@@ -2551,75 +2551,112 @@ function LEAD_API(url, opts){
 </script>
 
 <script>
-/* чекап: 14 дней собираются в карту процессов с узкими местами */
+/* карта процессов после чекапа: районы работы, маршруты между ними и отмеченные узкие места.
+   читается как карта местности, а не как абстрактный граф */
 (function(){
   var c=document.querySelector('.chk-fx'); if(!c) return;
   var DPR=Math.min(devicePixelRatio||1,2), ctx=c.getContext('2d'), W=0,H=0,t=0;
-  var WH='232,238,236', GR='128,140,136', PH='121,201,142';
+  var WH='232,238,236', GR='128,140,136', PH='121,201,142', WARN='226,146,92';
   function theme(){var l=document.documentElement.getAttribute('data-theme')==='light';
-    WH=l?'26,30,28':'232,238,236'; GR=l?'96,106,102':'128,140,136'; PH=l?'46,124,74':'121,201,142';}
+    WH=l?'26,30,28':'232,238,236'; GR=l?'96,106,102':'128,140,136';
+    PH=l?'46,124,74':'121,201,142'; WARN=l?'186,108,54':'226,146,92';}
   theme(); new MutationObserver(theme).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
-  function rnd(s){var x=Math.sin(s*127.1)*43758.5453;return x-Math.floor(x)}
-  var DAYS=14, nodes=[], links=[];
+
+  /* районы карты: доля ширины, доля высоты, размер, подпись */
+  var AREAS=[
+    {x:.14,y:.30,r:.16,n:'заявки'},
+    {x:.38,y:.62,r:.19,n:'продажи'},
+    {x:.63,y:.26,r:.17,n:'документы'},
+    {x:.85,y:.58,r:.15,n:'склад'}
+  ];
+  /* маршруты между районами: по ним ходит работа, на двух стоят заторы */
+  var ROADS=[[0,1,0],[1,2,1],[2,3,0],[1,3,1]];
+  var pts=[], roads=[], grid=[];
+
   function build(){
-    var r=c.getBoundingClientRect(); W=r.width; H=Math.max(190, Math.min(260, W*0.42));
+    var r=c.getBoundingClientRect(); W=r.width; H=Math.max(210, Math.min(280, W*0.44));
     c.style.height=H+'px'; c.width=W*DPR; c.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
-    nodes=[]; links=[];
-    var rows=3, per=[3,4,3], idx=0;
-    for(var r0=0;r0<rows;r0++){
-      for(var k=0;k<per[r0];k++){
-        nodes.push({x:70+ (W-150)*(k/(per[r0]-1||1)), y:44+(H-90)*(r0/(rows-1)),
-          hot: idx===2||idx===6, i:idx}); idx++;
-      }
-    }
-    for(var a=0;a<nodes.length;a++)for(var b=a+1;b<nodes.length;b++){
-      if(Math.abs(nodes[a].x-nodes[b].x)<W*0.34 && rnd(a*13+b*7)>0.42) links.push([nodes[a],nodes[b]]);
-    }
+    var m=Math.min(W,H);
+    pts=AREAS.map(function(a){return {x:a.x*W, y:a.y*H, r:a.r*m*.62, n:a.n}});
+    roads=ROADS.map(function(rd,i){
+      var a=pts[rd[0]], b=pts[rd[1]];
+      return {a:a,b:b,jam:rd[2],
+              mx:(a.x+b.x)/2+(i%2?18:-18), my:(a.y+b.y)/2+(i%2?-16:16), ph:i*.27};
+    });
+    grid=[];
+    for(var gx=0; gx<W; gx+=26) grid.push({v:true, p:gx});
+    for(var gy=0; gy<H; gy+=26) grid.push({v:false, p:gy});
   }
   build(); addEventListener('resize',build);
+
   (function frame(){
     requestAnimationFrame(frame);
-    if(c.getBoundingClientRect().bottom<-100){t++;return}
+    var bb=c.getBoundingClientRect();
+    if(bb.bottom<-120||bb.top>innerHeight+160){t++;return}
     ctx.clearRect(0,0,W,H);
-    var CY=760, ph=(t%CY)/CY;
-    var barH=8, y0=H-18, bw=(W-120)/DAYS;
-    /* фаза 1: заполняются дни */
-    var fill=Math.min(1, ph/0.45);
-    for(var d=0;d<DAYS;d++){
-      var on=d < fill*DAYS;
-      ctx.beginPath(); ctx.roundRect(60+d*bw, y0, bw-4, barH, 3);
-      ctx.fillStyle= on ? 'rgba('+PH+',.75)' : 'rgba('+GR+',.22)';
-      ctx.fill();
-    }
-    ctx.font='400 10.5px "JetBrains Mono", ui-monospace, monospace';
-    ctx.fillStyle='rgba('+GR+',.9)';
-    ctx.fillText('день '+Math.max(1,Math.round(fill*DAYS))+' из '+DAYS, 60, y0-10);
-    /* фаза 2: из дней вырастает карта процессов */
-    var map=Math.max(0, Math.min(1,(ph-0.4)/0.45));
-    if(map>0){
-      links.forEach(function(L,i){
-        var lo=Math.max(0,Math.min(1,(map-(i%5)*0.06)/0.5)); if(lo<=0)return;
-        ctx.beginPath(); ctx.moveTo(L[0].x,L[0].y);
-        ctx.lineTo(L[0].x+(L[1].x-L[0].x)*lo, L[0].y+(L[1].y-L[0].y)*lo);
-        ctx.strokeStyle='rgba('+GR+','+(0.3*lo)+')'; ctx.lineWidth=1; ctx.stroke();
-      });
-      nodes.forEach(function(n,i){
-        var lo=Math.max(0,Math.min(1,(map-i*0.045)/0.4)); if(lo<=0)return;
-        if(n.hot){
-          var g=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,18);
-          g.addColorStop(0,'rgba('+PH+','+(0.3*lo)+')'); g.addColorStop(1,'rgba('+PH+',0)');
-          ctx.fillStyle=g; ctx.beginPath(); ctx.arc(n.x,n.y,18,0,7); ctx.fill();
-        }
-        ctx.beginPath(); ctx.arc(n.x,n.y,n.hot?5:3.4,0,7);
-        ctx.fillStyle=n.hot?'rgba('+PH+','+(0.9*lo)+')':'rgba('+WH+','+(0.45*lo)+')';
-        ctx.fill();
-      });
-      if(map>0.75){
-        ctx.font='400 10.5px "JetBrains Mono", ui-monospace, monospace';
-        ctx.fillStyle='rgba('+PH+','+((map-0.75)/0.25*0.9)+')';
-        ctx.fillText('карта процессов, зелёным узкие места', 60, 22);
+
+    /* сетка карты */
+    ctx.strokeStyle='rgba('+GR+',.09)'; ctx.lineWidth=1;
+    grid.forEach(function(g){
+      ctx.beginPath();
+      if(g.v){ ctx.moveTo(g.p,0); ctx.lineTo(g.p,H) } else { ctx.moveTo(0,g.p); ctx.lineTo(W,g.p) }
+      ctx.stroke();
+    });
+
+    /* районы: заливка и граница, как участки на карте */
+    pts.forEach(function(p,i){
+      var brf=.5+.5*Math.sin(t*.012+i);
+      var g=ctx.createRadialGradient(p.x,p.y,p.r*.2,p.x,p.y,p.r);
+      g.addColorStop(0,'rgba('+GR+',.14)'); g.addColorStop(1,'rgba('+GR+',0)');
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,7); ctx.fill();
+      ctx.setLineDash([3,5]); ctx.strokeStyle='rgba('+GR+','+(.3+brf*.12)+')'; ctx.lineWidth=1;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,7); ctx.stroke(); ctx.setLineDash([]);
+    });
+
+    /* маршруты */
+    roads.forEach(function(rd){
+      ctx.beginPath(); ctx.moveTo(rd.a.x,rd.a.y);
+      ctx.quadraticCurveTo(rd.mx,rd.my,rd.b.x,rd.b.y);
+      ctx.strokeStyle=rd.jam?'rgba('+WARN+',.5)':'rgba('+GR+',.34)';
+      ctx.lineWidth=rd.jam?1.6:1.2; ctx.stroke();
+    });
+
+    /* поток по маршрутам: на затруднённых участках движение медленнее и точки копятся */
+    roads.forEach(function(rd,i){
+      var n=rd.jam?4:2;
+      for(var k=0;k<n;k++){
+        var sp=rd.jam?0.00055:0.0016;
+        var q=((t*sp)+rd.ph+k*(rd.jam?.045:.4))%1;
+        var x=(1-q)*(1-q)*rd.a.x+2*(1-q)*q*rd.mx+q*q*rd.b.x;
+        var y=(1-q)*(1-q)*rd.a.y+2*(1-q)*q*rd.my+q*q*rd.b.y;
+        ctx.beginPath(); ctx.arc(x,y,rd.jam?2.4:2,0,7);
+        ctx.fillStyle=rd.jam?'rgba('+WARN+',.85)':'rgba('+PH+',.8)'; ctx.fill();
       }
-    }
+    });
+
+    /* отметки узких мест */
+    roads.filter(function(r){return r.jam}).forEach(function(rd,i){
+      var pulse=.5+.5*Math.sin(t*.05+i*2);
+      var x=rd.mx, y=rd.my;
+      var g=ctx.createRadialGradient(x,y,0,x,y,16+pulse*6);
+      g.addColorStop(0,'rgba('+WARN+','+(.3+pulse*.2)+')'); g.addColorStop(1,'rgba('+WARN+',0)');
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,16+pulse*6,0,7); ctx.fill();
+      ctx.beginPath(); ctx.arc(x,y,3.4,0,7); ctx.fillStyle='rgba('+WARN+',.95)'; ctx.fill();
+      /* подпись только у первой отметки, вторая читается по цвету: иначе надписи наезжают */
+      if(i===0){
+        ctx.font='400 10px "JetBrains Mono", ui-monospace, monospace';
+        ctx.fillStyle='rgba('+WARN+',.9)'; ctx.textAlign='center';
+        ctx.fillText('узкие места', x, y+22); ctx.textAlign='left';
+      }
+    });
+
+    /* подписи районов и центральные точки */
+    pts.forEach(function(p){
+      ctx.beginPath(); ctx.arc(p.x,p.y,3.2,0,7); ctx.fillStyle='rgba('+WH+',.8)'; ctx.fill();
+      ctx.font='400 11px "JetBrains Mono", ui-monospace, monospace';
+      ctx.fillStyle='rgba('+GR+',.9)'; ctx.textAlign='center';
+      ctx.fillText(p.n, p.x, p.y+p.r+15); ctx.textAlign='left';
+    });
     t++;
   })();
 })();
