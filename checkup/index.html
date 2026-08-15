@@ -1,0 +1,966 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>AI-чекап бизнеса за&nbsp;две недели – Synapt</title>
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="Synapt">
+<meta property="og:title" content="За&nbsp;две недели видно, где теряете деньги и&nbsp;что&nbsp;делать первым">
+<meta property="og:description" content="AI-чекап бизнеса за&nbsp;две недели: три Zoom, карта процессов с&nbsp;узкими местами, порядок внедрения, план с&nbsp;вилкой бюджета и&nbsp;собранный агент на&nbsp;ваших материалах. 19 900 руб.">
+<meta property="og:url" content="/synapt/checkup/">
+<meta property="og:image" content="/synapt/checkup//og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="AI-чекап бизнеса за&nbsp;две недели: три Zoom, карта процессов с&nbsp;узкими местами, порядок внедрения, план с&nbsp;вилкой бюджета и&nbsp;собранный агент на&nbsp;ваших материалах. 19&nbsp;900 руб.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(){var s;try{s=localStorage.getItem('synapt-theme')}catch(e){}
+if(s!=='light'&&s!=='dark'){s=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches)?'light':'dark'}
+document.documentElement.setAttribute('data-theme',s)})();</script>
+<style>
+/* ===== токены Synapt ===== */
+:root{
+  --accent:#79C98E; --accent-glow:#96DCA8; --accent-deep:#4E8F62; --accent-light:#BEE9CB;
+  --accent-txt:#B9C1BE; --sage:#9DB2A3; --accent-ink:#101312; --danger:#FF7A8A;
+  --sans:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r-xs:8px; --r-sm:10px; --r-md:16px; --r-lg:22px; --r-pill:999px;
+  --maxw:1180px; --gutter:28px;
+  --ease:cubic-bezier(.22,.7,.3,1);
+  --dur-fast:.16s; --dur:.2s; --dur-theme:.35s; --dur-reveal:.7s;
+  --bg-deep:#0D0F0E; --bg:#131514; --surface:#191C1B; --surface-2:#212524; --surface-3:#2A2E2C;
+  --text:#F0F2F1; --text-2:#C4CAC7; --text-muted:#A8B0AC; --text-dim:#929A96;
+  --line:rgba(180,214,190,.10); --line-2:rgba(180,214,190,.18); --line-accent:rgba(121,201,142,.32);
+  --glow:radial-gradient(58% 52% at 74% 6%,rgba(121,201,142,.10),transparent 72%);
+  --card-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 12px 40px -20px rgba(0,0,0,.6);
+  --btn-shadow:0 6px 20px -8px rgba(121,201,142,.7);
+}
+:root[data-theme="light"]{
+  --bg-deep:#EDF1EE; --bg:#FBFBFB; --surface:#FFFFFF; --surface-2:#F4F6F5; --surface-3:#EBEEEC;
+  --text:#161918; --text-2:#3A3F3D; --text-muted:#525956; --text-dim:#626966; --danger:#B4232F;
+  --accent-txt:#4C534F; --sage:#546857;
+  --line:#E6E9E8; --line-2:#DBDFDD; --line-accent:rgba(78,143,98,.35);
+  --glow:radial-gradient(58% 52% at 74% 6%,rgba(121,201,142,.08),transparent 72%);
+  --card-shadow:0 1px 2px rgba(20,25,22,.04),0 14px 40px -24px rgba(30,50,38,.18);
+  --btn-shadow:0 6px 20px -10px rgba(78,143,98,.5);
+}
+
+/* ===== база ===== */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{font-family:var(--sans);font-size:17px;font-weight:450;line-height:1.6;
+ background:var(--bg);color:var(--text);font-feature-settings:"tnum" 1;
+ -webkit-font-smoothing:antialiased;overflow-x:hidden;
+ transition:background var(--dur-theme) ease,color var(--dur-theme) ease}
+a{color:inherit;text-decoration:none}
+svg{display:block}
+::selection{background:rgba(121,201,142,.24)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+.mono{font-family:var(--mono);font-feature-settings:"liga" 0,"calt" 0}
+/* диапазоны не рвутся по дефису: «200-» на одной строке и «300» на другой читается как ошибка */
+.nb{white-space:nowrap}
+
+/* шкала подобрана так, чтобы h1 был крупнее h2 не меньше чем в 1,8 раза на любой ширине */
+h1{font-size:clamp(40px,5.9vw,72px);font-weight:620;letter-spacing:-.03em;line-height:1.04;max-width:21ch}
+h2{font-size:clamp(23px,3.25vw,38px);font-weight:600;letter-spacing:-.025em;line-height:1.1;max-width:24ch}
+h3{font-size:21px;font-weight:620;letter-spacing:-.01em;line-height:1.25}
+h4{font-size:16.5px;font-weight:560;letter-spacing:-.012em;line-height:1.35}
+.lead{font-size:clamp(18px,2vw,21px);font-weight:450;letter-spacing:-.005em;line-height:1.6;color:var(--text-2);max-width:640px}
+.eyebrow{font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.14em;
+ color:var(--sage);margin-bottom:18px;display:flex;align-items:center;gap:10px;
+ font-feature-settings:"case" 1,"liga" 0,"calt" 0}
+.eyebrow .n{color:var(--text-dim)}
+.sec-head{margin-bottom:52px}
+.sec-head h2{margin-bottom:18px}
+.sec-head .lead{margin-top:0}
+
+/* ===== ритм секций ===== */
+.rh-hero{padding:96px 0 120px}
+.rh-list{padding:64px 0}
+.rh-list-b{padding:72px 0 88px}
+.rh-think{padding:130px 0 150px}
+.rh-dense{padding:72px 0 96px}
+.rh-scheme{padding:64px 0 130px}
+.rh-dense-b{padding:64px 0 96px}
+.rh-price{padding:96px 0 72px}
+.rh-thin{padding:72px 0 64px}
+.rh-pre{padding:64px 0 88px}
+.rh-cta{padding:80px 0 110px}
+/* лестница отступов: до вопросов 160, после 152, перед заявкой 168 – два соседних промежутка не совпадают */
+@media(min-width:721px){#faq{padding-bottom:88px}}
+
+/* ===== движение ===== */
+.reveal{opacity:0;transform:translateY(18px);
+ transition:opacity var(--dur-reveal) var(--ease),transform var(--dur-reveal) var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.06s}.d2{transition-delay:.12s}.d3{transition-delay:.18s}.d4{transition-delay:.24s}
+@media(prefers-reduced-motion:reduce){
+ .reveal{opacity:1;transform:none;transition:none}
+ html{scroll-behavior:auto}
+ *{animation:none!important}
+}
+
+/* ===== кнопки ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;
+ font-size:14.5px;font-weight:560;letter-spacing:-.005em;padding:10px 18px;border-radius:var(--r-sm);
+ border:1px solid transparent;cursor:pointer;min-height:44px;
+ transition:background var(--dur-fast) ease,border-color var(--dur-fast) ease,transform var(--dur-fast) ease,box-shadow var(--dur-fast) ease}
+.btn.pri{background:var(--accent);color:var(--accent-ink);box-shadow:var(--btn-shadow)}
+.btn.pri:hover{background:var(--accent-glow);transform:translateY(-1px)}
+.btn.pri:active{transform:none;box-shadow:none}
+.btn.ghost{background:var(--surface);color:var(--text);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--line-2)}
+.btn.ghost:active{background:var(--surface-2)}
+.btn.lg{font-size:16px;padding:14px 26px;border-radius:var(--r-md)}
+.morelink{display:inline-block;font-size:13.5px;font-weight:560;color:var(--accent-txt);
+ border-bottom:1px solid var(--line-accent);padding-bottom:1px;margin-top:16px;
+ transition:border-color var(--dur-fast) ease}
+.morelink:hover{border-color:var(--accent-txt)}
+
+/* ===== шапка ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:66px;display:flex;align-items:center;
+ background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:saturate(160%) blur(14px);
+ -webkit-backdrop-filter:saturate(160%) blur(14px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:14px;width:100%}
+.brand{display:inline-flex;align-items:center;color:var(--text);flex:none;min-height:44px}
+.brand svg{height:28px;width:auto}
+.nav-links{display:flex;gap:2px;flex:1;margin-left:8px;min-width:0}
+.nav-links a{font-size:14px;font-weight:500;color:var(--text-muted);padding:11px 10px;border-radius:var(--r-sm);
+ white-space:nowrap;transition:color var(--dur-fast) ease,background var(--dur-fast) ease}
+.nav-links a:hover{color:var(--text);background:var(--surface)}
+.nav-links a:active{background:var(--surface-2)}
+.tgl,.burger{flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+ background:transparent;border:1px solid var(--line);border-radius:var(--r-sm);color:var(--text-muted);
+ cursor:pointer;transition:border-color var(--dur-fast) ease,color var(--dur-fast) ease}
+.tgl:hover,.burger:hover{border-color:var(--line-2);color:var(--text)}
+.tgl svg{width:17px;height:17px}
+.tgl .i-sun{display:none}
+:root[data-theme="light"] .tgl .i-sun{display:block}
+:root[data-theme="light"] .tgl .i-moon{display:none}
+.burger{display:none}
+.burger .bl{display:block;width:16px;height:1.5px;background:currentColor;position:relative;transition:transform var(--dur) var(--ease)}
+.burger .bl::before,.burger .bl::after{content:"";position:absolute;left:0;width:16px;height:1.5px;background:currentColor;
+ transition:transform var(--dur) var(--ease),opacity var(--dur) var(--ease)}
+.burger .bl::before{top:-5px}
+.burger .bl::after{top:5px}
+.burger[aria-expanded="true"] .bl{background:transparent}
+.burger[aria-expanded="true"] .bl::before{transform:translateY(5px) rotate(45deg)}
+.burger[aria-expanded="true"] .bl::after{transform:translateY(-5px) rotate(-45deg)}
+.nav-sheet{display:none;position:fixed;inset:66px 0 auto 0;z-index:99;background:var(--bg);
+ border-bottom:1px solid var(--line);padding:12px var(--gutter) 20px;max-height:calc(100vh - 66px);overflow-y:auto}
+.nav-sheet.open{display:block}
+.nav-sheet a{display:flex;align-items:center;min-height:48px;font-size:16px;font-weight:500;color:var(--text-2);
+ border-bottom:1px solid var(--line)}
+.nav-sheet a:last-of-type{border-bottom:0}
+.nav-sheet .btn{display:inline-flex;width:100%;margin-top:16px;border-bottom:0}
+.nav .btn{white-space:nowrap;margin-left:auto}
+@media(max-width:980px){.nav-links{display:none}.burger{display:flex}.nav .btn{margin-left:0}}
+@media(max-width:600px){.nav>.wrap>.btn{display:none}}
+
+/* ===== первый экран ===== */
+.hero{position:relative;padding-top:calc(66px + 96px)}
+.hero::before{content:"";position:absolute;inset:0;background:var(--glow);pointer-events:none}
+/* три ряда одной сетки: текст и число сверху, линия с метриками во всю ширину контейнера */
+.hero-in{position:relative;display:grid;grid-template-columns:1.4fr .6fr;gap:48px;align-items:start}
+.hero-txt{grid-column:1}
+.hero-dom{grid-column:2}
+.hero .facts{grid-column:1/-1}
+.hero h1{margin-bottom:24px}
+.hero .lead{margin-bottom:32px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.facts{display:flex;flex-wrap:wrap;gap:34px;margin-top:48px;padding-top:26px;border-top:1px solid var(--line)}
+.hero .facts{margin-top:0}
+.metric b{display:block;font-family:var(--mono);font-weight:500;font-size:23px;letter-spacing:-.03em;line-height:1.1;
+ word-spacing:-.22em;color:var(--text);font-feature-settings:"tnum" 1,"liga" 0,"calt" 0}
+.metric>span{display:block;font-size:13.5px;line-height:1.5;color:var(--text-muted);margin-top:8px;max-width:24ch}
+.metric.big b{font-size:clamp(26px,3vw,38px);letter-spacing:-.02em;line-height:1}
+/* на большом экране три метрики держатся одной строкой и одним кеглем */
+@media(min-width:901px){
+ .hero .facts{flex-wrap:nowrap;align-items:flex-start}
+ .hero .facts .metric{flex:1 1 0;min-width:0}
+ .hero .facts .metric>span{max-width:23ch}
+}
+.hero .facts .metric.big b{font-size:23px;letter-spacing:-.03em;line-height:1.1}
+.hero-dom{justify-self:end;text-align:right}
+.dom{font-family:var(--mono);font-weight:500;font-size:clamp(96px,13vw,200px);letter-spacing:-.045em;
+ line-height:.9;color:var(--text);font-feature-settings:"tnum" 1,"liga" 0,"calt" 0}
+.dom-cap{font-size:13.5px;font-weight:450;color:var(--text-muted);
+ line-height:1.5;margin-top:14px;max-width:20ch;margin-left:auto}
+
+/* ===== строки-механизмы ===== */
+.rules{border-top:1px solid var(--line)}
+/* колонка метки считана по самой длинной подписи «после запуска», иначе она наезжала на заголовок */
+.rule{display:grid;grid-template-columns:112px 1fr 1.25fr;gap:24px;align-items:baseline;
+ padding:20px 0;border-bottom:1px solid var(--line)}
+.rule .rn{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.04em;color:var(--text-dim);white-space:nowrap;
+ transition:color var(--dur-fast) ease;font-feature-settings:"liga" 0,"calt" 0}
+.rule:hover .rn{color:var(--accent)}
+.rule .rt{font-size:16.5px;font-weight:560;letter-spacing:-.012em;line-height:1.35}
+.rule .rd{font-size:15px;line-height:1.55;color:var(--text-muted)}
+.rule .rd a{color:var(--accent-txt);border-bottom:1px solid var(--line-accent);
+ transition:color var(--dur-fast) ease,border-color var(--dur-fast) ease}
+.rule .rd a:hover{color:var(--text);border-bottom-color:currentColor}
+
+/* ===== блок-мысль ===== */
+.stmt{border-left:2px solid var(--accent);padding:4px 0 4px 26px;max-width:820px}
+.stmt p{font-size:clamp(21px,2.7vw,30px);font-weight:500;letter-spacing:-.015em;line-height:1.32}
+.stmt b{color:var(--accent-txt);font-weight:620}
+
+/* ===== карточки и бенто ===== */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:30px;
+ box-shadow:var(--card-shadow);transition:border-color var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.card:hover{border-color:var(--line-2);transform:translateY(-3px)}
+.card h3{margin-bottom:10px}
+.card p{font-size:15px;line-height:1.55;color:var(--text-muted);max-width:42ch}
+.tag{display:inline-block;font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.10em;
+ color:var(--accent-txt);border:1px solid var(--line-accent);border-radius:var(--r-pill);
+ padding:4px 11px;margin-bottom:16px;font-feature-settings:"case" 1,"liga" 0,"calt" 0}
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.bento>*:nth-child(1){grid-column:span 4}
+.bento>*:nth-child(2){grid-column:span 2}
+/* вертикальный шов чередуется зеркально: 4+2 и 2+4, а не 4+2 и 3+3 в разнобой */
+.bento>*:nth-child(3){grid-column:span 2}
+.bento>*:nth-child(4){grid-column:span 4}
+/* обе колонки начинаются от одной линии: смещение читалось как съехавший блок */
+.pair{display:grid;grid-template-columns:1.35fr 1fr;gap:22px;align-items:stretch}
+/* строка сноски держит ту же меру чтения, что и лид: 640px текста, иначе строка уходила за 140 знаков */
+.note{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+ padding:20px 24px;font-size:16px;line-height:1.6;color:var(--text-2);margin-top:22px;max-width:688px}
+.note b{color:var(--text);font-weight:560}
+
+/* ===== кейсы ===== */
+.case{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:30px;
+ box-shadow:var(--card-shadow);transition:border-color var(--dur) var(--ease)}
+.case:hover{border-color:var(--line-2)}
+.case h3{font-size:21px;letter-spacing:-.01em;margin-bottom:6px}
+.case .who{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--text-dim);margin-bottom:14px;
+ font-feature-settings:"liga" 0,"calt" 0}
+.case p{font-size:15px;line-height:1.55;color:var(--text-muted);margin-bottom:24px;max-width:46ch}
+/* обе цифры в кейсе одного кегля: разный кегль ронял базовые линии и подписи под ними */
+.case .metrics{display:flex;flex-wrap:wrap;gap:32px;align-items:baseline}
+.case .metrics .metric.big b{font-size:23px;letter-spacing:-.03em;line-height:1.1}
+
+/* ===== полоса во всю ширину ===== */
+.fullwide{background:var(--bg-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+ border-radius:0;position:relative;overflow:hidden}
+/* мягкая виньетка вместо линейной маски: графика гаснет ко всем краям, полос и обрезанных кусков нет */
+.fullwide>canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.5;pointer-events:none;z-index:0;
+ -webkit-mask-image:radial-gradient(64% 108% at 78% 50%,#000 0,rgba(0,0,0,.38) 54%,transparent 82%),
+  linear-gradient(to right,transparent 0,#000 20%,#000 74%,transparent 97%);
+ -webkit-mask-composite:source-in;
+ mask-image:radial-gradient(64% 108% at 78% 50%,#000 0,rgba(0,0,0,.38) 54%,transparent 82%),
+  linear-gradient(to right,transparent 0,#000 20%,#000 74%,transparent 97%);
+ mask-composite:intersect}
+/* графика остаётся фоном: на светлой теме и на узком экране она не должна перечёркивать строки текста */
+:root[data-theme="light"] .fullwide>canvas{opacity:.34}
+@media(max-width:900px){.fullwide>canvas{opacity:.26}}
+@media(max-width:600px){.fullwide>canvas{opacity:.16}}
+.fullwide>.wrap{position:relative;z-index:1}
+.fx-cap{font-size:13.5px;font-weight:450;color:var(--text-muted);margin-top:28px;max-width:52ch}
+
+/* ===== тарифы ===== */
+.plan{background:var(--bg-deep);border:1px solid var(--line);border-radius:var(--r-lg);padding:30px;
+ display:flex;flex-direction:column}
+.plan.main{border-color:var(--line-accent)}
+.plan .pn{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.10em;
+ color:var(--sage);margin-bottom:16px;font-feature-settings:"case" 1,"liga" 0,"calt" 0}
+.plan .sum{font-family:var(--mono);font-weight:500;font-size:clamp(26px,3vw,38px);letter-spacing:-.02em;line-height:1;
+ word-spacing:-.22em;color:var(--text);font-feature-settings:"tnum" 1,"liga" 0,"calt" 0}
+.plan .per{font-size:13.5px;color:var(--text-muted);margin:12px 0 22px}
+.plan ul{list-style:none;flex:1;margin-bottom:24px;border-top:1px solid var(--line)}
+.plan li{font-size:15px;line-height:1.5;color:var(--text-2);padding:12px 0;border-bottom:1px solid var(--line)}
+.plan .btn{align-self:flex-start}
+
+/* ===== аккордеон ===== */
+.faq{max-width:840px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:22px 2px;
+ font-size:17.5px;font-weight:560;letter-spacing:-.01em;min-height:44px;transition:color var(--dur-fast) ease}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--text-2)}
+.faq summary .pl{margin-left:auto;flex:none;width:26px;height:26px;border-radius:var(--r-xs);
+ border:1px solid var(--line);color:var(--text-dim);display:flex;align-items:center;justify-content:center;
+ font-size:15px;line-height:1;transition:transform var(--dur) var(--ease),border-color var(--dur) var(--ease)}
+.faq details[open] summary .pl{transform:rotate(45deg);border-color:var(--line-2);color:var(--text-2)}
+.faq .ans{padding:0 2px 22px;font-size:15px;line-height:1.65;color:var(--text-2);max-width:60ch}
+
+/* ===== пилюли смежных материалов ===== */
+.pills{display:flex;flex-wrap:wrap;gap:10px}
+.pill{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:10px 16px;
+ background:var(--surface);border:1px solid var(--line);border-radius:var(--r-pill);
+ font-size:14.5px;font-weight:500;color:var(--text-2);
+ transition:border-color var(--dur-fast) ease,color var(--dur-fast) ease}
+.pill:hover{border-color:var(--line-2);color:var(--text)}
+.pill .pk{font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.10em;
+ color:var(--text-dim);font-feature-settings:"case" 1,"liga" 0,"calt" 0}
+
+/* ===== форма ===== */
+.leadbox{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
+ padding:clamp(24px,3.4vw,38px);max-width:820px;box-shadow:var(--card-shadow)}
+/* между полями воздуха больше, чем между подписью и её полем: иначе подпись читалась вместе с чужим полем */
+.lf-row{display:grid;grid-template-columns:1fr 1fr;column-gap:20px;row-gap:0}
+.lf{margin-bottom:28px}
+.lf label{display:block;font-size:13.5px;font-weight:560;color:var(--text-2);margin-bottom:6px}
+/* поле это прямая линия: прозрачный фон, только нижняя граница, радиус 0 */
+.lf input,.lf textarea{width:100%;display:block;font-family:inherit;font-size:15px;color:var(--text);
+ background:transparent;border:0;border-bottom:1px solid var(--line-2);border-radius:0;
+ padding:12px 2px;min-height:44px;outline:none;resize:vertical;transition:border-color var(--dur-fast) ease}
+.lf input::placeholder,.lf textarea::placeholder{color:var(--text-dim)}
+.lf input:hover,.lf textarea:hover{border-bottom-color:var(--text-dim)}
+.lf input:focus,.lf textarea:focus{border-bottom-color:var(--accent)}
+.lf input:focus-visible,.lf textarea:focus-visible{outline:none}
+.lf input.err,.lf textarea.err{border-bottom-color:var(--danger)}
+.lf input:-webkit-autofill{-webkit-text-fill-color:var(--text);transition:background-color 9999s}
+.lf textarea{min-height:88px}
+.lf-check{display:flex;gap:12px;align-items:flex-start;margin:22px 0 4px;font-size:14px;line-height:1.5;
+ color:var(--text-muted);cursor:pointer}
+.lf-check input[type=checkbox]{appearance:none;-webkit-appearance:none;flex:none;width:20px;height:20px;
+ border-radius:0;border:1px solid var(--line-2);background:transparent;cursor:pointer;
+ position:relative;margin-top:2px;transition:border-color var(--dur-fast) ease,background var(--dur-fast) ease}
+/* зона нажатия у чекбокса 44px, визуально квадрат остаётся 22px */
+.lf-check input[type=checkbox]::before{content:"";position:absolute;left:50%;top:50%;
+ width:44px;height:44px;transform:translate(-50%,-50%)}
+.lf-check input[type=checkbox]:hover{border-color:var(--accent)}
+.lf-check input[type=checkbox]:checked{border-color:var(--accent);background:rgba(121,201,142,.14)}
+.lf-check input[type=checkbox]:checked::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;
+ border:solid var(--accent);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.lf-check a{color:var(--accent-txt);border-bottom:1px solid var(--line-accent)}
+.lf-err{display:none;color:var(--danger);font-size:13.5px;margin-top:14px}
+.lf-err.show{display:block}
+.leadbox button[type=submit]{margin-top:22px}
+.lf-done{display:none;font-size:16px;line-height:1.6;color:var(--text-2)}
+.lf-done.show{display:block}
+.lf-done b{color:var(--text);font-weight:560}
+.lf-done a{color:var(--accent-txt);border-bottom:1px solid var(--line-accent)}
+.lf-hint{font-size:13.5px;color:var(--text-dim);margin-top:16px;max-width:56ch}
+
+/* ===== подвал ===== */
+footer{padding:56px 0 64px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:22px;flex-wrap:wrap}
+footer .brand svg{height:24px}
+/* подпись года выравнивается по той же линии, что и ссылки, а не висит выше */
+footer .fm{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:13.5px;color:var(--text-dim)}
+footer .fm span{display:inline-flex;align-items:center;min-height:44px}
+footer .fm a{display:inline-flex;align-items:center;min-height:44px;transition:color var(--dur-fast) ease}
+footer .fm a:hover{color:var(--text)}
+.legal{font-family:var(--mono);font-size:11.5px;line-height:1.6;color:var(--text-2);margin-top:20px;
+ font-feature-settings:"liga" 0,"calt" 0}
+/* подпись реквизита и значение стояли вплотную: «ИННИндивидуальный…». Разводим в две колонки по одной линии */
+.legal>div{display:grid;grid-template-columns:104px minmax(0,1fr);gap:2px 16px;align-items:baseline}
+/* подпись реквизита отличается тоном, а не прозрачностью: на .72 контраст падал до 3,1:1 */
+.legal>div>span{color:var(--text-dim);opacity:1}
+@media(max-width:560px){
+ .legal>div{grid-template-columns:1fr;gap:0}
+ .legal>div>span{display:block;margin-top:10px}
+}
+
+/* ===== адаптив ===== */
+@media(max-width:1080px){
+ .hero-in{grid-template-columns:1.25fr .75fr;gap:32px}
+}
+@media(max-width:900px){
+ .hero-in{grid-template-columns:1fr;gap:48px}
+ .hero-txt,.hero-dom,.hero .facts{grid-column:1}
+ /* крупное «7» идёт сразу за обещанием и кнопками, метрики закрывают экран: иначе число висело в конце ни к чему */
+ .hero-dom{order:2;justify-self:start;text-align:left}
+ .hero .facts{order:3}
+ .dom-cap{margin-left:0}
+ /* два длинных блока во всю ширину, два коротких в паре: пустых ячеек в сетке не остаётся */
+ .bento{grid-template-columns:repeat(2,1fr)}
+ .bento>*:nth-child(2),.bento>*:nth-child(3){grid-column:span 1}
+ .bento>*:nth-child(1),.bento>*:nth-child(4){grid-column:span 2}
+ .pair{grid-template-columns:1fr}
+ /* на узком экране метка, заголовок и описание идут одной колонкой от общего левого края */
+ .rule{grid-template-columns:1fr;gap:6px}
+ .rule .rn{grid-column:1;margin-bottom:2px}
+ .rule .rt,.rule .rd{grid-column:1}
+ .rule .rd{max-width:62ch}
+}
+@media(max-width:720px){
+ :root{--gutter:20px}
+ /* на узком экране заголовок держит перевес над подзаголовком не меньше 1,8 раза */
+ h1{font-size:clamp(40px,11.6vw,50px)}
+ h2{font-size:clamp(21px,6vw,25px)}
+ .rh-hero{padding:64px 0 80px}
+ .hero{padding-top:calc(66px + 64px)}
+ .rh-list{padding:64px 0}
+ .rh-think{padding:88px 0 96px}
+ .rh-dense{padding:48px 0 64px}
+ .rh-scheme{padding:48px 0 88px}
+ .rh-dense-b{padding:48px 0 64px}
+ .rh-price{padding:64px 0 48px}
+ .rh-thin{padding:48px 0 64px}
+ .rh-pre{padding:48px 0 96px}
+ .rh-cta{padding:64px 0 80px}
+ .sec-head{margin-bottom:36px}
+ .bento{grid-template-columns:1fr;gap:14px}
+ .bento>*:nth-child(1),.bento>*:nth-child(4){grid-column:span 1}
+ .card,.case,.plan{padding:24px}
+ .facts{gap:26px}
+ .case .metrics{gap:24px}
+ .lf-row{grid-template-columns:1fr;column-gap:0}
+ .btn.lg{width:100%}
+ .lf input,.lf textarea{font-size:16px}
+ footer .wrap{align-items:flex-start}
+ /* лестница промежутков на мобильной: 128-144-152-144-112-136-128-112-128-96-128-112-160,
+    два соседних промежутка нигде не совпадают */
+ #why{padding-top:72px}
+ #estimate{padding-top:64px}
+ #faq{padding-top:64px}
+}
+
+/* ===== короткий экран: заголовок, лид и кнопки помещаются до сгиба ===== */
+@media(min-width:721px) and (max-height:900px){
+ .hero{padding-top:calc(66px + 28px)}
+ .rh-hero{padding-bottom:72px}
+ /* кегль держит перевес над h2 не меньше 1,8 на всей полосе 721-1440:
+    на 5.2vw отношение проваливалось до 1,60 при ширине около 1024 */
+ .hero h1{font-size:clamp(46px,5.9vw,70px);margin-bottom:16px}
+ .hero .lead{margin-bottom:20px}
+ .hero-in{gap:20px}
+ .facts{margin-top:34px;padding-top:18px}
+ .hero .facts .metric>span{margin-top:6px;max-width:30ch}
+ .dom{font-size:clamp(80px,10vw,156px)}
+}
+@media(max-width:720px) and (max-height:880px){
+ .hero{padding-top:calc(66px + 40px)}
+ .rh-hero{padding-bottom:64px}
+ .hero h1{font-size:clamp(38px,11.2vw,48px);margin-bottom:18px}
+ .hero .lead{margin-bottom:22px}
+ .facts{margin-top:32px;padding-top:20px;gap:22px}
+ .dom{font-size:clamp(80px,22vw,120px)}
+}
+
+/* тап-зоны на мобильной */
+@media(max-width:860px){
+  a.more,.ccard .morelink,.rcard a{position:relative;display:inline-flex;align-items:center;min-height:44px}
+  /* ссылки внутри абзаца остаются строчными, но зона нажатия дотягивается до 44px;
+     подчёркивание рисуем decoration, иначе граница уезжает вниз от текста отдельной чертой */
+  .rule .rd a,.faq .ans a,.note a,.lf-hint a,.lf-check>span a,.lf-done a,a.morelink{
+    position:relative;display:inline;padding:14px 3px;margin:-14px -3px;
+    border-bottom:0;text-decoration:underline;text-decoration-thickness:1px;
+    text-underline-offset:3px;text-decoration-color:color-mix(in srgb,currentColor 45%,transparent)}
+  a.morelink{padding:14px 3px;margin:-14px -3px}
+  .lf-check{min-height:44px}
+  .lf-check input[type=checkbox]{position:relative}
+  .lf-check input[type=checkbox]::before{content:"";position:absolute;inset:-12px;border-radius:50%}
+  footer .brand{min-height:44px;display:inline-flex;align-items:center}
+}
+
+/* чекбокс согласия: круг с зоной нажатия 44px */
+.lf-check{display:flex;align-items:flex-start;gap:12px;min-height:44px;padding:6px 0}
+.lf-check input[type=checkbox]{appearance:none;-webkit-appearance:none;flex:none;
+  width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line-2);background:transparent;
+  cursor:pointer;position:relative;margin-top:1px;transition:.16s}
+.lf-check input[type=checkbox]::before{content:"";position:absolute;inset:-11px;border-radius:50%}
+.lf-check input[type=checkbox]:checked{background:var(--accent);border-color:var(--accent)}
+.lf-check input[type=checkbox]:checked::after{content:"";position:absolute;left:7px;top:4px;
+  width:6px;height:10px;border:2px solid var(--accent-ink);border-top:0;border-left:0;transform:rotate(43deg)}
+.lf-check input[type=checkbox]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* тап-зоны в подвале и на планшете */
+@media(max-width:1024px){
+  footer .brand{min-height:44px;display:inline-flex;align-items:center}
+  footer a,.fmeta a,.fmeta span,.legal a{min-height:44px;display:inline-flex;align-items:center;
+    padding-inline:8px;margin-inline:-8px}
+}
+@media(max-width:420px){
+  .tn-mob,.tm-grid{flex-wrap:wrap;max-width:100%}
+  .tm-i{max-width:100%;white-space:normal}
+  *{min-width:0}
+}
+
+/* чекбокс: сам круг 22px, кликабельная область 44px */
+.lf-check{position:relative}
+.lf-check input[type=checkbox]{width:22px;height:22px;margin:11px 0 11px 0}
+.lf-check input[type=checkbox]::before{content:"";position:absolute;left:0;top:0;width:44px;height:44px;
+  border-radius:50%;transform:translate(-11px,-11px)}
+.lf-check>span{padding-top:11px}
+
+/* чекбокс согласия: круг 22px, нажатие 44px, клик по тексту работает */
+.lf-check{position:relative;display:flex;align-items:flex-start;gap:0;padding-left:36px;min-height:44px}
+.lf-check input[type=checkbox]{position:absolute;left:-11px;top:50%;transform:translateY(-50%);
+  width:44px;height:44px;margin:0;opacity:0;cursor:pointer;z-index:2;appearance:none;-webkit-appearance:none}
+.lf-check::before{content:"";position:absolute;left:0;top:11px;width:22px;height:22px;border-radius:50%;
+  border:1.5px solid var(--line-2);background:transparent;transition:.16s;pointer-events:none}
+.lf-check:has(input:checked)::before{background:var(--accent);border-color:var(--accent)}
+.lf-check:has(input:checked)::after{content:"";position:absolute;left:7.5px;top:15px;width:6px;height:10px;
+  border:2px solid var(--accent-ink);border-top:0;border-left:0;transform:rotate(43deg);pointer-events:none}
+.lf-check:has(input:focus-visible)::before{outline:2px solid var(--accent);outline-offset:3px}
+.lf-check>span{padding-top:9px;font-size:13.5px;line-height:1.5;color:var(--text-muted)}
+.lf-check>span a{color:var(--text-2);position:relative;z-index:3;
+  border-bottom:1px solid var(--line-2);transition:color var(--dur-fast) ease,border-color var(--dur-fast) ease}
+.lf-check>span a:hover,.lf-done a:hover{color:var(--text);border-bottom-color:currentColor}
+
+/* тап-зоны: логотип в шапке и подвале, ссылки-кнопки */
+@media(max-width:860px){
+  .nav .brand,footer .brand{min-height:44px;display:inline-flex;align-items:center}
+  a.btn,.btn.ghost,.btn.pri{min-height:44px}
+  .rel-card{min-height:44px}
+  /* ссылка в согласии: у неё зона нажатия 14px сверху и снизу, поэтому border-bottom
+     отваливался от текста отдельной чертой под блоком. Подчёркиваем только decoration */
+  .lf-check>span a{border-bottom:0;text-decoration:underline;text-decoration-thickness:1px;
+    text-underline-offset:3px;text-decoration-color:color-mix(in srgb,currentColor 45%,transparent)}
+}
+
+/* реквизиты в две колонки */
+.legal{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);
+  display:grid;grid-template-columns:1fr 1fr;gap:14px 48px;align-items:start}
+.lg-col{display:flex;flex-direction:column;gap:14px}
+.legal div{font-size:13px;color:var(--text-2);line-height:1.5}
+.legal span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;
+  color:var(--text-dim);margin-bottom:4px}
+.legal a{color:var(--text-2)}
+.legal a:hover{color:var(--accent-text,var(--accent))}
+@media(max-width:760px){.legal{grid-template-columns:1fr;gap:14px}}
+/* чекбокс согласия ровно по центру строки */
+.lf-check{display:flex;align-items:center;gap:12px}
+.lf-check input[type=checkbox]{flex:none;align-self:center;margin:0}
+.lf-check span{line-height:1.5}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="#top"><svg viewBox="0 0 869 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/><path d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></svg></a>
+  <div class="nav-links"><a href="#now">Почему сейчас</a><a href="#result">Что&nbsp;получите</a><a href="#days">Как&nbsp;проходит</a><a href="#ladder">Ступени</a><a href="#price">Цена</a></div>
+  <button class="tgl" id="themeTgl" type="button" aria-label="Сменить тему">
+    <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+    <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4L17 7M7 17l-1.6 1.6"/></svg>
+  </button>
+  <button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="navSheet"><span class="bl"></span></button>
+  <a class="btn ghost" href="https://t.me/Anti4ay">Обсудить задачу</a>
+</div>
+<div class="nav-sheet" id="navSheet"><a href="#now">Почему сейчас</a><a href="#entry">Цена входа</a><a href="#result">Что&nbsp;получите</a><a href="#days">Как&nbsp;проходит</a><a href="#ladder">Ступени доверия</a><a href="#estimate">Смета</a><a href="#price">Цена</a><a href="#vs">Что&nbsp;дальше</a><a href="#lead">Заявка</a><a class="btn ghost" href="https://t.me/Anti4ay">Обсудить задачу</a></div>
+</nav>
+<span id="top"></span>
+
+<header class="hero rh-hero"><div class="wrap hero-in">
+  <div class="hero-txt">
+    <div class="eyebrow reveal"><span class="n">01</span> AI-чекап бизнеса</div>
+    <h1 class="reveal d1">За&nbsp;две недели вы&nbsp;видите, где теряете деньги и&nbsp;что&nbsp;делать первым</h1>
+    <p class="lead reveal d2">Вы&nbsp;получаете карту процессов с&nbsp;узкими местами, план внедрения с&nbsp;приоритетами и&nbsp;вилкой бюджета, а&nbsp;также собранного агента на&nbsp;ваших материалах. С&nbsp;этим можно идти к&nbsp;нам, к&nbsp;другой студии или&nbsp;вести работу своими силами</p>
+    <div class="cta-row reveal d3">
+      <a class="btn pri lg" href="https://t.me/Anti4ay">Обсудить задачу</a>
+      <a class="btn ghost lg" href="#result">Посмотреть, что&nbsp;на&nbsp;выходе</a>
+    </div>
+  </div>
+  <div class="hero-dom reveal d2">
+    <div class="dom">14</div>
+    <div class="dom-cap">дней от&nbsp;первого Zoom до&nbsp;карты, плана и&nbsp;собранного агента</div>
+  </div>
+  <div class="facts reveal d3">
+    <div class="metric big"><b>19&nbsp;900&nbsp;руб.</b><span>чекап целиком, сумма фиксированная</span></div>
+    <div class="metric"><b>1 агент</b><span>собираем сразу на&nbsp;ваших материалах</span></div>
+    <div class="metric"><b><span class="nb">4-6</span> часов</b><span>интервью с&nbsp;вашей командой за&nbsp;неделю</span></div>
+  </div>
+</div></header>
+
+<section id="now" class="rh-list"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">02</span> Почему сейчас</div>
+    <h2>Разрыв прошёл между компаниями, которые перестроили процессы, и&nbsp;остальными</h2>
+    <p class="lead">Ramp и&nbsp;Stanford SIEPR посчитали по&nbsp;платёжным данным: ИИ&nbsp;работает в&nbsp;процессах примерно у&nbsp;20% компаний. У&nbsp;них штат растёт в&nbsp;5&nbsp;раз быстрее рынка, а&nbsp;средние зарплаты на&nbsp;15% быстрее. У&nbsp;остальных рабочих мест меньше не&nbsp;стало, зато реальные зарплаты и&nbsp;найм пошли вниз</p>
+  </div>
+  <div class="rules">
+    <div class="rule reveal"><span class="rn">0x01</span><div class="rt">Тестируют многие, в&nbsp;проде единицы</div><div class="rd">Есть две метрики: доля компаний, где ИИ&nbsp;уже работает в&nbsp;бою, и&nbsp;доля тех, кто его&nbsp;пробует на&nbsp;пилотах. Разница между этими двумя цифрами и&nbsp;есть недополученная прибыль тех, кто застрял на&nbsp;пилотах</div></div>
+    <div class="rule reveal d1"><span class="rn">0x02</span><div class="rt">Ранний запуск включает сложный процент</div><div class="rd">Данные улучшают модель, модель двигает метрики, метрики дают ещё больше данных. Квартал отсрочки это&nbsp;квартал, за&nbsp;который у&nbsp;конкурента накопилась история, а&nbsp;у&nbsp;вас нет</div></div>
+    <div class="rule reveal d2"><span class="rn">0x03</span><div class="rt">Ориентиры рынка, чтобы было с&nbsp;чем сравнивать</div><div class="rd">Компании, которые довели внедрение до&nbsp;рабочего состояния, называют экономию около 30% времени команды, рост выручки на&nbsp;10-30% при&nbsp;том&nbsp;же&nbsp;бюджете и&nbsp;рост выручки на&nbsp;сотрудника примерно на&nbsp;15%</div></div>
+  </div>
+  <div class="note reveal">Это чужие цифры, и&nbsp;мы&nbsp;их&nbsp;вам не&nbsp;обещаем. <b>Чекап нужен, чтобы посчитать ваши:</b> сколько часов у&nbsp;вас съедают повторяющиеся операции и&nbsp;какой участок вернёт эти часы первым</div>
+</div></section>
+
+<section id="why" class="rh-list"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">03</span> С&nbsp;чем к&nbsp;нам приходят</div>
+    <h2>Когда нужен чекап</h2>
+    <p class="lead">Формулировки ниже взяты со&nbsp;встреч дословно, мы&nbsp;их&nbsp;не&nbsp;причёсывали</p>
+  </div>
+  <div class="rules">
+    <div class="rule reveal"><span class="rn">0x01</span><div class="rt">«Все вокруг про&nbsp;ИИ&nbsp;трещат, а&nbsp;у&nbsp;меня менеджер до&nbsp;сих пор десять минут одну заявку в&nbsp;1С забивает»</div><div class="rd">Десять минут на&nbsp;заявку, сорок заявок в&nbsp;день, двадцать два рабочих дня. Это 146 часов в&nbsp;месяц, полторы ставки, растворённые в&nbsp;ФОТ отдельной строкой ни&nbsp;в&nbsp;одном отчёте</div></div>
+    <div class="rule reveal d1"><span class="rn">0x02</span><div class="rt">«Заявка приходит в&nbsp;мессенджер в&nbsp;одиннадцать вечера, а&nbsp;отвечаем мы&nbsp;в&nbsp;десять утра»</div><div class="rd">Лиды идут из&nbsp;нескольких каналов, часть оседает в&nbsp;личных переписках. Сколько сделок ушло к&nbsp;тому, кто ответил первым, никто не&nbsp;считал</div></div>
+    <div class="rule reveal d2"><span class="rn">0x03</span><div class="rt">«Купили команде курс за&nbsp;сто восемьдесят тысяч, посмотрели два урока и&nbsp;вернулись к&nbsp;прежней работе»</div><div class="rd">Инструменты в&nbsp;компании есть, привычки ими пользоваться нет. Пилоты идут один за&nbsp;другим, а&nbsp;процессы вокруг них остаются прежними</div></div>
+    <div class="rule reveal d3"><span class="rn">0x04</span><div class="rt">«Я&nbsp;вижу выручку, но&nbsp;не&nbsp;вижу, что&nbsp;именно менеджеры говорят клиентам»</div><div class="rd">Руководитель слушает пять диалогов из&nbsp;трёхсот, а&nbsp;причину падения конверсии узнаёт через квартал по&nbsp;деньгам</div></div>
+    <div class="rule reveal"><span class="rn">0x05</span><div class="rt">«Мне нужен человек, который придёт, посмотрит наши процессы и&nbsp;скажет, что&nbsp;тут имеет смысл автоматизировать и&nbsp;сколько это стоит»</div><div class="rd">Подрядчики называют 800 тыс. руб., 4 млн руб. и&nbsp;месяц на&nbsp;оценку. Сравнить нечего: задача сформулирована общими словами, и&nbsp;каждый считает свою</div></div>
+  </div>
+</div></section>
+
+<section id="entry" class="rh-think"><div class="wrap">
+  <div class="eyebrow reveal"><span class="n">04</span> Цена входа</div>
+  <div class="stmt reveal d1"><p>Первый шаг стоит меньше <b>месячной зарплаты одного менеджера</b> и&nbsp;ничем вас не&nbsp;связывает. Через две недели вы&nbsp;решаете, идти&nbsp;ли&nbsp;в&nbsp;разработку, и&nbsp;решаете по&nbsp;плану и&nbsp;собранному агенту</p></div>
+</div></section>
+
+<section id="result" class="rh-dense"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">05</span> Что&nbsp;получите</div>
+    <h2>Четыре результата, которые остаются у&nbsp;вас</h2>
+    <p class="lead">Документы можно показать команде и&nbsp;собственнику, агента открыть в&nbsp;браузере</p>
+  </div>
+  <div class="bento">
+    <article class="card reveal"><span class="tag">01 разбор</span><h3>Карта процессов с&nbsp;узкими местами</h3><p>Как&nbsp;сейчас устроена работа, где теряются заявки, часы и&nbsp;деньги. Что&nbsp;чинится на&nbsp;уровне процесса, а&nbsp;что&nbsp;закрывается автоматизацией. Смотрим ваши переписки, выгрузки и&nbsp;регламенты</p></article>
+    <article class="card reveal d1"><span class="tag">02 приоритеты</span><h3>Порядок внедрения</h3><p>Что&nbsp;даёт эффект первым, что&nbsp;можно отложить и&nbsp;почему. По&nbsp;каждому участку считаем, сколько времени он&nbsp;съедает сейчас</p></article>
+    <article class="card reveal d2"><span class="tag">03 деньги</span><h3>План с&nbsp;вилкой бюджета</h3><p>Сколько будет стоить внедрение по&nbsp;каждому направлению. Разброс показывает, от&nbsp;чего зависит цена. Точную сумму считаем, когда выбран участок и&nbsp;понятен объём</p></article>
+    <article class="card reveal d3"><span class="tag">04 агент</span><h3>Собранный агент</h3><p>Один агент на&nbsp;ваших материалах, работает в&nbsp;браузере или&nbsp;в&nbsp;телеграме. Команда задаёт ему рабочие вопросы и&nbsp;получает ответы по&nbsp;вашим документам, с&nbsp;ссылкой на&nbsp;документ-источник</p></article>
+  </div>
+</div></section>
+
+<section id="days" class="rh-scheme fullwide">
+<canvas id="synFx" data-fx="flow" aria-hidden="true"></canvas>
+<div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">06</span> Как&nbsp;проходит</div>
+    <h2>Три Zoom за&nbsp;две недели, между ними разбираем работу</h2>
+    <p class="lead">От&nbsp;вас нужны 4-6&nbsp;часов, доступ к&nbsp;рабочей переписке и&nbsp;один человек, к&nbsp;которому можно обратиться с&nbsp;вопросом. Готовить документы заранее не&nbsp;нужно</p>
+  </div>
+  <div class="rules">
+    <div class="rule reveal"><span class="rn">Zoom 1</span><div class="rt">Знакомство и&nbsp;постановка</div><div class="rd">Разбираем, чем занимается компания, какие процессы болят и&nbsp;что&nbsp;вы&nbsp;хотите изменить. Договариваемся, к&nbsp;чему получим доступ</div></div>
+    <div class="rule reveal d1"><span class="rn">неделя 1</span><div class="rt">Смотрим, как&nbsp;устроена работа</div><div class="rd">Читаем рабочие чаты и&nbsp;переписки с&nbsp;клиентами, изучаем регламенты и&nbsp;выгрузки, считаем, сколько времени уходит на&nbsp;повторяющиеся операции</div></div>
+    <div class="rule reveal d2"><span class="rn">Zoom 2</span><div class="rt">Сверяем находки</div><div class="rd">Показываем, что&nbsp;нашли, и&nbsp;проверяем на&nbsp;вас: где мы&nbsp;правы, где картина другая. Здесь выбираем участок, под который соберём агента</div></div>
+    <div class="rule reveal d3"><span class="rn">неделя 2</span><div class="rt">Собираем агента</div><div class="rd">Собираем агента на&nbsp;ваших материалах и&nbsp;проверяем его&nbsp;на&nbsp;рабочих вопросах вместе с&nbsp;вашими сотрудниками</div></div>
+    <div class="rule reveal d4"><span class="rn">Zoom 3</span><div class="rt">Отдаём результат</div><div class="rd">Показываем карту процессов, порядок внедрения и&nbsp;план с&nbsp;вилкой бюджета. Отвечаем на&nbsp;вопросы команды и&nbsp;передаём собранного агента</div></div>
+  </div>
+  <p class="fx-cap reveal">На&nbsp;фоне: разрозненные обращения идут слева и&nbsp;сходятся в&nbsp;одно русло. Так меняется поток заявок, когда почта, чаты и&nbsp;звонки собираются в&nbsp;один маршрут</p>
+</div></section>
+
+<section id="ladder" class="rh-thin"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">07</span> Ступени</div>
+    <h2>Пять ступеней доверия агенту</h2>
+    <p class="lead">Автономность включается постепенно. На&nbsp;чекапе определяем, на&nbsp;какой ступени вы&nbsp;сейчас и&nbsp;какая для&nbsp;вас следующая. Каждая ступень это&nbsp;отдельный этап работ и&nbsp;отдельный счёт, поэтому остановиться можно на&nbsp;любой</p>
+  </div>
+  <div class="rules">
+    <div class="rule reveal"><span class="rn">ступень 1</span><div class="rt">Отвечает на&nbsp;вопросы</div><div class="rd">Агент читает вашу базу знаний и&nbsp;отвечает сотрудникам. Цена ошибки здесь равна одному переспросу у&nbsp;коллеги</div></div>
+    <div class="rule reveal d1"><span class="rn">ступень 2</span><div class="rt">Собирает отчёты</div><div class="rd">Сам сводит данные и&nbsp;присылает сводку в&nbsp;понедельник утром. К&nbsp;каждой строке видно, из&nbsp;какого диалога или&nbsp;документа она взята, и&nbsp;вывод можно проверить руками</div></div>
+    <div class="rule reveal d2"><span class="rn">ступень 3</span><div class="rt">Предлагает решение</div><div class="rd">Размечает диалоги и&nbsp;сделки, называет, где потеряно и&nbsp;что&nbsp;делать дальше. Решение остаётся за&nbsp;человеком, агент показывает основание</div></div>
+    <div class="rule reveal d3"><span class="rn">ступень 4</span><div class="rt">Делает с&nbsp;подтверждением</div><div class="rd">Заполняет карточку, готовит ответ клиенту, ставит задачу. Отправка идёт по&nbsp;кнопке сотрудника, каждое действие пишется в&nbsp;журнал</div></div>
+    <div class="rule reveal"><span class="rn">ступень 5</span><div class="rt">Работает сам на&nbsp;узком участке</div><div class="rd">Рутинная операция идёт без&nbsp;человека, с&nbsp;журналом действий и&nbsp;правом отката. Включаем, когда на&nbsp;четвёртой ступени накопилась статистика ошибок и&nbsp;видно, где агент ошибается</div></div>
+  </div>
+  <div class="note reveal"><b>На&nbsp;чекапе мы&nbsp;не&nbsp;поднимаем вас выше второй ступени.</b> Доверие к&nbsp;агенту строится на&nbsp;его&nbsp;собственной истории ответов, а&nbsp;за&nbsp;две недели этой истории ещё нет</div>
+</div></section>
+
+<section id="estimate" class="rh-thin"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">08</span> Про&nbsp;деньги</div>
+    <h2>Почему на&nbsp;выходе вилка бюджета</h2>
+  </div>
+  <div class="rules">
+    <div class="rule reveal"><span class="rn">0x01</span><div class="rt">Чекап смотрит всю компанию сразу</div><div class="rd">За&nbsp;две недели видно, где теряются деньги и&nbsp;что&nbsp;делать первым. Точная смета требует разбора одного участка до&nbsp;уровня задач, это&nbsp;отдельная работа</div></div>
+    <div class="rule reveal d1"><span class="rn">0x02</span><div class="rt">Вилка честнее круглой цифры</div><div class="rd">Разброс показывает, от&nbsp;чего зависит стоимость: объём данных, число интеграций, требования к&nbsp;безопасности. Точную сумму фиксируем перед стартом работ</div></div>
+    <div class="rule reveal d2"><span class="rn">0x03</span><div class="rt">Стоимость чекапа возвращается</div><div class="rd">Если после чекапа вы&nbsp;идёте в&nbsp;разработку с&nbsp;нами, 19&nbsp;900&nbsp;руб. вычитаем из&nbsp;счёта. По&nbsp;сути вы&nbsp;платите только за&nbsp;время, если решаете не&nbsp;продолжать</div></div>
+  </div>
+  <div class="note reveal"><b>Сроки, состав работ и&nbsp;критерии приёмки записываем в&nbsp;договор до&nbsp;начала разработки.</b> Изменить их&nbsp;можно только письменным дополнением, которое подписываете вы</div>
+</div></section>
+
+<section id="cases" class="rh-dense-b"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">09</span> Кейсы</div>
+    <h2>С&nbsp;разбора начинались KURILO и&nbsp;GlobalDent</h2>
+  </div>
+  <div class="pair">
+    <div class="case reveal">
+      <span class="tag">чекап воронки</span>
+      <h3>Разобрали продажи и&nbsp;собрали задание на&nbsp;внедрение</h3>
+      <div class="who">KURILO</div>
+      <p>Начали с&nbsp;чекапа: где теряются заявки, что&nbsp;чинится регламентом, а&nbsp;что&nbsp;автоматизацией. По&nbsp;итогам собрали план внедрения и&nbsp;задание на&nbsp;AI-ассистента для&nbsp;отдела продаж</p>
+      <div class="metrics">
+        <div class="metric big"><b>19&nbsp;900 руб.</b><span>стоимость входа</span></div>
+        <div class="metric"><b>две недели</b><span>от&nbsp;старта до&nbsp;документов</span></div>
+      </div>
+    </div>
+    <div class="case reveal d1">
+      <span class="tag">агент на&nbsp;базе знаний</span>
+      <h3>Участник клуба получает ответ ночью и&nbsp;в&nbsp;выходные</h3>
+      <div class="who">GlobalDent</div>
+      <p>Собрали агента для&nbsp;клуба стоматологов на&nbsp;базе материалов клиента, подключили Bitrix24, добавили подсказки менеджерам по&nbsp;живым сделкам. Клиент вернулся за&nbsp;вторым агентом для&nbsp;другого направления</p>
+      <div class="metrics">
+        <div class="metric big"><b><span class="nb">1 500+</span></b><span>вопросов и&nbsp;ответов в&nbsp;базе</span></div>
+        <div class="metric"><b>24/7</b><span>ответ без&nbsp;ожидания менеджера</span></div>
+      </div>
+    </div>
+  </div>
+  <h3 class="reveal" style="margin:52px 0 20px">Раньше и&nbsp;теперь, из&nbsp;наших проектов</h3>
+  <div class="rules">
+    <div class="rule reveal"><span class="rn">закупки</span><div class="rt">Заявка оформляется за&nbsp;2&nbsp;минуты</div><div class="rd">Раньше десять минут: менеджер руками переносил позиции из&nbsp;письма поставщика в&nbsp;1С. Восемь минут разницы при сорока заявках в&nbsp;день это&nbsp;117 часов в&nbsp;месяц, которые вернулись отделу закупок INNORTO</div></div>
+    <div class="rule reveal d1"><span class="rn">продажи</span><div class="rt">Руководитель видит все 100% диалогов</div><div class="rd">Раньше слушал пять звонков из&nbsp;трёхсот, а&nbsp;остальных менеджеров оценивал по&nbsp;ощущению РОПа. Теперь по&nbsp;каждой потерянной сделке видно причину и&nbsp;фамилию</div></div>
+    <div class="rule reveal d2"><span class="rn">клуб врачей</span><div class="rt">Участник получает ответ в&nbsp;23:40</div><div class="rd">Раньше сообщение в&nbsp;клубе GlobalDent висело до&nbsp;утра, и&nbsp;за&nbsp;это&nbsp;время человек успевал написать ещё троим</div></div>
+  </div>
+</div></section>
+
+<section id="price" class="rh-price"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">10</span> Цена</div>
+    <h2>19&nbsp;900&nbsp;руб. за&nbsp;чекап, сумму вычитаем из&nbsp;счёта за&nbsp;разработку</h2>
+  </div>
+  <div class="pair">
+    <div class="plan main reveal">
+      <div class="pn">AI-чекап бизнеса</div>
+      <div class="sum">19&nbsp;900&nbsp;руб.</div>
+      <div class="per">две недели, сумма фиксированная</div>
+      <ul>
+        <li>Три Zoom: знакомство, сверка находок, передача результата</li>
+        <li>Карта процессов с&nbsp;узкими местами</li>
+        <li>Порядок внедрения по&nbsp;эффекту</li>
+        <li>План с&nbsp;вилкой бюджета</li>
+        <li>Собранный агент на&nbsp;ваших материалах</li>
+      </ul>
+      <a class="btn pri" href="#lead">Оставить заявку</a>
+    </div>
+    <div class="plan reveal d1">
+      <div class="pn">Если идёте дальше</div>
+      <div class="sum">минус 19&nbsp;900</div>
+      <div class="per">из&nbsp;счёта за&nbsp;разработку</div>
+      <ul>
+        <li>Выбираете участок из&nbsp;плана внедрения</li>
+        <li>Первый модуль AI-системы от&nbsp;150 тыс. руб., точная смета по&nbsp;объёму работ</li>
+        <li>Стоимость чекапа вычитаем из&nbsp;первого счёта</li>
+        <li>Готовый продукт за&nbsp;3-5&nbsp;недель, 60 дней после сдачи дорабатываем без&nbsp;доплат</li>
+        <li>Каждый следующий модуль дешевле: общий контур уже стоит</li>
+      </ul>
+      <a class="btn ghost" href="https://t.me/Anti4ay">Написать менеджеру</a>
+    </div>
+  </div>
+</div></section>
+
+<section id="vs" class="rh-thin"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">11</span> Дальше</div>
+    <h2>Что&nbsp;бывает после чекапа</h2>
+  </div>
+  <div class="rules">
+    <div class="rule reveal"><span class="rn">чаще всего</span><div class="rt">Берём один участок и&nbsp;доводим до&nbsp;готового продукта</div><div class="rd">Тот, который на&nbsp;чекапе дал самый быстрый эффект. Первая версия за&nbsp;3-5&nbsp;недель, дальше расширяем</div></div>
+    <div class="rule reveal d1"><span class="rn">бывает</span><div class="rt">Команда внедряет сама по&nbsp;нашему плану</div><div class="rd">План и&nbsp;приоритеты остаются у&nbsp;вас, никаких обязательств продолжать с&nbsp;нами нет</div></div>
+    <div class="rule reveal d2"><span class="rn">бывает</span><div class="rt">Отправляем на&nbsp;обучение</div><div class="rd">Если задачи закрываются готовыми инструментами и&nbsp;команде не&nbsp;хватает навыков, честно говорим об&nbsp;этом и&nbsp;показываем курс. Разработка тут лишняя трата</div></div>
+  </div>
+</div></section>
+
+<section id="faq" class="rh-dense"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">12</span> Вопросы</div>
+    <h2>Частые вопросы</h2>
+  </div>
+  <div class="faq reveal">
+    <details open><summary>Что&nbsp;если после чекапа мы&nbsp;не&nbsp;пойдём в&nbsp;разработку <span class="pl">+</span></summary><div class="ans">Обязательств продолжать нет. Все результаты остаются у&nbsp;вас, включая карту процессов, план и&nbsp;собранного агента. С&nbsp;этими документами можно выйти к&nbsp;любому подрядчику или&nbsp;вести разработку своими силами</div></details>
+    <details><summary>Сколько времени нужно от&nbsp;нашей команды <span class="pl">+</span></summary><div class="ans"><span class="nb">4-6</span> часов интервью за&nbsp;неделю, доступы к&nbsp;CRM и&nbsp;нужным таблицам, один контактный человек на&nbsp;быстрые вопросы. Агента стоит показать двум-трём сотрудникам, которые ведут этот процесс каждый день</div></details>
+    <details><summary>Агент реально работает или&nbsp;это демонстрация <span class="pl">+</span></summary><div class="ans">Работает. Отвечает на&nbsp;вопросы по&nbsp;вашим документам или&nbsp;сделкам, открывается в&nbsp;браузере, его&nbsp;можно показать команде и&nbsp;собственнику. Это первый рабочий контур: без полной интеграции и&nbsp;промышленной нагрузки. Её&nbsp;задача дать вам основание для&nbsp;решения о&nbsp;разработке</div></details>
+    <details><summary>Как&nbsp;быть с&nbsp;конфиденциальными данными <span class="pl">+</span></summary><div class="ans">Разбор контура данных идёт первым делом, ещё до&nbsp;разговора про&nbsp;разработку. Списком фиксируем, какие поля уходят в&nbsp;модель и&nbsp;какие остаются внутри. Подписываем соглашение о&nbsp;неразглашении до&nbsp;старта, работаем на&nbsp;обезличенных выгрузках, для&nbsp;чувствительных данных разворачиваем агента в&nbsp;вашем контуре по&nbsp;152-ФЗ</div></details>
+    <details><summary>А&nbsp;если две недели не&nbsp;хватит <span class="pl">+</span></summary><div class="ans">Срок фиксированный, состав пакета рассчитан под него. Если по&nbsp;ходу работы видим, что&nbsp;задача крупнее, говорим сразу и&nbsp;согласуем с&nbsp;вами: сузить рамку чекапа или&nbsp;продлить срок с&nbsp;отдельной оценкой</div></details>
+    <details><summary>У&nbsp;нас есть разработчики, мы&nbsp;соберём агента сами <span class="pl">+</span></summary><div class="ans">Первого агента действительно несложно собрать, платят не&nbsp;за&nbsp;это. Платят за&nbsp;пять вещей. Первое: поддержка. Модель обновилась, поставщик поменял формат письма, и&nbsp;отлаженная цепочка тихо поехала, кто-то&nbsp;должен это&nbsp;ловить. Второе: цепочки на&nbsp;пятнадцать-двадцать шагов, где агент ходит в&nbsp;1С, CRM и&nbsp;почту и&nbsp;должен вести себя одинаково каждый раз. Третье: обвязка вокруг агента, то&nbsp;есть журнал действий, подтверждения, мониторинг и&nbsp;откат. Четвёртое: ответственность за&nbsp;общий результат, включая стыки между участками. Пятое: работа с&nbsp;вашими данными, их&nbsp;разметка, обезличивание и&nbsp;права доступа. Если у&nbsp;вас это&nbsp;уже закрыто, честно скажем на&nbsp;чекапе и&nbsp;отдадим план, по&nbsp;которому команда сделает сама</div></details>
+    <details><summary>Команда решит, что&nbsp;их&nbsp;готовят к&nbsp;увольнению <span class="pl">+</span></summary><div class="ans">Это возражение живёт внутри вашей компании и&nbsp;убивает внедрение уже после подписания. Разбираем его&nbsp;на&nbsp;чекапе прямо. Агента показываем тем двум-трём людям, которые ведут процесс каждый день: их&nbsp;правки идут в&nbsp;базу, и&nbsp;агент становится их&nbsp;инструментом. Метрика приёмки у&nbsp;нас одна: доля сотрудников, работающих с&nbsp;системой ежедневно. В&nbsp;INNORTO это&nbsp;26 человек из&nbsp;27. Рыночный ориентир по&nbsp;судьбе людей: IKEA перевела 8&nbsp;500 сотрудников поддержки на&nbsp;консультирование по&nbsp;дизайну интерьера и&nbsp;заработала на&nbsp;этом 1,4 млрд дол.</div></details>
+    <details><summary>Мы&nbsp;уже внедряли, эффекта не&nbsp;было <span class="pl">+</span></summary><div class="ans">Чаще всего ломается одно и&nbsp;то&nbsp;же. Пилот работает, а&nbsp;процесс вокруг него остался прежним, поэтому люди возвращаются к&nbsp;старому маршруту. Агентов расплодилось несколько, они не&nbsp;связаны между собой и&nbsp;каждый требует отдельного внимания. И&nbsp;главное: каждый отвечает за&nbsp;свой кусок, а&nbsp;за&nbsp;общий результат не&nbsp;отвечает никто. На&nbsp;чекапе мы&nbsp;сначала смотрим процесс и&nbsp;только потом решаем, что&nbsp;в&nbsp;нём вообще стоит автоматизировать</div></details>
+    <details><summary>У&nbsp;нас нет данных: CRM ведётся не&nbsp;полностью, цифр нет <span class="pl">+</span></summary><div class="ans">Чекап рассчитан и&nbsp;на&nbsp;такую ситуацию. Работаем с&nbsp;тем, что&nbsp;есть: переписки в&nbsp;мессенджерах, почта, документы, записи звонков. В&nbsp;отчёте по&nbsp;каждому участку стоит ожидаемый эффект. Отдельно перечисляем, что&nbsp;закрывается изменением регламента, и&nbsp;называем участок, с&nbsp;которого начинать при таком объёме данных</div></details>
+  </div>
+</div></section>
+
+<section id="related" class="rh-pre"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">13</span> Смежные материалы</div>
+    <h2>Другие услуги и&nbsp;разборы проектов</h2>
+  </div>
+  <div class="pills reveal">
+    <a class="pill" href="/synapt//#services"><span class="pk">услуга</span> AI-десант</a>
+    <a class="pill" href="/synapt//#services"><span class="pk">услуга</span> AI-система для&nbsp;бизнеса</a>
+    <a class="pill" href="/synapt//#services"><span class="pk">услуга</span> Безопасный слой</a>
+    <a class="pill" href="/synapt/agent/"><span class="pk">продукт</span> AI-советник для&nbsp;бизнеса</a>
+    <a class="pill" href="/synapt//#cases"><span class="pk">кейс</span> GlobalDent</a>
+    <a class="pill" href="/synapt//#cases"><span class="pk">кейс</span> INNORTO</a>
+    <a class="pill" href="https://automyai.ru"><span class="pk">обучение</span> Automy AI</a>
+    <a class="pill" href="https://medialab-retainer.vercel.app"><span class="pk">медиа</span> Личный бренд на&nbsp;подписке</a>
+    <a class="pill" href="/synapt/"><span class="pk">сайт</span> Все услуги Synapt</a>
+  </div>
+</div></section>
+
+<section id="lead" class="rh-cta"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">14</span> Заявка</div>
+    <h2>Напишите пару строк о&nbsp;задаче</h2>
+    <p class="lead">30&nbsp;минут разговора. Вы&nbsp;рассказываете, мы&nbsp;задаём вопросы и&nbsp;вместе понимаем, что&nbsp;вам нужно. После пришлём расшифровку и&nbsp;что&nbsp;советуем делать</p>
+  </div>
+  <div class="leadbox reveal">
+    <form id="leadForm" novalidate>
+      <div class="lf-row">
+        <div class="lf"><label for="lfName">Как&nbsp;к&nbsp;вам обращаться</label><input id="lfName" name="name" type="text" autocomplete="name" required></div>
+        <div class="lf"><label for="lfContact">Телефон, почта или&nbsp;Telegram</label><input id="lfContact" name="contact" type="text" autocomplete="off" required></div>
+      </div>
+      <div class="lf"><label for="lfCompany">Компания и&nbsp;чем занимаетесь</label><input id="lfCompany" name="company" type="text" autocomplete="organization"></div>
+      <div class="lf"><label for="lfTask">Задача в&nbsp;двух словах</label><textarea id="lfTask" name="task" rows="3"></textarea></div>
+      <label class="lf-check"><input type="checkbox" id="lfAgree" required>
+        <span>Согласен на&nbsp;обработку персональных данных и&nbsp;принимаю <a href="/privacy" target="_blank" rel="noopener">политику обработки персональных данных</a></span></label>
+      <div class="lf-err" id="lfErr">Заполните имя, контакт и&nbsp;отметьте согласие</div>
+      <button class="btn pri lg" type="submit">Отправить заявку</button>
+      <p class="lf-hint">Кнопка соберёт письмо в&nbsp;вашей почтовой программе. Можно написать сразу в&nbsp;Telegram <a href="https://t.me/Anti4ay" class="morelink" style="margin-top:0">@Anti4ay</a></p>
+    </form>
+    <div class="lf-done" id="lfDone"><b>Письмо собрано.</b> Осталось отправить его&nbsp;из&nbsp;почтовой программы. Если она не&nbsp;открылась, напишите нам в&nbsp;Telegram: <a href="https://t.me/Anti4ay">@Anti4ay</a> или&nbsp;на&nbsp;почту <a href="mailto:oreshkin.medialab@outlook.com">oreshkin.medialab@outlook.com</a></div>
+  </div>
+</div></section>
+<footer><div class="wrap">
+  <a class="brand" href="/synapt/" aria-label="synapt">
+    <svg viewBox="0 0 869 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/><path d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></svg>
+  </a>
+  <div class="fm fmeta">
+    <a href="/synapt/#cases">Кейсы</a>
+    <a href="/synapt/#services">Услуги</a>
+    <a href="/synapt/#faq">FAQ</a>
+    <a href="https://t.me/Anti4ay" target="_blank" rel="noopener">Telegram менеджера</a>
+    <a href="/privacy">Политика обработки персональных данных</a><span>© 2026</span>
+  </div>
+</div><div class="wrap"><div class="legal">
+    <div class="lg-col">
+      <div><span>Индивидуальный предприниматель</span>Орешкин Антон Вадимович</div>
+      <div><span>Почта</span><a href="mailto:oreshkin.medialab@outlook.com">oreshkin.medialab@outlook.com</a></div>
+    </div>
+    <div class="lg-col">
+      <div><span>ИНН</span>100123323420</div>
+      <div><span>ОГРНИП</span>324100000000411</div>
+      <div><span>Адрес</span>185014, Республика Карелия, Петрозаводск, переулок Попова, дом 6, квартира 42</div>
+    </div>
+  </div></div></div></footer>
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.1,rootMargin:'0px 0px -6% 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+<script>
+/* тема: тумблер в шапке, состояние хранится */
+(function(){
+  var b=document.getElementById('themeTgl');if(!b)return;
+  b.addEventListener('click',function(){
+    var next=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+    document.documentElement.setAttribute('data-theme',next);
+    try{localStorage.setItem('synapt-theme',next)}catch(e){}
+  });
+})();
+/* бургер-меню */
+(function(){
+  var b=document.getElementById('burger'),s=document.getElementById('navSheet');if(!b||!s)return;
+  function close(){s.classList.remove('open');b.setAttribute('aria-expanded','false')}
+  b.addEventListener('click',function(){
+    var open=s.classList.toggle('open');
+    b.setAttribute('aria-expanded',open?'true':'false');
+  });
+  s.addEventListener('click',function(e){if(e.target.tagName==='A')close()});
+  addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+  addEventListener('resize',function(){if(innerWidth>980)close()});
+})();
+/* уважаем запрос на пониженную анимацию: фоновая графика не запускается */
+(function(){
+  if(!window.matchMedia)return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var c=document.getElementById('synFx');if(c&&c.parentNode)c.parentNode.removeChild(c);
+  }
+})();
+/* форма: собираем письмо в почтовой программе, ложных подтверждений не показываем */
+(function(){
+  var f=document.getElementById('leadForm');if(!f)return;
+  var err=document.getElementById('lfErr'),done=document.getElementById('lfDone');
+  var name=document.getElementById('lfName'),contact=document.getElementById('lfContact'),
+      company=document.getElementById('lfCompany'),task=document.getElementById('lfTask'),
+      agree=document.getElementById('lfAgree');
+  function clean(){[name,contact].forEach(function(x){x.classList.remove('err')});err.classList.remove('show')}
+  [name,contact].forEach(function(x){x.addEventListener('input',clean)});
+  agree.addEventListener('change',clean);
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var bad=false;
+    if(!name.value.trim()){name.classList.add('err');bad=true}
+    if(!contact.value.trim()){contact.classList.add('err');bad=true}
+    if(!agree.checked)bad=true;
+    if(bad){err.classList.add('show');return}
+    var body='Имя: '+name.value.trim()
+      +'\nКонтакт: '+contact.value.trim()
+      +'\nКомпания: '+(company.value.trim()||'не указано')
+      +'\nЗадача: '+(task.value.trim()||'не указано')
+      +'\n\nЗаявка со страницы чекапа за две недели';
+    var href='mailto:oreshkin.medialab@outlook.com?subject='
+      +encodeURIComponent('Заявка на чекап за две недели')+'&body='+encodeURIComponent(body);
+    f.style.display='none';done.classList.add('show');
+    window.location.href=href;
+  });
+})();
+</script>
+<script>
+/* ==========================================================
+   SYNAPT – фоновая графика: поток обращений
+   разрозненные обращения идут слева, сходятся в одно русло
+   единственная графика на странице, дублей нет
+   ========================================================== */
+(function () {
+  var c = document.getElementById('synFx');
+  if (!c) return;
+  var DPR = Math.min(devicePixelRatio || 1, 2);
+  var GR = '128,140,136', PH = '121,201,142', A = 1;
+  function applyTheme() {
+    var light = document.documentElement.getAttribute('data-theme') === 'light';
+    GR = light ? '74,86,80' : '128,140,136';
+    PH = light ? '46,124,74' : '121,201,142';
+    A = light ? 1.05 : 1;
+  }
+  applyTheme();
+  new MutationObserver(applyTheme).observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme']});
+  function rnd(s) { var x = Math.sin(s * 127.1) * 43758.5453; return x - Math.floor(x); }
+
+  var ctx = c.getContext('2d'), W = 0, H = 0, ps = [], t = 0, warm = false;
+  function reset(p, i, first) {
+    p.x = first ? rnd(i) * W : -20 - rnd(i + t) * 60;
+    p.y = (first ? rnd(i + 100) : Math.random()) * H;
+    p.sp = .55 + rnd(i + 7) * 1.1;
+    p.ph = rnd(i + 21) * 6.28;
+    p.life = 0;
+    p.hot = rnd(i + 55) > .86;
+  }
+  function build() {
+    var r = c.getBoundingClientRect(); W = r.width; H = r.height;
+    if (!W || !H) return;
+    c.width = W * DPR; c.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    ps = []; var n = W < 700 ? 90 : 210;
+    for (var i = 0; i < n; i++) { var p = {}; reset(p, i, true); ps.push(p); }
+    warm = false;
+  }
+  build();
+  var rt; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(build, 180) });
+  /* русло: горизонтальный снос вправо, вертикальная составляющая гасится к оси */
+  function step(p) {
+    var k = .010 + (p.x / W) * .022;                     // ближе к правому краю стягивает сильнее
+    var wob = Math.sin(p.x * .006 + p.ph) * (1 - p.x / W) * 1.15;
+    p.vx = p.sp * 2.2;
+    p.vy = (H * .5 - p.y) * k + wob;
+  }
+  function draw(fade) {
+    /* хвосты: гасим предыдущий кадр, а не стираем его целиком */
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.fillStyle = 'rgba(0,0,0,' + fade + ')';
+    ctx.fillRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.lineCap = 'round';
+    ps.forEach(function (p, i) {
+      step(p);
+      var nx = p.x + p.vx, ny = p.y + p.vy;
+      var mid = 1 - Math.min(1, Math.abs(p.y - H * .5) / (H * .46));
+      ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(nx, ny);
+      ctx.strokeStyle = p.hot ? 'rgba(' + PH + ',' + (.20 + mid * .40) * A + ')'
+                              : 'rgba(' + GR + ',' + (.10 + mid * .26) * A + ')';
+      ctx.lineWidth = .8 + mid * 1.3; ctx.stroke();
+      p.x = nx; p.y = ny; p.life++;
+      if (p.x > W + 14 || p.life > 420) reset(p, i, false);
+    });
+  }
+  (function frame() {
+    requestAnimationFrame(frame);
+    t++;
+    var r = c.getBoundingClientRect();
+    if (r.bottom < -100 || r.top > innerHeight + 100) return;
+    /* прогрев: к моменту, когда секция попала в кадр, русло уже прорисовано, а не пустое */
+    if (!warm) { warm = true; for (var i = 0; i < 320; i++) { t++; draw(.028) } }
+    draw(.028);
+  })();
+})();
+</script>
+</body>
+</html>

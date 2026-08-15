@@ -1,0 +1,1101 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>AI-система для&nbsp;бизнеса – Synapt</title>
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="Synapt">
+<meta property="og:title" content="AI-система для&nbsp;бизнеса – Synapt">
+<meta property="og:description" content="Продажи, управление, команда и&nbsp;операции на&nbsp;общей базе знаний компании. Первый модуль от&nbsp;150 тыс. руб. за&nbsp;3-5 недель, код и&nbsp;данные остаются у&nbsp;вас">
+<meta property="og:url" content="/synapt/system/">
+<meta property="og:image" content="/synapt/system//og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="AI-система на&nbsp;четыре участка работы компании: продажи, управление, команда и&nbsp;операции на&nbsp;общей базе знаний. Первый модуль от&nbsp;150 тыс. руб. за&nbsp;3-5 недель">
+<script>(function(){try{var s=localStorage.getItem('synapt_theme');if(s==='light'||s==='dark'){document.documentElement.setAttribute('data-theme',s)}}catch(e){}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
+<style>
+/* =========================================================
+   SYNAPT – графит и фосфорный зелёный, две темы
+   ========================================================= */
+:root{
+  --accent:#79C98E; --accent-glow:#96DCA8; --accent-deep:#4E8F62; --accent-light:#BEE9CB;
+  --accent-ink:#101312; --grad:linear-gradient(180deg,#96DCA8,#4E8F62); --danger:#FF7A8A;
+  --sans:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r-xs:8px; --r-sm:10px; --r-md:16px; --r-lg:22px; --r-pill:999px;
+  --maxw:1180px; --gutter:28px;
+  --ease:cubic-bezier(.22,.7,.3,1);
+}
+:root,:root[data-theme="dark"]{
+  --bg-deep:#0D0F0E; --bg:#131514; --surface:#191C1B; --surface-2:#212524; --surface-3:#2A2E2C;
+  --text:#F0F2F1; --text-2:#C4CAC7; --text-muted:#939B98; --text-dim:#8B938F;
+  --accent-txt:#B9C1BE; --sage:#9DB2A3;
+  --line:rgba(180,214,190,.10); --line-2:rgba(180,214,190,.18); --line-accent:rgba(121,201,142,.32);
+  --glow:radial-gradient(58% 52% at 74% 6%, rgba(121,201,142,.10), transparent 72%);
+  --card-shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 12px 40px -20px rgba(0,0,0,.6);
+  --btn-shadow:0 6px 20px -8px rgba(121,201,142,.7);
+}
+:root[data-theme="light"]{
+  --bg-deep:#F1F3F2; --bg:#FBFBFB; --surface:#FFFFFF; --surface-2:#F4F6F5; --surface-3:#EBEEEC;
+  --text:#161918; --text-2:#3A3F3D; --text-muted:#5C6360; --text-dim:#565D5A;
+  --accent-txt:#3D5C48; --sage:#47624F; --danger:#B32135;
+  --line:#E6E9E8; --line-2:#DBDFDD; --line-accent:rgba(78,143,98,.35);
+  --glow:radial-gradient(58% 52% at 74% 6%, rgba(121,201,142,.08), transparent 72%);
+  --card-shadow:0 1px 2px rgba(20,25,22,.04), 0 14px 40px -24px rgba(30,50,38,.18);
+  --btn-shadow:0 6px 20px -10px rgba(78,143,98,.5);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+/* один механизм отступа под фиксированную шапку: scroll-padding у контейнера,
+   scroll-margin у целей НЕ дублируем, иначе смещения складываются */
+html{scroll-behavior:smooth;scroll-padding-top:74px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:17px;font-weight:450;line-height:1.6;
+ font-feature-settings:"tnum" 1;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+ transition:background .35s ease,color .35s ease}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+a{color:inherit;text-decoration:none}
+svg{display:block}
+::selection{background:rgba(121,201,142,.28)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ---------- типографика ---------- */
+/* шаг h1 к h2 держим не меньше 1,8 на всех ширинах, а не только на десктопе */
+h1{font-size:clamp(42px,5.6vw,72px);font-weight:620;letter-spacing:-.03em;line-height:1.04}
+h2{font-size:clamp(23px,2.9vw,38px);font-weight:600;letter-spacing:-.025em;line-height:1.1;max-width:24ch}
+/* числовые диапазоны не разрываются переносом строки */
+.nb{white-space:nowrap}
+h3{font-size:21px;font-weight:620;letter-spacing:-.01em;line-height:1.25}
+h4{font-size:16.5px;font-weight:560;letter-spacing:-.012em;line-height:1.35}
+.lead{font-size:clamp(18px,2vw,21px);font-weight:450;color:var(--text-2);line-height:1.6;max-width:640px}
+.mono{font-family:var(--mono);font-feature-settings:"liga" 0,"calt" 0}
+.eyebrow{font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.14em;
+ color:var(--sage);margin-bottom:12px;display:flex;align-items:center;gap:10px;font-feature-settings:"case" 1,"liga" 0}
+.eyebrow .n{color:var(--text-dim)}
+.sec-head{max-width:720px;margin-bottom:52px}
+.sec-head h2{margin-bottom:24px}
+.cap{font-family:var(--mono);font-size:11.5px;font-weight:400;letter-spacing:.04em;color:var(--text-dim);margin-top:14px;line-height:1.5}
+
+/* ---------- кнопки ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--sans);font-weight:560;font-size:14.5px;
+ padding:10px 18px;border-radius:var(--r-sm);cursor:pointer;border:1px solid transparent;white-space:nowrap;min-height:44px;
+ transition:background .16s ease,border-color .16s ease,color .16s ease,transform .16s ease,box-shadow .16s ease}
+.btn.pri{background:var(--accent);color:var(--accent-ink);box-shadow:var(--btn-shadow)}
+.btn.pri:hover{background:var(--accent-glow);transform:translateY(-1px)}
+.btn.pri:active{transform:none;box-shadow:none}
+.btn.ghost{background:var(--surface);color:var(--text);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--line-2)}
+.btn.ghost:active{background:var(--surface-2)}
+.btn.lg{font-size:16px;padding:14px 26px;border-radius:var(--r-md)}
+.card .more{margin-top:0;align-self:flex-start}
+.more{display:inline-block;position:relative;font-size:13.5px;font-weight:560;color:var(--accent-txt);border-bottom:1px solid var(--line-accent);
+ padding-bottom:1px;margin-top:16px;transition:border-color .16s ease}
+/* зона нажатия 44px без изменения вида ссылки */
+.more::after{content:"";position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:44px}
+.more:hover{border-color:var(--accent-txt)}
+
+/* ---------- шапка ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:66px;display:flex;align-items:center;
+ background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:saturate(160%) blur(14px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:16px;width:100%}
+.brand{display:flex;align-items:center;color:var(--text);flex:none;min-height:44px}
+.brand svg{height:32px;width:auto}
+.nav-links{display:flex;gap:2px;margin-left:6px;flex:1}
+.nav-links a{font-size:14px;font-weight:500;color:var(--text-muted);padding:8px 11px;border-radius:var(--r-sm);white-space:nowrap;
+ transition:color .16s ease,background .16s ease}
+.nav-links a:hover{color:var(--text);background:var(--surface)}
+.nav-act{display:flex;align-items:center;gap:10px;flex:none;margin-left:auto}
+.tgl,.burger{width:44px;height:44px;border-radius:var(--r-sm);border:1px solid var(--line);background:var(--surface);color:var(--text-muted);
+ display:flex;align-items:center;justify-content:center;cursor:pointer;transition:color .16s ease,border-color .16s ease}
+.tgl:hover,.burger:hover{color:var(--text);border-color:var(--line-2)}
+.tgl svg{width:17px;height:17px}
+.burger{display:none}
+.burger svg{width:19px;height:19px}
+.sheet{position:fixed;inset:66px 0 auto 0;z-index:99;background:var(--bg);border-bottom:1px solid var(--line);
+ display:none;flex-direction:column;padding:6px 0 12px}
+.sheet.open{display:flex}
+.sheet a{display:flex;align-items:center;min-height:48px;padding:6px var(--gutter);font-size:16px;font-weight:500;color:var(--text-2)}
+.sheet a:hover{color:var(--text);background:var(--surface)}
+.sheet .btn{margin:10px var(--gutter) 2px}
+
+/* ---------- ритм секций, лестница ---------- */
+section{position:relative}
+/* ритм секций по смысловым группам: 72 внутри группы, 120 между группами */
+.s-pain{padding:96px 0 72px}
+.s-stmt{padding:72px 0 120px}
+.s-scen{padding:96px 0 72px}
+.s-how{padding:72px 0}
+.s-arch{padding:72px 0 120px}
+.s-case{padding:96px 0 72px}
+.s-cmp{padding:72px 0 120px}
+.s-price{padding:96px 0 72px}
+.s-sec{padding:72px 0}
+.s-launch{padding:72px 0 120px}
+.s-faq{padding:96px 0 72px}
+.s-rel{padding:72px 0}
+.s-lead{padding:72px 0 112px}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.06s}.reveal.d2{transition-delay:.12s}.reveal.d3{transition-delay:.18s}.reveal.d4{transition-delay:.24s}
+
+/* ---------- первый экран ---------- */
+.hero{padding:112px 0 104px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:var(--glow);pointer-events:none}
+.hero .wrap{position:relative;z-index:1}
+.hero-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:56px;align-items:end}
+.hero h1{max-width:17ch;margin-bottom:26px}
+.hero .lead{margin-bottom:32px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.hero-meta{margin-top:38px;display:flex;flex-wrap:wrap;gap:44px;padding-top:24px;border-top:1px solid var(--line)}
+.hero-meta .m{display:flex;flex-direction:column;gap:5px}
+.hero-meta .m b{font-family:var(--mono);font-weight:500;font-size:28px;letter-spacing:-.02em;color:var(--text);line-height:1.05}
+.hero-meta .m span{font-size:13.5px;color:var(--text-muted)}
+.dom{font-family:var(--mono);font-weight:500;font-size:clamp(84px,12vw,190px);letter-spacing:-.045em;line-height:.9;color:var(--text);
+ display:flex;align-items:baseline;justify-content:flex-end;gap:12px;white-space:nowrap}
+.dom .dom-of{font-size:.24em;letter-spacing:-.02em;color:var(--text-2)}
+.dom-cap{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--text-dim);line-height:1.5;margin-top:14px;max-width:26ch;
+ margin-left:auto;text-align:right}
+@media(min-width:1240px){.dom-wrap{margin-right:calc(590px - 50vw)}}
+/* короткий экран ноутбука: первый экран не режется на 820 и 720 */
+@media(min-width:900px) and (max-height:880px){
+  .hero{padding:104px 0 56px}
+  .hero h1{font-size:clamp(40px,4.4vw,58px);margin-bottom:20px}
+  /* h1 ужался под низкий экран, значит h2 едет за ним: шаг остаётся не меньше 1,8 */
+  h2{font-size:clamp(22px,2.4vw,32px)}
+  .hero .lead{font-size:19px;margin-bottom:24px}
+  .hero-meta{margin-top:26px;padding-top:20px;gap:36px}
+  .hero-meta .m b{font-size:24px}
+  .dom{font-size:clamp(84px,9.5vw,148px)}
+}
+
+/* ---------- блок-мысль ---------- */
+.stmt{border-left:2px solid var(--accent);padding:6px 0 6px 26px;max-width:820px}
+.stmt p{font-size:clamp(21px,2.7vw,30px);font-weight:500;letter-spacing:-.015em;line-height:1.32;color:var(--text)}
+.stmt b{color:var(--accent-txt);font-weight:620}
+
+/* ---------- строки-механизмы ---------- */
+.rows{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:64px 1fr 1.25fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.row .rn{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--text-dim);transition:color .16s ease;font-feature-settings:"liga" 0}
+.row:hover .rn{color:var(--accent-txt)}
+.row .rt{font-size:16.5px;font-weight:560;letter-spacing:-.012em;color:var(--text)}
+.row .rd{font-size:15px;color:var(--text-muted);line-height:1.55}
+
+/* ---------- бенто ---------- */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.b2{grid-column:span 2}.b3{grid-column:span 3}.b4{grid-column:span 4}.b6{grid-column:span 6}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:30px;box-shadow:var(--card-shadow);
+ transition:border-color .2s var(--ease),transform .2s var(--ease);display:flex;flex-direction:column}
+.card:hover{border-color:var(--line-2);transform:translateY(-3px)}
+.card .ic{width:42px;height:42px;border-radius:var(--r-sm);background:var(--surface-2);border:1px solid var(--line);
+ display:flex;align-items:center;justify-content:center;color:var(--accent-txt);margin-bottom:20px;flex:none}
+.card .ic svg{width:21px;height:21px}
+.card h3{margin-bottom:10px}
+.card p{font-size:15px;color:var(--text-muted);line-height:1.55;max-width:42ch}
+/* распорка ограничена: чип и ссылка не улетают в самый низ растянутой карточки */
+.card .grow{flex:1 1 auto;min-height:18px;max-height:34px}
+.card .tag{margin-top:0;align-self:flex-start;font-family:var(--mono);font-size:12px;color:var(--text-dim);
+ padding:5px 11px;border:1px solid var(--line);border-radius:var(--r-pill);font-feature-settings:"liga" 0}
+.card.plain{padding:26px;align-self:start}
+/* широкая карточка-подвал: текст слева, действие справа, пустой правый край не висит */
+.card.b6.wide{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:48px;align-items:center;padding:28px 32px}
+.card.b6.wide h3{grid-column:1;margin-bottom:10px}
+.card.b6.wide p{grid-column:1;max-width:70ch}
+.card.b6.wide .grow{display:none}
+.card.b6.wide .more{grid-column:2;grid-row:1 / span 2;margin-top:0;align-self:center;white-space:nowrap}
+@media(max-width:760px){
+  .card.b6.wide{grid-template-columns:1fr;row-gap:0}
+  .card.b6.wide .more{grid-column:1;grid-row:auto;justify-self:start;margin-top:16px}
+}
+.step-n{font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.1em;color:var(--text-dim);margin-bottom:16px}
+.ex{margin-top:18px;background:var(--bg-deep);border:1px solid var(--line);border-radius:var(--r-md);padding:16px 18px}
+.ex .exl{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.11em;color:var(--sage);margin-bottom:8px}
+.ex p{font-family:var(--mono);font-size:12.5px;line-height:1.6;color:var(--text-2);max-width:none;font-feature-settings:"liga" 0}
+.figcard{background:var(--bg-deep);border:1px solid var(--line);border-radius:var(--r-lg);padding:22px 22px 18px;overflow:hidden}
+.figcard canvas{width:100%;display:block;border-radius:var(--r-md)}
+
+/* ---------- full-bleed схема ---------- */
+.bleed{margin-left:calc(50% - 50vw);width:100vw;border-radius:0;border-left:0;border-right:0}
+/* 590 это половина maxw, плюс 28 гаттера: край схемы встаёт на ту же сетку, что и текст */
+.rail{padding-left:max(var(--gutter),calc(50vw - 562px));padding-right:max(var(--gutter),calc(50vw - 562px))}
+.archbox{background:var(--bg-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:72px 0}
+.diagram{overflow-x:auto;padding-bottom:6px}
+.flow{display:flex;align-items:center;justify-content:space-between;gap:20px;min-width:760px;width:100%;margin:0}
+.dcol{display:flex;flex-direction:column;gap:12px;align-items:stretch}
+.node{background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r-md);padding:13px 16px;font-size:14px;font-weight:500;
+ text-align:center;min-width:150px;color:var(--text)}
+.node small{display:block;font-family:var(--mono);font-size:10.5px;color:var(--text-dim);margin-top:4px;font-weight:400;font-feature-settings:"liga" 0}
+.node.hot{border-color:var(--accent);color:var(--accent-ink);background:var(--grad);
+ box-shadow:0 0 0 4px rgba(121,201,142,.16),0 10px 30px -10px rgba(121,201,142,.6)}
+.node.hot small{color:var(--accent-ink);opacity:.72}
+.conn{flex:1 1 60px;min-width:60px;max-width:220px;height:2px;background:linear-gradient(90deg,var(--line-2),var(--accent));position:relative}
+.conn::after{content:"";position:absolute;right:0;top:-3px;border:4px solid transparent;border-left-color:var(--accent)}
+
+/* ---------- кейс ---------- */
+.case{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:34px;box-shadow:var(--card-shadow)}
+.case .ch{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.case .ch .tag{font-family:var(--mono);font-size:11.5px;color:var(--accent-txt);border:1px solid var(--line-accent);padding:4px 10px;
+ border-radius:var(--r-pill);font-feature-settings:"liga" 0}
+.case p{font-size:15px;color:var(--text-muted);margin-bottom:26px;max-width:62ch;line-height:1.6}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:28px 34px}
+.metric b{display:block;font-family:var(--mono);font-weight:500;font-size:28px;letter-spacing:-.02em;color:var(--text);line-height:1.05}
+.metric span{font-size:13.5px;color:var(--text-muted);margin-top:6px;display:block}
+
+/* ---------- сравнение ---------- */
+.cmp{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--card-shadow);overflow-x:auto}
+.cmp-hint{display:none}
+/* 700 + два гаттера = 756: подсказка о боковом скролле включается ровно там, где скролл появляется */
+.cmp table{border-collapse:collapse;width:100%;min-width:700px;font-feature-settings:"tnum" 1}
+@media(max-width:755px){.cmp-hint{display:block}}
+.cmp th,.cmp td{padding:16px 20px;text-align:left;font-size:14.5px;line-height:1.5;border-bottom:1px solid var(--line);vertical-align:top}
+.cmp th{font-family:var(--mono);font-size:12px;letter-spacing:.1em;font-weight:500;color:var(--text-muted);
+ background:var(--surface-2);font-feature-settings:"case" 1}
+.cmp td:first-child{color:var(--text-muted);font-size:13.5px;width:180px}
+.cmp td{color:var(--text-2)}
+.cmp tr:last-child td{border-bottom:0}
+.cmp th.hi{color:var(--accent-txt)}
+.cmp td.hi{background:var(--surface-2);color:var(--text)}
+
+/* ---------- тарифы ---------- */
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:32px 28px;box-shadow:var(--card-shadow);
+ display:flex;flex-direction:column;transition:border-color .2s var(--ease),transform .2s var(--ease)}
+.plan:hover{border-color:var(--line-2);transform:translateY(-3px)}
+.plan.feat{border-color:var(--line-accent)}
+.plan .pk{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.1em;color:var(--text-dim);
+ margin-bottom:16px;font-feature-settings:"case" 1}
+.plan.feat .pk{color:var(--accent-txt)}
+.plan h3{font-size:21px;margin-bottom:16px}
+.plan .amt b{font-family:var(--mono);font-weight:500;font-size:clamp(26px,2.6vw,32px);letter-spacing:-.03em;color:var(--text)}
+.plan .amt span{display:block;font-size:13px;color:var(--text-muted);margin-top:4px}
+.plan .sub{font-family:var(--mono);font-size:14px;color:var(--text-2);margin:10px 0 22px}
+.plan ul{list-style:none;display:flex;flex-direction:column;gap:0;margin-bottom:22px;flex:1}
+.plan li{display:grid;grid-template-columns:30px 1fr;gap:10px;font-size:14.5px;line-height:1.5;color:var(--text-2);
+ padding:11px 0;border-bottom:1px solid var(--line)}
+.plan li .li-n{font-family:var(--mono);font-size:11.5px;color:var(--text-dim);padding-top:3px;font-feature-settings:"liga" 0}
+.plan .anchor{font-size:12.5px;color:var(--text-dim);line-height:1.55;margin-bottom:20px}
+
+/* ---------- смежные материалы ---------- */
+.rel{display:flex;flex-wrap:wrap;gap:10px}
+.rel a{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:10px 16px;border:1px solid var(--line);
+ border-radius:var(--r-pill);background:var(--surface);font-size:14.5px;font-weight:500;color:var(--text-2);
+ transition:border-color .16s ease,color .16s ease}
+.rel a:hover{border-color:var(--line-2);color:var(--text)}
+.rel a span{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;color:var(--text-dim);font-feature-settings:"case" 1}
+
+/* ---------- FAQ ---------- */
+.faq{max-width:820px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:22px 4px;font-size:17.5px;font-weight:560;
+ letter-spacing:-.01em;min-height:44px;transition:color .16s ease}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--accent-txt)}
+.faq summary .pl{flex:none;margin-left:auto;width:26px;height:26px;border-radius:var(--r-xs);border:1px solid var(--line);color:var(--text-dim);
+ display:flex;align-items:center;justify-content:center;transition:transform .2s var(--ease),color .2s var(--ease),border-color .2s var(--ease)}
+.faq details[open] summary .pl{transform:rotate(45deg);color:var(--accent-txt);border-color:var(--line-accent)}
+.faq .ans{padding:0 4px 24px;font-size:15px;color:var(--text-2);line-height:1.65;max-width:60ch}
+
+/* ---------- форма ---------- */
+.leadbox{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(24px,3.4vw,38px);max-width:820px;
+ box-shadow:var(--card-shadow)}
+.lf-row{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.lf{margin-bottom:28px}
+.lf label{display:block;font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.11em;
+ color:var(--sage);margin-bottom:10px;font-feature-settings:"case" 1,"liga" 0}
+/* поле это прямая линия: фона нет, только нижняя граница, радиуса нет */
+.lf input,.lf textarea{display:block;width:100%;font-family:inherit;font-size:15px;line-height:1.5;color:var(--text);
+ background:transparent;border:0;border-bottom:1px solid var(--line-2);border-radius:0;padding:8px 0 12px;
+ min-height:44px;outline:none;resize:vertical;transition:border-color .16s ease,color .16s ease}
+.lf input::placeholder,.lf textarea::placeholder{color:var(--text-dim)}
+.lf input:hover,.lf textarea:hover{border-bottom-color:var(--text-dim)}
+.lf input:focus,.lf textarea:focus,.lf input:focus-visible,.lf textarea:focus-visible{border-bottom-color:var(--accent);outline:none}
+.lf input.err,.lf textarea.err{border-bottom-color:var(--danger)}
+.lf textarea{min-height:80px;resize:none}
+.lf-check{display:flex;gap:14px;align-items:center;min-height:44px;margin:26px 0 6px;font-size:14px;color:var(--text-muted);
+ cursor:pointer;line-height:1.5}
+.lf-check .box{flex:none;display:flex;align-items:center;justify-content:center;width:44px;height:44px;margin-left:-11px}
+.lf-check input[type=checkbox]{appearance:none;-webkit-appearance:none;flex:none;width:20px;height:20px;border-radius:0;
+ border:1px solid var(--line-2);background:transparent;cursor:pointer;position:relative;margin:0;
+ transition:border-color .16s ease,background .16s ease}
+.lf-check input[type=checkbox]:hover{border-color:var(--accent)}
+.lf-check input[type=checkbox]:checked{border-color:var(--accent)}
+.lf-check input[type=checkbox]:checked::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;
+ border:solid var(--accent);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.lf-check a{color:var(--accent-txt);border-bottom:1px solid var(--line-accent)}
+.lf-err{display:none;color:var(--danger);font-size:13.5px;margin-top:14px}
+.lf-err.show{display:block}
+.leadbox .btn{margin-top:22px;width:100%}
+.lf-done{display:none;font-size:16px;color:var(--text-2);line-height:1.6}
+.lf-done b{color:var(--text)}
+.lf-done a{color:var(--accent-txt);border-bottom:1px solid var(--line-accent)}
+.lf-done.show{display:block}
+
+/* ---------- футер ---------- */
+footer{padding:56px 0 70px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+footer .brand svg{height:24px}
+footer .fmeta{font-size:13px;color:var(--text-dim);display:flex;gap:22px;flex-wrap:wrap;align-items:center}
+footer .fmeta a{min-height:44px;display:inline-flex;align-items:center}
+footer .fmeta a:hover{color:var(--text)}
+.legal{font-size:12.5px;color:var(--text-dim);line-height:1.6;margin-top:20px}
+
+/* ---------- адаптив ---------- */
+@media(max-width:1100px){
+  .hero-grid{grid-template-columns:1.25fr .75fr;gap:36px}
+}
+/* восемь пунктов меню перестают помещаться раньше 900: ниже 1040 сразу бургер,
+   иначе кнопка в шапке уезжала за правый край и обрезалась */
+@media(max-width:1040px){
+  .nav-links{display:none}
+  .burger{display:flex}
+}
+@media(max-width:900px){
+  .hero{padding:120px 0 88px}
+  .hero-grid{grid-template-columns:1fr;gap:48px;align-items:start}
+  .dom{font-size:clamp(72px,17vw,120px);justify-content:flex-start}
+  .dom-cap{margin-left:0;text-align:left}
+  .bento{grid-template-columns:repeat(2,1fr)}
+  .b2,.b3,.b4,.b6{grid-column:span 1}
+  .wide{grid-column:span 2}
+  .s-pain,.s-scen,.s-case,.s-price,.s-faq{padding:64px 0 48px}
+  .s-how,.s-sec,.s-rel{padding:48px 0}
+  .s-stmt,.s-arch,.s-cmp,.s-launch{padding:48px 0 80px}
+  .s-lead{padding:48px 0 72px}
+  .archbox{padding:48px 0}
+  /* третий тариф занимает всю строку: одинокой карточки с дырой справа не остаётся */
+  .s-price .bento>.plan:nth-child(3){grid-column:span 2}
+  /* схема разворачивается в столбец уже здесь: на 768 горизонтальный ряд обрезался */
+  .diagram{overflow-x:visible}
+  .flow{flex-direction:column;align-items:stretch;min-width:0;max-width:100%;gap:14px}
+  .dcol{gap:12px}
+  .node{min-width:0}
+  .conn{width:2px;height:36px;min-width:0;max-width:none;flex:none;margin:0 auto;
+   background:linear-gradient(180deg,var(--line-2),var(--accent))}
+  .conn::after{right:auto;top:auto;left:50%;bottom:-1px;transform:translateX(-50%);
+   border-left-color:transparent;border-top-color:var(--accent)}
+}
+@media(max-width:760px){
+  .row{grid-template-columns:52px 1fr;gap:6px 14px}
+  .row .rd{grid-column:2/-1}
+  .diagram{overflow-x:visible}
+  .flow{flex-direction:column;align-items:stretch;min-width:0;max-width:100%;gap:14px}
+  .dcol{gap:12px}
+  .node{min-width:0}
+  .conn{width:2px;height:36px;min-width:0;max-width:none;flex:none;margin:0 auto;
+   background:linear-gradient(180deg,var(--line-2),var(--accent))}
+  .conn::after{right:auto;top:auto;left:50%;bottom:-1px;transform:translateX(-50%);
+   border-left-color:transparent;border-top-color:var(--accent)}
+}
+@media(max-width:520px){
+  .nav-act .btn{display:none}
+}
+@media(max-width:640px){
+  :root{--gutter:20px}
+  .bento{grid-template-columns:1fr}
+  .wide{grid-column:span 1}
+  .s-price .bento>.plan:nth-child(3){grid-column:span 1}
+  .hero-meta{gap:26px}
+  .metrics{gap:24px}
+  .case{padding:26px}
+  .card{padding:26px}
+  .lf-row{grid-template-columns:1fr}
+  .lf input,.lf textarea{font-size:16px}
+  .faq summary{font-size:16.5px;padding:20px 2px}
+  footer .fmeta{gap:4px 18px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+
+/* тап-зоны на мобильной */
+@media(max-width:860px){
+  a.more,a.morelink,.ccard .morelink,.rcard a{position:relative;display:inline-flex;align-items:center;min-height:44px}
+  .lf-check{min-height:44px}
+  .lf-check input[type=checkbox]{position:relative}
+  .lf-check input[type=checkbox]::before{content:"";position:absolute;inset:-12px;border-radius:50%}
+  footer .brand{min-height:44px;display:inline-flex;align-items:center}
+}
+
+/* чекбокс согласия: круг с зоной нажатия 44px */
+.lf-check{display:flex;align-items:flex-start;gap:12px;min-height:44px;padding:6px 0}
+.lf-check input[type=checkbox]{appearance:none;-webkit-appearance:none;flex:none;
+  width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line-2);background:transparent;
+  cursor:pointer;position:relative;margin-top:1px;transition:.16s}
+.lf-check input[type=checkbox]::before{content:"";position:absolute;inset:-11px;border-radius:50%}
+.lf-check input[type=checkbox]:checked{background:var(--accent);border-color:var(--accent)}
+.lf-check input[type=checkbox]:checked::after{content:"";position:absolute;left:7px;top:4px;
+  width:6px;height:10px;border:2px solid var(--accent-ink);border-top:0;border-left:0;transform:rotate(43deg)}
+.lf-check input[type=checkbox]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* тап-зоны в подвале и на планшете */
+@media(max-width:1024px){
+  footer .brand{min-height:44px;display:inline-flex;align-items:center}
+  footer a,.fmeta a,.fmeta span,.legal a{min-height:44px;display:inline-flex;align-items:center;
+    padding-inline:8px;margin-inline:-8px}
+}
+@media(max-width:420px){
+  .tn-mob,.tm-grid{flex-wrap:wrap;max-width:100%}
+  .tm-i{max-width:100%;white-space:normal}
+  *{min-width:0}
+}
+
+/* чекбокс: сам круг 22px, кликабельная область 44px */
+.lf-check{position:relative}
+.lf-check input[type=checkbox]{width:22px;height:22px;margin:11px 0 11px 0}
+.lf-check input[type=checkbox]::before{content:"";position:absolute;left:0;top:0;width:44px;height:44px;
+  border-radius:50%;transform:translate(-11px,-11px)}
+.lf-check>span{padding-top:11px}
+
+/* чекбокс согласия: круг 22px, нажатие 44px, клик по тексту работает */
+.lf-check{position:relative;display:flex;align-items:flex-start;gap:0;padding-left:36px;min-height:44px}
+.lf-check input[type=checkbox]{position:absolute;left:-11px;top:50%;transform:translateY(-50%);
+  width:44px;height:44px;margin:0;opacity:0;cursor:pointer;z-index:2;appearance:none;-webkit-appearance:none}
+.lf-check::before{content:"";position:absolute;left:0;top:11px;width:22px;height:22px;border-radius:50%;
+  border:1.5px solid var(--line-2);background:transparent;transition:.16s;pointer-events:none}
+.lf-check:has(input:checked)::before{background:var(--accent);border-color:var(--accent)}
+.lf-check:has(input:checked)::after{content:"";position:absolute;left:7.5px;top:15px;width:6px;height:10px;
+  border:2px solid var(--accent-ink);border-top:0;border-left:0;transform:rotate(43deg);pointer-events:none}
+.lf-check:has(input:focus-visible)::before{outline:2px solid var(--accent);outline-offset:3px}
+.lf-check>span{padding-top:9px;font-size:13.5px;line-height:1.5;color:var(--text-muted)}
+.lf-check>span a{color:var(--text-2);position:relative;z-index:3}
+/* ссылка на политику внутри согласия: зона нажатия крупнее, но не перекрывает сам чекбокс */
+@media(max-width:860px){
+  .lf-check>span{line-height:1.65}
+  .lf-check>span a{display:inline-block;padding-block:12px;margin-block:-12px;border-bottom:0;
+   text-decoration:underline;text-decoration-color:var(--line-accent);text-underline-offset:3px}
+  /* ссылка внутри сноски: подчёркивание остаётся у текста, зона нажатия 44px невидимой полосой */
+  .note a,.src a{position:relative;display:inline-block}
+  .note a::after,.src a::after{content:"";position:absolute;left:0;right:0;top:50%;
+   transform:translateY(-50%);height:44px}
+}
+/* обёртка инпута больше не занимает 44px ширины: подпись стоит вплотную к кружку */
+.lf-check .box{display:contents}
+
+/* подвал: реквизиты читаются парами подпись — значение, а не одной склейкой */
+.legal>div{display:flex;flex-wrap:wrap;gap:2px 12px;margin-bottom:4px}
+.legal>div>span{flex:none;min-width:82px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;
+ color:var(--text-dim);font-feature-settings:"case" 1,"liga" 0}
+.legal a:hover{color:var(--text-2)}
+/* на узком экране подпись реквизита всегда отдельной строкой над значением */
+@media(max-width:640px){
+  .legal>div{gap:0;margin-bottom:10px}
+  .legal>div>span{min-width:100%;margin-bottom:1px}
+}
+
+/* длина строки в кейсе не уходит за 75 знаков */
+.case p{max-width:58ch}
+.ex .exl,.rel a span{font-size:11.5px}
+
+/* тап-зоны: логотип в шапке и подвале, ссылки-кнопки */
+@media(max-width:860px){
+  .nav .brand,footer .brand{min-height:44px;display:inline-flex;align-items:center}
+  a.btn,.btn.ghost,.btn.pri{min-height:44px}
+  .rel-card{min-height:44px}
+}
+
+/* ---------- ритм секций страницы ---------- */
+.rh-list{padding:96px 0 72px}
+.rh-dense{padding:72px 0}
+.rh-scheme{padding:72px 0 120px}
+.rh-thin{padding:72px 0}
+.rh-price{padding:96px 0 72px}
+.rh-why{padding:88px 0 72px}
+.rh-proof{padding:72px 0}
+.rh-team{padding:72px 0 96px}
+/* мобильный ритм этих секций стоит здесь, а не в общем блоке 900:
+   определения .rh-* идут ниже по файлу и при равной специфичности перебивали бы его */
+@media(max-width:900px){
+  .rh-why{padding:56px 0 48px}
+  .rh-list,.rh-price{padding:64px 0 48px}
+  .rh-dense,.rh-proof,.rh-thin{padding:48px 0}
+  .rh-scheme{padding:48px 0 80px}
+  .rh-team{padding:48px 0 64px}
+}
+
+/* ---------- строки-правила (тот же механизм, что и .row) ---------- */
+.rules{border-top:1px solid var(--line)}
+.rule{display:grid;grid-template-columns:104px 1fr 1.25fr;gap:24px;padding:20px 0;
+ border-bottom:1px solid var(--line);align-items:baseline}
+.rule .rn{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--text-dim);
+ transition:color .16s ease;font-feature-settings:"liga" 0}
+.rule:hover .rn{color:var(--accent-txt)}
+.rule .rt{font-size:16.5px;font-weight:560;letter-spacing:-.012em;color:var(--text)}
+.rule .rd{font-size:15px;color:var(--text-muted);line-height:1.55}
+@media(max-width:760px){
+  .rule{grid-template-columns:88px 1fr;gap:6px 14px}
+  .rule .rd{grid-column:2/-1}
+}
+
+/* ---------- сноска под блоком ---------- */
+.note{margin-top:28px;font-size:14.5px;color:var(--text-muted);line-height:1.6;max-width:72ch}
+.note a{color:var(--accent-txt);border-bottom:1px solid var(--line-accent)}
+.note a:hover{border-color:var(--accent-txt)}
+.src{margin-top:22px;font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;
+ color:var(--text-dim);line-height:1.6;max-width:70ch}
+
+/* ---------- ссылка внутри карточки ---------- */
+.morelink{display:inline-block;position:relative;font-size:13.5px;font-weight:560;color:var(--accent-txt);
+ border-bottom:1px solid var(--line-accent);padding-bottom:1px;margin-top:18px;align-self:flex-start;
+ transition:border-color .16s ease}
+.morelink:hover{border-color:var(--accent-txt)}
+
+/* ---------- крупное число в карточке ---------- */
+.card .big{font-family:var(--mono);font-weight:500;font-size:clamp(30px,3.4vw,38px);letter-spacing:-.03em;
+ color:var(--text);line-height:1.02;margin-bottom:12px}
+.card .big.txt{font-size:clamp(21px,2.4vw,26px);letter-spacing:-.02em}
+
+/* ---------- слои системы, схема ---------- */
+.stack{margin-top:40px;max-width:860px}
+.slab{display:grid;grid-template-columns:112px 1fr;gap:20px;align-items:baseline;
+ background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r-md);padding:18px 22px}
+.slab .sl{font-family:var(--mono);font-size:11px;letter-spacing:.11em;color:var(--text-dim);
+ font-feature-settings:"case" 1,"liga" 0}
+.slab b{display:block;font-size:16px;font-weight:560;letter-spacing:-.012em;color:var(--text)}
+.slab .sd{display:block;font-size:14px;color:var(--text-muted);line-height:1.55;margin-top:4px}
+.slab.top{border-color:var(--line-accent);box-shadow:0 0 0 3px rgba(121,201,142,.09)}
+.stack .up{display:flex;align-items:center;gap:12px;padding:10px 0 10px 34px;
+ font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--text-dim)}
+.stack .up::before{content:"";flex:none;width:2px;height:22px;
+ background:linear-gradient(180deg,var(--accent),var(--line-2))}
+@media(max-width:640px){
+  .slab{grid-template-columns:1fr;gap:8px}
+  .stack .up{padding-left:18px}
+}
+
+/* ---------- пара тарифов ---------- */
+/* stretch, а не start: обе карточки тарифов в ряду одной высоты, кнопки на одной линии */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
+.plan .pn{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.1em;
+ color:var(--text-dim);margin-bottom:18px;font-feature-settings:"case" 1}
+.plan.main .pn{color:var(--accent-txt)}
+.plan.main{border-color:var(--line-accent)}
+.plan .sum{font-family:var(--mono);font-weight:500;font-size:clamp(26px,2.8vw,34px);
+ letter-spacing:-.03em;color:var(--text);line-height:1.05}
+.plan .per{font-size:13.5px;color:var(--text-muted);margin:8px 0 24px;line-height:1.5}
+.plan ul{list-style:none;display:flex;flex-direction:column;margin-bottom:24px;flex:1}
+.plan li{display:block;font-size:14.5px;line-height:1.5;color:var(--text-2);
+ padding:12px 0 12px 22px;border-bottom:1px solid var(--line);position:relative}
+.plan li::before{content:"";position:absolute;left:0;top:20px;width:9px;height:1px;background:var(--line-accent)}
+.plan .btn{width:100%}
+@media(max-width:760px){.pair{grid-template-columns:1fr}}
+
+/* ---------- подсказка о боковом скролле таблицы ---------- */
+.cmp-hint{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--text-dim);margin-bottom:12px}
+
+/* таблица «раньше и теперь» на узком экране: строка становится карточкой */
+@media(max-width:755px){
+  .cmp{overflow-x:visible;background:transparent;border:0;box-shadow:none;border-radius:0}
+  .cmp-hint{display:none}
+  .cmp table,.cmp tbody,.cmp tr,.cmp td{display:block;width:auto;min-width:0}
+  .cmp thead{display:none}
+  .cmp tr{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
+   padding:6px 20px 14px;margin-bottom:14px;box-shadow:var(--card-shadow)}
+  .cmp td{padding:12px 0;border-bottom:1px solid var(--line);width:auto}
+  .cmp td:last-child{border-bottom:0}
+  .cmp td.hi{background:transparent;color:var(--text)}
+  .cmp td:first-child{width:auto;font-size:16px;font-weight:560;color:var(--text);border-bottom:1px solid var(--line-2)}
+  .cmp td[data-l]::before{content:attr(data-l);display:block;font-family:var(--mono);font-size:10.5px;
+   letter-spacing:.11em;color:var(--text-dim);margin-bottom:6px;font-feature-settings:"case" 1}
+  .cmp td:first-child[data-l]::before{color:var(--sage)}
+  .cmp td.hi[data-l]::before{color:var(--accent-txt)}
+}
+
+/* реквизиты в две колонки */
+.legal{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);
+  display:grid;grid-template-columns:1fr 1fr;gap:14px 48px;align-items:start}
+.lg-col{display:flex;flex-direction:column;gap:14px}
+.legal div{font-size:13px;color:var(--text-2);line-height:1.5}
+.legal span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;
+  color:var(--text-dim);margin-bottom:4px}
+.legal a{color:var(--text-2)}
+.legal a:hover{color:var(--accent-text,var(--accent))}
+@media(max-width:760px){.legal{grid-template-columns:1fr;gap:14px}}
+/* чекбокс согласия ровно по центру строки */
+.lf-check{display:flex;align-items:center;gap:12px}
+.lf-check input[type=checkbox]{flex:none;align-self:center;margin:0}
+.lf-check span{line-height:1.5}
+</style>
+</head>
+<body>
+
+<!-- ШАПКА -->
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="#top" aria-label="synapt"><svg viewBox="0 0 869 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/><path d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></svg></a>
+  <div class="nav-links"><a href="#pain">Зачем</a><a href="#modules">Модули</a><a href="#how">Как&nbsp;устроено</a><a href="#start">С&nbsp;чего начать</a><a href="#own">Свой процесс</a><a href="#pricing">Стоимость</a><a href="#faq">FAQ</a></div>
+  <div class="nav-act">
+    <button class="tgl" id="tgl" aria-label="Сменить тему" title="Светлая или&nbsp;тёмная тема"></button>
+    <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="sheet">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <a class="btn ghost" href="https://t.me/Anti4ay">Обсудить задачу</a>
+  </div>
+</div></nav>
+<div class="sheet" id="sheet">
+  <a href="#proof">Раньше и&nbsp;теперь</a>
+  <a href="#trust">Контроль</a>
+  <a href="#security">Данные и&nbsp;доступ</a>
+  <a class="btn pri" href="#lead">Обсудить задачу</a>
+</div>
+
+<span id="top"></span>
+
+<!-- ПЕРВЫЙ ЭКРАН -->
+<header class="hero"><div class="wrap">
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow reveal"><span class="n">01</span> AI-система для&nbsp;бизнеса</div>
+      <h1 class="reveal d1">Пробуют почти все. Отрыв получают те, кто перестроил процессы</h1>
+      <p class="lead reveal d2">Мы&nbsp;собираем ту часть, где проба превращается в&nbsp;процесс: продажи, управление, команда и&nbsp;операции работают на&nbsp;общей базе знаний вашей компании. Начать можно с&nbsp;одного модуля, код и&nbsp;данные остаются у&nbsp;вас</p>
+      <div class="hero-cta reveal d3">
+        <a class="btn pri lg" href="#lead">Обсудить задачу</a>
+        <a class="btn ghost lg" href="#modules">Посмотреть модули</a>
+      </div>
+    </div>
+    <div class="dom-wrap reveal d2">
+      <div class="dom">4<span class="dom-of">модуля</span></div>
+      <div class="dom-cap">берут на&nbsp;себя разные участки, но&nbsp;видят одни и&nbsp;те же&nbsp;данные компании</div>
+    </div>
+  </div>
+  <div class="hero-meta reveal d4">
+    <div class="m"><b>от&nbsp;150 тыс. руб.</b><span>первый модуль вместе с&nbsp;общим контуром</span></div>
+    <div class="m"><b>3-5 недель</b><span>до&nbsp;первой готового продукта</span></div>
+    <div class="m"><b>60 дней</b><span>после сдачи остаёмся на&nbsp;связи</span></div>
+  </div>
+</div></header>
+
+<!-- ПОЧЕМУ СЕЙЧАС -->
+<section id="why" class="rh-why"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">02</span> Почему сейчас</div>
+    <h2>Компании внутри одной отрасли расходятся всё сильнее</h2>
+    <p class="lead">Граница проходит по&nbsp;доле работы, которая каждый день реально идёт через систему. Доступ к&nbsp;нейросети сегодня есть у&nbsp;всех, перестроенный процесс есть у&nbsp;меньшинства</p>
+  </div>
+  <div class="bento">
+    <article class="card b2 reveal">
+      <div class="big">в&nbsp;5 раз</div>
+      <h3>Быстрее растёт штат</h3>
+      <p>У&nbsp;20% компаний, которые довели внедрение до&nbsp;ежедневной работы, команда прибавляет впятеро быстрее, чем у&nbsp;остальных. Замер Stanford SIEPR</p>
+    </article>
+    <article class="card b2 reveal d1">
+      <div class="big txt">пробуют больше, чем внедрили</div>
+      <h3>Две разные метрики</h3>
+      <p>Ramp считает отдельно долю компаний, которые платят за&nbsp;AI, и&nbsp;долю тех, кто довёл его&nbsp;до&nbsp;постоянной работы. Расстояние между полосами это недополученная прибыль</p>
+    </article>
+    <article class="card b2 reveal d2">
+      <div class="big">до&nbsp;30%</div>
+      <h3>Времени команды</h3>
+      <p>Столько по&nbsp;бенчмаркам внедрений уходит на&nbsp;повторяющуюся работу, которая описана регламентом: разбор документов, ввод данных, одинаковые ответы</p>
+    </article>
+  </div>
+  <div class="note reveal">Отрыв ведёт себя как&nbsp;сложный процент: пропущенный квартал уменьшает базу, на&nbsp;которую нарастает следующий. Поэтому дешевле начать с&nbsp;одного участка сейчас, чем с&nbsp;четырёх через год</div>
+  <div class="src reveal">Цифры выше чужие и&nbsp;приведены для&nbsp;калибровки ожиданий: Stanford SIEPR, Ramp AI Index. Наши собственные результаты по&nbsp;проектам ниже, в&nbsp;блоке «Раньше и&nbsp;теперь»</div>
+</div></section>
+
+<!-- ЗАДАЧА -->
+<section id="pain" class="rh-list"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">03</span> Зачем система целиком</div>
+    <h2>Отдельные инструменты не&nbsp;видят друг друга</h2>
+    <p class="lead">Бот отвечает клиентам, но&nbsp;не&nbsp;знает про остатки. Аналитика собирает отчёт, но&nbsp;не&nbsp;видит переписку менеджеров. Каждый инструмент решает свой кусок и&nbsp;не&nbsp;помогает соседнему</p>
+  </div>
+  <div class="rules">
+    <div class="rule reveal"><span class="rn">0x01</span><div class="rt">Данные лежат в&nbsp;разных местах</div><div class="rd">CRM, таблицы, переписка, документы и&nbsp;знания в&nbsp;голове сотрудников. Чтобы ответить на&nbsp;простой вопрос, человек открывает четыре окна</div></div>
+    <div class="rule reveal d1"><span class="rn">0x02</span><div class="rt">Каждый инструмент учат заново</div><div class="rd">Прайс поменялся, и&nbsp;правки надо внести в&nbsp;бота, в&nbsp;скрипты и&nbsp;в&nbsp;регламент. Где-то&nbsp;забыли, и&nbsp;клиенту называют старую цену</div></div>
+    <div class="rule reveal d2"><span class="rn">0x03</span><div class="rt">Внедрение упирается в&nbsp;объём</div><div class="rd">Автоматизировать всё сразу дорого и&nbsp;долго, поэтому компании откладывают и&nbsp;не&nbsp;начинают вовсе</div></div>
+    <div class="rule reveal d3"><span class="rn">0x04</span><div class="rt">Считать эффект не&nbsp;на&nbsp;чем</div><div class="rd">Инструменты не&nbsp;связаны, поэтому не&nbsp;видно, что&nbsp;дало результат, а&nbsp;что&nbsp;просто потратило бюджет</div></div>
+  </div>
+</div></section>
+
+<!-- МЫСЛЬ -->
+<section class="s-stmt"><div class="wrap">
+  <div class="eyebrow reveal"><span class="n">04</span> Принцип</div>
+  <div class="stmt reveal d1">
+    <p>Промпт повторит любой. <b>Подключение к&nbsp;вашей 1С, права по&nbsp;оргструктуре и&nbsp;база знаний компании собираются один раз и&nbsp;дальше работают на&nbsp;все модули сразу</b>. Вся цена внедрения сидит здесь</p>
+  </div>
+</div></section>
+
+<!-- МОДУЛИ -->
+<section id="modules" class="rh-dense"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">05</span> Модули</div>
+    <h2>Четыре участка, одна база знаний компании</h2>
+    <p class="lead">Каждый модуль работает сам по&nbsp;себе, но&nbsp;берёт данные из&nbsp;общего контура. Поэтому продажи знают про остатки, а&nbsp;руководитель видит, что&nbsp;происходит в&nbsp;переписке</p>
+  </div>
+  <div class="bento">
+    <article class="card b3 reveal"><span class="tag">01 продажи</span>
+      <h3>Работа с&nbsp;клиентом</h3>
+      <p>Отвечает в&nbsp;мессенджерах за&nbsp;секунды, выясняет потребность и&nbsp;доводит до&nbsp;заявки. Разбирает диалоги менеджеров и&nbsp;показывает, где сделки срываются</p>
+      <a class="morelink" href="/synapt/prodazh/">Как&nbsp;устроен модуль продаж</a></article>
+    <article class="card b3 reveal d1"><span class="tag">02 управление</span>
+      <h3>Картина для&nbsp;собственника</h3>
+      <p>Считает воронку, найм и&nbsp;маржу по&nbsp;вашим цифрам из&nbsp;CRM и&nbsp;финансовых таблиц. Раз в&nbsp;неделю присылает разбор: что&nbsp;просело и&nbsp;почему, со&nbsp;ссылкой на&nbsp;источник каждой цифры</p></article>
+    <article class="card b3 reveal d2"><span class="tag">03 команда</span>
+      <h3>Знания и&nbsp;адаптация</h3>
+      <p>Отвечает сотрудникам по&nbsp;регламентам и&nbsp;документам компании, ведёт новичка первые недели, снимает поток одинаковых вопросов с&nbsp;руководителей</p></article>
+    <article class="card b3 reveal d3"><span class="tag">04 операции</span>
+      <h3>Документы и&nbsp;закупки</h3>
+      <p>Разбирает входящие документы, готовит спецификации и&nbsp;заявки, сверяет данные между системами. Забирает ручную работу, которая повторяется каждый день</p></article>
+  </div>
+  <div class="note reveal">Набор модулей не&nbsp;догма. На&nbsp;чекапе смотрим, где у&nbsp;вас теряется больше времени, и&nbsp;начинаем оттуда</div>
+</div></section>
+
+<!-- КАК&nbsp;УСТРОЕНО -->
+<section id="how" class="rh-scheme"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">06</span> Как&nbsp;устроено</div>
+    <h2>Модули видят одни и&nbsp;те же&nbsp;данные</h2>
+    <p class="lead">Под модулями лежит общий контур: подключения к&nbsp;вашим системам, база знаний компании и&nbsp;правила доступа. Поэтому новый модуль не&nbsp;собирают с&nbsp;нуля</p>
+  </div>
+  <div class="stack reveal">
+    <div class="slab top"><span class="sl">слой 4</span><div><b>Модули</b><span class="sd">Продажи, управление, команда, операции. То, чем каждый день пользуются люди</span></div></div>
+    <div class="up">каждый запрос проходит через права</div>
+    <div class="slab"><span class="sl">слой 3</span><div><b>Права и&nbsp;обезличивание</b><span class="sd">Кто что&nbsp;видит, какие поля скрыты, что&nbsp;уходит в&nbsp;модель, а&nbsp;что&nbsp;не&nbsp;покидает контур компании</span></div></div>
+    <div class="up">ответ собирается из&nbsp;базы знаний</div>
+    <div class="slab"><span class="sl">слой 2</span><div><b>База знаний компании</b><span class="sd">Регламенты, прайсы, документы, история сделок. Обновляется один раз и&nbsp;сразу доступна всем модулям</span></div></div>
+    <div class="up">база подтягивается из&nbsp;ваших систем</div>
+    <div class="slab"><span class="sl">слой 1</span><div><b>Ваши системы</b><span class="sd">CRM, 1С, таблицы, почта и&nbsp;мессенджеры. Подключаемся к&nbsp;тому, что&nbsp;уже работает, ничего не&nbsp;переносим</span></div></div>
+    <div class="cap">На&nbsp;схеме четыре слоя системы снизу вверх: от&nbsp;ваших систем до&nbsp;модулей, которыми пользуются люди. Между слоями подписано, что&nbsp;происходит с&nbsp;запросом на&nbsp;каждом переходе</div>
+  </div>
+  <div class="note reveal">Первый модуль оплачивает всю эту стройку целиком. Второй встаёт на&nbsp;готовое основание, поэтому обходится дешевле и&nbsp;собирается быстрее</div>
+</div></section>
+
+<!-- РАНЬШЕ И&nbsp;ТЕПЕРЬ -->
+<section id="proof" class="rh-proof"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">07</span> Что&nbsp;меняется</div>
+    <h2>Раньше и&nbsp;теперь, на&nbsp;живых проектах</h2>
+    <p class="lead">Слева то, как&nbsp;работа шла до&nbsp;внедрения. Справа то, как&nbsp;она идёт сейчас. Компании названы там, где заказчик разрешил имя</p>
+  </div>
+  <div class="cmp-hint reveal">Таблица прокручивается вбок</div>
+  <div class="cmp reveal">
+    <table>
+      <thead><tr><th>Участок</th><th>Раньше</th><th class="hi">Теперь</th></tr></thead>
+      <tbody>
+        <tr><td data-l="участок">Заявка в&nbsp;закупках, INNORTO</td><td data-l="раньше">Менеджер вбивал заявку в&nbsp;1С руками, около десяти минут на&nbsp;штуку</td><td class="hi" data-l="теперь">Заявка собирается за&nbsp;две минуты, человек проверяет и&nbsp;подтверждает</td></tr>
+        <tr><td data-l="участок">Вопрос клиента ночью, GlobalDent</td><td data-l="раньше">Ответ утром, часть обращений успевала уйти к&nbsp;конкуренту</td><td class="hi" data-l="теперь">Ответ в&nbsp;23:40 по&nbsp;базе из&nbsp;1500 проверенных вопросов и&nbsp;ответов</td></tr>
+        <tr><td data-l="участок">Поменялся прайс</td><td data-l="раньше">Правки вносили отдельно в&nbsp;бота, в&nbsp;скрипты и&nbsp;в&nbsp;регламент, где-то&nbsp;забывали</td><td class="hi" data-l="теперь">Обновляют один документ в&nbsp;базе знаний, модули берут новую версию сразу</td></tr>
+        <tr><td data-l="участок">Разбор диалогов</td><td data-l="раньше">Руководитель слушал выборку звонков и&nbsp;делал вывод на&nbsp;ощущение</td><td class="hi" data-l="теперь">Разбирается вся переписка, у&nbsp;каждой оценки видно реплику, на&nbsp;которую она опирается</td></tr>
+        <tr><td data-l="участок">Отчёт собственнику</td><td data-l="раньше">Сводили руками в&nbsp;конце месяца, к&nbsp;середине следующего цифры устаревали</td><td class="hi" data-l="теперь">Считается кодом на&nbsp;цифрах CRM, у&nbsp;каждой строки открывается источник</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note reveal">Вывод всегда проверяем. Модуль не&nbsp;пишет «выручка выросла», он&nbsp;пишет, что&nbsp;выручка выросла при упавшей марже, потому что&nbsp;скидку давали на&nbsp;трёх сделках из&nbsp;десяти, и&nbsp;показывает эти сделки. Спорить можно с&nbsp;конкретной строкой</div>
+</div></section>
+
+<!-- ЛЕСТНИЦА ДОВЕРИЯ -->
+<section id="trust" class="rh-list"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">08</span> Контроль</div>
+    <h2>Вы&nbsp;решаете, на&nbsp;какой ступени остановиться</h2>
+    <p class="lead">Автономность не&nbsp;включается сразу. Обычно проходят три-четыре ступени, и&nbsp;на&nbsp;каждой видно, что&nbsp;система делает и&nbsp;где ошибается</p>
+  </div>
+  <div class="rules">
+    <div class="rule reveal"><span class="rn">ступень 1</span><div class="rt">Отвечает на&nbsp;вопросы</div><div class="rd">Работает как&nbsp;справочная по&nbsp;вашим документам. Ничего не&nbsp;меняет и&nbsp;никуда не&nbsp;пишет</div></div>
+    <div class="rule reveal d1"><span class="rn">ступень 2</span><div class="rt">Готовит отчёты</div><div class="rd">Сам собирает сводку по&nbsp;расписанию и&nbsp;показывает источники. Решения остаются за&nbsp;человеком</div></div>
+    <div class="rule reveal d2"><span class="rn">ступень 3</span><div class="rt">Предлагает действие</div><div class="rd">Черновик письма, заявки или&nbsp;спецификации готов, отправляет его&nbsp;сотрудник</div></div>
+    <div class="rule reveal d3"><span class="rn">ступень 4</span><div class="rt">Делает с&nbsp;подтверждением</div><div class="rd">Выполняет операцию после нажатия «ок». Каждый шаг пишется в&nbsp;журнал, его&nbsp;можно открыть и&nbsp;отмотать</div></div>
+    <div class="rule reveal d4"><span class="rn">ступень 5</span><div class="rt">Работает сам</div><div class="rd">Только там, где ошибка дешёвая и&nbsp;обратимая. На&nbsp;деньгах и&nbsp;обязательствах подтверждение остаётся всегда</div></div>
+  </div>
+  <div class="note reveal">Ступени работают и&nbsp;как&nbsp;нарезка этапов с&nbsp;оплатами: на&nbsp;следующую вы&nbsp;не&nbsp;переходите, пока не&nbsp;посмотрели, как&nbsp;ведёт себя текущая</div>
+</div></section>
+
+<!-- С&nbsp;ЧЕГО НАЧАТЬ -->
+<section id="start" class="rh-thin"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">09</span> С&nbsp;чего начинают</div>
+    <h2>Всю систему сразу не&nbsp;берут</h2>
+    <p class="lead">Заходят через участок, который болит сильнее, и&nbsp;расширяются, когда он&nbsp;окупился</p>
+  </div>
+  <div class="rules">
+    <div class="rule reveal"><span class="rn">шаг 1</span><div class="rt">Чекап за&nbsp;две недели</div><div class="rd">Смотрим, где теряются деньги и&nbsp;время, и&nbsp;собираем один агент на&nbsp;ваших материалах. 19 900 руб., сумму вычитаем из&nbsp;счёта за&nbsp;разработку</div></div>
+    <div class="rule reveal d1"><span class="rn">шаг 2</span><div class="rt">Первый модуль</div><div class="rd">Берём участок с&nbsp;самым быстрым эффектом и&nbsp;доводим до&nbsp;готового продукта за&nbsp;3-5 недель. Вместе с&nbsp;ним встаёт общий контур</div></div>
+    <div class="rule reveal d2"><span class="rn">шаг 3</span><div class="rt">Следующие модули</div><div class="rd">Каждый следующий дешевле первого: подключения и&nbsp;база знаний уже готовы. Решение о&nbsp;расширении принимаете по&nbsp;цифрам первого модуля</div></div>
+  </div>
+  <div class="note reveal">Назовите ступень из&nbsp;блока выше, на&nbsp;которой вы&nbsp;сейчас, и&nbsp;мы&nbsp;предложим один следующий шаг вместо всего пути</div>
+</div></section>
+
+<!-- СТОИМОСТЬ -->
+<section id="pricing" class="rh-price"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">10</span> Стоимость</div>
+    <h2>Платите за&nbsp;модуль, а&nbsp;не&nbsp;за&nbsp;всю систему сразу</h2>
+  </div>
+  <div class="pair">
+    <div class="plan main reveal">
+      <div class="pn">Первый модуль</div>
+      <div class="sum">от&nbsp;150 тыс. руб.</div>
+      <div class="per">3-5 недель, точная сумма после чекапа</div>
+      <ul>
+        <li>Общий контур: подключения, база знаний, права доступа</li>
+        <li>Один модуль на&nbsp;выбор, доведённый до&nbsp;работы</li>
+        <li>Обучение команды и&nbsp;передача документации</li>
+        <li>60 дней после сдачи остаёмся на&nbsp;связи</li>
+      </ul>
+      <a class="btn pri" href="#lead">Обсудить задачу</a>
+    </div>
+    <div class="plan reveal d1">
+      <div class="pn">Каждый следующий</div>
+      <div class="sum">дешевле</div>
+      <div class="per">контур уже стоит, платите только за&nbsp;модуль</div>
+      <ul>
+        <li>Подключения к&nbsp;системам переиспользуются</li>
+        <li>База знаний компании уже собрана</li>
+        <li>Права и&nbsp;обезличивание настроены</li>
+        <li>Срок короче: работаем на&nbsp;готовом основании</li>
+      </ul>
+      <a class="btn ghost" href="/synapt/checkup/">Начать с&nbsp;чекапа</a>
+    </div>
+  </div>
+  <div class="note reveal">Вход стоит 19 900 руб. за&nbsp;чекап, и&nbsp;эта сумма вычитается из&nbsp;счёта за&nbsp;разработку. Стоимость модуля фиксируем в&nbsp;договоре до&nbsp;начала работ, изменить её&nbsp;можно только дополнением, которое подписываете вы</div>
+</div></section>
+
+<!-- БЕЗОПАСНОСТЬ -->
+<section id="security" class="s-sec"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">11</span> Данные и&nbsp;доступ</div>
+    <h2>Что&nbsp;уходит в&nbsp;модель, решаете вы</h2>
+    <p class="lead">Контур доступа лежит под всеми модулями сразу. Настраивается один раз, дальше действует и&nbsp;для&nbsp;продаж, и&nbsp;для&nbsp;аналитики</p>
+  </div>
+  <div class="rows reveal">
+    <div class="row"><div class="rn">0x01</div><div class="rt">Список полей фиксируем письменно</div><div class="rd">До&nbsp;начала работ описываем, какие поля уходят в&nbsp;модель, а&nbsp;какие не&nbsp;покидают контур компании. Документ получает ваш юрист</div></div>
+    <div class="row"><div class="rn">0x02</div><div class="rt">Обезличивание до&nbsp;отправки</div><div class="rd">Имена, телефоны и&nbsp;реквизиты заменяются на&nbsp;метки, как&nbsp;требует 152-ФЗ. Клиентские базы наружу не&nbsp;выгружаются целиком</div></div>
+    <div class="row"><div class="rn">0x03</div><div class="rt">Права по&nbsp;оргструктуре</div><div class="rd">Собственник видит всё, руководитель только своё направление, менеджер только свои сделки. Настраивается под то, как&nbsp;устроена компания</div></div>
+    <div class="row"><div class="rn">0x04</div><div class="rt">Размещение по&nbsp;вашему выбору</div><div class="rd">Работаем на&nbsp;площадках в&nbsp;России, при необходимости разворачиваем контур на&nbsp;вашем сервере</div></div>
+    <div class="row"><div class="rn">0x05</div><div class="rt">Всё остаётся у&nbsp;вас</div><div class="rd">Код, база знаний, промпты и&nbsp;документация передаются по&nbsp;акту. Продолжить работу можно с&nbsp;любой другой командой</div></div>
+  </div>
+  <div class="note reveal">Контур доступа собран отдельным слоем, его&nbsp;можно взять и&nbsp;без модулей, если у&nbsp;вас уже есть свои решения на&nbsp;нейросетях. <a href="/synapt/safe/">Как&nbsp;устроен слой</a></div>
+</div></section>
+
+<!-- ЗАПУСК -->
+<section id="launch" class="s-launch"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">12</span> Запуск</div>
+    <h2>Первый модуль работает через <span class="nb">3-5</span> недель</h2>
+    <p class="lead">Каждый этап заканчивается результатом, который можно открыть и&nbsp;проверить на&nbsp;своих данных</p>
+  </div>
+  <div class="bento">
+    <div class="card b4 reveal">
+      <div class="step-n">этап 01</div>
+      <h3>Чекап и&nbsp;выбор модуля</h3>
+      <p>Две недели: смотрим процессы, считаем, где теряется время, и&nbsp;выбираем участок, который даст эффект первым. 19 900 руб., сумму вычитаем из&nbsp;счёта за&nbsp;разработку</p>
+    </div>
+    <div class="card b2 reveal d1">
+      <div class="step-n">этап 02</div>
+      <h3>Общий контур</h3>
+      <p>База знаний компании, подключения к&nbsp;вашим системам и&nbsp;правила доступа. Ставится один раз на&nbsp;все модули</p>
+    </div>
+    <div class="card b2 reveal d2">
+      <div class="step-n">этап 03</div>
+      <h3>Сборка модуля</h3>
+      <p>Собираем и&nbsp;проверяем на&nbsp;живых задачах вместе с&nbsp;теми, кто будет в&nbsp;нём работать</p>
+    </div>
+    <div class="card b4 reveal d3">
+      <div class="step-n">этап 04</div>
+      <h3>Передача и&nbsp;поддержка</h3>
+      <p>Учим команду на&nbsp;её&nbsp;задачах, отдаём код и&nbsp;документацию. 60 дней после сдачи остаёмся на&nbsp;связи без доплат</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- СВОЙ ПРОЦЕСС -->
+<section id="own" class="rh-thin"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">13</span> Свой процесс</div>
+    <h2>Если вашей задачи нет среди четырёх модулей</h2>
+    <p class="lead">Четыре модуля закрывают частые запросы, список ими не&nbsp;ограничен. Берём любой процесс, который повторяется и&nbsp;по&nbsp;которому есть данные</p>
+  </div>
+  <div class="rules">
+    <div class="rule reveal"><span class="rn">берём</span><div class="rt">Процесс повторяется</div><div class="rd">Одна и&nbsp;та же&nbsp;операция делается регулярно и&nbsp;примерно одинаково. Это главное условие</div></div>
+    <div class="rule reveal d1"><span class="rn">берём</span><div class="rt">По&nbsp;нему есть данные</div><div class="rd">Документы, переписка, выгрузки, регламенты. Хоть что-то, на&nbsp;чём модель может учиться отвечать</div></div>
+    <div class="rule reveal d2"><span class="rn">скажем прямо</span><div class="rt">Когда AI не&nbsp;нужен</div><div class="rd">Если процесс каждый раз выглядит иначе или&nbsp;решается регламентом, мы&nbsp;скажем об&nbsp;этом на&nbsp;чекапе, а&nbsp;не&nbsp;после оплаты</div></div>
+  </div>
+  <div class="note reveal">Быстрее всего идут отрасли, где у&nbsp;нас уже стоят работающие системы: закупки и&nbsp;снабжение, клиники и&nbsp;стоматология, отделы продаж, FoodTech. В&nbsp;новой для&nbsp;нас сфере первый модуль занимает верхнюю границу срока, и&nbsp;мы&nbsp;говорим об&nbsp;этом до&nbsp;договора</div>
+</div></section>
+
+<!-- КТО ДЕЛАЕТ -->
+<section id="team" class="rh-team"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">14</span> Кто делает</div>
+    <h2>С&nbsp;кем вы&nbsp;будете разговаривать</h2>
+    <p class="lead">Ядро студии это два партнёра. Оба участвуют в&nbsp;проекте лично, менеджера-передатчика между вами и&nbsp;командой нет</p>
+  </div>
+  <div class="bento">
+    <article class="card b3 reveal">
+      <span class="tag">развитие</span>
+      <h3>Антон Орешкин</h3>
+      <p>Ведёт проект со&nbsp;стороны бизнеса: разбор процессов на&nbsp;чекапе, смета, сроки и&nbsp;критерии приёмки. С&nbsp;ним вы&nbsp;обсуждаете, что&nbsp;берём в&nbsp;работу и&nbsp;в&nbsp;каком порядке</p>
+    </article>
+    <article class="card b3 reveal d1">
+      <span class="tag">технологии</span>
+      <h3>Виктор Калугин</h3>
+      <p>Технический партнёр: архитектура системы, выбор модели, интеграции и&nbsp;контур данных. Отвечает за&nbsp;то, чтобы решение пережило рост нагрузки и&nbsp;смену модели</p>
+    </article>
+  </div>
+  <div class="note reveal">Под задачу подключаем специалистов из&nbsp;своей сети, но&nbsp;ответственность за&nbsp;общий результат остаётся на&nbsp;партнёрах. Когда каждый отвечает только за&nbsp;свой кусок, за&nbsp;целое не&nbsp;отвечает никто</div>
+</div></section>
+
+<!-- FAQ -->
+<section id="faq" class="s-faq"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">15</span> Вопросы</div>
+    <h2>Что&nbsp;спрашивают до&nbsp;договора</h2>
+    <p class="lead">Сроки, деньги, данные, своя разработка и&nbsp;реакция команды</p>
+  </div>
+  <div class="faq reveal">
+    <details open><summary>Обязательно брать все модули сразу <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+      <div class="ans">Нет, так почти никто и&nbsp;не&nbsp;делает. Берут один участок, доводят его&nbsp;до&nbsp;результата и&nbsp;расширяются, когда посчитали эффект. Вместе с&nbsp;первым модулем встаёт общий контур, поэтому следующий обходится дешевле и&nbsp;собирается быстрее</div></details>
+    <details><summary>У&nbsp;нас есть свои разработчики, соберём сами <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+      <div class="ans">Собрать первого агента ваша команда действительно может за&nbsp;неделю. Дальше начинается то, что&nbsp;съедает год. Первое: поддержка отлаженных сценариев, когда меняется прайс, меняется API и&nbsp;меняется сама модель. Второе: длинные цепочки, где ошибка на&nbsp;третьем шаге всплывает только на&nbsp;десятом. Третье: обвязка вокруг агента, то&nbsp;есть журнал действий, подтверждения, мониторинг качества ответов и&nbsp;откат. Четвёртое: когда каждый отвечает только за&nbsp;свой кусок, за&nbsp;общий результат не&nbsp;отвечает никто, и&nbsp;внедрение застревает между отделами. Пятое: работа с&nbsp;вашими данными, которых нет ни&nbsp;в&nbsp;одной готовой платформе. Код и&nbsp;документацию мы&nbsp;отдаём, поэтому дальше ваши разработчики ведут систему сами</div></details>
+    <details><summary>Мы&nbsp;уже внедряли AI, эффекта не&nbsp;увидели <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+      <div class="ans">Обычно мешает не&nbsp;технология. Пилот показали, а&nbsp;процесс вокруг остался прежним: те же&nbsp;согласования, тот же&nbsp;ввод руками, тот же&nbsp;зоопарк из&nbsp;пяти ботов от&nbsp;разных подрядчиков. Пилотов много, перестройки нет. Поэтому мы&nbsp;начинаем с&nbsp;чекапа за&nbsp;две недели и&nbsp;берём участок, на&nbsp;котором эффект можно посчитать. Если задача решается регламентом, скажем это до&nbsp;того, как&nbsp;вы&nbsp;заплатите за&nbsp;разработку</div></details>
+    <details><summary>Команда решит, что&nbsp;их&nbsp;готовят к&nbsp;сокращению <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+      <div class="ans">Это возражение живёт внутри компании, чаще всего на&nbsp;уровне руководителей среднего звена, и&nbsp;убивает внедрение уже после подписания договора. Мы&nbsp;проговариваем его&nbsp;на&nbsp;старте вместе с&nbsp;вами. Люди в&nbsp;таких проектах обычно перераспределяются: IKEA переучила 8500 сотрудников колл-центра на&nbsp;новые роли и&nbsp;получила от&nbsp;этого дополнительно 1,4 млрд дол. В&nbsp;критерии приёмки мы&nbsp;выносим долю сотрудников, которые работают с&nbsp;системой каждый день, поэтому сопротивление видно сразу, и&nbsp;мы&nbsp;лечим его&nbsp;обучением на&nbsp;живых задачах</div></details>
+    <details><summary>Чем это отличается от&nbsp;готового чата с&nbsp;хорошим промптом <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+      <div class="ans">Разница начинается там, где нужен доступ к&nbsp;CRM и&nbsp;таблицам, роли и&nbsp;права, одинаковый ответ на&nbsp;один и&nbsp;тот же&nbsp;вопрос и&nbsp;ответственность за&nbsp;ошибку. Готовый чат не&nbsp;знает ваш прайс, не&nbsp;видит остатки и&nbsp;не&nbsp;оставляет следа, по&nbsp;которому можно проверить ответ</div></details>
+    <details><summary>Что&nbsp;нужно от&nbsp;нашей команды <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+      <div class="ans">Доступы к&nbsp;системам, из&nbsp;которых берём данные, и&nbsp;один человек, к&nbsp;которому можно обратиться с&nbsp;вопросом. Плюс несколько часов интервью с&nbsp;теми, кто работает в&nbsp;процессе каждый день. Техническое задание готовить не&nbsp;нужно</div></details>
+    <details><summary>А&nbsp;если у&nbsp;нас нестандартный процесс <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+      <div class="ans">Четыре модуля покрывают частые запросы, но&nbsp;список ими не&nbsp;заканчивается. Если процесс описуем и&nbsp;по&nbsp;нему есть данные, мы&nbsp;его&nbsp;возьмём. На&nbsp;чекапе скажем прямо, ложится задача на&nbsp;AI или&nbsp;решается на&nbsp;уровне процесса</div></details>
+    <details><summary>Что&nbsp;происходит после запуска <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+      <div class="ans">60 дней после сдачи остаёмся на&nbsp;связи без доплат. Код, база знаний и&nbsp;документация у&nbsp;вас, поэтому развивать систему можно своими силами или&nbsp;с&nbsp;любой другой командой</div></details>
+  </div>
+</div></section>
+
+<!-- СМЕЖНОЕ -->
+<section id="related" class="s-rel"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">16</span> Смежные материалы</div>
+    <h2>Другие услуги и&nbsp;разборы проектов</h2>
+  </div>
+  <div class="rel reveal">
+    <a href="/synapt/checkup/"><span>услуга</span>AI-чекап бизнеса</a>
+    <a href="/synapt/prodazh/"><span>модуль</span>Отдел продаж</a>
+    <a href="/synapt/safe/"><span>контур</span>Безопасный слой</a>
+    <a href="https://synapt.tech/#cases"><span>кейсы</span>Проекты Synapt</a>
+    <a href="https://automyai.ru"><span>обучение</span>Automy AI</a>
+    <a href="https://medialab-retainer.vercel.app"><span>медиа</span>Личный бренд на&nbsp;подписке</a>
+  </div>
+</div></section>
+
+<!-- ЗАЯВКА -->
+<section id="lead" class="s-lead"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">17</span> Заявка</div>
+    <h2>Расскажите о&nbsp;задаче, покажем, с&nbsp;какого модуля начать</h2>
+    <p class="lead">30&nbsp;минут разговора. Вы&nbsp;рассказываете, мы&nbsp;задаём вопросы и&nbsp;вместе понимаем, что&nbsp;вам нужно. После пришлём расшифровку и&nbsp;что&nbsp;советуем делать</p>
+  </div>
+  <div class="leadbox reveal">
+    <form id="leadForm" novalidate>
+      <div class="lf-row">
+        <div class="lf"><label for="lfName">Имя</label><input id="lfName" name="name" type="text" autocomplete="name" required></div>
+        <div class="lf"><label for="lfContact">Телефон, почта или&nbsp;Telegram</label><input id="lfContact" name="contact" type="text" autocomplete="off" required></div>
+      </div>
+      <div class="lf"><label for="lfCompany">Компания и&nbsp;сфера</label><input id="lfCompany" name="company" type="text" autocomplete="organization"></div>
+      <div class="lf"><label for="lfTask">Задача коротко</label><textarea id="lfTask" name="task" rows="3"></textarea></div>
+      <label class="lf-check"><span class="box"><input type="checkbox" id="lfAgree" required></span>
+        <span>Согласен на&nbsp;обработку персональных данных и&nbsp;принимаю <a href="/privacy" target="_blank" rel="noopener">политику</a></span></label>
+      <div class="lf-err" id="lfErr">Заполните имя, контакт и&nbsp;отметьте согласие</div>
+      <button class="btn pri lg" type="submit">Отправить заявку</button>
+    </form>
+    <div class="lf-done" id="lfDone"><b>Письмо собрано и&nbsp;открыто в&nbsp;вашей почте</b>, отправьте его, и&nbsp;мы&nbsp;ответим в&nbsp;рабочее время. Если почта не&nbsp;открылась, напишите нам в&nbsp;Telegram: <a href="https://t.me/Anti4ay">@Anti4ay</a> или&nbsp;на&nbsp;адрес <a href="mailto:oreshkin.medialab@outlook.com">oreshkin.medialab@outlook.com</a></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <a class="brand" href="/synapt/" aria-label="synapt">
+    <svg viewBox="0 0 869 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/><path d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></svg>
+  </a>
+  <div class="fmeta">
+    <a href="/synapt/#cases">Кейсы</a>
+    <a href="/synapt/#services">Услуги</a>
+    <a href="/synapt/#faq">FAQ</a>
+    <a href="https://t.me/Anti4ay" target="_blank" rel="noopener">Telegram менеджера</a>
+    <a href="/privacy">Политика обработки персональных данных</a><span>© 2026</span>
+  </div>
+</div><div class="wrap"><div class="legal">
+    <div class="lg-col">
+      <div><span>Индивидуальный предприниматель</span>Орешкин Антон Вадимович</div>
+      <div><span>Почта</span><a href="mailto:oreshkin.medialab@outlook.com">oreshkin.medialab@outlook.com</a></div>
+    </div>
+    <div class="lg-col">
+      <div><span>ИНН</span>100123323420</div>
+      <div><span>ОГРНИП</span>324100000000411</div>
+      <div><span>Адрес</span>185014, Республика Карелия, Петрозаводск, переулок Попова, дом 6, квартира 42</div>
+    </div>
+  </div></div></div></footer>
+
+<script>
+/* ---- тема ---- */
+(function(){
+  var root=document.documentElement;
+  var sun='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+  var moon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
+  var btn=document.getElementById('tgl');
+  function paint(){btn.innerHTML=root.getAttribute('data-theme')==='light'?moon:sun}
+  paint();
+  btn.onclick=function(){var t=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',t);try{localStorage.setItem('synapt_theme',t)}catch(e){}paint()};
+})();
+/* ---- бургер ---- */
+(function(){
+  var b=document.getElementById('burger'),s=document.getElementById('sheet');
+  if(!b||!s)return;
+  function close(){s.classList.remove('open');b.setAttribute('aria-expanded','false')}
+  b.addEventListener('click',function(){
+    var open=s.classList.toggle('open');
+    b.setAttribute('aria-expanded',open?'true':'false');
+  });
+  s.addEventListener('click',function(e){if(e.target.tagName==='A')close()});
+  addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+  /* 1040 это та же граница, на которой бургер сменяет меню в шапке */
+  addEventListener('resize',function(){if(innerWidth>1040)close()});
+})();
+/* ---- появление блоков ---- */
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce||!('IntersectionObserver'in window)){[].forEach.call(els,function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+  [].forEach.call(els,function(e){io.observe(e)});
+  /* страховка: первый экран не может остаться невидимым, что бы ни случилось */
+  setTimeout(function(){
+    [].forEach.call(document.querySelectorAll('.hero .reveal'),function(e){e.classList.add('in')});
+  },1200);
+})();
+/* ---- форма: собираем письмо, ложных подтверждений нет ---- */
+(function(){
+  var f=document.getElementById('leadForm');if(!f)return;
+  var err=document.getElementById('lfErr'),done=document.getElementById('lfDone');
+  var name=document.getElementById('lfName'),contact=document.getElementById('lfContact'),
+      company=document.getElementById('lfCompany'),task=document.getElementById('lfTask'),agree=document.getElementById('lfAgree');
+  function clean(){[name,contact].forEach(function(x){x.classList.remove('err')});err.classList.remove('show')}
+  [name,contact].forEach(function(x){x.addEventListener('input',clean)});
+  agree.addEventListener('change',clean);
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var bad=false;
+    if(!name.value.trim()){name.classList.add('err');bad=true}
+    if(!contact.value.trim()){contact.classList.add('err');bad=true}
+    if(!agree.checked)bad=true;
+    if(bad){err.classList.add('show');return}
+    var body='Имя: '+name.value.trim()+'\n'+
+             'Контакт: '+contact.value.trim()+'\n'+
+             'Компания: '+(company.value.trim()||'не указана')+'\n'+
+             'Задача: '+(task.value.trim()||'не указана')+'\n'+
+             'Страница: AI-система для бизнеса';
+    var url='mailto:oreshkin.medialab@outlook.com?subject='+encodeURIComponent('Заявка с сайта: AI-система для бизнеса')+'&body='+encodeURIComponent(body);
+    f.style.display='none';done.classList.add('show');
+    window.location.href=url;
+  });
+})();
+</script>
+</body>
+</html>

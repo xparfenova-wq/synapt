@@ -1,0 +1,1353 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>AI-эксперт – Synapt</title>
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="Synapt">
+<meta property="og:title" content="Компания растёт со&nbsp;скоростью календаря одного человека">
+<meta property="og:description" content="Записываем порядок разбора эксперта словами и&nbsp;переносим в&nbsp;агента. Чекап две недели за&nbsp;19 900 руб. с&nbsp;зачётом в&nbsp;сборку, работающий продукт за&nbsp;3-5 недель">
+<meta property="og:url" content="/synapt/expert/">
+<meta property="og:image" content="/synapt/expert//og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Записываем порядок разбора эксперта словами и&nbsp;переносим в&nbsp;агента. Чекап две недели за&nbsp;19 900 руб. с&nbsp;зачётом в&nbsp;сборку, работающий продукт за&nbsp;3-5 недель">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(){try{var t=localStorage.getItem('synapt-theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','dark')}})();</script>
+<style>
+:root{
+  --accent:#79C98E; --accent-glow:#96DCA8; --accent-deep:#4E8F62; --accent-light:#BEE9CB;
+  --accent-txt:#B9C1BE; --sage:#9DB2A3; --accent-ink:#101312; --danger:#FF7A8A;
+  --sans:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r-xs:8px; --r-sm:10px; --r-md:16px; --r-lg:22px; --r-pill:999px;
+  --maxw:1180px; --gutter:28px;
+  --ease:cubic-bezier(.22,.7,.3,1); --dur-fast:.16s; --dur:.2s; --dur-theme:.35s; --dur-reveal:.7s;
+}
+:root,:root[data-theme="dark"]{
+  --bg-deep:#0D0F0E; --bg:#131514; --surface:#191C1B; --surface-2:#212524; --surface-3:#2A2E2C;
+  --text:#F0F2F1; --text-2:#C4CAC7; --text-muted:#9AA29F; --text-dim:#8A928F;
+  --field:#1E2120;
+  --line:rgba(180,214,190,.10); --line-2:rgba(180,214,190,.18); --line-accent:rgba(121,201,142,.32);
+  --glow:radial-gradient(58% 52% at 74% 6%, rgba(121,201,142,.10), transparent 72%);
+  --card-shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 12px 40px -20px rgba(0,0,0,.6);
+  --btn-shadow:0 6px 20px -8px rgba(121,201,142,.7);
+}
+:root[data-theme="light"]{
+  --bg-deep:#F1F3F2; --bg:#FBFBFB; --surface:#FFFFFF; --surface-2:#F4F6F5; --surface-3:#EBEEEC;
+  --text:#161918; --text-2:#3A3F3D; --text-muted:#5C6360; --text-dim:#666D6A;
+  --field:#FFFFFF;
+  --accent-txt:#4C534F; --sage:#5C6F62; --danger:#C22F47;
+  --line:#E6E9E8; --line-2:#DBDFDD; --line-accent:rgba(78,143,98,.35);
+  --glow:radial-gradient(58% 52% at 74% 6%, rgba(121,201,142,.08), transparent 72%);
+  --card-shadow:0 1px 2px rgba(20,25,22,.04), 0 14px 40px -24px rgba(30,50,38,.18);
+  --btn-shadow:0 6px 20px -10px rgba(78,143,98,.5);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:82px}
+body{font-family:var(--sans);font-size:17px;font-weight:450;line-height:1.6;background:var(--bg);color:var(--text);
+ font-feature-settings:"tnum" 1;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+ transition:background var(--dur-theme) ease,color var(--dur-theme) ease}
+a{color:inherit;text-decoration:none}
+svg{display:block}
+::selection{background:rgba(121,201,142,.22)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+h1{font-size:clamp(46px,5.6vw,72px);font-weight:620;letter-spacing:-.03em;line-height:1.04;max-width:21ch;text-wrap:balance}
+h2{font-size:clamp(25px,3.05vw,38px);font-weight:600;letter-spacing:-.025em;line-height:1.1;max-width:24ch;text-wrap:balance}
+h3{font-size:21px;font-weight:620;letter-spacing:-.01em;line-height:1.25}
+.lead{font-size:clamp(18px,2vw,21px);font-weight:450;letter-spacing:-.005em;line-height:1.6;color:var(--text-2);max-width:640px}
+.mono{font-family:var(--mono);font-feature-settings:"liga" 0,"calt" 0}
+.eyebrow{font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.14em;
+ color:var(--sage);margin-bottom:18px;display:flex;align-items:center;gap:10px;
+ font-feature-settings:"case" 1,"liga" 0,"calt" 0}
+.eyebrow .n{color:var(--text-dim)}
+.sec-head{margin-bottom:52px}
+.sec-head .lead{margin-top:20px}
+
+/* ---------- ритм секций ---------- */
+#now{padding:72px 0 88px}
+#fit{padding:64px 0}
+#creed{padding:130px 0 150px}
+#core{padding:72px 0 96px}
+#how{padding:64px 0 96px}
+#ladder{padding:72px 0 120px}
+#where{padding:72px 0 96px}
+#value{padding:64px 0}
+#price{padding:72px 0 96px}
+#faq{padding:64px 0}
+#related{padding:140px 0 80px}
+#lead{padding:96px 0 120px}
+
+/* ---------- кнопки ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;font-size:14.5px;font-weight:560;
+ padding:10px 18px;min-height:44px;border-radius:var(--r-sm);border:1px solid transparent;cursor:pointer;
+ transition:background var(--dur-fast) ease,border-color var(--dur-fast) ease,transform var(--dur-fast) ease,box-shadow var(--dur-fast) ease}
+.btn.pri{background:var(--accent);color:var(--accent-ink);box-shadow:var(--btn-shadow)}
+.btn.pri:hover{background:var(--accent-glow);transform:translateY(-1px)}
+.btn.pri:active{transform:none;box-shadow:none}
+.btn.sec{background:var(--surface);color:var(--text);border-color:var(--line)}
+.btn.sec:hover{border-color:var(--line-2)}
+.btn.sec:active{background:var(--surface-2)}
+.btn.lg{font-size:16px;padding:14px 26px;border-radius:var(--r-md)}
+.more{display:inline-block;position:relative;font-size:13.5px;font-weight:560;color:var(--accent-txt);
+ border-bottom:1px solid var(--line-accent);padding-bottom:1px;margin-top:28px;transition:border-color var(--dur-fast) ease}
+.more::after{content:"";position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:44px}
+.more:hover{border-color:var(--accent-txt)}
+
+/* ---------- шапка ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:66px;display:flex;align-items:center;
+ background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:saturate(160%) blur(14px);
+ -webkit-backdrop-filter:saturate(160%) blur(14px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:12px;width:100%}
+.brand{display:inline-flex;align-items:center;min-height:44px;color:var(--text);flex:none}
+.brand svg{height:26px;width:auto}
+.nav-links{display:flex;gap:2px;flex:1;margin-left:8px}
+.nav-links a{display:inline-flex;align-items:center;min-height:44px;font-size:14px;font-weight:500;color:var(--text-muted);
+ padding:9px 11px;border-radius:var(--r-sm);white-space:nowrap;transition:color var(--dur-fast) ease,background var(--dur-fast) ease}
+.nav-links a:hover{color:var(--text);background:var(--surface)}
+.nav-cta{white-space:nowrap;flex:none}
+.nav-links a:active{background:var(--surface-2)}
+.tgl,.burger{width:44px;height:44px;flex:none;display:inline-flex;align-items:center;justify-content:center;
+ background:transparent;border:1px solid var(--line);border-radius:var(--r-sm);color:var(--text-muted);cursor:pointer;
+ transition:color var(--dur-fast) ease,border-color var(--dur-fast) ease}
+.tgl:hover,.burger:hover{color:var(--text);border-color:var(--line-2)}
+.tgl svg,.burger svg{width:18px;height:18px}
+.tgl .i-moon{display:none}
+:root[data-theme="light"] .tgl .i-sun{display:none}
+:root[data-theme="light"] .tgl .i-moon{display:block}
+.burger{display:none}
+.sheet{display:none;position:fixed;inset:66px 0 auto 0;z-index:99;background:var(--bg);
+ border-bottom:1px solid var(--line);padding:10px var(--gutter) 22px;max-height:calc(100vh - 66px);overflow-y:auto}
+.sheet.open{display:block}
+.sheet a{display:flex;align-items:center;min-height:48px;font-size:16px;font-weight:500;color:var(--text-2);
+ border-bottom:1px solid var(--line)}
+.sheet a:last-of-type{border-bottom:0}
+.sheet .btn{width:100%;margin-top:22px;border-bottom:0}
+@media(max-width:1219px){.nav-links,.nav-cta{display:none}.burger{display:inline-flex}.nav .wrap{gap:8px}
+ .nav-sp{flex:1}}
+
+/* ---------- первый экран ---------- */
+.hero{padding:162px 0 120px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:var(--glow);pointer-events:none;z-index:0}
+#synFx{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0;opacity:.52;
+ -webkit-mask-image:radial-gradient(115% 105% at 84% 26%,#000 0,rgba(0,0,0,.5) 44%,transparent 76%);
+ mask-image:radial-gradient(115% 105% at 84% 26%,#000 0,rgba(0,0,0,.5) 44%,transparent 76%)}
+:root[data-theme="light"] #synFx{opacity:.5}
+.hero-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:40px;align-items:start;position:relative;z-index:1}
+.hero .lead{margin-top:24px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:28px;margin-top:56px;padding-top:28px;border-top:1px solid var(--line)}
+.hero-meta b{display:block;font-family:var(--mono);font-weight:500;font-size:clamp(26px,2.4vw,30px);letter-spacing:-.02em;line-height:1;color:var(--text);
+ font-feature-settings:"liga" 0,"calt" 0}
+.hero-meta span{display:block;margin-top:10px;font-size:13.5px;color:var(--text-muted);max-width:23ch}
+.hero-r{justify-self:end;text-align:right}
+.dom{font-family:var(--mono);font-weight:500;font-size:clamp(72px,9.6vw,152px);letter-spacing:-.045em;line-height:.9;
+ white-space:nowrap;color:var(--text);font-feature-settings:"liga" 0,"calt" 0}
+.dom .sp{display:inline-block;width:.26em}
+.dom-cap{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;line-height:1.5;color:var(--text-dim);
+ max-width:32ch;margin-top:16px;margin-left:auto;text-align:left}
+.dom-cap a{color:var(--accent-txt);border-bottom:1px solid var(--line-accent);white-space:nowrap}
+.dom-cap a:hover{border-bottom-color:var(--accent-txt)}
+@media(min-width:1240px){.hero-r{margin-right:calc(590px - 50vw)}}
+@media(min-width:901px) and (max-height:860px){
+  .hero{padding:114px 0 88px}
+  .hero .lead{margin-top:18px}
+  .cta-row{margin-top:24px}
+  .hero-meta{margin-top:32px;padding-top:20px}
+  .hero-meta span{margin-top:8px}
+}
+@media(min-width:901px) and (max-height:760px){
+  .hero{padding:96px 0 72px}
+  .hero-meta{margin-top:26px;padding-top:18px}
+}
+
+/* ---------- строки-механизмы ---------- */
+.rows{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:74px 1fr 1.25fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--line);
+ align-items:baseline;transition:background var(--dur-fast) ease}
+.row .rn{font-family:var(--mono);font-size:12px;color:var(--text-dim);transition:color var(--dur-fast) ease;
+ font-feature-settings:"liga" 0,"calt" 0;white-space:nowrap}
+.row:hover .rn{color:var(--accent)}
+.row .rt{font-size:16.5px;font-weight:560;letter-spacing:-.012em}
+.row .rd{font-size:15px;line-height:1.55;color:var(--text-muted)}
+.rows.tight .row{grid-template-columns:52px 1fr;gap:6px 18px}
+.rows.tight .rd{grid-column:2}
+
+/* ---------- блок-мысль ---------- */
+.stmt{border-left:2px solid var(--accent);padding-left:26px;max-width:820px}
+.stmt p{font-size:clamp(21px,2.7vw,30px);font-weight:500;letter-spacing:-.015em;line-height:1.32}
+.stmt b{font-weight:620;color:var(--accent-txt)}
+
+/* ---------- бенто ---------- */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.bento>*:nth-child(1){grid-column:span 4}
+.bento>*:nth-child(2){grid-column:span 2}
+.bento>*:nth-child(3){grid-column:span 3}
+.bento>*:nth-child(4){grid-column:span 3}
+.bento>*:nth-child(5){grid-column:span 2}
+.bento>*:nth-child(6){grid-column:span 4}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:30px;
+ box-shadow:var(--card-shadow);display:flex;flex-direction:column;gap:12px;
+ transition:border-color var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.card:hover{border-color:var(--line-2);transform:translateY(-3px)}
+.card p{font-size:15px;line-height:1.55;color:var(--text-muted);max-width:42ch}
+.ic{width:42px;height:42px;border-radius:var(--r-sm);background:var(--surface-2);color:var(--text-2);
+ display:flex;align-items:center;justify-content:center;margin-bottom:4px}
+.ic svg{width:20px;height:20px}
+.pill{align-self:flex-start;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--accent-txt);
+ border:1px solid var(--line-accent);border-radius:var(--r-pill);padding:4px 11px;
+ font-feature-settings:"liga" 0,"calt" 0}
+.card .pill{margin-top:auto}
+
+/* ---------- полноширинная схема ---------- */
+.bleed{margin-left:calc(50% - 50vw);width:100vw;border-radius:0;border-left:0;border-right:0}
+.rail{padding-left:max(28px,calc(50vw - 590px));padding-right:max(28px,calc(50vw - 590px))}
+.scheme{background:var(--bg-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+ padding-top:72px;padding-bottom:72px}
+.scheme-in{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:start}
+@media(min-width:1081px){.scheme-in>div:last-child{position:sticky;top:100px}}
+.scheme .rows{margin-top:40px}
+.fig{border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;background:var(--surface)}
+.fig canvas{display:block;width:100%}
+.cap{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;line-height:1.5;color:var(--text-dim);margin-top:12px;
+ font-feature-settings:"liga" 0,"calt" 0;max-width:56ch}
+.note{border-left:1px solid var(--line-accent);padding-left:20px;margin-top:32px;font-size:15px;color:var(--text-2);max-width:56ch}
+
+/* ---------- применение ---------- */
+.split{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:start}
+.split h3{margin-bottom:20px}
+/* колонки идут по общим строкам: заголовки и каждая строка совпадают по базовой линии */
+@media(min-width:1081px){
+ .split{grid-template-rows:auto repeat(4,auto);row-gap:0}
+ .split>div{grid-row:1/-1;display:grid;grid-template-rows:subgrid}
+ .split .rows.tight{grid-row:2/-1;display:grid;grid-template-rows:subgrid}
+}
+.wide-fig{margin-top:48px}
+
+/* ---------- метрики ---------- */
+.metrics{display:flex;flex-wrap:wrap;gap:40px;margin-top:48px;padding-top:32px;border-top:1px solid var(--line)}
+.metric b{display:block;font-family:var(--mono);font-weight:500;font-size:23px;letter-spacing:-.03em;line-height:1.1;color:var(--text);
+ font-feature-settings:"liga" 0,"calt" 0}
+.metric.big b{font-size:clamp(26px,3vw,38px);letter-spacing:-.02em;line-height:1}
+.metric span{display:block;margin-top:8px;font-size:13.5px;color:var(--text-muted);max-width:24ch}
+
+/* ---------- тарифы ---------- */
+.plans{display:grid;grid-template-columns:1.35fr 1fr;gap:22px;align-items:stretch}
+.plan{background:var(--bg-deep);border:1px solid var(--line);border-radius:var(--r-lg);padding:30px;
+ display:flex;flex-direction:column}
+.plan .pn{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.10em;color:var(--sage);
+ font-feature-settings:"case" 1,"liga" 0,"calt" 0}
+.plan .sum{font-family:var(--mono);font-size:clamp(26px,3vw,38px);font-weight:500;letter-spacing:-.02em;line-height:1;
+ margin:18px 0 8px;color:var(--text);font-feature-settings:"liga" 0,"calt" 0}
+.plan .sum b{font-weight:inherit}
+.plan .per{font-size:13.5px;color:var(--text-muted)}
+.plan ul{list-style:none;margin:24px 0;border-top:1px solid var(--line)}
+.plan li{display:grid;grid-template-columns:34px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);
+ font-size:15px;line-height:1.5;color:var(--text-muted)}
+.plan li .li-n{font-family:var(--mono);font-style:normal;font-size:12px;color:var(--text-dim);
+ font-feature-settings:"liga" 0,"calt" 0}
+.plan .btn{align-self:flex-start;margin-top:auto}
+.terms{margin-top:48px}
+
+/* ---------- вопросы ---------- */
+.faq{max-width:840px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:22px 2px;
+ font-size:17.5px;font-weight:560;letter-spacing:-.012em;min-height:56px;transition:color var(--dur-fast) ease}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--text)}
+.faq .pl{margin-left:auto;flex:none;width:26px;height:26px;border-radius:var(--r-xs);border:1px solid var(--line);
+ color:var(--text-dim);display:flex;align-items:center;justify-content:center;font-size:15px;
+ transition:transform var(--dur) var(--ease),border-color var(--dur) var(--ease),color var(--dur) var(--ease)}
+.faq details[open] .pl{transform:rotate(45deg);color:var(--accent-txt);border-color:var(--line-2)}
+.faq .ans{padding:0 2px 24px;font-size:15px;line-height:1.66;color:var(--text-2);max-width:60ch}
+
+/* ---------- смежные материалы ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:8px 16px;border-radius:var(--r-pill);
+ background:var(--surface);border:1px solid var(--line);font-size:15px;font-weight:500;color:var(--text-2);
+ transition:border-color var(--dur-fast) ease,color var(--dur-fast) ease}
+.chip:hover{border-color:var(--line-2);color:var(--text)}
+.chip .ck{font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.10em;color:var(--text-dim);
+ font-feature-settings:"case" 1,"liga" 0,"calt" 0}
+
+/* ---------- форма: поле это линия ---------- */
+.lead-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:start}
+.leadbox{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(24px,3.4vw,34px);
+ box-shadow:var(--card-shadow)}
+.lf-row{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.lf{margin-bottom:26px}
+.lf label{display:block;font-size:12.5px;font-family:var(--mono);font-weight:500;letter-spacing:.10em;
+ color:var(--sage);margin-bottom:10px;font-feature-settings:"case" 1,"liga" 0,"calt" 0}
+.lf input,.lf textarea{display:block;width:100%;font-family:inherit;font-size:15.5px;line-height:1.5;color:var(--text);
+ background:transparent;border:0;border-bottom:1px solid var(--line-2);border-radius:0;padding:11px 0 12px;
+ outline:none;resize:vertical;-webkit-appearance:none;appearance:none;
+ transition:border-color var(--dur-fast) ease}
+.lf input::placeholder,.lf textarea::placeholder{color:var(--text-dim)}
+.lf input:hover,.lf textarea:hover{border-bottom-color:var(--text-dim)}
+.lf input:focus,.lf textarea:focus,.lf input:focus-visible,.lf textarea:focus-visible{border-bottom-color:var(--accent);outline:none}
+.lf input.err,.lf textarea.err{border-bottom-color:var(--danger)}
+.lf textarea{min-height:72px}
+.lf input:-webkit-autofill{-webkit-text-fill-color:var(--text);transition:background-color 9999s ease}
+.lf-check{display:flex;gap:14px;align-items:flex-start;margin:6px 0 4px;font-size:14px;line-height:1.5;
+ color:var(--text-muted);cursor:pointer;position:relative;min-height:44px;padding-top:11px}
+.lf-check input[type=checkbox]{appearance:none;-webkit-appearance:none;flex:none;width:20px;height:20px;border-radius:0;
+ border:1px solid var(--line-2);background:transparent;cursor:pointer;position:relative;margin-top:1px;
+ transition:border-color var(--dur-fast) ease,background var(--dur-fast) ease}
+.lf-check input[type=checkbox]::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+ width:44px;height:44px}
+.lf-check input[type=checkbox]:hover{border-color:var(--accent)}
+.lf-check input[type=checkbox]:checked{border-color:var(--accent)}
+.lf-check input[type=checkbox]:checked::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;
+ border:solid var(--accent);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.lf-check a{color:var(--accent-txt);border-bottom:1px solid var(--line-accent)}
+.lf-err{display:none;color:var(--danger);font-size:13.5px;margin-top:14px}
+.lf-err.show{display:block}
+.leadbox .btn{margin-top:26px}
+.lf-done{display:none;font-size:15.5px;line-height:1.6;color:var(--text-2)}
+.lf-done.show{display:block}
+.lf-done a{color:var(--accent-txt);border-bottom:1px solid var(--line-accent)}
+.side dl{border-top:1px solid var(--line)}
+.side .si{padding:16px 0;border-bottom:1px solid var(--line)}
+.side dt{font-family:var(--mono);font-size:11.5px;letter-spacing:.10em;color:var(--sage);
+ font-feature-settings:"case" 1,"liga" 0,"calt" 0}
+.side dd{margin-top:8px;font-size:15px;color:var(--text-muted)}
+
+/* ---------- подвал ---------- */
+footer{border-top:1px solid var(--line);padding:48px 0 56px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+footer .brand svg{height:22px}
+.fm,.fmeta{display:flex;align-items:center;gap:2px 22px;flex-wrap:wrap;font-size:13.5px;color:var(--text-muted)}
+.fm a,.fmeta a{display:inline-flex;align-items:center;min-height:44px;
+ transition:color var(--dur-fast) ease}
+.fm a:hover,.fmeta a:hover{color:var(--text)}
+.fmeta>span{display:inline-flex;align-items:center;min-height:44px;color:var(--text-dim)}
+.legal{margin-top:28px;font-size:12.5px;line-height:1.6;color:var(--text-dim);max-width:74ch;
+ display:grid;gap:6px}
+.legal>div{display:grid;grid-template-columns:112px 1fr;gap:2px 14px;align-items:baseline}
+.legal>div>span:first-child{color:var(--sage)}
+.legal a{justify-self:start;color:var(--text-2);border-bottom:1px solid var(--line-2)}
+.legal a:hover{color:var(--text);border-bottom-color:var(--text-dim)}
+
+/* ---------- появление ---------- */
+.reveal{opacity:0;transform:translateY(18px);
+ transition:opacity var(--dur-reveal) var(--ease),transform var(--dur-reveal) var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- адаптив ---------- */
+@media(max-width:1080px){
+ .scheme-in,.lead-grid,.split{grid-template-columns:1fr;gap:40px}
+ .hero-grid{grid-template-columns:1.2fr .8fr;gap:32px}
+}
+@media(max-width:900px){
+ .bento{grid-template-columns:repeat(2,1fr)}
+ .bento>*:nth-child(1),.bento>*:nth-child(6){grid-column:span 2}
+ .bento>*:nth-child(2),.bento>*:nth-child(3),.bento>*:nth-child(4),.bento>*:nth-child(5){grid-column:span 1}
+ .plans{grid-template-columns:1fr}
+ .hero-grid{grid-template-columns:1fr;gap:48px}
+ .hero-r{justify-self:start;text-align:left}
+ .dom-cap{margin-left:0}
+ #synFx{opacity:.26;-webkit-mask-image:radial-gradient(130% 80% at 68% 14%,#000 0,transparent 74%);
+  mask-image:radial-gradient(130% 80% at 68% 14%,#000 0,transparent 74%)}
+}
+@media(max-width:720px){
+ .wrap,.sheet{padding-left:20px;padding-right:20px}
+ .hero{padding:130px 0 80px}
+ #now{padding:56px 0 64px}
+ #fit{padding:64px 0}
+ #creed{padding:88px 0 96px}
+ #core{padding:48px 0 64px}
+ #how{padding:64px 0 72px}
+ #ladder{padding:56px 0 88px}
+ #where{padding:48px 0 64px}
+ #value{padding:64px 0}
+ #price{padding:48px 0 64px}
+ #faq{padding:64px 0}
+ #related{padding:96px 0 56px}
+ #lead{padding:64px 0 80px}
+ .sec-head{margin-bottom:36px}
+ .row{grid-template-columns:70px 1fr;gap:6px 14px;padding:18px 0}
+ .row .rd{grid-column:2}
+ .bento{grid-template-columns:1fr}
+ .bento>*{grid-column:span 1!important}
+ .card,.plan{padding:24px}
+ .scheme{padding-top:48px;padding-bottom:48px}
+ .rail{padding-left:20px;padding-right:20px}
+ .lf-row{grid-template-columns:1fr;gap:0}
+ .lf input,.lf textarea{font-size:16px}
+ .hero-meta{gap:24px 32px}
+ .metrics{gap:24px}
+ .btn.lg{width:100%}
+ .stmt{padding-left:20px}
+ .wide-fig{margin-top:32px}
+ .legal>div{grid-template-columns:1fr;gap:0}
+ .legal{gap:14px}
+ .fm,.fmeta{gap:0 18px}
+}
+@media(prefers-reduced-motion:reduce){
+ *{animation:none!important;transition:none!important}
+ .reveal{opacity:1;transform:none}
+ html{scroll-behavior:auto}
+}
+
+/* согласие: круг 22px, зона нажатия 44px, клик по тексту работает */
+.lf-check{position:relative;display:flex;align-items:flex-start;gap:0;cursor:pointer;
+  margin:6px 0 4px;padding:11px 0 0 36px;min-height:44px;color:var(--text-muted)}
+.lf-check input[type=checkbox]{position:absolute;left:-11px;top:50%;transform:translateY(-50%);
+  width:44px;height:44px;margin:0;opacity:0;cursor:pointer;z-index:2;appearance:none;-webkit-appearance:none}
+.lf-check::before{content:"";position:absolute;left:0;top:11px;width:22px;height:22px;border-radius:50%;
+  border:1.5px solid var(--line-2);background:transparent;transition:.16s;pointer-events:none}
+.lf-check:has(input:checked)::before{background:var(--accent);border-color:var(--accent)}
+.lf-check:has(input:checked)::after{content:"";position:absolute;left:7.5px;top:15px;width:6px;height:10px;
+  border:2px solid var(--accent-ink);border-top:0;border-left:0;transform:rotate(43deg);pointer-events:none}
+.lf-check:has(input:focus-visible)::before{outline:2px solid var(--accent);outline-offset:3px}
+/* строка 22,3px: ссылка согласия в две строки даёт тап-зону 44px */
+.lf-check>span{padding-top:9px;font-size:13.5px;line-height:1.65;color:var(--text-muted)}
+.lf-check>span a{color:var(--text-2);position:relative;z-index:3}
+
+/* тап-зоны в подвале и на планшете */
+@media(max-width:1024px){
+  footer .brand{min-height:44px;display:inline-flex;align-items:center}
+  footer a,.fmeta a,.fmeta span,.legal a{min-height:44px;display:inline-flex;align-items:center;
+    padding-inline:8px;margin-inline:-8px}
+}
+@media(max-width:420px){*{min-width:0}}
+
+/* тап-зоны на мобильной: логотипы, кнопки, строчные ссылки внутри текста */
+@media(max-width:860px){
+  .nav .brand,footer .brand{min-height:44px;display:inline-flex;align-items:center}
+  a.btn,.btn.pri{min-height:44px}
+  a.more{position:relative;display:inline-flex;align-items:center;min-height:44px}
+  .dom-cap a{position:relative;display:inline-block}
+  .dom-cap a::after{content:"";position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:44px}
+}
+
+/* реквизиты в две колонки */
+.legal{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);
+  display:grid;grid-template-columns:1fr 1fr;gap:14px 48px;align-items:start}
+.lg-col{display:flex;flex-direction:column;gap:14px}
+.legal div{font-size:13px;color:var(--text-2);line-height:1.5}
+.legal span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;
+  color:var(--text-dim);margin-bottom:4px}
+.legal a{color:var(--text-2)}
+.legal a:hover{color:var(--accent-text,var(--accent))}
+@media(max-width:760px){.legal{grid-template-columns:1fr;gap:14px}}
+/* чекбокс согласия ровно по центру строки */
+.lf-check{display:flex;align-items:center;gap:12px}
+.lf-check input[type=checkbox]{flex:none;align-self:center;margin:0}
+.lf-check span{line-height:1.5}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="#top" aria-label="Synapt"><svg viewBox="0 0 869 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/><path d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></svg></a>
+  <div class="nav-links">
+    <a href="#now">Почему&nbsp;сейчас</a><a href="#fit">Кому&nbsp;подходит</a><a href="#core">Что&nbsp;переносим</a><a href="#ladder">Ступени</a><a href="#value">Что&nbsp;считаем</a><a href="#price">Цена</a><a href="/synapt/">Услуги</a>
+  </div>
+  <span class="nav-sp"></span>
+  <button class="tgl" id="tgl" type="button" aria-label="Сменить тему">
+    <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4L17 7M7 17l-1.6 1.6"/></svg>
+    <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.2A8.4 8.4 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2z"/></svg>
+  </button>
+  <a class="btn sec nav-cta" href="#lead">Обсудить задачу</a>
+  <button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="sheet">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg>
+  </button>
+</div></nav>
+<div class="sheet" id="sheet">
+  <a href="#now">Почему&nbsp;сейчас</a>
+  <a href="#fit">Кому&nbsp;подходит</a>
+  <a href="#core">Что&nbsp;переносим в&nbsp;агента</a>
+  <a href="#ladder">Ступени доверия</a>
+  <a href="#where">Где&nbsp;применяется</a>
+  <a href="#value">Что&nbsp;считаем</a>
+  <a href="#price">Цена и&nbsp;условия</a>
+  <a href="#lead">Заявка</a>
+  <a href="/synapt/">Все&nbsp;услуги Synapt</a>
+  <a class="btn pri" href="https://t.me/Anti4ay">Обсудить задачу</a>
+</div>
+
+<header class="hero" id="top">
+  <canvas id="synFx" data-fx="mesh" aria-hidden="true"></canvas>
+  <div class="wrap hero-grid">
+  <div class="hero-l">
+    <div class="eyebrow reveal"><span class="n">01</span> Цифровая копия эксперта</div>
+    <h1 class="reveal">Компания растёт со&nbsp;скоростью календаря одного человека</h1>
+    <p class="lead reveal">Пока порядок разбора живёт в&nbsp;голове эксперта, очередь к&nbsp;нему упирается в&nbsp;его&nbsp;рабочие часы. Мы&nbsp;записываем этот порядок словами и&nbsp;переносим в&nbsp;агента: он&nbsp;разбирает вопрос теми&nbsp;же&nbsp;шагами и&nbsp;теми&nbsp;же&nbsp;формулировками, случай за&nbsp;границей компетенции отдаёт человеку</p>
+    <div class="cta-row reveal">
+      <a class="btn pri lg" href="#lead">Получить демо-агента бесплатно</a>
+      <a class="btn sec lg" href="#core">Что&nbsp;переносим в&nbsp;агента</a>
+    </div>
+    <div class="hero-meta reveal">
+      <div class="m"><b>19 900 руб.</b><span>чекап материалов и&nbsp;методологии за&nbsp;две недели, сумма зачитывается в&nbsp;счёт сборки</span></div>
+      <div class="m"><b>3-5 недель</b><span>до&nbsp;готового продукта, вы&nbsp;проверяете её&nbsp;на&nbsp;своих вопросах</span></div>
+      <div class="m"><b>60 дней</b><span>доработок после сдачи без доплат</span></div>
+    </div>
+  </div>
+  <div class="hero-r reveal">
+    <div class="dom">1<span class="sp"></span>500</div>
+    <div class="dom-cap">вопросов и&nbsp;ответов в&nbsp;базе агента, собранного по&nbsp;материалам эксперта клуба GlobalDent. Отвечает только тем, что&nbsp;в&nbsp;базе; диагноз и&nbsp;назначения уходят живому специалисту. <a href="/synapt/globaldent/">Разбор кейса</a></div>
+  </div>
+</div></header>
+
+<section id="now"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">02</span> Почему&nbsp;сейчас</div>
+    <h2>Разрыв идёт между компаниями, которые перестроили процессы, и&nbsp;остальными</h2>
+    <p class="lead">Дело не&nbsp;в&nbsp;том, что&nbsp;машины заменяют людей. Внутри одного рынка расходятся те, у&nbsp;кого AI уже работает в&nbsp;живом процессе, и&nbsp;те, кто&nbsp;второй год его&nbsp;пробует</p>
+  </div>
+  <div class="rows reveal">
+    <div class="row"><div class="rn">20%</div><div class="rt">Столько компаний довели AI до&nbsp;рабочих процессов</div><div class="rd">У&nbsp;них штат растёт впятеро быстрее рынка, а&nbsp;средние зарплаты быстрее на&nbsp;15%. Данные Ramp и&nbsp;брифа Stanford SIEPR по&nbsp;рынку США</div></div>
+    <div class="row"><div class="rn">разрыв</div><div class="rt">Между «работает в&nbsp;проде» и&nbsp;«мы&nbsp;тестируем»</div><div class="rd">Доля компаний с&nbsp;AI в&nbsp;проде и&nbsp;доля тех, кто&nbsp;его&nbsp;только пробует, расходятся год от&nbsp;года. Расстояние между полосами и&nbsp;есть недополученная прибыль</div></div>
+    <div class="row"><div class="rn">эффект</div><div class="rt">Ранний запуск включает сложный процент</div><div class="rd">Живые вопросы копятся в&nbsp;логах, логи улучшают базу знаний, база улучшает ответы и&nbsp;приносит ещё больше вопросов. Год ожидания этот круг не&nbsp;догоняет</div></div>
+    <div class="row"><div class="rn">фокус</div><div class="rt">Это участок, где работа уже описана</div><div class="rd">Материалы, разборы и&nbsp;переписки лежат готовыми, менять поведение команды почти не&nbsp;нужно. Эффект считается от&nbsp;фонда оплаты труда, который уходит на&nbsp;повторяющиеся вопросы</div></div>
+  </div>
+  <div class="note reveal">Цифры выше сняты на&nbsp;рынке США, российского замера такого масштаба нет. Мы&nbsp;приводим их&nbsp;как&nbsp;порядок величин, а&nbsp;обещания держим на&nbsp;замерах внутри вашей компании: первый делаем на&nbsp;чекапе, второй через квартал после запуска</div>
+</div></section>
+
+<section id="fit"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">03</span> Кому&nbsp;подходит</div>
+    <h2>Когда нужна копия эксперта</h2>
+    <p class="lead">Берёмся там, где знание продаётся как&nbsp;услуга: клиники и&nbsp;профессиональные клубы, консалтинг и&nbsp;юридическая практика, инженерные и&nbsp;проектные бюро, оптовые продажи со&nbsp;сложной спецификацией. Если совпало три пункта из&nbsp;шести, стоит поговорить</p>
+  </div>
+  <div class="rows reveal">
+    <div class="row"><div class="rn">0x01</div><div class="rt">Вопросов больше, чем&nbsp;часов у&nbsp;эксперта</div><div class="rd">Вопросы копятся в&nbsp;очередь, клиенты ждут ответа по&nbsp;несколько дней</div></div>
+    <div class="row"><div class="rn">0x02</div><div class="rt">Методология нигде не&nbsp;описана</div><div class="rd">Порядок разбора держит в&nbsp;голове сам специалист, регламента нет</div></div>
+    <div class="row"><div class="rn">0x03</div><div class="rt">Ответы расходятся между людьми</div><div class="rd">На&nbsp;один и&nbsp;тот&nbsp;же&nbsp;вопрос клиент получает разные ответы от&nbsp;разных сотрудников</div></div>
+    <div class="row"><div class="rn">0x04</div><div class="rt">Новичок выходит на&nbsp;уровень месяцами</div><div class="rd">Обучение идёт через эксперта и&nbsp;снова занимает его&nbsp;часы</div></div>
+    <div class="row"><div class="rn">0x05</div><div class="rt">Материалы есть, ими не&nbsp;пользуются</div><div class="rd">Записи консультаций, разборы и&nbsp;шаблоны лежат в&nbsp;папках и&nbsp;чатах. Найти нужное дольше, чем&nbsp;спросить эксперта</div></div>
+    <div class="row"><div class="rn">0x06</div><div class="rt">Знания уходят вместе с&nbsp;человеком</div><div class="rd">Порядок принятия решений нигде не&nbsp;записан, новый специалист собирает его&nbsp;заново</div></div>
+  </div>
+  <div class="note reveal"><b>Когда копия эксперта не&nbsp;нужна.</b> Если повторяющихся вопросов меньше двадцати в&nbsp;неделю, если каждый случай уникален и&nbsp;ответ нельзя вывести из&nbsp;прошлых решений, если материалов нет совсем и&nbsp;эксперт не&nbsp;готов давать интервью. В&nbsp;таких случаях мы&nbsp;говорим об&nbsp;этом на&nbsp;первом Zoom и&nbsp;денег за&nbsp;чекап не&nbsp;берём</div>
+</div></section>
+
+<section id="creed"><div class="wrap">
+  <div class="eyebrow reveal"><span class="n">04</span> Наша позиция</div>
+  <div class="stmt reveal"><p>Это не&nbsp;предложение обучить модель на&nbsp;записях эксперта и&nbsp;назвать это базой знаний. Эксперт ценен порядком разбора: какие вопросы задаёт первыми, что&nbsp;проверяет и&nbsp;когда отказывает. <b>Этот порядок мы&nbsp;записываем словами и&nbsp;переносим в&nbsp;агента.</b> Каждый ответ можно проверить по&nbsp;источнику и&nbsp;повторить</p></div>
+</div></section>
+
+<section id="core"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">05</span> Что&nbsp;переносим в&nbsp;агента</div>
+    <h2>Из&nbsp;чего собирается агент</h2>
+    <p class="lead">Состав и&nbsp;границу компетенции определяем на&nbsp;чекапе и&nbsp;записываем в&nbsp;спецификацию до&nbsp;начала сборки</p>
+  </div>
+  <div class="bento">
+    <div class="card reveal">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4.5h9l5 5v10H5z"/><path d="M13.6 4.6v5.2h5.2"/><path d="M8.4 13.4h7M8.4 16.4h4.6"/></svg></div>
+      <h3>Материалы эксперта</h3>
+      <p>Записи консультаций и&nbsp;выступлений, разборы кейсов, документы, переписки с&nbsp;клиентами, шаблоны и&nbsp;чек-листы. Сводим в&nbsp;одну базу знаний, у&nbsp;каждого ответа остаётся ссылка на&nbsp;источник</p>
+      <span class="pill">источники</span>
+    </div>
+    <div class="card reveal">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.6" cy="7.2" r="1.5"/><circle cx="5.6" cy="12" r="1.5"/><circle cx="5.6" cy="16.8" r="1.5"/><path d="M5.6 8.7v1.8M5.6 13.5v1.8"/><path d="M9.6 7.2h9.4M9.6 12h9.4M9.6 16.8h5.8"/></svg></div>
+      <h3>Методология</h3>
+      <p>Порядок разбора задачи по&nbsp;шагам: с&nbsp;чего эксперт начинает, что&nbsp;уточняет и&nbsp;в&nbsp;какой последовательности проверяет</p>
+      <span class="pill">логика</span>
+    </div>
+    <div class="card reveal">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5v15"/><path d="M4.5 9.5h15"/><circle cx="8.2" cy="14.6" r="2.6"/><path d="M15.4 12.4h4.1v4.1h-4.1z"/></svg></div>
+      <h3>Критерии решений</h3>
+      <p>Правила, по&nbsp;которым эксперт выбирает вариант: пороги и&nbsp;ограничения, условия отказа, признаки исключений из&nbsp;правила</p>
+      <span class="pill">правила</span>
+    </div>
+    <div class="card reveal">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4.4" y="4.6" width="15.2" height="11.2" rx="2.2"/><path d="M8.6 15.8v3.4l3.8-3.4"/><path d="M8.2 8.8h7.6M8.2 11.8h4.8"/></svg></div>
+      <h3>Язык и&nbsp;форма ответа</h3>
+      <p>Насколько подробно объясняет, что&nbsp;даёт списком, где приводит пример и&nbsp;какие формулировки не&nbsp;использует. Тон согласуем с&nbsp;ним лично</p>
+      <span class="pill">голос</span>
+    </div>
+    <div class="card reveal">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.2l6.5 2.6v5.4c0 3.7-2.6 6.4-6.5 7.6-3.9-1.2-6.5-3.9-6.5-7.6V6.8z"/><path d="M9.4 12.1l1.9 1.9 3.4-3.7"/></svg></div>
+      <h3>Граница компетенции</h3>
+      <p>Список тем, где агент отвечает сам, и&nbsp;тем, где сразу зовёт человека. Границу описывает сам эксперт и&nbsp;подтверждает подписью в&nbsp;спецификации</p>
+      <span class="pill">границы</span>
+    </div>
+    <div class="card reveal">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.4" r="3.3"/><path d="M5.6 19.4c.7-3.4 3.3-5.2 6.4-5.2s5.7 1.8 6.4 5.2"/></svg></div>
+      <h3>Что&nbsp;остаётся за&nbsp;экспертом</h3>
+      <p>Нестандартные случаи, спорные решения и&nbsp;всё, что&nbsp;меняет методологию. Такие обращения агент собирает отдельно. Эксперт разбирает их&nbsp;раз в&nbsp;неделю и&nbsp;этим&nbsp;же&nbsp;обновляет базу знаний</p>
+      <span class="pill">человек</span>
+    </div>
+  </div>
+</div></section>
+
+<section id="how">
+  <div class="bleed rail scheme">
+    <div class="scheme-in">
+      <div class="reveal">
+        <div class="eyebrow"><span class="n">06</span> Этапы и&nbsp;сроки</div>
+        <h2>Чекап идёт две недели, готовый продукт через 3-5 недель</h2>
+        <div class="rows">
+          <div class="row"><div class="rn">дни 1-2</div><div class="rt">Погружение</div><div class="rd">Zoom с&nbsp;руководителем и&nbsp;интервью с&nbsp;экспертом: на&nbsp;какие вопросы уходит его&nbsp;время чаще всего</div></div>
+          <div class="row"><div class="rn">дни 4-10</div><div class="rt">Сбор материалов</div><div class="rd">Забираем записи, документы, переписки и&nbsp;разборы. Со&nbsp;стороны эксперта нужно 4-6 часов интервью за&nbsp;неделю</div></div>
+          <div class="row"><div class="rn">дни 11-14</div><div class="rt">Спецификация и&nbsp;смета</div><div class="rd">Карта знаний по&nbsp;источникам, описанная методология, критерии решений, границы компетенции, фиксированная смета</div></div>
+          <div class="row"><div class="rn">нед. 1-3</div><div class="rt">Сборка агента</div><div class="rd">База знаний, логика разбора, интеграции с&nbsp;почтой, CRM и&nbsp;мессенджерами, режим передачи сложного случая человеку</div></div>
+          <div class="row"><div class="rn">нед. 3-6</div><div class="rt">Проверка экспертом</div><div class="rd">Эксперт читает ответы на&nbsp;реальных вопросах и&nbsp;правит формулировки. Запускаем после его&nbsp;согласия</div></div>
+          <div class="row"><div class="rn">нед. 6-8</div><div class="rt">Запуск и&nbsp;обучение</div><div class="rd">Открываем доступ команде, показываем сценарии на&nbsp;живых задачах, снимаем первые метрики использования</div></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="fig"><canvas class="fx-layers" data-layers="ответ,критерии решений,методология,материалы"></canvas></div>
+        <div class="cap">путь ответа снизу вверх: материалы эксперта, методология, критерии решений и&nbsp;ответ, который получает клиент</div>
+        <div class="note">Смету и&nbsp;критерии приёмки закрепляем в&nbsp;договоре до&nbsp;первой строчки кода. Меняем их&nbsp;только письменным дополнением, которое подписываете вы</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ladder"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">07</span> Ступени доверия</div>
+    <h2>Агент забирает контроль по&nbsp;одной ступени за&nbsp;раз</h2>
+    <p class="lead">Внедрение упирается в&nbsp;скорость, с&nbsp;которой люди готовы отдать агенту решение, и&nbsp;почти никогда в&nbsp;саму модель. Поэтому ступени идут отдельными этапами со&nbsp;своей приёмкой и&nbsp;своей оплатой: следующую вы&nbsp;запускаете, когда доверяете предыдущей. Скажите на&nbsp;Zoom, где вы&nbsp;сейчас, и&nbsp;мы&nbsp;посчитаем ближайшую</p>
+  </div>
+  <div class="rows reveal">
+    <div class="row"><div class="rn">ступень 1</div><div class="rt">Чат по&nbsp;материалам</div><div class="rd">Агент отвечает только внутри компании. Наружу ничего не&nbsp;уходит, эксперт читает диалоги и&nbsp;правит формулировки</div></div>
+    <div class="row"><div class="rn">ступень 2</div><div class="rt">Отчёты</div><div class="rd">Раз в&nbsp;неделю сводка: какие вопросы приходят чаще всего, где база отвечает уверенно и&nbsp;где пусто</div></div>
+    <div class="row"><div class="rn">ступень 3</div><div class="rt">Рекомендации</div><div class="rd">Агент готовит проект ответа со&nbsp;ссылками на&nbsp;источник, менеджер правит и&nbsp;отправляет сам</div></div>
+    <div class="row"><div class="rn">ступень 4</div><div class="rt">Полуавтомат</div><div class="rd">Агент отвечает клиенту сам, но&nbsp;каждое действие подтверждает человек. Подтверждения логируются вместе с&nbsp;текстом ответа</div></div>
+    <div class="row"><div class="rn">ступень 5</div><div class="rt">Автономность</div><div class="rd">В&nbsp;согласованных темах агент работает без подтверждения, эксперту приходит уведомление и&nbsp;выборка диалогов на&nbsp;проверку</div></div>
+  </div>
+  <div class="note reveal">Большинство компаний останавливается на&nbsp;третьей или&nbsp;четвёртой ступени, и&nbsp;это нормальный результат работы. Самая частая ошибка на&nbsp;входе – просить сразу пятую, потому что&nbsp;у&nbsp;знакомого «всё работает само»</div>
+</div></section>
+
+<section id="where"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">08</span> Где&nbsp;применяется</div>
+    <h2>Где работает агент</h2>
+    <p class="lead">Сотруднику и&nbsp;клиенту агент отвечает по-разному. Доступы и&nbsp;формулировки для&nbsp;каждой роли пишем в&nbsp;спецификации</p>
+  </div>
+  <div class="split">
+    <div class="reveal">
+      <h3>Внутри компании</h3>
+      <div class="rows tight">
+        <div class="row"><div class="rn">0x01</div><div class="rt">Первичный запрос</div><div class="rd">Клиент задаёт вопрос и&nbsp;получает разбор по&nbsp;методологии, не&nbsp;дожидаясь окна в&nbsp;календаре эксперта</div></div>
+        <div class="row"><div class="rn">0x02</div><div class="rt">Разбор перед встречей</div><div class="rd">Менеджер приносит вводные и&nbsp;получает разбор в&nbsp;логике эксперта до&nbsp;звонка клиенту</div></div>
+        <div class="row"><div class="rn">0x03</div><div class="rt">Проверка документа</div><div class="rd">Расчёт, оффер или&nbsp;заключение сверяются с&nbsp;критериями эксперта до&nbsp;отправки</div></div>
+        <div class="row"><div class="rn">0x04</div><div class="rt">Вопрос вне рабочих часов</div><div class="rd">Ночное обращение получает ответ сразу. Спорный случай ждёт эксперта в&nbsp;отдельной очереди</div></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <h3>В&nbsp;работе с&nbsp;клиентами</h3>
+      <div class="rows tight">
+        <div class="row"><div class="rn">0x05</div><div class="rt">Первичная консультация</div><div class="rd">Клиент получает ответ в&nbsp;переписке по&nbsp;материалам эксперта и&nbsp;приходит на&nbsp;встречу подготовленным</div></div>
+        <div class="row"><div class="rn">0x06</div><div class="rt">Сообщество и&nbsp;клуб</div><div class="rd">Участники получают ответ круглосуточно, как&nbsp;в&nbsp;клубе стоматологов GlobalDent</div></div>
+        <div class="row"><div class="rn">0x07</div><div class="rt">Подбор варианта</div><div class="rd">Агент собирает вводные, предлагает вариант по&nbsp;методологии и&nbsp;передаёт менеджеру для&nbsp;предложения</div></div>
+        <div class="row"><div class="rn">0x08</div><div class="rt">Отсев обращений</div><div class="rd">Запросы, где эксперт не&nbsp;нужен, закрываются на&nbsp;входе. До&nbsp;него доходят только сложные</div></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="value"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">09</span> Что&nbsp;считаем</div>
+    <h2>Замеряем до&nbsp;запуска и&nbsp;через квартал после</h2>
+    <p class="lead">Первый замер делаем на&nbsp;чекапе, второй через квартал после запуска. Рост выручки и&nbsp;конверсии не&nbsp;обещаем: на&nbsp;них влияет слишком многое за&nbsp;пределами нашей работы</p>
+  </div>
+  <div class="rows reveal">
+    <div class="row"><div class="rn">0x01</div><div class="rt">Часы эксперта в&nbsp;неделю</div><div class="rd">Сколько времени уходит на&nbsp;повторяющиеся вопросы, которые агент закрывает сам</div></div>
+    <div class="row"><div class="rn">0x02</div><div class="rt">Доля обращений без эксперта</div><div class="rd">Какая часть вопросов закрывается агентом, замер по&nbsp;логам за&nbsp;календарный месяц</div></div>
+    <div class="row"><div class="rn">0x03</div><div class="rt">Время ответа клиенту</div><div class="rd">От&nbsp;вопроса до&nbsp;ответа по&nbsp;существу, в&nbsp;часах и&nbsp;минутах, отдельно в&nbsp;рабочее и&nbsp;нерабочее время</div></div>
+    <div class="row"><div class="rn">0x04</div><div class="rt">Срок выхода новичка</div><div class="rd">Сколько недель проходит до&nbsp;самостоятельной работы, замер до&nbsp;запуска и&nbsp;после</div></div>
+    <div class="row"><div class="rn">0x05</div><div class="rt">Разброс ответов</div><div class="rd">Насколько расходятся ответы на&nbsp;один вопрос до&nbsp;и&nbsp;после запуска, выборка проверяется вручную</div></div>
+  </div>
+  <div class="wide-fig reveal">
+    <div class="fig"><canvas class="fx-signal" data-a="все вопросы идут к&nbsp;эксперту" data-b="доходят только сложные"></canvas></div>
+    <div class="cap">нагрузка на&nbsp;эксперта: сверху поток вопросов до&nbsp;запуска, снизу тот, что&nbsp;доходит после. Повторяющееся закрывает агент</div>
+  </div>
+  <h3 class="reveal" style="margin-top:64px">Что&nbsp;меняется в&nbsp;работе</h3>
+  <div class="rows reveal" style="margin-top:24px">
+    <div class="row"><div class="rn">было</div><div class="rt">Вопрос ждал окна в&nbsp;календаре эксперта</div><div class="rd">Стало: ответ приходит сразу, ночное обращение не&nbsp;лежит до&nbsp;утра</div></div>
+    <div class="row"><div class="rn">было</div><div class="rt">Порядок разбора держался в&nbsp;голове специалиста</div><div class="rd">Стало: он&nbsp;описан словами, лежит у&nbsp;вас и&nbsp;передаётся по&nbsp;акту</div></div>
+    <div class="row"><div class="rn">было</div><div class="rt">Новичок выходил на&nbsp;уровень через часы эксперта</div><div class="rd">Стало: спрашивает агента и&nbsp;видит источник, эксперта зовёт на&nbsp;сложном</div></div>
+    <div class="row"><div class="rn">было</div><div class="rt">На&nbsp;один вопрос компания давала разные ответы</div><div class="rd">Стало: ответ повторяется, расхождения видно в&nbsp;логах и&nbsp;можно поправить точечно</div></div>
+    <div class="row"><div class="rn">было</div><div class="rt">Время эксперта уходило на&nbsp;повторяющееся</div><div class="rd">Стало: до&nbsp;него доходят спорные случаи, он&nbsp;разбирает очередь раз в&nbsp;неделю</div></div>
+  </div>
+  <div class="note reveal">Для&nbsp;калибровки ожиданий: в&nbsp;публичных разборах внедрений называют экономию около 30% времени команды и&nbsp;рост выручки на&nbsp;сотрудника около 15%. Это чужие цифры на&nbsp;чужих процессах, мы&nbsp;их&nbsp;не&nbsp;обещаем и&nbsp;приводим только чтобы был виден порядок величин</div>
+</div></section>
+
+<section id="price"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">10</span> Цена и&nbsp;условия</div>
+    <h2>Решение о&nbsp;сборке вы&nbsp;принимаете на&nbsp;работающем агенте</h2>
+    <p class="lead">Первый шаг стоит меньше, чем&nbsp;день работы вашего эксперта, и&nbsp;зачитывается в&nbsp;счёт сборки. Смету на&nbsp;полную сборку вы&nbsp;видите тогда, когда агент на&nbsp;ваших материалах уже отвечает</p>
+  </div>
+  <div class="plans">
+    <div class="plan reveal">
+      <div class="pn">Шаг 1. Чекап материалов и&nbsp;методологии</div>
+      <div class="sum">19 900 руб.</div>
+      <div class="per">две недели, с&nbsp;собранным агентом на&nbsp;ваших материалах. Сумма зачитывается в&nbsp;счёт сборки, отдельно за&nbsp;чекап вы&nbsp;в&nbsp;итоге не&nbsp;платите</div>
+      <ul>
+        <li><span class="li-n">01</span><span>Карта знаний эксперта с&nbsp;разметкой по&nbsp;источникам</span></li>
+        <li><span class="li-n">02</span><span>Описанная методология и&nbsp;критерии решений</span></li>
+        <li><span class="li-n">03</span><span>Границы компетенции агента, согласованные с&nbsp;экспертом</span></li>
+        <li><span class="li-n">04</span><span>Спецификация и&nbsp;фиксированная смета на&nbsp;сборку</span></li>
+        <li><span class="li-n">05</span><span>Кликабельный агент на&nbsp;ваших материалах</span></li>
+        <li><span class="li-n">06</span><span>Ступень доверия, с&nbsp;которой стартуем, и&nbsp;план по&nbsp;следующим</span></li>
+      </ul>
+      <a class="btn sec" href="#lead">Обсудить чекап</a>
+    </div>
+    <div class="plan reveal">
+      <div class="pn">Шаг 2. Сборка агента</div>
+      <div class="sum"><b>по&nbsp;смете</b></div>
+      <div class="per">фиксированная смета по&nbsp;итогам чекапа: считаем от&nbsp;объёма материалов, числа интеграций и&nbsp;ступени, до&nbsp;которой доводим агента</div>
+      <ul>
+        <li><span class="li-n">01</span><span>База знаний со&nbsp;ссылкой на&nbsp;источник у&nbsp;каждого ответа</span></li>
+        <li><span class="li-n">02</span><span>Логика разбора и&nbsp;критерии решений эксперта</span></li>
+        <li><span class="li-n">03</span><span>Интеграции с&nbsp;почтой, CRM, мессенджерами и&nbsp;телефонией</span></li>
+        <li><span class="li-n">04</span><span>MCP-доступ и&nbsp;API, чтобы агента можно было звать прямо из&nbsp;ваших инструментов, не&nbsp;открывая отдельный чат</span></li>
+        <li><span class="li-n">05</span><span>Передача сложного случая человеку и&nbsp;логирование</span></li>
+        <li><span class="li-n">06</span><span>Код, промпты и&nbsp;документация по&nbsp;акту при сдаче</span></li>
+      </ul>
+      <a class="btn pri" href="#lead">Обсудить сборку</a>
+    </div>
+  </div>
+  <div class="rows terms reveal">
+    <div class="row"><div class="rn">0x00</div><div class="rt">Прототип до&nbsp;любых договорённостей</div><div class="rd">К&nbsp;первому Zoom собираем демо-агента на&nbsp;ваших открытых материалах: сайт, публикации, вебинары эксперта. Структура настоящая, объём базы маленький. Это бесплатно и&nbsp;ни&nbsp;к&nbsp;чему вас не&nbsp;обязывает</div></div>
+    <div class="row"><div class="rn">0x01</div><div class="rt">Смету фиксируем до&nbsp;старта</div><div class="rd">Стоимость и&nbsp;критерии приёмки пишем в&nbsp;договоре, меняем только письменным дополнением с&nbsp;вашей подписью</div></div>
+    <div class="row"><div class="rn">0x02</div><div class="rt">60 дней доработок</div><div class="rd">После сдачи три месяца поправим, если что-то&nbsp;пошло не&nbsp;так, правим промпты и&nbsp;донастраиваем под реальную нагрузку без доплат</div></div>
+    <div class="row"><div class="rn">0x03</div><div class="rt">Всё остаётся у&nbsp;вас</div><div class="rd">Код, базу знаний, промпты, доступы и&nbsp;документацию передаём по&nbsp;акту с&nbsp;перечнем. Продолжить можно с&nbsp;любой командой</div></div>
+    <div class="row"><div class="rn">0x04</div><div class="rt">Сопровождение по&nbsp;желанию</div><div class="rd">От&nbsp;40 тыс. руб. в&nbsp;месяц: читаем диалоги, обновляем базу знаний под новые материалы эксперта, держим интеграции</div></div>
+  </div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">11</span> Вопросы</div>
+    <h2>Что&nbsp;спрашивают до&nbsp;договора</h2>
+  </div>
+  <div class="faq reveal">
+    <details open><summary>Эксперт боится, что&nbsp;его&nbsp;обесценят<span class="pl">+</span></summary><div class="ans">Вопрос закономерный, и&nbsp;мы&nbsp;разбираем его&nbsp;на&nbsp;первой встрече с&nbsp;самим экспертом. Агент берёт повторяющиеся вопросы, у&nbsp;которых есть готовый ответ в&nbsp;материалах. Сложные случаи и&nbsp;спорные решения остаются за&nbsp;человеком, и&nbsp;границу между этими зонами описывает сам эксперт. Он&nbsp;же&nbsp;принимает ответы перед запуском: без его&nbsp;согласия агент не&nbsp;включается</div></details>
+    <details><summary>Команда решит, что&nbsp;её&nbsp;готовят к&nbsp;сокращению<span class="pl">+</span></summary><div class="ans">Это возражение живёт не&nbsp;у&nbsp;собственника, а&nbsp;внутри команды, и&nbsp;именно оно чаще всего убивает внедрение уже после подписания. Ответ у&nbsp;нас один и&nbsp;он&nbsp;проверяемый: агент забирает повторяющееся, у&nbsp;людей высвобождаются часы на&nbsp;работу, до&nbsp;которой раньше не&nbsp;доходили руки. Сокращение штата мы&nbsp;не&nbsp;обещаем и&nbsp;в&nbsp;критерии приёмки не&nbsp;пишем. Крупный публичный пример такой развилки – IKEA: 8 500 ролей поддержки перевели на&nbsp;AI, а&nbsp;самих сотрудников переучили в&nbsp;консультантов по&nbsp;дизайну интерьера и&nbsp;получили из&nbsp;этого новую линию выручки. Носители знания при этом должны видеть свою выгоду: эксперт остаётся владельцем методологии, а&nbsp;его&nbsp;имя и&nbsp;роль прописаны в&nbsp;спецификации</div></details>
+    <details><summary>Мы&nbsp;уже внедряли AI, эффекта не&nbsp;увидели<span class="pl">+</span></summary><div class="ans">Обычно ломается одно и&nbsp;то&nbsp;же. Компания набирает пилоты и&nbsp;ни&nbsp;один не&nbsp;доводит до&nbsp;живого процесса. Ускоряется отдельный кусок, а&nbsp;очередь переезжает на&nbsp;следующий участок. Процесс остаётся прежним, потому что&nbsp;AI хорошо показывает узкое место, но&nbsp;сам процесс не&nbsp;переписывает. Агентов становится много, и&nbsp;за&nbsp;них никто не&nbsp;отвечает. Поэтому мы&nbsp;берём один участок, доводим его&nbsp;до&nbsp;живой работы с&nbsp;замером до&nbsp;и&nbsp;после, назначаем владельца на&nbsp;вашей стороне и&nbsp;только после этого обсуждаем следующий</div></details>
+    <details><summary>Мы&nbsp;соберём такого агента сами<span class="pl">+</span></summary><div class="ans">Иногда это правда, и&nbsp;мы&nbsp;говорим об&nbsp;этом прямо. Платить есть смысл в&nbsp;пяти случаях. Первый: собрать рабочий сценарий за&nbsp;выходные можно, а&nbsp;поддерживать его&nbsp;год – отдельная работа. Второй: простой чат по&nbsp;документам соберёт любой, разбор со&nbsp;ссылкой на&nbsp;источник и&nbsp;воспроизводимым ответом – нет. Третий: вокруг агента нужна инфраструктура, которую не&nbsp;видно снаружи, – логирование, подтверждения, мониторинг, возврат к&nbsp;прежним промптам. Четвёртый: нужен тот, кто&nbsp;отвечает за&nbsp;кусок работы целиком и&nbsp;чинит его&nbsp;по&nbsp;договору. Пятый: методология и&nbsp;границы компетенции достаются интервью с&nbsp;экспертом, и&nbsp;это самая долгая часть, которую внутри почти никогда не&nbsp;доводят до&nbsp;конца</div></details>
+    <details><summary>Агент ответит неверно, а&nbsp;отвечать нам<span class="pl">+</span></summary><div class="ans">Поэтому в&nbsp;спецификации мы&nbsp;прописываем темы, где агент отвечает сам, и&nbsp;темы, где он&nbsp;сразу зовёт человека. У&nbsp;каждого ответа остаётся ссылка на&nbsp;источник в&nbsp;базе, все диалоги логируются. Перед запуском эксперт проверяет ответы на&nbsp;реальных вопросах, а&nbsp;после запуска мы&nbsp;выборочно читаем диалоги и&nbsp;правим формулировки</div></details>
+    <details><summary>У&nbsp;нас нет базы, материалы разрознены<span class="pl">+</span></summary><div class="ans">Так у&nbsp;большинства компаний, которые к&nbsp;нам приходят. На&nbsp;чекапе мы&nbsp;собираем материал из&nbsp;того, что&nbsp;уже есть: записи консультаций и&nbsp;Zoom, переписки с&nbsp;клиентами, документы, презентации, ответы в&nbsp;рабочих чатах. Со&nbsp;стороны эксперта нужно 4-6 часов интервью за&nbsp;неделю, готовить материалы заранее не&nbsp;требуется</div></details>
+    <details><summary>Знания компании утекут наружу<span class="pl">+</span></summary><div class="ans">Это первое, что&nbsp;мы&nbsp;разбираем на&nbsp;чекапе. Поимённо фиксируем, какие поля уходят в&nbsp;модель и&nbsp;какие остаются внутри контура. Ставим обезличивание перед отправкой, ролевой доступ и&nbsp;логирование. Персональные данные обрабатываем по&nbsp;152-ФЗ, описание контура получает ваш юрист или&nbsp;служба безопасности до&nbsp;старта работ</div></details>
+    <details><summary>Чем&nbsp;это отличается от&nbsp;обычного чата с&nbsp;моделью<span class="pl">+</span></summary><div class="ans">Обычный чат отвечает из&nbsp;общих знаний и&nbsp;каждый раз по-разному. Здесь агент отвечает по&nbsp;материалам вашего эксперта, в&nbsp;описанной последовательности разбора и&nbsp;со&nbsp;ссылкой на&nbsp;источник. На&nbsp;один и&nbsp;тот&nbsp;же&nbsp;вопрос ответ повторяется. Сверху добавляем доступ к&nbsp;CRM и&nbsp;документам, роли и&nbsp;права, передачу сложного случая человеку</div></details>
+    <details><summary>Сколько времени займёт у&nbsp;эксперта<span class="pl">+</span></summary><div class="ans">На&nbsp;чекапе 4-6 часов интервью за&nbsp;неделю. На&nbsp;этапе сборки 1-2 часа в&nbsp;неделю на&nbsp;чтение ответов и&nbsp;правки формулировок. После запуска участие сводится к&nbsp;разбору очереди сложных случаев, которую агент собирает отдельно</div></details>
+    <details><summary>Что&nbsp;будет, если эксперт уйдёт из&nbsp;компании<span class="pl">+</span></summary><div class="ans">База знаний, описанная методология, критерии решений и&nbsp;промпты остаются у&nbsp;вас и&nbsp;передаются по&nbsp;акту при сдаче. Новый специалист начинает с&nbsp;описанной методологии и&nbsp;развивает её&nbsp;дальше. Собирать порядок разбора заново не&nbsp;придётся</div></details>
+  </div>
+</div></section>
+
+<section id="related"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">12</span> Смежные материалы</div>
+    <h2>Другие услуги и&nbsp;разборы проектов</h2>
+  </div>
+  <div class="chips reveal">
+    <a class="chip" href="/synapt/checkup/"><span class="ck">услуга</span>AI-чекап бизнеса</a>
+    <a class="chip" href="/synapt/desant/"><span class="ck">услуга</span>AI-десант</a>
+    <a class="chip" href="/synapt/prodazh/"><span class="ck">услуга</span>AI-продавец в&nbsp;переписке</a>
+    
+    <a class="chip" href="/synapt/agent/"><span class="ck">продукт</span>AI-советник для&nbsp;бизнеса</a>
+    <a class="chip" href="/synapt/safe/"><span class="ck">контур</span>Безопасность данных</a>
+    <a class="chip" href="/synapt/globaldent/"><span class="ck">кейс</span>GlobalDent</a>
+    <a class="chip" href="/synapt/innorto/"><span class="ck">кейс</span>INNORTO</a>
+  </div>
+  <a class="more" href="/synapt/">Все&nbsp;услуги на&nbsp;сайте Synapt</a>
+</div></section>
+
+<section id="lead"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">13</span> Заявка</div>
+    <h2>Расскажите про вашего эксперта</h2>
+    <p class="lead">Напишите, кто&nbsp;ваш ключевой эксперт и&nbsp;какие вопросы к&nbsp;нему повторяются чаще всего. К&nbsp;Zoom соберём демо-агента на&nbsp;ваших открытых материалах, чтобы разговор шёл о&nbsp;работающей вещи. Zoom 30 минут, оценка бесплатна</p>
+  </div>
+  <div class="lead-grid">
+    <div class="leadbox reveal">
+      <form id="leadForm" novalidate>
+        <div class="lf-row">
+          <div class="lf"><label for="lfName">Как&nbsp;к&nbsp;вам обращаться</label><input id="lfName" name="name" type="text" autocomplete="name" required></div>
+          <div class="lf"><label for="lfContact">Телефон, почта или&nbsp;Telegram</label><input id="lfContact" name="contact" type="text" autocomplete="off" required></div>
+        </div>
+        <div class="lf"><label for="lfCompany">Компания и&nbsp;сфера работы</label><input id="lfCompany" name="company" type="text" autocomplete="organization"></div>
+        <div class="lf"><label for="lfTask">Кто&nbsp;эксперт и&nbsp;какие вопросы повторяются</label><textarea id="lfTask" name="task" rows="2"></textarea></div>
+        <label class="lf-check"><input type="checkbox" id="lfAgree" required>
+          <span>Согласен на&nbsp;обработку персональных данных и&nbsp;принимаю <a href="/privacy" target="_blank" rel="noopener">политику обработки персональных данных</a></span></label>
+        <div class="lf-err" id="lfErr">Заполните имя и&nbsp;контакт, отметьте согласие</div>
+        <button class="btn pri lg" type="submit">Отправить заявку</button>
+      </form>
+      <div class="lf-done" id="lfDone">Открыли письмо в&nbsp;вашей почтовой программе. Отправьте его, и&nbsp;мы&nbsp;ответим в&nbsp;течение рабочего дня. Быстрее всего написать сразу в&nbsp;Telegram: <a href="https://t.me/Anti4ay">@Anti4ay</a></div>
+    </div>
+    <div class="side reveal">
+      <dl>
+        <div class="si"><dt>Первый шаг</dt><dd>Zoom на&nbsp;30 минут с&nbsp;демо-агентом на&nbsp;ваших открытых материалах, бесплатно</dd></div>
+        <div class="si"><dt>Ответ на&nbsp;заявку</dt><dd>В&nbsp;течение рабочего дня</dd></div>
+        <div class="si"><dt>Ступень на&nbsp;старте</dt><dd>Скажите, где вы&nbsp;сейчас по&nbsp;лестнице доверия, и&nbsp;мы&nbsp;посчитаем ближайшую</dd></div>
+        <div class="si"><dt>С&nbsp;вашей стороны</dt><dd>4-6 часов интервью с&nbsp;экспертом за&nbsp;неделю и&nbsp;доступ к&nbsp;его&nbsp;материалам</dd></div>
+        <div class="si"><dt>Напрямую</dt><dd><a class="more" href="https://t.me/Anti4ay" style="margin-top:0">Написать менеджеру в&nbsp;Telegram</a></dd></div>
+      </dl>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <a class="brand" href="/synapt/" aria-label="synapt">
+    <svg viewBox="0 0 869 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/><path d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></svg>
+  </a>
+  <div class="fmeta">
+    <a href="/synapt/#cases">Кейсы</a>
+    <a href="/synapt/#services">Услуги</a>
+    <a href="/synapt/#faq">FAQ</a>
+    <a href="https://t.me/Anti4ay" target="_blank" rel="noopener">Telegram менеджера</a>
+    <a href="/privacy">Политика обработки персональных данных</a><span>© 2026</span>
+  </div>
+</div><div class="wrap"><div class="legal">
+    <div class="lg-col">
+      <div><span>Индивидуальный предприниматель</span>Орешкин Антон Вадимович</div>
+      <div><span>Почта</span><a href="mailto:oreshkin.medialab@outlook.com">oreshkin.medialab@outlook.com</a></div>
+    </div>
+    <div class="lg-col">
+      <div><span>ИНН</span>100123323420</div>
+      <div><span>ОГРНИП</span>324100000000411</div>
+      <div><span>Адрес</span>185014, Республика Карелия, Петрозаводск, переулок Попова, дом 6, квартира 42</div>
+    </div>
+  </div></div></div></footer>
+
+<script>
+(function(){
+  var root=document.documentElement,tgl=document.getElementById('tgl');
+  if(tgl)tgl.addEventListener('click',function(){
+    var next=root.getAttribute('data-theme')==='light'?'dark':'light';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('synapt-theme',next)}catch(e){}
+  });
+  var b=document.getElementById('burger'),sh=document.getElementById('sheet');
+  if(b&&sh){
+    b.addEventListener('click',function(){
+      var open=sh.classList.toggle('open');
+      b.setAttribute('aria-expanded',open?'true':'false');
+    });
+    sh.addEventListener('click',function(e){
+      if(e.target.closest('a')){sh.classList.remove('open');b.setAttribute('aria-expanded','false')}
+    });
+    addEventListener('resize',function(){if(innerWidth>1219){sh.classList.remove('open');b.setAttribute('aria-expanded','false')}});
+  }
+})();
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){[].forEach.call(els,function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.1,rootMargin:'0px 0px -6% 0px'});
+  [].forEach.call(els,function(e){io.observe(e)});
+})();
+(function(){
+  var f=document.getElementById('leadForm');if(!f)return;
+  var err=document.getElementById('lfErr'),done=document.getElementById('lfDone');
+  var name=document.getElementById('lfName'),contact=document.getElementById('lfContact'),agree=document.getElementById('lfAgree');
+  var company=document.getElementById('lfCompany'),task=document.getElementById('lfTask');
+  function clean(){[name,contact].forEach(function(x){x.classList.remove('err')});err.classList.remove('show')}
+  [name,contact].forEach(function(x){x.addEventListener('input',clean)});
+  agree.addEventListener('change',clean);
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var bad=false;
+    if(!name.value.trim()){name.classList.add('err');bad=true}
+    if(!contact.value.trim()){contact.classList.add('err');bad=true}
+    if(!agree.checked)bad=true;
+    if(bad){err.classList.add('show');return}
+    var body='Имя: '+name.value.trim()+'\nКонтакт: '+contact.value.trim()
+      +'\nКомпания: '+(company.value||'').trim()+'\nЭксперт и задача: '+(task.value||'').trim()
+      +'\nИсточник: страница «Цифровая копия эксперта»';
+    var href='mailto:oreshkin.medialab@outlook.com?subject='+encodeURIComponent('Заявка на цифровую копию эксперта')+'&body='+encodeURIComponent(body);
+    f.style.display='none';done.classList.add('show');
+    window.location.href=href;
+  });
+})();
+</script>
+
+<script>
+/* ==========================================================
+   SYNAPT – графика связей, единая система
+   белые и серые узлы, зелёный только на несущих смысл
+   обложка: <canvas id="synFx" data-fx="converge|flow|mesh|contour"></canvas>
+   в блоках: canvas.fx-matrix .fx-layers .fx-signal .fx-multiples .fx-halftone
+   ========================================================== */
+(function () {
+  var DPR = Math.min(devicePixelRatio || 1, 2);
+  /* палитра следует за темой страницы: на светлом узлы тёмные, на тёмном светлые */
+  var WH = '232,238,236', GR = '128,140,136', PH = '121,201,142', A = 1;
+  function applyTheme() {
+    var light = document.documentElement.getAttribute('data-theme') === 'light';
+    WH = light ? '18,22,20' : '232,238,236';
+    GR = light ? '58,68,64' : '128,140,136';
+    PH = light ? '40,124,68' : '121,201,142';
+    A = light ? 2.1 : 1;
+  }
+  applyTheme();
+  new MutationObserver(applyTheme).observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme']});
+  function rnd(s) { var x = Math.sin(s * 127.1) * 43758.5453; return x - Math.floor(x); }
+  function vis(c) { var r = c.getBoundingClientRect(); return r.bottom > -200 && r.top < innerHeight + 200; }
+  /* уважаем системную настройку «меньше движения»: кадр рисуем, время не двигаем */
+  var RMQ = window.matchMedia ? matchMedia('(prefers-reduced-motion: reduce)') : null;
+  var RM = !!(RMQ && RMQ.matches);
+  if (RMQ && RMQ.addEventListener) RMQ.addEventListener('change', function (e) { RM = e.matches; });
+  function RAF(fn) { RM ? setTimeout(function () { requestAnimationFrame(fn); }, 400) : requestAnimationFrame(fn); }
+  function fit(c, ratio) {
+    if (typeof ratio === 'function') ratio = ratio();
+    var r = c.getBoundingClientRect(), W = r.width, H = ratio ? W / ratio : r.height;
+    if (ratio) c.style.height = H + 'px';
+    c.width = W * DPR; c.height = H * DPR;
+    var ctx = c.getContext('2d'); ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    return [ctx, W, H];
+  }
+  function loop(c, draw, ratio) {
+    var st = {};
+    function build() { var f = fit(c, ratio); st.ctx = f[0]; st.W = f[1]; st.H = f[2]; if (st.onbuild) st.onbuild(); }
+    st.rebuild = build;
+    build(); addEventListener('resize', build);
+    var t = 0;
+    (function frame() { RAF(frame); if (!vis(c)) { t++; return; } draw(st, RM ? 0 : t); t++; })();
+    return st;
+  }
+
+  /* ---------- обложка: разрозненные сигналы собираются в нейронную сеть, по ней идёт активация ---------- */
+  function converge(c) {
+    var ctx = c.getContext('2d'), W, H, L = [], edges = [], t = 0;
+    var CYCLE = 1320, P_FLY = .34, P_WIRE = .5;
+    function build() {
+      var r = c.getBoundingClientRect(); W = r.width; H = r.height;
+      c.width = W * DPR; c.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      var narrow = W < 900;
+      // слои как в схеме нейросети: вход, два скрытых, выход
+      var counts = narrow ? [4, 6, 6, 3] : [5, 8, 8, 4];
+      var x0 = narrow ? W * .12 : W * .47, x1 = narrow ? W * .88 : W * .95;
+      var top = narrow ? H * .16 : H * .14, bot = narrow ? H * .58 : H * .86;
+      L = [];
+      for (var li = 0; li < counts.length; li++) {
+        var n = counts[li], col = [];
+        var lx = x0 + (x1 - x0) * (li / (counts.length - 1));
+        var span = (bot - top) * (li === 0 || li === counts.length - 1 ? .72 : 1);
+        var cy = (top + bot) / 2;
+        for (var k = 0; k < n; k++) {
+          var ny = cy - span / 2 + span * (n === 1 ? .5 : k / (n - 1));
+          col.push({
+            x: lx, y: ny,
+            // откуда прилетает: с краёв экрана, каждый по своей дуге
+            sx: lx + (rnd(li * 31 + k) - .5) * W * 1.7,
+            sy: ny + (rnd(li * 17 + k + 5) - .5) * H * 2.2,
+            d: rnd(li * 7 + k) * .5, li: li, k: k,
+            hot: rnd(li * 13 + k + 3) > .76
+          });
+        }
+        L.push(col);
+      }
+      edges = [];
+      for (var i = 0; i < L.length - 1; i++)
+        for (var a = 0; a < L[i].length; a++)
+          for (var b = 0; b < L[i + 1].length; b++) {
+            var w = rnd(i * 101 + a * 13 + b * 7);
+            if (w < .3) continue;                       // не все связи, иначе каша
+            edges.push({a: L[i][a], b: L[i + 1][b], w: w, li: i});
+          }
+    }
+    build(); addEventListener('resize', build);
+    function eOut(p) { return 1 - Math.pow(1 - p, 3); }
+    (function frame() {
+      RAF(frame); if (RM) t = 0;
+      if (c.getBoundingClientRect().bottom < -100) { t++; return; }
+      ctx.clearRect(0, 0, W, H);
+      var tt = (t % CYCLE) / CYCLE;
+      var fade = tt > .94 ? 1 - (tt - .94) / .06 : (tt < .03 ? tt / .03 : 1);
+
+      /* фаза 1: узлы слетаются на свои места в слоях */
+      var nodes = [];
+      L.forEach(function (col) { col.forEach(function (n) {
+        var p = Math.max(0, Math.min(1, (tt - n.d * .1) / (P_FLY - n.d * .1)));
+        var e = eOut(p);
+        nodes.push({n: n, x: n.sx + (n.x - n.sx) * e, y: n.sy + (n.y - n.sy) * e, p: p});
+      }); });
+
+      /* фаза 2: между слоями прорастают связи, слой за слоем */
+      if (tt > P_FLY) {
+        var wire = Math.min(1, (tt - P_FLY) / (P_WIRE - P_FLY));
+        edges.forEach(function (ed) {
+          var lo = Math.max(0, Math.min(1, (wire - ed.li * .16) / .5));
+          if (lo <= 0) return;
+          var gx = ed.a.x + (ed.b.x - ed.a.x) * eOut(lo), gy = ed.a.y + (ed.b.y - ed.a.y) * eOut(lo);
+          ctx.beginPath(); ctx.moveTo(ed.a.x, ed.a.y); ctx.lineTo(gx, gy);
+          ctx.strokeStyle = 'rgba(' + GR + ',' + (.05 + ed.w * .16) * A * fade + ')';
+          ctx.lineWidth = .35 + ed.w * .75; ctx.stroke();
+        });
+      }
+
+      /* фаза 3: по сети идёт активация слева направо, как прямой проход */
+      if (tt > P_WIRE) {
+        var pass = (tt - P_WIRE) / (.94 - P_WIRE);
+        var wave = pass * (L.length + .6) - .3;       // фронт двигается по слоям
+        edges.forEach(function (ed) {
+          var local = wave - ed.li;
+          if (local < 0 || local > 1.5) return;
+          var glow = Math.max(0, 1 - Math.abs(local - .5) * 1.5);
+          if (glow <= .02) return;
+          ctx.beginPath(); ctx.moveTo(ed.a.x, ed.a.y); ctx.lineTo(ed.b.x, ed.b.y);
+          ctx.strokeStyle = 'rgba(' + PH + ',' + glow * ed.w * .5 * A * fade + ')';
+          ctx.lineWidth = .4 + ed.w * 1.1; ctx.stroke();
+          if (local < 1) {
+            var q = Math.min(1, local), px = ed.a.x + (ed.b.x - ed.a.x) * q, py = ed.a.y + (ed.b.y - ed.a.y) * q;
+            ctx.beginPath(); ctx.arc(px, py, 1.3 * ed.w + .5, 0, 7);
+            ctx.fillStyle = 'rgba(' + PH + ',' + glow * .8 * A * fade + ')'; ctx.fill();
+          }
+        });
+      }
+
+      /* узлы поверх связей */
+      nodes.forEach(function (nd) {
+        if (nd.p <= 0) return;
+        var lit = 0;
+        if (tt > P_WIRE) {
+          var pass2 = (tt - P_WIRE) / (.94 - P_WIRE), wave2 = pass2 * (L.length + .6) - .3;
+          lit = Math.max(0, 1 - Math.abs(wave2 - nd.n.li) * 1.6);
+        }
+        var col = (nd.n.hot || lit > .4) ? PH : WH;
+        var r = 2.2 + lit * 2.2 + (nd.n.hot ? .6 : 0);
+        if (lit > .15 || nd.n.hot) {
+          var g = ctx.createRadialGradient(nd.x, nd.y, 0, nd.x, nd.y, r * 5);
+          g.addColorStop(0, 'rgba(' + PH + ',' + (.12 + lit * .34) * fade + ')');
+          g.addColorStop(1, 'rgba(' + PH + ',0)');
+          ctx.fillStyle = g; ctx.beginPath(); ctx.arc(nd.x, nd.y, r * 5, 0, 7); ctx.fill();
+        }
+        ctx.beginPath(); ctx.arc(nd.x, nd.y, r, 0, 7);
+        ctx.fillStyle = 'rgba(' + col + ',' + Math.min(1, (nd.p < 1 ? .3 + nd.p * .4 : (.42 + lit * .5)) * A) * fade + ')';
+        ctx.fill();
+        // пока узел летит, за ним тянется след
+        if (nd.p < 1 && nd.p > .04) {
+          ctx.beginPath(); ctx.moveTo(nd.x, nd.y);
+          ctx.lineTo(nd.x + (nd.n.sx - nd.x) * .1, nd.y + (nd.n.sy - nd.y) * .1);
+          ctx.strokeStyle = 'rgba(' + GR + ',' + .22 * fade + ')'; ctx.lineWidth = 1; ctx.stroke();
+        }
+      });
+      t++;
+    })();
+  }
+
+  /* ---------- обложка: поток по руслу, врозь и собирается ---------- */
+  function flow(c) {
+    var ctx = c.getContext('2d'), W, H, ps = [], t = 0;
+    function build() {
+      var r = c.getBoundingClientRect(); W = r.width; H = r.height;
+      c.width = W * DPR; c.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      ps = []; var n = W < 700 ? 80 : 200;
+      for (var i = 0; i < n; i++) ps.push({x: rnd(i) * W, y: rnd(i + 100) * H, sp: .5 + rnd(i + 7) * 1.2, life: rnd(i + 3) * 220, hot: rnd(i + 55) > .88});
+    }
+    build(); addEventListener('resize', build);
+    function ang(x, y) { return Math.sin(x * .0055 + y * .0035) * .5 + (H * .52 - y) / H * 1.55; }
+    (function frame() {
+      RAF(frame); if (RM) t = 0;
+      if (c.getBoundingClientRect().bottom < -100) { t++; return; }
+      ctx.clearRect(0, 0, W, H);
+      ps.forEach(function (p) {
+        var a = ang(p.x, p.y), nx = p.x + Math.cos(a) * p.sp * 1.7, ny = p.y + Math.sin(a) * p.sp;
+        var mid = 1 - Math.min(1, Math.abs(p.y - H * .52) / (H * .44));
+        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(nx, ny);
+        ctx.strokeStyle = p.hot ? 'rgba(' + PH + ',' + (.14 + mid * .38) + ')' : 'rgba(' + GR + ',' + (.07 + mid * .2) + ')';
+        ctx.lineWidth = .6 + mid * 1.2; ctx.lineCap = 'round'; ctx.stroke();
+        p.x = nx; p.y = ny; p.life++;
+        if (p.x > W + 12 || p.life > 340) { p.x = -12; p.y = Math.random() * H; p.life = 0; }
+      });
+      t++;
+    })();
+  }
+
+  /* ---------- обложка: сетка узлов с волной возбуждения ---------- */
+  function meshCover(c) {
+    var ctx = c.getContext('2d'), W, H, nodes = [], links = [], t = 0;
+    function build() {
+      var r = c.getBoundingClientRect(); W = r.width; H = r.height;
+      c.width = W * DPR; c.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      var step = W < 700 ? 40 : 52; nodes = []; links = [];
+      var cols = Math.ceil(W / step) + 1, rows = Math.ceil(H / step) + 1;
+      for (var j = 0; j < rows; j++) for (var i = 0; i < cols; i++) {
+        var k = j * cols + i;
+        nodes.push({x: i * step + (rnd(k) - .5) * step * .6, y: j * step + (rnd(k + 77) - .5) * step * .6,
+          i: i, j: j, hot: rnd(k + 300) > .9, ph: rnd(k + 5) * 6.28});
+      }
+      nodes.forEach(function (a) { nodes.forEach(function (b) {
+        if (b.j < a.j || (b.j === a.j && b.i <= a.i)) return;
+        if (Math.abs(a.i - b.i) > 1 || Math.abs(a.j - b.j) > 1) return;
+        if (rnd(a.i * 13 + a.j * 29 + b.i * 7 + b.j * 3) > .58) return;
+        links.push([a, b]);
+      }); });
+    }
+    build(); addEventListener('resize', build);
+    (function frame() {
+      RAF(frame); if (RM) t = 0;
+      if (c.getBoundingClientRect().bottom < -100) { t++; return; }
+      ctx.clearRect(0, 0, W, H);
+      var tt = t * .012, front = ((t * 1.7) % (W + 460)) - 230;
+      links.forEach(function (L) {
+        var mx = (L[0].x + L[1].x) / 2, near = Math.max(0, 1 - Math.abs(mx - front) / 200);
+        ctx.beginPath(); ctx.moveTo(L[0].x, L[0].y); ctx.lineTo(L[1].x, L[1].y);
+        ctx.strokeStyle = near > .38 ? 'rgba(' + PH + ',' + (.07 + near * .28) + ')' : 'rgba(' + GR + ',' + (.07 + near * .1) + ')';
+        ctx.lineWidth = .7 + near * .9; ctx.stroke();
+      });
+      nodes.forEach(function (n) {
+        var near = Math.max(0, 1 - Math.abs(n.x - front) / 180), br = .55 + .45 * Math.sin(tt + n.ph);
+        ctx.beginPath(); ctx.arc(n.x, n.y, 1.5 + near * 2 + (n.hot ? .8 : 0), 0, 7);
+        ctx.fillStyle = (n.hot || near > .62) ? 'rgba(' + PH + ',' + ((n.hot ? .75 : .3) * br + near * .4) + ')'
+                                              : 'rgba(' + WH + ',' + (.16 + near * .32) * br + ')';
+        ctx.fill();
+      });
+      t++;
+    })();
+  }
+
+  /* ---------- обложка: изолинии рельефа ---------- */
+  function contour(c) {
+    var ctx = c.getContext('2d'), W, H, t = 0;
+    function build() { var r = c.getBoundingClientRect(); W = r.width; H = r.height;
+      c.width = W * DPR; c.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0); }
+    build(); addEventListener('resize', build);
+    function field(x, y, tt) {
+      return Math.sin(x * .0085 + tt) * Math.cos(y * .012 - tt * .6)
+           + Math.sin((x + y) * .0055 + tt * .45) * .85
+           + Math.cos(Math.hypot(x - W * .72, (y - H * .45) * 1.4) * .0095 - tt * .8) * 1.05;
+    }
+    (function frame() {
+      RAF(frame); if (RM) t = 0;
+      if (c.getBoundingClientRect().bottom < -100) { t++; return; }
+      ctx.clearRect(0, 0, W, H);
+      var tt = t * .0032, st = 12;
+      var nx = Math.ceil(W / st) + 1, ny = Math.ceil(H / st) + 1, g = new Float32Array(nx * ny), i, j;
+      for (j = 0; j < ny; j++) for (i = 0; i < nx; i++) g[j * nx + i] = field(i * st, j * st, tt);
+      for (var lv = -2.4; lv <= 2.4; lv += .3) {
+        var key = Math.abs(lv) < .32;
+        ctx.beginPath();
+        for (j = 0; j < ny - 1; j++) for (i = 0; i < nx - 1; i++) {
+          var a = g[j*nx+i], b = g[j*nx+i+1], d = g[(j+1)*nx+i+1], e = g[(j+1)*nx+i];
+          var x0 = i * st, y0 = j * st, pts = [];
+          if ((a < lv) !== (b < lv)) pts.push([x0 + st * (lv - a) / (b - a), y0]);
+          if ((b < lv) !== (d < lv)) pts.push([x0 + st, y0 + st * (lv - b) / (d - b)]);
+          if ((e < lv) !== (d < lv)) pts.push([x0 + st * (lv - e) / (d - e), y0 + st]);
+          if ((a < lv) !== (e < lv)) pts.push([x0, y0 + st * (lv - a) / (e - a)]);
+          if (pts.length >= 2) { ctx.moveTo(pts[0][0], pts[0][1]); ctx.lineTo(pts[1][0], pts[1][1]); }
+          if (pts.length === 4) { ctx.moveTo(pts[2][0], pts[2][1]); ctx.lineTo(pts[3][0], pts[3][1]); }
+        }
+        ctx.strokeStyle = key ? 'rgba(' + PH + ',.34)' : 'rgba(' + GR + ',.2)';
+        ctx.lineWidth = key ? 1.4 : .85; ctx.lineCap = 'round'; ctx.stroke();
+      }
+      t++;
+    })();
+  }
+
+  var COVER = {converge: converge, flow: flow, mesh: meshCover, contour: contour};
+  var cov = document.getElementById('synFx');
+  if (cov) (COVER[cov.dataset.fx] || converge)(cov);
+
+  /* ---------- блок: матрица связей, круглые ячейки ---------- */
+  [].forEach.call(document.querySelectorAll('canvas.fx-matrix'), function (c) {
+    var N = 14, cells = [];
+    var st = loop(c, function (s, t) {
+      var ctx = s.ctx, W = s.W, H = s.H;
+      ctx.clearRect(0, 0, W, H);
+      var side = Math.min(W, H) - 28, cs = side / N, ox = (W - side) / 2, oy = (H - side) / 2;
+      cells.forEach(function (cl) {
+        var v = cl.v * (.72 + .28 * Math.sin(t * cl.sp + cl.ph));
+        if (v < .05) return;
+        var x = ox + cl.j * cs + cs / 2, y = oy + cl.i * cs + cs / 2, r = cs * .42 * (.35 + v * .65);
+        ctx.beginPath(); ctx.arc(x, y, r, 0, 7);
+        ctx.fillStyle = cl.bridge ? 'rgba(' + PH + ',' + Math.min(1, v * 1.1) + ')'
+          : cl.diag ? 'rgba(' + WH + ',' + v * .6 + ')' : 'rgba(' + GR + ',' + v * .62 + ')';
+        ctx.fill();
+        if (cl.bridge && v > .6) {
+          var g = ctx.createRadialGradient(x, y, 0, x, y, r * 3.4);
+          g.addColorStop(0, 'rgba(' + PH + ',.2)'); g.addColorStop(1, 'rgba(' + PH + ',0)');
+          ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, r * 3.4, 0, 7); ctx.fill();
+        }
+      });
+      ctx.strokeStyle = 'rgba(150,160,155,.12)'; ctx.lineWidth = 1;
+      ctx.strokeRect(ox - 3, oy - 3, side + 6, side + 6);
+    }, 1);
+    st.onbuild = function () {
+      N = innerWidth < 700 ? 11 : 15; cells = [];
+      var grp = function (i) { return Math.floor(i / (N / 3)); };
+      for (var i = 0; i < N; i++) for (var j = 0; j < N; j++) {
+        var noise = rnd(i * 41 + j * 17), same = grp(i) === grp(j);
+        var v = i === j ? .95 : (same ? .3 + noise * .55 : (noise > .84 ? .45 + noise * .45 : noise * .16));
+        cells.push({i: i, j: j, v: v, bridge: !same && v > .4, diag: i === j,
+          ph: rnd(i * 3 + j * 11) * 6.28, sp: .008 + rnd(i + j * 5) * .016});
+      }
+    };
+    st.onbuild(); st.rebuild();
+  });
+
+  /* ---------- блок: слои системы, сигнал идёт снизу вверх ---------- */
+  [].forEach.call(document.querySelectorAll('canvas.fx-layers'), function (c) {
+    var names = (c.dataset.layers || 'люди,интерфейс,модель,данные').split(',');
+    loop(c, function (s, t) {
+      var ctx = s.ctx, W = s.W, H = s.H;
+      ctx.clearRect(0, 0, W, H);
+      var narrow = W < 560;
+      var cx = W * (narrow ? .33 : .46), cy = H * .5, half = Math.min(W * .21, 190), hh = half * .52, gap = H / (names.length + 1.1);
+      ctx.font = (narrow ? 10 : 11) + 'px "JetBrains Mono", ui-monospace, monospace';
+      for (var i = 0; i < names.length; i++) {
+        var y = cy + (i - (names.length - 1) / 2) * gap + Math.sin(t * .012 + i * 1.1) * 4;
+        ctx.beginPath();
+        ctx.moveTo(cx, y - hh); ctx.lineTo(cx + half, y); ctx.lineTo(cx, y + hh); ctx.lineTo(cx - half, y); ctx.closePath();
+        ctx.fillStyle = 'rgba(' + GR + ',.07)'; ctx.fill();
+        ctx.strokeStyle = 'rgba(' + GR + ',.5)'; ctx.lineWidth = 1; ctx.stroke();
+        var nm = names[i].trim(), tw = ctx.measureText(nm).width;
+        ctx.fillStyle = 'rgba(' + GR + ',.95)';
+        ctx.fillText(nm, Math.max(4, Math.min(cx + half + 16, W - tw - 10)), y + 4);
+        for (var k = 0; k < 3; k++) {
+          var a = (k / 3) * 6.28 + i * .8 + t * .004;
+          ctx.beginPath(); ctx.arc(cx + Math.cos(a) * half * .55, y + Math.sin(a) * hh * .5, 1.9, 0, 7);
+          ctx.fillStyle = 'rgba(' + WH + ',.5)'; ctx.fill();
+        }
+      }
+      var yTop = cy - (names.length - 1) / 2 * gap, yBot = cy + (names.length - 1) / 2 * gap;
+      for (var m = 0; m < 3; m++) {
+        var x = cx + (m - 1) * half * .48;
+        ctx.beginPath(); ctx.moveTo(x, yTop); ctx.lineTo(x, yBot);
+        ctx.strokeStyle = 'rgba(' + GR + ',.26)'; ctx.lineWidth = 1; ctx.stroke();
+        var p = ((t * .006 + m * .33) % 1), py = yBot - (yBot - yTop) * p;
+        var g = ctx.createRadialGradient(x, py, 0, x, py, 13);
+        g.addColorStop(0, 'rgba(' + PH + ',.5)'); g.addColorStop(1, 'rgba(' + PH + ',0)');
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, py, 13, 0, 7); ctx.fill();
+        ctx.beginPath(); ctx.arc(x, py, 1.8, 0, 7); ctx.fillStyle = 'rgba(' + PH + ',.9)'; ctx.fill();
+      }
+    }, function () { return innerWidth < 700 ? 1.15 : innerWidth < 1081 ? 2.3 : 1.45; });
+  });
+
+  /* ---------- блок: сигнал до и после ---------- */
+  [].forEach.call(document.querySelectorAll('canvas.fx-signal'), function (c) {
+    var la = c.dataset.a || 'было', lb = c.dataset.b || 'стало';
+    loop(c, function (s, t) {
+      var ctx = s.ctx, W = s.W, H = s.H, x;
+      ctx.clearRect(0, 0, W, H);
+      var tt = t * .015, yA = H * .32, yB = H * .72, amp = H * .17;
+      ctx.strokeStyle = 'rgba(' + GR + ',.06)'; ctx.lineWidth = 1;
+      for (x = 0; x < W; x += 64) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
+      ctx.font = '11px "JetBrains Mono", ui-monospace, monospace';
+      ctx.fillStyle = 'rgba(' + GR + ',.95)';
+      ctx.fillText(la, 16, yA - amp - 12); ctx.fillText(lb, 16, yB - amp * .32 - 12);
+      ctx.beginPath();
+      /* шум ползёт плавно: между соседними зёрнами интерполируем, иначе линия дёргается раз в шесть кадров */
+      var sf = t / 6, s0 = Math.floor(sf), sm = sf - s0; sm = sm * sm * (3 - 2 * sm);
+      for (x = 0; x <= W; x += 2) {
+        var xi = Math.floor(x / 2);
+        var r0 = rnd(xi + s0), r1 = rnd(xi + s0 + 1);
+        var n = Math.sin(x * .09 + tt) * .5 + Math.sin(x * .31 - tt * 1.7) * .35 + Math.sin(x * .73 + tt * 2.3) * .3
+              + (r0 + (r1 - r0) * sm - .5) * .55;
+        var y = yA + n * amp; x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = 'rgba(' + GR + ',.5)'; ctx.lineWidth = 1.1; ctx.stroke();
+      ctx.beginPath();
+      for (x = 0; x <= W; x += 2) { var y2 = yB + Math.sin(x * .045 + tt * .8) * amp * .27; x === 0 ? ctx.moveTo(x, y2) : ctx.lineTo(x, y2); }
+      ctx.strokeStyle = 'rgba(' + PH + ',.72)'; ctx.lineWidth = 1.8; ctx.stroke();
+      var px = (t * 2.6) % (W + 130) - 65;
+      if (px > 0 && px < W) {
+        var py = yB + Math.sin(px * .045 + tt * .8) * amp * .27;
+        var g = ctx.createRadialGradient(px, py, 0, px, py, 20);
+        g.addColorStop(0, 'rgba(' + PH + ',.45)'); g.addColorStop(1, 'rgba(' + PH + ',0)');
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(px, py, 20, 0, 7); ctx.fill();
+      }
+    }, function () { return innerWidth < 700 ? 1.4 : 3; });
+  });
+
+  /* ---------- блок: малые кратные, разные сети рядом ---------- */
+  [].forEach.call(document.querySelectorAll('canvas.fx-multiples'), function (c) {
+    var nets = [];
+    var st = loop(c, function (s, t) {
+      var ctx = s.ctx, W = s.W, H = s.H;
+      ctx.clearRect(0, 0, W, H);
+      nets.forEach(function (nt) {
+        nt.nodes.forEach(function (nd) {
+          ctx.beginPath(); ctx.moveTo(nt.cx, nt.cy); ctx.lineTo(nd.x, nd.y);
+          ctx.strokeStyle = 'rgba(' + GR + ',.38)'; ctx.lineWidth = .9; ctx.stroke();
+          var p = (t * nt.sp + nd.ph) % 1;
+          ctx.beginPath(); ctx.arc(nd.x + (nt.cx - nd.x) * p, nd.y + (nt.cy - nd.y) * p, 2, 0, 7);
+          ctx.fillStyle = 'rgba(' + PH + ',' + .8 * Math.sin(p * Math.PI) + ')'; ctx.fill();
+          ctx.beginPath(); ctx.arc(nd.x, nd.y, 2.3, 0, 7); ctx.fillStyle = 'rgba(' + WH + ',.5)'; ctx.fill();
+        });
+        ctx.beginPath(); ctx.arc(nt.cx, nt.cy, 4.2, 0, 7); ctx.fillStyle = 'rgba(' + PH + ',.9)'; ctx.fill();
+      });
+    }, innerWidth < 700 ? 1.1 : 3.2);
+    st.onbuild = function () {
+      var W = st.W, H = st.H, cols = innerWidth < 700 ? 2 : 4, rows = innerWidth < 700 ? 2 : 1;
+      nets = [];
+      for (var k = 0; k < 4; k++) {
+        var cw = W / cols, ch = H / rows, cx = (k % cols) * cw + cw / 2, cy = Math.floor(k / cols) * ch + ch / 2;
+        var R = Math.min(cw, ch) * .3, cnt = 4 + Math.floor(rnd(k * 13) * 3), nodes = [];
+        for (var i = 0; i < cnt; i++) {
+          var a = (i / cnt) * 6.28 + rnd(k * 7 + i) * 1.1, rr = R * (.55 + rnd(k * 5 + i) * .6);
+          nodes.push({x: cx + Math.cos(a) * rr, y: cy + Math.sin(a) * rr, ph: rnd(k * 3 + i) * 6.28});
+        }
+        nets.push({cx: cx, cy: cy, nodes: nodes, sp: .011 + rnd(k) * .008});
+      }
+    };
+    st.onbuild(); st.rebuild();
+  });
+
+  /* ---------- блок: плотность, растр из точек ---------- */
+  [].forEach.call(document.querySelectorAll('canvas.fx-halftone'), function (c) {
+    loop(c, function (s, t) {
+      var ctx = s.ctx, W = s.W, H = s.H;
+      ctx.clearRect(0, 0, W, H);
+      var tt = t * .004, g = 15;
+      for (var y = g; y < H; y += g) for (var x = g; x < W; x += g) {
+        var v = (Math.sin(x * .012 + tt) * Math.cos(y * .017 - tt * .8) + 1) / 2;
+        var dist = 1 - Math.min(1, Math.hypot(x - W * .5, (y - H * .5) * 1.7) / (W * .5));
+        var m = Math.max(0, v * .55 + dist * .7);
+        if (m < .07) continue;
+        ctx.beginPath(); ctx.arc(x, y, m * 3.4, 0, 7);
+        ctx.fillStyle = m > .68 ? 'rgba(' + PH + ',' + Math.min(1, m * .95 * A) + ')' : 'rgba(' + GR + ',' + Math.min(1, m * .7 * A) + ')';
+        ctx.fill();
+      }
+    }, innerWidth < 700 ? 1.5 : 3);
+  });
+
+  /* ---------- блок: нейронная сетка ---------- */
+  [].forEach.call(document.querySelectorAll('canvas.fx-mesh'), function (c) {
+    var nodes = [], links = [];
+    var st = loop(c, function (s, t) {
+      var ctx = s.ctx, W = s.W, H = s.H;
+      ctx.clearRect(0, 0, W, H);
+      var tt = t * .012, front = ((t * 1.6) % (W + 420)) - 210;
+      links.forEach(function (L) {
+        var mx = (L[0].x + L[1].x) / 2, near = Math.max(0, 1 - Math.abs(mx - front) / 190);
+        ctx.beginPath(); ctx.moveTo(L[0].x, L[0].y); ctx.lineTo(L[1].x, L[1].y);
+        ctx.strokeStyle = near > .35 ? 'rgba(' + PH + ',' + (.08 + near * .3) + ')' : 'rgba(' + GR + ',' + (.09 + near * .12) + ')';
+        ctx.lineWidth = .7 + near * .9; ctx.stroke();
+      });
+      nodes.forEach(function (n) {
+        var near = Math.max(0, 1 - Math.abs(n.x - front) / 170), br = .55 + .45 * Math.sin(tt + n.ph);
+        ctx.beginPath(); ctx.arc(n.x, n.y, 1.5 + near * 2 + (n.hot ? .8 : 0), 0, 7);
+        ctx.fillStyle = (n.hot || near > .6) ? 'rgba(' + PH + ',' + ((n.hot ? .8 : .34) * br + near * .4) + ')'
+                                             : 'rgba(' + WH + ',' + (.18 + near * .35) * br + ')';
+        ctx.fill();
+      });
+    }, innerWidth < 700 ? 2.6 : 5.4);
+    st.onbuild = function () {
+      var W = st.W, H = st.H, step = innerWidth < 700 ? 30 : 36;
+      nodes = []; links = [];
+      var cols = Math.ceil(W / step) + 1, rows = Math.ceil(H / step) + 1;
+      for (var j = 0; j < rows; j++) for (var i = 0; i < cols; i++) {
+        var k = j * cols + i;
+        nodes.push({x: i * step + (rnd(k) - .5) * step * .55, y: j * step + (rnd(k + 77) - .5) * step * .55,
+          i: i, j: j, hot: rnd(k + 300) > .88, ph: rnd(k + 5) * 6.28});
+      }
+      nodes.forEach(function (a) { nodes.forEach(function (b) {
+        if (b.j < a.j || (b.j === a.j && b.i <= a.i)) return;
+        if (Math.abs(a.i - b.i) > 1 || Math.abs(a.j - b.j) > 1) return;
+        if (rnd(a.i * 13 + a.j * 29 + b.i * 7 + b.j * 3) > .62) return;
+        links.push([a, b]);
+      }); });
+    };
+    st.onbuild(); st.rebuild();
+  });
+})();
+
+</script>
+</body>
+</html>
