@@ -275,17 +275,14 @@ h3{font-size:21px;font-weight:620;letter-spacing:-.01em;line-height:1.25}
 .faq .ans{padding:0 2px 24px;font-size:15px;line-height:1.66;color:var(--text-2);max-width:60ch}
 
 /* ---------- смежные материалы: строки-карточки, тип слева, название крупно ---------- */
-.nxt{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
-  border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
-.nxt a{display:flex;flex-direction:column;gap:9px;padding:22px 22px 24px;background:var(--bg);
-  min-height:96px;justify-content:center;transition:background var(--dur) var(--ease)}
-.nxt a:hover{background:var(--surface)}
-.nxt .nk{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;color:var(--text-dim);
-  font-feature-settings:"case" 1,"liga" 0,"calt" 0}
-.nxt .nt{font-size:16px;font-weight:560;color:var(--text);line-height:1.35}
-.nxt a:hover .nt{color:var(--accent-txt)}
-@media(max-width:1080px){.nxt{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.nxt{grid-template-columns:1fr}.nxt a{min-height:0;padding:18px 20px}}
+
+
+
+
+
+
+@media(max-width:1080px){}
+@media(max-width:560px){}
 /* ---------- форма: поле это линия ---------- */
 .lead-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:start}
 .leadbox{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(24px,3.4vw,34px);
@@ -479,6 +476,19 @@ footer .brand svg{height:22px}
 .lf-check input[type=checkbox]{flex:none;align-self:center;margin:0}
 .lf-check span{line-height:1.5}
 .lf-done.fail b{color:var(--danger,#c2544d)}
+
+/* блок смежного: ровная сетка три на три, одинаковые ячейки без пустот */
+.nxt{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+.nxt a{display:flex;flex-direction:column;gap:9px;padding:22px 24px;background:var(--bg);
+  min-height:96px;justify-content:center;transition:background .22s var(--ease)}
+.nxt a:hover{background:var(--surface)}
+.nxt .nk{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;color:var(--text-dim);
+  font-feature-settings:"case" 1}
+.nxt .nt{font-size:16px;font-weight:560;color:var(--text);line-height:1.35}
+.nxt a:hover .nt{color:var(--accent-txt)}
+@media(max-width:900px){.nxt{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.nxt{grid-template-columns:1fr}.nxt a{min-height:0;padding:18px 20px}}
 </style>
 </head>
 <body>
@@ -771,19 +781,20 @@ footer .brand svg{height:22px}
   </div>
 </div></section>
 
-<section id="related"><div class="wrap">
+<section id="related" class="wrap"><div class="wrap">
   <div class="sec-head reveal">
-    <div class="eyebrow"><span class="n">12</span> Куда&nbsp;дальше</div>
+    <div class="eyebrow"><span class="n">12</span> Другие услуги и&nbsp;кейсы студии</div>
   </div>
   <div class="nxt reveal">
-    <a href="/synapt/checkup/"><span class="nk">услуга</span><span class="nt">AI-чекап бизнеса</span></a>
-    <a href="/synapt/desant/"><span class="nk">услуга</span><span class="nt">AI-десант</span></a>
-    <a href="/synapt/prodazh/"><span class="nk">услуга</span><span class="nt">AI-продавец в&nbsp;переписке</span></a>
-    <a href="/synapt/agent/"><span class="nk">продукт</span><span class="nt">AI-советник для&nbsp;бизнеса</span></a>
-    <a href="/synapt/safe/"><span class="nk">контур</span><span class="nt">Безопасность данных</span></a>
-    <a href="/synapt/globaldent/"><span class="nk">кейс</span><span class="nt">GlobalDent</span></a>
     <a href="/synapt/innorto/"><span class="nk">кейс</span><span class="nt">INNORTO</span></a>
-    <a href="/synapt/"><span class="nk">студия</span><span class="nt">Все&nbsp;услуги Synapt</span></a>
+    <a href="/synapt/globaldent/"><span class="nk">кейс</span><span class="nt">GlobalDent</span></a>
+    <a href="/synapt/desant/"><span class="nk">блок системы</span><span class="nt">AI-десант</span></a>
+    <a href="/synapt/safe/"><span class="nk">блок системы</span><span class="nt">Безопасный слой</span></a>
+    <a href="/synapt/prodazh/"><span class="nk">блок системы</span><span class="nt">AI-продавец в&nbsp;переписке</span></a>
+    <a href="/synapt/checkup/"><span class="nk">услуга</span><span class="nt">AI-чекап бизнеса</span></a>
+    <a href="/synapt/system/"><span class="nk">продукт</span><span class="nt">AI-система для&nbsp;бизнеса</span></a>
+    <a href="/synapt/agent/"><span class="nk">продукт</span><span class="nt">AI-советник для&nbsp;бизнеса</span></a>
+    <a href="https://automyai.ru"><span class="nk">обучение</span><span class="nt">Automy AI</span></a>
   </div>
 </div></section>
 
