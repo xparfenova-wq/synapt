@@ -110,7 +110,9 @@ svg{display:block}
 .btn.lg{font-size:16px;padding:14px 26px;border-radius:var(--r-md)}
 
 .nb{white-space:nowrap}
-.morelink{display:inline-block;margin-top:16px;font-size:13.5px;font-weight:560;color:var(--accent-txt);border-bottom:1px solid var(--line-accent);padding-bottom:1px}
+/* во flex-колонке ссылка растягивалась на всю карточку и подчёркивание уезжало
+   на всю ширину: align-self держит её по длине слова */
+.morelink{display:inline-block;align-self:flex-start;width:fit-content;margin-top:16px;font-size:13.5px;font-weight:560;color:var(--accent-txt);border-bottom:1px solid var(--line-accent);padding-bottom:1px}
 .morelink:hover{border-bottom-color:var(--accent-txt)}
 /* ---------- reveal ---------- */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.22,.7,.3,1),transform .7s cubic-bezier(.22,.7,.3,1)}
@@ -194,10 +196,10 @@ h3{font-size:21px;font-weight:620;letter-spacing:-.01em;line-height:1.25}
 .cc-tag{font-family:var(--mono);font-size:11px;letter-spacing:.045em;color:var(--accent-text);
   border:1px solid rgba(121,201,142,.3);padding:5px 11px;border-radius:var(--r-pill)}
 .cc-ind{font-family:var(--mono);font-size:11px;color:var(--text-dim)}
-/* высота заголовка держит карточки в одну линию, но текст прижат к низу,
-   иначе под коротким заголовком зияла пустота перед строкой клиента */
+/* высота заголовка держит карточки в одну линию.
+   flex тут применять нельзя: он разбивает строку заголовка на отдельные блоки */
 .ccard h3{font-size:19px;letter-spacing:-.015em;font-weight:620;line-height:1.28;
-  min-height:74px;margin-bottom:4px;display:flex;align-items:flex-end}
+  min-height:52px;margin-bottom:10px}
 .cc-client{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--text-dim);margin:0 0 14px}
 .cc-task{font-size:14.5px;color:var(--text-muted);line-height:1.55;min-height:66px;margin-bottom:2px}
 .cc-fig{border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;background:var(--bg-deep);height:128px;
