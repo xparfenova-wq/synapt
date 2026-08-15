@@ -7,6 +7,17 @@
 <meta name="theme-color" content="#f3efe9" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#16120f" media="(prefers-color-scheme: dark)">
 <title>Цифровой Антон, AI-копия наставника</title>
+<meta name="description" content="Цифровая копия Антона Орешкина: отвечает его&nbsp;методологией между сессиями наставничества">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Антон Орешкин">
+<meta property="og:title" content="Цифровой Антон, AI-копия наставника">
+<meta property="og:description" content="Отвечает вашей методологией между сессиями: разбор недели, план и&nbsp;метрики">
+<meta property="og:url" content="https://anton-digital-twin.vercel.app">
+<meta property="og:image" content="https://anton-digital-twin.vercel.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://anton-digital-twin.vercel.app">
 <meta name="description" content="AI-копия наставника Антона Орешкина: разбирает неделю, отвечает на&nbsp;вопросы между сессиями и&nbsp;готовит материал к&nbsp;живой встрече">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -388,6 +399,7 @@ footer .flinks a:hover{color:var(--accent)}
   a.btn,.btn.ghost,.btn.pri{min-height:44px}
   .rel-card{min-height:44px}
 }
+.lf-done.fail b{color:var(--danger,#c2544d)}
 </style>
 </head>
 <body>
@@ -526,7 +538,7 @@ footer .flinks a:hover{color:var(--accent)}
 <section class="s-price" id="price"><div class="container">
   <div class="head reveal">
     <div class="label">Доступ</div>
-    <h2>В&nbsp;программе копия идёт без доплаты, отдельно стоит 4&#8239;900&nbsp;руб. в&nbsp;месяц</h2>
+    <h2>В&nbsp;программе копия идёт без доплаты, отдельно стоит 4&#8239;900&nbsp;₽ в&nbsp;месяц</h2>
     <p class="lead">В&nbsp;наставничестве копия держит темп между сессиями. Подписка даёт ту&nbsp;же&nbsp;методологию без живых встреч со&nbsp;мной</p>
   </div>
   <div class="prices">
@@ -536,8 +548,8 @@ footer .flinks a:hover{color:var(--accent)}
       <div class="sum">Без доплаты</div>
       <div class="per">в&nbsp;тарифах на&nbsp;3 и&nbsp;6 месяцев</div>
       <ul>
-        <li>Входит в&nbsp;тарифы 59&nbsp;тыс.&nbsp;руб. за&nbsp;3&nbsp;месяца и&nbsp;99&nbsp;тыс.&nbsp;руб. за&nbsp;6&nbsp;месяцев</li>
-        <li>К&nbsp;месячному тарифу 25&nbsp;тыс.&nbsp;руб. доплата 5&nbsp;тыс.&nbsp;руб. в&nbsp;месяц</li>
+        <li>Входит в&nbsp;тарифы 59&nbsp;тыс.&nbsp;₽ за&nbsp;3&nbsp;месяца и&nbsp;99&nbsp;тыс.&nbsp;₽ за&nbsp;6&nbsp;месяцев</li>
+        <li>К&nbsp;месячному тарифу 25&nbsp;тыс.&nbsp;₽ доплата 5&nbsp;тыс.&nbsp;₽ в&nbsp;месяц</li>
         <li>Держит темп между сессиями: разбор недели, план, метрики</li>
         <li>Готовит материал к&nbsp;каждой живой встрече со&nbsp;мной</li>
         <li>Знает контекст: дорожную карту, цели, историю сессий</li>
@@ -547,8 +559,8 @@ footer .flinks a:hover{color:var(--accent)}
     <div class="price reveal">
       <span class="tag alt">Вариант&nbsp;2</span>
       <h3>Отдельная подписка</h3>
-      <div class="sum">4&#8239;900 руб.</div>
-      <div class="per">в&nbsp;месяц, или&nbsp;11&#8239;900&nbsp;руб. за&nbsp;3&nbsp;месяца</div>
+      <div class="sum">4&#8239;900 ₽</div>
+      <div class="per">в&nbsp;месяц, или&nbsp;11&#8239;900&nbsp;₽ за&nbsp;3&nbsp;месяца</div>
       <ul>
         <li>Вся методология и&nbsp;мой тон, живые сессии сюда не&nbsp;входят</li>
         <li>Пятая часть от&nbsp;месячного тарифа наставничества</li>
@@ -603,7 +615,7 @@ footer .flinks a:hover{color:var(--accent)}
       <div class="lf"><label for="lfStage">Класс, курс или&nbsp;чем занимаешься</label><input id="lfStage" name="stage" type="text" placeholder="11 класс, 2 курс, работаю"></div>
       <div class="lf"><label for="lfGoal">Цель в&nbsp;двух словах</label><textarea id="lfGoal" name="goal" rows="3" placeholder="Куда хочешь поступить или&nbsp;что&nbsp;хочешь изменить"></textarea></div>
       <label class="lf-check"><input type="checkbox" id="lfAgree" required>
-        <span>Согласен на&nbsp;обработку персональных данных и&nbsp;принимаю <a href="/privacy" target="_blank" rel="noopener">политику обработки персональных данных</a></span></label>
+        <span>Согласен на&nbsp;обработку персональных данных и&nbsp;принимаю <a href="/synapt/twin/privacy/" target="_blank" rel="noopener">политику обработки персональных данных</a></span></label>
       <div class="lf-err" id="lfErr">Заполни имя, контакт и&nbsp;отметь согласие</div>
       <button class="btn btn-primary" type="submit">Отправить заявку в&nbsp;Telegram</button>
       <div class="lf-hint">Кнопка соберёт заявку в&nbsp;сообщение и&nbsp;откроет диалог со&nbsp;мной. Если Telegram не&nbsp;установлен, текст останется у&nbsp;тебя в&nbsp;буфере обмена</div>
@@ -620,7 +632,7 @@ footer .flinks a:hover{color:var(--accent)}
       <a href="https://oreshkin.me">oreshkin.me</a>
       <a href="https://t.me/antonoreshkin">Telegram</a>
       <a href="#price">Доступ</a>
-      <a href="/privacy">Политика данных</a>
+      <a href="/synapt/twin/privacy/">Политика данных</a>
     </div>
   </div>
   <div class="fnote">Часть программы наставничества Антона Орешкина. В&nbsp;интерфейсе всегда подписано, что&nbsp;отвечает копия</div>
@@ -675,6 +687,11 @@ footer .flinks a:hover{color:var(--accent)}
     if(goal.value.trim())lines.push('Цель: '+goal.value.trim());
     var text=lines.join('\n');
     try{if(navigator.clipboard)navigator.clipboard.writeText(text)}catch(x){}
+    /* заявка уходит на сервер сразу, чтобы она не потерялась,
+       если человек не нажмёт отправку в открывшемся диалоге */
+    fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name:name.value,contact:contact.value,
+        company:stage.value||'',task:goal.value||'',page:'Цифровой Антон'})}).catch(function(){});
     var url='https://t.me/antonoreshkin?text='+encodeURIComponent(text);
     window.open(url,'_blank','noopener');
     f.style.display='none';

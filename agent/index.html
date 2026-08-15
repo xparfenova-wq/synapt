@@ -10,8 +10,8 @@
 <meta property="og:site_name" content="Synapt">
 <meta property="og:title" content="Советник, которого открывают каждый день">
 <meta property="og:description" content="AI-советник собственника: методологии, база знаний компании и&nbsp;живые данные из&nbsp;CRM. Каждый понедельник разбор недели по&nbsp;вашим цифрам, работающий продукт за&nbsp;3-5 недель">
-<meta property="og:url" content="/synapt/agent/">
-<meta property="og:image" content="/synapt/agent//og.png">
+<meta property="og:url" content="https://synapt-business-agent.vercel.app">
+<meta property="og:image" content="https://synapt-business-agent.vercel.app/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -286,13 +286,18 @@ section{position:relative}
 .plan li .li-n{font-family:var(--mono);font-size:11.5px;color:var(--text-dim);padding-top:3px;font-feature-settings:"liga" 0}
 .plan .anchor{font-size:12.5px;color:var(--text-dim);line-height:1.55;margin-bottom:20px}
 
-/* ---------- смежные материалы ---------- */
-.rel{display:flex;flex-wrap:wrap;gap:10px}
-.rel a{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:10px 16px;border:1px solid var(--line);
- border-radius:var(--r-pill);background:var(--surface);font-size:14.5px;font-weight:500;color:var(--text-2);
- transition:border-color .16s ease,color .16s ease}
-.rel a:hover{border-color:var(--line-2);color:var(--text)}
-.rel a span{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;color:var(--text-dim);font-feature-settings:"case" 1}
+/* ---------- смежные материалы: карточки, тип мелко сверху, название крупнее ---------- */
+.nxt{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+ border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+.nxt a{display:flex;flex-direction:column;gap:9px;padding:22px 22px 24px;background:var(--bg);
+ min-height:96px;justify-content:center;transition:background .22s var(--ease)}
+.nxt a:hover{background:var(--surface)}
+.nxt .nk{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;color:var(--text-dim);
+ font-feature-settings:"case" 1,"liga" 0}
+.nxt .nt{font-size:16px;font-weight:560;color:var(--text);line-height:1.35}
+.nxt a:hover .nt{color:var(--accent-txt)}
+@media(max-width:900px){.nxt{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.nxt{grid-template-columns:1fr}.nxt a{min-height:0;padding:18px 20px}}
 
 /* ---------- FAQ ---------- */
 .faq{max-width:820px;border-top:1px solid var(--line)}
@@ -547,13 +552,50 @@ footer .fmeta a:hover{color:var(--text)}
 .lf-check{display:flex;align-items:center;gap:12px}
 .lf-check input[type=checkbox]{flex:none;align-self:center;margin:0}
 .lf-check span{line-height:1.5}
+.lf-done.fail b{color:var(--danger,#c2544d)}
+
+/* canvas работает как встроенная иллюстрация: занимает половину карточки, не всю ширину */
+.figcard canvas{width:min(100%,300px)}
+
+/* заявка: слева заголовок и подзаголовок, справа форма, ниже широкая полоса про менеджера */
+.lead-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);
+  gap:clamp(28px,4vw,60px);align-items:start}
+.lead-copy{padding-top:4px}
+.lead-copy .sec-head{margin-bottom:0}
+.lead-copy h2{margin-bottom:14px}
+.lead-copy .lead{max-width:38ch}
+#lead .leadbox{max-width:none;width:100%}
+@media(max-width:980px){
+  .lead-grid{grid-template-columns:1fr;gap:26px}
+  .lead-copy .lead{max-width:60ch}
+}
+.tg-after{margin-top:clamp(22px,3vw,34px);padding:20px 24px;border:1px solid var(--line);
+  border-radius:var(--r-lg);background:var(--surface);display:flex;align-items:center;gap:18px}
+.tg-ava{flex:none;width:60px;height:60px;border-radius:50%;object-fit:cover;border:1px solid var(--line-2)}
+.tg-txt{flex:1;min-width:0}
+.tg-after b{display:block;font-size:15.5px;font-weight:600;color:var(--text);margin-bottom:5px}
+.tg-txt>span{font-size:14px;color:var(--text-muted);line-height:1.55;display:block}
+.tg-nick{font-family:var(--mono);font-size:12.5px;font-weight:500;color:var(--text-dim);
+  font-feature-settings:"liga" 0}
+.tg-btn{flex:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 20px;min-height:48px;border:1px solid var(--line-2);border-radius:var(--r-md);
+  font-size:14.5px;font-weight:560;color:var(--text);white-space:nowrap;
+  transition:border-color .2s var(--ease),color .2s var(--ease)}
+.tg-btn:hover{border-color:var(--accent);color:var(--accent-txt)}
+@media(max-width:760px){
+  .tg-after{display:grid;grid-template-columns:52px minmax(0,1fr);
+    grid-template-areas:"ava txt" "btn btn";gap:14px;align-items:start;padding:18px 20px}
+  .tg-ava{grid-area:ava;width:52px;height:52px}
+  .tg-txt{grid-area:txt}
+  .tg-btn{grid-area:btn;width:100%}
+}
 </style>
 </head>
 <body>
 
 <!-- ШАПКА -->
 <nav class="nav"><div class="wrap">
-  <a class="brand" href="#top" aria-label="synapt"><svg viewBox="0 0 869 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/><path d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></svg></a>
+  <a class="brand" href="/synapt/" aria-label="synapt"><svg viewBox="0 0 839 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-30,0)"><path d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/></g><path d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></svg></a>
   <div class="nav-links"><a href="#pain">Задача</a><a href="#scenarios">Сценарии</a><a href="#how">Как&nbsp;устроен</a><a href="#pricing">Стоимость</a><a href="#faq">FAQ</a></div>
   <div class="nav-act">
     <button class="tgl" id="tgl" aria-label="Сменить тему" title="Светлая или&nbsp;тёмная тема"></button>
@@ -584,7 +626,7 @@ footer .fmeta a:hover{color:var(--text)}
       <div class="eyebrow reveal"><span class="n">01</span> AI-советник собственника</div>
       <a class="mod-mark" href="/synapt/system/"><b>модуль системы,</b> управление</a>
       <h1 class="reveal d1">Каждый понедельник советник присылает разбор недели</h1>
-      <p class="lead reveal d2">Один узкий фокус: собственник компании с&nbsp;выручкой <span class="nb">30-500</span>&nbsp;млн&nbsp;руб., где нет штатного аналитика. Собираем советника на&nbsp;ваших данных: CRM, финансовые таблицы, регламенты. Просадку в&nbsp;воронке он&nbsp;видит в&nbsp;тот&nbsp;же&nbsp;день. Работающий продукт за&nbsp;<span class="nb">3-5</span> недель, вход 290&nbsp;тыс.&nbsp;руб., код и&nbsp;база знаний остаются&nbsp;у&nbsp;вас</p>
+      <p class="lead reveal d2">Один узкий фокус: собственник компании с&nbsp;выручкой <span class="nb">30-500</span>&nbsp;млн&nbsp;₽, где нет штатного аналитика. Собираем советника на&nbsp;ваших данных: CRM, финансовые таблицы, регламенты. Просадку в&nbsp;воронке он&nbsp;видит в&nbsp;тот&nbsp;же&nbsp;день. Работающий продукт за&nbsp;<span class="nb">3-5</span> недель, вход 290&nbsp;тыс.&nbsp;₽, код и&nbsp;база знаний остаются&nbsp;у&nbsp;вас</p>
       <div class="hero-cta reveal d3">
         <a class="btn pri lg" href="https://t.me/Anti4ay">Обсудить задачу</a>
         <a class="btn ghost lg" href="#scenarios">Смотреть сценарии</a>
@@ -597,7 +639,7 @@ footer .fmeta a:hover{color:var(--text)}
   </div>
   <div class="hero-meta reveal d4">
     <div class="m"><b>3-5 недель</b><span>до&nbsp;готового продукта</span></div>
-    <div class="m"><b>от&nbsp;150 тыс. руб.</b><span>вход в&nbsp;тариф Старт</span></div>
+    <div class="m"><b>от&nbsp;150 тыс. ₽</b><span>вход в&nbsp;тариф Старт</span></div>
     <div class="m"><b>60 дней</b><span>доработок после сдачи без доплат</span></div>
   </div>
 </div></header>
@@ -630,13 +672,13 @@ footer .fmeta a:hover{color:var(--text)}
   <div class="sec-head reveal">
     <div class="eyebrow"><span class="n">03</span> Задача</div>
     <h2>Владелец решает без&nbsp;цифр под&nbsp;рукой</h2>
-    <p class="lead">Мы&nbsp;собирали советника под&nbsp;бизнес с&nbsp;выручкой <span class="nb">30-500</span>&nbsp;млн&nbsp;руб. в&nbsp;год и&nbsp;командой <span class="nb">10-100</span> человек, где нет штатного&nbsp;аналитика&nbsp;и&nbsp;стратега</p>
+    <p class="lead">Мы&nbsp;собирали советника под&nbsp;бизнес с&nbsp;выручкой <span class="nb">30-500</span>&nbsp;млн&nbsp;₽ в&nbsp;год и&nbsp;командой <span class="nb">10-100</span> человек, где нет штатного&nbsp;аналитика&nbsp;и&nbsp;стратега</p>
   </div>
   <div class="rows reveal">
     <div class="row"><div class="rn">0x01</div><div class="rt">Цифры лежат в&nbsp;разных местах</div><div class="rd">Часть в&nbsp;CRM, часть в&nbsp;таблицах, часть в&nbsp;личных заметках руководителей. Цену, найм и&nbsp;скидки согласуют по&nbsp;опыту, проверить расчётом некому</div></div>
     <div class="row"><div class="rn">0x02</div><div class="rt">Аналитика раз в&nbsp;квартал</div><div class="rd">Просадка воронки видна в&nbsp;квартальном отчёте через два-три месяца, деньги к&nbsp;этому времени уже потеряны</div></div>
-    <div class="row"><div class="rn">0x03</div><div class="rt">Аналитик в&nbsp;штате не&nbsp;окупается</div><div class="rd">Штатный аналитик стоит <span class="nb">150-250</span>&nbsp;тыс.&nbsp;руб. в&nbsp;месяц, внешний консультант дороже и&nbsp;работает от&nbsp;случая к&nbsp;случаю</div></div>
-    <div class="row"><div class="rn">0x04</div><div class="rt">Прошлое внедрение не&nbsp;прижилось</div><div class="rd">Команда досмотрела курс по&nbsp;нейросетям за&nbsp;180&nbsp;тыс.&nbsp;руб. до&nbsp;второго урока и&nbsp;вернулась к&nbsp;прежней работе</div></div>
+    <div class="row"><div class="rn">0x03</div><div class="rt">Аналитик в&nbsp;штате не&nbsp;окупается</div><div class="rd">Штатный аналитик стоит <span class="nb">150-250</span>&nbsp;тыс.&nbsp;₽ в&nbsp;месяц, внешний консультант дороже и&nbsp;работает от&nbsp;случая к&nbsp;случаю</div></div>
+    <div class="row"><div class="rn">0x04</div><div class="rt">Прошлое внедрение не&nbsp;прижилось</div><div class="rd">Команда досмотрела курс по&nbsp;нейросетям за&nbsp;180&nbsp;тыс.&nbsp;₽ до&nbsp;второго урока и&nbsp;вернулась к&nbsp;прежней работе</div></div>
   </div>
 </div></section>
 
@@ -660,7 +702,7 @@ footer .fmeta a:hover{color:var(--text)}
       <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div>
       <h3>Разбор метрик недели</h3>
       <p>Собирает выручку, воронку и&nbsp;маржу из&nbsp;CRM и&nbsp;финансовых таблиц. В&nbsp;понедельник присылает дайджест: что&nbsp;просело, почему и&nbsp;что&nbsp;делать&nbsp;на&nbsp;неделе</p>
-      <div class="ex"><div class="exl">пример ответа</div><p>Выручка недели 2,4&nbsp;млн&nbsp;руб., минус 12% к&nbsp;плану. Конверсия из&nbsp;заявки в&nbsp;счёт упала с&nbsp;31% до&nbsp;22%, просели заявки с&nbsp;двух каналов. Три действия на&nbsp;неделю приложены</p></div>
+      <div class="ex"><div class="exl">пример ответа</div><p>Выручка недели 2,4&nbsp;млн&nbsp;₽, минус 12% к&nbsp;плану. Конверсия из&nbsp;заявки в&nbsp;счёт упала с&nbsp;31% до&nbsp;22%, просели заявки с&nbsp;двух каналов. Три действия на&nbsp;неделю приложены</p></div>
     </div>
     <div class="card b2 reveal d1">
       <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20"/><path d="M17 6.5c0-2-2.2-3-5-3s-5 1-5 3.2S9.5 10 12 10.6s5 1.3 5 3.6-2.2 3.3-5 3.3-5-1.1-5-3.2"/></svg></div>
@@ -673,7 +715,7 @@ footer .fmeta a:hover{color:var(--text)}
       <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
       <h3>Подготовка к&nbsp;переговорам</h3>
       <p>Цели, аргументы, запасные варианты и&nbsp;лестница уступок на&nbsp;живых цифрах сделки из&nbsp;CRM</p>
-      <div class="ex"><div class="exl">пример ответа</div><p>Сделка на&nbsp;1,8&nbsp;млн&nbsp;руб., клиент тянет третью неделю. Запасных вариантов загрузки два, аргументы и&nbsp;лестница уступок собраны по&nbsp;истории переписки</p></div>
+      <div class="ex"><div class="exl">пример ответа</div><p>Сделка на&nbsp;1,8&nbsp;млн&nbsp;₽, клиент тянет третью неделю. Запасных вариантов загрузки два, аргументы и&nbsp;лестница уступок собраны по&nbsp;истории переписки</p></div>
     </div>
     <div class="card b3 reveal d1">
       <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 3h16l-6 8v7l-4 3v-10L4 3z"/></svg></div>
@@ -692,7 +734,7 @@ footer .fmeta a:hover{color:var(--text)}
       <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></div>
       <h3>План найма</h3>
       <p>Считает загрузку и&nbsp;экономику роли, говорит, когда нанимать выгодно, собирает профиль и&nbsp;показатели&nbsp;новичка</p>
-      <div class="ex"><div class="exl">пример ответа</div><p>Менеджеры загружены на&nbsp;118%, потери на&nbsp;необработанных лидах 260&nbsp;тыс.&nbsp;руб. в&nbsp;месяц. Новый менеджер окупается со&nbsp;второго месяца, профиль и&nbsp;показатели приложены</p></div>
+      <div class="ex"><div class="exl">пример ответа</div><p>Менеджеры загружены на&nbsp;118%, потери на&nbsp;необработанных лидах 260&nbsp;тыс.&nbsp;₽ в&nbsp;месяц. Новый менеджер окупается со&nbsp;второго месяца, профиль и&nbsp;показатели приложены</p></div>
     </div>
     <div class="card b3 reveal d1">
       <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
@@ -813,7 +855,7 @@ footer .fmeta a:hover{color:var(--text)}
       <div class="metric"><b>24/7</b><span>ответ участнику и&nbsp;менеджеру</span></div>
       <div class="metric"><b>99,5%</b><span>доступность сервиса по&nbsp;договору</span></div>
     </div>
-    <a class="more" href="https://synapt.tech/#cases">Другие кейсы Synapt</a>
+    <a class="more" href="/synapt/#cases">Другие кейсы Synapt</a>
   </div>
 </div></section>
 
@@ -821,13 +863,13 @@ footer .fmeta a:hover{color:var(--text)}
 <section id="compare" class="s-cmp"><div class="wrap">
   <div class="sec-head reveal">
     <div class="eyebrow"><span class="n">10</span> Сравнение</div>
-    <h2>Год подписки 660&nbsp;тыс.&nbsp;руб., год штатного аналитика 2,3&nbsp;млн&nbsp;руб. с&nbsp;налогами</h2>
+    <h2>Год подписки 660&nbsp;тыс.&nbsp;₽, год штатного аналитика 2,3&nbsp;млн&nbsp;₽ с&nbsp;налогами</h2>
     <p class="lead">Штатный аналитик, внешний консультант и&nbsp;советник на&nbsp;тарифе Стандарт: деньги, скорость и&nbsp;доступ к&nbsp;данным</p>
   </div>
   <div class="cmp reveal">
     <table>
       <tr><th></th><th>Штатный аналитик</th><th>Внешний консультант</th><th class="hi">AI-советник, Стандарт</th></tr>
-      <tr><td>Стоимость в&nbsp;год</td><td><span class="nb">2,3-3,9</span>&nbsp;млн&nbsp;руб. с&nbsp;налогами</td><td>от&nbsp;1,5&nbsp;млн&nbsp;руб. при&nbsp;регулярной работе</td><td class="hi">660&nbsp;тыс.&nbsp;руб. подписка, внедрение отдельно</td></tr>
+      <tr><td>Стоимость в&nbsp;год</td><td><span class="nb">2,3-3,9</span>&nbsp;млн&nbsp;₽ с&nbsp;налогами</td><td>от&nbsp;1,5&nbsp;млн&nbsp;₽ при&nbsp;регулярной работе</td><td class="hi">660&nbsp;тыс.&nbsp;₽ подписка, внедрение отдельно</td></tr>
       <tr><td>Скорость ответа</td><td>дни</td><td>недели</td><td class="hi">минуты</td></tr>
       <tr><td>Доступность</td><td>8 часов, отпуска и&nbsp;больничные</td><td>по&nbsp;договору, от&nbsp;случая к&nbsp;случаю</td><td class="hi">круглосуточно, без отпусков</td></tr>
       <tr><td>Живые данные</td><td>частично, по&nbsp;запросу</td><td>работает по&nbsp;срезам на&nbsp;дату</td><td class="hi">CRM и&nbsp;финансы в&nbsp;реальном времени</td></tr>
@@ -843,14 +885,14 @@ footer .fmeta a:hover{color:var(--text)}
   <div class="sec-head reveal">
     <div class="eyebrow"><span class="n">11</span> Тарифы</div>
     <h2>Смету фиксируем в&nbsp;договоре до&nbsp;начала работ</h2>
-    <p class="lead">За&nbsp;внедрение под&nbsp;вашу компанию вы&nbsp;платите один раз, дальше идёт подписка: доступ, поддержка и&nbsp;обновление базы знаний. Модуль AI-системы Synapt стоит от&nbsp;150&nbsp;тыс.&nbsp;руб., советник собственника в&nbsp;конфигурации Старт стоит 290&nbsp;тыс.&nbsp;руб.: в&nbsp;него входит вся база методологий и&nbsp;разбор документов компании. Каждый следующий модуль дешевле первого, общий контур и&nbsp;безопасный слой уже стоят</p>
+    <p class="lead">За&nbsp;внедрение под&nbsp;вашу компанию вы&nbsp;платите один раз, дальше идёт подписка: доступ, поддержка и&nbsp;обновление базы знаний. Модуль AI-системы Synapt стоит от&nbsp;150&nbsp;тыс.&nbsp;₽, советник собственника в&nbsp;конфигурации Старт стоит 290&nbsp;тыс.&nbsp;₽: в&nbsp;него входит вся база методологий и&nbsp;разбор документов компании. Каждый следующий модуль дешевле первого, общий контур и&nbsp;безопасный слой уже стоят</p>
   </div>
   <div class="bento">
     <div class="plan b2 reveal">
       <div class="pk">первый&nbsp;шаг</div>
       <h3>Старт</h3>
-      <div class="amt"><b>от&nbsp;150 тыс. руб.</b><span>внедрение</span></div>
-      <div class="sub">25 тыс. руб. в&nbsp;месяц</div>
+      <div class="amt"><b>от&nbsp;150 тыс. ₽</b><span>внедрение</span></div>
+      <div class="sub">25 тыс. ₽ в&nbsp;месяц</div>
       <ul>
         <li><span class="li-n">01</span><span>Слой методологий целиком</span></li>
         <li><span class="li-n">02</span><span>База знаний компании: PDF, DOCX, XLSX, изображения</span></li>
@@ -862,22 +904,22 @@ footer .fmeta a:hover{color:var(--text)}
     <div class="plan feat b2 reveal d1">
       <div class="pk">полный контур</div>
       <h3>Стандарт</h3>
-      <div class="amt"><b>590 тыс. руб.</b><span>внедрение</span></div>
-      <div class="sub">55 тыс. руб. в&nbsp;месяц</div>
+      <div class="amt"><b>590 тыс. ₽</b><span>внедрение</span></div>
+      <div class="sub">55 тыс. ₽ в&nbsp;месяц</div>
       <ul>
         <li><span class="li-n">01</span><span>Всё из&nbsp;тарифа Старт</span></li>
         <li><span class="li-n">02</span><span>Живые коннекторы к&nbsp;Bitrix24, amoCRM и&nbsp;финансовым таблицам</span></li>
         <li><span class="li-n">03</span><span>Еженедельный разбор метрик с&nbsp;аномалиями и&nbsp;планом действий</span></li>
         <li><span class="li-n">04</span><span>5 часов методолога в&nbsp;месяц на&nbsp;правку сценариев и&nbsp;базы</span></li>
       </ul>
-      <div class="anchor">Подготовка данных и&nbsp;интеграции входят в&nbsp;тариф: отдельного счёта на&nbsp;<span class="nb">100-500</span>&nbsp;тыс.&nbsp;руб. после старта не&nbsp;будет</div>
+      <div class="anchor">Подготовка данных и&nbsp;интеграции входят в&nbsp;тариф: отдельного счёта на&nbsp;<span class="nb">100-500</span>&nbsp;тыс.&nbsp;₽ после старта не&nbsp;будет</div>
       <a class="btn pri" href="https://t.me/Anti4ay">Обсудить Стандарт</a>
     </div>
     <div class="plan b2 reveal d2">
       <div class="pk">группа компаний</div>
       <h3>Максимум</h3>
-      <div class="amt"><b>от&nbsp;1,2 млн руб.</b><span>внедрение</span></div>
-      <div class="sub">от&nbsp;110 тыс. руб. в&nbsp;месяц</div>
+      <div class="amt"><b>от&nbsp;1,2 млн ₽</b><span>внедрение</span></div>
+      <div class="sub">от&nbsp;110 тыс. ₽ в&nbsp;месяц</div>
       <ul>
         <li><span class="li-n">01</span><span>Несколько ролевых агентов: советник, продажи, финансы</span></li>
         <li><span class="li-n">02</span><span>Развёртывание в&nbsp;вашем контуре</span></li>
@@ -888,7 +930,7 @@ footer .fmeta a:hover{color:var(--text)}
     </div>
     <div class="card b6 wide plain reveal d3">
       <h3>Если внедрение пока рано</h3>
-      <p>Начните с&nbsp;чекапа за&nbsp;19&nbsp;900&nbsp;руб.: за&nbsp;две недели разбираем, где теряются заявки, и&nbsp;отдаём спецификацию со&nbsp;сметой. Эту сумму вычитаем из&nbsp;счёта за&nbsp;разработку, а&nbsp;с&nbsp;документами можно идти к&nbsp;любому&nbsp;подрядчику</p>
+      <p>Начните с&nbsp;чекапа за&nbsp;19&nbsp;900&nbsp;₽: за&nbsp;две недели разбираем, где теряются заявки, и&nbsp;отдаём спецификацию со&nbsp;сметой. С&nbsp;этими документами можно идти к&nbsp;нам или&nbsp;к&nbsp;любому другому&nbsp;подрядчику</p>
       <span class="grow"></span>
       <a class="more" href="/synapt/checkup/">AI-чекап бизнеса за&nbsp;две недели</a>
     </div>
@@ -906,7 +948,7 @@ footer .fmeta a:hover{color:var(--text)}
     <div class="row"><div class="rn">0x02</div><div class="rt">Ролевой доступ</div><div class="rd">Собственник видит всё, руководители видят только свои направления. Права настраиваются под&nbsp;оргструктуру</div></div>
     <div class="row"><div class="rn">0x03</div><div class="rt">Безопасный слой</div><div class="rd">Обезличиваем чувствительные финансовые поля до&nbsp;отправки в&nbsp;модель, каждое обращение пишем в&nbsp;лог</div></div>
     <div class="row"><div class="rn">0x04</div><div class="rt">152-ФЗ</div><div class="rd">Фиксируем списком, какие поля уходят в&nbsp;модель и&nbsp;какие остаются внутри. Описание контура получает ваш юрист до&nbsp;старта работ</div></div>
-    <div class="row"><div class="rn">0x05</div><div class="rt">Всё остаётся у&nbsp;вас</div><div class="rd">Код, база знаний, промпты и&nbsp;документация передаются по&nbsp;акту. Продолжить работу можно с&nbsp;любой другой командой</div></div>
+    <div class="row"><div class="rn">0x05</div><div class="rt">Всё остаётся у&nbsp;вас</div><div class="rd">Код, база знаний, промпты и&nbsp;документация передаются вам целиком. Продолжить работу можно с&nbsp;нами или&nbsp;с&nbsp;другой командой</div></div>
   </div>
 </div></section>
 
@@ -992,7 +1034,7 @@ footer .fmeta a:hover{color:var(--text)}
     </details>
     <details>
       <summary>Что&nbsp;понадобится от&nbsp;вашей команды <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-      <div class="ans">Доступы к&nbsp;CRM и&nbsp;таблицам, пакет документов компании и&nbsp;<span class="nb">4-6</span> часов владельца за&nbsp;неделю, чтобы зафиксировать типовые решения. Спецификацию пишем мы. Дальше первая версия за&nbsp;<span class="nb">3-5</span> недель, оплата этапами, 60 дней доработок после сдачи</div>
+      <div class="ans">Доступы к&nbsp;CRM и&nbsp;таблицам, пакет документов компании и&nbsp;<span class="nb">4-6</span> часов владельца за&nbsp;неделю, чтобы зафиксировать типовые решения. Спецификацию пишем мы. Дальше готовый продукт за&nbsp;<span class="nb">3-5</span> недель, оплата этапами, 60 дней доработок после сдачи</div>
     </details>
     <details>
       <summary>Когда советник вам не&nbsp;нужен <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
@@ -1004,25 +1046,27 @@ footer .fmeta a:hover{color:var(--text)}
 <!-- СМЕЖНОЕ -->
 <section id="related" class="s-rel"><div class="wrap">
   <div class="sec-head reveal">
-    <div class="eyebrow"><span class="n">15</span> Смежные материалы</div>
-    <h2>Другие услуги и&nbsp;разборы проектов</h2>
+    <div class="eyebrow"><span class="n">15</span> Куда&nbsp;дальше</div>
   </div>
-  <div class="rel reveal">
-    <a href="/synapt/checkup/"><span>услуга</span>AI-чекап бизнеса</a>
-    <a href="https://synapt.tech/#services"><span>услуга</span>AI-десант</a>
-    
-    <a href="https://synapt.tech/#cases"><span>кейсы</span>Проекты Synapt</a>
-    <a href="https://automyai.ru"><span>обучение</span>Automy AI</a>
-    <a href="https://medialab-retainer.vercel.app"><span>медиа</span>Личный бренд на&nbsp;подписке</a>
+  <div class="nxt reveal">
+    <a href="/synapt/checkup/"><span class="nk">услуга</span><span class="nt">AI-чекап бизнеса</span></a>
+    <a href="/synapt/#services"><span class="nk">услуга</span><span class="nt">AI-десант</span></a>
+    <a href="/synapt/system/"><span class="nk">система</span><span class="nt">AI-система Synapt</span></a>
+    <a href="/synapt/#cases"><span class="nk">кейсы</span><span class="nt">Проекты Synapt</span></a>
+    <a href="https://automyai.ru"><span class="nk">обучение</span><span class="nt">Automy AI</span></a>
+    <a href="https://medialab-retainer.vercel.app"><span class="nk">медиа</span><span class="nt">Личный бренд на&nbsp;подписке</span></a>
   </div>
 </div></section>
 
 <!-- ЗАЯВКА -->
 <section id="lead" class="s-lead"><div class="wrap">
-  <div class="sec-head reveal">
-    <div class="eyebrow"><span class="n">16</span> Заявка</div>
-    <h2>Придём на&nbsp;Zoom с&nbsp;собранным демо вашего советника</h2>
-    <p class="lead">Один Zoom на&nbsp;30&nbsp;минут. К&nbsp;нему соберём демо по&nbsp;открытым данным о&nbsp;компании: сценарии настоящие, цифры условные. Вы&nbsp;посмотрите, поправите вопросы под&nbsp;себя, получите план внедрения и&nbsp;оценку. Бесплатно, готовить материалы заранее не&nbsp;нужно</p>
+  <div class="lead-grid">
+  <div class="lead-copy reveal">
+    <div class="sec-head">
+      <div class="eyebrow"><span class="n">16</span> Заявка</div>
+      <h2>Придём на&nbsp;Zoom с&nbsp;собранным демо вашего советника</h2>
+      <p class="lead">Один Zoom на&nbsp;30&nbsp;минут. К&nbsp;нему соберём демо по&nbsp;открытым данным о&nbsp;компании: сценарии настоящие, цифры условные. Вы&nbsp;посмотрите, поправите вопросы под&nbsp;себя, получите план внедрения и&nbsp;оценку. Бесплатно, готовить материалы заранее не&nbsp;нужно</p>
+    </div>
   </div>
   <div class="leadbox reveal">
     <form id="leadForm" novalidate>
@@ -1033,24 +1077,33 @@ footer .fmeta a:hover{color:var(--text)}
       <div class="lf"><label for="lfCompany">Компания и&nbsp;сфера</label><input id="lfCompany" name="company" type="text" autocomplete="organization"></div>
       <div class="lf"><label for="lfTask">Задача коротко</label><textarea id="lfTask" name="task" rows="3"></textarea></div>
       <label class="lf-check"><span class="box"><input type="checkbox" id="lfAgree" required></span>
-        <span>Согласен на&nbsp;обработку персональных данных и&nbsp;принимаю <a href="/privacy" target="_blank" rel="noopener">политику</a></span></label>
+        <span>Согласен на&nbsp;обработку персональных данных и&nbsp;принимаю <a href="/synapt/agent/privacy/" target="_blank" rel="noopener">политику</a></span></label>
       <div class="lf-err" id="lfErr">Заполните имя, контакт и&nbsp;отметьте согласие</div>
       <button class="btn pri lg" type="submit">Отправить заявку</button>
     </form>
     <div class="lf-done" id="lfDone"><b>Письмо собрано и&nbsp;открыто в&nbsp;вашей почте</b>, отправьте его, и&nbsp;мы&nbsp;ответим в&nbsp;рабочее время. Если почта не&nbsp;открылась, напишите нам в&nbsp;Telegram: <a href="https://t.me/Anti4ay">@Anti4ay</a> или&nbsp;на&nbsp;адрес <a href="mailto:oreshkin.medialab@outlook.com">oreshkin.medialab@outlook.com</a></div>
   </div>
+  </div>
+  <div class="tg-after reveal">
+    <img class="tg-ava" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QCARXhpZgAATU0AKgAAAAgABAEaAAUAAAABAAAAPgEbAAUAAAABAAAARgEoAAMAAAABAAIAAIdpAAQAAAABAAAATgAAAAAAAABIAAAAAQAAAEgAAAABAAOgAQADAAAAAQABAACgAgAEAAAAAQAAAHigAwAEAAAAAQAAAHgAAAAA/+0AOFBob3Rvc2hvcCAzLjAAOEJJTQQEAAAAAAAAOEJJTQQlAAAAAAAQ1B2M2Y8AsgTpgAmY7PhCfv/AABEIAHgAeAMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T19vf4+fr/xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv/xAC1EQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2wBDAAICAgICAgQCAgQFBAQEBQcFBQUFBwkHBwcHBwkLCQkJCQkJCwsLCwsLCwsNDQ0NDQ0PDw8PDxERERERERERERH/2wBDAQMDAwQEBAcEBAcSDAoMEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhISEhL/3QAEAAj/2gAMAwEAAhEDEQA/APulp+eDTTcAGs0vTN/Fe/5HyruaZmQ9aQ3CeprM3HHvTxk07ruFmX/OHekFyhqgcjFIRijmQWZeM6dqZ54xkVRYc8CkZgMGjmQrMv8A2nHQ8U37WexrPyp603cOnFPmQrS6F/7Y446Cm/bXB4NZ5bHSjzeaHNDSZf8AtzgYz1pn2xs5qiZe5FRl88kfpT54hys0ftrdM0/7a3qKyd5J7Uu8+1VzIVmf/9D7QVkbhSD+NRTz21she4kRFHdmAFedfFV/+ES1CzttAaSOO6tlnPm7WYbugBFeOvPdX7+ZeTNITz8xJr2cPavTVWL0Z85VpypTdOa1R71qPjvw9p2VV2nfHAiBIP4niuNuPiZrN3KINIslUnoWy7fkMCuDht4B975vauiCahYWUd1HC0EUmQsijAb8a6OWEfMhNvU6465rQAF9Ntk284O3a3XoOKxJPFmtWT7orgsDyQ4Djjt261zeTJk7m55OeaeijcA4zkgc1HIo6sq/Noj0Cx+JVm+F1KBo/Vozkfl1rs7DWdI1YAWFwjt125w35HmvFbyHS7O7g/tDKQyEhinbFRWllpl3bXN7ZSsPKkIhPQsAAefzrCrVpQV3dG1LDVajajr1+4+gGRxUeDnmvB7XxH4h07/UXDsv92T5h+tdVZfEeVAF1K1DD+9EcfoatwmtjBcrPSyMc00k4NcP/wALH0wj5raX8CtQ/wDCxtKBy1vKv1INTafYbUe53meKdnJrkovHfhqRQXd0PUgqT/Kq9x8QtBg/1KTSn2UAfqaVp9gtHudmR2pdprzdviZaFv3dlIfqwFJ/wsuH/nyf/vsf4VXLV7B7nc//0fo34p20viHxbpOn2zLxp6kE9whH865TxNfaLr+ptY6HaRWk8LC3EaYBlKk7pGHQcjAx2r49/wCGr7651SPUtZ08LJbW5jgRSfmTjBJ96+g/hb4ot/HTQa7bWwikvL0jbKMYYhjjPXGaWW46k6apxbvFPy/4B5uLiqlVNfaaPQNP8FTicjUHGFi8xlU4OSMgZrtotci1GxHh67gja2hcRjnBDKOCx645rMuZby2KXatlbpnTC9tmM/QZbrXFWDPJqeoKWYbJDwvbCnPI/nV1sVOoubsdVLBRpOz63PZNR+ENvaWi6pZ3VuYJhld8pXaAOScjjmvH/EWnDwxLi7nhkAIZTC4kyDyMYrRutbuptPtbaBiI448N2ByK+ePjT41v4YoW0SP7S0QVcKQOVAHX2xU/W8RRj+8le4oYSjWkvZxsela54t8O3dlHBPI0E4kPySqQ+Megzjr3qtpXiXw/pkcsN80wVyCWWMvjH+7mvhy78e+KSrXNjp/mluBlTjg8sxHzMT6ZAqhafF7xFppNrd+aGfIyP3YUnpsBBOPqa4KuMxE0rM9algaFO7af/Dn6dwweCPEOmNP4e1IyTQxqXjcYOWbB+U4IA/GrGjaPa39kPMKDy12AsM7pDJwB749a+EvDfxTFrtXxHqFtHdYBhmMioxH91sgbW9COD0OK+y/hz8SNK8R6Xbafvje7+0wuhjAUSqp5IAyC2Tzg4rWhnE2vZVdJX0fQ5q+TQi/aUtY217mjJp9gLOKXZteW9eEtjnbvx06Vzt54Z1S3kkdLeQxByAxHUetem61pfhvT9lneasiXEUzXMqBdyxSmQ7omYHqMCt6G0hayu9YTUbaWOcDylVzuBHUAEdcnoK9T6+6SUt7nk/Uo1Hy32PBGtpY0Hmrtz0J70otix4OfpXpcWmXGqItzqMW6C2lZGb5gCOuc4xz161YsbfSmjttWtkitztVioO7ndjPPqO1dH9oxtsYPL5X0Z5f5CdD1o+zx16PftZSXKy2UEBMssxkdskja4A4HA696dsi9IPyFaLGxavYh4Fp2bP/S+Qv+ELzaw61PBFdXLww4tY/l2hl+RmbIG0Y+YetP0742eK/Cc0FtZN5UtrOzvlRhSPlUADsO9eWrrl3tEcty0hQBsZ4dgRgH2Fd54in8I3UEOq2YZri5CvNFAoCgkYYkt824kZ9K+UUqiXLPt0OSybufWf7O37Qesaz4jbwd4qYzpqDkQtGgJU9WBJHAbH04r6qhsf7BudRFmpLTBjI7Y+XeDgA/SvzK+H2p2GjaXqWuadKbC+RUjtnkIbcVP3cY+UY6mtfwX8e/GmjeK55b/UnmsZQVkt/vrIW4ByegHrW2Hxzpx5ZXa8zqU0kubfufRfxK8Uv4P0O1tzIfOu8ogzgkL1+g9T6V4pq+q2Gqx2OmxPhypLv1bkjP6/yrU/a0tZx4U0HxdZuDGC9srA/89cOP0U187fDue68QeIbRoXIETBXbtgf/AF81242pOt+8voerllKFFqlbfU/S34ceBPC9hpaw6hAlwzjJduTn0xW54w+AXgTxbbCKK1SF+zIMH9K8StvjJ4D8IOLfVtYiDxYBChmB/wC+QQa+gPCXx58G+IrdZrCQSrtyHToSPr0NeFVVeK59T66i6E/3at6HyJ4i/Zdl8OGVrKyS+jGfl2/Pj2P+NfNcmoap8NvEjNoiyW5iYNLaPlGyOjqD91h/eH41+t1/+0J8NfDLed4qvI7ZHO1QQWZvooyTXgH7SGt/B/42/CLU9W8JFZNR0eI3kExj8uXav39jcEjHUVFHFVvaJVY3i9LmGLwtLlapK0lqcD4K8bHx1os/ijzTLcT3BebfjPmHG7IHfOT+te/6Jewv4ZKTSbZGl27BnJyMk+gwQPevkD9mDQpo/At1q16xMl1ceZHlshlUBMkY4OQfyr7i0rw9ZXGiZViHSQK+CM89dgP1719tPFU44aEKj97+rH54sJVniZypL3d/8zb0mxa58J34nubiREG/yyQVwBkk8ZIGeaydXXwfH4fgisdS82OWXz2eziKtEsKdCHxlWOelHxX8PN4E0u0tkvHY3o80RYwfLZcYYg4JyOnSuBtfDXiVtEt2hsJjG9vLukIARQQSCSTwDWFOPMvaKW7OyTj8LXQ9B8GQ+GdMuWRiZIbxHm2TgD59oJbJJ65GBmu83+D/APn2g/SvirxPdma5jkhl3Rm3i5DEDgAcVzP2hf7x/wC+q63gZT96Ujg+txj7sY6H/9P4Y8Q3WhXLxatoscMTRACQRjG/JwG2f7vXHel1jRv7OMCLOrRTwLI0nK5zk9Dz8te1aP8AC6bxt4bkTwnYyalq9knmzpaJlPKDE/vSOAVAACjk1Wh8KLJ4cS5vEjkt03tPLcEiWHjLbEPzEAYx24NfL1aqtaQ54Wak3LrqeWnwz4ns/DrarCFFlcBQZplI3MOioT1OPTp3rN0/Sf7L8zU9RszHE2CCwxuzx8pPuOete+fFjxzpFn4Q0TwdoAEqWZ893YMqgSAEDGSDkda8ObxUwmthcosjQDavmsTGQTuxgHrzjtWD1Wi0ZnUUYTtfY9d8f3OpeLvg1pegabtuJobySfK52/u0PALcHCk/jT/2c/h6ur+C9Q1FY91wtyYTF3OEAIP1zXmeg+PNROsw3Ophf7Lwbee3T5BGjgjei9iM/j07194fCbSdA8N2N5NpcqC0kufMcr93aEHzf8CAz1rdVZKn7N/I+iyuNKrTjUi/ejo/0f6HyJ4w+HfxJRporBdPtUZsLClvJKwUdMuqFc/Q16H+zv8AC3xOfE0Vv4qdUgkb540GzcR35r6H+JPx68O6FYLZ6fEJ52+WKKPAZm7Djt615R4Y+Omh6VqNpd+JTLDqDEtLGY9sSc/Ltbvx1zVuU503Fo9ynhKUasZc+vqZfx2+EXjW28SzXfhRgtuSRE5haXZg9GwCcV3/AID+H3je5+Guuf8ACbXNnqFtFpVy0DQRPE8b+U2QwdVJH0r0vxp8cLDT7FfFnh63mv7WKU/bo1jIAQgfOjdyDyR6V7DofxF8IeP/AIbXElnOogu7SRXcAZEbKQ+R6gE14k6k1SjFrRPfqenVw0YycovVra+i87Hwt8MdJ1Dwr4atdAuv3cp3OY+4BO7Br3HRfElwZfJ3EB5PlB/h471wSQ2V215rtzcSQRSOJon2AgI52pGAGDEhOWxVnRNB1G3upJmWQvGQqLKrAOx4yinr8uDzX00ZqUIqb1Pipcsak3TWl9PQ7H41+PG8TeL0TTyk0OnW6Wiyxk+XIV5ZxnnGTj1rM8E3OoSa7Yi9YGZ7gbQWLKOOM+3tWR4pTTdFsWl1XzmunjLpGiAABTty/cDJA55ri1+IVjosTa5pfNtDtkhMhUS7t2GU89R2xXpLG0IUfZJapHh1cFXdbmltc7T4r3OPFsizPHPIkUaM8SBVUr1XGO1ec/bF/wBn/vgf4Vmab4/g8TalFbXkMcU11KT5rP8AKoAyQ2e/vXon9maf/wA/Nj/38X/GuijmlBU0jCtgKzm3c//U8V+Cf7Q2tfBv7bomnXENvbXaSRzXDIWlEu75Qg55A4ycitLRPHMl1pUWpalB5utxyGxlknAfz7aYsfJEZG3cwI5PbJGMV4L4c07S7PWF1LU7UXsYnLNCQR5mCQR8pDLg89a9b/aI16ytPFenWVhp0umsmmWzK8wVGm5YiUKBgZ6c88V8rKnTqSdjVVZX5pPY8N1611bU7573UVkit5ppJIrcAlkz1AA7Csmy0iNlDLufaww0nDH/AHc96gn8QanLfi6a4nJY/MWkORj05xj2ruvC+g694yE9zLMkFhbfNc3c5wsPGfQlieyjn6Cis3TjzN2M8PhpYmqqVGLlJ9OrOQOjTrOwkYlZmIHIOMc/nX1j8LWmj+Hev2ULsMiONck5VtjDoemcCvnvVNd+G3hWMWyFrkqRKJrpmUs395YIiG2ntukWvoL4AeKtG8Y+HfElvAhCo0JZjGIid4fbgAsTjHGTXPCrKau4u3e2h9ZQ4bxOBXt8ROKf8t7y/DT8TyHxB4a8SajfweJvCbxS3JhB8m4B2hx1UdhntXWaBdW+sX8T+PLiewkj4KyaO06ZyB8rRMQeMnr2rsNHa10vXzpuovtt5Sdjn7u739K7aPwHrmo6ibzTtXhihzwpbnHtjrXU6l6fIzqoU4upzO/9ep0GqSePdXsf+Ea+HjGTSVGbjUNR08Wkfl8jbChfzGY8clduK8i+za54H+Dl/o+mM1xqGrXckMMKMqMIy2ZGUEjI2jGFz96vtrRNLudP8Ktb6xeLPKwxGFPJ9OK+L/25vC6aB4E8G6hZPslF3eLLIP78iRsM+w2kCvGpS56qw3n+KuetXoRnFpt6prSyevbofL7eIvGluIbYST280RV1t5sh1ZBtGA3sK+gPBfjD4lavDBDc6nlINro8x3fdGfvnJ9iPwr5O8L/F6bS7eLR/F9uL21jbdG7k74znOY5B8y/Tp619u+BE8G+M9Al1LwJcA3I/eGznIyX9mAHXpnpnr61216ioNKvHlTe+6+//ADPn4cK1uZ1MFV9olq1tNesX+l7/AIGB440Xxdrkd3rV/dzXNwpJTYeHDNucY44GOODXksN5GbeQz27GNMxqjAkgnDdegwc49cV6l4i8U6reWFzps8Ys7hNwCh8NwcFcHv61yVlbyzLDuiEgBWSfBCrjOM+4XgV3xd9Gzxqypp+4ytZ+HnGjxSLIigSCMGQEHbjOd2Tx0xU//COr/wA/lv8A9/W/xrT8UvEdMa0s182LcqIEONzL1Of0A9K80/s69/58pvz/APr0cpm5W0sf/9X8+9Y1zUrLVWt4F+yiO4/fqDtaR92GHuBX1V+2Hc3V74o0nQbSdZYm0e2uBCQrMJ2BUruxuC4AIXOAckDmmap8GvG+vrH438PQWUNnczGdfPsd5ZJGyqt5ilST/wDqqxefBn4u61ex61daDqOs3NyQJbyOOSKIoowI1K4ygA/hA5HUivn+Rezi01d66C9lOcpR6fgfMnw+8GDVfEsdnrwaFFjaWZVBBZIhnaDxyxGCe1et/GXVI7Lw3ZeEtDVLO2uJU3RwjA56lsdScck8108vhWHwRBLqGrGeC+aNkgsn2hYI3OCzbRl2btnoPc14Z8QNUm1ayN/bk77ZxKMddo4J/DNfOY2u62NiovSP3XP2ngzJY4HKZ4ivTtUnd368ll93X9StcaD4a8PWr+J9WQX94R+7WVR5at2Ow5yfr+VfYPws0zT9K8BNNCo+26iIZrqU/efdErjPoq7yqgcYGepNfCuoatHPp1hd3gMsHmqJVzyQTz+VfedwseiaDo+q6e4e2vLFEDL0LQqFz+KFfyr08FQlLDzqTleSdvRf8OY8W4mMcTToUIWhJXv3l597I5PV9Me7uXiRdyjqPavGNvjG21wafpV9PDGW28HOBntmvdbXxJHZXYvBhieCD3zXQ+HZvCupXTaxtTfFJiSM9Rnpx6UVans4NnyNOEpTSPVvh9oV9pGixXeoXEtzIxyZJWLH6DsB9K9n1Dw54D+Kq6f8NfiJaR3Wnaw8lspJ2yxTiJpI5IZOqONhAI65wcivKL7xfbSafFbWqeUoAOPYV5l4n+Kltonibw1qaShY9M1m1vJyOdscbfOT/wABJ4rycApfW4VZd9fQ9vER58PKnT+JrS29+ljwv9oz9grxZ8HZ7vxJ4NuBrHhmOJpnluZEiuLXHGxl4Emc/Ky4z0IHU/K3wY1/VvA3jy3SMusM0m1o/UYzkj3Ffcf7Tv7XN98Uo38L+FUe10jeHd5eJJ9nQsP4UBAIXqTyfSviDwHZzaj4qj1WfPlxszszdy3A/QZ/KvdzXF4erSrQpq8LO77vpb/M9XIslxmGlhquKlarzKy6qL35n5rp0/A+jvjU0UfiSPWEJVbmDdOg6ExsBvGO5XBPrWLo2q3WoW8ksEZZZAfnXGNq/wAOM5x3I61m/FW31zXxp3iDRLeeeC3We3vTGVKJG5ULuH3hnBy3ToM5rltD1O90+aKMmNH3EeW3UDHr3+przcshL6jSrbvr8naz+R8JxjRhhc/xNOEbRbTXndJtryu2d7r7/Zmjjll3weSr+ZHxib+6BnHJ/IVy39or/fn/AO/gq74yl1C9sU1KSaNFhQq0Ue07gf4gQOMd8815R/aKf3pP++v/AK1ezhk6lJSe54Eqlmf/1vsn4XaheeJPhxYfEX4oo1l4d0u3jg0vTlDsZ3jHl+dImMkuw+RMdOTxXI/GD9qC7u9CPh/wfZXlnDKgSSUxt5rJ3VQoIRT06kkelegRf8mjaJ9bf/0a9fHvir/WL/uivgszqzpyVGDsmj9T4LyjCYqMsZiIc0oy0T22T26/M+RviRqPiPWZhe6bY3W6MEMphkO9T6/L19K8PE/iDzfM/s67Izhka3l6HqpG3pX23qHRvpXlj/62T/fq8vwtOUGpI+ozjH1qVWLg7XPmr+wNYgtwBpl5cWDMSo8iUPEx/hOBn6Hoa+i/hj46Gi+H5PA/ifTNUn06RxJbskEjS2r/AN5MqAV55XjIJFdVa/8AIAuP+uiUWH/H2P8Adrp96m3OEnfX5+qMoxp4yksPiIJxdmu69Hvoaep+FNRmszq+gxy3lqSB5sUUgwSMhXRlDIfYj6E15NFaa7omrm+lsroMTyRHJyPoFr7Z8B/8k+1L/r8i/wDQWryzxL/r66KUVViubqfF46lHDYipTh9l21PFfEfjzxlfW/2fQdMvCcYaQwSD8B8teM3ml+O9QuVk1SyvWLZ2qIZDx9MV9faZ/qTUk/8Ax/xf7hryqjtJ0ktD9ByvB0qNCOIiveaTv6nxfc+FtUQkaha3YXqUSGQsfTJC4AH41oQ6d4hiijs7GwuofN7iCQEL/wB89/U819I6v/rZPoKvx/8AH7D/ANcxR7JSgmzerjKirSiktPv3Mj4ex6zpAjEdtcqQNvMT9D1ByvIPcGuj8YfB5NdjbxB4Ss5LW7jQtNZR25KTKOphBxsf/YztboADxXpHh77y/UV734a/4+1/z2NeDQxNXCYpujLRvVdGdXEWW4XMsuaxVNNxTs+q9H+mx+ZI82SFoPI1AbRg4sXXIPoCe9UPsEf/AD7al/4Bt/8AFV7zL/r3/wB0fzNRV+lRpxsfzanof//Z" alt="Никита, project manager студии" width="60" height="60" loading="lazy">
+    <div class="tg-txt">
+      <b>Никита <span class="tg-nick">@Anti4ay</span>&nbsp;– project manager студии</b>
+      <span>На&nbsp;запись по&nbsp;форме ответим в&nbsp;течение 1&nbsp;рабочего дня и&nbsp;подтвердим встречу, а&nbsp;если задача важная, напишите нам напрямую</span>
+    </div>
+    <a class="tg-btn" href="https://t.me/Anti4ay" target="_blank" rel="noopener">Написать в&nbsp;Telegram</a>
+  </div>
 </div></section>
 
 <footer><div class="wrap">
   <a class="brand" href="/synapt/" aria-label="synapt">
-    <svg viewBox="0 0 869 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/><path d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></svg>
+    <svg viewBox="0 0 839 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-30,0)"><path d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/></g><path d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></svg>
   </a>
   <div class="fmeta">
     <a href="/synapt/#cases">Кейсы</a>
     <a href="/synapt/#services">Услуги</a>
     <a href="/synapt/#faq">FAQ</a>
     <a href="https://t.me/Anti4ay" target="_blank" rel="noopener">Telegram менеджера</a>
-    <a href="/privacy">Политика обработки персональных данных</a><span>© 2026</span>
+    <a href="/synapt/agent/privacy/">Политика обработки персональных данных</a><span>© 2026</span>
   </div>
 </div><div class="wrap"><div class="legal">
     <div class="lg-col">
@@ -1062,7 +1115,7 @@ footer .fmeta a:hover{color:var(--text)}
       <div><span>ОГРНИП</span>324100000000411</div>
       <div><span>Адрес</span>185014, Республика Карелия, Петрозаводск, переулок Попова, дом 6, квартира 42</div>
     </div>
-  </div></div></div></footer>
+  </div></div></footer>
 
 <script>
 /* ---- тема ---- */
@@ -1117,14 +1170,22 @@ footer .fmeta a:hover{color:var(--text)}
     if(!contact.value.trim()){contact.classList.add('err');bad=true}
     if(!agree.checked)bad=true;
     if(bad){err.classList.add('show');return}
-    var body='Имя: '+name.value.trim()+'\n'+
-             'Контакт: '+contact.value.trim()+'\n'+
-             'Компания: '+(company.value.trim()||'не указана')+'\n'+
-             'Задача: '+(task.value.trim()||'не указана')+'\n'+
-             'Страница: AI-советник для бизнеса';
-    var url='mailto:oreshkin.medialab@outlook.com?subject='+encodeURIComponent('Заявка с сайта: AI-советник')+'&body='+encodeURIComponent(body);
-    f.style.display='none';done.classList.add('show');
-    window.location.href=url;
+    /* заявка уходит на сервер, ложного подтверждения без доставки не показываем */
+    var btn=f.querySelector('button[type=submit]'), was=btn?btn.textContent:'';
+    if(btn){btn.disabled=true;btn.textContent='Отправляем'}
+    var slotEl=document.getElementById('lfSlot');
+    fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name:name.value,contact:contact.value,
+        company:(company&&company.value)||'',task:(task&&task.value)||'',
+        slot:slotEl?slotEl.value:'',page:'AI-советник для бизнеса'})})
+      .then(function(r){return r.ok?r.json():Promise.reject(r.status)})
+      .then(function(){f.style.display='none';done.classList.remove('fail');done.classList.add('show')})
+      .catch(function(){
+        f.style.display='none';done.classList.add('show','fail');
+        var b=done.querySelector('b'); if(b) b.textContent='Заявка не ушла';
+        var t=done.querySelector('span'); if(t) t.innerHTML='Форма не\u00A0достучалась до\u00A0нас. Напишите Никите в\u00A0Telegram, он\u00A0примет заявку';
+      })
+      .then(function(){if(btn){btn.disabled=false;btn.textContent=was}});
   });
 })();
 </script>

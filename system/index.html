@@ -9,13 +9,13 @@
 <meta property="og:locale" content="ru_RU">
 <meta property="og:site_name" content="Synapt">
 <meta property="og:title" content="AI-система для&nbsp;бизнеса – Synapt">
-<meta property="og:description" content="Продажи, управление, команда и&nbsp;операции на&nbsp;общей базе знаний компании. Первый модуль от&nbsp;150 тыс. руб. за&nbsp;3-5 недель, код и&nbsp;данные остаются у&nbsp;вас">
-<meta property="og:url" content="/synapt/system/">
-<meta property="og:image" content="/synapt/system//og.png">
+<meta property="og:description" content="Продажи, управление, команда и&nbsp;операции на&nbsp;общей базе знаний компании. Первый модуль от&nbsp;150 тыс. ₽ за&nbsp;3-5 недель, код и&nbsp;данные остаются у&nbsp;вас">
+<meta property="og:url" content="https://synapt-system.vercel.app">
+<meta property="og:image" content="https://synapt-system.vercel.app/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="AI-система на&nbsp;четыре участка работы компании: продажи, управление, команда и&nbsp;операции на&nbsp;общей базе знаний. Первый модуль от&nbsp;150 тыс. руб. за&nbsp;3-5 недель">
+<meta name="description" content="AI-система на&nbsp;четыре участка работы компании: продажи, управление, команда и&nbsp;операции на&nbsp;общей базе знаний. Первый модуль от&nbsp;150 тыс. ₽ за&nbsp;3-5 недель">
 <script>(function(){try{var s=localStorage.getItem('synapt_theme');if(s==='light'||s==='dark'){document.documentElement.setAttribute('data-theme',s)}}catch(e){}})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -623,13 +623,87 @@ footer .fmeta a:hover{color:var(--text)}
 .lf-check{display:flex;align-items:center;gap:12px}
 .lf-check input[type=checkbox]{flex:none;align-self:center;margin:0}
 .lf-check span{line-height:1.5}
+
+/* смежное: строки-карточки вместо пилюль, тип слева, название крупно */
+.nxt{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+.nxt a{display:flex;flex-direction:column;gap:9px;padding:22px 22px 24px;background:var(--bg);
+  min-height:96px;justify-content:center;transition:background .22s var(--ease)}
+.nxt a:hover{background:var(--surface)}
+.nxt .nk{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;color:var(--text-dim);
+  font-feature-settings:"case" 1}
+.nxt .nt{font-size:16px;font-weight:560;color:var(--text);line-height:1.35}
+.nxt a:hover .nt{color:var(--accent-txt)}
+@media(max-width:900px){.nxt{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.nxt{grid-template-columns:1fr}.nxt a{min-height:0;padding:18px 20px}}
+.lf-done.fail b{color:var(--danger,#c2544d)}
+
+/* ---------- стоимость: сумма отдельной строкой, состав одной сеткой ---------- */
+.price-line{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 28px;
+  padding-bottom:26px;border-bottom:1px solid var(--line)}
+.pl-sum{font-family:var(--mono);font-weight:500;font-size:clamp(30px,4vw,44px);
+  letter-spacing:-.03em;color:var(--text);line-height:1.02}
+.pl-meta{display:flex;flex-wrap:wrap;gap:4px 26px}
+.pl-meta span{font-size:14px;color:var(--text-muted);line-height:1.5}
+.incl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0 clamp(28px,5vw,64px);margin-top:30px;align-items:start}
+.incl-h{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.11em;
+  color:var(--sage);margin-bottom:14px;font-feature-settings:"case" 1,"liga" 0}
+.incl ul{list-style:none;display:flex;flex-direction:column}
+.incl li{font-size:14.5px;line-height:1.5;color:var(--text-2);padding:12px 0 12px 22px;
+  border-bottom:1px solid var(--line);position:relative;min-height:60px}
+.incl li::before{content:"";position:absolute;left:0;top:20px;width:9px;height:1px;background:var(--line-accent)}
+.price-acts{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+@media(max-width:760px){
+  .incl{grid-template-columns:1fr;gap:26px}
+  .incl li{min-height:0}
+}
+
+/* ---------- заявка: слева объяснение, справа форма ---------- */
+.lead-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);
+  gap:clamp(28px,4vw,60px);align-items:start}
+.lead-copy{padding-top:4px}
+.lead-copy h2{margin-bottom:14px}
+.lead-copy .lead{max-width:38ch}
+#lead .leadbox{max-width:none;width:100%}
+.lc-list{margin-top:26px;display:flex;flex-direction:column;gap:14px;max-width:40ch;list-style:none}
+.lc-list li{display:flex;gap:14px;align-items:baseline;font-size:14.5px;color:var(--text-2);line-height:1.5}
+.lc-list .lk{flex:none;width:88px;font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;
+  color:var(--text-dim);font-feature-settings:"case" 1}
+@media(max-width:980px){.lead-grid{grid-template-columns:1fr;gap:26px}.lead-copy .lead{max-width:60ch}}
+@media(max-width:520px){.lc-list li{flex-direction:column;gap:4px}.lc-list .lk{width:auto}}
+.lf-done span{display:block;margin-top:6px;font-size:15px;color:var(--text-muted)}
+.lf-acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.btn.sm{padding:9px 16px;font-size:13.5px;min-height:40px}
+
+/* ---------- полоса с менеджером под формой ---------- */
+.tg-after{margin-top:clamp(22px,3vw,34px);padding:20px 24px;border:1px solid var(--line);
+  border-radius:var(--r-lg);background:var(--surface);display:flex;align-items:center;gap:18px}
+.tg-ava{flex:none;width:60px;height:60px;border-radius:50%;object-fit:cover;border:1px solid var(--line-2)}
+.tg-txt{flex:1;min-width:0}
+.tg-after b{display:block;font-size:15.5px;font-weight:600;color:var(--text);margin-bottom:5px}
+.tg-after b .tg-at{display:inline;font-family:var(--mono);font-size:12px;font-weight:400;
+  color:var(--text-dim);white-space:nowrap}
+.tg-after span{font-size:14px;color:var(--text-muted);line-height:1.55;display:block}
+.tg-btn{flex:none;display:inline-flex;align-items:center;justify-content:center;
+  padding:11px 20px;min-height:52px;border:1px solid var(--line-2);
+  border-radius:var(--r-md);font-size:14.5px;font-weight:560;color:var(--text);
+  transition:border-color .2s var(--ease),color .2s var(--ease)}
+.tg-btn:hover{border-color:var(--accent);color:var(--accent-txt)}
+@media(max-width:760px){
+  .tg-after{display:grid;grid-template-columns:52px minmax(0,1fr);
+    grid-template-areas:"ava txt" "btn btn";gap:14px;align-items:start;padding:18px 20px}
+  .tg-ava{grid-area:ava;width:52px;height:52px;align-self:start}
+  .tg-txt{grid-area:txt}
+  .tg-btn{grid-area:btn;width:100%;min-height:48px}
+}
 </style>
 </head>
 <body>
 
 <!-- ШАПКА -->
 <nav class="nav"><div class="wrap">
-  <a class="brand" href="#top" aria-label="synapt"><svg viewBox="0 0 869 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/><path d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></svg></a>
+  <a class="brand" href="/synapt/" aria-label="synapt"><svg viewBox="0 0 839 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-30,0)"><path d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/></g><path d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></svg></a>
   <div class="nav-links"><a href="#pain">Зачем</a><a href="#modules">Модули</a><a href="#how">Как&nbsp;устроено</a><a href="#start">С&nbsp;чего начать</a><a href="#own">Свой процесс</a><a href="#pricing">Стоимость</a><a href="#faq">FAQ</a></div>
   <div class="nav-act">
     <button class="tgl" id="tgl" aria-label="Сменить тему" title="Светлая или&nbsp;тёмная тема"></button>
@@ -666,8 +740,8 @@ footer .fmeta a:hover{color:var(--text)}
     </div>
   </div>
   <div class="hero-meta reveal d4">
-    <div class="m"><b>от&nbsp;150 тыс. руб.</b><span>первый модуль вместе с&nbsp;общим контуром</span></div>
-    <div class="m"><b>3-5 недель</b><span>до&nbsp;первой готового продукта</span></div>
+    <div class="m"><b>от&nbsp;150 тыс. ₽</b><span>первый модуль вместе с&nbsp;общим контуром</span></div>
+    <div class="m"><b>3-5 недель</b><span>до&nbsp;первого работающего модуля</span></div>
     <div class="m"><b>60 дней</b><span>после сдачи остаёмся на&nbsp;связи</span></div>
   </div>
 </div></header>
@@ -733,7 +807,7 @@ footer .fmeta a:hover{color:var(--text)}
   <div class="bento">
     <article class="card b3 reveal"><span class="tag">01 продажи</span>
       <h3>Работа с&nbsp;клиентом</h3>
-      <p>Отвечает в&nbsp;мессенджерах за&nbsp;секунды, выясняет потребность и&nbsp;доводит до&nbsp;заявки. Разбирает диалоги менеджеров и&nbsp;показывает, где сделки срываются</p>
+      <p>Отвечает в&nbsp;мессенджерах в&nbsp;первые минуты и&nbsp;круглосуточно, выясняет потребность и&nbsp;доводит до&nbsp;заявки. Разбирает диалоги менеджеров и&nbsp;показывает, где сделки срываются</p>
       <a class="morelink" href="/synapt/prodazh/">Как&nbsp;устроен модуль продаж</a></article>
     <article class="card b3 reveal d1"><span class="tag">02 управление</span>
       <h3>Картина для&nbsp;собственника</h3>
@@ -782,7 +856,7 @@ footer .fmeta a:hover{color:var(--text)}
       <tbody>
         <tr><td data-l="участок">Заявка в&nbsp;закупках, INNORTO</td><td data-l="раньше">Менеджер вбивал заявку в&nbsp;1С руками, около десяти минут на&nbsp;штуку</td><td class="hi" data-l="теперь">Заявка собирается за&nbsp;две минуты, человек проверяет и&nbsp;подтверждает</td></tr>
         <tr><td data-l="участок">Вопрос клиента ночью, GlobalDent</td><td data-l="раньше">Ответ утром, часть обращений успевала уйти к&nbsp;конкуренту</td><td class="hi" data-l="теперь">Ответ в&nbsp;23:40 по&nbsp;базе из&nbsp;1500 проверенных вопросов и&nbsp;ответов</td></tr>
-        <tr><td data-l="участок">Поменялся прайс</td><td data-l="раньше">Правки вносили отдельно в&nbsp;бота, в&nbsp;скрипты и&nbsp;в&nbsp;регламент, где-то&nbsp;забывали</td><td class="hi" data-l="теперь">Обновляют один документ в&nbsp;базе знаний, модули берут новую версию сразу</td></tr>
+        <tr><td data-l="участок">Поменялся прайс</td><td data-l="раньше">Правки вносили отдельно в&nbsp;бота, в&nbsp;скрипты и&nbsp;в&nbsp;регламент, где-то&nbsp;забывали</td><td class="hi" data-l="теперь">Обновляют один документ в&nbsp;базе знаний, модули сразу работают с&nbsp;обновлённым</td></tr>
         <tr><td data-l="участок">Разбор диалогов</td><td data-l="раньше">Руководитель слушал выборку звонков и&nbsp;делал вывод на&nbsp;ощущение</td><td class="hi" data-l="теперь">Разбирается вся переписка, у&nbsp;каждой оценки видно реплику, на&nbsp;которую она опирается</td></tr>
         <tr><td data-l="участок">Отчёт собственнику</td><td data-l="раньше">Сводили руками в&nbsp;конце месяца, к&nbsp;середине следующего цифры устаревали</td><td class="hi" data-l="теперь">Считается кодом на&nbsp;цифрах CRM, у&nbsp;каждой строки открывается источник</td></tr>
       </tbody>
@@ -816,7 +890,7 @@ footer .fmeta a:hover{color:var(--text)}
     <p class="lead">Заходят через участок, который болит сильнее, и&nbsp;расширяются, когда он&nbsp;окупился</p>
   </div>
   <div class="rules">
-    <div class="rule reveal"><span class="rn">шаг 1</span><div class="rt">Чекап за&nbsp;две недели</div><div class="rd">Смотрим, где теряются деньги и&nbsp;время, и&nbsp;собираем один агент на&nbsp;ваших материалах. 19 900 руб., сумму вычитаем из&nbsp;счёта за&nbsp;разработку</div></div>
+    <div class="rule reveal"><span class="rn">шаг 1</span><div class="rt">Чекап за&nbsp;две недели</div><div class="rd">Смотрим, где теряются деньги и&nbsp;время, и&nbsp;собираем один агент на&nbsp;ваших материалах. 19 900 ₽, отдельная услуга с&nbsp;результатом на&nbsp;руках</div></div>
     <div class="rule reveal d1"><span class="rn">шаг 2</span><div class="rt">Первый модуль</div><div class="rd">Берём участок с&nbsp;самым быстрым эффектом и&nbsp;доводим до&nbsp;готового продукта за&nbsp;3-5 недель. Вместе с&nbsp;ним встаёт общий контур</div></div>
     <div class="rule reveal d2"><span class="rn">шаг 3</span><div class="rt">Следующие модули</div><div class="rd">Каждый следующий дешевле первого: подключения и&nbsp;база знаний уже готовы. Решение о&nbsp;расширении принимаете по&nbsp;цифрам первого модуля</div></div>
   </div>
@@ -829,33 +903,35 @@ footer .fmeta a:hover{color:var(--text)}
     <div class="eyebrow"><span class="n">10</span> Стоимость</div>
     <h2>Платите за&nbsp;модуль, а&nbsp;не&nbsp;за&nbsp;всю систему сразу</h2>
   </div>
-  <div class="pair">
-    <div class="plan main reveal">
-      <div class="pn">Первый модуль</div>
-      <div class="sum">от&nbsp;150 тыс. руб.</div>
-      <div class="per">3-5 недель, точная сумма после чекапа</div>
+  <div class="price-line reveal">
+    <div class="pl-sum">от&nbsp;150 тыс. ₽</div>
+    <div class="pl-meta"><span>первый модуль вместе с&nbsp;общим контуром</span><span>3-5 недель, точная сумма после чекапа</span></div>
+  </div>
+  <div class="incl reveal d1">
+    <div class="incl-col">
+      <div class="incl-h">Что&nbsp;входит</div>
       <ul>
         <li>Общий контур: подключения, база знаний, права доступа</li>
         <li>Один модуль на&nbsp;выбор, доведённый до&nbsp;работы</li>
-        <li>Обучение команды и&nbsp;передача документации</li>
+        <li>Обучение команды на&nbsp;её&nbsp;задачах</li>
         <li>60 дней после сдачи остаёмся на&nbsp;связи</li>
       </ul>
-      <a class="btn pri" href="#lead">Обсудить задачу</a>
     </div>
-    <div class="plan reveal d1">
-      <div class="pn">Каждый следующий</div>
-      <div class="sum">дешевле</div>
-      <div class="per">контур уже стоит, платите только за&nbsp;модуль</div>
+    <div class="incl-col">
+      <div class="incl-h">Что&nbsp;на&nbsp;выходе</div>
       <ul>
-        <li>Подключения к&nbsp;системам переиспользуются</li>
-        <li>База знаний компании уже собрана</li>
-        <li>Права и&nbsp;обезличивание настроены</li>
-        <li>Срок короче: работаем на&nbsp;готовом основании</li>
+        <li>Работающий модуль на&nbsp;ваших данных</li>
+        <li>Код, промпты и&nbsp;база знаний у&nbsp;вас</li>
+        <li>Документация и&nbsp;журнал действий системы</li>
+        <li>Основание, на&nbsp;котором следующий модуль дешевле</li>
       </ul>
-      <a class="btn ghost" href="/synapt/checkup/">Начать с&nbsp;чекапа</a>
     </div>
   </div>
-  <div class="note reveal">Вход стоит 19 900 руб. за&nbsp;чекап, и&nbsp;эта сумма вычитается из&nbsp;счёта за&nbsp;разработку. Стоимость модуля фиксируем в&nbsp;договоре до&nbsp;начала работ, изменить её&nbsp;можно только дополнением, которое подписываете вы</div>
+  <div class="price-acts reveal d2">
+    <a class="btn pri lg" href="#lead">Обсудить задачу</a>
+    <a class="btn ghost lg" href="/synapt/checkup/">Начать с&nbsp;чекапа</a>
+  </div>
+  <div class="note reveal">Вход стоит 19 900 ₽ за&nbsp;чекап, это отдельная услуга: по&nbsp;её&nbsp;итогам вы&nbsp;решаете, идём&nbsp;ли&nbsp;дальше в&nbsp;разработку. Стоимость модуля фиксируем в&nbsp;договоре до&nbsp;начала работ, изменить её&nbsp;можно только дополнением, которое подписываете вы</div>
 </div></section>
 
 <!-- БЕЗОПАСНОСТЬ -->
@@ -870,7 +946,7 @@ footer .fmeta a:hover{color:var(--text)}
     <div class="row"><div class="rn">0x02</div><div class="rt">Обезличивание до&nbsp;отправки</div><div class="rd">Имена, телефоны и&nbsp;реквизиты заменяются на&nbsp;метки, как&nbsp;требует 152-ФЗ. Клиентские базы наружу не&nbsp;выгружаются целиком</div></div>
     <div class="row"><div class="rn">0x03</div><div class="rt">Права по&nbsp;оргструктуре</div><div class="rd">Собственник видит всё, руководитель только своё направление, менеджер только свои сделки. Настраивается под то, как&nbsp;устроена компания</div></div>
     <div class="row"><div class="rn">0x04</div><div class="rt">Размещение по&nbsp;вашему выбору</div><div class="rd">Работаем на&nbsp;площадках в&nbsp;России, при необходимости разворачиваем контур на&nbsp;вашем сервере</div></div>
-    <div class="row"><div class="rn">0x05</div><div class="rt">Всё остаётся у&nbsp;вас</div><div class="rd">Код, база знаний, промпты и&nbsp;документация передаются по&nbsp;акту. Продолжить работу можно с&nbsp;любой другой командой</div></div>
+    <div class="row"><div class="rn">0x05</div><div class="rt">Всё остаётся у&nbsp;вас</div><div class="rd">Код, база знаний, промпты и&nbsp;документация передаются вам целиком. Продолжить работу можно с&nbsp;нами или&nbsp;с&nbsp;другой командой</div></div>
   </div>
   <div class="note reveal">Контур доступа собран отдельным слоем, его&nbsp;можно взять и&nbsp;без модулей, если у&nbsp;вас уже есть свои решения на&nbsp;нейросетях. <a href="/synapt/safe/">Как&nbsp;устроен слой</a></div>
 </div></section>
@@ -886,7 +962,7 @@ footer .fmeta a:hover{color:var(--text)}
     <div class="card b4 reveal">
       <div class="step-n">этап 01</div>
       <h3>Чекап и&nbsp;выбор модуля</h3>
-      <p>Две недели: смотрим процессы, считаем, где теряется время, и&nbsp;выбираем участок, который даст эффект первым. 19 900 руб., сумму вычитаем из&nbsp;счёта за&nbsp;разработку</p>
+      <p>Две недели: смотрим процессы, считаем, где теряется время, и&nbsp;выбираем участок, который даст эффект первым. 19 900 ₽, отдельная услуга с&nbsp;результатом на&nbsp;руках</p>
     </div>
     <div class="card b2 reveal d1">
       <div class="step-n">этап 02</div>
@@ -956,7 +1032,7 @@ footer .fmeta a:hover{color:var(--text)}
     <details><summary>У&nbsp;нас есть свои разработчики, соберём сами <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
       <div class="ans">Собрать первого агента ваша команда действительно может за&nbsp;неделю. Дальше начинается то, что&nbsp;съедает год. Первое: поддержка отлаженных сценариев, когда меняется прайс, меняется API и&nbsp;меняется сама модель. Второе: длинные цепочки, где ошибка на&nbsp;третьем шаге всплывает только на&nbsp;десятом. Третье: обвязка вокруг агента, то&nbsp;есть журнал действий, подтверждения, мониторинг качества ответов и&nbsp;откат. Четвёртое: когда каждый отвечает только за&nbsp;свой кусок, за&nbsp;общий результат не&nbsp;отвечает никто, и&nbsp;внедрение застревает между отделами. Пятое: работа с&nbsp;вашими данными, которых нет ни&nbsp;в&nbsp;одной готовой платформе. Код и&nbsp;документацию мы&nbsp;отдаём, поэтому дальше ваши разработчики ведут систему сами</div></details>
     <details><summary>Мы&nbsp;уже внедряли AI, эффекта не&nbsp;увидели <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-      <div class="ans">Обычно мешает не&nbsp;технология. Пилот показали, а&nbsp;процесс вокруг остался прежним: те же&nbsp;согласования, тот же&nbsp;ввод руками, тот же&nbsp;зоопарк из&nbsp;пяти ботов от&nbsp;разных подрядчиков. Пилотов много, перестройки нет. Поэтому мы&nbsp;начинаем с&nbsp;чекапа за&nbsp;две недели и&nbsp;берём участок, на&nbsp;котором эффект можно посчитать. Если задача решается регламентом, скажем это до&nbsp;того, как&nbsp;вы&nbsp;заплатите за&nbsp;разработку</div></details>
+      <div class="ans">Обычно мешает не&nbsp;технология. Работающий продукт показали, а&nbsp;процесс вокруг остался прежним: те же&nbsp;согласования, тот же&nbsp;ввод руками, тот же&nbsp;зоопарк из&nbsp;пяти ботов от&nbsp;разных подрядчиков. Показов много, перестройки нет. Поэтому мы&nbsp;начинаем с&nbsp;чекапа за&nbsp;две недели и&nbsp;берём участок, на&nbsp;котором эффект можно посчитать. Если задача решается регламентом, скажем это до&nbsp;того, как&nbsp;вы&nbsp;заплатите за&nbsp;разработку</div></details>
     <details><summary>Команда решит, что&nbsp;их&nbsp;готовят к&nbsp;сокращению <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
       <div class="ans">Это возражение живёт внутри компании, чаще всего на&nbsp;уровне руководителей среднего звена, и&nbsp;убивает внедрение уже после подписания договора. Мы&nbsp;проговариваем его&nbsp;на&nbsp;старте вместе с&nbsp;вами. Люди в&nbsp;таких проектах обычно перераспределяются: IKEA переучила 8500 сотрудников колл-центра на&nbsp;новые роли и&nbsp;получила от&nbsp;этого дополнительно 1,4 млрд дол. В&nbsp;критерии приёмки мы&nbsp;выносим долю сотрудников, которые работают с&nbsp;системой каждый день, поэтому сопротивление видно сразу, и&nbsp;мы&nbsp;лечим его&nbsp;обучением на&nbsp;живых задачах</div></details>
     <details><summary>Чем это отличается от&nbsp;готового чата с&nbsp;хорошим промптом <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
@@ -970,56 +1046,74 @@ footer .fmeta a:hover{color:var(--text)}
   </div>
 </div></section>
 
-<!-- СМЕЖНОЕ -->
-<section id="related" class="s-rel"><div class="wrap">
-  <div class="sec-head reveal">
-    <div class="eyebrow"><span class="n">16</span> Смежные материалы</div>
-    <h2>Другие услуги и&nbsp;разборы проектов</h2>
+<!-- ЗАЯВКА -->
+<section id="lead" class="s-lead"><div class="wrap">
+  <div class="lead-grid">
+    <div class="lead-copy reveal">
+      <div class="eyebrow"><span class="n">16</span> Заявка</div>
+      <h2><span class="nb">30 минут</span> в&nbsp;Zoom с&nbsp;партнёрами студии</h2>
+      <p class="lead">Вы&nbsp;рассказываете про&nbsp;бизнес, мы&nbsp;задаём вопросы и&nbsp;вместе смотрим, какой участок стоит взять первым. После присылаем запись и&nbsp;короткий разбор</p>
+      <ul class="lc-list">
+        <li><span class="lk">формат</span>Zoom, ссылку присылаем вместе с&nbsp;подтверждением</li>
+        <li><span class="lk">кто&nbsp;будет</span>Антон и&nbsp;Виктор, оба партнёра студии</li>
+        <li><span class="lk">после</span>запись, разбор и&nbsp;ответ, с&nbsp;чего начинать</li>
+      </ul>
+    </div>
+    <div class="leadbox reveal d1">
+      <form id="leadForm" novalidate>
+        <div class="lf-row">
+          <div class="lf"><label for="lfName">Как&nbsp;вас зовут</label><input id="lfName" name="name" type="text" autocomplete="name" required></div>
+          <div class="lf"><label for="lfContact">Телефон, почта или&nbsp;Telegram</label><input id="lfContact" name="contact" type="text" autocomplete="off" required></div>
+        </div>
+        <div class="lf"><label for="lfCompany">Компания и&nbsp;сфера деятельности</label><input id="lfCompany" name="company" type="text" autocomplete="organization"></div>
+        <div class="lf"><label for="lfTask">Коротко о&nbsp;задаче</label><textarea id="lfTask" name="task" rows="3"></textarea></div>
+        <label class="lf-check"><input type="checkbox" id="lfAgree" required>
+          <span>Согласен на&nbsp;обработку персональных данных и&nbsp;принимаю <a href="/synapt/system/privacy/" target="_blank">политику обработки персональных данных</a></span></label>
+        <div class="lf-err" id="lfErr" role="alert">Не&nbsp;хватает вашего имени, контактов и&nbsp;согласия на&nbsp;обработку персональных данных</div>
+        <button class="btn pri lg" type="submit">Обсудить задачу</button>
+      </form>
+      <div class="lf-done" id="lfDone">
+        <b>Заявка принята</b>
+        <span id="lfDoneTxt">Ответим в&nbsp;течение 1&nbsp;рабочего дня и&nbsp;подтвердим встречу</span>
+        <div class="lf-acts"><a class="btn ghost sm" href="https://t.me/Anti4ay" target="_blank" rel="noopener">Написать в&nbsp;Telegram</a></div>
+      </div>
+    </div>
   </div>
-  <div class="rel reveal">
-    <a href="/synapt/checkup/"><span>услуга</span>AI-чекап бизнеса</a>
-    <a href="/synapt/prodazh/"><span>модуль</span>Отдел продаж</a>
-    <a href="/synapt/safe/"><span>контур</span>Безопасный слой</a>
-    <a href="https://synapt.tech/#cases"><span>кейсы</span>Проекты Synapt</a>
-    <a href="https://automyai.ru"><span>обучение</span>Automy AI</a>
-    <a href="https://medialab-retainer.vercel.app"><span>медиа</span>Личный бренд на&nbsp;подписке</a>
+  <div class="tg-after reveal">
+    <img class="tg-ava" src="data:image/jpeg;base64,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" alt="Никита, project manager студии" width="60" height="60" loading="lazy">
+    <div class="tg-txt">
+      <b>Никита&nbsp;<span class="tg-at">@Anti4ay</span>&nbsp;–&nbsp;project manager студии</b>
+      <span>На&nbsp;запись по&nbsp;форме ответим в&nbsp;течение 1&nbsp;рабочего дня и&nbsp;подтвердим встречу, а&nbsp;если задача важная, напишите нам напрямую</span>
+    </div>
+    <a class="tg-btn" href="https://t.me/Anti4ay" target="_blank" rel="noopener">Написать в&nbsp;Telegram</a>
   </div>
 </div></section>
 
-<!-- ЗАЯВКА -->
-<section id="lead" class="s-lead"><div class="wrap">
+<!-- СМЕЖНОЕ -->
+<section id="related" class="s-rel"><div class="wrap">
   <div class="sec-head reveal">
-    <div class="eyebrow"><span class="n">17</span> Заявка</div>
-    <h2>Расскажите о&nbsp;задаче, покажем, с&nbsp;какого модуля начать</h2>
-    <p class="lead">30&nbsp;минут разговора. Вы&nbsp;рассказываете, мы&nbsp;задаём вопросы и&nbsp;вместе понимаем, что&nbsp;вам нужно. После пришлём расшифровку и&nbsp;что&nbsp;советуем делать</p>
+    <div class="eyebrow"><span class="n">17</span> Куда&nbsp;дальше</div>
   </div>
-  <div class="leadbox reveal">
-    <form id="leadForm" novalidate>
-      <div class="lf-row">
-        <div class="lf"><label for="lfName">Имя</label><input id="lfName" name="name" type="text" autocomplete="name" required></div>
-        <div class="lf"><label for="lfContact">Телефон, почта или&nbsp;Telegram</label><input id="lfContact" name="contact" type="text" autocomplete="off" required></div>
-      </div>
-      <div class="lf"><label for="lfCompany">Компания и&nbsp;сфера</label><input id="lfCompany" name="company" type="text" autocomplete="organization"></div>
-      <div class="lf"><label for="lfTask">Задача коротко</label><textarea id="lfTask" name="task" rows="3"></textarea></div>
-      <label class="lf-check"><span class="box"><input type="checkbox" id="lfAgree" required></span>
-        <span>Согласен на&nbsp;обработку персональных данных и&nbsp;принимаю <a href="/privacy" target="_blank" rel="noopener">политику</a></span></label>
-      <div class="lf-err" id="lfErr">Заполните имя, контакт и&nbsp;отметьте согласие</div>
-      <button class="btn pri lg" type="submit">Отправить заявку</button>
-    </form>
-    <div class="lf-done" id="lfDone"><b>Письмо собрано и&nbsp;открыто в&nbsp;вашей почте</b>, отправьте его, и&nbsp;мы&nbsp;ответим в&nbsp;рабочее время. Если почта не&nbsp;открылась, напишите нам в&nbsp;Telegram: <a href="https://t.me/Anti4ay">@Anti4ay</a> или&nbsp;на&nbsp;адрес <a href="mailto:oreshkin.medialab@outlook.com">oreshkin.medialab@outlook.com</a></div>
+  <div class="nxt reveal">
+    <a href="/synapt/checkup/"><span class="nk">услуга</span><span class="nt">AI-чекап бизнеса</span></a>
+    <a href="/synapt/prodazh/"><span class="nk">блок системы</span><span class="nt">Отдел продаж</span></a>
+    <a href="/synapt/safe/"><span class="nk">блок системы</span><span class="nt">Безопасный слой</span></a>
+    <a href="/synapt/#cases"><span class="nk">кейсы</span><span class="nt">Проекты студии</span></a>
+    <a href="https://automyai.ru"><span class="nk">обучение</span><span class="nt">Automy AI</span></a>
+    <a href="https://medialab-retainer.vercel.app"><span class="nk">медиа</span><span class="nt">Личный бренд на&nbsp;подписке</span></a>
   </div>
 </div></section>
 
 <footer><div class="wrap">
   <a class="brand" href="/synapt/" aria-label="synapt">
-    <svg viewBox="0 0 869 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/><path d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></svg>
+    <svg viewBox="0 0 839 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-30,0)"><path d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/></g><path d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></svg>
   </a>
   <div class="fmeta">
     <a href="/synapt/#cases">Кейсы</a>
     <a href="/synapt/#services">Услуги</a>
     <a href="/synapt/#faq">FAQ</a>
     <a href="https://t.me/Anti4ay" target="_blank" rel="noopener">Telegram менеджера</a>
-    <a href="/privacy">Политика обработки персональных данных</a><span>© 2026</span>
+    <a href="/synapt/system/privacy/">Политика обработки персональных данных</a><span>© 2026</span>
   </div>
 </div><div class="wrap"><div class="legal">
     <div class="lg-col">
@@ -1031,7 +1125,7 @@ footer .fmeta a:hover{color:var(--text)}
       <div><span>ОГРНИП</span>324100000000411</div>
       <div><span>Адрес</span>185014, Республика Карелия, Петрозаводск, переулок Попова, дом 6, квартира 42</div>
     </div>
-  </div></div></div></footer>
+  </div></div></footer>
 
 <script>
 /* ---- тема ---- */
@@ -1086,14 +1180,22 @@ footer .fmeta a:hover{color:var(--text)}
     if(!contact.value.trim()){contact.classList.add('err');bad=true}
     if(!agree.checked)bad=true;
     if(bad){err.classList.add('show');return}
-    var body='Имя: '+name.value.trim()+'\n'+
-             'Контакт: '+contact.value.trim()+'\n'+
-             'Компания: '+(company.value.trim()||'не указана')+'\n'+
-             'Задача: '+(task.value.trim()||'не указана')+'\n'+
-             'Страница: AI-система для бизнеса';
-    var url='mailto:oreshkin.medialab@outlook.com?subject='+encodeURIComponent('Заявка с сайта: AI-система для бизнеса')+'&body='+encodeURIComponent(body);
-    f.style.display='none';done.classList.add('show');
-    window.location.href=url;
+    /* заявка уходит на сервер, ложного подтверждения без доставки не показываем */
+    var btn=f.querySelector('button[type=submit]'), was=btn?btn.textContent:'';
+    if(btn){btn.disabled=true;btn.textContent='Отправляем'}
+    var slotEl=document.getElementById('lfSlot');
+    fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name:name.value,contact:contact.value,
+        company:(company&&company.value)||'',task:(task&&task.value)||'',
+        slot:slotEl?slotEl.value:'',page:'AI-система для бизнеса'})})
+      .then(function(r){return r.ok?r.json():Promise.reject(r.status)})
+      .then(function(){f.style.display='none';done.classList.remove('fail');done.classList.add('show')})
+      .catch(function(){
+        f.style.display='none';done.classList.add('show','fail');
+        var b=done.querySelector('b'); if(b) b.textContent='Заявка не ушла';
+        var t=done.querySelector('span'); if(t) t.innerHTML='Форма не\u00A0достучалась до\u00A0нас. Напишите Никите в\u00A0Telegram, он\u00A0примет заявку';
+      })
+      .then(function(){if(btn){btn.disabled=false;btn.textContent=was}});
   });
 })();
 </script>
