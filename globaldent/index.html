@@ -267,7 +267,8 @@ h4{font-size:16.5px;font-weight:560;letter-spacing:-.012em;line-height:1.35}
   color:var(--accent-txt);border-top:1px solid var(--line);padding-top:18px;width:100%}
 .incl{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;align-items:start}
 .icol{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:26px;box-shadow:var(--card-shadow)}
-.icol:nth-child(2){margin-top:32px}
+/* обе колонки начинаются от одной линии: смещение мешало читать их как одну сетку */
+.icol:nth-child(2){margin-top:0}
 .icol .k{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.11em;
   color:var(--text-dim);margin-bottom:18px;font-feature-settings:"case" 1,"liga" 0}
 .icol ul{list-style:none;display:flex;flex-direction:column;gap:0}
@@ -458,6 +459,22 @@ footer .fmeta a:hover{color:var(--text)}
 .tg-after span{font-size:14px;color:var(--text-muted);line-height:1.55;max-width:62ch;display:block}
 @media(max-width:700px){.lf-row{grid-template-columns:1fr}.tg-after{flex-direction:column;align-items:flex-start}
   .tg-after .btn{width:100%;justify-content:center}}
+
+/* стоимость идёт строкой без карточки, а что входит и что на выходе стоят одной сеткой */
+.price-line{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(20px,3vw,48px);
+  align-items:end;padding-bottom:26px;margin-bottom:28px;border-bottom:1px solid var(--line)}
+.price-line .big{font-family:var(--mono);font-weight:500;font-size:clamp(30px,3.4vw,44px);
+  letter-spacing:-.03em;line-height:1;color:var(--text);white-space:nowrap}
+.price-line .big small{font-family:var(--sans);font-size:16px;color:var(--text-muted);
+  font-weight:450;letter-spacing:0;white-space:nowrap}
+.price-line .desc{font-size:15px;color:var(--text-muted);line-height:1.55;max-width:62ch}
+.price-line .start{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;
+  letter-spacing:.04em;color:var(--text-dim);margin-top:10px}
+.incl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,3vw,44px);align-items:start}
+@media(max-width:860px){
+  .price-line{grid-template-columns:1fr;gap:14px;align-items:start}
+  .incl{grid-template-columns:1fr;gap:24px}
+}
 
 .r64-64-64-64{padding:64px 0 64px}.r64-130-64-80{padding:64px 0 130px}.r72-96-48-64{padding:72px 0 96px}.r96-120-64-80{padding:96px 0 120px}.r120-140-72-80{padding:120px 0 140px}.r130-150-80-96{padding:130px 0 150px}.r140-96-96-64{padding:140px 0 96px}@media(max-width:720px){.r64-64-64-64{padding:64px 0 64px}.r64-130-64-80{padding:64px 0 80px}.r72-96-48-64{padding:48px 0 64px}.r96-120-64-80{padding:64px 0 80px}.r120-140-72-80{padding:72px 0 80px}.r130-150-80-96{padding:80px 0 96px}.r140-96-96-64{padding:96px 0 64px}}</style>
 </head>
@@ -850,6 +867,94 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
       }
     }, innerWidth < 700 ? 1.5 : 3);
   });
+
+
+  /* ---------- блок: очередь заявок до и после запуска ----------
+     сверху обращения копятся и ждут ответа, снизу тот же поток разбирается сразу ---------- */
+  [].forEach.call(document.querySelectorAll('canvas.fx-queue'), function (c) {{
+    var la = c.dataset.a || 'было', lb = c.dataset.b || 'стало';
+    loop(c, function (s, t) {{
+      var ctx = s.ctx, W = s.W, H = s.H, i;
+      ctx.clearRect(0, 0, W, H);
+      var yA = H * .34, yB = H * .74, x0 = W * .10, x1 = W * .90;
+      ctx.font = '11px "JetBrains Mono", ui-monospace, monospace';
+      ctx.fillStyle = 'rgba(' + GR + ',.85)';
+      ctx.fillText(la, x0, yA - H * .16); ctx.fillText(lb, x0, yB - H * .16);
+      [yA, yB].forEach(function (y) {{
+        ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x1, y);
+        ctx.strokeStyle = 'rgba(' + GR + ',.2)'; ctx.lineWidth = 1; ctx.stroke();
+      }});
+      /* верхняя дорожка: заявки доходят до менеджера и встают в очередь */
+      var stop = W * .62, waiting = 0;
+      for (i = 0; i < 14; i++) {{
+        var ph = ((t * .0022) + i * .07) % 1;
+        var x = x0 + (x1 - x0) * ph;
+        if (x > stop) {{ x = stop - waiting * 11; waiting++; }}
+        ctx.beginPath(); ctx.arc(x, yA, 3.4, 0, 7);
+        ctx.fillStyle = x >= stop - waiting * 11 && waiting ? 'rgba(' + GR + ',.75)' : 'rgba(' + GR + ',.45)';
+        ctx.fill();
+      }}
+      ctx.setLineDash([4, 5]);
+      ctx.beginPath(); ctx.moveTo(stop, yA - H * .1); ctx.lineTo(stop, yA + H * .1);
+      ctx.strokeStyle = 'rgba(' + GR + ',.5)'; ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = 'rgba(' + GR + ',.7)';
+      ctx.fillText('ждут ответа', stop + 10, yA + H * .13);
+      /* нижняя дорожка: агент отвечает сразу, поток идёт ровно */
+      for (i = 0; i < 14; i++) {{
+        var q = ((t * .0055) + i * .071) % 1;
+        var bx = x0 + (x1 - x0) * q;
+        ctx.beginPath(); ctx.arc(bx, yB, 3.4, 0, 7);
+        ctx.fillStyle = 'rgba(' + PH + ',' + (.5 + .4 * Math.sin(q * Math.PI)) + ')'; ctx.fill();
+      }}
+      ctx.fillStyle = 'rgba(' + PH + ',.8)';
+      ctx.fillText('ответ сразу', x1 - 78, yB + H * .13);
+    }}, innerWidth < 700 ? 1.5 : 2.6);
+  }});
+
+  /* ---------- блок: переписка с агентом ----------
+     реплики появляются по очереди, агент печатает ответ ---------- */
+  [].forEach.call(document.querySelectorAll('canvas.fx-chat'), function (c) {{
+    var lines = (c.dataset.chat || 'Есть доставка в Казань?|Да, два раза в неделю. Подскажите объём|Паллета в неделю|Собрал заявку и передал менеджеру').split('|');
+    loop(c, function (s, t) {{
+      var ctx = s.ctx, W = s.W, H = s.H;
+      ctx.clearRect(0, 0, W, H);
+      var pad = W * .07, bw = Math.min(W * .62, 330), lh = 17, gap = 14;
+      var cycle = 150, shown = Math.min(lines.length, Math.floor((t % (cycle * (lines.length + 2))) / cycle));
+      var y = H * .12;
+      for (var i = 0; i < shown; i++) {{
+        var mine = i % 2 === 0;
+        ctx.font = '12px "JetBrains Mono", ui-monospace, monospace';
+        var words = lines[i].split(' '), rows = [], cur = '';
+        words.forEach(function (w) {{
+          var test = cur ? cur + ' ' + w : w;
+          if (ctx.measureText(test).width > bw - 26 && cur) {{ rows.push(cur); cur = w; }} else cur = test;
+        }});
+        if (cur) rows.push(cur);
+        var h = rows.length * lh + 16;
+        var w = 0; rows.forEach(function (r) {{ w = Math.max(w, ctx.measureText(r).width); }});
+        var x = mine ? pad : W - pad - (w + 26);
+        ctx.fillStyle = mine ? 'rgba(' + GR + ',.16)' : 'rgba(' + PH + ',.16)';
+        ctx.strokeStyle = mine ? 'rgba(' + GR + ',.3)' : 'rgba(' + PH + ',.42)';
+        ctx.lineWidth = 1;
+        if (ctx.roundRect) {{ ctx.beginPath(); ctx.roundRect(x, y, w + 26, h, 12); ctx.fill(); ctx.stroke(); }}
+        else {{ ctx.fillRect(x, y, w + 26, h); ctx.strokeRect(x, y, w + 26, h); }}
+        ctx.fillStyle = mine ? 'rgba(' + GR + ',.95)' : 'rgba(' + WH + ',.95)';
+        rows.forEach(function (r, k) {{ ctx.fillText(r, x + 13, y + 15 + k * lh); }});
+        y += h + gap;
+      }}
+      /* агент набирает следующий ответ */
+      if (shown < lines.length) {{
+        var dots = Math.floor(t / 18) % 3 + 1, dx = W - pad - 54;
+        ctx.fillStyle = 'rgba(' + PH + ',.16)';
+        ctx.strokeStyle = 'rgba(' + PH + ',.35)';
+        if (ctx.roundRect) {{ ctx.beginPath(); ctx.roundRect(dx, y, 54, 26, 12); ctx.fill(); ctx.stroke(); }}
+        for (var d = 0; d < dots; d++) {{
+          ctx.beginPath(); ctx.arc(dx + 16 + d * 11, y + 13, 2.4, 0, 7);
+          ctx.fillStyle = 'rgba(' + PH + ',.8)'; ctx.fill();
+        }}
+      }}
+    }}, innerWidth < 700 ? 1.25 : 1.9);
+  }});
 
   /* ---------- блок: малые кратные, разные сети рядом ---------- */
   [].forEach.call(document.querySelectorAll('canvas.fx-multiples'), function (c) {
