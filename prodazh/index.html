@@ -124,7 +124,8 @@ h4{font-size:16.5px;font-weight:560;letter-spacing:-.012em;line-height:1.35}
 .sec-head h2{margin-bottom:18px}
 
 /* ---------- обложка ---------- */
-.r-cover{padding:calc(var(--nav-h) + 96px) 0 120px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+/* линия под обложкой убрана: она резала экран поперёк */
+.r-cover{padding:calc(var(--nav-h) + 96px) 0 120px;position:relative;overflow:hidden}
 .r-cover::before{content:"";position:absolute;inset:0;background:var(--glow);pointer-events:none;z-index:0}
 .r-cover .wrap{position:relative;z-index:1}
 #synFx{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0;opacity:.62}
@@ -915,6 +916,85 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
     }, innerWidth < 700 ? 1.5 : 3);
   });
 
+
+
+  /* ---------- блок: разбор вопроса участника клуба ----------
+     вопрос про бизнес уходит в базу методологии и возвращается разбором,
+     медицинский вопрос агент передаёт живому специалисту ---------- */
+  [].forEach.call(document.querySelectorAll('canvas.fx-routeq'), function (c) {{
+    loop(c, function (s, t) {{
+      var ctx = s.ctx, W = s.W, H = s.H;
+      ctx.clearRect(0, 0, W, H);
+      var inX = W * .10, hubX = W * .46, outX = W * .88;
+      var yBiz = H * .34, yMed = H * .72, yHub = H * .5;
+      ctx.font = '11px "JetBrains Mono", ui-monospace, monospace';
+
+      /* база методологии: стопка материалов клуба */
+      var bx = hubX, by = H * .16, bw = W * .16, bh = 9;
+      for (var k = 0; k < 4; k++) {{
+        ctx.beginPath();
+        var yy = by + k * (bh + 3);
+        if (ctx.roundRect) ctx.roundRect(bx - bw / 2, yy, bw, bh, 3); else ctx.rect(bx - bw / 2, yy, bw, bh);
+        ctx.strokeStyle = 'rgba(' + GR + ',.4)'; ctx.lineWidth = 1; ctx.stroke();
+      }}
+      ctx.fillStyle = 'rgba(' + GR + ',.75)'; ctx.textAlign = 'center';
+      ctx.fillText('база методологии клуба', bx, by - 10);
+
+      /* маршруты */
+      [[yBiz, PH], [yMed, '198,142,96']].forEach(function (r) {{
+        ctx.beginPath(); ctx.moveTo(inX, r[0]);
+        ctx.quadraticCurveTo((inX + hubX) / 2, r[0], hubX, yHub);
+        ctx.strokeStyle = 'rgba(' + GR + ',.32)'; ctx.lineWidth = 1; ctx.stroke();
+      }});
+      ctx.beginPath(); ctx.moveTo(hubX, yHub);
+      ctx.quadraticCurveTo((hubX + outX) / 2, yBiz, outX, yBiz);
+      ctx.strokeStyle = 'rgba(' + PH + ',.4)'; ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(hubX, yHub);
+      ctx.quadraticCurveTo((hubX + outX) / 2, yMed, outX, yMed);
+      ctx.strokeStyle = 'rgba(198,142,96,.4)'; ctx.stroke();
+
+      /* подписи входа и выходов */
+      ctx.textAlign = 'left';
+      ctx.fillStyle = 'rgba(' + GR + ',.85)';
+      ctx.fillText('вопрос про бизнес', inX - 4, yBiz - 14);
+      ctx.fillText('медицинский вопрос', inX - 4, yMed + 22);
+      ctx.textAlign = 'right';
+      ctx.fillStyle = 'rgba(' + PH + ',.9)';
+      ctx.fillText('разбор по методологии', outX + 4, yBiz - 14);
+      ctx.fillStyle = 'rgba(198,142,96,.9)';
+      ctx.fillText('живой специалист', outX + 4, yMed + 22);
+      ctx.textAlign = 'left';
+
+      /* два запроса идут по своим маршрутам */
+      [[yBiz, PH, 0], [yMed, '198,142,96', .5]].forEach(function (r) {{
+        var ph = ((t * .0035) + r[2]) % 1;
+        var x, y;
+        if (ph < .5) {{
+          var u = ph / .5, m = 1 - u, cx = (inX + hubX) / 2;
+          x = m * m * inX + 2 * m * u * cx + u * u * hubX;
+          y = m * m * r[0] + 2 * m * u * r[0] + u * u * yHub;
+        }} else {{
+          var u2 = (ph - .5) / .5, m2 = 1 - u2, cx2 = (hubX + outX) / 2;
+          x = m2 * m2 * hubX + 2 * m2 * u2 * cx2 + u2 * u2 * outX;
+          y = m2 * m2 * yHub + 2 * m2 * u2 * r[0] + u2 * u2 * r[0];
+        }}
+        var g = ctx.createRadialGradient(x, y, 0, x, y, 13);
+        g.addColorStop(0, 'rgba(' + r[1] + ',.5)'); g.addColorStop(1, 'rgba(' + r[1] + ',0)');
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, 13, 0, 7); ctx.fill();
+        ctx.beginPath(); ctx.arc(x, y, 2.6, 0, 7);
+        ctx.fillStyle = 'rgba(' + r[1] + ',.95)'; ctx.fill();
+      }});
+
+      /* сам агент в центре */
+      var pulse = .5 + .5 * Math.sin(t * .04);
+      ctx.beginPath(); ctx.arc(hubX, yHub, 16 + pulse * 3, 0, 7);
+      ctx.strokeStyle = 'rgba(' + PH + ',' + (.5 + pulse * .3) + ')'; ctx.lineWidth = 1.4; ctx.stroke();
+      ctx.beginPath(); ctx.arc(hubX, yHub, 4.4, 0, 7);
+      ctx.fillStyle = 'rgba(' + PH + ',.95)'; ctx.fill();
+      ctx.textAlign = 'center'; ctx.fillStyle = 'rgba(' + GR + ',.8)';
+      ctx.fillText('агент', hubX, yHub + 34); ctx.textAlign = 'left';
+    }}, innerWidth < 700 ? 1.45 : 2.4);
+  }});
 
   /* ---------- блок: очередь заявок до и после запуска ----------
      сверху обращения копятся и ждут ответа, снизу тот же поток разбирается сразу ---------- */
