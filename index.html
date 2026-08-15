@@ -1187,9 +1187,19 @@ if(s)r.setAttribute('data-theme',s);
 </head>
 <body>
 <script>
-/* заявка уходит на сервер основного сайта: на зеркале GitHub Pages своего бэкенда нет */
-var LEAD_API = location.hostname.indexOf('github.io') > -1
-  ? '/synapt/api/lead' : '/api/lead';
+/* заявка уходит на сервер основного сайта: на зеркале GitHub Pages своего бэкенда нет.
+   с чужого домена браузер сначала спрашивает разрешение, и если сервер его не дал,
+   повторяем отправку простым запросом: ответ прочитать нельзя, но заявка доходит */
+var MIRROR = location.hostname.indexOf('github.io') > -1;
+var LEAD_URL = MIRROR ? '/synapt/api/lead' : '/api/lead';
+function LEAD_API(url, opts){
+  return fetch(LEAD_URL, opts).catch(function(err){
+    if(!MIRROR) throw err;
+    return fetch(LEAD_URL, {method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'text/plain;charset=UTF-8'}, body:opts.body})
+      .then(function(){ return {ok:true, json:function(){return Promise.resolve({ok:true})}} });
+  });
+}
 </script>
 
 <!-- ШАПКА -->
@@ -1870,7 +1880,7 @@ var LEAD_API = location.hostname.indexOf('github.io') > -1
     var btn=f.querySelector('button[type=submit]'), was=btn.textContent;
     btn.disabled=true; btn.textContent='Отправляем';
     var slotEl=document.getElementById('lfSlot');
-    fetch(LEAD_API,{method:'POST',headers:{'Content-Type':'application/json'},
+    LEAD_API(0,{method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({name:name.value,contact:contact.value,
         company:(document.getElementById('lfCompany')||{}).value||'',
         task:(document.getElementById('lfTask')||{}).value||'',
