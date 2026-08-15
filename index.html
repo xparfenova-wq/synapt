@@ -194,8 +194,11 @@ h3{font-size:21px;font-weight:620;letter-spacing:-.01em;line-height:1.25}
 .cc-tag{font-family:var(--mono);font-size:11px;letter-spacing:.045em;color:var(--accent-text);
   border:1px solid rgba(121,201,142,.3);padding:5px 11px;border-radius:var(--r-pill)}
 .cc-ind{font-family:var(--mono);font-size:11px;color:var(--text-dim)}
-.ccard h3{font-size:19px;letter-spacing:-.015em;font-weight:620;line-height:1.28;min-height:74px;margin-bottom:8px}
-.cc-client{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--text-dim);margin-top:0}
+/* высота заголовка держит карточки в одну линию, но текст прижат к низу,
+   иначе под коротким заголовком зияла пустота перед строкой клиента */
+.ccard h3{font-size:19px;letter-spacing:-.015em;font-weight:620;line-height:1.28;
+  min-height:74px;margin-bottom:4px;display:flex;align-items:flex-end}
+.cc-client{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--text-dim);margin:0 0 14px}
 .cc-task{font-size:14.5px;color:var(--text-muted);line-height:1.55;min-height:66px;margin-bottom:2px}
 .cc-fig{border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;background:var(--bg-deep);height:128px;
   display:flex;align-items:center;position:relative}
@@ -1243,6 +1246,11 @@ footer .wrap{display:block}
 
 /* звёздочка обязательного поля: заметная, но не крикливая */
 .req{color:var(--accent-txt);font-family:var(--sans);font-size:14px;margin-left:4px;cursor:help}
+
+/* переносы: короткие слова уже склеены неразрывным пробелом и уезжают на новую строку
+   вместе со следующим словом, а pretty дополнительно убирает висячие слова в конце абзаца */
+p,li,.lead,.ip,.cc-task,.cc-cap,.rm-d,.pr-d,.card p,.wcard p{text-wrap:pretty}
+h1,h2,h3,h4,.step-t,.rm-t{text-wrap:balance}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
@@ -1322,7 +1330,7 @@ function LEAD_API(url, opts){
     <div>
       <span class="nb-k">Почему сейчас</span>
       <h2>AI внедряют почти все, вопрос в&nbsp;том, как</h2>
-      <p>Одни покупают подписки и&nbsp;раздают инструменты сотрудникам. Работа при&nbsp;этом остаётся прежней: заявку обрабатывают по-старому, знания не&nbsp;используются, скорость прежняя. Деньги уходят, счета за&nbsp;сервисы растут, а&nbsp;в&nbsp;процессах ничего не&nbsp;меняется</p>
+      <p>Одни покупают подписки и&nbsp;раздают инструменты сотрудникам. Работа при&nbsp;этом остаётся прежней: заявку обрабатывают <span class="nb">по-старому</span>, знания не&nbsp;используются, скорость прежняя. Деньги уходят, счета за&nbsp;сервисы растут, а&nbsp;в&nbsp;процессах ничего не&nbsp;меняется</p>
       <p>Другие перестраивают сам процесс: кто&nbsp;принимает заявку, откуда берутся знания, как&nbsp;работа идёт дальше. У&nbsp;них появляется общий контур, и&nbsp;каждое следующее внедрение встраивается в&nbsp;готовое и&nbsp;усиливает его: дешевле, быстрее и&nbsp;без&nbsp;повторной разработки с&nbsp;нуля</p>
       <p>Разрыв между этими двумя группами растёт каждый квартал, и&nbsp;мы&nbsp;помогаем начать с&nbsp;одного участка сейчас, чтобы не&nbsp;догонять через год</p>
     </div>
@@ -1364,7 +1372,7 @@ function LEAD_API(url, opts){
           </div>
         </div>
 
-        <div class="step-link reveal"><span class="sl-rule"></span><span>карта из&nbsp;чекапа показывает, из&nbsp;каких блоков собирать вашу систему</span></div>
+        <div class="step-link reveal"><span class="sl-rule"></span><span>карта из&nbsp;чекапа показывает, из&nbsp;каких блоков собирать систему</span></div>
       </div>
     </div>
 
@@ -1376,8 +1384,8 @@ function LEAD_API(url, opts){
       </div></div>
       <div class="step-body">
         <div class="step-intro reveal">
-          <h3 class="step-t">AI-система, усиливающая и&nbsp;ускоряющая ваш бизнес</h3>
-          <p class="step-d">Система собирается из&nbsp;блоков. Какие нужны именно вам, показывает чекап: где-то&nbsp;это&nbsp;работа с&nbsp;клиентами, где-то&nbsp;знания команды, где-то&nbsp;обучение людей</p>
+          <h3 class="step-t">AI-система, усиливающая и&nbsp;ускоряющая бизнес</h3>
+          <p class="step-d">Система собирается из&nbsp;блоков. Какие именно нужны, показывает чекап: <span class="nb">где-то</span>&nbsp;это&nbsp;работа с&nbsp;клиентами, <span class="nb">где-то</span>&nbsp;знания команды, <span class="nb">где-то</span>&nbsp;обучение людей</p>
         </div>
 
         <div class="svc">
@@ -1397,7 +1405,7 @@ function LEAD_API(url, opts){
           </div>
 
           <div class="card s3 reveal">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 21c0-3.9 3.4-6.3 7.5-6.3s7.5 2.4 7.5 6.3"/><path d="M17.4 5.4l1.1 1.1M19.6 3.2l.9.9"/></svg></div>
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-5 4z"/><path d="M8 8h6M8 11h4"/><circle cx="19" cy="17.5" r="2.4"/><path d="M15.4 22c.5-1.6 1.9-2.6 3.6-2.6s3.1 1 3.6 2.6"/></svg></div>
             <h3>AI-эксперт</h3>
             <span class="kick-to">блок для&nbsp;клиентов и&nbsp;внешнего рынка</span>
             <p>Если спрос на&nbsp;вашего ключевого специалиста выше, чем его&nbsp;временные ресурсы. Агент отвечает клиентам по&nbsp;авторским материалам и&nbsp;методологиям, а&nbsp;сложные случаи передаёт человеку</p>
@@ -1449,14 +1457,14 @@ function LEAD_API(url, opts){
           <div class="card s3 reveal">
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 17l6-6-6-6"/><path d="M12 19h8"/></svg></div>
             <h3>Разработка продукта</h3>
-            <p>Если задача больше отдельного блока: SaaS, мобильное приложение, внутренняя система. Берём интерфейс, backend, инфраструктуру и&nbsp;запуск, разработку ведём с&nbsp;AI-агентами</p>
+            <p>Если задача больше отдельного блока: SaaS, мобильное приложение, внутренняя система. Вместе сформируем техническое задание и&nbsp;возьмём работу целиком: интерфейс, backend, инфраструктуру и&nbsp;запуск, разработку ведём с&nbsp;AI-агентами</p>
             <a class="morelink" href="#lead">Описать запрос</a>
           </div>
 
           <div class="card s3 reveal d1">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9.4 9.2a2.7 2.7 0 1 1 3.4 3.4c-.5.2-.8.7-.8 1.3v.4"/><path d="M12 17.4h.01"/></svg></div>
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9.3 9.3a2.8 2.8 0 1 1 3.6 3.4c-.6.2-.9.7-.9 1.3v.5"/><circle cx="12" cy="17.6" r=".9" fill="currentColor" stroke="none"/></svg></div>
             <h3>Не&nbsp;нашли свою задачу?</h3>
-            <p>Список блоков&nbsp;– частые запросы, а&nbsp;не&nbsp;весь возможный набор. Если процесс повторяется и&nbsp;по&nbsp;нему есть данные, мы&nbsp;соберём под&nbsp;него решение</p>
+            <p>Список блоков&nbsp;– частые запросы, не&nbsp;весь возможный набор. Если процесс повторяется и&nbsp;по&nbsp;нему есть данные, соберём под&nbsp;него решение</p>
             <a class="morelink" href="#lead">Описать запрос</a>
           </div>
         </div>
@@ -1489,12 +1497,12 @@ function LEAD_API(url, opts){
       <a class="morelink" href="/synapt/innorto/">Подробнее</a>
     </article><article class="ccard">
       <div class="cc-top"><span class="cc-tag">AI-агент на&nbsp;знаниях</span><span class="cc-ind">02</span></div>
-      <h3>Ответ по&nbsp;протоколу лечения приходит в&nbsp;чат в&nbsp;любое время</h3>
+      <h3>Разбор бизнеса клиники приходит в&nbsp;чат за&nbsp;минуты</h3>
       <div class="cc-client">GlobalDent, клуб стоматологов</div>
-      <div class="cc-res"><div><b><span class="nb">1 500+</span></b><span>проверенных вопросов и&nbsp;ответов в&nbsp;базе</span></div><div><b>24/7</b><span>ответ участнику клуба в&nbsp;любое время</span></div></div>
-      <p class="cc-task">Участники задавали одни и&nbsp;те&nbsp;же&nbsp;вопросы по&nbsp;протоколам лечения, отвечать успевали не&nbsp;всегда</p>
+      <div class="cc-res"><div><b><span class="nb">1 500+</span></b><span>пар вопрос-ответ в&nbsp;базе знаний клуба</span></div><div><b>24/7</b><span>ответ участнику клуба в&nbsp;любое время</span></div></div>
+      <p class="cc-task">Участники клуба задавали одни и&nbsp;те&nbsp;же&nbsp;вопросы по&nbsp;управлению клиникой, а&nbsp;эксперты успевали разобрать не&nbsp;всех</p>
       <div class="cc-fig"><canvas class="fx-flow" data-maxh="126"></canvas></div>
-      <div class="cc-cap">База знаний клуба: сетка это&nbsp;накопленные материалы, подсветка показывает, откуда пришёл ответ участнику</div>
+      <div class="cc-cap">Работа с&nbsp;клиентами клуба: агент отвечает по&nbsp;методологии GlobalDent и&nbsp;собирает разборы, а&nbsp;медицинские вопросы уводит к&nbsp;живому специалисту</div>
       <a class="morelink" href="/synapt/globaldent/">Подробнее</a>
     </article><article class="ccard">
       <div class="cc-top"><span class="cc-tag">Отдел продаж</span><span class="cc-ind">03</span></div>
@@ -1590,7 +1598,7 @@ function LEAD_API(url, opts){
       <div class="rm-stage">
         <span class="rm-w">четвёртый этап</span>
         <h3 class="rm-t">Передача и&nbsp;поддержка</h3>
-        <p class="rm-d">Передаём систему команде в&nbsp;работу и&nbsp;<span class="nb">60 дней</span> остаёмся на&nbsp;связи: обкатаем систему на&nbsp;задачах и&nbsp;поправим, если что-то&nbsp;пойдёт не&nbsp;так</p>
+        <p class="rm-d">Передаём систему команде в&nbsp;работу и&nbsp;<span class="nb">60 дней</span> остаёмся на&nbsp;связи: обкатаем систему на&nbsp;задачах и&nbsp;поправим, если <span class="nb">что-то</span>&nbsp;пойдёт не&nbsp;так</p>
       </div>
       <div class="rm-out">
         <span class="rm-ol">на&nbsp;выходе</span>
@@ -1656,7 +1664,7 @@ function LEAD_API(url, opts){
     <div class="pr-row reveal">
       <div class="pr-n">05</div>
       <div class="pr-main"><span class="pr-k">поддержка</span><h4><span class="nb">60 дней</span> на&nbsp;связи после сдачи</h4></div>
-      <p class="pr-d">В&nbsp;первые недели обкатываем систему на&nbsp;работе, и&nbsp;если что-то&nbsp;идёт не&nbsp;так, правим. Заодно быстро донастраиваем под&nbsp;нагрузку и&nbsp;новые сценарии, которые появляются по&nbsp;ходу</p>
+      <p class="pr-d">В&nbsp;первые недели обкатываем систему на&nbsp;работе, и&nbsp;если <span class="nb">что-то</span>&nbsp;идёт не&nbsp;так, правим. Заодно быстро донастраиваем под&nbsp;нагрузку и&nbsp;новые сценарии, которые появляются по&nbsp;ходу</p>
     </div>
     <div class="pr-row reveal">
       <div class="pr-n">06</div>
@@ -1690,7 +1698,7 @@ function LEAD_API(url, opts){
     </details>
     <details>
       <summary>Почему получится сейчас, если раньше не&nbsp;вышло? <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-      <div class="ans">Чаще всего бывает так: инструменты выдали, а&nbsp;работа не&nbsp;поменялась. Заявку обрабатывают по-старому, знания не&nbsp;используются, скорость работы прежняя. Поэтому если вы&nbsp;заходите в&nbsp;чекап, начинаем с&nbsp;разбора вашего контекста: что&nbsp;делали, где прогресс остановился и&nbsp;почему. А&nbsp;если заходим в&nbsp;разработку, помогаем с&nbsp;адаптацией и&nbsp;настройкой работы команды: кто, для&nbsp;чего и&nbsp;как&nbsp;использует систему</div>
+      <div class="ans">Чаще всего бывает так: инструменты выдали, а&nbsp;работа не&nbsp;поменялась. Заявку обрабатывают <span class="nb">по-старому</span>, знания не&nbsp;используются, скорость работы прежняя. Поэтому если вы&nbsp;заходите в&nbsp;чекап, начинаем с&nbsp;разбора вашего контекста: что&nbsp;делали, где прогресс остановился и&nbsp;почему. А&nbsp;если заходим в&nbsp;разработку, помогаем с&nbsp;адаптацией и&nbsp;настройкой работы команды: кто, для&nbsp;чего и&nbsp;как&nbsp;использует систему</div>
     </details>
     <details>
       <summary>Что&nbsp;будет с&nbsp;командой после интеграции AI? <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
@@ -2573,11 +2581,11 @@ function LEAD_API(url, opts){
 
   /* участки идут двумя рядами, маршрут между ними читается как схема линий */
   var STOPS=[
-    {x:.08,y:.26,n:'заявка'},      {x:.28,y:.26,n:'квалификация'},
-    {x:.48,y:.26,n:'счёт'},        {x:.68,y:.26,n:'договор'},
-    {x:.88,y:.50,n:'закупка'},
-    {x:.68,y:.74,n:'производство'},{x:.44,y:.74,n:'отгрузка'},
-    {x:.16,y:.74,n:'документы'}
+    {x:.07,y:.30,n:'заявка'},       {x:.25,y:.20,n:'квалификация'},
+    {x:.44,y:.34,n:'счёт'},         {x:.63,y:.20,n:'договор'},
+    {x:.86,y:.38,n:'закупка'},
+    {x:.72,y:.66,n:'производство'}, {x:.46,y:.74,n:'отгрузка'},
+    {x:.18,y:.62,n:'документы'}
   ];
   var pts=[];
   function build(){
@@ -2598,12 +2606,12 @@ function LEAD_API(url, opts){
     for(var gx=0; gx<W; gx+=32){ ctx.beginPath(); ctx.moveTo(gx,0); ctx.lineTo(gx,H); ctx.stroke() }
     for(var gy=0; gy<H; gy+=32){ ctx.beginPath(); ctx.moveTo(0,gy); ctx.lineTo(W,gy); ctx.stroke() }
 
-    /* маршрут: прямые участки со скруглениями на поворотах */
+    /* маршрут: одна извилистая дорожка через все участки */
     ctx.beginPath(); ctx.moveTo(pts[0].x,pts[0].y);
-    for(var i=1;i<pts.length;i++){
-      var a=pts[i-1], b=pts[i];
-      if(Math.abs(a.y-b.y)<2) ctx.lineTo(b.x,b.y);
-      else ctx.quadraticCurveTo(b.x, a.y, b.x, b.y);
+    for(var i=0;i<pts.length-1;i++){
+      var a=pts[i], b=pts[i+1];
+      var dx=(b.x-a.x)*0.45;
+      ctx.bezierCurveTo(a.x+dx, a.y, b.x-dx, b.y, b.x, b.y);
     }
     ctx.strokeStyle='rgba('+GR+',.34)'; ctx.lineWidth=1.6; ctx.stroke();
 
@@ -2611,9 +2619,9 @@ function LEAD_API(url, opts){
     for(var k=0;k<6;k++){
       var q=((t*0.0016)+k*0.166)%1, seg=q*(pts.length-1), si=Math.min(pts.length-2,Math.floor(seg)), u=seg-si;
       var a2=pts[si], b2=pts[si+1];
-      var x,y;
-      if(Math.abs(a2.y-b2.y)<2){ x=a2.x+(b2.x-a2.x)*u; y=a2.y }
-      else { x=(1-u)*(1-u)*a2.x+2*(1-u)*u*b2.x+u*u*b2.x; y=(1-u)*(1-u)*a2.y+2*(1-u)*u*a2.y+u*u*b2.y }
+      var dx2=(b2.x-a2.x)*0.45, m=1-u;
+      var x = m*m*m*a2.x + 3*m*m*u*(a2.x+dx2) + 3*m*u*u*(b2.x-dx2) + u*u*u*b2.x;
+      var y = m*m*m*a2.y + 3*m*m*u*a2.y + 3*m*u*u*b2.y + u*u*u*b2.y;
       ctx.beginPath(); ctx.arc(x,y,2.2,0,7); ctx.fillStyle='rgba('+PH+',.7)'; ctx.fill();
     }
 
@@ -2656,7 +2664,7 @@ function LEAD_API(url, opts){
 
   var BIZ=['заявки','продажи','закупки','документы','клиенты','знания'];
   var BIZR={'заявки':'входящие обращения: где теряются и как долго ждут ответа',
-    'продажи':'работа менеджеров: переписки, follow-up и передача сделок',
+    'продажи':'работа менеджеров: переписки, <span class="nb">follow-up</span> и передача сделок',
     'закупки':'поставщики, счета и сроки поставки',
     'документы':'договоры, акты и всё, что сейчас готовится вручную',
     'клиенты':'обслуживание и повторные обращения',
