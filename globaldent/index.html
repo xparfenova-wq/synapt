@@ -346,9 +346,6 @@ h4{font-size:16.5px;font-weight:560;letter-spacing:-.012em;line-height:1.35}
 footer{padding:56px 0 64px;border-top:1px solid var(--line)}
 footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
 footer .brand svg{height:28px}
-footer .fmeta{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--text-dim);display:flex;
-  gap:22px;flex-wrap:wrap;font-feature-settings:"liga" 0}
-footer .fmeta a:hover{color:var(--text)}
 
 /* ---------- мобильная адаптация ---------- */
 @media(max-width:900px){
@@ -363,8 +360,6 @@ footer .fmeta a:hover{color:var(--text)}
   .crow .was,.crow .now{border-left:none;border-top:1px solid var(--line)}
   .crow.head{display:none}
   .btn.lg{width:100%}
-  footer .fmeta{gap:8px 18px}
-  footer .fmeta a,footer .fmeta span{display:inline-flex;align-items:center;min-height:40px}
 }
 @media(max-width:560px){.nav-act .btn.pri .lbl{display:none}.nav-act .btn.pri{padding:10px 14px}}
 
@@ -415,15 +410,6 @@ footer .fmeta a:hover{color:var(--text)}
 .h1-link{color:inherit;text-decoration:none;border-bottom:2px solid var(--line-2);transition:.16s}
 .h1-link:hover{border-color:var(--accent)}
 @media(max-width:860px){.fig-side{grid-template-columns:1fr;gap:22px}.fig-side .figbox canvas{min-height:230px}}
-
-/* реквизиты в подвале */
-.legal{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);
-  display:grid;grid-template-columns:1fr 1fr;gap:14px 48px;align-items:start}
-.lg-col{display:flex;flex-direction:column;gap:14px}
-.legal div{font-size:13px;color:var(--text-2);line-height:1.5}
-.legal span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;color:var(--text-dim);margin-bottom:4px}
-.legal a{color:var(--text-2)}
-.legal a:hover{color:var(--accent)}
 @media(max-width:760px){.legal{grid-template-columns:1fr;gap:14px}}
 /* логотип и название чуть свободнее */
 .brand{gap:12px}
