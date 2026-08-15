@@ -164,17 +164,21 @@ h4{font-size:16.5px;font-weight:560;letter-spacing:-.012em;line-height:1.35}
 }
 
 /* ---------- бенто из шагов ---------- */
-.month{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;align-items:start}
+/* шаги идут ровной чередой: разная ширина и смещение читались как случайность,
+   а не как последовательность */
+.month{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:stretch}
 .mstep{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:26px;
   box-shadow:var(--card-shadow);transition:border-color .2s var(--ease),transform .2s var(--ease)}
 .mstep:hover{border-color:var(--line-2);transform:translateY(-3px)}
+.month .mstep:last-child:nth-child(odd){grid-column:1/-1}
+@media(max-width:760px){.month{grid-template-columns:1fr}}
 .mstep:hover .num{color:var(--accent)}
-.month .mstep:nth-child(1){grid-column:span 4}
-.month .mstep:nth-child(2){grid-column:span 2;margin-top:48px}
-.month .mstep:nth-child(3){grid-column:span 3}
-.month .mstep:nth-child(4){grid-column:span 3}
-.month .mstep:nth-child(5){grid-column:span 2}
-.month .mstep:nth-child(6){grid-column:span 4}
+
+
+
+
+
+
 .mstep .top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
 .mstep .num{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.04em;color:var(--text-dim);
   transition:color .16s ease;font-feature-settings:"liga" 0}
