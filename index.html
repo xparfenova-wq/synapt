@@ -2669,8 +2669,8 @@ function LEAD_API(url, opts){
     'документы':'договоры, акты и всё, что сейчас готовится вручную',
     'клиенты':'обслуживание и повторные обращения',
     'знания':'то, что знает команда, но нигде не записано'};
-  var CORE=[{n:'Виктор Калугин',r:'технический партнёр|архитектура системы'},
-            {n:'Антон Орешкин', r:'стратегический партнёр|продукт и развитие'}];
+  var CORE=[{n:'Виктор Калугин',r:'технический партнёр, архитектура системы'},
+            {n:'Антон Орешкин', r:'стратегический партнёр, продукт и развитие'}];
   var SPEC=[
     {n:'продукт',      r:'переводит задачу бизнеса в требования и критерии приёмки'},
     {n:'AI-инженер',   r:'собирает агентов: модель, промпты и качество ответов'},
@@ -2760,7 +2760,7 @@ function LEAD_API(url, opts){
     var lines = p.r.indexOf('|')>-1 ? p.r.split('|') : wrap(p.r,maxw);
     var lh=size*1.5;
     /* у верхнего партнёра роль стоит над именем, у нижнего под ним */
-    var y = p.lab==='up' ? p.y-31-(lines.length-1)*lh : (p.lab==='down' ? p.y+36 : p.y+20);
+    var y = p.lab==='up' ? p.y-31-(lines.length-1)*lh : (p.lab==='down' ? p.y+36 : p.y+34);
     ctx.fillStyle='rgba('+WH+','+(.72*alpha)+')';
     ctx.textAlign = p.lab ? 'center' : (p.kind!=='biz'&&p.side!=='l' ? 'left' : 'right');
     var x = p.lab ? p.x : (ctx.textAlign==='left' ? p.x+11 : p.x-11);
@@ -2781,7 +2781,7 @@ function LEAD_API(url, opts){
     /* возврат к спокойному темпу плавный, без рывка */
     hubE += ((hotHub?1:0)-hubE)*(hotHub?.028:.006);
     /* в покое время идёт медленно, при наведении ускоряется, после отвода снова затихает */
-    var pace = 0.42 + hubE*0.75;
+    var pace = 0.30 + hubE*0.55;
     var biz=pts.filter(function(p){return p.kind==='biz'}),
         core=pts.filter(function(p){return p.kind==='core'}),
         spec=pts.filter(function(p){return p.kind==='spec'});
@@ -2796,22 +2796,39 @@ function LEAD_API(url, opts){
     ctx.font='400 '+(10.5*S)+'px "JetBrains Mono", ui-monospace, monospace';
     ctx.textAlign='center';
     ctx.fillStyle='rgba('+GR+','+(.6+hubE*.3)+')'; ctx.fillText('ваша компания', hub.L.x, hub.y-hub.ry-14);
-    ctx.fillStyle='rgba('+PH+','+(.7+hubE*.3)+')'; ctx.fillText('команда Synapt', hub.R.x, hub.y-hub.ry-14);
+    ctx.fillStyle='rgba('+GR+','+(.6+hubE*.3)+')'; ctx.fillText('команда Synapt', hub.R.x, hub.y-hub.ry-14);
     ctx.textAlign='left';
     ctx.setLineDash([5,6]); ctx.lineWidth=1+hubE*0.9;
     ell(hub.L.x); ctx.strokeStyle='rgba('+(hubE>.4?PH:GR)+','+(.34+hubE*.55)+')'; ctx.stroke();
     ell(hub.R.x); ctx.strokeStyle='rgba('+PH+','+(.36+hubE*.55)+')'; ctx.stroke();
     ctx.setLineDash([]);
 
-    biz.concat(core).forEach(function(p){
+    /* связь не нарисована целиком: она прорастает от узла к ядру и обратно,
+       поэтому сеть читается как живые отростки, а не как готовая схема */
+    biz.concat(core).forEach(function(p,i){
+      var grow = 0.55 + 0.45*Math.sin(t*0.004*(0.6+hubE*0.6) + i*0.8);
+      var cx=(p.x+hub.x)/2, cy=p.y*0.4+hub.y*0.6, seg=26;
       ctx.beginPath(); ctx.moveTo(p.x,p.y);
-      ctx.quadraticCurveTo((p.x+hub.x)/2,(p.y*0.4+hub.y*0.6),hub.x,hub.y);
-      ctx.strokeStyle='rgba('+(hubE>.3?PH:GR)+','+(hover===p?.5:.2+hubE*.3)+')';
-      ctx.lineWidth=1+hubE*.3; ctx.stroke();
+      for(var k=1;k<=seg;k++){
+        var u=(k/seg)*grow, m=1-u;
+        ctx.lineTo(m*m*p.x+2*m*u*cx+u*u*hub.x, m*m*p.y+2*m*u*cy+u*u*hub.y);
+      }
+      ctx.strokeStyle='rgba('+(hubE>.3?PH:GR)+','+(hover===p?.55:.18+hubE*.32)+')';
+      ctx.lineWidth=1+hubE*.4; ctx.stroke();
+      /* кончик отростка светится, как растущий синапс */
+      var uu=grow, mm=1-uu;
+      var tx2=mm*mm*p.x+2*mm*uu*cx+uu*uu*hub.x, ty2=mm*mm*p.y+2*mm*uu*cy+uu*uu*hub.y;
+      if(grow<0.985){
+        ctx.beginPath(); ctx.arc(tx2,ty2,1.8,0,7);
+        ctx.fillStyle='rgba('+PH+','+(.35+hubE*.4)+')'; ctx.fill();
+      }
     });
-    core.forEach(function(o){spec.forEach(function(sp){
-      ctx.beginPath(); ctx.moveTo(o.x,o.y); ctx.lineTo(sp.x,sp.y);
-      ctx.strokeStyle='rgba('+(hubE>.3?PH:GR)+','+((hover===sp||hover===o?.34:.13)+hubE*.22)+')';
+    core.forEach(function(o,oi){spec.forEach(function(sp,si){
+      /* внутри команды связи тоже дышат: то тянутся к специалисту, то отступают */
+      var g2 = 0.6 + 0.4*Math.sin(t*0.005*(0.6+hubE*0.7) + oi*1.7 + si*0.9);
+      ctx.beginPath(); ctx.moveTo(o.x,o.y);
+      ctx.lineTo(o.x+(sp.x-o.x)*g2, o.y+(sp.y-o.y)*g2);
+      ctx.strokeStyle='rgba('+(hubE>.3?PH:GR)+','+((hover===sp||hover===o?.34:.12)+hubE*.24)+')';
       ctx.lineWidth=.8; ctx.stroke();
     })});
 
