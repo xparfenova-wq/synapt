@@ -877,7 +877,17 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
         ctx.fillStyle = 'rgba(' + GR + ',.07)'; ctx.fill();
         ctx.strokeStyle = 'rgba(' + GR + ',.5)'; ctx.lineWidth = 1; ctx.stroke();
         ctx.fillStyle = 'rgba(160,170,166,.85)';
-        cap(ctx, names[i].trim(), cx + half + 16, y + 4, W - (cx + half + 22), 11);
+        var lx = cx + half + 16;
+        if (W < 400) {
+          /* на узком экране подпись слоя идёт под ним по центру */
+          ctx.textAlign = 'center';
+          cap(ctx, names[i].trim(), cx, y + 16, W - 16, 9.5);
+          ctx.textAlign = 'left';
+          continue;
+        }
+        if (lx + 40 > W) { ctx.textAlign = 'right'; lx = cx - half - 16; }
+        cap(ctx, names[i].trim(), lx, y + 4, Math.max(60, (ctx.textAlign === 'right' ? lx - 6 : W - lx - 6)), 11);
+        ctx.textAlign = 'left';
         for (var k = 0; k < 3; k++) {
           var a = (k / 3) * 6.28 + i * .8 + t * .004;
           ctx.beginPath(); ctx.arc(cx + Math.cos(a) * half * .55, y + Math.sin(a) * hh * .5, 1.9, 0, 7);
@@ -1006,7 +1016,36 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
     loop(c, function (s, t) {
       var ctx = s.ctx, W = s.W, H = s.H, i;
       ctx.clearRect(0, 0, W, H);
-      var narrow = W < 620;
+      var narrow = W < 620, tiny = W < 640;
+      if (tiny) {
+        /* на телефоне схема идёт сверху вниз: вопрос, агент со слоями, сценарии */
+        ctx.font = '9px "JetBrains Mono", ui-monospace, monospace';
+        var cxc = W / 2, ay = H * .46;
+        ctx.fillStyle = 'rgba(' + GR + ',.8)'; ctx.textAlign = 'center';
+        cap(ctx, 'вопрос участника', cxc, 16, W - 20, 9);
+        for (var li = 0; li < 4; li++) {
+          var rr2 = 20 + li * 9, a2 = t * (0.0026 - li * 0.0004) + li * 1.2;
+          ctx.beginPath(); ctx.ellipse(cxc, ay, rr2, rr2 * .62, a2 * .3, 0, 7);
+          ctx.setLineDash([3, 6]); ctx.strokeStyle = 'rgba(' + GR + ',' + (.3 - li * .05) + ')';
+          ctx.lineWidth = 1; ctx.stroke(); ctx.setLineDash([]);
+          var px2 = cxc + Math.cos(a2) * rr2, py2 = ay + Math.sin(a2) * rr2 * .62;
+          ctx.beginPath(); ctx.arc(px2, py2, 1.8, 0, 7);
+          ctx.fillStyle = 'rgba(' + PH + ',.8)'; ctx.fill();
+        }
+        ctx.beginPath(); ctx.arc(cxc, ay, 5, 0, 7);
+        ctx.fillStyle = 'rgba(' + PH + ',.95)'; ctx.fill();
+        ctx.fillStyle = 'rgba(' + GR + ',.85)';
+        cap(ctx, 'агент клуба и база знаний', cxc, Math.min(ay + 32, H - 9 - SCEN_S.length * 12 - 6), W - 20, 9);
+        var live2 = Math.floor(t / 170) % SCEN_S.length;
+        for (var si2 = 0; si2 < SCEN_S.length; si2++) {
+          /* строки сценариев считаем от нижнего края, чтобы последняя не срезалась */
+          var on2 = si2 === live2, ly2 = H - 9 - (SCEN_S.length - 1 - si2) * 12;
+          ctx.fillStyle = 'rgba(' + (on2 ? PH : GR) + ',' + (on2 ? .95 : .55) + ')';
+          cap(ctx, SCEN_S[si2], cxc, ly2, W - 20, 9);
+        }
+        ctx.textAlign = 'left';
+        return;
+      }
       var chatX = W * (narrow ? .05 : .05), chatW = W * (narrow ? .34 : .30);
       var hubX = W * (narrow ? .52 : .53), hubY = H * .5;
       var scenX = W * (narrow ? .68 : .74);
@@ -1017,10 +1056,11 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
       var shown = 1 + Math.floor((t % 480) / 160);
       for (i = 0; i < Math.min(shown, CHAT.length); i++) {
         var mine = i % 2 === 0;
+        var maxRow = Math.min(chatW - 20, W * .42);
         var words = CHAT[i].split(' '), rows = [], cur = '';
         words.forEach(function (w) {
           var test = cur ? cur + ' ' + w : w;
-          if (ctx.measureText(test).width > chatW - 20 && cur) { rows.push(cur); cur = w; } else cur = test;
+          if (ctx.measureText(test).width > maxRow && cur) { rows.push(cur); cur = w; } else cur = test;
         });
         if (cur) rows.push(cur);
         var lh = narrow ? 13 : 15, bh = rows.length * lh + 12;
