@@ -3046,7 +3046,7 @@ function LEAD_API(url, opts){
           ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y0, r * 2.4, 0, 7); ctx.fill();
         }
         var col = got > 0
-          ? (inStock ? 'rgba(' + PH + ',' + (.4 + got * .55) + ')' : 'rgba(' + GR + ',' + (.45 - got * .22) + ')')
+          ? (inStock ? 'rgba(' + PH + ',' + (.4 + got * .55) + ')' : 'rgba(' + GR + ',' + (.5 - got * .16) + ')')
           : 'rgba(' + GR + ',.5)';
         ctx.strokeStyle = col; ctx.fillStyle = col;
         ctx.lineWidth = inStock && got > .5 ? 1.7 : 1.3;
@@ -3054,7 +3054,7 @@ function LEAD_API(url, opts){
         /* итог под позицией: галочка у того, что есть на складе, черта у остального */
         if (got > .5) {
           var a = (got - .5) / .5, yy = y0 + r + 11;
-          ctx.strokeStyle = inStock ? 'rgba(' + PH + ',' + (.9 * a) + ')' : 'rgba(' + GR + ',' + (.4 * a) + ')';
+          ctx.strokeStyle = inStock ? 'rgba(' + PH + ',' + (.9 * a) + ')' : 'rgba(' + GR + ',' + (.6 * a) + ')';
           ctx.lineWidth = 1.5; ctx.beginPath();
           if (inStock) { ctx.moveTo(x - 4, yy); ctx.lineTo(x - 1.2, yy + 3.2); ctx.lineTo(x + 4.4, yy - 3.4) }
           else { ctx.moveTo(x - 3.4, yy); ctx.lineTo(x + 3.4, yy) }
