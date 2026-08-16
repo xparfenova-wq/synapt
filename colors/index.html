@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Synapt – подбор акцента</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   SYNAPT – подбор акцента, 4 кандидата на реальных элементах
+   слева тёмная тема, справа светлая, палитра одна на обе
+   ========================================================= */
+:root{
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --ease:cubic-bezier(.22,.7,.3,1);
+  --r-xs:8px; --r-sm:10px; --r-md:16px; --r-lg:22px; --r-pill:999px;
+  --shell:#0B0D0C; --shell-2:#111413; --shell-line:rgba(190,206,198,.12);
+  --shell-text:#F0F2F1; --shell-2t:#C4CAC7; --shell-muted:#939B98; --shell-dim:#7E8582;
+  --maxw:1320px; --gutter:32px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--shell);color:var(--shell-text);
+  font-size:17px;font-weight:450;line-height:1.6;-webkit-font-smoothing:antialiased;
+  font-feature-settings:"tnum" 1;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+svg{display:block}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+
+/* ---------- шапка страницы ---------- */
+.top{padding:64px 0 40px;border-bottom:1px solid var(--shell-line)}
+.eyebrow{font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.06em;
+  color:var(--shell-muted);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.eyebrow .n{color:var(--shell-dim)}
+h1{font-size:clamp(30px,4vw,46px);font-weight:600;letter-spacing:-.028em;line-height:1.08;max-width:20ch}
+.lead{margin-top:20px;font-size:clamp(16px,1.6vw,19px);color:var(--shell-2t);max-width:74ch;line-height:1.6}
+.now{margin-top:28px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--shell-dim)}
+.now .sw{display:block;width:22px;height:22px;border-radius:6px;background:#79C98E;flex:none}
+.now b{color:var(--shell-2t);font-weight:500}
+
+/* ---------- блок варианта ---------- */
+.vblock{padding:56px 0;border-bottom:1px solid var(--shell-line)}
+.vhead{display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:8px}
+.vchip{width:54px;height:54px;border-radius:14px;flex:none;box-shadow:0 8px 28px -14px rgba(0,0,0,.9)}
+.vname{font-size:clamp(23px,2.5vw,30px);font-weight:600;letter-spacing:-.02em;line-height:1.15}
+.vhex{font-family:var(--mono);font-size:13px;letter-spacing:.05em;color:var(--shell-muted);margin-top:6px}
+.vnote{margin-top:14px;font-size:15.5px;color:var(--shell-2t);max-width:78ch;line-height:1.6}
+
+/* контрастные чипы */
+.crow{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:10px;margin:22px 0 26px}
+.cchip{background:var(--shell-2);border:1px solid var(--shell-line);border-radius:var(--r-md);padding:13px 15px}
+.cchip .lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:var(--shell-dim);
+  line-height:1.4;min-height:29px;display:block;margin-bottom:8px}
+.cchip .val{display:block;font-family:var(--mono);font-size:20px;font-weight:500;letter-spacing:-.02em;line-height:1}
+.cchip .st{display:block;font-size:12.5px;margin-top:6px;color:var(--shell-muted);line-height:1.35}
+.cchip.ok .val{color:#8FE0A6}
+.cchip.no .val{color:#FF8E9C}
+.cchip.no .st{color:#FF8E9C}
+
+/* ---------- две панели ---------- */
+.panes{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pane{border-radius:var(--r-lg);border:1px solid var(--line);background:var(--bg);
+  padding:26px 24px 28px;overflow:hidden;position:relative;isolation:isolate}
+.pane::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--glow);pointer-events:none}
+.pane[data-t="dark"]{
+  --bg:#0E1211; --surface:#171A19; --surface-2:#1E2221;
+  --line:rgba(196,214,206,.11); --line-2:rgba(196,214,206,.2);
+  --text:#F0F2F1; --text-2:#C4CAC7; --text-muted:#939B98; --text-dim:#7E8582;
+  --node:232,238,236; --grid:128,140,136;
+}
+.pane[data-t="light"]{
+  --bg:#FBFBFB; --surface:#FFFFFF; --surface-2:#F4F6F5;
+  --line:#E6E9E8; --line-2:#DBDFDD;
+  --text:#161918; --text-2:#3A3F3D; --text-muted:#636A67; --text-dim:#616865;
+  --node:24,28,26; --grid:96,106,102;
+}
+.pane .ptag{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--text-dim);
+  margin-bottom:22px;display:block}
+.pane .peyebrow{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.06em;
+  color:var(--ac-txt);margin-bottom:14px;display:flex;align-items:center;gap:9px}
+.pane .peyebrow .n{color:var(--text-dim)}
+.pane h3{font-size:clamp(19px,2vw,23px);font-weight:600;letter-spacing:-.022em;line-height:1.2;
+  color:var(--text);max-width:22ch}
+.pane .ptxt{margin-top:10px;font-size:14.5px;color:var(--text-2);line-height:1.6;max-width:44ch}
+
+.pstat{display:flex;gap:26px;flex-wrap:wrap;margin:24px 0 22px;padding-top:20px;border-top:1px solid var(--line)}
+.pstat div{min-width:96px}
+.pstat b{display:block;font-family:var(--mono);font-size:30px;font-weight:500;letter-spacing:-.035em;
+  line-height:1;color:var(--ac-txt);margin-bottom:7px}
+.pstat span{font-size:12px;color:var(--text-muted);line-height:1.4;display:block}
+
+.pbtns{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-weight:560;
+  font-size:14.5px;padding:11px 19px;border-radius:var(--r-sm);border:1px solid transparent;
+  cursor:pointer;transition:.16s var(--ease);white-space:nowrap}
+.btn.pri{background:var(--ac);color:#0E1211;box-shadow:var(--ac-shadow)}
+.btn.pri:hover{background:var(--ac-glow);transform:translateY(-1px)}
+.btn.ghost{background:var(--surface);color:var(--text);border-color:var(--line-2)}
+.btn.ghost:hover{border-color:var(--ac-line)}
+.morelink{display:inline-block;font-size:13.5px;font-weight:560;color:var(--ac-txt);
+  border-bottom:1px solid var(--ac-line);padding-bottom:2px}
+.morelink:hover{border-bottom-color:var(--ac-txt)}
+
+.pcard{margin-top:22px;background:var(--surface);border:1px solid var(--ac-line);
+  border-radius:var(--r-lg);padding:20px;box-shadow:var(--ac-tint)}
+.pcard .ctop{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.pcard .ctag{font-family:var(--mono);font-size:10.5px;letter-spacing:.045em;color:var(--ac-txt);
+  border:1px solid var(--ac-line);padding:5px 11px;border-radius:var(--r-pill)}
+.pcard .cind{font-family:var(--mono);font-size:10.5px;color:var(--text-dim)}
+.pcard h4{font-size:16px;font-weight:600;letter-spacing:-.015em;color:var(--text);line-height:1.3}
+.pcard p{margin-top:8px;font-size:13.5px;color:var(--text-muted);line-height:1.55}
+.pfig{margin-top:16px;border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;
+  background:var(--bg);padding:2px}
+.pfig svg{width:100%;height:auto}
+.pcap{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--text-dim);
+  line-height:1.45;margin-top:10px}
+
+/* ---------- вывод ---------- */
+.final{padding:60px 0 30px}
+.final h2{font-size:clamp(25px,3vw,34px);font-weight:600;letter-spacing:-.025em;line-height:1.12;max-width:24ch}
+.fgrid{display:grid;grid-template-columns:1.25fr 1fr;gap:16px;margin-top:28px}
+.fbox{background:var(--shell-2);border:1px solid var(--shell-line);border-radius:var(--r-lg);padding:26px 24px}
+.fbox.hot{border-color:rgba(216,255,62,.34)}
+.fbox .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--shell-dim);margin-bottom:14px;display:block}
+.fbox h3{font-size:20px;font-weight:600;letter-spacing:-.02em;line-height:1.2;margin-bottom:12px}
+.fbox p{font-size:15px;color:var(--shell-2t);line-height:1.62;margin-bottom:12px}
+.fbox p:last-child{margin-bottom:0}
+.fbox b{font-weight:600;color:var(--shell-text)}
+.nb{white-space:nowrap}
+.flist{list-style:none;display:flex;flex-direction:column;gap:12px}
+.flist li{font-size:14.5px;color:var(--shell-2t);line-height:1.55;padding-left:26px;position:relative}
+.flist li .ix{font-family:var(--mono);font-size:11px;letter-spacing:.05em;
+  color:var(--shell-dim);position:absolute;left:0;top:4px}
+.foot{padding:26px 0 70px;font-size:13px;color:var(--shell-dim);line-height:1.6;max-width:90ch}
+
+@media(max-width:1020px){
+  .panes{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  :root{--gutter:18px}
+  body{font-size:16px}
+  .top{padding:44px 0 30px}
+  .vblock{padding:38px 0}
+  .pane{padding:20px 17px 22px;border-radius:var(--r-md)}
+  .crow{grid-template-columns:1fr;gap:8px}
+  .cchip .lab{min-height:0}
+  .pstat{gap:18px}
+  .btn{font-size:14px;padding:10px 16px}
+  .final{padding:42px 0 22px}
+}
+@media(max-width:360px){
+  :root{--gutter:14px}
+  .vchip{width:44px;height:44px}
+  .pstat b{font-size:26px}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="top">
+    <div class="eyebrow"><span class="n">01</span> подбор акцента</div>
+    <h1>Четыре кандидата на&nbsp;место зелёного</h1>
+    <p class="lead">Каждый акцент показан на&nbsp;живых элементах сайта: кикер, заголовок, цифра, кнопка, ссылка с&nbsp;подчёркиванием, карточка с&nbsp;рамкой и&nbsp;графика связей. Тёмная тема слева, светлая справа, чтобы сразу видеть, как&nbsp;цвет держится в&nbsp;обеих. Контраст посчитан по&nbsp;WCAG&nbsp;2.1 на&nbsp;фоне #0E1211 и&nbsp;#FBFBFB</p>
+    <div class="now"><span class="sw"></span> <span>сейчас в&nbsp;деле <b>#79C98E</b>, на&nbsp;тёмном 9,48:1, в&nbsp;светлой теме подменяется на&nbsp;#3E7F55 и&nbsp;даёт 4,64:1</span></div>
+  </header>
+
+  <main id="blocks"></main>
+
+  <section class="final">
+    <div class="eyebrow"><span class="n">06</span> вывод</div>
+    <h2>Рекомендую лимон-электрик&nbsp;#D8FF3E</h2>
+    <div class="fgrid">
+      <div class="fbox hot">
+        <span class="k">почему он</span>
+        <h3>Самый светлый акцент даёт самый большой запас</h3>
+        <p>Яркость #D8FF3E&nbsp;– 0,865, это в&nbsp;1,8 раза выше текущего зелёного. Отсюда 16,4:1 на&nbsp;тёмном против 9,5:1 у&nbsp;зелёного, и&nbsp;те&nbsp;же&nbsp;16,4:1 у&nbsp;чёрной подписи на&nbsp;заливке кнопки. Мелкий мононабор, тонкая линия подчёркивания и&nbsp;точки в&nbsp;графике связей на&nbsp;тёмном фоне читаются без напряжения, а&nbsp;у&nbsp;остальных кандидатов на&nbsp;этих же&nbsp;элементах запаса меньше</p>
+        <p>Второй довод практический: рамка. Чтобы дать рабочие 3:1 на&nbsp;тёмном, лимону хватает прозрачности 0,36, циану нужно 0,43, янтарю 0,46, барвинку 0,51. Значит акцентную рамку карточки можно оставить деликатной и&nbsp;при этом честно доступной</p>
+        <p>Третий&nbsp;– различимость. Зелёный, циан и&nbsp;синий&nbsp;– это цвета, которыми выкрашена половина <span class="nb">AI-студий</span>. Кислотный лимон на&nbsp;тёплом графите запоминается с&nbsp;первого экрана и&nbsp;при этом остаётся техничным, потому что&nbsp;применяется точечно: заливка кнопки, цифра, узел связи</p>
+      </div>
+      <div class="fbox">
+        <span class="k">чем платим</span>
+        <ul class="flist">
+          <li><span class="ix">01</span> В&nbsp;светлой теме лимон как&nbsp;текст уходит в&nbsp;оливковый #627B00&nbsp;– это другой по&nbsp;ощущению цвет. На&nbsp;тёмной он&nbsp;кислотный, на&nbsp;светлой спокойный, единство держится за&nbsp;счёт заливок, а&nbsp;не&nbsp;за&nbsp;счёт текста</li>
+          <li><span class="ix">02</span> Лимон плохо переносит большие площади. Работает как&nbsp;заливка кнопки и&nbsp;мелкая метка, но&nbsp;широкую плашку или&nbsp;крупный блок им&nbsp;красить нельзя</li>
+          <li><span class="ix">03</span> Лимон рядом с&nbsp;жёлто-оранжевым статусом предупреждения сливается. Систему статусов придётся переводить на&nbsp;холодную гамму</li>
+          <li><span class="ix">04</span> Если светлая тема станет главной, скажем в&nbsp;печатных материалах и&nbsp;PDF, честнее взять циан-сигнал #3FE0CE: он&nbsp;единственный сохраняет узнаваемый оттенок в&nbsp;обеих темах, тёмная форма #158174 читается как&nbsp;тот&nbsp;же&nbsp;цвет</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <p class="foot">Как&nbsp;считала: контраст по&nbsp;формуле относительной яркости WCAG&nbsp;2.1, фон тёмной темы #0E1211, светлой #FBFBFB. Порог для&nbsp;мелкого текста 4,5:1, для&nbsp;крупного от&nbsp;24px и&nbsp;для&nbsp;границ 3:1. Акцентная рамка карточки в&nbsp;каждой панели залита ровно на&nbsp;тот&nbsp;процент, который даёт этому кандидату честные 3:1, поэтому в&nbsp;светлой теме она везде плотнее&nbsp;– там любому из&nbsp;четырёх нужно около 0,75, и&nbsp;это цена порога, а&nbsp;не&nbsp;ошибка вёрстки. Отдельно проверено, что&nbsp;сырой акцент как&nbsp;текст на&nbsp;светлом фоне не&nbsp;проходит ни&nbsp;у&nbsp;одного кандидата, включая нынешний зелёный, поэтому светлая тема продолжает работать через отдельную переменную. Для&nbsp;канвасов сайт применяет invert и&nbsp;hue-rotate&nbsp;– все четыре кандидата после этого преобразования дают тёмный насыщенный тон и&nbsp;остаются в&nbsp;своём семействе</p>
+
+</div>
+
+<script>
+/* ==========================================================
+   данные вариантов: база, светлая форма для текста и рамки,
+   посчитанные контрасты и короткий разбор
+   ========================================================== */
+var VARS = [
+  {
+    id:'02', key:'lime', name:'Лимон-электрик', hex:'#D8FF3E',
+    glow:'#E4FF6E', deep:'#A9CF00', lt:'#627B00', lb:'#7D9C00', rgb:'216,255,62', ltRgb:'98,123,0',
+    bd:.36, bl:.76,
+    note:'Кислотный жёлто-зелёный, самая высокая яркость из всей четвёрки: 0,865. На тёплом графите светится как сигнальная лента, на молочном фоне заливка кнопки остаётся собой, а текстовая форма садится в оливковый #627B00',
+    m:[
+      {lab:'акцент как текст на тёмном', v:'16,43:1', ok:true, st:'проходит с трёхкратным запасом'},
+      {lab:'подпись #0E1211 на заливке', v:'16,43:1', ok:true, st:'проходит, кнопка читается'},
+      {lab:'светлая форма #627B00 на молочном', v:'4,66:1', ok:true, st:'проходит для мелкого текста'},
+      {lab:'сырой акцент на молочном', v:'1,11:1', ok:false, st:'не проходит, нужна подмена цвета'},
+      {lab:'рамка, порог 3:1, тёмная / светлая', v:'0,36 / 0,76', ok:true, st:'минимальная заливка рамки, лучший показатель на тёмном'}
+    ]
+  },
+  {
+    id:'03', key:'cyan', name:'Циан-сигнал', hex:'#3FE0CE',
+    glow:'#7BEBDD', deep:'#12A896', lt:'#158174', lb:'#1AA192', rgb:'63,224,206', ltRgb:'21,129,116',
+    bd:.43, bl:.75,
+    note:'Холодная бирюза на грани зелёного и синего. Единственный кандидат, который в светлой теме остаётся узнаваемо тем же цветом: тёмная форма #158174 читается как та же бирюза, только глубже',
+    m:[
+      {lab:'акцент как текст на тёмном', v:'11,47:1', ok:true, st:'проходит уверенно'},
+      {lab:'подпись #0E1211 на заливке', v:'11,47:1', ok:true, st:'проходит, кнопка читается'},
+      {lab:'светлая форма #158174 на молочном', v:'4,59:1', ok:true, st:'проходит, запас небольшой'},
+      {lab:'сырой акцент на молочном', v:'1,59:1', ok:false, st:'не проходит, нужна подмена цвета'},
+      {lab:'рамка, порог 3:1, тёмная / светлая', v:'0,43 / 0,75', ok:true, st:'минимальная заливка рамки'}
+    ]
+  },
+  {
+    id:'04', key:'amber', name:'Янтарь', hex:'#FFB13C',
+    glow:'#FFC875', deep:'#E08A00', lt:'#A76400', lb:'#D27E00', rgb:'255,177,60', ltRgb:'167,100,0',
+    bd:.46, bl:.76,
+    note:'Тёплый оранжево-жёлтый, максимальный отрыв от зелёно-синей гаммы конкурентов. Даёт сайту человеческую интонацию, но в светлой теме текстовая форма #A76400 уходит в коричневый и конфликтует со смыслом предупреждения',
+    m:[
+      {lab:'акцент как текст на тёмном', v:'10,43:1', ok:true, st:'проходит уверенно'},
+      {lab:'подпись #0E1211 на заливке', v:'10,43:1', ok:true, st:'проходит, кнопка читается'},
+      {lab:'светлая форма #A76400 на молочном', v:'4,54:1', ok:true, st:'проходит впритык'},
+      {lab:'сырой акцент на молочном', v:'1,75:1', ok:false, st:'не проходит, нужна подмена цвета'},
+      {lab:'рамка, порог 3:1, тёмная / светлая', v:'0,46 / 0,76', ok:true, st:'минимальная заливка рамки'}
+    ]
+  },
+  {
+    id:'05', key:'peri', name:'Барвинок', hex:'#93A9FF',
+    glow:'#C0CCFF', deep:'#5C7BFF', lt:'#3C64FF', lb:'#6A89FF', rgb:'147,169,255', ltRgb:'60,100,255',
+    bd:.51, bl:.75,
+    note:'Мягкий сине-фиолетовый, самый спокойный из четвёрки. Яркость всего 0,418, поэтому запас по контрасту минимальный, а рамке нужна прозрачность 0,51, иначе она перестаёт быть границей и превращается в декор',
+    m:[
+      {lab:'акцент как текст на тёмном', v:'8,41:1', ok:true, st:'проходит, запас меньше всех'},
+      {lab:'подпись #0E1211 на заливке', v:'8,41:1', ok:true, st:'проходит, кнопка читается'},
+      {lab:'светлая форма #3C64FF на молочном', v:'4,55:1', ok:true, st:'проходит, но цвет ярче базы'},
+      {lab:'сырой акцент на молочном', v:'2,17:1', ok:false, st:'не проходит, нужна подмена цвета'},
+      {lab:'рамка, порог 3:1, тёмная / светлая', v:'0,51 / 0,75', ok:false, st:'самая заметная рамка из четвёрки'}
+    ]
+  }
+];
+
+/* графика связей: узлы нейтральные, акцентом только несущая цепочка */
+var NODES = [
+  [26,104],[74,58],[122,100],[170,46],[218,92],[266,50],[314,98],[362,60],[404,96],
+  [58,22],[150,132],[248,132],[330,20],[196,16],[92,140]
+];
+var GRID = [[9,1],[1,0],[0,2],[2,10],[10,4],[4,11],[11,6],[6,8],[13,3],[12,7],[14,0],[9,13],[13,5],[12,5],[10,11]];
+var CHAIN = [[0,1],[1,3],[3,5],[5,7],[7,8]];
+var CHAIN_N = [0,1,3,5,7,8];
+
+function mesh(color){
+  var s = '<svg viewBox="0 0 428 156" preserveAspectRatio="xMidYMid meet" role="img" aria-label="схема связей">';
+  s += '<g stroke="rgba(var(--grid),.42)" stroke-width="1" fill="none">';
+  GRID.forEach(function(e){
+    s += '<line x1="'+NODES[e[0]][0]+'" y1="'+NODES[e[0]][1]+'" x2="'+NODES[e[1]][0]+'" y2="'+NODES[e[1]][1]+'"/>';
+  });
+  s += '</g>';
+  s += '<g stroke="'+color+'" stroke-width="1.6" fill="none" stroke-linecap="round">';
+  CHAIN.forEach(function(e){
+    s += '<line x1="'+NODES[e[0]][0]+'" y1="'+NODES[e[0]][1]+'" x2="'+NODES[e[1]][0]+'" y2="'+NODES[e[1]][1]+'"/>';
+  });
+  s += '</g>';
+  NODES.forEach(function(p,i){
+    if (CHAIN_N.indexOf(i) > -1) return;
+    s += '<circle cx="'+p[0]+'" cy="'+p[1]+'" r="2.4" fill="rgba(var(--node),.5)"/>';
+  });
+  CHAIN_N.forEach(function(i){
+    var p = NODES[i];
+    s += '<circle cx="'+p[0]+'" cy="'+p[1]+'" r="6.5" fill="'+color+'" opacity=".16"/>';
+    s += '<circle cx="'+p[0]+'" cy="'+p[1]+'" r="3.2" fill="'+color+'"/>';
+  });
+  s += '</svg>';
+  return s;
+}
+
+function pane(v, theme){
+  var dark = theme === 'dark';
+  var acTxt = dark ? v.hex : v.lt;
+  var acLine = dark ? 'rgba('+v.rgb+','+v.bd+')' : 'rgba('+v.ltRgb+','+v.bl+')';
+  var tint = dark ? 'inset 0 0 0 1px rgba('+v.rgb+',.05)' : 'inset 0 0 0 1px rgba('+v.ltRgb+',.05)';
+  var glow = dark
+    ? 'radial-gradient(58% 52% at 76% 4%, rgba('+v.rgb+',.09), transparent 70%)'
+    : 'radial-gradient(58% 52% at 76% 4%, rgba('+v.ltRgb+',.07), transparent 70%)';
+  var shadow = dark ? '0 6px 20px -8px rgba('+v.rgb+',.55)' : '0 6px 20px -10px rgba('+v.ltRgb+',.5)';
+  var st = '--ac:'+v.hex+';--ac-glow:'+v.glow+';--ac-txt:'+acTxt+';--ac-line:'+acLine+
+           ';--ac-tint:'+tint+';--glow:'+glow+';--ac-shadow:'+shadow;
+
+  return '<div class="pane" data-t="'+theme+'" style="'+st+'">'+
+    '<span class="ptag">'+(dark ? 'тёмная тема, фон 0E1211' : 'светлая тема, фон FBFBFB')+'</span>'+
+    '<div class="peyebrow"><span class="n">02</span> как мы работаем</div>'+
+    '<h3>Соединяем AI, процессы и&nbsp;людей</h3>'+
+    '<p class="ptxt">Разбираем поток задач, находим места, где решение принимает человек вручную, и&nbsp;встраиваем модель туда, где она снимает нагрузку</p>'+
+    '<div class="pstat">'+
+      '<div><b>38%</b><span>времени на&nbsp;разбор заявок</span></div>'+
+      '<div><b>6 нед.</b><span>до&nbsp;первой рабочей сборки</span></div>'+
+      '<div><b>2,4 млн&nbsp;руб.</b><span>годовая экономия</span></div>'+
+    '</div>'+
+    '<div class="pbtns">'+
+      '<button class="btn pri" type="button">Обсудить задачу</button>'+
+      '<button class="btn ghost" type="button">Смотреть кейсы</button>'+
+      '<a class="morelink" href="#">Забрать чекап процессов</a>'+
+    '</div>'+
+    '<div class="pcard">'+
+      '<div class="ctop"><span class="ctag">поддержка</span><span class="cind">кейс 04</span></div>'+
+      '<h4>Разбор входящих обращений</h4>'+
+      '<p>Модель раскладывает письмо по&nbsp;теме и&nbsp;срочности, спорные случаи уходят человеку с&nbsp;готовым черновиком ответа</p>'+
+      '<div class="pfig">'+mesh(acTxt)+'</div>'+
+      '<div class="pcap">несущая цепочка выделена акцентом, остальные узлы нейтральные</div>'+
+    '</div>'+
+  '</div>';
+}
+
+function block(v){
+  return '<section class="vblock">'+
+    '<div class="vhead">'+
+      '<span class="vchip" style="background:'+v.hex+'"></span>'+
+      '<div><div class="eyebrow"><span class="n">'+v.id+'</span> кандидат</div>'+
+      '<div class="vname">'+v.name+'</div>'+
+      '<div class="vhex">'+v.hex+' на тёмной теме, '+v.lt+' на светлой</div></div>'+
+    '</div>'+
+    '<p class="vnote">'+v.note+'</p>'+
+    '<div class="crow">'+v.m.map(function(m){
+      return '<div class="cchip '+(m.ok?'ok':'no')+'"><span class="lab">'+m.lab+'</span>'+
+             '<span class="val">'+m.v+'</span><span class="st">'+m.st+'</span></div>';
+    }).join('')+'</div>'+
+    '<div class="panes">'+pane(v,'dark')+pane(v,'light')+'</div>'+
+  '</section>';
+}
+
+document.getElementById('blocks').innerHTML = VARS.map(block).join('');
+</script>
+</body>
+</html>
