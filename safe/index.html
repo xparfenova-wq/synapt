@@ -916,82 +916,111 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
 
 
 
-  /* ---------- блок: разбор вопроса участника клуба ----------
-     вопрос про бизнес уходит в базу методологии и возвращается разбором,
-     медицинский вопрос агент передаёт живому специалисту ---------- */
+  /* ---------- блок: как агент клуба ведёт разбор ----------
+     слева живая переписка участника, в центре агент со слоями базы знаний,
+     справа четыре сценария аудита. Виден весь путь от вопроса до документа ---------- */
   [].forEach.call(document.querySelectorAll('canvas.fx-routeq'), function (c) {{
+    var LAYERS = ['книги и протоколы', 'вопрос-ответ клуба', 'уроки и эфиры', 'данные клиники'];
+    var SCEN = ['стратегический аудит', 'P&L-анализ', 'имплант-калькулятор', 'разбор переписки'];
+    var SCEN_S = ['стратегия', 'P&L', 'импланты', 'переписка'];
+    var CHAT = ['Как поднять загрузку кресел?', 'Смотрю ваш P&L и график записи', 'Собрал разбор на 17 разделов'];
     loop(c, function (s, t) {{
-      var ctx = s.ctx, W = s.W, H = s.H;
+      var ctx = s.ctx, W = s.W, H = s.H, i;
       ctx.clearRect(0, 0, W, H);
-      var inX = W * .10, hubX = W * .46, outX = W * .88;
-      var yBiz = H * .34, yMed = H * .72, yHub = H * .5;
-      ctx.font = '11px "JetBrains Mono", ui-monospace, monospace';
+      var narrow = W < 620;
+      var chatX = W * (narrow ? .05 : .05), chatW = W * (narrow ? .34 : .30);
+      var hubX = W * (narrow ? .52 : .53), hubY = H * .5;
+      var scenX = W * (narrow ? .68 : .74);
+      var names = narrow ? SCEN_S : SCEN;
 
-      /* база методологии: стопка материалов клуба */
-      var bx = hubX, by = H * .16, bw = W * .16, bh = 9;
-      for (var k = 0; k < 4; k++) {{
-        ctx.beginPath();
-        var yy = by + k * (bh + 3);
-        if (ctx.roundRect) ctx.roundRect(bx - bw / 2, yy, bw, bh, 3); else ctx.rect(bx - bw / 2, yy, bw, bh);
-        ctx.strokeStyle = 'rgba(' + GR + ',.4)'; ctx.lineWidth = 1; ctx.stroke();
-      }}
-      ctx.fillStyle = 'rgba(' + GR + ',.75)'; ctx.textAlign = 'center';
-      ctx.fillText('база методологии клуба', bx, by - 10);
-
-      /* маршруты */
-      [[yBiz, PH], [yMed, '198,142,96']].forEach(function (r) {{
-        ctx.beginPath(); ctx.moveTo(inX, r[0]);
-        ctx.quadraticCurveTo((inX + hubX) / 2, r[0], hubX, yHub);
-        ctx.strokeStyle = 'rgba(' + GR + ',.32)'; ctx.lineWidth = 1; ctx.stroke();
-      }});
-      ctx.beginPath(); ctx.moveTo(hubX, yHub);
-      ctx.quadraticCurveTo((hubX + outX) / 2, yBiz, outX, yBiz);
-      ctx.strokeStyle = 'rgba(' + PH + ',.4)'; ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(hubX, yHub);
-      ctx.quadraticCurveTo((hubX + outX) / 2, yMed, outX, yMed);
-      ctx.strokeStyle = 'rgba(198,142,96,.4)'; ctx.stroke();
-
-      /* подписи входа и выходов */
-      ctx.textAlign = 'left';
-      ctx.fillStyle = 'rgba(' + GR + ',.85)';
-      ctx.fillText('вопрос про бизнес', inX - 4, yBiz - 14);
-      ctx.fillText('медицинский вопрос', inX - 4, yMed + 22);
-      ctx.textAlign = 'right';
-      ctx.fillStyle = 'rgba(' + PH + ',.9)';
-      ctx.fillText('разбор по методологии', outX + 4, yBiz - 14);
-      ctx.fillStyle = 'rgba(198,142,96,.9)';
-      ctx.fillText('живой специалист', outX + 4, yMed + 22);
-      ctx.textAlign = 'left';
-
-      /* два запроса идут по своим маршрутам */
-      [[yBiz, PH, 0], [yMed, '198,142,96', .5]].forEach(function (r) {{
-        var ph = ((t * .0035) + r[2]) % 1;
-        var x, y;
-        if (ph < .5) {{
-          var u = ph / .5, m = 1 - u, cx = (inX + hubX) / 2;
-          x = m * m * inX + 2 * m * u * cx + u * u * hubX;
-          y = m * m * r[0] + 2 * m * u * r[0] + u * u * yHub;
-        }} else {{
-          var u2 = (ph - .5) / .5, m2 = 1 - u2, cx2 = (hubX + outX) / 2;
-          x = m2 * m2 * hubX + 2 * m2 * u2 * cx2 + u2 * u2 * outX;
-          y = m2 * m2 * yHub + 2 * m2 * u2 * r[0] + u2 * u2 * r[0];
+      /* переписка участника: реплики появляются по очереди */
+      ctx.font = (narrow ? 9 : 10.5) + 'px "JetBrains Mono", ui-monospace, monospace';
+      var shown = 1 + Math.floor((t % 480) / 160);
+      for (i = 0; i < Math.min(shown, CHAT.length); i++) {{
+        var mine = i % 2 === 0;
+        var words = CHAT[i].split(' '), rows = [], cur = '';
+        words.forEach(function (w) {{
+          var test = cur ? cur + ' ' + w : w;
+          if (ctx.measureText(test).width > chatW - 20 && cur) {{ rows.push(cur); cur = w; }} else cur = test;
+        }});
+        if (cur) rows.push(cur);
+        var lh = narrow ? 13 : 15, bh = rows.length * lh + 12;
+        var by = H * .22 + i * (bh + 12);
+        var bw = 0; rows.forEach(function (r) {{ bw = Math.max(bw, ctx.measureText(r).width); }});
+        ctx.fillStyle = mine ? 'rgba(' + GR + ',.14)' : 'rgba(' + PH + ',.14)';
+        ctx.strokeStyle = mine ? 'rgba(' + GR + ',.3)' : 'rgba(' + PH + ',.4)';
+        ctx.lineWidth = 1;
+        if (ctx.roundRect) {{ ctx.beginPath(); ctx.roundRect(chatX, by, bw + 18, bh, 10); ctx.fill(); ctx.stroke(); }}
+        ctx.fillStyle = mine ? 'rgba(' + GR + ',.95)' : 'rgba(' + WH + ',.95)';
+        rows.forEach(function (r, k) {{ ctx.fillText(r, chatX + 9, by + 12 + k * lh); }});
+        /* от последней реплики к агенту тянется связь */
+        if (i === Math.min(shown, CHAT.length) - 1) {{
+          ctx.beginPath(); ctx.moveTo(chatX + bw + 18, by + bh / 2);
+          ctx.lineTo(hubX - 26, hubY);
+          ctx.strokeStyle = 'rgba(' + PH + ',.34)'; ctx.stroke();
         }}
-        var g = ctx.createRadialGradient(x, y, 0, x, y, 13);
-        g.addColorStop(0, 'rgba(' + r[1] + ',.5)'); g.addColorStop(1, 'rgba(' + r[1] + ',0)');
-        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, 13, 0, 7); ctx.fill();
-        ctx.beginPath(); ctx.arc(x, y, 2.6, 0, 7);
-        ctx.fillStyle = 'rgba(' + r[1] + ',.95)'; ctx.fill();
-      }});
+      }}
 
-      /* сам агент в центре */
-      var pulse = .5 + .5 * Math.sin(t * .04);
-      ctx.beginPath(); ctx.arc(hubX, yHub, 16 + pulse * 3, 0, 7);
-      ctx.strokeStyle = 'rgba(' + PH + ',' + (.5 + pulse * .3) + ')'; ctx.lineWidth = 1.4; ctx.stroke();
-      ctx.beginPath(); ctx.arc(hubX, yHub, 4.4, 0, 7);
+      /* слои базы знаний вращаются вокруг агента */
+      for (i = 0; i < LAYERS.length; i++) {{
+        var rr = (narrow ? 26 : 34) + i * (narrow ? 9 : 13);
+        var a0 = t * (0.0028 - i * 0.0004) + i * 1.2;
+        ctx.beginPath();
+        ctx.ellipse(hubX, hubY, rr, rr * .62, a0 * .35, 0, 7);
+        ctx.setLineDash([3, 6]);
+        ctx.strokeStyle = 'rgba(' + GR + ',' + (.34 - i * .05) + ')'; ctx.lineWidth = 1; ctx.stroke();
+        ctx.setLineDash([]);
+        /* точка знания бежит по своему слою */
+        var px = hubX + Math.cos(a0) * rr, py = hubY + Math.sin(a0) * rr * .62;
+        var g = ctx.createRadialGradient(px, py, 0, px, py, 9);
+        g.addColorStop(0, 'rgba(' + PH + ',.45)'); g.addColorStop(1, 'rgba(' + PH + ',0)');
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(px, py, 9, 0, 7); ctx.fill();
+        ctx.beginPath(); ctx.arc(px, py, 1.9, 0, 7);
+        ctx.fillStyle = 'rgba(' + PH + ',.85)'; ctx.fill();
+      }}
+      /* ядро агента */
+      var pulse = .5 + .5 * Math.sin(t * .03);
+      var hg = ctx.createRadialGradient(hubX, hubY, 0, hubX, hubY, 26 + pulse * 8);
+      hg.addColorStop(0, 'rgba(' + PH + ',' + (.22 + pulse * .12) + ')'); hg.addColorStop(1, 'rgba(' + PH + ',0)');
+      ctx.fillStyle = hg; ctx.beginPath(); ctx.arc(hubX, hubY, 26 + pulse * 8, 0, 7); ctx.fill();
+      ctx.beginPath(); ctx.arc(hubX, hubY, 5.4 + pulse, 0, 7);
       ctx.fillStyle = 'rgba(' + PH + ',.95)'; ctx.fill();
-      ctx.textAlign = 'center'; ctx.fillStyle = 'rgba(' + GR + ',.8)';
-      ctx.fillText('агент', hubX, yHub + 34); ctx.textAlign = 'left';
-    }}, innerWidth < 700 ? 1.45 : 2.4);
+      ctx.font = (narrow ? 9 : 10.5) + 'px "JetBrains Mono", ui-monospace, monospace';
+      ctx.textAlign = 'center'; ctx.fillStyle = 'rgba(' + GR + ',.85)';
+      ctx.fillText('агент клуба', hubX, hubY + (narrow ? 62 : 78));
+      ctx.textAlign = 'left';
+
+      /* четыре сценария справа: активный подсвечивается по очереди */
+      var live = Math.floor(t / 170) % SCEN.length;
+      for (i = 0; i < SCEN.length; i++) {{
+        var sy = H * (narrow ? .22 : .24) + i * H * (narrow ? .18 : .17);
+        var on = i === live;
+        ctx.beginPath(); ctx.moveTo(hubX + (narrow ? 30 : 44), hubY);
+        ctx.quadraticCurveTo((hubX + scenX) / 2, sy, scenX - 6, sy);
+        ctx.strokeStyle = 'rgba(' + (on ? PH : GR) + ',' + (on ? .55 : .16) + ')';
+        ctx.lineWidth = on ? 1.4 : .9; ctx.stroke();
+        ctx.beginPath(); ctx.arc(scenX - 6, sy, on ? 4 : 2.8, 0, 7);
+        ctx.fillStyle = 'rgba(' + (on ? PH : WH) + ',' + (on ? 1 : .55) + ')'; ctx.fill();
+        ctx.font = (narrow ? 8.5 : 10) + 'px "JetBrains Mono", ui-monospace, monospace';
+        ctx.fillStyle = 'rgba(' + (on ? PH : GR) + ',' + (on ? .95 : .6) + ')';
+        ctx.fillText(names[i], scenX + 6, sy + 3.5);
+        /* по активному маршруту идёт документ */
+        if (on) {{
+          var q = ((t % 170) / 170), m = 1 - q;
+          var cx2 = (hubX + scenX) / 2;
+          var dx = m * m * (hubX + (narrow ? 30 : 44)) + 2 * m * q * cx2 + q * q * (scenX - 6);
+          var dy = m * m * hubY + 2 * m * q * sy + q * q * sy;
+          ctx.beginPath(); ctx.arc(dx, dy, 2.6, 0, 7);
+          ctx.fillStyle = 'rgba(' + PH + ',.9)'; ctx.fill();
+        }}
+      }}
+
+      /* подписи сторон */
+      ctx.font = (narrow ? 8.5 : 10) + 'px "JetBrains Mono", ui-monospace, monospace';
+      ctx.fillStyle = 'rgba(' + GR + ',.7)';
+      ctx.fillText('вопрос участника', chatX, H * .12);
+      ctx.fillText('сценарии разбора', scenX - 6, H * .12);
+    }}, innerWidth < 700 ? 1.25 : 2.7);
   }});
 
   /* ---------- блок: очередь заявок до и после запуска ----------
