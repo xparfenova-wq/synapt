@@ -862,7 +862,8 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
         ctx.moveTo(cx, y - hh); ctx.lineTo(cx + half, y); ctx.lineTo(cx, y + hh); ctx.lineTo(cx - half, y); ctx.closePath();
         ctx.fillStyle = 'rgba(' + GR + ',.07)'; ctx.fill();
         ctx.strokeStyle = 'rgba(' + GR + ',.5)'; ctx.lineWidth = 1; ctx.stroke();
-        ctx.fillStyle = 'rgba(160,170,166,.85)'; ctx.fillText(names[i].trim(), cx + half + 16, y + 4);
+        ctx.fillStyle = 'rgba(160,170,166,.85)';
+        cap(ctx, names[i].trim(), cx + half + 16, y + 4, W - (cx + half + 22), 11);
         for (var k = 0; k < 3; k++) {
           var a = (k / 3) * 6.28 + i * .8 + t * .004;
           ctx.beginPath(); ctx.arc(cx + Math.cos(a) * half * .55, y + Math.sin(a) * hh * .5, 1.9, 0, 7);
@@ -916,6 +917,17 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
   });
 
 
+
+  /* подпись ужимается по кеглю, пока не влезет в отведённую ширину */
+  function cap(ctx, text, x, y, maxw, base) {{
+    var size = base || 10.5;
+    ctx.font = size + 'px "JetBrains Mono", ui-monospace, monospace';
+    while (ctx.measureText(text).width > maxw && size > 7.5) {{
+      size -= .5;
+      ctx.font = size + 'px "JetBrains Mono", ui-monospace, monospace';
+    }}
+    ctx.fillText(text, x, y);
+  }}
 
   /* ---------- блок: как агент клуба ведёт разбор ----------
      слева живая переписка участника, в центре агент со слоями базы знаний,
@@ -988,7 +1000,7 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
       ctx.fillStyle = 'rgba(' + PH + ',.95)'; ctx.fill();
       ctx.font = (narrow ? 9 : 10.5) + 'px "JetBrains Mono", ui-monospace, monospace';
       ctx.textAlign = 'center'; ctx.fillStyle = 'rgba(' + GR + ',.85)';
-      ctx.fillText('агент клуба', hubX, hubY + (narrow ? 62 : 78));
+      cap(ctx, 'агент клуба', hubX, Math.min(H - 6, hubY + (narrow ? 62 : 78)), W * .34, narrow ? 9 : 10.5);
       ctx.textAlign = 'left';
 
       /* четыре сценария справа: активный подсвечивается по очереди */

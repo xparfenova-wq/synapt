@@ -75,8 +75,10 @@ h3{font-size:21px;font-weight:620;letter-spacing:-.01em;line-height:1.25}
 h4{font-size:16.5px;font-weight:560;letter-spacing:-.012em;line-height:1.35}
 .lead{font-size:clamp(18px,2vw,21px);font-weight:450;color:var(--text-2);line-height:1.6;max-width:640px}
 .mono{font-family:var(--mono);font-feature-settings:"liga" 0,"calt" 0}
+/* baseline, а не center: на 320 подпись раздела уходит в две строки, и при center
+   номер вставал между строками вместо первой */
 .eyebrow{font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.14em;
- color:var(--sage);margin-bottom:12px;display:flex;align-items:center;gap:10px;font-feature-settings:"case" 1,"liga" 0}
+ color:var(--sage);margin-bottom:12px;display:flex;align-items:baseline;gap:10px;font-feature-settings:"case" 1,"liga" 0}
 .eyebrow .n{color:var(--text-dim)}
 .sec-head{max-width:720px;margin-bottom:52px}
 .sec-head h2{margin-bottom:24px}
@@ -117,8 +119,11 @@ h4{font-size:16.5px;font-weight:560;letter-spacing:-.012em;line-height:1.35}
 .tgl svg{width:17px;height:17px}
 .burger{display:none}
 .burger svg{width:19px;height:19px}
+/* меню целиком повторяет шапку: ниже 1040 .nav-links скрыт, и другого пути к разделам нет.
+   высота ограничена экраном и лист прокручивается, иначе на 320x568 нижние пункты недостижимы */
 .sheet{position:fixed;inset:66px 0 auto 0;z-index:99;background:var(--bg);border-bottom:1px solid var(--line);
- display:none;flex-direction:column;padding:6px 0 12px}
+ display:none;flex-direction:column;padding:6px 0 12px;
+ max-height:calc(100dvh - 66px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
 .sheet.open{display:flex}
 .sheet a{display:flex;align-items:center;min-height:48px;padding:6px var(--gutter);font-size:16px;font-weight:500;color:var(--text-2)}
 .sheet a:hover{color:var(--text);background:var(--surface)}
@@ -733,9 +738,16 @@ input:not([type=checkbox]),textarea,select{font-size:16px}
   </div>
 </div></nav>
 <div class="sheet" id="sheet">
+  <a href="#pain">Зачем</a>
+  <a href="#modules">Модули</a>
+  <a href="#how">Как&nbsp;устроено</a>
   <a href="#proof">Раньше и&nbsp;теперь</a>
   <a href="#trust">Контроль</a>
+  <a href="#start">С&nbsp;чего начать</a>
+  <a href="#pricing">Стоимость</a>
   <a href="#security">Данные и&nbsp;доступ</a>
+  <a href="#own">Свой процесс</a>
+  <a href="#faq">FAQ</a>
   <a class="btn pri" href="#lead">Обсудить задачу</a>
 </div>
 

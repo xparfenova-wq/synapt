@@ -351,6 +351,10 @@ h3{font-size:21px;font-weight:620;letter-spacing:-.01em;line-height:1.25}
   .tg-txt{flex:1 1 100%;order:3}
   .tg-btn{margin-left:auto}
 }
+/* на узких экранах кнопка не помещается рядом с аватаром и повисает посреди карточки: уводим её вниз на всю ширину */
+@media(max-width:359px){
+  .tg-btn{order:4;flex:1 1 100%;width:100%;margin-left:0}
+}
 
 /* ---------- подвал ---------- */
 footer{border-top:1px solid var(--line);padding:48px 0 56px}
@@ -363,10 +367,10 @@ footer .brand svg{height:22px}
 .fmeta>span{display:inline-flex;align-items:center;min-height:44px;color:var(--text-dim)}
 .legal{margin-top:28px;font-size:12.5px;line-height:1.6;color:var(--text-dim);max-width:74ch;
  display:grid;gap:6px}
-.legal>div{display:grid;grid-template-columns:112px 1fr;gap:2px 14px;align-items:baseline}
-.legal>div>span:first-child{color:var(--sage)}
-.legal a{justify-self:start;color:var(--text-2);border-bottom:1px solid var(--line-2)}
-.legal a:hover{color:var(--text);border-bottom-color:var(--text-dim)}
+/* подчёркивание вместо рамки: на мобильной у ссылки тап-зона 44px и рамка читалась как разделитель */
+.legal a{justify-self:start;color:var(--text-2);text-decoration:underline;
+ text-decoration-color:var(--line-2);text-underline-offset:3px}
+.legal a:hover{color:var(--text);text-decoration-color:var(--text-dim)}
 
 /* ---------- появление ---------- */
 .reveal{opacity:0;transform:translateY(18px);
@@ -427,7 +431,6 @@ footer .brand svg{height:22px}
  .btn.lg{width:100%}
  .stmt{padding-left:20px}
  .wide-fig{margin-top:32px}
- .legal>div{grid-template-columns:1fr;gap:0}
  .legal{gap:14px}
  .fm,.fmeta{gap:0 18px}
 }
