@@ -163,7 +163,7 @@ h3{font-size:21px;font-weight:620;letter-spacing:-.01em;line-height:1.25}
 /* силуэт мозга из узлов держится правее текста, левый край растворяется маской */
 /* вторая маска по вертикали: без неё узлы и рёбра проходили прямо по строке метрик
    под кнопками, и на светлой теме линия перечёркивала цифры */
-#synFx{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0;opacity:.66}
+#synFx{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0;opacity:.8}
 /* на светлой узлы темнее текста и лезли на заголовок, поэтому холст глуше */
 :root[data-theme="light"] #synFx{opacity:.78}
 .hero .wrap{position:relative;z-index:1}
@@ -1563,7 +1563,7 @@ footer .f-tg::after{content:"";position:absolute;left:0;right:0;top:50%;
 
 /* ---------- 7. графика первого экрана не заходит на текст и цифры ---------- */
 @media(min-width:761px){
-  #synFx{-webkit-mask-image:linear-gradient(180deg,#000 60%,rgba(0,0,0,.42) 69%,transparent 77%);
+  #synFx{-webkit-mask-image:linear-gradient(180deg,#000 74%,rgba(0,0,0,.5) 84%,transparent 96%);
     mask-image:linear-gradient(180deg,#000 60%,rgba(0,0,0,.42) 69%,transparent 77%)}
 }
 .hero-meta::after{background:radial-gradient(130% 130% at 55% 50%,var(--bg) 0%,var(--bg) 52%,
@@ -1662,16 +1662,16 @@ function LEAD_API(url, opts){
     <button class="nav-burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="navSheet">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
-    <a class="btn pri" href="#lead">Оставить заявку</a>
+    <a class="btn pri" href="#lead">Обсудить задачу</a>
   </div>
 </div>
-<div class="nav-sheet" id="navSheet"><div class="ns-in"><a href="#services">Услуги</a><a href="#cases">Кейсы</a><a href="#how">Как&nbsp;работаем</a><a href="#idea">Почему мы</a><a href="#rules">Подход</a><a href="#faq">Вопросы</a>
+<div class="nav-sheet" id="navSheet"><div class="ns-in"><a href="#services">Услуги</a><a href="#cases">Кейсы</a><a href="#how">Как&nbsp;работаем</a><a href="#idea">Почему мы</a><a href="#rules">Подход</a><a href="#faq">FAQ</a>
   <div class="ns-act">
     <button class="tgl ns-tgl" aria-label="Тёмная тема" title="Тёмная тема"></button>
     <a class="nav-tg" href="https://t.me/Anti4ay" target="_blank" rel="noopener" aria-label="Написать в&nbsp;Telegram" title="Написать в&nbsp;Telegram">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 4.3 3.3 11.4c-.9.35-.88 1.63.02 1.96l4.5 1.63 1.72 5.2c.24.72 1.16.92 1.68.37l2.5-2.63 4.55 3.34c.62.46 1.5.12 1.66-.63l3.03-14.4c.17-.8-.62-1.47-1.36-1.19zM8.9 14.1l9.1-5.6-7.2 6.6-.35 2.9-1.55-3.9z"/></svg>
     </a>
-    <a class="btn pri" href="#lead">Оставить заявку</a>
+    <a class="btn pri" href="#lead">Обсудить задачу</a>
   </div>
 </div><div class="wrap">
   
@@ -1696,7 +1696,7 @@ function LEAD_API(url, opts){
         <div class="m"><b><span class="nb">19 900 ₽</span></b><span>чекап бизнеса за&nbsp;две недели</span></div>
         <div class="m"><b><span class="nb">3-5 недель</span></b><span>до&nbsp;готового продукта</span></div>
         <div class="m"><b><span class="nb">60 дней</span></b><span>на&nbsp;связи после завершения</span></div>
-        <div class="m m-cta"><a class="btn pri lg" href="#lead">Оставить заявку</a></div>
+        <div class="m m-cta"><a class="btn pri lg" href="#lead">Обсудить задачу</a></div>
       </div>
     </div>
   </div>
@@ -2162,7 +2162,7 @@ function LEAD_API(url, opts){
       <a href="#how">Как&nbsp;работаем</a>
       <a href="#idea">Почему мы</a>
       <a href="#rules">Подход</a>
-      <a href="#faq">Вопросы</a>
+      <a href="#faq">FAQ</a>
     </nav>
     <div class="f-legal">
       <span class="f-k">Формальности</span>
@@ -2429,7 +2429,7 @@ function LEAD_API(url, opts){
          текст первого экрана, и графика туда не заходит ни одним узлом */
       cx = narrow ? W * .5 : W * .55;
       cy = narrow ? H * .44 : H * .34;
-      RAD = narrow ? Math.min(W * .5, H * .38) : Math.min(W * .34, H * .30);
+      RAD = narrow ? Math.min(W * .46, H * .44) : Math.min(W * .36, H * .44);
       nodes = [];
       var rings = 5, id = 0;
       nodes.push({x: cx, y: cy, ring: 0, r: 3.2, core: true, ph: 0, d: 0, hot: false, sx: cx, sy: cy});
@@ -2442,8 +2442,8 @@ function LEAD_API(url, opts){
           nodes.push({
             /* разброс держим в узких пределах: поле обязано читаться кругом,
                иначе одиночные узлы уходят до самых краёв кадра */
-            x: cx + Math.cos(a) * rr * jitter * (1 + rnd(id * 19) * .1),
-            y: cy + Math.sin(a) * rr * jitter * (a > 0 ? 1 : .92),
+            x: cx + Math.cos(a) * rr * jitter * (1.2 + rnd(id * 19) * .22),
+            y: cy + Math.sin(a) * rr * jitter * (a > 0 ? 1.04 : .84),
             ring: ri, a: a, rr: rr,
             r: 1.5 + rnd(id * 5) * 1.7,
             d: rnd(id * 3) * .6,
