@@ -74,9 +74,10 @@ svg{display:block}
  background:transparent;border-bottom:1px solid transparent;
  transition:background .3s var(--ease),border-color .3s var(--ease),backdrop-filter .3s var(--ease)}
 /* подложка шапки появляется, только когда первый экран уже прокручен */
-/* кнопка в шапке появляется, когда первый экран уже прокручен */
-.nav .btn.pri{opacity:0;visibility:hidden;transition:opacity .25s var(--ease),visibility .25s}
-.nav.solid .btn.pri{opacity:1;visibility:visible}
+/* кнопка в шапке появляется, когда первый экран уже прокручен.
+   правило бьёт только по кнопке в строке шапки: копия в меню-шторке видна всегда */
+.nav .nav-act .btn.pri{opacity:0;visibility:hidden;transition:opacity .25s var(--ease),visibility .25s}
+.nav.solid .nav-act .btn.pri{opacity:1;visibility:visible}
 .nav.solid{background:color-mix(in srgb,var(--bg) 46%,transparent);
  backdrop-filter:saturate(150%) blur(18px);border-bottom-color:var(--line)}
 .nav .wrap{display:flex;align-items:center;gap:20px;width:100%}
@@ -148,7 +149,8 @@ section{position:relative}
 }
 .eyebrow{font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.06em;color:var(--sage);margin-bottom:18px;display:flex;align-items:center;gap:10px}
 .eyebrow .n{color:var(--text-dim)}
-/* иерархия: h1 к h2 не меньше 1,8; h2 к тексту (17px) не меньше 2 */
+/* иерархия: h1 обложки всегда крупнее h2 разделов, шкала задана переменными
+   --fs-h1 … --fs-h4 ниже по файлу и одинакова на всех страницах студии */
 h1{font-size:clamp(38px,4.7vw,60px);font-weight:620;letter-spacing:-.03em;line-height:1.04}
 h2{font-size:clamp(22px,2.2vw,30px);font-weight:600;letter-spacing:-.025em;line-height:1.12;max-width:24ch}
 h3{font-size:21px;font-weight:620;letter-spacing:-.01em;line-height:1.25}
@@ -1160,7 +1162,7 @@ body.cs-lock{overflow:hidden}
 @media(max-width:760px){
   .hero{display:flex;flex-direction:column;align-items:stretch;padding:86px 0 40px;min-height:auto}
   .hero>.wrap{order:2}
-  #synFx{position:relative;inset:auto;order:1;width:100%;height:250px;margin:0 0 10px;opacity:.9;
+  #synFx{position:relative;inset:auto;order:1;width:100%;height:330px;margin:6px 0 14px;opacity:.95;
     -webkit-mask-image:linear-gradient(180deg,#000 72%,transparent);
     mask-image:linear-gradient(180deg,#000 72%,transparent)}
   /* цифры парой: крупное число сверху, подпись под ним, третья занимает всю строку */
@@ -1316,7 +1318,8 @@ input:not([type=checkbox]),textarea,select{font-size:16px}
   .hero-grid>div{display:grid;grid-template-columns:minmax(0,1.32fr) minmax(430px,.78fr);
     column-gap:clamp(32px,4vw,64px);row-gap:4px;align-items:end;width:100%}
   .hero-grid .eyebrow,.hero-grid h1{grid-column:1}
-  .hero h1{max-width:none;font-size:clamp(36px,3.4vw,52px);margin-bottom:0;margin-top:0;text-wrap:balance}
+  /* кегль h1 задан один раз в общей шкале ниже по файлу, здесь только геометрия */
+  .hero h1{max-width:none;margin-bottom:0;margin-top:0;text-wrap:balance}
   .hero-meta{grid-column:2;grid-row:1/3;display:grid;grid-auto-flow:column;
     grid-template-rows:auto auto;grid-template-columns:repeat(2,minmax(0,1fr));
     gap:26px clamp(48px,6vw,104px);margin:0;padding-top:0;border-top:0;align-self:end;min-width:0}
@@ -1501,6 +1504,125 @@ h2,.sec-head h2{font-size:var(--fs-h2);letter-spacing:-.025em;line-height:1.14}
 .hero-meta::after{content:"";position:absolute;inset:-18px -22px;z-index:-1;border-radius:20px;
   background:radial-gradient(120% 120% at 60% 50%,color-mix(in srgb,var(--bg) 88%,transparent) 0%,
     color-mix(in srgb,var(--bg) 72%,transparent) 60%,transparent 100%)}
+
+/* ==========================================================
+   ФИНАЛЬНАЯ СВОДКА ПРАВИЛ
+   блок стоит последним и перебивает всё, что выше, без удаления
+   прежних правил: так не ломается ни один селектор в середине файла
+   ========================================================== */
+
+/* ---------- 1. надзаголовки: обычный Manrope, без разрядки ---------- */
+.eyebrow,.nowband .nb-k,.kick-to,.step-w,.cc-tag,.cs-tag,.f-k,.sl-h,.rm-w,.rm-ol,
+.pr-k,.fkicker,.svc-sep span,.voc-k,.wcard .wn,.ladder .lk,.lstep .ln,.ba-head,
+.rmap-head span,.audit-out span,.extra-next span,.rm-speed .rs-k,.legal .lg-c>span,
+.cc-cap,.step-link span:last-child,.idea .cap,.chk-note,.tg-nick{
+  font-family:var(--sans);letter-spacing:0;font-feature-settings:normal}
+.eyebrow{font-size:15px;font-weight:500;color:var(--text-muted)}
+.nowband .nb-k{font-size:15px;font-weight:500;color:var(--text-muted)}
+.f-k,footer .f-k{font-family:var(--sans);letter-spacing:0;font-size:12.5px;font-weight:600;color:var(--text-dim)}
+.step-w,.rm-w,.rm-ol,.pr-k,.sl-h,.kick-to,.svc-sep span,.voc-k,.wcard .wn,
+.ladder .lk,.lstep .ln,.ba-head,.rmap-head span,.rm-speed .rs-k{font-size:12.5px;font-weight:500}
+.cc-tag,.cs-tag,.fkicker{font-size:12px;font-weight:560}
+.legal .lg-c>span,.audit-out span,.extra-next span{font-size:11.5px;font-weight:560}
+.cc-cap{font-size:12px;font-weight:450}
+
+/* ---------- 2. одно скругление на все кнопки: 16px, пилюль нет ---------- */
+.btn,.btn.lg,.btn.sm,.nav .btn,.chip,.cc-tag,.svc-sep span,.fab-b,
+.tgl,.nav-tg,.nav-burger,.cnav button,.cs-x,.sl-t,.sl-day,.tg-btn,.tfx-mode,.fp{border-radius:16px}
+.fab-b{border-radius:16px}
+
+/* ---------- 3. блок «почему сейчас»: колонка цифр занимает всю высоту ---------- */
+.nowband{align-items:stretch}
+.now-figs{margin-top:0;justify-content:center;gap:clamp(22px,3vw,34px)}
+@media(max-width:900px){.now-figs{justify-content:flex-start;margin-top:8px}}
+
+/* ---------- 4. карточки: ссылка «Подробнее» по одной нижней линии ---------- */
+.svc .card{justify-content:flex-start}
+.svc .card .morelink{margin-top:auto;padding-top:16px}
+.cc-res{margin-top:0}
+.ccard .morelink,.ccard .cs-open{margin-top:auto;align-self:flex-start}
+
+/* ---------- 5. форма: единый кегль полей, дни не обрезаются ---------- */
+.lf input,.lf textarea,#leadForm input:not([type=checkbox]),#leadForm textarea{font-size:16px}
+.sl-days{flex-wrap:wrap;overflow-x:visible;padding-bottom:0;
+  -webkit-mask-image:none;mask-image:none}
+.sl-day{flex:0 0 auto}
+
+/* ---------- 6. подвал ---------- */
+/* реквизиты одним серым тоном на любой ширине */
+footer .f-legal,footer .f-legal *,footer .f-req,footer .f-req *{color:var(--text-dim)}
+footer .f-legal a:hover{color:var(--accent-txt)}
+/* ссылка политики стоит на одной вертикали с остальными строками */
+footer .f-legal p,footer .f-legal a{margin-inline:0;padding-inline:0}
+/* подчёркивание ссылки идёт по длине слов, а не во всю ширину колонки */
+footer .f-legal a{align-self:flex-start;width:fit-content;max-width:100%}
+/* подчёркивание держится у текста, зона нажатия дотягивается отдельно */
+footer .f-tg{display:inline-block;min-height:0;position:relative;line-height:1.55}
+footer .f-tg::after{content:"";position:absolute;left:0;right:0;top:50%;
+  transform:translateY(-50%);height:44px}
+
+/* ---------- 7. графика первого экрана не заходит на текст и цифры ---------- */
+@media(min-width:761px){
+  #synFx{-webkit-mask-image:linear-gradient(180deg,#000 60%,rgba(0,0,0,.42) 69%,transparent 77%);
+    mask-image:linear-gradient(180deg,#000 60%,rgba(0,0,0,.42) 69%,transparent 77%)}
+}
+.hero-meta::after{background:radial-gradient(130% 130% at 55% 50%,var(--bg) 0%,var(--bg) 52%,
+  color-mix(in srgb,var(--bg) 70%,transparent) 78%,transparent 100%)}
+
+/* ---------- 8. мобильное меню ---------- */
+@media(max-width:1100px){
+  /* блюр шапки создаёт контейнер для fixed-шторки и схлопывает её до высоты шапки */
+  body.menu-open .nav,body.menu-open .nav.solid{backdrop-filter:none;-webkit-backdrop-filter:none}
+  /* под меню страница не просматривается */
+  .nav-sheet{background:var(--bg)}
+  /* один отступ у пунктов, линий, иконок и логотипа */
+  .nav-sheet a{padding-left:0;padding-right:0}
+  .ns-in{padding-left:var(--gutter);padding-right:var(--gutter)}
+}
+@media(max-width:640px){
+  .nav-sheet a{padding-left:0;padding-right:0}
+  .ns-in{padding-left:18px;padding-right:18px}
+}
+html.menu-open,html.cs-lock{overflow:hidden}
+body.menu-open,body.cs-lock{overflow:hidden;overscroll-behavior:none}
+
+/* ---------- 9. во время набора первый экран стоит на месте ---------- */
+/* появление блоков сдвигом здесь отключено: пока идёт набор, ни один
+   элемент обложки не должен смещаться ни по вертикали, ни по горизонтали */
+.hero .reveal{transform:none;transition-delay:0s}
+
+/* ---------- 10. лента кейсов заканчивается ровно на карточке ---------- */
+@media(max-width:860px){#cases .crail::after{content:none}}
+
+/* ---------- подвал ---------- */
+/* ссылки подвала видно как ссылки */
+footer .f-tg,footer .f-legal a{border-bottom:1px solid var(--line-2);padding-bottom:2px}
+footer .f-tg:hover,footer .f-legal a:hover{border-bottom-color:var(--accent)}
+@media(max-width:860px){
+  /* разделы идут плотным списком, реквизиты строка за строкой */
+  footer .f-nav2{gap:6px 20px}
+  footer .f-nav2 a{min-height:30px;font-size:14.5px}
+  footer .f-legal{gap:6px}
+  footer .f-legal p{margin:0}
+  footer .f-legal a{margin-top:8px;display:inline-block}
+  footer .f-copy{margin-top:14px}
+  /* форма на телефоне: поля во всю ширину, слоты не жмутся */
+  #lead .leadbox{padding:18px 16px}
+  #lead .lf-row{grid-template-columns:1fr;gap:0}
+  #lead .lf{margin-bottom:18px}
+  #lead .slots{margin-top:18px}
+  #lead .sl-day{min-width:66px;min-height:56px;padding:8px 10px}
+  #lead .sl-t{padding:9px 13px;font-size:12.5px}
+  #lead .btn.pri.lg{width:100%;justify-content:center}
+  /* пункты меню и логотип на одной левой линии */
+  .ns-in{padding-left:var(--gutter);padding-right:var(--gutter)}
+  .nav .wrap{padding-left:var(--gutter);padding-right:var(--gutter)}
+  .ns-act .tgl,.ns-act .nav-tg{width:56px;height:56px}
+  .ns-act .tgl svg,.ns-act .nav-tg svg{width:24px;height:24px}
+  /* бургер остаётся кликабельным в самом низу страницы */
+  .nav{pointer-events:auto}
+  .fab{z-index:90}
+}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
@@ -1533,20 +1655,20 @@ function LEAD_API(url, opts){
   </a>
   <div class="nav-links"><a href="#services">Услуги</a><a href="#cases">Кейсы</a><a href="#how">Как&nbsp;работаем</a><a href="#idea">Почему мы</a><a href="#rules">Подход</a><a href="#faq">FAQ</a></div>
   <div class="nav-act">
-    <button class="tgl" id="tgl" aria-label="Сменить тему" title="Тёмная тема"></button>
+    <button class="tgl" id="tgl" aria-label="Тёмная тема" title="Тёмная тема"></button>
     <a class="nav-tg" href="https://t.me/Anti4ay" target="_blank" rel="noopener" aria-label="Написать в&nbsp;Telegram" title="Написать в&nbsp;Telegram">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 4.3 3.3 11.4c-.9.35-.88 1.63.02 1.96l4.5 1.63 1.72 5.2c.24.72 1.16.92 1.68.37l2.5-2.63 4.55 3.34c.62.46 1.5.12 1.66-.63l3.03-14.4c.17-.8-.62-1.47-1.36-1.19zM8.9 14.1l9.1-5.6-7.2 6.6-.35 2.9-1.55-3.9z"/></svg>
     </a>
     <button class="nav-burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="navSheet">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
-    <a class="btn pri" href="#lead">Обсудить задачу</a>
+    <a class="btn pri" href="#lead">Оставить заявку</a>
   </div>
 </div>
-<div class="nav-sheet" id="navSheet"><div class="ns-in"><a href="#services">Услуги</a><a href="#cases">Кейсы</a><a href="#how">Как&nbsp;работаем</a><a href="#idea">Почему мы</a><a href="#rules">Подход</a><a href="#faq">FAQ</a>
+<div class="nav-sheet" id="navSheet"><div class="ns-in"><a href="#services">Услуги</a><a href="#cases">Кейсы</a><a href="#how">Как&nbsp;работаем</a><a href="#idea">Почему мы</a><a href="#rules">Подход</a><a href="#faq">Вопросы</a>
   <div class="ns-act">
-    <button class="tgl ns-tgl" aria-label="Сменить тему"></button>
-    <a class="nav-tg" href="https://t.me/Anti4ay" target="_blank" rel="noopener" aria-label="Написать в&nbsp;Telegram">
+    <button class="tgl ns-tgl" aria-label="Тёмная тема" title="Тёмная тема"></button>
+    <a class="nav-tg" href="https://t.me/Anti4ay" target="_blank" rel="noopener" aria-label="Написать в&nbsp;Telegram" title="Написать в&nbsp;Telegram">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 4.3 3.3 11.4c-.9.35-.88 1.63.02 1.96l4.5 1.63 1.72 5.2c.24.72 1.16.92 1.68.37l2.5-2.63 4.55 3.34c.62.46 1.5.12 1.66-.63l3.03-14.4c.17-.8-.62-1.47-1.36-1.19zM8.9 14.1l9.1-5.6-7.2 6.6-.35 2.9-1.55-3.9z"/></svg>
     </a>
     <a class="btn pri" href="#lead">Оставить заявку</a>
@@ -1574,7 +1696,7 @@ function LEAD_API(url, opts){
         <div class="m"><b><span class="nb">19 900 ₽</span></b><span>чекап бизнеса за&nbsp;две недели</span></div>
         <div class="m"><b><span class="nb">3-5 недель</span></b><span>до&nbsp;готового продукта</span></div>
         <div class="m"><b><span class="nb">60 дней</span></b><span>на&nbsp;связи после завершения</span></div>
-        <div class="m m-cta"><a class="btn pri lg" href="#lead">Обсудить задачу</a></div>
+        <div class="m m-cta"><a class="btn pri lg" href="#lead">Оставить заявку</a></div>
       </div>
     </div>
   </div>
@@ -1593,6 +1715,7 @@ function LEAD_API(url, opts){
     <div class="now-figs">
       <div class="now-f"><b><span class="nb">26 из&nbsp;27</span></b><span>сотрудников INNORTO работают с&nbsp;AI каждый день, потому что&nbsp;через него быстрее</span><a class="src" href="/synapt/innorto/">наш кейс, месяц AI-десанта</a></div>
       <div class="now-f"><b><span class="nb">2 минуты</span></b><span>уходит у&nbsp;агента на&nbsp;стратегический аудит для&nbsp;собственника клиники на&nbsp;основе <span class="nb">17 разделов</span> методологии клуба и&nbsp;<span class="nb">1 500+</span> пар вопрос-ответ</span><a class="src" href="/synapt/globaldent/">наш кейс, агент Global Dent Club</a></div>
+    </div>
   </div>
 </div></section>
 
@@ -1690,6 +1813,7 @@ function LEAD_API(url, opts){
             <h3>Интеграции и&nbsp;автоматизация</h3>
             <span class="kick-to">блок для&nbsp;операций</span>
             <p>Если данные находятся в&nbsp;разных системах и&nbsp;люди переносят их&nbsp;вручную. Связываем CRM, 1С, таблицы и&nbsp;мессенджеры так, чтобы каждая цифра появлялась там, где она нужна, без&nbsp;участия человека</p>
+            <a class="morelink" href="#lead">Описать запрос</a>
           </div>
 
           <div class="card s3 reveal">
@@ -1726,6 +1850,7 @@ function LEAD_API(url, opts){
           </div>
         </div>
       </div>
+    </div>
   </div>
 </div></section>
 
@@ -1772,7 +1897,7 @@ function LEAD_API(url, opts){
       <div class="cc-cap">Отдел продаж: сверху выборочная прослушка руками, пять диалогов из&nbsp;трёхсот. Снизу сплошной разбор: агент слушает все триста и&nbsp;отмечает, где сделка ушла</div>
       <a class="morelink" href="/synapt/prodazh/">Подробнее</a>
     </article><article class="ccard">
-      <div class="cc-top"><span class="cc-tag">AI-агент в&nbsp;подборе</span><span class="cc-ind">05</span></div>
+      <div class="cc-top"><span class="cc-tag">AI-агент в&nbsp;подборе</span><span class="cc-ind">04</span></div>
       <h3>Бот подбирает блюда только из&nbsp;того, что&nbsp;сейчас есть на&nbsp;складе</h3>
       <div class="cc-client">FoodTech-сервис, имя под NDA</div>
       <div class="cc-res"><div><b><span class="nb">1 200+</span></b><span>карт меню поставщиков оцифровано</span></div><div><b><span class="nb">30 000+</span></b><span>сообщений обработал бот</span></div></div><p class="cc-task">Меню поставщиков приходили PDF-файлами, а&nbsp;подбор под запрос клиента менеджер собирал вручную и&nbsp;без&nbsp;оглядки на&nbsp;остатки</p>
@@ -1780,7 +1905,7 @@ function LEAD_API(url, opts){
       <div class="cc-cap">Логистика и&nbsp;склад: запрос уходит в&nbsp;базу меню и&nbsp;в&nbsp;остатки одновременно, ответ собирается из&nbsp;того, что&nbsp;есть на&nbsp;складе</div>
       <button type="button" class="morelink cs-open" data-case="0">Подробнее</button>
     </article><article class="ccard">
-      <div class="cc-top"><span class="cc-tag">AI-консультант</span><span class="cc-ind">06</span></div>
+      <div class="cc-top"><span class="cc-tag">AI-консультант</span><span class="cc-ind">05</span></div>
       <h3>Консультант разбирает запрос по&nbsp;методике компании прямо в&nbsp;Telegram</h3>
       <div class="cc-client">Консалтинговая компания, имя под NDA</div>
       <div class="cc-res"><div><b>300+</b><span>часов работы экспертов экономим каждый месяц</span></div><div><b>800+</b><span>страниц методики внутри базы знаний</span></div></div><p class="cc-task">Авторскую методику знали несколько экспертов, каждый разбор они собирали вручную и&nbsp;очередь клиентов росла</p>
@@ -1788,7 +1913,7 @@ function LEAD_API(url, opts){
       <div class="cc-cap">Работа с&nbsp;клиентами: запрос проходит через материалы автора и&nbsp;правила разбора, ответ приходит по&nbsp;его&nbsp;методике</div>
       <button type="button" class="morelink cs-open" data-case="1">Подробнее</button>
     </article><article class="ccard">
-      <div class="cc-top"><span class="cc-tag">Разработка</span><span class="cc-ind">04</span></div>
+      <div class="cc-top"><span class="cc-tag">Разработка</span><span class="cc-ind">06</span></div>
       <h3>30 лет расчётов переехали в&nbsp;браузер без расхождений</h3>
       <div class="cc-client">Инженерное бюро, имя под NDA</div>
       <div class="cc-res"><div><b>100%</b><span>совпадение расчётов со&nbsp;старой системой</span></div><div><b><span class="nb">30+ лет</span></b><span>накопленной логики сохранено</span></div></div><p class="cc-task">Расчётная система 1992 года жила в&nbsp;среде DOS и&nbsp;запускалась только на&nbsp;старых машинах</p>
@@ -1869,8 +1994,7 @@ function LEAD_API(url, opts){
       <p>Разработку ведём с&nbsp;AI и&nbsp;агентами, длительность у&nbsp;проектов разная: на&nbsp;разбор одного хватит недели, а&nbsp;на&nbsp;другой может потребоваться три. Точные сроки и&nbsp;стоимость фиксируем в&nbsp;спецификации после&nbsp;встречи</p>
     </div>
   </div>
-
-  </section>
+</div></section>
 
 
 
@@ -1890,7 +2014,6 @@ function LEAD_API(url, opts){
 
     </div>
   </div>
-  </div>
 </section>
 
 <section id="rules"><div class="wrap">
@@ -1901,7 +2024,7 @@ function LEAD_API(url, opts){
   <div class="prlist">
     <div class="pr-row reveal">
       <div class="pr-n">01</div>
-      <div class="pr-main"><span class="pr-k">с&nbsp;чего начинаем</span><h4>Сначала анализ, потом цифры и&nbsp;критерии</h4></div>
+      <div class="pr-main"><span class="pr-k">с&nbsp;чего начинаем</span><h4>Сначала проводим анализ, только потом определяем стоимость и&nbsp;критерии</h4></div>
       <p class="pr-d">Первый Zoom&nbsp;– знакомство с&nbsp;запросом и&nbsp;контекстом. Затем внутренний анализ, форматы сотрудничества на&nbsp;выбор и&nbsp;чёткие критерии приёмки в&nbsp;договоре</p>
     </div>
     <div class="pr-row reveal">
@@ -1928,6 +2051,7 @@ function LEAD_API(url, opts){
       <div class="pr-n">06</div>
       <div class="pr-main"><span class="pr-k">честность и&nbsp;фокус</span><h4>Берёмся только за&nbsp;то, что&nbsp;умеем</h4></div>
       <p class="pr-d">AI-агенты, интеграции, веб и&nbsp;мобильная разработка для&nbsp;бизнеса. Игровые проекты, встроенное ПО&nbsp;и&nbsp;задачи, где нужна команда из&nbsp;тридцати человек, отдаём коллегам и&nbsp;говорим об&nbsp;этом сразу. Если задача решается на&nbsp;уровне процесса и&nbsp;AI не&nbsp;нужен&nbsp;– тоже скажем</p>
+    </div>
   </div>
 </div></section>
 
@@ -2000,7 +2124,7 @@ function LEAD_API(url, opts){
         <div class="lf"><label for="lfContact">Телефон, почта или&nbsp;Telegram <span class="req" title="обязательное поле">*</span></label><input id="lfContact" name="contact" type="text" autocomplete="off" required></div>
       </div>
       <div class="lf"><label for="lfCompany">Компания и&nbsp;сфера деятельности</label><input id="lfCompany" name="company" type="text" autocomplete="organization"></div>
-      <div class="lf"><label for="lfTask">Коротко о&nbsp;задаче</label><textarea id="lfTask" name="task" rows="2"></textarea></div>
+      <div class="lf"><label for="lfTask">Коротко о&nbsp;контексте</label><textarea id="lfTask" name="task" rows="2"></textarea></div>
     <div class="slots" id="slots">
       <div class="sl-h">Когда вам удобно</div>
       <div class="sl-days" id="slDays"></div>
@@ -2011,7 +2135,7 @@ function LEAD_API(url, opts){
       <label class="lf-check"><input type="checkbox" id="lfAgree" required>
         <span>Согласен на&nbsp;обработку персональных данных и&nbsp;принимаю<br><a href="/synapt/privacy/" target="_blank">политику обработки персональных данных</a></span></label>
       <div class="lf-err" id="lfErr" role="alert">Не&nbsp;хватает вашего имени, контактов и&nbsp;согласия на&nbsp;обработку персональных данных</div>
-      <button class="btn pri lg" type="submit">Обсудить задачу</button>
+      <button class="btn pri lg" type="submit">Оставить заявку</button>
       <p class="lf-after">Подтвердим встречу в&nbsp;ответном сообщении в&nbsp;течение <span class="nb">1</span>&nbsp;рабочего дня</p>
     </form>
     <div class="lf-done" id="lfDone">
@@ -2020,6 +2144,7 @@ function LEAD_API(url, opts){
       <div class="lf-acts"><button type="button" class="btn ghost sm" id="lfIcs">Добавить в&nbsp;календарь</button>
         <a class="btn ghost sm" href="https://t.me/Anti4ay" target="_blank" rel="noopener">Написать в&nbsp;Telegram</a></div>
     </div>
+  </div>
   </div>
 </div></section>
 
@@ -2042,8 +2167,10 @@ function LEAD_API(url, opts){
     <div class="f-legal">
       <span class="f-k">Формальности</span>
       <p>ИП Орешкин Антон Вадимович</p>
-      <p>ИНН 100123323420, ОГРНИП 324100000000411</p>
-      <p>185014, Республика Карелия, Петрозаводск, переулок Попова, дом&nbsp;6, квартира&nbsp;42</p>
+      <p>ИНН 100123323420</p>
+      <p>ОГРНИП 324100000000411</p>
+      <p>185014, Республика Карелия, Петрозаводск</p>
+      <p>переулок Попова, дом&nbsp;6, квартира&nbsp;42</p>
       <a href="/synapt/privacy/">Политика обработки персональных данных</a>
       <p class="f-copy">© 2026 Synapt</p>
     </div>
@@ -2079,7 +2206,9 @@ function LEAD_API(url, opts){
   function close(){sheet.classList.remove('open');b.setAttribute('aria-expanded','false');
     if(typeof burgerIcon!=='undefined') b.innerHTML=burgerIcon;
     b.setAttribute('aria-label','Меню');
-    document.body.classList.remove('menu-open')}
+    document.body.classList.remove('menu-open');
+    /* в iOS Safari прокруткой владеет корневой элемент, поэтому замок ставим и на него */
+    document.documentElement.classList.remove('menu-open')}
   var burgerIcon=b.innerHTML;
   var closeIcon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M6 6l12 12M18 6L6 18"/></svg>';
   b.addEventListener('click',function(){
@@ -2088,6 +2217,7 @@ function LEAD_API(url, opts){
     b.innerHTML=open?closeIcon:burgerIcon;
     b.setAttribute('aria-label',open?'Закрыть меню':'Меню');
     document.body.classList.toggle('menu-open',open);
+    document.documentElement.classList.toggle('menu-open',open);
   });
   sheet.addEventListener('click',function(e){if(e.target.closest('a'))close()});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
@@ -2261,7 +2391,9 @@ function LEAD_API(url, opts){
   function capt(ctx, text, x, y, maxw) {
     var size = 11;
     ctx.font = CAPT_F(size);
-    while (size > 9 && ctx.measureText(text).width > maxw) { size -= .5; ctx.font = CAPT_F(size) }
+    /* на 320px строка не влезала даже в 9px и переносилась прямо на графику,
+       поэтому нижняя граница кегля опущена до 8px */
+    while (size > 8 && ctx.measureText(text).width > maxw) { size -= .5; ctx.font = CAPT_F(size) }
     var lines = [text];
     if (ctx.measureText(text).width > maxw) {
       var words = text.split(' '), cur = '';
@@ -2292,12 +2424,14 @@ function LEAD_API(url, opts){
       if (!W || !H) return;
       c.width = W * DPR; c.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
       var narrow = W < 900;
-      /* центр композиции: на широком экране правее текста, на телефоне по центру кадра */
+      /* центр композиции: на широком экране правее текста, на телефоне по центру кадра.
+         на десктопе круг целиком помещается в верхние две трети кадра: ниже начинается
+         текст первого экрана, и графика туда не заходит ни одним узлом */
       cx = narrow ? W * .5 : W * .55;
-      cy = narrow ? H * .44 : H * .4;
-      RAD = narrow ? Math.min(W * .5, H * .38) : Math.min(W * .36, H * .46);
+      cy = narrow ? H * .44 : H * .34;
+      RAD = narrow ? Math.min(W * .5, H * .38) : Math.min(W * .34, H * .30);
       nodes = [];
-      var rings = narrow ? 4 : 5, id = 0;
+      var rings = 5, id = 0;
       nodes.push({x: cx, y: cy, ring: 0, r: 3.2, core: true, ph: 0, d: 0, hot: false, sx: cx, sy: cy});
       for (var ri = 1; ri <= rings; ri++) {
         var rr = RAD * (ri / rings), cnt = Math.round(5 + ri * (narrow ? 3.4 : 4.6));
@@ -2306,8 +2440,10 @@ function LEAD_API(url, opts){
           var a = (k / cnt) * 6.283 + rnd(id * 11) * .5 + ri * .4;
           var jitter = 1 + (rnd(id * 7) - .5) * .22;
           nodes.push({
-            x: cx + Math.cos(a) * rr * jitter * (1.24 + rnd(id * 19) * .26),
-            y: cy + Math.sin(a) * rr * jitter * (a > 0 ? 1.06 : .8),
+            /* разброс держим в узких пределах: поле обязано читаться кругом,
+               иначе одиночные узлы уходят до самых краёв кадра */
+            x: cx + Math.cos(a) * rr * jitter * (1 + rnd(id * 19) * .1),
+            y: cy + Math.sin(a) * rr * jitter * (a > 0 ? 1 : .92),
             ring: ri, a: a, rr: rr,
             r: 1.5 + rnd(id * 5) * 1.7,
             d: rnd(id * 3) * .6,
@@ -2409,7 +2545,7 @@ function LEAD_API(url, opts){
       }
       /* мягкие края: композиция читается как одно целое и никуда не обрывается */
       ctx.globalCompositeOperation = 'destination-out';
-      var mask = ctx.createRadialGradient(cx, cy, RAD * .95, cx, cy, RAD * 1.85);
+      var mask = ctx.createRadialGradient(cx, cy, RAD * .82, cx, cy, RAD * 1.22);
       mask.addColorStop(0, 'rgba(0,0,0,0)');
       mask.addColorStop(1, 'rgba(0,0,0,1)');
       ctx.fillStyle = mask; ctx.fillRect(0, 0, W, H);
@@ -2615,7 +2751,8 @@ function LEAD_API(url, opts){
       var qa = Math.min(1, ph / .22);                       /* вопрос появляется */
       var sp = ph < .26 ? 0 : Math.min(1, (ph - .26) / .26); /* агент поднимает базу */
       var ra = ph < .56 ? 0 : Math.min(1, (ph - .56) / .24); /* ответ печатается */
-      var bw = Math.min(150, W * .34), bx = 10, ax = W - 10 - bw;
+      /* на узком холсте облака диалога уже, иначе подпись базы ложится на них */
+      var bw = Math.min(150, W * (W < 240 ? .29 : .34)), bx = 10, ax = W - 10 - bw;
       var qy = 22, ay = H - 58;
       /* вопрос участника */
       bubble(ctx, bx, qy, bw, 30, false, qa, false);
@@ -2660,9 +2797,11 @@ function LEAD_API(url, opts){
       ctx.textAlign = 'left'; ctx.fillStyle = 'rgba(' + GR + ',.8)';
       capt(ctx, 'вопрос участника', 10, 13, W * .42);
       ctx.textAlign = 'center'; ctx.fillStyle = 'rgba(' + (sp > .1 ? PH : GR) + ',.8)';
-      capt(ctx, 'база клуба', mx, H / 2 - 22, W * .3);
+      capt(ctx, 'база клуба', mx, H / 2 - 22, Math.max(64, W * .3));
+      /* нижняя подпись идёт под облаком ответа и берёт всю ширину холста:
+         по .6 ширины она ломалась на две строки и ложилась на само облако */
       ctx.textAlign = 'right'; ctx.fillStyle = 'rgba(' + PH + ',.85)';
-      capt(ctx, 'ответ со ссылкой на источник', W - 10, H - 7, W * .6);
+      capt(ctx, 'ответ со ссылкой на источник', W - 10, H - 7, W - 20);
       ctx.textAlign = 'left';
     }, null);
   });
@@ -2749,10 +2888,12 @@ function LEAD_API(url, opts){
         ctx.fillStyle = lit ? 'rgba(' + PH + ',.78)' : 'rgba(' + GR + ',.2)';
         ctx.fill();
       }
+      /* подписи стоят над и под лентами, поэтому им отдана вся ширина холста:
+         на 320px по ширине ленты строка ломалась на две и ложилась на полосы */
       ctx.textAlign = 'right'; ctx.fillStyle = 'rgba(' + GR + ',.75)';
-      capt(ctx, 'слушали 5 из 300 аудиозаписей', x1, yA - hBar / 2 - 6, x1 - x0);
+      capt(ctx, 'слушали 5 из 300 аудиозаписей', x1, yA - hBar / 2 - 6, x1 - 8);
       ctx.fillStyle = 'rgba(' + PH + ',.8)';
-      capt(ctx, 'разбираются все 300 каждый день', x1, yB + hBar / 2 + 13, x1 - x0);
+      capt(ctx, 'разбираются все 300 каждый день', x1, yB + hBar / 2 + 13, x1 - 8);
       ctx.textAlign = 'left';
     }, null);
   });
@@ -2819,12 +2960,21 @@ function LEAD_API(url, opts){
         ctx.fillStyle = on ? 'rgba(' + PH + ',.92)' : 'rgba(' + GR + ',.32)';
         ctx.fill();
       }
-      ctx.font = '9.5px "JetBrains Mono", ui-monospace, monospace';
+      /* две подписи стоят в одной строке по краям холста и обязаны разойтись:
+         на 320px они печатались друг поверх друга, поэтому сначала пробуем
+         полные формулировки, затем короткие, и только потом жмём кегль */
+      var fs = 9.5;
+      var L = 'день ' + Math.max(1, day) + ' из 30', R = lit + ' из 27 работают с AI';
+      var room = W - padX * 2 - 12;
+      function capW() { ctx.font = fs + 'px "JetBrains Mono", ui-monospace, monospace';
+        return ctx.measureText(L).width + ctx.measureText(R).width }
+      if (capW() > room) { L = 'день ' + Math.max(1, day) + '/30'; R = lit + ' из 27 с AI' }
+      while (fs > 7.5 && capW() > room) fs -= .5;
       ctx.fillStyle = 'rgba(' + GR + ',.75)';
-      ctx.fillText('день ' + Math.max(1, day) + ' из 30', padX, 15);
+      ctx.fillText(L, padX, 15);
       ctx.textAlign = 'right';
       ctx.fillStyle = 'rgba(' + PH + ',.9)';
-      ctx.fillText(lit + ' из 27 работают с AI', W - padX, 15);
+      ctx.fillText(R, W - padX, 15);
       ctx.textAlign = 'left';
     }, null);
   });
@@ -2993,13 +3143,18 @@ function LEAD_API(url, opts){
 
     /* подпись стоит внизу неподвижно, чтобы не прыгала вслед за подсветкой.
        кегль ужимается под ширину холста: на узком экране строка вылезала за оба края */
-    var cs=11;
-    ctx.font='400 '+cs+'px "JetBrains Mono", ui-monospace, monospace';
-    while(cs>8.5 && ctx.measureText('узким местом может оказаться любой этап').width > W-16){
-      cs-=.5; ctx.font='400 '+cs+'px "JetBrains Mono", ui-monospace, monospace';
+    var cs=11, cap='узким местом может оказаться любой этап';
+    function capFont(){ ctx.font='400 '+cs+'px "JetBrains Mono", ui-monospace, monospace' }
+    capFont();
+    while(cs>8.5 && ctx.measureText(cap).width > W-16){ cs-=.5; capFont() }
+    /* на 320px даже 8,5px не спасали и строка вылезала за оба края,
+       поэтому ниже этого кегля берём короткую формулировку */
+    if(ctx.measureText(cap).width > W-16){
+      cap='узкое место бывает на любом этапе'; cs=9.5; capFont();
+      while(cs>7.5 && ctx.measureText(cap).width > W-16){ cs-=.5; capFont() }
     }
     ctx.fillStyle='rgba('+WARN+',.85)'; ctx.textAlign='center';
-    ctx.fillText('узким местом может оказаться любой этап', W/2, H-8);
+    ctx.fillText(cap, W/2, H-8);
     ctx.textAlign='left';
     t++;
   })();
@@ -3024,8 +3179,8 @@ function LEAD_API(url, opts){
     'документы':'договоры, акты и всё, что сейчас готовится вручную',
     'клиенты':'обслуживание и повторные обращения',
     'знания':'то, что знает команда, но нигде не записано'};
-  var CORE=[{n:'Виктор Калугин',r:'технический партнёр,|архитектура системы'},
-            {n:'Антон Орешкин', r:'стратегический партнёр,|продукт и развитие'}];
+  var CORE=[{n:'Виктор Калугин',r:'технический партнёр,|архитектура системы',below:true},
+            {n:'Антон Орешкин', r:'стратегический партнёр,|продукт и развитие',below:true}];
   var SPEC=[
     {n:'продукт',      r:'переводит задачу бизнеса в требования и критерии приёмки'},
     {n:'AI-инженер',   r:'собирает агентов: модель, промпты и качество ответов'},
@@ -3063,18 +3218,18 @@ function LEAD_API(url, opts){
       /* на телефоне схема разворачивается вертикально: сверху процессы компании,
          снизу команда, в месте пересечения контуров общая работа */
       hub={x:W*0.5, y:H*0.5, vertical:true,
-           rx:W*0.44, ry:H*0.26, U:{y:H*0.30}, D:{y:H*0.70}};
+           rx:W*0.42, ry:H*0.235, U:{y:H*0.31}, D:{y:H*0.67}};
       BIZ.forEach(function(n,i){
         var col=i%3, row=Math.floor(i/3);
         pts.push({kind:'biz',n:n,r:BIZR[n],lab:'top',
-          x:W*(0.22+col*0.28), y:H*(0.17+row*0.10), rr:3.6});
+          x:W*(0.22+col*0.28), y:H*(0.19+row*0.095), rr:3.6});
       });
-      pts.push({kind:'core',n:CORE[0].n,r:CORE[0].r,x:W*0.27,y:H*0.84,rr:6,lab:'down'});
-      pts.push({kind:'core',n:CORE[1].n,r:CORE[1].r,x:W*0.73,y:H*0.84,rr:6,lab:'down'});
+      pts.push({kind:'core',n:CORE[0].n,r:CORE[0].r,x:W*0.27,y:H*0.78,rr:6,lab:'down'});
+      pts.push({kind:'core',n:CORE[1].n,r:CORE[1].r,x:W*0.73,y:H*0.78,rr:6,lab:'down'});
       SPEC.forEach(function(o,i){
         var col=i%3, row=Math.floor(i/3);
         pts.push({kind:'spec',n:o.n,r:o.r,lab:'top',
-          x:W*(0.22+col*0.28), y:H*(0.64+row*0.07), rr:3.4});
+          x:W*(0.22+col*0.28), y:H*(0.60+row*0.065), rr:3.4});
       });
     } else {
       hub={x:W*0.5, y:H*0.5, rx:W*0.245, ry:H*0.40,
@@ -3156,7 +3311,8 @@ function LEAD_API(url, opts){
     var lines = p.r.indexOf('|')>-1 ? p.r.split('|') : wrap(p.r,maxw);
     var lh=size*1.5;
     /* у верхнего партнёра роль стоит над именем, у нижнего под ним */
-    var y = p.lab==='up' ? p.y-31-(lines.length-1)*lh : (p.lab==='down' ? p.y+36 : p.y+34);
+    /* у партнёров роль всегда идёт строкой ниже имени */
+    var y = (p.kind==='core' || p.lab==='down') ? p.y+36 : (p.lab==='up' ? p.y-31-(lines.length-1)*lh : p.y+34);
     ctx.fillStyle='rgba('+WH+','+(.72*alpha)+')';
     ctx.textAlign = p.lab ? 'center' : (p.kind!=='biz'&&p.side!=='l' ? 'left' : 'right');
     var x = p.lab ? p.x : (ctx.textAlign==='left' ? p.x+11 : p.x-11);
@@ -3226,7 +3382,7 @@ function LEAD_API(url, opts){
     /* возврат к спокойному темпу плавный, без рывка */
     hubE += ((hotHub?1:0)-hubE)*(hotHub?.02:.004);
     /* в покое время идёт медленно, при наведении ускоряется, после отвода снова затихает */
-    var pace = 0.10 + hubE*0.22;
+    var pace = 0.07 + hubE*0.16;
     var biz=pts.filter(function(p){return p.kind==='biz'}),
         core=pts.filter(function(p){return p.kind==='core'}),
         spec=pts.filter(function(p){return p.kind==='spec'});
@@ -3242,16 +3398,16 @@ function LEAD_API(url, opts){
     ctx.textAlign='center';
     if(hub.vertical){
       ctx.fillStyle='rgba('+GR+','+(.6+hubE*.3)+')';
-      ctx.fillText('ваша компания', hub.x, hub.U.y-hub.ry-8);
+      ctx.fillText('ваша компания', hub.x, hub.U.y-hub.ry-16);
       /* нижняя подпись прижимается к краю холста, но не заезжает за него:
          на мобильной у «команда Synapt» срезало нижние выносные элементы */
       var mS=ctx.measureText('команда Synapt');
       ctx.fillText('команда Synapt', hub.x,
-        Math.min(H-(mS.actualBoundingBoxDescent||3)-2, hub.D.y+hub.ry+22));
+        Math.min(H-(mS.actualBoundingBoxDescent||3)-12, hub.D.y+hub.ry+28));
     } else {
       ctx.fillStyle='rgba('+GR+','+(.6+hubE*.3)+')';
-      ctx.fillText('ваша компания', hub.L.x, hub.y-hub.ry-14);
-      ctx.fillText('команда Synapt', hub.R.x, hub.y-hub.ry-14);
+      ctx.fillText('ваша компания', hub.L.x, hub.y-hub.ry-22);
+      ctx.fillText('команда Synapt', hub.R.x, hub.y-hub.ry-22);
     }
     ctx.textAlign='left';
     ctx.setLineDash([5,6]); ctx.lineWidth=1+hubE*0.9;
@@ -3262,7 +3418,7 @@ function LEAD_API(url, opts){
     /* связь не нарисована целиком: она прорастает от узла к ядру и обратно,
        поэтому сеть читается как живые отростки, а не как готовая схема */
     biz.concat(core).forEach(function(p,i){
-      var grow = 0.62 + 0.38*Math.sin(t*0.0009*(0.6+hubE*0.5) + i*0.8);
+      var grow = 0.62 + 0.38*Math.sin(t*0.0006*(0.6+hubE*0.5) + i*0.8);
       var cx=(p.x+hub.x)/2, cy=p.y*0.4+hub.y*0.6, seg=26;
       ctx.beginPath(); ctx.moveTo(p.x,p.y);
       for(var k=1;k<=seg;k++){
@@ -3281,7 +3437,7 @@ function LEAD_API(url, opts){
     });
     core.forEach(function(o,oi){spec.forEach(function(sp,si){
       /* внутри команды связи тоже дышат: то тянутся к специалисту, то отступают */
-      var g2 = 0.72 + 0.28*Math.sin(t*0.0010*(0.6+hubE*0.6) + oi*1.7 + si*0.9);
+      var g2 = 0.72 + 0.28*Math.sin(t*0.0007*(0.6+hubE*0.6) + oi*1.7 + si*0.9);
       ctx.beginPath(); ctx.moveTo(o.x,o.y);
       ctx.lineTo(o.x+(sp.x-o.x)*g2, o.y+(sp.y-o.y)*g2);
       ctx.strokeStyle='rgba('+(hubE>.3?PH:GR)+','+((hover===sp||hover===o?.34:.12)+hubE*.24)+')';
@@ -3289,7 +3445,7 @@ function LEAD_API(url, opts){
     })});
 
     /* при активном ядре подсветка идёт в обе стороны: и к процессам компании, и к команде */
-    var speed=0.0009*pace;
+    var speed=0.0007*pace;
     biz.forEach(function(p,i){
       var full=((t*speed)+i*0.15)%1, to=core[i%2], q, from, dest;
       if(full<.5){ q=full/.5; from=p; dest=hub } else { q=(full-.5)/.5; from=hub; dest=to }
@@ -3366,9 +3522,8 @@ function LEAD_API(url, opts){
       else { var right=p.kind!=='biz'&&p.side!=='l';
         ctx.textAlign=right?'left':'right'; ctx.fillText(p.n,p.x+(right?11:-11),p.y+4) }
       ctx.textAlign='left';
-      /* роли партнёров стоят по умолчанию, остальные показываются при наведении */
-      /* на телефоне роли партнёров показываются по касанию: иначе подписи наезжают друг на друга */
-      if(p.kind==='core' && !NAR) role(p, on?1:.8);
+      /* роль партнёра всегда стоит строкой под именем, у остальных появляется при наведении */
+      if(p.kind==='core') role(p, on?1:.8);
       else if(on) role(p,1);
     });
     t++;
@@ -3458,9 +3613,11 @@ function LEAD_API(url, opts){
     cli.textContent=(card.querySelector('.cc-client')||{}).textContent||'';
     box.innerHTML=src?src.innerHTML:'';
     modal.hidden=false; document.body.classList.add('cs-lock');
+    document.documentElement.classList.add('cs-lock');
     last=btn; modal.querySelector('.cs-x').focus();
   }
-  function close(){ modal.hidden=true; document.body.classList.remove('cs-lock'); if(last) last.focus() }
+  function close(){ modal.hidden=true; document.body.classList.remove('cs-lock');
+    document.documentElement.classList.remove('cs-lock'); if(last) last.focus() }
   document.addEventListener('click',function(e){
     var b=e.target.closest('.cs-open'); if(b){ e.preventDefault(); open(b); return }
     if(e.target.closest('[data-cs-close]')) close();
@@ -3502,7 +3659,7 @@ function LEAD_API(url, opts){
    поэтому во время набора ничего не двигается и не переносится */
 (function(){
   if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-  var targets=[].slice.call(document.querySelectorAll('.hero .eyebrow, .hero h1, .hero-meta b'));
+  var targets=[].slice.call(document.querySelectorAll('.hero .eyebrow, .hero h1, .hero .lead, .hero-meta b'));
   if(!targets.length) return;
   var runs=[];
   targets.forEach(function(el){

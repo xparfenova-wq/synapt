@@ -786,6 +786,118 @@ h2,.sec-head h2{font-size:var(--fs-h2);letter-spacing:-.025em;line-height:1.14}
 .step-h,.svc-extra h3,.off-card h3,.idea h3,#services .step-body h3,.nxt h3{font-size:var(--fs-h3);line-height:1.2}
 .ccard h3,.svc h3,.card h3,.wcard h3,.prlist h3,.faq h3,.rel-card .rel-t,.arte h3,.contour h3{
   font-size:var(--fs-h4);letter-spacing:-.015em;line-height:1.3}
+
+/* ================= сверка со стандартом сайта ================= */
+/* подвал: три колонки на десктопе, две на планшете, одна на телефоне */
+.f-main{grid-template-columns:1.3fr 1.2fr 1.2fr}
+@media(max-width:900px){.f-main{grid-template-columns:1fr 1fr;row-gap:30px}}
+@media(max-width:560px){.f-main{grid-template-columns:1fr;row-gap:28px}}
+footer .wrap{overflow-wrap:break-word}
+.f-nav a,.f-nav2 a,.f-legal p,.f-legal a,.f-k{overflow-wrap:break-word;word-break:normal;hyphens:none}
+/* реквизиты и политика одним серым тоном */
+.f-legal p,.f-legal a,.f-legal a:hover,.f-copy{color:var(--text-dim)}
+
+/* шапка над обложкой: ни подложки, ни размытия до конца первого экрана */
+.nav{background:transparent!important;border-bottom-color:transparent!important;
+  backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+  transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease}
+.nav.solid{background:color-mix(in srgb,var(--bg) 46%,transparent)!important;
+  backdrop-filter:saturate(150%) blur(18px)!important;
+  -webkit-backdrop-filter:saturate(150%) blur(18px)!important;
+  border-bottom-color:var(--line)!important}
+/* кнопка шапки приходит вместе с подложкой, одинаково на всех страницах */
+.nav>.wrap .btn{opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s}
+.nav.solid>.wrap .btn{opacity:1;visibility:visible}
+
+/* единое скругление: за образец взята кнопка первого экрана, 16px */
+.btn,.btn.lg,.btn.sm,.btn.pri,.btn.ghost,.btn.sec,.nav .btn,.chip,.tg-btn,.sl-t,.sl-day,.hero-chip{border-radius:16px}
+.tgl,.burger,.nav-tg,.nav-burger{border-radius:14px}
+
+/* надзаголовки обычным шрифтом и без разрядки */
+.eyebrow,.f-k,.sl-h,.hero-chip{font-family:var(--sans);letter-spacing:0;font-feature-settings:normal}
+.f-k{font-size:12.5px;font-weight:500}
+.hero .eyebrow{font-size:15px;font-weight:500;margin-bottom:0;display:block}
+.hero .eyebrow .n{margin-right:8px}
+
+/* кикер и чип одной строкой по левому краю */
+.hero-kick{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.hero-chip{display:inline-block;height:26px;line-height:24px;padding:0 12px;
+  border:1px solid var(--line);font-size:12.5px;font-weight:500;color:var(--text-dim);white-space:nowrap}
+
+/* набор текста: символы стоят на своих местах и только проявляются,
+   поэтому во время набора вёрстка не двигается. Символ всегда остаётся
+   строчным элементом и наследует кегль родителя, иначе правила вида
+   .hs span{display:block} разложили бы буквы столбиком */
+.tch{opacity:0}
+.tch.on{opacity:1}
+.tch,.tch.on{display:inline!important;font-size:inherit!important;font-family:inherit!important;
+  font-weight:inherit!important;line-height:inherit!important;letter-spacing:inherit!important;
+  color:inherit!important;margin:0!important;padding:0!important;width:auto!important;
+  max-width:none!important;flex:none!important;background:none!important;border:0!important}
+.hero .reveal{opacity:1;transform:none;transition:none}
+
+/* кегль полей не меньше 16px: иначе iOS зумит страницу при фокусе */
+.lf input,.lf textarea,.leadbox input,.leadbox textarea,
+input:not([type=checkbox]),textarea,select{font-size:16px}
+.leadbox textarea,#lfTask{min-height:56px}
+.lf input:focus,.lf textarea:focus,.leadbox input:focus,.leadbox textarea:focus{background:var(--surface-2,transparent)}
+
+/* выбор дня и времени, как на главной */
+.slots{margin-top:24px}
+.sl-h{font-size:13.5px;font-weight:500;color:var(--text);margin-bottom:12px}
+.sl-days{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:6px;margin-bottom:14px;max-width:100%}
+.sl-day{flex:none;min-width:76px;min-height:60px;padding:9px 12px;border:1px solid var(--line-2,var(--line));
+  background:transparent;color:var(--text-2);cursor:pointer;text-align:center;font-family:var(--sans);transition:.16s}
+.sl-day b{display:block;font-size:17px;font-weight:600;color:var(--text)}
+.sl-day span{display:block;font-size:11px;color:var(--text-dim)}
+.sl-day:hover{border-color:var(--text-dim)}
+.sl-day.on{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent)}
+.sl-slots{display:flex;flex-wrap:wrap;gap:8px}
+.sl-t{min-height:44px;padding:10px 16px;border:1px solid var(--line-2,var(--line));background:transparent;
+  color:var(--text-2);font-family:var(--sans);font-size:14px;cursor:pointer;transition:.16s}
+.sl-t:hover{border-color:var(--text-dim)}
+.sl-t.on{border-color:var(--accent);background:var(--accent);color:var(--accent-ink,#101312)}
+.sl-note{margin-top:12px;font-size:13px;color:var(--text-dim);line-height:1.5}
+
+
+/* подписи полей как на главной: обычный шрифт, без разрядки */
+.lf label{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:0;
+  color:var(--text-muted);text-transform:none;line-height:1.45}
+
+/* кикер и чип держатся одной строкой и на узком экране */
+@media(max-width:560px){
+  .hero .eyebrow{font-size:13.5px}
+  .hero-chip{font-size:11.5px;padding:0 10px;height:24px;line-height:22px}
+  .hero-kick{gap:8px}
+}
+/* страница не едет вбок ни на одной ширине */
+html,body{overflow-x:clip;max-width:100%}
+img,svg,canvas,video{max-width:100%}
+
+/* обложка повторяет первый экран главной: кикер, заголовок и лид слева,
+   цифры справа внизу через вертикальный разделитель */
+@media(min-width:1041px){
+  .hero>.wrap{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(440px,.96fr);
+    column-gap:clamp(28px,3vw,48px);align-items:end}
+  .hero .hero-grid{display:contents}
+  .hero .hero-grid>div:first-child{grid-column:1;grid-row:1/3}
+  .hero .dom-wrap{grid-column:2;grid-row:1;align-self:start;margin-bottom:8px}
+  .hero-meta{grid-column:2;grid-row:2;align-self:end;margin-top:26px;padding-top:0;border-top:0;
+    display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:0}
+  .hero-meta .m{padding-right:clamp(10px,.9vw,14px);min-width:0}
+  .hero-meta .m+.m{padding-left:clamp(10px,.9vw,14px);border-left:1px solid var(--line)}
+  /* под число заранее отведены две строки: при наборе текста блок не растёт */
+  .hero-meta .m b{font-size:clamp(15px,1.15vw,17px);line-height:1.2;white-space:normal;
+    word-spacing:-.08em;min-height:2.4em}
+  .hero-meta .m span{font-size:12.5px;line-height:1.45}
+}
+/* графика обложки лежит фоном и не мешает тексту */
+.hero{position:relative;overflow:hidden}
+.hero>.wrap{position:relative;z-index:1}
+#heroFx{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0;opacity:.5;
+  -webkit-mask-image:radial-gradient(125% 105% at 82% 24%,#000 0,rgba(0,0,0,.55) 46%,transparent 82%);
+  mask-image:radial-gradient(125% 105% at 82% 24%,#000 0,rgba(0,0,0,.55) 46%,transparent 82%)}
+:root[data-theme="light"] #heroFx{opacity:.42}
 </style>
 </head>
 <body>
@@ -795,11 +907,14 @@ h2,.sec-head h2{font-size:var(--fs-h2);letter-spacing:-.025em;line-height:1.14}
   <a class="brand" href="/synapt/" aria-label="synapt"><svg viewBox="0 0 839 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-30,0)"><path d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/></g><path d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></svg></a>
   <div class="nav-links"><a href="#pain">Зачем</a><a href="#modules">Модули</a><a href="#how">Как&nbsp;устроено</a><a href="#start">С&nbsp;чего начать</a><a href="#own">Свой процесс</a><a href="#pricing">Стоимость</a><a href="#faq">FAQ</a></div>
   <div class="nav-act">
-    <button class="tgl" id="tgl" aria-label="Сменить тему" title="Светлая или&nbsp;тёмная тема"></button>
+    <button class="tgl" id="tgl" aria-label="Светлая тема" title="Светлая тема"></button>
+    <a class="tgl nav-tg" href="https://t.me/Anti4ay" target="_blank" rel="noopener" aria-label="Написать в&nbsp;Telegram" title="Написать в&nbsp;Telegram">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 4.3 3.3 11.4c-.9.35-.88 1.63.02 1.96l4.5 1.63 1.72 5.2c.24.72 1.16.92 1.68.37l2.5-2.63 4.55 3.34c.62.46 1.5.12 1.66-.63l3.03-14.4c.17-.8-.62-1.47-1.36-1.19zM8.9 14.1l9.1-5.6-7.2 6.6-.35 2.9-1.55-3.9z"/></svg>
+    </a>
     <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="sheet">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
-    <a class="btn ghost" href="https://t.me/Anti4ay">Обсудить задачу</a>
+    <a class="btn ghost" href="#lead">Обсудить задачу</a>
   </div>
 </div></nav>
 <div class="sheet" id="sheet">
@@ -819,10 +934,10 @@ h2,.sec-head h2{font-size:var(--fs-h2);letter-spacing:-.025em;line-height:1.14}
 <span id="top"></span>
 
 <!-- ПЕРВЫЙ ЭКРАН -->
-<header class="hero"><div class="wrap">
+<header class="hero"><canvas id="heroFx" aria-hidden="true"></canvas><div class="wrap">
   <div class="hero-grid">
     <div>
-      <div class="eyebrow reveal"><span class="n">01</span> AI-система для&nbsp;бизнеса</div>
+      <div class="hero-kick reveal"><div class="eyebrow"><span class="n">01</span> AI-система для&nbsp;бизнеса</div><span class="hero-chip">продукт</span></div>
       <h1 class="reveal d1">Пробуют почти все. Отрыв получают те, кто перестроил процессы</h1>
       <p class="lead reveal d2">Мы&nbsp;собираем ту часть, где проба превращается в&nbsp;процесс: продажи, управление, команда и&nbsp;операции работают на&nbsp;общей базе знаний вашей компании. Начать можно с&nbsp;одного модуля, код и&nbsp;данные остаются у&nbsp;вас</p>
       <div class="hero-cta reveal d3">
@@ -1162,11 +1277,18 @@ h2,.sec-head h2{font-size:var(--fs-h2);letter-spacing:-.025em;line-height:1.14}
           <div class="lf"><label for="lfContact">Телефон, почта или&nbsp;Telegram</label><input id="lfContact" name="contact" type="text" autocomplete="off" required></div>
         </div>
         <div class="lf"><label for="lfCompany">Компания и&nbsp;сфера деятельности</label><input id="lfCompany" name="company" type="text" autocomplete="organization"></div>
-        <div class="lf"><label for="lfTask">Коротко о&nbsp;задаче</label><textarea id="lfTask" name="task" rows="3"></textarea></div>
+        <div class="lf"><label for="lfTask">Коротко о&nbsp;контексте: какой сейчас уровень использования AI в&nbsp;команде и&nbsp;к&nbsp;какому результату хотите прийти</label><textarea id="lfTask" name="task" rows="2"></textarea></div>
+        <div class="slots" id="slots">
+          <div class="sl-h">Когда вам удобно</div>
+          <div class="sl-days" id="slDays"></div>
+          <div class="sl-slots" id="slSlots"></div>
+          <input type="hidden" id="lfSlot" name="slot">
+          <div class="sl-note" id="slNote"></div>
+        </div>
         <label class="lf-check"><input type="checkbox" id="lfAgree" required>
           <span>Согласен на&nbsp;обработку персональных данных и&nbsp;принимаю <a href="/synapt/system/privacy/" target="_blank">политику обработки персональных данных</a></span></label>
         <div class="lf-err" id="lfErr" role="alert">Не&nbsp;хватает вашего имени, контактов и&nbsp;согласия на&nbsp;обработку персональных данных</div>
-        <button class="btn pri lg" type="submit">Обсудить задачу</button>
+        <button class="btn pri lg" type="submit">Оставить заявку</button>
       </form>
       <div class="lf-done" id="lfDone">
         <b>Заявка принята</b>
@@ -1211,13 +1333,15 @@ h2,.sec-head h2{font-size:var(--fs-h2);letter-spacing:-.025em;line-height:1.14}
       <a class="f-tg" href="https://t.me/Anti4ay" target="_blank" rel="noopener">Telegram менеджера</a>
     </div>
     <nav class="f-nav f-nav2">
-      <span class="f-k">разделы</span>
-      <a href="/synapt/#services">Услуги</a>
-      <a href="/synapt/#cases">Кейсы</a>
-      <a href="/synapt/#how">Как&nbsp;работаем</a>
-      <a href="/synapt/#idea">Почему мы</a>
-      <a href="/synapt/#rules">Подход</a>
-      <a href="/synapt/#faq">Вопросы</a>
+      <span class="f-k">Разделы</span>
+      <a href="#pain">Зачем</a>
+      <a href="#modules">Модули</a>
+      <a href="#how">Как&nbsp;устроено</a>
+      <a href="#proof">Раньше и&nbsp;теперь</a>
+      <a href="#start">С&nbsp;чего начать</a>
+      <a href="#pricing">Стоимость</a>
+      <a href="#faq">Вопросы</a>
+      <a href="#lead">Оставить заявку</a>
     </nav>
     <div class="f-legal">
       <span class="f-k">Формальности</span>
@@ -1304,28 +1428,183 @@ h2,.sec-head h2{font-size:var(--fs-h2);letter-spacing:-.025em;line-height:1.14}
 </script>
 
 <script>
-/* заголовок обложки набирается, как на клавиатуре, и только один раз за загрузку */
+/* набор текста первого экрана: кикер, заголовок, лид и цифры печатаются
+   одновременно и посимвольно. Символы заранее стоят на своих местах,
+   поэтому во время набора вёрстка не двигается и строки не перескакивают */
 (function(){
-  var h1=document.querySelector('h1'); if(!h1) return;
-  if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-  var html=h1.innerHTML, text=h1.textContent;
-  h1.textContent=''; h1.style.minHeight=h1.offsetHeight+'px';
-  var cur=document.createElement('span'); cur.className='type-cur'; h1.appendChild(cur);
-  var i=0;
-  (function step(){
-    if(i>=text.length){ setTimeout(function(){ h1.innerHTML=html }, 700); return }
-    var chunk=text.slice(i, i+(text[i]===' '?2:1));
-    cur.insertAdjacentText('beforebegin', chunk);
-    i+=chunk.length;
-    setTimeout(step, 18+Math.random()*26);
-  })();
+  var hero=document.querySelector('.hero'); if(!hero) return;
+  var sel='.eyebrow, h1, .lead, .hero-meta b, .hero-stats b, .hero-chip';
+  var targets=[].slice.call(hero.querySelectorAll(sel));
+  if(!targets.length) return;
+  var runs=[];
+  targets.forEach(function(el){
+    var chars=[];
+    (function walk(node){
+      [].slice.call(node.childNodes).forEach(function(n){
+        if(n.nodeType===3){
+          var frag=document.createDocumentFragment();
+          n.nodeValue.split('').forEach(function(ch){
+            var sp=document.createElement('span');
+            sp.className='tch'; sp.textContent=ch;
+            frag.appendChild(sp); chars.push(sp);
+          });
+          node.replaceChild(frag,n);
+        } else if(n.nodeType===1) walk(n);
+      });
+    })(el);
+    if(chars.length) runs.push(chars);
+  });
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){
+    runs.forEach(function(r){r.forEach(function(s){s.classList.add('on')})});
+    return;
+  }
+  var maxLen=0;
+  runs.forEach(function(r){ if(r.length>maxLen) maxLen=r.length });
+  var step=Math.max(5, Math.min(26, 2000/(maxLen*1.3)));
+  runs.forEach(function(chars){
+    var i=0;
+    (function tick(){
+      if(i>=chars.length) return;
+      /* пробелы проявляются вместе со следующей буквой, набор идёт ровно */
+      do { chars[i].classList.add('on'); i++ } while(i<chars.length && chars[i-1].textContent===' ');
+      setTimeout(tick, step + Math.random()*step*0.6);
+    })();
+  });
 })();
-/* подложка шапки появляется, когда обложка уходит вверх */
+/* подложка шапки включается только после первого экрана */
 (function(){
   var nav=document.querySelector('.nav'); if(!nav) return;
   var hero=document.querySelector('.hero')||document.querySelector('header');
-  function upd(){ nav.classList.toggle('solid', scrollY > (hero?hero.offsetHeight-80:120)) }
-  upd(); addEventListener('scroll',upd,{passive:true});
+  function upd(){ var h=hero?hero.getBoundingClientRect().height:200;
+    nav.classList.toggle('solid', scrollY > Math.max(120, h-80)) }
+  upd(); addEventListener('scroll',upd,{passive:true}); addEventListener('resize',upd);
+})();
+/* подписи иконок шапки: тема и Telegram */
+(function(){
+  function sync(){
+    var dark=document.documentElement.getAttribute('data-theme')!=='light';
+    var lbl=dark?'Светлая тема':'Тёмная тема';
+    [].forEach.call(document.querySelectorAll('.tgl'),function(b){
+      if(b.classList.contains('nav-tg')) return;
+      b.title=lbl; b.setAttribute('aria-label',lbl);
+    });
+    [].forEach.call(document.querySelectorAll('.nav-tg'),function(a){
+      a.title='Написать в Telegram'; a.setAttribute('aria-label','Написать в Telegram');
+    });
+  }
+  sync(); addEventListener('click',function(){setTimeout(sync,0)},true);
+  new MutationObserver(sync).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+})();
+</script>
+
+<script>
+/* выбор дня и времени для Zoom: ближайшие рабочие дни, слоты по часу */
+(function(){
+  var days=document.getElementById('slDays'), slotBox=document.getElementById('slSlots'),
+      hid=document.getElementById('lfSlot'), note=document.getElementById('slNote');
+  if(!days||!slotBox) return;
+  var MN=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+  var WD=['вс','пн','вт','ср','чт','пт','сб'];
+  var HOURS=['10:00','11:00','12:00','14:00','15:00','16:00','17:00'];
+  var list=[], d=new Date(); d.setHours(0,0,0,0);
+  while(list.length<6){ d.setDate(d.getDate()+1); if(d.getDay()!==0&&d.getDay()!==6) list.push(new Date(d)) }
+  var sel={day:null,time:null};
+  function label(x){ return '<b>'+x.getDate()+'</b><span>'+WD[x.getDay()]+', '+MN[x.getMonth()].slice(0,3)+'</span>' }
+  list.forEach(function(x){
+    var b=document.createElement('button'); b.type='button'; b.className='sl-day'; b.innerHTML=label(x);
+    b.addEventListener('click',function(){
+      var same=b.classList.contains('on');
+      [].forEach.call(days.children,function(e){e.classList.remove('on')});
+      if(same){ sel.day=null; sel.time=null; render(); return }
+      b.classList.add('on'); sel.day=x; sel.time=null; render();
+    });
+    days.appendChild(b);
+  });
+  function render(){
+    slotBox.innerHTML='';
+    if(!sel.day){ sync(); return }
+    HOURS.forEach(function(t){
+      var b=document.createElement('button'); b.type='button'; b.className='sl-t'+(sel.time===t?' on':''); b.textContent=t;
+      b.addEventListener('click',function(){ sel.time=t; render() });
+      slotBox.appendChild(b);
+    });
+    sync();
+  }
+  function sync(){
+    if(sel.day&&sel.time){
+      var v=sel.day.getDate()+' '+MN[sel.day.getMonth()]+', '+sel.time+' по Москве';
+      if(hid) hid.value=v;
+      if(note) note.textContent='Выбрано: '+v;
+    } else { if(hid) hid.value=''; if(note) note.textContent='' }
+  }
+  render();
+})();
+</script>
+<script>
+/* графика обложки: сетка узлов, по ней идёт волна.
+   области текста и цифр вырезаны из холста, поэтому линии по ним не проходят */
+(function(){
+  var c=document.getElementById('heroFx'); if(!c||!c.getContext) return;
+  var ctx=c.getContext('2d'), DPR=Math.min(devicePixelRatio||1,2), W=0,H=0,t=0,nodes=[],links=[];
+  var GR='128,140,136', PH='121,201,142';
+  function theme(){var l=document.documentElement.getAttribute('data-theme')==='light';
+    GR=l?'92,111,98':'128,140,136'; PH=l?'46,124,74':'121,201,142'}
+  theme();
+  new MutationObserver(theme).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+  function build(){
+    var r=c.getBoundingClientRect(); W=Math.round(r.width); H=Math.round(r.height);
+    if(!W||!H) return;
+    c.width=W*DPR; c.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
+    var step=W<700?44:62, cols=Math.ceil(W/step)+2, rows=Math.ceil(H/step)+2;
+    nodes=[]; links=[];
+    for(var j=0;j<rows;j++) for(var i=0;i<cols;i++){
+      nodes.push({x:(i-.5)*step+(((i*7+j*13)%5)-2)*3.4,
+                  y:(j-.5)*step+(((i*11+j*5)%5)-2)*3.4,
+                  d:(i/(cols-1)+j/(rows-1))/2});
+    }
+    for(var k=0;k<nodes.length;k++){
+      var ci=k%cols, rj=(k-ci)/cols;
+      if(ci<cols-1) links.push([k,k+1]);
+      if(rj<rows-1) links.push([k,k+cols]);
+    }
+  }
+  /* места текста и цифр стираются с холста, поэтому линии по ним не идут */
+  function cutouts(){
+    var cr=c.getBoundingClientRect();
+    ['.hero .hero-kick','.hero h1','.hero .lead','.hero .cta-row','.hero .hero-cta',
+     '.hero .hero-meta','.hero .hero-stats','.hero .dom','.hero .dom-cap','.hero .mod-mark']
+      .forEach(function(s){
+        [].forEach.call(document.querySelectorAll(s),function(el){
+          var r=el.getBoundingClientRect();
+          if(!r.width||!r.height) return;
+          ctx.clearRect(r.left-cr.left-10, r.top-cr.top-8, r.width+20, r.height+16);
+        });
+      });
+  }
+  build(); addEventListener('resize',build);
+  (function frame(){
+    requestAnimationFrame(frame);
+    if(!W||!H){ build(); return }
+    if(c.getBoundingClientRect().bottom<-100){ t++; return }
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    ctx.clearRect(0,0,W,H);
+    var wave=(t*.0024)%1.4;
+    for(var i=0;i<links.length;i++){
+      var a=nodes[links[i][0]], b=nodes[links[i][1]];
+      var lit=Math.max(0,1-Math.abs(wave-(a.d+b.d)/2)*3.4);
+      ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+      ctx.strokeStyle=lit>.04?'rgba('+PH+','+(.07+lit*.34)+')':'rgba('+GR+',.14)';
+      ctx.lineWidth=lit>.04?1.1:.8; ctx.stroke();
+    }
+    for(var n=0;n<nodes.length;n++){
+      var nd=nodes[n], l2=Math.max(0,1-Math.abs(wave-nd.d)*3.4);
+      ctx.beginPath(); ctx.arc(nd.x,nd.y,1.5+l2*2.2,0,7);
+      ctx.fillStyle=l2>.04?'rgba('+PH+','+(.3+l2*.5)+')':'rgba('+GR+',.32)';
+      ctx.fill();
+    }
+    cutouts();
+    t++;
+  })();
 })();
 </script>
 </body>

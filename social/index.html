@@ -52,6 +52,7 @@ a{color:inherit}
 nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);
   backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;align-items:center;gap:22px;min-height:64px}
+nav{position:sticky}
 .brand{display:flex;align-items:center;color:var(--text);text-decoration:none;flex:none;min-height:44px;padding-right:6px}
 .brand svg{height:24px;width:auto;fill:currentColor}
 .nlinks{display:flex;gap:16px;flex:1;flex-wrap:wrap}
@@ -227,11 +228,177 @@ footer .f{display:flex;gap:20px;flex-wrap:wrap;font-size:13.5px;color:var(--text
 footer a{color:var(--text-muted);text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
 footer a:hover{color:var(--accent)}
 @media(max-width:640px){section{padding:54px 0}.wrap{padding:0 20px}}
+
+/* ================= общий шаблон страниц студии ================= */
+/* единая шкала заголовков: та же, что на главной и на остальных страницах */
+:root{--fs-h1:clamp(34px,3.05vw,46px);--fs-h2:clamp(26px,2.6vw,36px);
+  --fs-h3:clamp(22px,2.1vw,28px);--fs-h4:clamp(18px,1.55vw,21px);
+  --sans:Manrope,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+h1,.hero h1{font-size:var(--fs-h1);letter-spacing:-.03em;line-height:1.06}
+h2{font-size:var(--fs-h2);letter-spacing:-.025em;line-height:1.14}
+h3{font-size:var(--fs-h4);letter-spacing:-.015em;line-height:1.3}
+
+/* кнопки */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--sans);
+  font-size:14.5px;font-weight:600;letter-spacing:-.005em;padding:10px 18px;min-height:44px;
+  border:1px solid transparent;border-radius:16px;cursor:pointer;text-decoration:none;
+  transition:background .18s ease,border-color .18s ease,transform .18s ease}
+.btn.pri{background:var(--accent);color:var(--accent-ink)}
+.btn.pri:hover{background:var(--accent-light);color:var(--milk-ink,#161A18)}
+.btn.ghost{background:var(--surface);color:var(--text);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--line-2)}
+.btn.lg{font-size:16px;padding:14px 26px;border-radius:16px}
+.tgl,.nav-tg{width:44px;height:44px;border-radius:14px;border:1px solid var(--line);background:var(--surface);
+  color:var(--text-2);cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none;
+  text-decoration:none}
+.tgl:hover,.nav-tg:hover{color:var(--text);border-color:var(--line-2)}
+.tgl svg,.nav-tg svg{width:18px;height:18px}
+.nav-tg svg{fill:currentColor}
+
+/* шапка: подложка и размытие включаются только ниже первого экрана */
+nav.nav{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom-color:transparent;
+  transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease}
+nav.nav.solid{background:color-mix(in srgb,var(--bg) 46%,transparent);
+  backdrop-filter:saturate(150%) blur(18px);-webkit-backdrop-filter:saturate(150%) blur(18px);
+  border-bottom-color:var(--line)}
+.nav>.wrap .btn{opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s}
+.nav.solid>.wrap .btn{opacity:1;visibility:visible}
+.nav-act{display:flex;align-items:center;gap:10px;flex:none;margin-left:auto}
+@media(max-width:820px){.nav>.wrap .btn{display:none}}
+
+/* надзаголовки обычным шрифтом и без разрядки */
+.kick,.eyebrow,.f-k,.sl-h,.hero-chip{font-family:var(--sans);letter-spacing:0}
+.kick{font-size:13px;font-weight:500}
+.hero .eyebrow{font-size:15px;font-weight:500;color:var(--accent);display:block;margin-bottom:0}
+.hero-kick{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.hero-chip{display:inline-block;height:26px;line-height:24px;padding:0 12px;border:1px solid var(--line);
+  border-radius:16px;font-size:12.5px;font-weight:500;color:var(--text-dim);white-space:nowrap}
+
+/* набор текста: символы стоят на местах, во время набора вёрстка не двигается */
+.tch{opacity:0}
+.tch.on{opacity:1}
+.tch,.tch.on{display:inline!important;font-size:inherit!important;font-family:inherit!important;
+  font-weight:inherit!important;line-height:inherit!important;letter-spacing:inherit!important;
+  color:inherit!important;margin:0!important;padding:0!important;width:auto!important;
+  max-width:none!important;flex:none!important;background:none!important;border:0!important}
+
+/* обложка: кикер и чип строкой, заголовок, лид, цифры справа внизу */
+header.hero{position:relative;overflow:hidden;padding:96px 0 72px}
+#heroFx{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0;opacity:.5;
+  -webkit-mask-image:radial-gradient(125% 105% at 82% 24%,#000 0,rgba(0,0,0,.55) 46%,transparent 82%);
+  mask-image:radial-gradient(125% 105% at 82% 24%,#000 0,rgba(0,0,0,.55) 46%,transparent 82%)}
+:root[data-theme="light"] #heroFx{opacity:.42}
+header.hero>.wrap{position:relative;z-index:1}
+.hstat{margin-top:44px;padding-top:24px;border-top:1px solid var(--line)}
+@media(min-width:1041px){
+  header.hero>.wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(400px,.9fr);
+    column-gap:clamp(28px,3vw,48px);align-items:end}
+  .hero-txt{grid-column:1}
+  .hstat{grid-column:2;align-self:end;margin-top:0;padding-top:0;border-top:0;
+    display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:0}
+  .hstat>div{padding-right:clamp(10px,.9vw,14px);min-width:0}
+  .hstat>div+div{padding-left:clamp(10px,.9vw,14px);border-left:1px solid var(--line)}
+  .hstat b{font-size:clamp(20px,1.7vw,24px)}
+}
+
+/* заявка */
+#lead .lead-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,56px);align-items:start;margin-top:30px}
+.leadbox{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(22px,3.2vw,32px)}
+.lf-row{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.lf{margin-bottom:22px}
+.lf label{display:block;font-size:13px;font-weight:500;color:var(--text-dim);margin-bottom:8px;line-height:1.45}
+.lf input,.lf textarea{display:block;width:100%;font-family:inherit;font-size:16px;line-height:1.5;color:var(--text);
+  background:transparent;border:0;border-bottom:1px solid var(--line-2);padding:9px 0;border-radius:0}
+.lf textarea{min-height:56px;resize:vertical}
+/* кегль полей не меньше 16px: иначе iOS зумит страницу при фокусе */
+input:not([type=checkbox]),textarea,select{font-size:16px}
+.lf input:focus,.lf textarea:focus{border-bottom-color:var(--accent);outline:none;background:transparent}
+.lf-check{display:flex;gap:12px;align-items:flex-start;margin:6px 0 4px;font-size:14px;line-height:1.5;color:var(--text-2)}
+.lf-check input[type=checkbox]{flex:none;width:20px;height:20px;margin-top:2px;accent-color:var(--accent)}
+.lf-check a{color:var(--accent)}
+.lf-err{display:none;color:#E06C7A;font-size:13.5px;margin-top:12px}
+.lf-err.show{display:block}
+.leadbox .btn{margin-top:22px;width:100%}
+.lf-done{display:none;font-size:15px;line-height:1.6;color:var(--text-2)}
+.lf-done.show{display:block}
+.lf-done b{display:block;font-size:16px;font-weight:600;color:var(--text);margin-bottom:6px}
+.tg-after{margin-top:26px;padding:20px 24px;border:1px solid var(--line);border-radius:var(--r-lg);
+  background:var(--surface);display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.tg-ava{flex:none;width:60px;height:60px;border-radius:50%;object-fit:cover;border:1px solid var(--line-2)}
+.tg-txt{flex:1;min-width:0}
+.tg-after b{display:block;font-size:15.5px;font-weight:600;color:var(--text);margin-bottom:5px}
+.tg-after span{display:block;font-size:14px;color:var(--text-muted);line-height:1.55}
+.tg-btn{flex:none;display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;
+  border:1px solid var(--line-2);border-radius:16px;font-size:14px;font-weight:500;color:var(--text);text-decoration:none}
+.tg-btn:hover{border-color:var(--accent);color:var(--accent)}
+@media(max-width:900px){#lead .lead-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.lf-row{grid-template-columns:1fr;gap:0}.tg-btn{flex:1 1 100%}}
+
+/* выбор дня и времени, как на главной */
+.slots{margin-top:24px}
+.sl-h{font-size:13.5px;font-weight:500;color:var(--text);margin-bottom:12px}
+.sl-days{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:6px;margin-bottom:14px;max-width:100%}
+.sl-day{flex:none;min-width:76px;min-height:60px;padding:9px 12px;border:1px solid var(--line-2);border-radius:16px;
+  background:transparent;color:var(--text-2);cursor:pointer;text-align:center;font-family:var(--sans)}
+.sl-day b{display:block;font-size:17px;font-weight:600;color:var(--text)}
+.sl-day span{display:block;font-size:11px;color:var(--text-dim)}
+.sl-day.on{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent)}
+.sl-slots{display:flex;flex-wrap:wrap;gap:8px}
+.sl-t{min-height:44px;padding:10px 16px;border:1px solid var(--line-2);border-radius:16px;background:transparent;
+  color:var(--text-2);font-family:var(--sans);font-size:14px;cursor:pointer}
+.sl-t.on{border-color:var(--accent);background:var(--accent);color:var(--accent-ink)}
+.sl-note{margin-top:12px;font-size:13px;color:var(--text-dim);line-height:1.5}
+
+/* подвал в общем виде студии */
+footer{padding:64px 0 40px;border-top:1px solid var(--line);margin-top:20px}
+footer .wrap{display:block;overflow-wrap:break-word}
+.f-main{display:grid;grid-template-columns:1.3fr 1.2fr 1.2fr;gap:clamp(24px,3vw,48px);align-items:start}
+@media(max-width:900px){.f-main{grid-template-columns:1fr 1fr;row-gap:30px}}
+@media(max-width:560px){.f-main{grid-template-columns:1fr;row-gap:28px}}
+.f-brand .brand svg{height:26px}
+.f-note{margin-top:14px;font-size:13.5px;color:var(--text-dim);line-height:1.5;max-width:26ch}
+.f-tg{display:inline-block;margin-top:16px;font-size:14px;color:var(--text-2);text-decoration:none;
+  border-bottom:1px solid var(--line);width:fit-content}
+.f-nav,.f-legal{display:flex;flex-direction:column;gap:9px}
+.f-nav a{font-size:14px;color:var(--text-2);width:fit-content;text-decoration:none;
+  min-height:32px;display:inline-flex;align-items:center}
+.f-nav a:hover{color:var(--text)}
+.f-nav2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 18px;align-content:start}
+.f-nav2 .f-k{grid-column:1/-1}
+.f-k{font-size:12.5px;font-weight:500;color:var(--text-dim);margin-bottom:4px}
+.f-legal p,.f-legal a,.f-copy{font-size:13px;color:var(--text-dim);line-height:1.55}
+.f-legal a{text-decoration:none;border-bottom:1px solid var(--line);width:fit-content;margin-top:4px}
+.f-copy{margin-top:14px;font-size:12.5px}
+.f-nav a,.f-nav2 a,.f-legal p,.f-legal a,.f-k{overflow-wrap:break-word;word-break:normal;hyphens:none}
+
+/* мобильное меню */
+.burger{display:none;width:44px;height:44px;border-radius:14px;border:1px solid var(--line);
+  background:var(--surface);color:var(--text-2);cursor:pointer;align-items:center;justify-content:center;flex:none}
+.burger svg{width:19px;height:19px}
+.sheet{display:none;position:absolute;left:0;right:0;top:100%;z-index:49;background:var(--bg);
+  border-bottom:1px solid var(--line);padding:10px 28px 22px;max-height:calc(100vh - 64px);overflow-y:auto}
+.sheet.open{display:block}
+.sheet a{display:flex;align-items:center;min-height:48px;font-size:16px;font-weight:500;color:var(--text-2);
+  text-decoration:none;border-bottom:1px solid var(--line)}
+.sheet a:last-of-type{border-bottom:0}
+.sheet .btn{display:inline-flex;width:100%;margin-top:14px;border-bottom:0;opacity:1;visibility:visible}
+@media(max-width:820px){.burger{display:flex}.wrap .sheet{padding-left:20px;padding-right:20px}}
+
+
+/* кикер и чип держатся одной строкой и на узком экране */
+@media(max-width:560px){
+  .hero .eyebrow{font-size:13.5px}
+  .hero-chip{font-size:11.5px;padding:0 10px;height:24px;line-height:22px}
+  .hero-kick{gap:8px}
+}
+/* страница не едет вбок ни на одной ширине */
+html,body{overflow-x:clip;max-width:100%}
+img,svg,canvas,video{max-width:100%}
 </style>
 </head>
 <body>
 
-<nav><div class="wrap">
+<nav class="nav"><div class="wrap">
   <a class="brand" href="/synapt/" aria-label="Synapt">
     <svg viewBox="0 0 839 360" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-30,0)"><path d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/></g><path d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></svg>
   </a>
@@ -240,14 +407,31 @@ footer a:hover{color:var(--accent)}
     <a href="#stories">Сторис</a><a href="#tg">Telegram</a><a href="#rub">Рубрики</a>
     <a href="#obj">Возражения</a><a href="#write">Тексты</a><a href="#cal">Календарь</a>
   </div>
-  <button class="tgl" id="tgl" aria-label="Сменить тему"></button>
+  <div class="nav-act">
+    <button class="tgl" id="tgl" aria-label="Светлая тема" title="Светлая тема"></button>
+    <a class="tgl nav-tg" href="https://t.me/Anti4ay" target="_blank" rel="noopener" aria-label="Написать в&nbsp;Telegram" title="Написать в&nbsp;Telegram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 4.3 3.3 11.4c-.9.35-.88 1.63.02 1.96l4.5 1.63 1.72 5.2c.24.72 1.16.92 1.68.37l2.5-2.63 4.55 3.34c.62.46 1.5.12 1.66-.63l3.03-14.4c.17-.8-.62-1.47-1.36-1.19zM8.9 14.1l9.1-5.6-7.2 6.6-.35 2.9-1.55-3.9z"/></svg></a>
+    <button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="sheet">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <a class="btn pri" href="#lead">Оставить заявку</a>
+  </div>
+</div>
+<div class="sheet" id="sheet">
+  <a href="#shift">Почему сейчас</a><a href="#roles">Каналы</a><a href="#style">Стиль</a>
+  <a href="#ig">Instagram</a><a href="#stories">Сторис</a><a href="#tg">Telegram</a>
+  <a href="#rub">Рубрики</a><a href="#obj">Возражения</a><a href="#write">Тексты</a>
+  <a href="#cal">Календарь</a>
+  <a class="btn pri" href="#lead">Оставить заявку</a>
 </div></nav>
 
 <span id="top"></span>
 
-<header class="hero"><div class="wrap">
+<header class="hero"><canvas id="heroFx" aria-hidden="true"></canvas><div class="wrap">
+  <div class="hero-txt">
+  <div class="hero-kick"><div class="eyebrow">Материалы студии</div><span class="hero-chip">соцсети</span></div>
   <h1>Фирменный стиль соцсетей Synapt</h1>
   <p class="lead">Рынок разошёлся надвое: компании, которые перестроили процессы под&nbsp;AI, и&nbsp;все остальные. Разрыв между ними растёт каждый квартал, и&nbsp;весь наш контент показывает эту границу изнутри проектов. Ниже шаблоны постов и&nbsp;сторис для&nbsp;Instagram и&nbsp;Telegram, шесть рубрик с&nbsp;готовыми текстами, банк возражений и&nbsp;календарь месяца</p>
+  </div>
   <div class="hstat">
     <div><b>8</b><span>публикаций в&nbsp;Instagram в&nbsp;месяц: 5 каруселей и&nbsp;3 видео</span></div>
     <div><b>6</b><span>рубрик с&nbsp;индексами 0x01–0x06, как&nbsp;принципы на&nbsp;сайте</span></div>
@@ -651,11 +835,76 @@ footer a:hover{color:var(--accent)}
   </div>
 </div></section>
 
-<footer><div class="wrap">
-  <div class="f">
-    <a href="/synapt/">Сайт студии</a>
-    <a href="https://t.me/Anti4ay">Telegram</a>
+<section id="lead"><div class="wrap">
+  <div class="kick">0x0B</div>
+  <h2>Оставить заявку на&nbsp;Zoom со&nbsp;студией</h2>
+  <p class="lead">Расскажите, какой участок работы хотите разобрать первым. Zoom на&nbsp;30&nbsp;минут, оценка бесплатна, запись и&nbsp;короткий разбор присылаем после встречи</p>
+  <div class="lead-grid">
+    <div class="lead-copy">
+      <div class="tg-after">
+        <img class="tg-ava" src="data:image/jpeg;base64,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" alt="Никита, project manager студии" loading="lazy" decoding="async">
+        <div class="tg-txt">
+          <b>Никита&nbsp;– project manager студии</b>
+          <span>На&nbsp;запись по&nbsp;форме ответим в&nbsp;течение 1&nbsp;рабочего дня и&nbsp;подтвердим встречу, а&nbsp;если задача срочная, напишите нам напрямую</span>
+        </div>
+        <a class="tg-btn" href="https://t.me/Anti4ay" target="_blank" rel="noopener">Написать в&nbsp;Telegram</a>
+      </div>
     </div>
+    <div class="leadbox">
+      <form id="leadForm" novalidate>
+        <div class="lf-row">
+          <div class="lf"><label for="lfName">Как&nbsp;вас зовут</label><input id="lfName" name="name" type="text" autocomplete="name" required></div>
+          <div class="lf"><label for="lfContact">Телефон, почта или&nbsp;Telegram</label><input id="lfContact" name="contact" type="text" autocomplete="off" required></div>
+        </div>
+        <div class="lf"><label for="lfCompany">Компания и&nbsp;сфера деятельности</label><input id="lfCompany" name="company" type="text" autocomplete="organization"></div>
+        <div class="lf"><label for="lfTask">Коротко о&nbsp;контексте: какой сейчас уровень использования AI в&nbsp;команде и&nbsp;к&nbsp;какому результату хотите прийти</label><textarea id="lfTask" name="task" rows="2"></textarea></div>
+        <div class="slots" id="slots">
+          <div class="sl-h">Когда вам удобно</div>
+          <div class="sl-days" id="slDays"></div>
+          <div class="sl-slots" id="slSlots"></div>
+          <input type="hidden" id="lfSlot" name="slot">
+          <div class="sl-note" id="slNote"></div>
+        </div>
+        <label class="lf-check"><input type="checkbox" id="lfAgree" required>
+          <span>Согласен на&nbsp;обработку персональных данных и&nbsp;принимаю <a href="/synapt/social/privacy/" target="_blank" rel="noopener">политику обработки персональных данных</a></span></label>
+        <div class="lf-err" id="lfErr" role="alert">Не&nbsp;хватает вашего имени, контактов и&nbsp;согласия на&nbsp;обработку персональных данных</div>
+        <button class="btn pri lg" type="submit">Оставить заявку</button>
+      </form>
+      <div class="lf-done" id="lfDone">
+        <b>Заявка принята</b>
+        <span>Ответим в&nbsp;течение 1&nbsp;рабочего дня и&nbsp;подтвердим встречу</span>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="f-main">
+    <div class="f-brand">
+      <a class="brand" href="/synapt/" aria-label="Synapt"><svg viewBox="0 0 839 360" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-30,0)"><path d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/></g><path d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></svg></a>
+      <p class="f-note">Студия AI и&nbsp;IT-разработки для&nbsp;бизнеса</p>
+      <a class="f-tg" href="https://t.me/Anti4ay" target="_blank" rel="noopener">Telegram менеджера</a>
+    </div>
+    <nav class="f-nav f-nav2">
+      <span class="f-k">Разделы</span>
+      <a href="#shift">Почему сейчас</a>
+      <a href="#roles">Каналы</a>
+      <a href="#style">Стиль</a>
+      <a href="#rub">Рубрики</a>
+      <a href="#obj">Возражения</a>
+      <a href="#write">Тексты</a>
+      <a href="#cal">Календарь</a>
+      <a href="#lead">Оставить заявку</a>
+    </nav>
+    <div class="f-legal">
+      <span class="f-k">Формальности</span>
+      <p>ИП Орешкин Антон Вадимович</p>
+      <p>ИНН 100123323420, ОГРНИП 324100000000411</p>
+      <p>185014, Республика Карелия, Петрозаводск, переулок Попова, дом&nbsp;6, квартира&nbsp;42</p>
+      <a href="/synapt/social/privacy/">Политика обработки персональных данных</a>
+      <p class="f-copy">© 2026 Synapt</p>
+    </div>
+  </div>
 </div></footer>
 
 <svg style="display:none"><symbol id="lg" viewBox="0 0 869 360"><path d="M159.195 0C171.173 0 181.31 7.889 184.654 18.745C184.861 19.416 184.908 20.123 184.851 20.823C184.713 22.52 184.642 24.236 184.642 25.967C184.642 28.567 184.802 31.131 185.112 33.649C187.506 53.142 198.885 69.852 214.978 79.548C215.737 80.005 216.509 80.446 217.289 80.871C224.71 85.592 229.619 93.865 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.876 196.73 88.999 200.28C85.763 201.739 82.672 203.462 79.757 205.424C65.077 215.305 54.809 231.228 52.548 249.63C52.239 252.148 52.079 252.942 52.079 255.541C52.079 257.632 52.974 261.276 52.383 263.512C49.375 274.891 38.982 283.279 26.631 283.279C11.923 283.279 0 271.389 0 256.721C0 249.645 2.771 243.219 7.298 238.456C10.061 235.549 17.168 233.615 21.489 230.322C34.767 220.202 43.882 204.903 45.79 187.436C46.035 185.186 46.161 182.902 46.161 180.59C46.161 178.573 46.063 176.578 45.875 174.609C45.808 173.91 45.846 173.202 46.043 172.529C49.279 161.498 59.505 153.443 71.608 153.443C73.15 153.443 74.658 153.573 76.123 153.822C76.95 153.962 77.716 154.327 78.399 154.812C82.48 157.719 86.926 160.152 91.658 162.027C98.826 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.706 177.071 96.188C174.677 76.694 163.298 59.984 147.205 50.288C146.447 49.832 145.675 49.39 144.894 48.964C137.473 44.243 132.564 35.971 132.564 26.557C132.564 11.89 144.487 0 159.195 0ZM26.631 76.721C41.339 76.721 53.262 88.612 53.262 103.279C53.262 117.946 41.339 129.836 26.631 129.836C11.923 129.836 0 117.946 0 103.279C0 88.612 11.923 76.721 26.631 76.721ZM290.575 76.721C305.283 76.721 317.206 88.612 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.612 275.867 76.721 290.575 76.721Z"/></symbol></svg>
@@ -751,6 +1000,217 @@ footer a:hover{color:var(--accent)}
       }
       t++;
     })();
+  });
+})();
+</script>
+<script>
+/* набор текста первого экрана: кикер, заголовок, лид и цифры печатаются
+   одновременно и посимвольно. Символы заранее стоят на своих местах,
+   поэтому во время набора вёрстка не двигается и строки не перескакивают */
+(function(){
+  var hero=document.querySelector('.hero'); if(!hero) return;
+  var sel='.eyebrow, h1, .lead, .hero-meta b, .hero-stats b, .hstat b, .hero-chip';
+  var targets=[].slice.call(hero.querySelectorAll(sel));
+  if(!targets.length) return;
+  var runs=[];
+  targets.forEach(function(el){
+    var chars=[];
+    (function walk(node){
+      [].slice.call(node.childNodes).forEach(function(n){
+        if(n.nodeType===3){
+          var frag=document.createDocumentFragment();
+          n.nodeValue.split('').forEach(function(ch){
+            var sp=document.createElement('span');
+            sp.className='tch'; sp.textContent=ch;
+            frag.appendChild(sp); chars.push(sp);
+          });
+          node.replaceChild(frag,n);
+        } else if(n.nodeType===1) walk(n);
+      });
+    })(el);
+    if(chars.length) runs.push(chars);
+  });
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){
+    runs.forEach(function(r){r.forEach(function(s){s.classList.add('on')})});
+    return;
+  }
+  var maxLen=0;
+  runs.forEach(function(r){ if(r.length>maxLen) maxLen=r.length });
+  var step=Math.max(5, Math.min(26, 2000/(maxLen*1.3)));
+  runs.forEach(function(chars){
+    var i=0;
+    (function tick(){
+      if(i>=chars.length) return;
+      /* пробелы проявляются вместе со следующей буквой, набор идёт ровно */
+      do { chars[i].classList.add('on'); i++ } while(i<chars.length && chars[i-1].textContent===' ');
+      setTimeout(tick, step + Math.random()*step*0.6);
+    })();
+  });
+})();
+/* подложка шапки включается только после первого экрана */
+(function(){
+  var nav=document.querySelector('.nav'); if(!nav) return;
+  var hero=document.querySelector('.hero')||document.querySelector('header');
+  function upd(){ var h=hero?hero.getBoundingClientRect().height:200;
+    nav.classList.toggle('solid', scrollY > Math.max(120, h-80)) }
+  upd(); addEventListener('scroll',upd,{passive:true}); addEventListener('resize',upd);
+})();
+/* подписи иконок шапки: тема и Telegram */
+(function(){
+  function sync(){
+    var dark=document.documentElement.getAttribute('data-theme')!=='light';
+    var lbl=dark?'Светлая тема':'Тёмная тема';
+    [].forEach.call(document.querySelectorAll('.tgl'),function(b){
+      if(b.classList.contains('nav-tg')) return;
+      b.title=lbl; b.setAttribute('aria-label',lbl);
+    });
+    [].forEach.call(document.querySelectorAll('.nav-tg'),function(a){
+      a.title='Написать в Telegram'; a.setAttribute('aria-label','Написать в Telegram');
+    });
+  }
+  sync(); addEventListener('click',function(){setTimeout(sync,0)},true);
+  new MutationObserver(sync).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+})();
+</script>
+
+<script>
+/* выбор дня и времени для Zoom: ближайшие рабочие дни, слоты по часу */
+(function(){
+  var days=document.getElementById('slDays'), slotBox=document.getElementById('slSlots'),
+      hid=document.getElementById('lfSlot'), note=document.getElementById('slNote');
+  if(!days||!slotBox) return;
+  var MN=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+  var WD=['вс','пн','вт','ср','чт','пт','сб'];
+  var HOURS=['10:00','11:00','12:00','14:00','15:00','16:00','17:00'];
+  var list=[], d=new Date(); d.setHours(0,0,0,0);
+  while(list.length<6){ d.setDate(d.getDate()+1); if(d.getDay()!==0&&d.getDay()!==6) list.push(new Date(d)) }
+  var sel={day:null,time:null};
+  function label(x){ return '<b>'+x.getDate()+'</b><span>'+WD[x.getDay()]+', '+MN[x.getMonth()].slice(0,3)+'</span>' }
+  list.forEach(function(x){
+    var b=document.createElement('button'); b.type='button'; b.className='sl-day'; b.innerHTML=label(x);
+    b.addEventListener('click',function(){
+      var same=b.classList.contains('on');
+      [].forEach.call(days.children,function(e){e.classList.remove('on')});
+      if(same){ sel.day=null; sel.time=null; render(); return }
+      b.classList.add('on'); sel.day=x; sel.time=null; render();
+    });
+    days.appendChild(b);
+  });
+  function render(){
+    slotBox.innerHTML='';
+    if(!sel.day){ sync(); return }
+    HOURS.forEach(function(t){
+      var b=document.createElement('button'); b.type='button'; b.className='sl-t'+(sel.time===t?' on':''); b.textContent=t;
+      b.addEventListener('click',function(){ sel.time=t; render() });
+      slotBox.appendChild(b);
+    });
+    sync();
+  }
+  function sync(){
+    if(sel.day&&sel.time){
+      var v=sel.day.getDate()+' '+MN[sel.day.getMonth()]+', '+sel.time+' по Москве';
+      if(hid) hid.value=v;
+      if(note) note.textContent='Выбрано: '+v;
+    } else { if(hid) hid.value=''; if(note) note.textContent='' }
+  }
+  render();
+})();
+</script>
+<script>
+/* графика обложки: сетка узлов, по ней идёт волна.
+   области текста и цифр вырезаны из холста, поэтому линии по ним не проходят */
+(function(){
+  var c=document.getElementById('heroFx'); if(!c||!c.getContext) return;
+  var ctx=c.getContext('2d'), DPR=Math.min(devicePixelRatio||1,2), W=0,H=0,t=0,nodes=[],links=[];
+  var GR='128,140,136', PH='121,201,142';
+  function theme(){var l=document.documentElement.getAttribute('data-theme')==='light';
+    GR=l?'92,111,98':'128,140,136'; PH=l?'46,124,74':'121,201,142'}
+  theme();
+  new MutationObserver(theme).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+  function build(){
+    var r=c.getBoundingClientRect(); W=Math.round(r.width); H=Math.round(r.height);
+    if(!W||!H) return;
+    c.width=W*DPR; c.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
+    var step=W<700?44:62, cols=Math.ceil(W/step)+2, rows=Math.ceil(H/step)+2;
+    nodes=[]; links=[];
+    for(var j=0;j<rows;j++) for(var i=0;i<cols;i++){
+      nodes.push({x:(i-.5)*step+(((i*7+j*13)%5)-2)*3.4,
+                  y:(j-.5)*step+(((i*11+j*5)%5)-2)*3.4,
+                  d:(i/(cols-1)+j/(rows-1))/2});
+    }
+    for(var k=0;k<nodes.length;k++){
+      var ci=k%cols, rj=(k-ci)/cols;
+      if(ci<cols-1) links.push([k,k+1]);
+      if(rj<rows-1) links.push([k,k+cols]);
+    }
+  }
+  /* места текста и цифр стираются с холста, поэтому линии по ним не идут */
+  function cutouts(){
+    var cr=c.getBoundingClientRect();
+    ['.hero .hero-kick','.hero h1','.hero .lead','.hero .cta-row','.hero .hero-cta',
+     '.hero .hero-meta','.hero .hero-stats','.hero .hstat','.hero .dom','.hero .dom-cap','.hero .mod-mark']
+      .forEach(function(s){
+        [].forEach.call(document.querySelectorAll(s),function(el){
+          var r=el.getBoundingClientRect();
+          if(!r.width||!r.height) return;
+          ctx.clearRect(r.left-cr.left-10, r.top-cr.top-8, r.width+20, r.height+16);
+        });
+      });
+  }
+  build(); addEventListener('resize',build);
+  (function frame(){
+    requestAnimationFrame(frame);
+    if(!W||!H){ build(); return }
+    if(c.getBoundingClientRect().bottom<-100){ t++; return }
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    ctx.clearRect(0,0,W,H);
+    var wave=(t*.0024)%1.4;
+    for(var i=0;i<links.length;i++){
+      var a=nodes[links[i][0]], b=nodes[links[i][1]];
+      var lit=Math.max(0,1-Math.abs(wave-(a.d+b.d)/2)*3.4);
+      ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+      ctx.strokeStyle=lit>.04?'rgba('+PH+','+(.07+lit*.34)+')':'rgba('+GR+',.14)';
+      ctx.lineWidth=lit>.04?1.1:.8; ctx.stroke();
+    }
+    for(var n=0;n<nodes.length;n++){
+      var nd=nodes[n], l2=Math.max(0,1-Math.abs(wave-nd.d)*3.4);
+      ctx.beginPath(); ctx.arc(nd.x,nd.y,1.5+l2*2.2,0,7);
+      ctx.fillStyle=l2>.04?'rgba('+PH+','+(.3+l2*.5)+')':'rgba('+GR+',.32)';
+      ctx.fill();
+    }
+    cutouts();
+    t++;
+  })();
+})();
+</script>
+<script>
+/* бургер-меню */
+(function(){
+  var b=document.getElementById('burger'), sh=document.getElementById('sheet');
+  if(!b||!sh) return;
+  function close(){sh.classList.remove('open');b.setAttribute('aria-expanded','false')}
+  b.addEventListener('click',function(){
+    var open=sh.classList.toggle('open');
+    b.setAttribute('aria-expanded',open?'true':'false');
+  });
+  sh.addEventListener('click',function(e){if(e.target.tagName==='A')close()});
+  addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+  addEventListener('resize',function(){if(innerWidth>820)close()});
+})();
+</script>
+
+<script>
+/* заявка: подтверждение показываем только после проверки полей */
+(function(){
+  var f=document.getElementById('leadForm'); if(!f) return;
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var n=document.getElementById('lfName'),c=document.getElementById('lfContact'),a=document.getElementById('lfAgree');
+    var err=document.getElementById('lfErr');
+    if(!n.value.trim()||!c.value.trim()||!a.checked){ err.classList.add('show'); return }
+    err.classList.remove('show');
+    f.style.display='none';
+    document.getElementById('lfDone').classList.add('show');
   });
 })();
 </script>
