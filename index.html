@@ -1142,7 +1142,8 @@ body.cs-lock{overflow:hidden}
    в шапке остаётся только Telegram, чтобы действия не спорили между собой */
 /* пара стоит по той же правой линии, что бургер в шапке, и отодвинута от угла:
    на первом экране она попадает ровно в пустую четвёртую ячейку сетки цифр */
-.fab{position:fixed;right:36px;bottom:18px;z-index:95;display:none;gap:10px;align-items:center}
+.fab{position:fixed;right:36px;bottom:calc(18px + env(safe-area-inset-bottom,0px));
+  z-index:95;display:none;gap:10px;align-items:center}
 .fab-b{display:inline-flex;align-items:center;gap:9px;height:52px;padding:0 18px;border-radius:26px;
   font-size:14.5px;font-weight:560;box-shadow:0 10px 30px rgba(0,0,0,.22)}
 .fab-lead{background:var(--accent);color:var(--accent-ink)}
@@ -1159,12 +1160,14 @@ body.cs-lock{overflow:hidden}
    холст лежит рядом с .wrap, поэтому растягивается по всей обложке */
 @media(max-width:760px){
   .hero{display:flex;flex-direction:column;justify-content:flex-end;align-items:stretch;
-    padding:92px 0 18px;min-height:100vh;min-height:100svh}
+    padding:92px 0 calc(18px + env(safe-area-inset-bottom,0px));min-height:100vh;min-height:100svh}
   .hero>.wrap{order:2;width:100%}
   #synFx{position:absolute;inset:0;order:0;width:100%;height:100%;margin:0;opacity:.95;
     -webkit-mask-image:none;mask-image:none}
-  /* цифры сеткой два на два: четвёртая ячейка пустая, её занимают плавающие кнопки */
-  .hero-meta{display:grid;grid-template-columns:1.18fr .82fr;gap:20px 16px;margin-top:30px;padding-top:22px}
+  /* цифры сеткой два на два: четвёртая ячейка пустая, её занимают плавающие кнопки,
+     поэтому нижняя строка цифр стоит ровно на их линии */
+  .hero-meta{display:grid;grid-template-columns:1.18fr .82fr;gap:20px 16px;
+    margin-top:30px;margin-bottom:0;padding-top:22px}
   .hero-meta .m{flex-direction:column;align-items:flex-start;gap:6px}
   .hero-meta .m b{font-size:23px;width:auto;flex:none}
   .hero-meta .m>span{font-size:12.5px;line-height:1.45;max-width:none}
@@ -1564,8 +1567,8 @@ footer .f-tg::after{content:"";position:absolute;left:0;right:0;top:50%;
 .hero::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
   background:linear-gradient(180deg,transparent 30%,
     color-mix(in srgb,var(--bg) 26%,transparent) 56%,
-    color-mix(in srgb,var(--bg) 58%,transparent) 80%,
-    color-mix(in srgb,var(--bg) 72%,transparent) 100%)}
+    color-mix(in srgb,var(--bg) 52%,transparent) 80%,
+    color-mix(in srgb,var(--bg) 62%,transparent) 100%)}
 .hero-meta::after{background:radial-gradient(130% 130% at 55% 50%,var(--bg) 0%,var(--bg) 52%,
   color-mix(in srgb,var(--bg) 70%,transparent) 78%,transparent 100%)}
 
@@ -1637,16 +1640,41 @@ footer .f-tg:hover,footer .f-legal a:hover{border-bottom-color:var(--accent)}
 @media(max-width:640px){
   .nav .wrap{padding-left:18px;padding-right:18px}
 }
-/* подписи цифр держат одну строку: колонка со стоимостью чекапа длиннее соседней */
+/* подписи цифр держат одну строку: колонка со стоимостью чекапа длиннее соседней,
+   кегль подписи считается от ширины экрана, поэтому строка не переносится и на 320 */
 @media(max-width:760px){
-  .hero-meta .m>span{font-size:12.5px;text-wrap:nowrap;white-space:normal}
-  .hero-meta .m:first-child>span{white-space:nowrap}
+  .hero-meta .m>span{font-size:clamp(10.5px,2.92vw,13px);letter-spacing:-.005em}
+  /* нижняя строка цифр встаёт на линию плавающих кнопок: пара занимает
+     пустую четвёртую ячейку сетки и ничего не перекрывает */
+  .hero-meta{margin-bottom:0}
 }
 @media(max-width:400px){
   .hero-meta{gap:18px 12px}
-  .hero-meta .m>span{font-size:11.5px}
   .hero-meta .m b{font-size:21px}
 }
+
+/* ==========================================================
+   МОДУЛИ СИСТЕМЫ: чип с номером, заголовок, кнопка на форму
+   ========================================================== */
+/* чип стоит отдельной строкой и держит воздух до заголовка */
+.mod-chip{display:inline-flex;align-items:center;gap:9px;width:fit-content;max-width:100%;
+  padding:5px 12px;margin:0 0 14px;border:1px solid var(--line);border-radius:16px;
+  background:var(--surface-2);font-family:var(--sans);font-size:12.5px;font-weight:500;
+  letter-spacing:0;line-height:1.35;color:var(--text-dim)}
+.mod-chip .mc-n{font-family:var(--mono);font-weight:500;font-feature-settings:"liga" 0,"calt" 0;
+  color:var(--accent-txt)}
+.mods .card h3{margin-top:0}
+.mods .card p{max-width:46ch;margin-bottom:20px}
+/* кнопки модулей стоят по одной нижней линии карточек */
+.mods .card .btn{margin-top:auto;align-self:flex-start;min-height:42px}
+@media(max-width:560px){
+  .mods .card .btn{width:100%;justify-content:center}
+}
+
+/* подписи со ссылкой на кейс читаются как ссылки */
+.now-f .src{width:fit-content;max-width:100%;
+  border-bottom:1px solid var(--line-2);padding-bottom:2px;color:var(--text-2)}
+.now-f .src:hover{color:var(--accent-txt);border-bottom-color:var(--accent)}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
@@ -1757,7 +1785,7 @@ function LEAD_API(url, opts){
     <div class="step">
       <div class="step-rail"><div class="step-rail-in">
         <span class="step-n">01</span>
-        <span class="step-w">Шаг 1 из&nbsp;2</span>
+        <span class="step-w">Шаг 1 из&nbsp;3</span>
         <span class="step-rail-t">Чекап бизнеса</span>
       </div></div>
       <div class="step-body">
@@ -1775,27 +1803,27 @@ function LEAD_API(url, opts){
           </div>
         </div>
 
-        <div class="step-link reveal"><span class="sl-rule"></span><span>карта из&nbsp;чекапа показывает, из&nbsp;каких блоков собирать систему</span></div>
+        <div class="step-link reveal"><span class="sl-rule"></span><span>карта из&nbsp;чекапа показывает, с&nbsp;каких участков начинать</span></div>
       </div>
     </div>
 
     <div class="step">
       <div class="step-rail"><div class="step-rail-in">
         <span class="step-n">02</span>
-        <span class="step-w">Шаг 2 из&nbsp;2</span>
-        <span class="step-rail-t">AI-система</span>
+        <span class="step-w">Шаг 2 из&nbsp;3</span>
+        <span class="step-rail-t">Десант и&nbsp;обучение</span>
       </div></div>
       <div class="step-body">
         <div class="step-intro reveal">
-          <h3 class="step-t">AI-система, усиливающая и&nbsp;ускоряющая бизнес</h3>
-          <p class="step-d">Система собирается из&nbsp;блоков. Какие именно нужны, показывает чекап: <span class="nb">где-то</span>&nbsp;это&nbsp;работа с&nbsp;клиентами, <span class="nb">где-то</span>&nbsp;знания команды, <span class="nb">где-то</span>&nbsp;обучение людей</p>
+          <h3 class="step-t">AI-десант и&nbsp;обучение команды</h3>
+          <p class="step-d">Месяц работы внутри компании: специалист студии встраивает нейросети в&nbsp;повседневные задачи каждого отдела, а&nbsp;курс даёт команде знания и&nbsp;кураторскую поддержку. После этого видно, где люди справляются сами, а&nbsp;где нужен отдельный блок системы</p>
         </div>
 
         <div class="svc">
           <div class="card s3 reveal">
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div>
             <h3>AI-десант</h3>
-            <span class="kick-to">блок для&nbsp;быстрого старта</span>
+            <span class="kick-to">быстрый старт внутри команды</span>
             <p>Если инструменты уже купили, а&nbsp;привычки ими пользоваться нет. Наш специалист на&nbsp;месяц входит в&nbsp;команду и&nbsp;встраивает AI в&nbsp;повседневную работу каждого отдела</p>
             <a class="morelink" href="/synapt/desant/">Подробнее</a>
           </div>
@@ -1803,57 +1831,75 @@ function LEAD_API(url, opts){
           <div class="card s3 reveal">
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8"/></svg></div>
             <h3>Обучение команды</h3>
-            <span class="kick-to">блок для&nbsp;погружения</span>
+            <span class="kick-to">погружение и&nbsp;кураторская работа</span>
             <p>Если нужны знания и&nbsp;кураторская работа с&nbsp;командой. Курс Automy AI: шесть недель, на&nbsp;выходе база знаний компании и&nbsp;свои агенты под&nbsp;задачу</p>
             <a class="morelink" href="https://automyai.ru">Подробнее</a>
+          </div>
+        </div>
+
+        <div class="step-link reveal"><span class="sl-rule"></span><span>чекап и&nbsp;десант вместе показывают, из&nbsp;каких блоков собирать систему</span></div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-rail"><div class="step-rail-in">
+        <span class="step-n">03</span>
+        <span class="step-w">Шаг 3 из&nbsp;3</span>
+        <span class="step-rail-t">AI-система</span>
+      </div></div>
+      <div class="step-body">
+        <div class="step-intro reveal">
+          <h3 class="step-t">AI-система, усиливающая и&nbsp;ускоряющая бизнес</h3>
+          <p class="step-d">Система разрабатывается из&nbsp;блоков. Какие именно нужны вашей компании, показывают AI-чекап и&nbsp;AI-десант: они дают карту процессов и&nbsp;живую картину того, где команда теряет время</p>
+        </div>
+
+        <div class="svc mods">
+          <div class="card s3 reveal">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <span class="mod-chip"><span class="mc-n">01</span>продажи</span>
+            <h3>Работа с&nbsp;клиентом</h3>
+            <p>Заявки приходят в&nbsp;мессенджеры и&nbsp;теряются между менеджерами. Система отвечает клиенту за&nbsp;секунды, выясняет потребность и&nbsp;доводит до&nbsp;заявки, а&nbsp;после разбирает диалоги и&nbsp;показывает, где сделка ушла</p>
+            <a class="btn ghost sm" href="#lead">Обсудить задачу</a>
+          </div>
+
+          <div class="card s3 reveal">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V9M10 20V4M16 20v-7M22 20H2"/></svg></div>
+            <span class="mod-chip"><span class="mc-n">02</span>управление</span>
+            <h3>Картина для&nbsp;собственника</h3>
+            <p>Цифры лежат в&nbsp;разных отчётах и&nbsp;приходят поздно. Система разбирает воронку, найм и&nbsp;маржу, присылает регулярный разбор и&nbsp;у&nbsp;каждого вывода даёт ссылку на&nbsp;источник данных</p>
+            <a class="btn ghost sm" href="#lead">Обсудить задачу</a>
           </div>
 
           <div class="card s3 reveal">
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg></div>
-            <h3>AI-агент на&nbsp;знаниях компании</h3>
-            <span class="kick-to">блок для&nbsp;команды</span>
-            <p>Если сотрудники задают руководителям одни и&nbsp;те&nbsp;же&nbsp;вопросы, а&nbsp;регламенты никто не&nbsp;открывает. Агент отвечает по&nbsp;вашим документам и&nbsp;истории решений, новичок адаптируется и&nbsp;приступает к&nbsp;задачам быстрее</p>
-            <a class="morelink" href="/synapt/globaldent/">Подробнее</a>
-          </div>
-
-          <div class="card s3 reveal">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-            <h3>AI-продавец в&nbsp;переписке</h3>
-            <span class="kick-to">блок для&nbsp;работы с&nbsp;клиентами</span>
-            <p>Если заявки приходят в&nbsp;мессенджеры и&nbsp;теряются между менеджерами. Отвечает клиенту за&nbsp;секунды, выясняет потребность и&nbsp;доводит до&nbsp;заявки, менеджер подключается, когда нужен человек</p>
-            <a class="morelink" href="/synapt/prodazh/">Подробнее</a>
+            <span class="mod-chip"><span class="mc-n">03</span>команда</span>
+            <h3>Знания и&nbsp;адаптация</h3>
+            <p>Новичок долго входит в&nbsp;курс дела, а&nbsp;команда задаёт руководителям разные вопросы по&nbsp;работе. Агент отвечает по&nbsp;вашим документам и&nbsp;истории решений, ведёт адаптацию и&nbsp;выводит человека на&nbsp;задачи быстрее</p>
+            <a class="btn ghost sm" href="#lead">Обсудить задачу</a>
           </div>
 
           <div class="card s3 reveal">
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-5 4z"/><path d="M8 8h6M8 11h4"/><circle cx="19" cy="17.5" r="2.4"/><path d="M15.4 22c.5-1.6 1.9-2.6 3.6-2.6s3.1 1 3.6 2.6"/></svg></div>
+            <span class="mod-chip"><span class="mc-n">04</span>экспертиза</span>
             <h3>AI-эксперт</h3>
-            <span class="kick-to">блок для&nbsp;клиентов и&nbsp;внешнего рынка</span>
-            <p>Если спрос на&nbsp;вашего ключевого специалиста выше, чем его&nbsp;временные ресурсы. Агент отвечает клиентам по&nbsp;авторским материалам и&nbsp;методологиям, а&nbsp;сложные случаи передаёт человеку</p>
-            <a class="morelink" href="/synapt/expert/">Подробнее</a>
+            <p>Спрос на&nbsp;вашего ключевого специалиста выше, чем его&nbsp;рабочее время. Цифровая копия эксперта отвечает клиентам по&nbsp;авторским материалам и&nbsp;методологиям, а&nbsp;сложные случаи передаёт человеку</p>
+            <a class="btn ghost sm" href="#lead">Обсудить задачу</a>
           </div>
 
           <div class="card s3 reveal">
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
+            <span class="mod-chip"><span class="mc-n">05</span>операции</span>
             <h3>Интеграции и&nbsp;автоматизация</h3>
-            <span class="kick-to">блок для&nbsp;операций</span>
-            <p>Если данные находятся в&nbsp;разных системах и&nbsp;люди переносят их&nbsp;вручную. Связываем CRM, 1С, таблицы и&nbsp;мессенджеры так, чтобы каждая цифра появлялась там, где она нужна, без&nbsp;участия человека</p>
-            <a class="morelink" href="#lead">Описать запрос</a>
+            <p>Данные лежат в&nbsp;разных системах, и&nbsp;люди переносят их&nbsp;вручную. Связываем CRM, 1С, таблицы и&nbsp;мессенджеры так, чтобы цифры работали между собой и&nbsp;появлялись там, где нужны, без&nbsp;участия человека</p>
+            <a class="btn ghost sm" href="#lead">Обсудить задачу</a>
           </div>
 
           <div class="card s3 reveal">
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7.5 3.6v5.2c0 4.1-3.1 7.6-7.5 8.6-4.4-1-7.5-4.5-7.5-8.6V6.6z"/><path d="M9.1 12.1l2 2 3.7-4"/></svg></div>
+            <span class="mod-chip"><span class="mc-n">06</span>основа всех блоков</span>
             <h3>Безопасный слой</h3>
-            <span class="kick-to">основание под&nbsp;всеми блоками</span>
-            <p>Если в&nbsp;работу попадают персональные данные или&nbsp;коммерческая тайна. Обезличивание перед отправкой в&nbsp;модель, ролевой доступ и&nbsp;журнал обращений. Настраивается один раз на&nbsp;всю систему</p>
-            <a class="morelink" href="/synapt/safe/">Подробнее</a>
-          </div>
-
-          <div class="card s3 reveal">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.6"/><rect x="14" y="14" width="7" height="7" rx="1.6"/></svg></div>
-            <h3>Комплексная система</h3>
-            <span class="kick-to">когда блоков нужно несколько</span>
-            <p>Блоки работают на&nbsp;общей базе знаний, поэтому каждый следующий собирается быстрее предыдущего. Можно посмотреть, как&nbsp;система выглядит целиком: какие модули бывают и&nbsp;как&nbsp;они связаны</p>
-            <a class="morelink" href="/synapt/system/">Подробнее</a>
+            <p>В&nbsp;работу попадают персональные данные и&nbsp;коммерческая тайна. Обезличивание перед отправкой в&nbsp;модель, ролевой доступ и&nbsp;журнал обращений. Настраивается один раз и&nbsp;держит под&nbsp;собой всю систему</p>
+            <a class="btn ghost sm" href="#lead">Обсудить задачу</a>
           </div>
         </div>
 
@@ -2367,9 +2413,10 @@ function LEAD_API(url, opts){
 (function () {
   var DPR = Math.min(devicePixelRatio || 1, 2);
   /* палитра следует за темой страницы: на светлом узлы тёмные, на тёмном светлые */
-  var WH = '232,238,236', GR = '128,140,136', PH = '121,201,142', A = 1;
+  var WH = '232,238,236', GR = '128,140,136', PH = '121,201,142', A = 1, LIGHT = false;
   function applyTheme() {
     var light = document.documentElement.getAttribute('data-theme') === 'light';
+    LIGHT = light;
     WH = light ? '18,22,20' : '232,238,236';
     GR = light ? '38,46,43' : '128,140,136';
     PH = light ? '40,124,68' : '121,201,142';
@@ -2437,143 +2484,154 @@ function LEAD_API(url, opts){
      крупно, во весь экран. Смысл: по отдельности точки ничего не значат,
      после соединения сеть начинает работать как целое ---------- */
   function converge(c) {
-    /* композиция ограничена мягким кругом: это одна собранная сеть, а не поле точек.
-       Узлы стоят кольцами, связи держат форму, по сети волнами проходит синергия */
+    /* сеть занимает весь кадр и уходит за его края: ни круга, ни рамки, ни маски.
+       Плотность и яркость спадают от ядра наружу, поэтому композиция читается
+       единым организмом, а не полем точек, и внизу не мешает тексту */
     var ctx = c.getContext('2d'), W = 0, H = 0, nodes = [], edges = [], t = 0;
     var reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
-    var cx = 0, cy = 0, RAD = 0, FLY = 230, WIRE = 400, PULSE = 900;
+    var cx = 0, cy = 0, RAD = 0, LIM = 0, FLY = 110, WIRE = 200, PULSE = 540;
 
     function build() {
       var r = c.getBoundingClientRect(); W = r.width; H = r.height;
       if (!W || !H) return;
       c.width = W * DPR; c.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-      var narrow = W < 900;
-      /* центр композиции: на широком экране правее текста, на телефоне по центру кадра.
-         на десктопе круг целиком помещается в верхние две трети кадра: ниже начинается
-         текст первого экрана, и графика туда не заходит ни одним узлом */
-      cx = narrow ? W * .5 : W * .55;
-      cy = narrow ? H * .44 : H * .34;
-      RAD = narrow ? Math.min(W * .46, H * .44) : Math.min(W * .36, H * .44);
+      var narrow = W < 760;
+      /* ядро выше и правее середины: под ним остаётся место заголовку и цифрам */
+      cx = narrow ? W * .58 : W * .62;
+      cy = narrow ? H * .30 : H * .33;
+      /* поле накрывает дальний угол кадра с запасом: кольца обрезаются краями экрана,
+         поэтому у композиции нет ни верхней прямой, ни нижней дуги */
+      RAD = Math.hypot(Math.max(cx, W - cx), Math.max(cy, H - cy)) * 1.06;
+      /* плотность задаётся на площадь кадра, а не числом узлов на кольцо:
+         иначе на широком экране сеть расползается и выглядит пустой */
+      var inFrame = narrow ? 168 : 205;
+      var gapPx = Math.sqrt(W * H / inFrame);          /* шаг сети */
+      var rings = Math.max(6, Math.round(RAD / gapPx));
+      var dr = RAD / rings, dens = inFrame / (W * H), mg = 80, id = 0;
       nodes = [];
-      var rings = 5, id = 0;
-      nodes.push({x: cx, y: cy, ring: 0, r: 3.2, core: true, ph: 0, d: 0, hot: false, sx: cx, sy: cy});
+      nodes.push({x: cx, y: cy, r: 3.4, core: true, ph: 0, d: 0, hot: false,
+                  sx: cx, sy: cy, dist: 0, sp: 0});
       for (var ri = 1; ri <= rings; ri++) {
-        var rr = RAD * (ri / rings), cnt = Math.round(5 + ri * (narrow ? 3.4 : 4.6));
+        var rr = dr * ri, cnt = Math.max(6, Math.round(dens * 6.283 * rr * dr));
         for (var k = 0; k < cnt; k++) {
           id++;
-          var a = (k / cnt) * 6.283 + rnd(id * 11) * .5 + ri * .4;
-          var jitter = 1 + (rnd(id * 7) - .5) * .22;
+          var a = (k / cnt) * 6.283 + rnd(id * 11) * .55 + ri * .7;
+          var x = cx + Math.cos(a) * rr + (rnd(id * 7) - .5) * dr * .95;
+          var y = cy + Math.sin(a) * rr * .96 + (rnd(id * 31) - .5) * dr * .95;
+          /* узлы за пределами кадра не хранятся: в памяти только то, что видно */
+          if (x < -mg || x > W + mg || y < -mg || y > H + mg) continue;
           nodes.push({
-            /* разброс держим в узких пределах: поле обязано читаться кругом,
-               иначе одиночные узлы уходят до самых краёв кадра */
-            x: cx + Math.cos(a) * rr * jitter * (1.2 + rnd(id * 19) * .22),
-            y: cy + Math.sin(a) * rr * jitter * (a > 0 ? 1.04 : .84),
-            ring: ri, a: a, rr: rr,
-            r: 1.5 + rnd(id * 5) * 1.7,
-            d: rnd(id * 3) * .6,
-            sx: cx + Math.cos(a) * rr * (2.4 + rnd(id * 13)),
-            sy: cy + Math.sin(a) * rr * (2.4 + rnd(id * 17)),
+            x: x, y: y, r: 1.3 + rnd(id * 5) * 1.8,
+            d: rnd(id * 3) * .7,
+            sx: cx + Math.cos(a) * rr * (2 + rnd(id * 13) * .9),
+            sy: cy + Math.sin(a) * rr * (2 + rnd(id * 17) * .9),
             ph: rnd(id * 41) * 6.283,
-            hot: rnd(id * 23) > .86
+            sp: .4 + rnd(id * 29),
+            dist: Math.hypot(x - cx, y - cy),
+            hot: rnd(id * 23) > .88
           });
         }
       }
+      LIM = gapPx * 1.5;
       edges = [];
-      var lim = RAD / (rings * .78);
-      for (var a1 = 0; a1 < nodes.length; a1++)
-        for (var b1 = a1 + 1; b1 < nodes.length; b1++) {
-          var na = nodes[a1], nb = nodes[b1];
+      for (var i = 0; i < nodes.length; i++)
+        for (var j = i + 1; j < nodes.length; j++) {
+          var na = nodes[i], nb = nodes[j];
           var d = Math.hypot(na.x - nb.x, na.y - nb.y);
-          if (d > lim * (na.core || nb.core ? 1.35 : 1)) continue;
-          if (rnd(a1 * 53 + b1 * 11) > .86) continue;
-          edges.push({a: na, b: nb, w: 1 - d / lim, ph: rnd(a1 + b1 * 3) * 6.283,
+          if (d > LIM * (na.core || nb.core ? 1.6 : 1)) continue;
+          if (rnd(i * 53 + j * 11) > .86) continue;
+          edges.push({i: i, j: j, w: 1 - d / LIM,
                       mid: Math.hypot((na.x + nb.x) / 2 - cx, (na.y + nb.y) / 2 - cy)});
         }
     }
     build(); addEventListener('resize', build);
     function eOut(p) { return 1 - Math.pow(1 - p, 3) }
+    /* к краю кадра сеть тише, но не исчезает: обрыва по кругу быть не должно */
+    function fade(dist) { return 1 - .46 * Math.pow(Math.min(1, dist / RAD), 1.4) }
 
     (function frame() {
       requestAnimationFrame(frame);
       if (!W || !H) { build(); return }
       if (c.getBoundingClientRect().bottom < -100) { t++; return }
       ctx.clearRect(0, 0, W, H);
-      var k = reduce ? WIRE + 200 : t;
+      /* на светлой теме зелёные ореолы почти выключены: иначе обложка
+         заливается зелёным пятном, а не читается сетью */
+      var HALO = LIGHT ? .14 : 1, AK = LIGHT ? 1.5 : 1.25;
+      var k = reduce ? WIRE + 400 : t;
       var appear = Math.min(1, k / 40);
 
       /* сборка проходит один раз, дальше сеть живёт и по ней идут волны синергии */
-      var pos = nodes.map(function (n) {
-        if (n.core) return {n: n, x: n.x, y: n.y, p: 1};
-        var p = Math.max(0, Math.min(1, (k - n.d * 90) / FLY)), e = eOut(p);
-        return {n: n, x: n.sx + (n.x - n.sx) * e, y: n.sy + (n.y - n.sy) * e, p: p};
-      });
+      var px = new Float64Array(nodes.length), py = new Float64Array(nodes.length),
+          pp = new Float64Array(nodes.length);
+      for (var q = 0; q < nodes.length; q++) {
+        var n = nodes[q];
+        /* медленный дрейф: сеть дышит и после сборки, кадр не замирает */
+        var dx = Math.sin(k * .0062 + n.ph) * 2.6 * n.sp,
+            dy = Math.cos(k * .0051 + n.ph * 1.3) * 2.2 * n.sp;
+        if (n.core) { px[q] = n.x + dx * .3; py[q] = n.y + dy * .3; pp[q] = 1; continue }
+        var p = Math.max(0, Math.min(1, (k - n.d * 80) / FLY)), e = eOut(p);
+        px[q] = n.sx + (n.x - n.sx) * e + dx * e;
+        py[q] = n.sy + (n.y - n.sy) * e + dy * e;
+        pp[q] = p;
+      }
       var wire = Math.max(0, Math.min(1, (k - FLY) / (WIRE - FLY)));
       /* волна синергии расходится от ядра каждые PULSE кадров */
       var ph = k > WIRE ? ((k - WIRE) % PULSE) / PULSE : -1;
-      /* волна доходит до края, а потом вся сеть держится зажжённой и медленно гаснет */
-      var wave = ph < 0 ? -1 : (ph < .55 ? ph / .55 * (RAD * 1.35) : -1);
-      var glowAll = ph < 0 ? 0 : (ph < .55 ? 0 : (ph < .8 ? (ph - .55) / .25 : 1 - (ph - .8) / .2));
+      var wave = ph < 0 ? -1 : (ph < .62 ? ph / .62 * (RAD * 1.1) : -1);
+      var glowAll = ph < 0 ? 0 : (ph < .62 ? 0 : (ph < .82 ? (ph - .62) / .2 : 1 - (ph - .82) / .18));
+      var band = Math.max(70, RAD * .12);
 
       if (wire > 0) {
-        edges.forEach(function (ed) {
+        for (var ei = 0; ei < edges.length; ei++) {
+          var ed = edges[ei], ax = px[ed.i], ay = py[ed.i];
+          if (pp[ed.i] <= 0 || pp[ed.j] <= 0) continue;
+          if ((ax < -60 && px[ed.j] < -60) || (ax > W + 60 && px[ed.j] > W + 60)) continue;
+          if ((ay < -60 && py[ed.j] < -60) || (ay > H + 60 && py[ed.j] > H + 60)) continue;
           var grow = Math.min(1, wire * 1.4);
-          var gx = ed.a.x + (ed.b.x - ed.a.x) * eOut(grow), gy = ed.a.y + (ed.b.y - ed.a.y) * eOut(grow);
-          var lit = Math.max(glowAll * .85, wave > 0 ? Math.max(0, 1 - Math.abs(ed.mid - wave) / 86) : 0);
-          ctx.beginPath(); ctx.moveTo(ed.a.x, ed.a.y); ctx.lineTo(gx, gy);
-          ctx.strokeStyle = lit > .04
-            ? 'rgba(' + PH + ',' + (.1 + lit * .55) * A * appear + ')'
-            : 'rgba(' + GR + ',' + (.1 + ed.w * .16) * A * appear + ')';
-          ctx.lineWidth = (.75 + ed.w * .5) + lit * .7;
+          var gx = ax + (px[ed.j] - ax) * eOut(grow), gy = ay + (py[ed.j] - ay) * eOut(grow);
+          var lit = Math.max(glowAll * .46, wave > 0 ? Math.max(0, 1 - Math.abs(ed.mid - wave) / band) : 0);
+          var f = fade(ed.mid);
+          ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(gx, gy);
+          ctx.strokeStyle = lit > .05
+            ? 'rgba(' + PH + ',' + (.1 + lit * .5) * AK * appear * f + ')'
+            : 'rgba(' + GR + ',' + (.1 + ed.w * .17) * AK * appear * f + ')';
+          ctx.lineWidth = (.7 + ed.w * .55) + lit * .8;
           ctx.stroke();
-        });
+        }
       }
 
-      pos.forEach(function (o) {
-        if (o.p <= 0) return;
-        var n = o.n;
-        var dist = Math.hypot(o.x - cx, o.y - cy);
-        var lit = Math.max(glowAll * .8, wave > 0 ? Math.max(0, 1 - Math.abs(dist - wave) / 72) : 0);
-        var live = .5 + .5 * Math.sin(k * .012 + n.ph);
-        var rad = n.r * (o.p < 1 ? .5 + o.p * .5 : 1 + lit * .5);
-        if (n.core) {
-          var cg = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, RAD * .5);
-          cg.addColorStop(0, 'rgba(' + PH + ',' + (.09 + live * .05) * A * appear + ')');
+      for (var ni = 0; ni < nodes.length; ni++) {
+        if (pp[ni] <= 0) continue;
+        var nd = nodes[ni], ox = px[ni], oy = py[ni], op = pp[ni];
+        if (ox < -50 || ox > W + 50 || oy < -50 || oy > H + 50) continue;
+        var dist = Math.hypot(ox - cx, oy - cy);
+        var lit = Math.max(glowAll * .5, wave > 0 ? Math.max(0, 1 - Math.abs(dist - wave) / (band * .85)) : 0);
+        var live = .5 + .5 * Math.sin(k * .012 + nd.ph);
+        var rad = nd.r * (op < 1 ? .5 + op * .5 : 1 + lit * .55);
+        var f2 = fade(dist);
+        if (nd.core && HALO > .5) {
+          var cg = ctx.createRadialGradient(ox, oy, 0, ox, oy, RAD * .3);
+          cg.addColorStop(0, 'rgba(' + PH + ',' + (.1 + live * .05) * AK * appear * HALO + ')');
           cg.addColorStop(1, 'rgba(' + PH + ',0)');
-          ctx.fillStyle = cg; ctx.beginPath(); ctx.arc(o.x, o.y, RAD * .5, 0, 7); ctx.fill();
+          ctx.fillStyle = cg; ctx.beginPath(); ctx.arc(ox, oy, RAD * .3, 0, 7); ctx.fill();
         }
-        if (lit > .1 || n.hot) {
-          var g = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, rad * 7);
-          g.addColorStop(0, 'rgba(' + PH + ',' + (.07 + lit * .4) * A * appear + ')');
+        if (HALO > .5 && (lit > .18 || nd.hot)) {
+          var g = ctx.createRadialGradient(ox, oy, 0, ox, oy, rad * 5.5);
+          g.addColorStop(0, 'rgba(' + PH + ',' + (.06 + lit * .34) * AK * appear * f2 + ')');
           g.addColorStop(1, 'rgba(' + PH + ',0)');
-          ctx.fillStyle = g; ctx.beginPath(); ctx.arc(o.x, o.y, rad * 7, 0, 7); ctx.fill();
+          ctx.fillStyle = g; ctx.beginPath(); ctx.arc(ox, oy, rad * 5.5, 0, 7); ctx.fill();
         }
-        ctx.beginPath(); ctx.arc(o.x, o.y, rad, 0, 7);
-        ctx.fillStyle = 'rgba(' + (lit > .3 || n.hot ? PH : WH) + ',' +
-          Math.min(1, (o.p < 1 ? .2 + o.p * .28 : .36 + lit * .62) * A) * appear + ')';
+        ctx.beginPath(); ctx.arc(ox, oy, rad, 0, 7);
+        ctx.fillStyle = 'rgba(' + (lit > .32 || nd.hot ? PH : WH) + ',' +
+          Math.min(1, (op < 1 ? .2 + op * .28 : .34 + lit * .6) * AK * f2) * appear + ')';
         ctx.fill();
-        if (o.p > .05 && o.p < 1) {
-          ctx.beginPath(); ctx.moveTo(o.x, o.y);
-          ctx.lineTo(o.x + (n.sx - o.x) * .12, o.y + (n.sy - o.y) * .12);
-          ctx.strokeStyle = 'rgba(' + GR + ',' + .22 * A * appear + ')';
+        if (op > .05 && op < 1) {
+          ctx.beginPath(); ctx.moveTo(ox, oy);
+          ctx.lineTo(ox + (nd.sx - ox) * .12, oy + (nd.sy - oy) * .12);
+          ctx.strokeStyle = 'rgba(' + GR + ',' + .22 * AK * appear + ')';
           ctx.lineWidth = 1; ctx.lineCap = 'round'; ctx.stroke();
         }
-      });
-
-      /* когда сеть зажглась целиком, за ней проступает мягкое свечение */
-      if (glowAll > .02) {
-        var bg = ctx.createRadialGradient(cx, cy, 0, cx, cy, RAD * 1.5);
-        bg.addColorStop(0, 'rgba(' + PH + ',' + (.09 * glowAll) + ')');
-        bg.addColorStop(.6, 'rgba(' + PH + ',' + (.04 * glowAll) + ')');
-        bg.addColorStop(1, 'rgba(' + PH + ',0)');
-        ctx.fillStyle = bg; ctx.beginPath(); ctx.arc(cx, cy, RAD * 1.5, 0, 7); ctx.fill();
       }
-      /* мягкие края: композиция читается как одно целое и никуда не обрывается */
-      ctx.globalCompositeOperation = 'destination-out';
-      var mask = ctx.createRadialGradient(cx, cy, RAD * .82, cx, cy, RAD * 1.22);
-      mask.addColorStop(0, 'rgba(0,0,0,0)');
-      mask.addColorStop(1, 'rgba(0,0,0,1)');
-      ctx.fillStyle = mask; ctx.fillRect(0, 0, W, H);
-      ctx.globalCompositeOperation = 'source-over';
       t++;
     })();
   }
@@ -3705,8 +3763,11 @@ function LEAD_API(url, opts){
   });
   var maxLen=0;
   runs.forEach(function(r){ if(r.length>maxLen) maxLen=r.length });
-  var step=Math.max(14, Math.min(30, 1400/maxLen));
+  /* длинная строка печатается быстрее короткой: набор во всех элементах
+     идёт одной волной и заканчивается почти одновременно, а не мигает в цифрах */
+  var TOTAL=Math.max(1200, Math.min(1900, maxLen*26));
   runs.forEach(function(chars){
+    var step=Math.max(13, Math.min(88, TOTAL/chars.length));
     var i=0;
     (function tick(){
       if(i>=chars.length) return;
