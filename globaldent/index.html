@@ -647,6 +647,11 @@ h2,.sec-head h2{font-size:var(--fs-h2);letter-spacing:-.025em;line-height:1.14}
 .stmt p,.dom-txt{font-size:var(--fs-h3);line-height:1.32}
 .card h3,.arte h3,.contour h3,.rel-card .rel-t,.icol .k,.wcard h3{font-size:var(--fs-h4);line-height:1.3}
 
+/* заголовки третьего уровня в материалах идут тем же кеглем, что карточки на главной */
+h3,.card h3,.arte h3,.contour h3,.step h3,.rel-card .rel-t{font-size:var(--fs-h4);line-height:1.3;letter-spacing:-.015em}
+
+.mstep h3,.bento .b h3,.case h3{font-size:var(--fs-h4);line-height:1.3;letter-spacing:-.015em}
+
 .r64-130-64-80{padding:64px 0 130px}.r72-96-48-64{padding:72px 0 96px}.r96-120-64-80{padding:96px 0 120px}.r120-140-72-80{padding:120px 0 140px}.r130-150-80-96{padding:130px 0 150px}.r140-96-96-64{padding:140px 0 96px}@media(max-width:720px){.r64-130-64-80{padding:64px 0 80px}.r72-96-48-64{padding:48px 0 64px}.r96-120-64-80{padding:64px 0 80px}.r120-140-72-80{padding:72px 0 80px}.r130-150-80-96{padding:80px 0 96px}.r140-96-96-64{padding:96px 0 64px}}</style>
 <style media="print">
 @page{size:A4 portrait;margin:15mm 13mm 17mm}
@@ -1160,7 +1165,7 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
       var cx = W * .46, cy = H * .5, half = Math.min(W * .21, 190), hh = half * .52, gap = H / (names.length + 1.1);
       ctx.font = '11px "JetBrains Mono", ui-monospace, monospace';
       for (var i = 0; i < names.length; i++) {
-        var y = cy + (i - (names.length - 1) / 2) * gap + Math.sin(t * .012 + i * 1.1) * 4;
+        var y = cy + (i - (names.length - 1) / 2) * gap;
         ctx.beginPath();
         ctx.moveTo(cx, y - hh); ctx.lineTo(cx + half, y); ctx.lineTo(cx, y + hh); ctx.lineTo(cx - half, y); ctx.closePath();
         ctx.fillStyle = 'rgba(' + GR + ',.07)'; ctx.fill();
