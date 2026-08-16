@@ -74,6 +74,9 @@ svg{display:block}
  background:transparent;border-bottom:1px solid transparent;
  transition:background .3s var(--ease),border-color .3s var(--ease),backdrop-filter .3s var(--ease)}
 /* подложка шапки появляется, только когда первый экран уже прокручен */
+/* кнопка в шапке появляется, когда первый экран уже прокручен */
+.nav .btn.pri{opacity:0;visibility:hidden;transition:opacity .25s var(--ease),visibility .25s}
+.nav.solid .btn.pri{opacity:1;visibility:visible}
 .nav.solid{background:color-mix(in srgb,var(--bg) 46%,transparent);
  backdrop-filter:saturate(150%) blur(18px);border-bottom-color:var(--line)}
 .nav .wrap{display:flex;align-items:center;gap:20px;width:100%}
@@ -1479,6 +1482,9 @@ h2,.sec-head h2{font-size:var(--fs-h2);letter-spacing:-.025em;line-height:1.14}
   footer .f-legal p,footer .f-legal a{margin:0;font-size:13.5px;line-height:1.5}
   footer .f-k{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--text-dim)}
 }
+
+/* светлая тема: основной текст и подписи в графике заметно темнее */
+:root[data-theme="light"]{--text-muted:#3F4A46;--text-dim:#5A6561}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
@@ -1632,11 +1638,11 @@ function LEAD_API(url, opts){
           </div>
 
           <div class="card s3 reveal">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-            <h3>AI-продавец в&nbsp;переписке</h3>
-            <span class="kick-to">блок для&nbsp;работы с&nbsp;клиентами</span>
-            <p>Если заявки приходят в&nbsp;мессенджеры и&nbsp;теряются между менеджерами. Отвечает клиенту за&nbsp;секунды, выясняет потребность и&nbsp;доводит до&nbsp;заявки, менеджер подключается, когда нужен человек</p>
-            <a class="morelink" href="/synapt/prodazh/">Подробнее</a>
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8"/></svg></div>
+            <h3>Обучение команды</h3>
+            <span class="kick-to">блок для&nbsp;погружения</span>
+            <p>Если нужны знания и&nbsp;кураторская работа с&nbsp;командой. Курс Automy AI: шесть недель, на&nbsp;выходе база знаний компании и&nbsp;свои агенты под&nbsp;задачу</p>
+            <a class="morelink" href="https://automyai.ru">Подробнее</a>
           </div>
 
           <div class="card s3 reveal">
@@ -1645,6 +1651,14 @@ function LEAD_API(url, opts){
             <span class="kick-to">блок для&nbsp;команды</span>
             <p>Если сотрудники задают руководителям одни и&nbsp;те&nbsp;же&nbsp;вопросы, а&nbsp;регламенты никто не&nbsp;открывает. Агент отвечает по&nbsp;вашим документам и&nbsp;истории решений, новичок адаптируется и&nbsp;приступает к&nbsp;задачам быстрее</p>
             <a class="morelink" href="/synapt/globaldent/">Подробнее</a>
+          </div>
+
+          <div class="card s3 reveal">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <h3>AI-продавец в&nbsp;переписке</h3>
+            <span class="kick-to">блок для&nbsp;работы с&nbsp;клиентами</span>
+            <p>Если заявки приходят в&nbsp;мессенджеры и&nbsp;теряются между менеджерами. Отвечает клиенту за&nbsp;секунды, выясняет потребность и&nbsp;доводит до&nbsp;заявки, менеджер подключается, когда нужен человек</p>
+            <a class="morelink" href="/synapt/prodazh/">Подробнее</a>
           </div>
 
           <div class="card s3 reveal">
@@ -1660,14 +1674,6 @@ function LEAD_API(url, opts){
             <h3>Интеграции и&nbsp;автоматизация</h3>
             <span class="kick-to">блок для&nbsp;операций</span>
             <p>Если данные находятся в&nbsp;разных системах и&nbsp;люди переносят их&nbsp;вручную. Связываем CRM, 1С, таблицы и&nbsp;мессенджеры так, чтобы каждая цифра появлялась там, где она нужна, без&nbsp;участия человека</p>
-          </div>
-
-          <div class="card s3 reveal">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8"/></svg></div>
-            <h3>Обучение команды</h3>
-            <span class="kick-to">блок для&nbsp;погружения</span>
-            <p>Если нужны знания и&nbsp;кураторская работа с&nbsp;командой. Курс Automy AI: шесть недель, на&nbsp;выходе база знаний компании и&nbsp;свои агенты под&nbsp;задачу</p>
-            <a class="morelink" href="https://automyai.ru">Подробнее</a>
           </div>
 
           <div class="card s3 reveal">
@@ -2194,7 +2200,7 @@ function LEAD_API(url, opts){
   function applyTheme() {
     var light = document.documentElement.getAttribute('data-theme') === 'light';
     WH = light ? '18,22,20' : '232,238,236';
-    GR = light ? '58,68,64' : '128,140,136';
+    GR = light ? '38,46,43' : '128,140,136';
     PH = light ? '40,124,68' : '121,201,142';
     A = light ? 2.6 : 1.25;
   }
@@ -2262,7 +2268,7 @@ function LEAD_API(url, opts){
        Узлы стоят кольцами, связи держат форму, по сети волнами проходит синергия */
     var ctx = c.getContext('2d'), W = 0, H = 0, nodes = [], edges = [], t = 0;
     var reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
-    var cx = 0, cy = 0, RAD = 0, FLY = 240, WIRE = 420, PULSE = 780;
+    var cx = 0, cy = 0, RAD = 0, FLY = 200, WIRE = 340, PULSE = 460;
 
     function build() {
       var r = c.getBoundingClientRect(); W = r.width; H = r.height;
@@ -2270,9 +2276,9 @@ function LEAD_API(url, opts){
       c.width = W * DPR; c.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
       var narrow = W < 900;
       /* центр композиции: на широком экране правее текста, на телефоне по центру кадра */
-      cx = narrow ? W * .5 : W * .57;
-      cy = narrow ? H * .46 : H * .38;
-      RAD = narrow ? Math.min(W * .44, H * .34) : Math.min(W * .26, H * .34);
+      cx = narrow ? W * .5 : W * .55;
+      cy = narrow ? H * .44 : H * .4;
+      RAD = narrow ? Math.min(W * .5, H * .38) : Math.min(W * .36, H * .46);
       nodes = [];
       var rings = narrow ? 4 : 5, id = 0;
       nodes.push({x: cx, y: cy, ring: 0, r: 3.2, core: true, ph: 0, d: 0, hot: false, sx: cx, sy: cy});
@@ -2283,8 +2289,8 @@ function LEAD_API(url, opts){
           var a = (k / cnt) * 6.283 + rnd(id * 11) * .5 + ri * .4;
           var jitter = 1 + (rnd(id * 7) - .5) * .22;
           nodes.push({
-            x: cx + Math.cos(a) * rr * jitter,
-            y: cy + Math.sin(a) * rr * jitter * .92,
+            x: cx + Math.cos(a) * rr * jitter * (1.24 + rnd(id * 19) * .26),
+            y: cy + Math.sin(a) * rr * jitter * (a > 0 ? 1.06 : .8),
             ring: ri, a: a, rr: rr,
             r: 1.5 + rnd(id * 5) * 1.7,
             d: rnd(id * 3) * .6,
@@ -2335,7 +2341,7 @@ function LEAD_API(url, opts){
           var lit = wave > 0 ? Math.max(0, 1 - Math.abs(ed.mid - wave) / 86) : 0;
           ctx.beginPath(); ctx.moveTo(ed.a.x, ed.a.y); ctx.lineTo(gx, gy);
           ctx.strokeStyle = lit > .04
-            ? 'rgba(' + PH + ',' + (.08 + lit * .34) * A * appear + ')'
+            ? 'rgba(' + PH + ',' + (.1 + lit * .55) * A * appear + ')'
             : 'rgba(' + GR + ',' + (.1 + ed.w * .16) * A * appear + ')';
           ctx.lineWidth = (.75 + ed.w * .5) + lit * .7;
           ctx.stroke();
@@ -2357,13 +2363,13 @@ function LEAD_API(url, opts){
         }
         if (lit > .1 || n.hot) {
           var g = ctx.createRadialGradient(o.x, o.y, 0, o.x, o.y, rad * 7);
-          g.addColorStop(0, 'rgba(' + PH + ',' + (.06 + lit * .26) * A * appear + ')');
+          g.addColorStop(0, 'rgba(' + PH + ',' + (.07 + lit * .4) * A * appear + ')');
           g.addColorStop(1, 'rgba(' + PH + ',0)');
           ctx.fillStyle = g; ctx.beginPath(); ctx.arc(o.x, o.y, rad * 7, 0, 7); ctx.fill();
         }
         ctx.beginPath(); ctx.arc(o.x, o.y, rad, 0, 7);
         ctx.fillStyle = 'rgba(' + (lit > .3 || n.hot ? PH : WH) + ',' +
-          Math.min(1, (o.p < 1 ? .2 + o.p * .28 : .34 + lit * .5) * A) * appear + ')';
+          Math.min(1, (o.p < 1 ? .2 + o.p * .28 : .36 + lit * .62) * A) * appear + ')';
         ctx.fill();
         if (o.p > .05 && o.p < 1) {
           ctx.beginPath(); ctx.moveTo(o.x, o.y);
@@ -2375,7 +2381,7 @@ function LEAD_API(url, opts){
 
       /* мягкие края: композиция читается как одно целое и никуда не обрывается */
       ctx.globalCompositeOperation = 'destination-out';
-      var mask = ctx.createRadialGradient(cx, cy, RAD * .72, cx, cy, RAD * 1.5);
+      var mask = ctx.createRadialGradient(cx, cy, RAD * .95, cx, cy, RAD * 1.85);
       mask.addColorStop(0, 'rgba(0,0,0,0)');
       mask.addColorStop(1, 'rgba(0,0,0,1)');
       ctx.fillStyle = mask; ctx.fillRect(0, 0, W, H);
@@ -2548,63 +2554,87 @@ function LEAD_API(url, opts){
        слева разрозненные обращения, в центре база знаний, справа ровный разобранный ответ ---------- */
   /* агент на знаниях: вопрос уходит в базу клуба и возвращается ответом со ссылкой на источник */
   [].forEach.call(document.querySelectorAll('canvas.fx-flow'), function (c) {
-    /* вопрос уходит в базу клуба, слои базы по очереди отзываются,
-       и наружу выходит ответ со ссылкой на источник. Подписи стоят
-       строкой сверху и строкой снизу, линия идёт между ними и ничего не пересекает */
-    var LAY = 4;
+    /* переписка с агентом: слева приходит вопрос участника, агент поднимает базу клуба
+       и справа возвращает ответ со ссылкой на источник */
+    function bubble(ctx, x, y, w, h, right, alpha, accent) {
+      ctx.beginPath();
+      var r = 7;
+      if (ctx.roundRect) ctx.roundRect(x, y, w, h, r); else ctx.rect(x, y, w, h);
+      ctx.fillStyle = accent ? 'rgba(' + PH + ',' + (.1 * alpha) + ')' : 'rgba(' + GR + ',' + (.09 * alpha) + ')';
+      ctx.fill();
+      ctx.strokeStyle = accent ? 'rgba(' + PH + ',' + (.5 * alpha) + ')' : 'rgba(' + GR + ',' + (.42 * alpha) + ')';
+      ctx.lineWidth = 1; ctx.stroke();
+      /* хвостик пузыря со стороны собеседника */
+      ctx.beginPath();
+      if (right) { ctx.moveTo(x + w - 9, y + h); ctx.lineTo(x + w, y + h + 5); ctx.lineTo(x + w - 2, y + h) }
+      else { ctx.moveTo(x + 9, y + h); ctx.lineTo(x, y + h + 5); ctx.lineTo(x + 2, y + h) }
+      ctx.fillStyle = accent ? 'rgba(' + PH + ',' + (.5 * alpha) + ')' : 'rgba(' + GR + ',' + (.42 * alpha) + ')';
+      ctx.fill();
+    }
+    function lines(ctx, x, y, w, n, alpha, accent, lastShort) {
+      for (var i = 0; i < n; i++) {
+        var lw = i === n - 1 && lastShort ? w * .55 : w * (i % 2 ? .82 : 1);
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(x, y + i * 8, lw, 3, 1.5); else ctx.rect(x, y + i * 8, lw, 3);
+        ctx.fillStyle = accent ? 'rgba(' + PH + ',' + (.5 * alpha) + ')' : 'rgba(' + GR + ',' + (.45 * alpha) + ')';
+        ctx.fill();
+      }
+    }
     loop(c, function (s, t) {
       var ctx = s.ctx, W = s.W, H = s.H, i;
       ctx.clearRect(0, 0, W, H);
-      var midY = H * .52, qx = 16, ax = W - 16, hx = W * .5;
-      var ph = (t * .0038) % 1;
-      /* 0-.34 вопрос летит в базу, .34-.62 база отзывается слоями, .62-1 ответ уходит */
-      var qp = Math.min(1, ph / .34);
-      var sp = ph < .34 ? 0 : Math.min(1, (ph - .34) / .28);
-      var rp = ph < .62 ? 0 : (ph - .62) / .38;
-      var stackW = 54, lh = 8, gap = 3, top = midY - (LAY * (lh + gap) - gap) / 2;
-      /* стопка базы: слои загораются по очереди, пока агент ищет ответ */
+      var ph = (t * .0034) % 1;
+      var qa = Math.min(1, ph / .22);                       /* вопрос появляется */
+      var sp = ph < .26 ? 0 : Math.min(1, (ph - .26) / .26); /* агент поднимает базу */
+      var ra = ph < .56 ? 0 : Math.min(1, (ph - .56) / .24); /* ответ печатается */
+      var bw = Math.min(150, W * .34), bx = 10, ax = W - 10 - bw;
+      var qy = 22, ay = H - 58;
+      /* вопрос участника */
+      bubble(ctx, bx, qy, bw, 30, false, qa, false);
+      lines(ctx, bx + 10, qy + 9, bw - 20, 2, qa, false, true);
+      /* база клуба между ними: слои загораются снизу вверх */
+      var mx = W / 2, LAY = 4, lh = 6, gap = 3;
+      var top = H / 2 - (LAY * (lh + gap) - gap) / 2;
       for (i = 0; i < LAY; i++) {
-        var yy = top + i * (lh + gap);
-        /* подсветка идёт снизу вверх: сигнал приходит в основание базы */
         var lit = Math.max(0, Math.min(1, sp * LAY - (LAY - 1 - i)));
-        var ww = stackW - i * 5;
+        var ww = 44 - i * 4;
         ctx.beginPath();
-        if (ctx.roundRect) ctx.roundRect(hx - ww / 2, yy, ww, lh, 3); else ctx.rect(hx - ww / 2, yy, ww, lh);
-        ctx.fillStyle = 'rgba(' + PH + ',' + (.04 + lit * .18) + ')'; ctx.fill();
-        ctx.strokeStyle = lit > .1 ? 'rgba(' + PH + ',' + (.28 + lit * .3) + ')' : 'rgba(' + GR + ',.42)';
+        if (ctx.roundRect) ctx.roundRect(mx - ww / 2, top + i * (lh + gap), ww, lh, 2.5);
+        else ctx.rect(mx - ww / 2, top + i * (lh + gap), ww, lh);
+        ctx.fillStyle = 'rgba(' + PH + ',' + (.04 + lit * .2) + ')'; ctx.fill();
+        ctx.strokeStyle = lit > .1 ? 'rgba(' + PH + ',' + (.3 + lit * .3) + ')' : 'rgba(' + GR + ',.4)';
         ctx.lineWidth = 1; ctx.stroke();
       }
-      if (sp > 0 && sp < 1) {
-        var g0 = ctx.createRadialGradient(hx, midY, 0, hx, midY, 34);
-        g0.addColorStop(0, 'rgba(' + PH + ',' + (.09 * Math.sin(sp * Math.PI)) + ')');
-        g0.addColorStop(1, 'rgba(' + PH + ',0)');
-        ctx.fillStyle = g0; ctx.beginPath(); ctx.arc(hx, midY, 34, 0, 7); ctx.fill();
+      /* путь вопроса к базе и ответа из базы */
+      if (qa > .6) {
+        var p1 = Math.min(1, (qa - .6) / .4);
+        ctx.beginPath(); ctx.moveTo(bx + bw, qy + 34);
+        ctx.lineTo(bx + bw + (mx - 26 - bx - bw) * p1, H / 2 - 6);
+        ctx.strokeStyle = 'rgba(' + GR + ',.34)'; ctx.lineWidth = 1; ctx.stroke();
       }
-      /* путь вопроса и путь ответа: две прямые линии на одной высоте */
-      var inX = hx - stackW / 2 - 8, outX = hx + stackW / 2 + 8;
-      ctx.beginPath(); ctx.moveTo(qx, midY); ctx.lineTo(inX, midY);
-      ctx.strokeStyle = 'rgba(' + GR + ',.32)'; ctx.lineWidth = 1; ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(outX, midY); ctx.lineTo(ax, midY);
-      ctx.strokeStyle = 'rgba(' + PH + ',' + (.2 + rp * .3) + ')'; ctx.lineWidth = 1; ctx.stroke();
-      if (ph < .34) {
-        var x1 = qx + (inX - qx) * qp;
-        ctx.beginPath(); ctx.arc(x1, midY, 2.6, 0, 7);
-        ctx.fillStyle = 'rgba(' + WH + ',.85)'; ctx.fill();
-      } else if (rp > 0) {
-        var x2 = outX + (ax - outX) * Math.min(1, rp);
-        var g = ctx.createRadialGradient(x2, midY, 0, x2, midY, 12);
-        g.addColorStop(0, 'rgba(' + PH + ',.5)'); g.addColorStop(1, 'rgba(' + PH + ',0)');
-        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x2, midY, 12, 0, 7); ctx.fill();
-        ctx.beginPath(); ctx.arc(x2, midY, 2.8, 0, 7);
-        ctx.fillStyle = 'rgba(' + PH + ',.95)'; ctx.fill();
+      if (ra > 0) {
+        ctx.beginPath(); ctx.moveTo(mx + 26, H / 2 + 6);
+        ctx.lineTo(mx + 26 + (ax - mx - 26) * Math.min(1, ra * 1.4), ay + 4);
+        ctx.strokeStyle = 'rgba(' + PH + ',' + (.2 + ra * .3) + ')'; ctx.lineWidth = 1; ctx.stroke();
+        /* ответ со ссылкой на источник */
+        bubble(ctx, ax, ay, bw, 34, true, ra, true);
+        lines(ctx, ax + 10, ay + 8, bw - 20, 2, ra, true, false);
+        if (ra > .7) {
+          var la = (ra - .7) / .3, lwid = (bw - 20) * .5;
+          ctx.beginPath();
+          if (ctx.roundRect) ctx.roundRect(ax + 10, ay + 24, lwid, 3, 1.5); else ctx.rect(ax + 10, ay + 24, lwid, 3);
+          ctx.fillStyle = 'rgba(' + PH + ',' + (.85 * la) + ')'; ctx.fill();
+          ctx.beginPath(); ctx.moveTo(ax + 10, ay + 29.5); ctx.lineTo(ax + 10 + lwid, ay + 29.5);
+          ctx.strokeStyle = 'rgba(' + PH + ',' + (.55 * la) + ')'; ctx.lineWidth = 1; ctx.stroke();
+        }
       }
-      /* подписи: верхняя строка и нижняя строка, между ними только графика */
+      /* подписи по краям, вне зоны пузырей */
       ctx.textAlign = 'left'; ctx.fillStyle = 'rgba(' + GR + ',.8)';
-      capt(ctx, 'вопрос участника', 8, 13, W * .42);
-      ctx.textAlign = 'right'; ctx.fillStyle = 'rgba(' + PH + ',.85)';
-      capt(ctx, 'ответ со ссылкой на источник', W - 8, 13, W * .5);
+      capt(ctx, 'вопрос участника', 10, 13, W * .42);
       ctx.textAlign = 'center'; ctx.fillStyle = 'rgba(' + (sp > .1 ? PH : GR) + ',.8)';
-      capt(ctx, 'база клуба: 1 500+ пар вопрос-ответ', hx, H - 7, W - 16);
+      capt(ctx, 'база клуба', mx, H / 2 - 22, W * .3);
+      ctx.textAlign = 'right'; ctx.fillStyle = 'rgba(' + PH + ',.85)';
+      capt(ctx, 'ответ со ссылкой на источник', W - 10, H - 7, W * .6);
       ctx.textAlign = 'left';
     }, null);
   });
@@ -2956,7 +2986,7 @@ function LEAD_API(url, opts){
   var TOUCH=matchMedia('(hover: none)').matches;
   var WH='232,238,236', GR='128,140,136', PH='121,201,142';
   function theme(){var l=document.documentElement.getAttribute('data-theme')==='light';
-    WH=l?'26,30,28':'232,238,236'; GR=l?'104,114,110':'128,140,136'; PH=l?'46,124,74':'121,201,142';}
+    WH=l?'26,30,28':'232,238,236'; GR=l?'40,48,45':'128,140,136'; PH=l?'46,124,74':'121,201,142';}
   theme(); new MutationObserver(theme).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 
   var BIZ=['заявки','продажи','закупки','документы','клиенты','знания'];
