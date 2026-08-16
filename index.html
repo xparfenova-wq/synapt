@@ -2685,24 +2685,42 @@ function LEAD_API(url, opts){
 
   function build(){
     var r=c.getBoundingClientRect(); W=r.width; NAR=W<620; S=NAR?0.84:1;
-    H=NAR?450:Math.max(380,Math.min(500,W*0.48));
+    H=NAR?Math.min(520,Math.max(430,W*1.22)):Math.max(380,Math.min(500,W*0.48));
     c.style.height=H+'px'; c.width=W*DPR; c.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
-    hub={x:W*0.5, y:H*0.5, rx:W*(NAR?0.27:0.245), ry:H*0.40,
-         L:{x:W*(NAR?0.32:0.30)}, R:{x:W*(NAR?0.68:0.70)}};
     pts=[];
-    var bx=hub.L.x-(NAR?W*0.04:W*0.045);
-    BIZ.forEach(function(n,i){
-      pts.push({kind:'biz',n:n,r:BIZR[n],x:bx+(i%2?W*0.035:0),y:H*0.22+(H*0.56)*(i/(BIZ.length-1)),rr:4});
-    });
-    /* партнёры ближе к центру, чтобы их роли читались сразу под именем */
-    var tx=hub.R.x+(NAR?0:W*0.015);
-    pts.push({kind:'core',n:CORE[0].n,r:CORE[0].r,x:tx,y:H*0.26,rr:6.5,lab:'up'});
-    pts.push({kind:'core',n:CORE[1].n,r:CORE[1].r,x:tx,y:H*0.76,rr:6.5,lab:'down'});
-    SPEC.forEach(function(o,i){
-      var left=i%2===0, row=Math.floor(i/2);
-      pts.push({kind:'spec',n:o.n,r:o.r,side:left?'l':'r',
-        x:tx+(left?-1:1)*W*(NAR?0.085:0.10), y:H*(0.38+row*0.12), rr:4});
-    });
+    if(NAR){
+      /* на телефоне схема разворачивается вертикально: сверху процессы компании,
+         снизу команда, в месте пересечения контуров общая работа */
+      hub={x:W*0.5, y:H*0.5, vertical:true,
+           rx:W*0.44, ry:H*0.30, U:{y:H*0.34}, D:{y:H*0.66}};
+      BIZ.forEach(function(n,i){
+        var col=i%3, row=Math.floor(i/3);
+        pts.push({kind:'biz',n:n,r:BIZR[n],lab:'top',
+          x:W*(0.22+col*0.28), y:H*(0.20+row*0.12), rr:3.6});
+      });
+      pts.push({kind:'core',n:CORE[0].n,r:CORE[0].r,x:W*0.27,y:H*0.80,rr:6,lab:'down'});
+      pts.push({kind:'core',n:CORE[1].n,r:CORE[1].r,x:W*0.73,y:H*0.80,rr:6,lab:'down'});
+      SPEC.forEach(function(o,i){
+        var col=i%3, row=Math.floor(i/3);
+        pts.push({kind:'spec',n:o.n,r:o.r,lab:'top',
+          x:W*(0.22+col*0.28), y:H*(0.62+row*0.08), rr:3.4});
+      });
+    } else {
+      hub={x:W*0.5, y:H*0.5, rx:W*0.245, ry:H*0.40,
+           L:{x:W*0.30}, R:{x:W*0.70}};
+      var bx=hub.L.x-W*0.045;
+      BIZ.forEach(function(n,i){
+        pts.push({kind:'biz',n:n,r:BIZR[n],x:bx+(i%2?W*0.035:0),y:H*0.22+(H*0.56)*(i/(BIZ.length-1)),rr:4});
+      });
+      var tx=hub.R.x+W*0.015;
+      pts.push({kind:'core',n:CORE[0].n,r:CORE[0].r,x:tx,y:H*0.26,rr:6.5,lab:'up'});
+      pts.push({kind:'core',n:CORE[1].n,r:CORE[1].r,x:tx,y:H*0.76,rr:6.5,lab:'down'});
+      SPEC.forEach(function(o,i){
+        var left=i%2===0, row=Math.floor(i/2);
+        pts.push({kind:'spec',n:o.n,r:o.r,side:left?'l':'r',
+          x:tx+(left?-1:1)*W*0.10, y:H*(0.38+row*0.12), rr:4});
+      });
+    }
   }
   build(); addEventListener('resize',build);
 
@@ -2744,7 +2762,11 @@ function LEAD_API(url, opts){
     g.addColorStop(0,'rgba('+PH+','+a+')'); g.addColorStop(1,'rgba('+PH+',0)');
     ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,rad,0,7); ctx.fill();
   }
-  function ell(cx){ ctx.beginPath(); ctx.ellipse(cx,hub.y,hub.rx,hub.ry,0,0,7) }
+  /* два контура: на широком экране рядом, на телефоне друг над другом */
+  function ellL(){ if(hub.vertical) ctx.beginPath(), ctx.ellipse(hub.x,hub.U.y,hub.rx,hub.ry,0,0,7);
+                   else ctx.beginPath(), ctx.ellipse(hub.L.x,hub.y,hub.rx,hub.ry,0,0,7) }
+  function ellR(){ if(hub.vertical) ctx.beginPath(), ctx.ellipse(hub.x,hub.D.y,hub.rx,hub.ry,0,0,7);
+                   else ctx.beginPath(), ctx.ellipse(hub.R.x,hub.y,hub.rx,hub.ry,0,0,7) }
   function wrap(txt,max){
     var w=txt.split(' '), lines=[], cur='';
     for(var i=0;i<w.length;i++){
@@ -2790,19 +2812,26 @@ function LEAD_API(url, opts){
     var breathe=.5+.5*Math.sin(t*.008);
 
     /* при наведении на ядро светлеет вся площадь обоих контуров, не только их линии */
-    ell(hub.L.x); ctx.fillStyle='rgba('+PH+','+(.02+hubE*.075)+')'; ctx.fill();
-    ell(hub.R.x); ctx.fillStyle='rgba('+PH+','+(.02+hubE*.075)+')'; ctx.fill();
-    ctx.save(); ell(hub.L.x); ctx.clip(); ell(hub.R.x);
+    ellL(); ctx.fillStyle='rgba('+PH+','+(.02+hubE*.075)+')'; ctx.fill();
+    ellR(); ctx.fillStyle='rgba('+PH+','+(.02+hubE*.075)+')'; ctx.fill();
+    ctx.save(); ellL(); ctx.clip(); ellR();
     ctx.fillStyle='rgba('+PH+','+(.05+breathe*.04+hubE*.1)+')'; ctx.fill(); ctx.restore();
     /* при активном ядре оба контура целиком набирают цвет и толщину */
     ctx.font='400 '+(10.5*S)+'px "JetBrains Mono", ui-monospace, monospace';
     ctx.textAlign='center';
-    ctx.fillStyle='rgba('+GR+','+(.6+hubE*.3)+')'; ctx.fillText('ваша компания', hub.L.x, hub.y-hub.ry-14);
-    ctx.fillStyle='rgba('+GR+','+(.6+hubE*.3)+')'; ctx.fillText('команда Synapt', hub.R.x, hub.y-hub.ry-14);
+    if(hub.vertical){
+      ctx.fillStyle='rgba('+GR+','+(.6+hubE*.3)+')';
+      ctx.fillText('ваша компания', hub.x, hub.U.y-hub.ry-8);
+      ctx.fillText('команда Synapt', hub.x, hub.D.y+hub.ry+22);
+    } else {
+      ctx.fillStyle='rgba('+GR+','+(.6+hubE*.3)+')';
+      ctx.fillText('ваша компания', hub.L.x, hub.y-hub.ry-14);
+      ctx.fillText('команда Synapt', hub.R.x, hub.y-hub.ry-14);
+    }
     ctx.textAlign='left';
     ctx.setLineDash([5,6]); ctx.lineWidth=1+hubE*0.9;
-    ell(hub.L.x); ctx.strokeStyle='rgba('+(hubE>.4?PH:GR)+','+(.34+hubE*.55)+')'; ctx.stroke();
-    ell(hub.R.x); ctx.strokeStyle='rgba('+PH+','+(.36+hubE*.55)+')'; ctx.stroke();
+    ellL(); ctx.strokeStyle='rgba('+(hubE>.4?PH:GR)+','+(.34+hubE*.55)+')'; ctx.stroke();
+    ellR(); ctx.strokeStyle='rgba('+PH+','+(.36+hubE*.55)+')'; ctx.stroke();
     ctx.setLineDash([]);
 
     /* связь не нарисована целиком: она прорастает от узла к ядру и обратно,
@@ -2887,12 +2916,14 @@ function LEAD_API(url, opts){
       var size=(p.kind==='core'?12.5:11)*S;
       ctx.font=(p.kind==='core'?'500 ':'400 ')+size+'px "JetBrains Mono", ui-monospace, monospace';
       ctx.fillStyle='rgba('+(on?PH:(p.kind==='core'?WH:GR))+','+(on?1:(p.kind==='core'?.92:.8))+')';
-      if(p.lab){ ctx.textAlign='center'; ctx.fillText(p.n,p.x,p.y+(p.lab==='up'?-13:19)) }
+      if(p.lab==='top'){ ctx.textAlign='center'; ctx.fillText(p.n,p.x,p.y-11) }
+      else if(p.lab){ ctx.textAlign='center'; ctx.fillText(p.n,p.x,p.y+(p.lab==='up'?-13:19)) }
       else { var right=p.kind!=='biz'&&p.side!=='l';
         ctx.textAlign=right?'left':'right'; ctx.fillText(p.n,p.x+(right?11:-11),p.y+4) }
       ctx.textAlign='left';
       /* роли партнёров стоят по умолчанию, остальные показываются при наведении */
-      if(p.kind==='core') role(p, on?1:.8);
+      /* на телефоне роли партнёров показываются по касанию: иначе подписи наезжают друг на друга */
+      if(p.kind==='core' && !NAR) role(p, on?1:.8);
       else if(on) role(p,1);
     });
     t++;

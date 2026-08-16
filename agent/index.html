@@ -479,7 +479,7 @@ footer .fmeta a:hover{color:var(--text)}
 /* ссылка на политику внутри согласия: зона нажатия крупнее, но не перекрывает сам чекбокс */
 @media(max-width:860px){
   .lf-check>span{line-height:1.65}
-  .lf-check>span a{display:inline-block;padding-block:11px;margin-block:-11px;border-bottom:0;
+  .lf-check>span a{display:inline-block;padding-block:12px;margin-block:-12px;border-bottom:0;
    text-decoration:underline;text-decoration-color:var(--line-accent);text-underline-offset:3px}
 }
 /* обёртка инпута больше не занимает 44px ширины: подпись стоит вплотную к кружку */
@@ -588,6 +588,31 @@ footer .fmeta a:hover{color:var(--text)}
   .tg-ava{grid-area:ava;width:52px;height:52px}
   .tg-txt{grid-area:txt}
   .tg-btn{grid-area:btn;width:100%}
+}
+
+/* таблица сравнения на телефоне: четыре колонки не листаются вбок, а встают
+   карточками, где под критерием идут три подписанных значения подряд */
+@media(max-width:640px){
+  .cmp:not(.pairs){overflow-x:visible}
+  .cmp:not(.pairs) table,.cmp:not(.pairs) tbody,.cmp:not(.pairs) tr,.cmp:not(.pairs) td{
+   display:block;width:auto;min-width:0}
+  .cmp:not(.pairs) tr:first-child{display:none}
+  .cmp:not(.pairs) tr{padding:16px 0 18px;border-bottom:1px solid var(--line)}
+  .cmp:not(.pairs) tr:last-child{border-bottom:0}
+  .cmp:not(.pairs) td,.cmp:not(.pairs) td.hi{width:auto;padding:7px 20px;border-bottom:0;
+   background:transparent;color:var(--text-2);font-size:14.5px}
+  .cmp:not(.pairs) td:first-child{width:auto;padding-bottom:2px;font-size:16px;font-weight:560;
+   letter-spacing:-.012em;color:var(--text)}
+  .cmp:not(.pairs) td+td::before{display:block;font-family:var(--mono);font-size:11px;
+   letter-spacing:.1em;color:var(--text-dim);margin-bottom:5px;font-feature-settings:"case" 1}
+  .cmp:not(.pairs) td:nth-child(2)::before{content:"штатный аналитик"}
+  .cmp:not(.pairs) td:nth-child(3)::before{content:"внешний консультант"}
+  .cmp:not(.pairs) td:nth-child(4)::before{content:"AI-советник, Стандарт";color:var(--accent-txt)}
+  .cmp:not(.pairs) td:nth-child(4){color:var(--text)}
+  /* листать больше нечего, подсказку снимаем */
+  .cmp-hint{display:none}
+  /* открытый плюс поворачивается на 45 градусов и углом выходил за колонку */
+  .faq summary{padding-right:7px}
 }
 </style>
 </head>

@@ -298,8 +298,12 @@ section{position:relative}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary:hover{color:var(--accent-txt)}
 .faq summary .pl{flex:none;margin-left:auto;width:26px;height:26px;border-radius:var(--r-xs);border:1px solid var(--line);color:var(--text-dim);
- display:flex;align-items:center;justify-content:center;transition:transform .2s var(--ease),color .2s var(--ease),border-color .2s var(--ease)}
-.faq details[open] summary .pl{transform:rotate(45deg);color:var(--accent-txt);border-color:var(--line-accent)}
+ display:flex;align-items:center;justify-content:center;transition:color .2s var(--ease),border-color .2s var(--ease)}
+/* поворачивается только знак внутри, сама рамка остаётся квадратной:
+   иначе повёрнутый бокс становится шире на корень из двух и вылезает за правый край */
+.faq summary .pl svg{transition:transform .2s var(--ease)}
+.faq details[open] summary .pl{color:var(--accent-txt);border-color:var(--line-accent)}
+.faq details[open] summary .pl svg{transform:rotate(45deg)}
 .faq .ans{padding:0 4px 24px;font-size:15px;color:var(--text-2);line-height:1.65;max-width:60ch}
 
 /* ---------- форма ---------- */

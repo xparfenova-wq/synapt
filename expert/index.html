@@ -383,15 +383,19 @@ footer .brand svg{height:22px}
  .bento>*:nth-child(1),.bento>*:nth-child(6){grid-column:span 2}
  .bento>*:nth-child(2),.bento>*:nth-child(3),.bento>*:nth-child(4),.bento>*:nth-child(5){grid-column:span 1}
  .plans{grid-template-columns:1fr}
- .hero-grid{grid-template-columns:1fr;gap:48px}
- .hero-r{justify-self:start;text-align:left}
- .dom-cap{margin-left:0}
+ .hero-grid{grid-template-columns:1fr;gap:44px}
+ .hero-r{justify-self:stretch;text-align:left}
+ .dom-cap{margin-left:0;max-width:38ch}
  #synFx{opacity:.26;-webkit-mask-image:radial-gradient(130% 80% at 68% 14%,#000 0,transparent 74%);
   mask-image:radial-gradient(130% 80% at 68% 14%,#000 0,transparent 74%)}
 }
 @media(max-width:720px){
  .wrap,.sheet{padding-left:20px;padding-right:20px}
- .hero{padding:130px 0 80px}
+ .hero{padding:118px 0 72px}
+ .dom{font-size:clamp(64px,19vw,84px)}
+ .eyebrow{flex-wrap:wrap;gap:8px}
+ .eyebrow .n{flex:none}
+ .faq summary{font-size:16.5px;gap:12px}
  #now{padding:56px 0 64px}
  #fit{padding:64px 0}
  #creed{padding:88px 0 96px}
@@ -443,6 +447,9 @@ footer .brand svg{height:22px}
 /* строка 22,3px: ссылка согласия в две строки даёт тап-зону 44px */
 .lf-check>span{padding-top:9px;font-size:13.5px;line-height:1.65;color:var(--text-muted)}
 .lf-check>span a{color:var(--text-2);position:relative;z-index:3}
+/* ссылка согласия переносится на две строки: подчёркивание вместо рамки плюс вертикальный паддинг дают тап-зону от 44px */
+.lf-check>span a{border-bottom:0;text-decoration:underline;text-decoration-color:var(--line-accent);
+  text-underline-offset:3px;padding-block:4px}
 
 /* тап-зоны в подвале и на планшете */
 @media(max-width:1024px){
@@ -530,7 +537,6 @@ footer .brand svg{height:22px}
     <div class="cta-row reveal">
       <a class="btn pri lg" href="#lead">Обсудить задачу</a>
     </div>
-      </div>
   </div>
   <div class="hero-r reveal">
     <div class="dom">1<span class="sp"></span>500</div>
@@ -1246,7 +1252,7 @@ footer .brand svg{height:22px}
       ctx.clearRect(0, 0, W, H);
       var narrow = W < 560;
       var cx = W * (narrow ? .33 : .46), cy = H * .5, half = Math.min(W * .21, 190), hh = half * .52, gap = H / (names.length + 1.1);
-      ctx.font = (narrow ? 10 : 11) + 'px "JetBrains Mono", ui-monospace, monospace';
+      ctx.font = '11px "JetBrains Mono", ui-monospace, monospace';
       for (var i = 0; i < names.length; i++) {
         var y = cy + (i - (names.length - 1) / 2) * gap + Math.sin(t * .012 + i * 1.1) * 4;
         ctx.beginPath();

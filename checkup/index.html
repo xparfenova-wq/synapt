@@ -261,8 +261,22 @@ h4{font-size:16.5px;font-weight:560;letter-spacing:-.012em;line-height:1.35}
  mask-composite:intersect}
 /* графика остаётся фоном: на светлой теме и на узком экране она не должна перечёркивать строки текста */
 :root[data-theme="light"] .fullwide>canvas{opacity:.62}
-@media(max-width:900px){.fullwide>canvas{width:64%;opacity:.5}}
-@media(max-width:600px){.fullwide>canvas{width:100%;left:0;opacity:.34}}
+/* светлая тема задавала прозрачность правилом выше по весу, поэтому мобильные значения
+   до неё не доходили и графика шла в полную силу через текст */
+@media(max-width:900px){
+ .fullwide>canvas,:root[data-theme="light"] .fullwide>canvas{width:64%;opacity:.5}
+}
+@media(max-width:600px){
+ /* на узком экране графика становится полосой в шапке блока: раньше холст тянулся
+    на полторы высоты экрана и линии шли сквозь всю дорожную карту */
+ .fullwide>canvas,:root[data-theme="light"] .fullwide>canvas{
+  width:100%;left:0;height:min(46vh,380px);bottom:auto;opacity:.3;
+  -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 54%,transparent 97%),linear-gradient(#000,#000);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to bottom,#000 0,#000 54%,transparent 97%),linear-gradient(#000,#000);
+  mask-composite:intersect}
+ :root[data-theme="light"] .fullwide>canvas{opacity:.36}
+}
 .fullwide>.wrap{position:relative;z-index:1}
 .fx-cap{font-size:13.5px;font-weight:450;color:var(--text-muted);margin-top:28px;max-width:52ch}
 
@@ -578,6 +592,11 @@ footer .fm a:hover{color:var(--text)}
   .tg-ava{grid-area:ava;width:52px;height:52px}
   .tg-txt{grid-area:txt}
   .tg-btn{grid-area:btn;width:100%}
+}
+/* на узком экране колонка текста рядом с фото ужималась до 170px и строка ломалась
+   после каждых двух слов: фото уходит на свою строку, текст идёт во всю ширину */
+@media(max-width:480px){
+  .tg-after{grid-template-columns:minmax(0,1fr);grid-template-areas:"ava" "txt" "btn";gap:12px}
 }
 </style>
 </head>
