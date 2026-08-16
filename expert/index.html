@@ -558,6 +558,10 @@ footer .wrap{display:block}
 .type-cur{display:inline-block;width:.06em;height:.86em;margin-left:.06em;vertical-align:-.06em;
   background:var(--accent);animation:typeBlink 1s steps(1) infinite}
 @keyframes typeBlink{0%,50%{opacity:1}51%,100%{opacity:0}}
+
+/* хвост строки в подвале не должен растягивать страницу вбок на телефоне */
+html,body{overflow-x:clip}
+footer .wrap{overflow-wrap:anywhere}
 </style>
 </head>
 <body>
