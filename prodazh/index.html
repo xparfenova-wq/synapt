@@ -1114,6 +1114,18 @@ footer .f-tg:hover,footer .f-legal a:hover{border-bottom-color:var(--accent)}
   .cover .cover-kick .eyebrow{white-space:normal;flex:0 1 auto;min-width:0}
 }
 
+/* на телефоне заголовок и цена стоят в две колонки, а пояснение уходит строкой ниже:
+   узкая колонка описания рвала текст на два-три слова */
+@media(max-width:600px){
+  .cost-top{grid-template-columns:minmax(0,auto) minmax(0,1fr);gap:14px 18px;align-items:start}
+  .cost-top .price-line{display:contents}
+  .cost-top .cost-head h2{max-width:9ch;margin-bottom:0}
+  .cost-top .cost-head .lead{margin-top:10px}
+  .cost-top .big{align-self:start}
+  .cost-top .pl-side{grid-column:1/-1;margin-top:6px}
+  .cost-top .desc{max-width:none}
+}
+
 .r56-120-56-80{padding:56px 0 120px}.r64-130-64-80{padding:64px 0 130px}.r72-96-48-64{padding:72px 0 96px}.r96-120-64-80{padding:96px 0 120px}.r120-140-72-80{padding:120px 0 140px}.r130-150-80-96{padding:130px 0 150px}.r140-96-96-64{padding:140px 0 96px}@media(max-width:720px){.r56-120-56-80{padding:56px 0 80px}.r64-130-64-80{padding:64px 0 80px}.r72-96-48-64{padding:48px 0 64px}.r96-120-64-80{padding:64px 0 80px}.r120-140-72-80{padding:72px 0 80px}.r130-150-80-96{padding:80px 0 96px}.r140-96-96-64{padding:96px 0 64px}}</style>
 <style media="print">
 @page{size:A4 portrait;margin:15mm 13mm 17mm}
