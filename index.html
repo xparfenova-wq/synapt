@@ -1328,6 +1328,8 @@ input:not([type=checkbox]),textarea,select{font-size:16px}
   .hero-meta .m-cta .btn{width:fit-content;min-width:0;padding-inline:24px;white-space:nowrap}
 }
 /* курсор набора текста в заголовке первого экрана */
+.tch{opacity:0;transition:opacity .12s linear}
+.tch.on{opacity:1}
 .type-cur{display:inline-block;width:.06em;height:.86em;margin-left:.06em;vertical-align:-.06em;
   background:var(--accent);animation:typeBlink 1s steps(1) infinite}
 @keyframes typeBlink{0%,50%{opacity:1}51%,100%{opacity:0}}
@@ -3469,27 +3471,50 @@ function LEAD_API(url, opts){
 </script>
 
 <script>
-/* заголовок первого экрана набирается, как на клавиатуре, и только один раз за сессию */
+/* набор текста первого экрана: надзаголовок, заголовок и цифры печатаются
+   одновременно. Символы уже стоят на своих местах и только проявляются,
+   поэтому во время набора ничего не двигается и не переносится */
 (function(){
-  var h1=document.querySelector('.hero h1'); if(!h1) return;
   if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-  var html=h1.innerHTML, text=h1.textContent;
-  h1.textContent=''; h1.style.minHeight=h1.offsetHeight+'px';
-  var cur=document.createElement('span'); cur.className='type-cur'; h1.appendChild(cur);
-  var i=0;
-  (function step(){
-    if(i>=text.length){ setTimeout(function(){ h1.innerHTML=html }, 700); return }
-    var chunk=text.slice(i, i+ (text[i]===' '?2:1));
-    cur.insertAdjacentText('beforebegin', chunk);
-    i+=chunk.length;
-    setTimeout(step, 18 + Math.random()*26);
-  })();
+  var targets=[].slice.call(document.querySelectorAll('.hero .eyebrow, .hero h1, .hero-meta b'));
+  if(!targets.length) return;
+  var runs=[];
+  targets.forEach(function(el){
+    var chars=[];
+    (function walk(node){
+      [].slice.call(node.childNodes).forEach(function(n){
+        if(n.nodeType===3){
+          var frag=document.createDocumentFragment();
+          n.nodeValue.split('').forEach(function(ch){
+            var sp=document.createElement('span');
+            sp.className='tch'; sp.textContent=ch;
+            frag.appendChild(sp); chars.push(sp);
+          });
+          node.replaceChild(frag, n);
+        } else if(n.nodeType===1) walk(n);
+      });
+    })(el);
+    if(chars.length) runs.push(chars);
+  });
+  var maxLen=0;
+  runs.forEach(function(r){ if(r.length>maxLen) maxLen=r.length });
+  var step=Math.max(14, Math.min(30, 1400/maxLen));
+  runs.forEach(function(chars){
+    var i=0;
+    (function tick(){
+      if(i>=chars.length) return;
+      /* пробелы проявляются вместе со следующей буквой, набор идёт ровно */
+      do { chars[i].classList.add('on'); i++ } while(i<chars.length && chars[i-1].textContent===' ');
+      setTimeout(tick, step + Math.random()*step*0.6);
+    })();
+  });
 })();
 /* подложка шапки включается после первого экрана */
 (function(){
   var nav=document.querySelector('.nav'), hero=document.querySelector('.hero');
   if(!nav||!hero) return;
-  function upd(){ nav.classList.toggle('solid', scrollY > hero.offsetHeight - 80) }
+  function upd(){ var h=hero.getBoundingClientRect().height;
+    nav.classList.toggle('solid', scrollY > Math.max(120, h-80)) }
   upd(); addEventListener('scroll', upd, {passive:true}); addEventListener('resize', upd);
 })();
 </script>

@@ -733,6 +733,33 @@ h3,.card h3,.arte h3,.contour h3,.step h3,.rel-card .rel-t{font-size:var(--fs-h4
 .case-split .morelink{border-bottom:1px solid var(--line-2);padding-bottom:3px}
 .case-split .morelink:hover{border-bottom-color:var(--accent)}
 
+/* «что меняется»: две строки одной шкалы, вторая помечена акцентом */
+.vs-line{display:grid;gap:0;border-top:1px solid var(--line);max-width:1000px}
+.vrow{display:grid;grid-template-columns:14px minmax(0,1fr);gap:18px;align-items:start;
+  padding:26px 0;border-bottom:1px solid var(--line)}
+.v-mark{width:10px;height:10px;border-radius:50%;border:1px solid var(--line-2);margin-top:7px}
+.vrow.hot .v-mark{background:var(--accent);border-color:var(--accent);
+  box-shadow:0 0 0 5px color-mix(in srgb,var(--accent) 16%,transparent)}
+.vrow .k{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;
+  color:var(--text-dim);margin-bottom:9px}
+.vrow.hot .k{color:var(--accent-text,var(--accent))}
+.vrow p{font-size:clamp(16px,1.6vw,19px);line-height:1.55;color:var(--text-muted);max-width:64ch}
+.vrow.hot p{color:var(--text)}
+/* обложка: кнопка стоит под текстом слева, цифры справа сверху */
+.cover-cta{margin-top:26px}
+
+/* кнопка обложки стоит в правой колонке под цифрами */
+@media(min-width:981px){
+  .cover-grid.stats{grid-template-rows:auto 1fr}
+  .cover-cta-side{grid-column:2;align-self:end;justify-self:start;padding-bottom:2px}
+  .cover-stats{grid-column:2;grid-row:1}
+  .cover-grid.stats>div:first-child{grid-column:1;grid-row:1/3}
+}
+@media(max-width:980px){.cover-cta-side{margin-top:22px}}
+/* кнопка в шапке появляется, когда обложка прокручена */
+.nav .btn.pri.nav-cta{opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s}
+.nav.solid .btn.pri.nav-cta{opacity:1;visibility:visible}
+
 .r64-80-64-56{padding:64px 0 80px}.r64-130-64-80{padding:64px 0 130px}.r72-96-48-64{padding:72px 0 96px}.r80-96-56-64{padding:80px 0 96px}.r96-120-64-80{padding:96px 0 120px}.r140-96-96-64{padding:140px 0 96px}@media(max-width:720px){.r64-80-64-56{padding:64px 0 56px}.r64-130-64-80{padding:64px 0 80px}.r72-96-48-64{padding:48px 0 64px}.r80-96-56-64{padding:56px 0 64px}.r96-120-64-80{padding:64px 0 80px}.r140-96-96-64{padding:96px 0 64px}}</style>
 <style media="print">
 @page{size:A4 portrait;margin:15mm 13mm 17mm}
@@ -837,7 +864,7 @@ footer{margin-top:26px;padding:24px 0 0;break-inside:avoid;page-break-inside:avo
   <div class="nav-act">
     <button class="tgl" id="tgl" type="button" aria-label="Сменить тему"></button>
     <a class="btn sq" href="https://t.me/Anti4ay" aria-label="Написать менеджеру студии в&nbsp;Telegram" title="Никита, проджект-менеджер студии"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.6 20c-.2 1.1-.9 1.3-1.8.8l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1L18 6.6c.4-.3-.1-.5-.6-.2L7.2 13 2.3 11.5c-1.1-.3-1.1-1 .2-1.5l18.1-7c.9-.3 1.7.2 1.3 1.3z"/></svg></a>
-    <a class="btn pri" href="#cta">Оставить заявку</a>
+    <a class="btn pri nav-cta" href="#cta">Оставить заявку</a>
     <button class="nav-burger" id="brg" type="button" aria-label="Меню" aria-expanded="false" aria-controls="sheet"><i></i><i></i></button>
   </div>
 </div>
@@ -855,8 +882,8 @@ footer{margin-top:26px;padding:24px 0 0;break-inside:avoid;page-break-inside:avo
   
   <h1 class="reveal d1">AI-десант</h1>
   <p class="lead reveal d2">Специалист Synapt на&nbsp;месяц входит в&nbsp;вашу команду: учит сотрудников работать с&nbsp;нейросетями, разрабатывает и&nbsp;сразу запускает первые решения</p>
-  <div class="cover-cta reveal d3"><a class="btn pri lg" href="#cta">Оставить заявку</a></div>
-  </div><div class="cover-stats reveal d2"><div class="cs"><div class="cs-n">30 дней</div><div class="cs-c">один специалист, полный рабочий месяц на&nbsp;ваших задачах</div></div></div></div>
+  
+  </div><div class="cover-stats reveal d2"><div class="cs"><div class="cs-n">30 дней</div><div class="cs-c">один специалист, полный рабочий месяц на&nbsp;ваших задачах</div></div></div><div class="cover-cta-side"><a class="btn pri lg" href="#cta">Оставить заявку</a></div></div>
 </div></header><section id="how" class="r72-96-48-64"><div class="wrap"><div class="sec-head reveal"><div class="eyebrow"><span class="n">01</span> Формат</div><h2>Как&nbsp;проходит месяц</h2><p class="lead">Подход один, содержание всегда разное: как&nbsp;не&nbsp;бывает двух одинаковых нейронов, так и&nbsp;десант в&nbsp;каждой компании уникальный. Специалист заходит в&nbsp;команду и&nbsp;работает на&nbsp;основе запроса каждого человека в&nbsp;ней</p></div><div class="month"><div class="mstep reveal "><div class="top"><span class="num">01</span><span class="wk">неделя 1</span></div><h3>Заходим и&nbsp;изучаем базу</h3><p>Начинаем с&nbsp;разговора с&nbsp;собственником: зачем компании это нужно, что&nbsp;уже пробовали, какой бюджет на&nbsp;сервисы и&nbsp;по&nbsp;каким сигналам поймём, что&nbsp;получилось. Дальше знакомство с&nbsp;командой, поднимаем сервер и&nbsp;защищённый доступ, настраиваем инструменты людям на&nbsp;компьютерах и&nbsp;показываем, как&nbsp;ими пользоваться</p></div><div class="mstep reveal d1"><div class="top"><span class="num">02</span><span class="wk">неделя 2</span></div><h3>Первые улучшения в&nbsp;отделах</h3><p>Идём по&nbsp;отделам с&nbsp;четырьмя вопросами: какие задачи решаете, что&nbsp;болит, что&nbsp;делается долго, где рутина. И&nbsp;сразу показываем на&nbsp;их&nbsp;же&nbsp;работе: свести таблицы, разобрать договор, найти нужное, собрать данные из&nbsp;разных источников</p></div><div class="mstep reveal d2"><div class="top"><span class="num">03</span><span class="wk">неделя 3</span></div><h3>Углубляемся с&nbsp;теми, кто хочет большего</h3><p>К&nbsp;этому моменту видно, кому это интереснее. С&nbsp;ними идём в&nbsp;инструменты посерьёзнее: скрипты и&nbsp;автоматизация под их&nbsp;конкретные задачи</p></div><div class="mstep reveal d3"><div class="top"><span class="num">04</span><span class="wk">неделя 4</span></div><h3>Доводим до&nbsp;результата</h3><p>Фиксируем задачи по&nbsp;процессам и&nbsp;доводим их&nbsp;до&nbsp;работающего решения. Считаем сэкономленные часы по&nbsp;отделам и&nbsp;передаём всё, что&nbsp;настроено</p></div></div></div></section><section id="teams" class="r64-130-64-80"><div class="wrap"><div class="sec-head reveal"><div class="eyebrow"><span class="n">02</span> Охват отделов</div><h2>Как&nbsp;нейросети расходятся по&nbsp;отделам</h2></div>
   <div class="fig-side reveal flip card big"><div class="figbox"><canvas class="fx-adopt"></canvas></div><div class="fig-txt">По&nbsp;нашему опыту это не&nbsp;происходит за&nbsp;один день, но&nbsp;происходит обязательно: у&nbsp;каждого отдела свой темп адаптации и&nbsp;настройки</div></div>
 </div></section><section id="left" class="r72-96-48-64"><div class="wrap"><div class="sec-head reveal"><div class="eyebrow"><span class="n">03</span> Что&nbsp;остаётся</div><h2>Три артефакта, которые получает компания</h2></div><div class="arte"><div class="art reveal "><div class="art-top"><span class="art-k">команда</span><span class="art-i">01</span></div><span class="art-line"></span><p>Сотрудники работают с&nbsp;AI сами, без внешней помощи. Люди начинают мыслить автоматизацией: меняются и&nbsp;процессы, и&nbsp;подход к&nbsp;ним</p></div><div class="art reveal d1"><div class="art-top"><span class="art-k">инструменты</span><span class="art-i">02</span></div><span class="art-line"></span><p>Сервер, защищённый доступ, оплаченные сервисы и&nbsp;настроенные сценарии. Всё это живёт в&nbsp;контуре компании и&nbsp;дальше принадлежит ей</p></div><div class="art reveal d2"><div class="art-top"><span class="art-k">время</span><span class="art-i">03</span></div><span class="art-line"></span><p>Сэкономленные часы посчитаны по&nbsp;отделам, и&nbsp;у&nbsp;каждого сотрудника появляется свободное время для&nbsp;задач, которые двигают бизнес вперёд</p></div></div></div></section><section id="result" class="r64-80-64-56"><div class="wrap"><div class="sec-head reveal"><div class="eyebrow"><span class="n">04</span> Что&nbsp;меняется</div><h2>Сколько времени уходит на&nbsp;задачи</h2></div><div class="compare reveal"><div class="crow head"><div class="task">Задача</div><div class="was">Сейчас</div><div class="now">После AI-десанта</div></div><div class="crow"><div class="task">Разбор заявки в&nbsp;закупках</div><div class="was">10 минут вручную</div><div class="now"><b>2 минуты</b>, AI готовит черновик</div></div><div class="crow"><div class="task">Ответ клиенту в&nbsp;сервисе</div><div class="was">пишут с&nbsp;нуля каждый раз</div><div class="now"><b>секунды</b>, человек проверяет</div></div><div class="crow"><div class="task">Обработка отзывов</div><div class="was">вручную, по&nbsp;одному отзыву</div><div class="now"><b>20-30 в&nbsp;час</b> автоматически</div></div><div class="crow"><div class="task">Сводки и&nbsp;отчёты</div><div class="was">полчаса ручной сборки</div><div class="now"><b>сводка собирается сама</b> по&nbsp;данным</div></div></div><div class="step-link reveal"><span class="sl-rule"></span><span>Это часть процессов, где эффект заметен быстрее всего. В&nbsp;каждой команде могут быть автоматизированы другие задачи</span></div></div></section><section id="case" class="r72-96-48-64"><div class="wrap"><div class="eyebrow reveal"><span class="n">05</span> Кейс</div>
@@ -1198,6 +1225,13 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
       ctx.fillStyle = hg; ctx.beginPath(); ctx.arc(dx, dy, 34 + pulse * 10, 0, 7); ctx.fill();
       ctx.beginPath(); ctx.arc(dx, dy, 4.2, 0, 7);
       ctx.fillStyle = 'rgba(' + PH + ',' + .95 * fade + ')'; ctx.fill();
+      /* низ кадра растворяется: обложка переходит в следующий блок без резкой границы */
+      ctx.globalCompositeOperation = 'destination-out';
+      var fade = ctx.createLinearGradient(0, H - 260, 0, H);
+      fade.addColorStop(0, 'rgba(0,0,0,0)');
+      fade.addColorStop(1, 'rgba(0,0,0,1)');
+      ctx.fillStyle = fade; ctx.fillRect(0, H - 260, W, 260);
+      ctx.globalCompositeOperation = 'source-over';
       t++;
     })();
   }
@@ -1819,7 +1853,10 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
 (function(){
   var nav=document.querySelector('.nav'), cov=document.querySelector('.cover');
   if(!nav) return;
-  function upd(){ nav.classList.toggle('solid', scrollY > (cov?cov.offsetHeight-80:120)) }
+  function upd(){
+    var h=cov?cov.getBoundingClientRect().height:0;
+    nav.classList.toggle('solid', scrollY > Math.max(120, h-80));
+  }
   upd(); addEventListener('scroll',upd,{passive:true});
 })();
 </script>
