@@ -2063,61 +2063,44 @@ function LEAD_API(url, opts){
       if (!W || !H) return;
       c.width = W * DPR; c.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
       var narrow = W < 900;
-      var N = narrow ? 30 : 58;
-      var cx = narrow ? W * .5 : W * .68, cy = narrow ? H * .46 : H * .5;
-      var R = Math.min(W * (narrow ? .46 : .38), H * .54);
+      /* узлы раскладываются по всей площади кадра с лёгким разбросом: пустых углов не остаётся,
+         а читаемость текста слева держит маска затухания на самом холсте */
+      var pad = Math.max(20, Math.min(W, H) * .04);
+      var aspect = W / Math.max(1, H);
+      var cols = Math.max(7, Math.round((narrow ? 5.4 : 11) * Math.sqrt(aspect)));
+      var rows = Math.max(5, Math.round((narrow ? 7 : 9) / Math.sqrt(aspect)));
+      var stepX = (W - pad * 2) / (cols - 1), stepY = (H - pad * 2) / (rows - 1);
+      var R = Math.hypot(stepX, stepY);
       nodes = [];
-      for (var i = 0; i < N; i++) {
-        /* кластеры: три сгущения, между ними мосты. Так сеть читается как система, а не облако */
-        var g = i % 3;
-        var ga = g * 2.094 + .5, gr = R * .52;
-        var gx = cx + Math.cos(ga) * gr, gy = cy + Math.sin(ga) * gr * .74;
-        var a = rnd(i * 7) * 6.283, rr = R * (.16 + rnd(i * 13) * .5);
-        var x = gx + Math.cos(a) * rr, y = gy + Math.sin(a) * rr * .8;
-        var side = rnd(i * 31) > .5 ? 1 : -1;
-        nodes.push({
-          x: x, y: y, g: g,
-          sx: x + side * (W * .5 + rnd(i * 3) * W * .5),
-          sy: y + (rnd(i * 17) - .5) * H * 1.4,
-          d: rnd(i * 11) * .55,
-          r: 2 + rnd(i * 5) * 2.4,
-          hot: rnd(i * 23) > .78,
-          ph: rnd(i * 41) * 6.283
-        });
+      for (var gy0 = 0; gy0 < rows; gy0++) {
+        for (var gx0 = 0; gx0 < cols; gx0++) {
+          var i = gy0 * cols + gx0;
+          var jx = (rnd(i * 7) - .5) * stepX * .78;
+          var jy = (rnd(i * 13) - .5) * stepY * .78;
+          var x = pad + gx0 * stepX + jx, y = pad + gy0 * stepY + jy;
+          var side = rnd(i * 31) > .5 ? 1 : -1;
+          nodes.push({
+            x: x, y: y, g: (gx0 + gy0) % 3,
+            sx: x + side * (W * .45 + rnd(i * 3) * W * .35),
+            sy: y + (rnd(i * 17) - .5) * H * 1.2,
+            d: rnd(i * 11) * .55,
+            r: 1.6 + rnd(i * 5) * 2.2,
+            hot: rnd(i * 23) > .84,
+            ph: rnd(i * 41) * 6.283
+          });
+        }
       }
-      /* сеть вписывается в холст целиком: считаем габариты облака и подгоняем масштаб,
-         иначе на широких экранах у правого верхнего угла срезало узлы и связи */
-      var pad = Math.max(28, Math.min(W, H) * .07);
-      var minX = 1e9, maxX = -1e9, minY = 1e9, maxY = -1e9;
-      nodes.forEach(function (n) {
-        if (n.x - n.r < minX) minX = n.x - n.r;
-        if (n.x + n.r > maxX) maxX = n.x + n.r;
-        if (n.y - n.r < minY) minY = n.y - n.r;
-        if (n.y + n.r > maxY) maxY = n.y + n.r;
-      });
-      var bw = Math.max(1, maxX - minX), bh = Math.max(1, maxY - minY);
-      var availW = narrow ? W - pad * 2 : W * .66 - pad;
-      var sc = Math.min(availW / bw, (H - pad * 2) / bh);
-      var ox = (narrow ? W * .5 : W - pad - bw * sc / 2) - (minX + bw / 2) * sc;
-      var oy = H * .5 - (minY + bh / 2) * sc;
-      nodes.forEach(function (n) {
-        n.x = n.x * sc + ox; n.y = n.y * sc + oy;
-        n.r = n.r * Math.max(.9, Math.min(sc, 1.4));
-        var side = rnd(n.ph * 5) > .5 ? 1 : -1;
-        n.sx = n.x + side * (W * .5 + rnd(n.ph) * W * .4);
-        n.sy = n.y + (rnd(n.ph * 3) - .5) * H * 1.2;
-      });
-      R = R * sc;
-
       edges = [];
       for (var a1 = 0; a1 < nodes.length; a1++)
         for (var b1 = a1 + 1; b1 < nodes.length; b1++) {
           var na = nodes[a1], nb = nodes[b1];
           var d = Math.hypot(na.x - nb.x, na.y - nb.y);
-          var lim = na.g === nb.g ? R * .46 : R * .62;
+          /* соседей соединяем плотно, дальние связи оставляем выборочно:
+             сеть держится единым полотном, но не превращается в кашу */
+          var lim = na.g === nb.g ? R * .96 : R * .74;
           if (d > lim) continue;
-          if (na.g !== nb.g && rnd(a1 * 97 + b1 * 7) > .3) continue;
-          if (na.g === nb.g && rnd(a1 * 53 + b1 * 11) > .62) continue;
+          if (na.g !== nb.g && rnd(a1 * 97 + b1 * 7) > .5) continue;
+          if (na.g === nb.g && rnd(a1 * 53 + b1 * 11) > .8) continue;
           edges.push({a: na, b: nb, w: 1 - d / lim, bridge: na.g !== nb.g, ph: rnd(a1 + b1 * 3) * 6.283});
         }
     }
