@@ -1328,7 +1328,7 @@ input:not([type=checkbox]),textarea,select{font-size:16px}
   .hero-meta .m-cta .btn{width:fit-content;min-width:0;padding-inline:24px;white-space:nowrap}
 }
 /* курсор набора текста в заголовке первого экрана */
-.tch{opacity:0;transition:opacity .12s linear}
+.tch{opacity:0}
 .tch.on{opacity:1}
 .type-cur{display:inline-block;width:.06em;height:.86em;margin-left:.06em;vertical-align:-.06em;
   background:var(--accent);animation:typeBlink 1s steps(1) infinite}
@@ -1487,6 +1487,20 @@ h2,.sec-head h2{font-size:var(--fs-h2);letter-spacing:-.025em;line-height:1.14}
 
 /* светлая тема: основной текст и подписи в графике заметно темнее */
 :root[data-theme="light"]{--text-muted:#3F4A46;--text-dim:#5A6561}
+
+/* надзаголовок первого экрана обычным шрифтом, без разрядки моно */
+/* надзаголовок первого экрана: обычный шрифт и обычные пробелы.
+   Флекс-контейнер с gap раздвигал символы набора, поэтому здесь блок */
+.hero .eyebrow{display:block;font-family:var(--sans);font-size:15px;font-weight:500;letter-spacing:0;
+  color:var(--text-muted);text-transform:none;margin-bottom:14px}
+.hero .eyebrow .tch{display:inline}
+/* иконки шапки стоят по одной правой линии с кнопкой */
+.nav-act{align-items:center}
+/* графика первого экрана не спорит с цифрами: под ними подложка по теме */
+.hero-meta{position:relative;isolation:isolate}
+.hero-meta::after{content:"";position:absolute;inset:-18px -22px;z-index:-1;border-radius:20px;
+  background:radial-gradient(120% 120% at 60% 50%,color-mix(in srgb,var(--bg) 88%,transparent) 0%,
+    color-mix(in srgb,var(--bg) 72%,transparent) 60%,transparent 100%)}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
@@ -1519,8 +1533,8 @@ function LEAD_API(url, opts){
   </a>
   <div class="nav-links"><a href="#services">Услуги</a><a href="#cases">Кейсы</a><a href="#how">Как&nbsp;работаем</a><a href="#idea">Почему мы</a><a href="#rules">Подход</a><a href="#faq">FAQ</a></div>
   <div class="nav-act">
-    <button class="tgl" id="tgl" aria-label="Сменить тему" title="Светлая или&nbsp;тёмная"></button>
-    <a class="nav-tg" href="https://t.me/Anti4ay" target="_blank" rel="noopener" aria-label="Написать менеджеру студии в&nbsp;Telegram" title="Никита, Проджект-менеджер студии" title="Написать в&nbsp;Telegram">
+    <button class="tgl" id="tgl" aria-label="Сменить тему" title="Тёмная тема"></button>
+    <a class="nav-tg" href="https://t.me/Anti4ay" target="_blank" rel="noopener" aria-label="Написать в&nbsp;Telegram" title="Написать в&nbsp;Telegram">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 4.3 3.3 11.4c-.9.35-.88 1.63.02 1.96l4.5 1.63 1.72 5.2c.24.72 1.16.92 1.68.37l2.5-2.63 4.55 3.34c.62.46 1.5.12 1.66-.63l3.03-14.4c.17-.8-.62-1.47-1.36-1.19zM8.9 14.1l9.1-5.6-7.2 6.6-.35 2.9-1.55-3.9z"/></svg>
     </a>
     <button class="nav-burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="navSheet">
@@ -1737,7 +1751,7 @@ function LEAD_API(url, opts){
       <div class="cc-res"><div><b><span class="nb">26 из&nbsp;27</span></b><span>сотрудников работают с&nbsp;AI каждый день</span></div><div><b>1 месяц</b><span>десанта внутри команды на&nbsp;живых задачах</span></div></div>
       <p class="cc-task">Нейросетями в&nbsp;компании пользовались два энтузиаста, остальные вернулись к&nbsp;прежней работе после курса</p>
       <div class="cc-fig"><canvas class="fx-halftone" data-maxh="126"></canvas></div>
-      <div class="cc-cap">Внедрение в&nbsp;отделах: каждая точка это&nbsp;сотрудник, точка загорается в&nbsp;день, когда человек начал работать с&nbsp;нейросетями</div>
+      <div class="cc-cap">Внедрение в&nbsp;отделах: каждая точка&nbsp;– это&nbsp;сотрудник, точка загорается в&nbsp;день, когда человек начал работать с&nbsp;нейросетями</div>
       <a class="morelink" href="/synapt/innorto/">Подробнее</a>
     </article><article class="ccard">
       <div class="cc-top"><span class="cc-tag">AI-агент на&nbsp;знаниях</span><span class="cc-ind">02</span></div>
@@ -2047,8 +2061,9 @@ function LEAD_API(url, opts){
   var sun='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
   var moon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
   var btns=[].slice.call(document.querySelectorAll('.tgl'));
-  function paint(){var ic=root.getAttribute('data-theme')==='dark'?sun:moon;
-    btns.forEach(function(b){b.innerHTML=ic})}
+  function paint(){var dark=root.getAttribute('data-theme')==='dark';
+    var ic=dark?sun:moon, lbl=dark?'Светлая тема':'Тёмная тема';
+    btns.forEach(function(b){b.innerHTML=ic; b.title=lbl; b.setAttribute('aria-label',lbl)})}
   paint();
   btns.forEach(function(b){ b.onclick=function(){
     var t=root.getAttribute('data-theme')==='dark'?'light':'dark';
@@ -2270,7 +2285,7 @@ function LEAD_API(url, opts){
        Узлы стоят кольцами, связи держат форму, по сети волнами проходит синергия */
     var ctx = c.getContext('2d'), W = 0, H = 0, nodes = [], edges = [], t = 0;
     var reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
-    var cx = 0, cy = 0, RAD = 0, FLY = 200, WIRE = 340, PULSE = 460;
+    var cx = 0, cy = 0, RAD = 0, FLY = 230, WIRE = 400, PULSE = 900;
 
     function build() {
       var r = c.getBoundingClientRect(); W = r.width; H = r.height;
@@ -2334,13 +2349,16 @@ function LEAD_API(url, opts){
       });
       var wire = Math.max(0, Math.min(1, (k - FLY) / (WIRE - FLY)));
       /* волна синергии расходится от ядра каждые PULSE кадров */
-      var wave = k > WIRE ? ((k - WIRE) % PULSE) / PULSE * (RAD * 1.35) : -1;
+      var ph = k > WIRE ? ((k - WIRE) % PULSE) / PULSE : -1;
+      /* волна доходит до края, а потом вся сеть держится зажжённой и медленно гаснет */
+      var wave = ph < 0 ? -1 : (ph < .55 ? ph / .55 * (RAD * 1.35) : -1);
+      var glowAll = ph < 0 ? 0 : (ph < .55 ? 0 : (ph < .8 ? (ph - .55) / .25 : 1 - (ph - .8) / .2));
 
       if (wire > 0) {
         edges.forEach(function (ed) {
           var grow = Math.min(1, wire * 1.4);
           var gx = ed.a.x + (ed.b.x - ed.a.x) * eOut(grow), gy = ed.a.y + (ed.b.y - ed.a.y) * eOut(grow);
-          var lit = wave > 0 ? Math.max(0, 1 - Math.abs(ed.mid - wave) / 86) : 0;
+          var lit = Math.max(glowAll * .85, wave > 0 ? Math.max(0, 1 - Math.abs(ed.mid - wave) / 86) : 0);
           ctx.beginPath(); ctx.moveTo(ed.a.x, ed.a.y); ctx.lineTo(gx, gy);
           ctx.strokeStyle = lit > .04
             ? 'rgba(' + PH + ',' + (.1 + lit * .55) * A * appear + ')'
@@ -2354,7 +2372,7 @@ function LEAD_API(url, opts){
         if (o.p <= 0) return;
         var n = o.n;
         var dist = Math.hypot(o.x - cx, o.y - cy);
-        var lit = wave > 0 ? Math.max(0, 1 - Math.abs(dist - wave) / 72) : 0;
+        var lit = Math.max(glowAll * .8, wave > 0 ? Math.max(0, 1 - Math.abs(dist - wave) / 72) : 0);
         var live = .5 + .5 * Math.sin(k * .012 + n.ph);
         var rad = n.r * (o.p < 1 ? .5 + o.p * .5 : 1 + lit * .5);
         if (n.core) {
@@ -2381,6 +2399,14 @@ function LEAD_API(url, opts){
         }
       });
 
+      /* когда сеть зажглась целиком, за ней проступает мягкое свечение */
+      if (glowAll > .02) {
+        var bg = ctx.createRadialGradient(cx, cy, 0, cx, cy, RAD * 1.5);
+        bg.addColorStop(0, 'rgba(' + PH + ',' + (.09 * glowAll) + ')');
+        bg.addColorStop(.6, 'rgba(' + PH + ',' + (.04 * glowAll) + ')');
+        bg.addColorStop(1, 'rgba(' + PH + ',0)');
+        ctx.fillStyle = bg; ctx.beginPath(); ctx.arc(cx, cy, RAD * 1.5, 0, 7); ctx.fill();
+      }
       /* мягкие края: композиция читается как одно целое и никуда не обрывается */
       ctx.globalCompositeOperation = 'destination-out';
       var mask = ctx.createRadialGradient(cx, cy, RAD * .95, cx, cy, RAD * 1.85);
