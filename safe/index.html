@@ -811,11 +811,50 @@ h3,.card h3,.arte h3,.contour h3,.step h3,.rel-card .rel-t{font-size:var(--fs-h4
 .cover-stats .cs-n{font-size:clamp(38px,4.6vw,60px);line-height:1.02}
 .cover-stats .cs-c{font-size:13.5px;line-height:1.6;max-width:30ch}
 
-/* графика не перекрывает цифры обложки: под ними мягкая подложка по теме */
-.cover-stats{position:relative;isolation:isolate}
-.cover-stats::after{content:"";position:absolute;inset:-16px -20px;z-index:-1;border-radius:20px;
-  background:radial-gradient(120% 120% at 50% 50%,color-mix(in srgb,var(--bg) 88%,transparent) 0%,
-    color-mix(in srgb,var(--bg) 70%,transparent) 62%,transparent 100%)}
+/* подложки под цифрами нет: графика сама гаснет в этой зоне */
+.cover-stats{position:relative}
+
+/* ---------- обложка материала повторяет первый экран главной ---------- */
+@media(min-width:981px){
+  .cover{align-items:flex-end}
+  .cover-grid.stats{grid-template-columns:minmax(0,1.2fr) minmax(430px,.8fr);
+    grid-template-rows:auto;align-items:end;column-gap:clamp(32px,4vw,64px)}
+  .cover-grid.stats>div:first-child{grid-column:1;grid-row:1;align-self:end}
+  /* цифры стоят справа внизу колонками через вертикальную линию */
+  .cover-stats{grid-column:2;grid-row:1;align-self:end;position:relative;
+    display:grid;grid-auto-flow:row;
+    grid-template-columns:repeat(2,minmax(0,1fr));gap:24px clamp(36px,4vw,72px);
+    border:0;background:transparent;padding:0}
+  /* одна цифра занимает всю ширину колонки, две встают рядом через линию */
+  .cover-stats .cs:only-child{grid-column:1/-1}
+  .cover-stats:has(.cs:nth-child(2))::before{content:"";position:absolute;left:50%;top:4px;bottom:4px;
+    width:1px;background:var(--line);transform:translateX(-50%)}
+  .cover-stats .cs{border:0;background:transparent;padding:0;text-align:left}
+  .cover-cta-side{grid-column:2;grid-row:2;align-self:end;justify-self:start;margin-top:18px}
+}
+/* цифра и её подпись стоят вплотную */
+.cover-stats .cs-n{font-size:clamp(28px,3.1vw,42px);line-height:1.05;white-space:nowrap}
+.cover-stats .cs-c{margin-top:8px;font-size:13px;line-height:1.55;max-width:24ch;padding-right:14px}
+/* заголовок обложки ещё крупнее */
+.cover h1{font-size:clamp(44px,5vw,72px);line-height:1}
+/* предлог в цене мельче самой суммы */
+.price-line .big .pre{font-size:.42em;letter-spacing:0;margin-right:.12em;color:var(--text-muted)}
+/* подзаголовки списков условий мельче */
+.incl .k{font-size:12px;letter-spacing:.06em;font-family:var(--mono);color:var(--text-dim)}
+
+/* схема адаптации занимает половину блока и не наезжает на заголовок */
+.fig-side.big{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.fig-side.big.flip{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.fig-side.big .figbox canvas{min-height:330px}
+@media(max-width:860px){.fig-side.big .figbox canvas{min-height:280px}}
+/* подпись к схеме идёт ближе к заголовку блока */
+#teams .sec-head{margin-bottom:26px}
+
+.cover-stats .cs-u{font-size:.52em;margin-left:.28em;color:var(--text-2)}
+
+/* подпись к схеме идёт сразу под заголовком, а не по центру блока */
+.fig-side.big{align-items:start}
+.fig-side.big .fig-txt{padding-top:2px}
 
 .r64-64-64-64{padding:64px 0 64px}.r72-96-48-64{padding:72px 0 96px}.r96-120-64-80{padding:96px 0 120px}.r130-150-80-96{padding:130px 0 150px}.r140-96-96-64{padding:140px 0 96px}@media(max-width:720px){.r64-64-64-64{padding:64px 0 64px}.r72-96-48-64{padding:48px 0 64px}.r96-120-64-80{padding:64px 0 80px}.r130-150-80-96{padding:80px 0 96px}.r140-96-96-64{padding:96px 0 64px}}</style>
 <style media="print">
@@ -916,7 +955,7 @@ footer{margin-top:26px;padding:24px 0 0;break-inside:avoid;page-break-inside:avo
   <div class="nav-act">
     <button class="tgl" id="tgl" type="button" aria-label="Сменить тему"></button>
     <a class="btn sq" href="https://t.me/Anti4ay" aria-label="Написать менеджеру студии в&nbsp;Telegram" title="Никита, проджект-менеджер студии"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.6 20c-.2 1.1-.9 1.3-1.8.8l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1L18 6.6c.4-.3-.1-.5-.6-.2L7.2 13 2.3 11.5c-1.1-.3-1.1-1 .2-1.5l18.1-7c.9-.3 1.7.2 1.3 1.3z"/></svg></a>
-    <a class="btn pri nav-cta" href="#cta">Оставить заявку</a>
+    <a class="btn pri" href="#cta">Оставить заявку</a>
     <button class="nav-burger" id="brg" type="button" aria-label="Меню" aria-expanded="false" aria-controls="sheet"><i></i><i></i></button>
   </div>
 </div>
@@ -928,10 +967,10 @@ footer{margin-top:26px;padding:24px 0 0;break-inside:avoid;page-break-inside:avo
   <h1 class="reveal d1">Безопасный слой</h1>
   <p class="lead reveal d2">Разрабатываем контур между вашими данными и&nbsp;нейросетями: чувствительные данные не&nbsp;покидают ваш периметр, работа идёт по&nbsp;152-ФЗ</p>
   
-  </div><div class="cover-stats reveal d2"><div class="cs"><div class="cs-n">4 слоя</div><div class="cs-c">защиты: данные, модель, интерфейс и&nbsp;человек</div></div><div class="cs"><div class="cs-n">от&nbsp;200</div><div class="cs-c">тыс. ₽ за&nbsp;ядро безопасного контура</div></div></div><div class="cover-cta-side"><a class="btn pri lg" href="#cta">Оставить заявку</a></div></div>
+  </div><div class="cover-stats reveal d2"><div class="cs"><div class="cs-n">4 <span class="cs-u">слоя</span></div><div class="cs-c">защиты: данные, модель, интерфейс и&nbsp;человек</div></div><div class="cs"><div class="cs-n">от <span class="cs-u">200</span></div><div class="cs-c">тыс. ₽ за&nbsp;ядро безопасного контура</div></div></div></div>
 </div></header><section id="offer" class="r130-150-80-96"><div class="wrap"><div class="eyebrow reveal"><span class="n">01</span> Что&nbsp;это</div><div class="stmt reveal"><p><b>Делаем так, чтобы модель получала только то, что&nbsp;можно отдать,</b> а&nbsp;финансы, налоги и&nbsp;персональные данные оставались в&nbsp;вашем контуре: наружу уходит только обезличенный запрос. Ядро контура ставим поверх текущих систем, переписывать 1С, CRM и&nbsp;телефонию не&nbsp;нужно, обезличивание и&nbsp;права настраиваем мы</p></div></div></section><section id="how" class="r72-96-48-64"><div class="wrap"><div class="sec-head reveal"><div class="eyebrow"><span class="n">02</span> Что&nbsp;внутри</div><h2>Четыре уровня защиты</h2><p class="lead">Настраиваем под ваши требования к&nbsp;данным и&nbsp;доступу</p></div><div class="month"><div class="mstep reveal "><div class="top"><span class="num">0x01</span><span class="wk">данные</span></div><h3>Обезличивание</h3><p>Убираем персональные и&nbsp;финансовые данные из&nbsp;запроса до&nbsp;того, как&nbsp;он&nbsp;уйдёт в&nbsp;модель</p></div><div class="mstep reveal d1"><div class="top"><span class="num">0x02</span><span class="wk">доступ</span></div><h3>Ролевой доступ</h3><p>Права настраиваем по&nbsp;ролям и&nbsp;подразделениям. Сотрудник видит только свои данные</p></div><div class="mstep reveal d2"><div class="top"><span class="num">0x03</span><span class="wk">контур</span></div><h3>Ваш периметр</h3><p>Данные остаются в&nbsp;вашей инфраструктуре. Локальное развёртывание обсуждаем отдельно</p></div><div class="mstep reveal d3"><div class="top"><span class="num">0x04</span><span class="wk">закон</span></div><h3>Соответствие 152-ФЗ</h3><p>Оформляем согласия, ведём журнал доступа, храним данные в&nbsp;России. Всё это можно предъявить при проверке</p></div></div></div></section><section id="why" class="r64-64-64-64"><div class="wrap"><div class="sec-head reveal"><div class="eyebrow"><span class="n">03</span> Зачем</div><h2>Что&nbsp;меняется</h2></div><div class="vs-line"><div class="vrow reveal "><span class="v-mark" aria-hidden="true"></span><div class="v-body"><span class="k">Без безопасного слоя</span><p>Данные уходят в&nbsp;чужое облако как&nbsp;есть. Отсюда риск утечки и&nbsp;штрафов по&nbsp;152-ФЗ</p></div></div><div class="vrow hot reveal d1"><span class="v-mark" aria-hidden="true"></span><div class="v-body"><span class="k">С&nbsp;безопасным слоем</span><p>Данные остаются в&nbsp;вашем контуре, наружу уходит обезличенный запрос. Каждое обращение попадает в&nbsp;журнал доступа</p></div></div></div></div></section><section id="cost" class="r140-96-96-64"><div class="wrap"><div class="sec-head reveal"><div class="eyebrow"><span class="n">04</span> Условия</div><h2>Стоимость и&nbsp;старт</h2></div>
   <div class="price-line reveal">
-    <div class="big">от&nbsp;200 <small>тыс. ₽</small></div>
+    <div class="big"><span class="pre">от</span> 200 <small>тыс. ₽</small></div>
     <div class="pl-side"><div class="desc">Стоимость зависит от&nbsp;числа систем, объёма данных и&nbsp;требований к&nbsp;контуру. Вилку уточняем после чекапа</div><div class="start"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg> 60 дней поддержки после сдачи входят в&nbsp;стоимость</div></div>
   </div>
   <div class="incl reveal d1"><div class="icol"><div class="k">Что&nbsp;входит</div><ul><li><span class="ix">01</span><span>Разбор данных и&nbsp;точек риска</span></li><li><span class="ix">02</span><span>Контур обезличивания</span></li><li><span class="ix">03</span><span>Ролевой доступ и&nbsp;журналирование</span></li><li><span class="ix">04</span><span>Интеграция с&nbsp;вашими системами</span></li></ul></div><div class="icol"><div class="k">На&nbsp;выходе</div><ul><li><span class="ix">01</span><span>Описание контура для&nbsp;юриста и&nbsp;службы безопасности</span></li><li><span class="ix">02</span><span>Журнал доступа с&nbsp;разбором по&nbsp;ролям</span></li><li><span class="ix">03</span><span>Обезличивание перед отправкой в&nbsp;модель</span></li><li><span class="ix">04</span><span>Код и&nbsp;документация остаются у&nbsp;вас</span></li></ul></div></div>
@@ -1266,8 +1305,14 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
       ctx.fillStyle = hg; ctx.beginPath(); ctx.arc(dx, dy, 34 + pulse * 10, 0, 7); ctx.fill();
       ctx.beginPath(); ctx.arc(dx, dy, 4.2, 0, 7);
       ctx.fillStyle = 'rgba(' + PH + ',' + .95 * fade + ')'; ctx.fill();
-      /* низ кадра растворяется: обложка переходит в следующий блок без резкой границы */
+      /* низ кадра растворяется, а справа графика гаснет под цифрами */
       ctx.globalCompositeOperation = 'destination-out';
+      if (W > 980) {
+        var rg = ctx.createLinearGradient(W * .58, 0, W, 0);
+        rg.addColorStop(0, 'rgba(0,0,0,0)');
+        rg.addColorStop(1, 'rgba(0,0,0,.72)');
+        ctx.fillStyle = rg; ctx.fillRect(W * .58, 0, W * .42, H);
+      }
       var fade = ctx.createLinearGradient(0, H - 260, 0, H);
       fade.addColorStop(0, 'rgba(0,0,0,0)');
       fade.addColorStop(1, 'rgba(0,0,0,1)');
@@ -1481,9 +1526,8 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
         for (j = 0; j < d.k; j++) { total++; if (day >= jd(i, j)) { done++; lit++ } }
         var full = done === d.k;
         /* иконка отдела, рядом название, справа счётчик людей */
-        icon(ctx, d.ic, tx + 12, ty + 8, 17, done > 0);
         ctx.textAlign = 'left'; ctx.fillStyle = 'rgba(' + GR + ',.85)';
-        cap(ctx, d.n, tx + 26, ty + 12, tw * .5, 10.5);
+        cap(ctx, d.n, tx + 2, ty + 12, tw * .5, 10.5);
         ctx.textAlign = 'right'; ctx.fillStyle = 'rgba(' + (full ? PH : GR) + ',.85)';
         cap(ctx, done + ' из ' + d.k, tx + tw - 10, ty + 12, tw * .34, 10);
         ctx.textAlign = 'left';
