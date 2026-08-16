@@ -1302,10 +1302,11 @@ input:not([type=checkbox]),textarea,select{font-size:16px}
 @media(min-width:981px){
   .hero{align-items:flex-end;padding:120px 0 76px}
   /* текст слева, цифры отдельной колонкой справа */
-  .hero-grid>div{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr);
-    gap:clamp(32px,4vw,64px);align-items:end;width:100%}
+  .hero-grid{grid-template-columns:1fr;gap:0}
+  .hero-grid>div{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(300px,.58fr);
+    column-gap:clamp(32px,4vw,64px);row-gap:14px;align-items:end;width:100%}
   .hero-grid .eyebrow,.hero-grid h1{grid-column:1}
-  .hero h1{max-width:20ch;font-size:clamp(38px,3.5vw,50px);margin-bottom:0}
+  .hero h1{max-width:none;font-size:clamp(30px,2.55vw,38px);margin-bottom:0;margin-top:0;text-wrap:balance}
   .hero-meta{grid-column:2;grid-row:1/3;display:grid;grid-auto-flow:column;
     grid-template-rows:auto auto;grid-template-columns:repeat(2,minmax(0,1fr));
     gap:24px clamp(24px,3vw,54px);margin:0;padding-top:0;border-top:0;align-self:end}
@@ -1336,6 +1337,34 @@ input:not([type=checkbox]),textarea,select{font-size:16px}
 #now .nowgrid, #cases .crail, footer .f-main{max-width:var(--contentw)}
 #lead .lead-grid{max-width:var(--contentw)}
 @media(max-width:1240px){:root{--contentw:100%}}
+
+/* единое скругление: за образец взята кнопка первого экрана */
+:root{--r-sm:999px}
+.btn,.tgl,.nav-burger,.fab-b,.chip,.cc-tag,.svc-sep span{border-radius:999px}
+.card,.wcard,.ccard,.leadbox,.cs-win,.off-card,.nxt,.rel-grid,.figbox,.tsyn{border-radius:var(--r-lg)}
+
+/* ритм секций: первый блок после экрана не должен липнуть к нему */
+#now{padding-top:clamp(72px,8vw,120px)}
+/* внутреннее содержимое центрируется в своей колонке, по левому краю только заголовки */
+#how .rmap,#how .rm-speed,#rules .prlist,#idea .idea-lead,#idea .tmap,#faq .faq,
+#services .svc,#services .svc-extra,#services .step-body,#lead .lead-grid{margin-left:auto;margin-right:auto}
+
+/* кейсы: лента слева, текст блока справа, стрелки над лентой */
+@media(min-width:1041px){
+  #cases>.wrap{display:grid;grid-template-columns:minmax(0,1fr) clamp(300px,26vw,360px);
+    grid-template-areas:"nav head" "rail head";column-gap:clamp(32px,4vw,64px);align-items:start}
+  #cases .sec-head{grid-area:head;max-width:none;margin-bottom:0;position:sticky;top:104px}
+  #cases .cnav{grid-area:nav;justify-content:flex-start;margin-bottom:14px}
+  #cases .crail-wrap{grid-area:rail;width:auto;margin-left:0}
+  #cases .crail{padding:4px 0 20px;scroll-padding-left:0;gap:20px;max-width:none}
+  #cases .ccard{flex:0 0 calc((100% - 20px)/2);scroll-snap-align:start}
+  #cases .ccard .morelink{margin-top:auto}
+}
+/* дорожная карта: прежние габариты, текст этапа не отрывается от колонки результата */
+#how .rmap{max-width:1000px}
+#how .rmap-head,#how .rmap-row{grid-template-columns:34px minmax(0,1fr) minmax(0,1fr);column-gap:20px}
+/* схема команды и содержимое смысловых блоков центрируются в контентной колонке */
+#idea .tsyn-box,#idea .tsyn,#how .rmap,#how .rm-speed{margin-left:auto;margin-right:auto}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
@@ -1485,6 +1514,7 @@ function LEAD_API(url, opts){
             <h3>AI-агент на&nbsp;знаниях компании</h3>
             <span class="kick-to">блок для&nbsp;команды</span>
             <p>Если сотрудники задают руководителям одни и&nbsp;те&nbsp;же&nbsp;вопросы, а&nbsp;регламенты никто не&nbsp;открывает. Агент отвечает по&nbsp;вашим документам и&nbsp;истории решений, новичок адаптируется и&nbsp;приступает к&nbsp;задачам быстрее</p>
+            <a class="morelink" href="/synapt/globaldent/">Подробнее</a>
           </div>
 
           <div class="card s3 reveal">
@@ -2104,8 +2134,8 @@ function LEAD_API(url, opts){
          а читаемость текста слева держит маска затухания на самом холсте */
       var pad = Math.max(20, Math.min(W, H) * .04);
       var aspect = W / Math.max(1, H);
-      var cols = Math.max(7, Math.round((narrow ? 5.4 : 11) * Math.sqrt(aspect)));
-      var rows = Math.max(5, Math.round((narrow ? 7 : 9) / Math.sqrt(aspect)));
+      var cols = Math.max(8, Math.round((narrow ? 6 : 13) * Math.sqrt(aspect)));
+      var rows = Math.max(6, Math.round((narrow ? 7.6 : 10.5) / Math.sqrt(aspect)));
       var stepX = (W - pad * 2) / (cols - 1), stepY = (H - pad * 2) / (rows - 1);
       var R = Math.hypot(stepX, stepY);
       nodes = [];
@@ -2136,8 +2166,8 @@ function LEAD_API(url, opts){
              сеть держится единым полотном, но не превращается в кашу */
           var lim = na.g === nb.g ? R * .96 : R * .74;
           if (d > lim) continue;
-          if (na.g !== nb.g && rnd(a1 * 97 + b1 * 7) > .5) continue;
-          if (na.g === nb.g && rnd(a1 * 53 + b1 * 11) > .8) continue;
+          if (na.g !== nb.g && rnd(a1 * 97 + b1 * 7) > .68) continue;
+          if (na.g === nb.g && rnd(a1 * 53 + b1 * 11) > .9) continue;
           edges.push({a: na, b: nb, w: 1 - d / lim, bridge: na.g !== nb.g, ph: rnd(a1 + b1 * 3) * 6.283});
         }
     }
@@ -2221,6 +2251,14 @@ function LEAD_API(url, opts){
           ctx.lineWidth = 1.2; ctx.lineCap = 'round'; ctx.stroke();
         }
       });
+      /* верхняя часть кадра уходит в темноту: шапка читается, а сеть не спорит с заголовком */
+      ctx.globalCompositeOperation = 'destination-out';
+      var mg = ctx.createLinearGradient(0, 0, 0, H * .62);
+      mg.addColorStop(0, 'rgba(0,0,0,.72)');
+      mg.addColorStop(.45, 'rgba(0,0,0,.28)');
+      mg.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = mg; ctx.fillRect(0, 0, W, H * .62);
+      ctx.globalCompositeOperation = 'source-over';
       t++;
     })();
   }
@@ -2788,16 +2826,23 @@ function LEAD_API(url, opts){
     {n:'интерфейсы',   r:'UX и UI экранов для пользователей системы'},
     {n:'тестирование', r:'проверка сценариев и поведения системы при ошибках'}
   ];
-  var pts=[], hub=null, hover=null, hotHub=false, hubE=0, sparks=[], bg=[];
-  /* подложка строится один раз на размер холста */
+  var pts=[], hub=null, hover=null, hotHub=false, hubE=0, sparks=[], bg=[], bnodes=[], wave=null;
+  /* подложка это та же нейронная сеть, что и на первом экране:
+     узлы стоят сеткой с разбросом, рёбра появляются между близкими соседями */
   function buildBg(){
-    bg=[];
-    for(var i=0;i<26;i++){
-      var a=(i*2.399)%6.283, r1=(0.2+((i*37)%50)/100)*Math.min(W,H)*0.9;
-      var x1=W*0.5+Math.cos(a)*r1, y1=H*0.5+Math.sin(a)*r1*0.7;
-      var b2=a+1.1+((i*13)%40)/100, r2=r1*(0.5+((i*29)%50)/100);
-      var x2=W*0.5+Math.cos(b2)*r2, y2=H*0.5+Math.sin(b2)*r2*0.7;
-      bg.push({x1:x1,y1:y1,x2:x2,y2:y2,cx:(x1+x2)/2+((i%5)-2)*18,cy:(y1+y2)/2+((i%7)-3)*12});
+    bg=[]; bnodes=[];
+    if(!W||!H) return;
+    var cols=Math.max(6,Math.round(W/88)), rows=Math.max(4,Math.round(H/88));
+    var stepX=W/(cols-1), stepY=H/(rows-1), k=0;
+    for(var iy=0;iy<rows;iy++) for(var ix=0;ix<cols;ix++){
+      var j1=((k*37)%100)/100-.5, j2=((k*61)%100)/100-.5; k++;
+      bnodes.push({x:stepX*ix+j1*stepX*.6, y:stepY*iy+j2*stepY*.6,
+                   ph:((k*29)%100)/100*6.283, e:0});
+    }
+    var lim=Math.hypot(stepX,stepY)*.92;
+    for(var q=0;q<bnodes.length;q++) for(var w2=q+1;w2<bnodes.length;w2++){
+      var d=Math.hypot(bnodes[q].x-bnodes[w2].x, bnodes[q].y-bnodes[w2].y);
+      if(d<lim) bg.push({a:q,b:w2,ph:((q*7+w2*13)%100)/100*6.283});
     }
   }
 
@@ -2857,10 +2902,11 @@ function LEAD_API(url, opts){
     if(TOUCH) return;
     var r=c.getBoundingClientRect(), mx=e.clientX-r.left, my=e.clientY-r.top, best=null;
     pts.forEach(function(p){ if(!best&&hit(p,mx,my)) best=p });
+    if(best && best!==hover) wave={x:best.x,y:best.y,r:0};
     hover=best;
     var wasHot=hotHub;
     hotHub=Math.hypot(hub.x-mx,hub.y-my)<46;
-    if(hotHub&&!wasHot) burst();
+    if(hotHub&&!wasHot){ burst(); wave={x:hub.x,y:hub.y,r:0} }
     c.style.cursor=(best||hotHub)?'pointer':'default';
   }
   function burst(){
@@ -2923,13 +2969,43 @@ function LEAD_API(url, opts){
     /* фон: редкая нейронная подложка, оживает вместе с ядром.
        рисунок другой, чем на обложке: там сетка, здесь дуги между дальними точками */
     if(!bg.length) buildBg();
+    /* волна расходится от узла, на который навели: сначала соседи, потом дальние */
+    if(wave){
+      wave.r += Math.max(W,H)*0.0042;
+      if(wave.r > Math.hypot(W,H)*1.05) wave=null;
+    } else if(hover){
+      /* пока курсор держат на узле, импульс уходит в сеть снова */
+      wave={x:hover.x,y:hover.y,r:0};
+    }
+    var wr = wave ? wave.r : -1;
+    bnodes.forEach(function(n){
+      var lit=0;
+      if(wave){
+        var dd=Math.abs(Math.hypot(n.x-wave.x,n.y-wave.y)-wr);
+        if(dd<72) lit=(1-dd/72);
+      }
+      n.e += (lit-n.e)*0.10;
+    });
     bg.forEach(function(b,i){
-      var brf=.5+.5*Math.sin(t*0.0018+i*1.1);
-      ctx.beginPath(); ctx.moveTo(b.x1,b.y1);
-      ctx.quadraticCurveTo(b.cx,b.cy,b.x2,b.y2);
-      ctx.strokeStyle='rgba('+GR+','+(.05+brf*.035+hubE*.08)+')'; ctx.lineWidth=.8; ctx.stroke();
-      ctx.beginPath(); ctx.arc(b.x1,b.y1,1.1,0,7);
-      ctx.fillStyle='rgba('+GR+','+(.16+hubE*.2)+')'; ctx.fill();
+      var na=bnodes[b.a], nb=bnodes[b.b];
+      var brf=.5+.5*Math.sin(t*0.0009+b.ph);
+      var en=Math.max(na.e,nb.e);
+      ctx.beginPath(); ctx.moveTo(na.x,na.y); ctx.lineTo(nb.x,nb.y);
+      ctx.strokeStyle = en>.04
+        ? 'rgba('+PH+','+(.08+en*.72)+')'
+        : 'rgba('+GR+','+(.055+brf*.045+hubE*.06)+')';
+      ctx.lineWidth=.7+en*.7; ctx.stroke();
+    });
+    bnodes.forEach(function(n){
+      var pul=.5+.5*Math.sin(t*0.0011+n.ph);
+      if(n.e>.03){
+        glow(n.x,n.y,9+n.e*9,.28*n.e);
+        ctx.beginPath(); ctx.arc(n.x,n.y,1.1+n.e*1.5,0,7);
+        ctx.fillStyle='rgba('+PH+','+(.3+n.e*.6)+')'; ctx.fill();
+      } else {
+        ctx.beginPath(); ctx.arc(n.x,n.y,1,0,7);
+        ctx.fillStyle='rgba('+GR+','+(.16+pul*.09+hubE*.14)+')'; ctx.fill();
+      }
     });
     /* возврат к спокойному темпу плавный, без рывка */
     hubE += ((hotHub?1:0)-hubE)*(hotHub?.02:.004);
@@ -2938,7 +3014,7 @@ function LEAD_API(url, opts){
     var biz=pts.filter(function(p){return p.kind==='biz'}),
         core=pts.filter(function(p){return p.kind==='core'}),
         spec=pts.filter(function(p){return p.kind==='spec'});
-    var breathe=.5+.5*Math.sin(t*.004);
+    var breathe=.5+.5*Math.sin(t*.0022);
 
     /* при наведении на ядро светлеет вся площадь обоих контуров, не только их линии */
     ellL(); ctx.fillStyle='rgba('+PH+','+(.02+hubE*.075)+')'; ctx.fill();
@@ -2970,7 +3046,7 @@ function LEAD_API(url, opts){
     /* связь не нарисована целиком: она прорастает от узла к ядру и обратно,
        поэтому сеть читается как живые отростки, а не как готовая схема */
     biz.concat(core).forEach(function(p,i){
-      var grow = 0.62 + 0.38*Math.sin(t*0.0016*(0.6+hubE*0.5) + i*0.8);
+      var grow = 0.62 + 0.38*Math.sin(t*0.0009*(0.6+hubE*0.5) + i*0.8);
       var cx=(p.x+hub.x)/2, cy=p.y*0.4+hub.y*0.6, seg=26;
       ctx.beginPath(); ctx.moveTo(p.x,p.y);
       for(var k=1;k<=seg;k++){
@@ -2989,7 +3065,7 @@ function LEAD_API(url, opts){
     });
     core.forEach(function(o,oi){spec.forEach(function(sp,si){
       /* внутри команды связи тоже дышат: то тянутся к специалисту, то отступают */
-      var g2 = 0.72 + 0.28*Math.sin(t*0.0018*(0.6+hubE*0.6) + oi*1.7 + si*0.9);
+      var g2 = 0.72 + 0.28*Math.sin(t*0.0010*(0.6+hubE*0.6) + oi*1.7 + si*0.9);
       ctx.beginPath(); ctx.moveTo(o.x,o.y);
       ctx.lineTo(o.x+(sp.x-o.x)*g2, o.y+(sp.y-o.y)*g2);
       ctx.strokeStyle='rgba('+(hubE>.3?PH:GR)+','+((hover===sp||hover===o?.34:.12)+hubE*.24)+')';
@@ -2997,7 +3073,7 @@ function LEAD_API(url, opts){
     })});
 
     /* при активном ядре подсветка идёт в обе стороны: и к процессам компании, и к команде */
-    var speed=0.0022*pace;
+    var speed=0.0013*pace;
     biz.forEach(function(p,i){
       var full=((t*speed)+i*0.15)%1, to=core[i%2], q, from, dest;
       if(full<.5){ q=full/.5; from=p; dest=hub } else { q=(full-.5)/.5; from=hub; dest=to }
@@ -3008,6 +3084,16 @@ function LEAD_API(url, opts){
       glow(x,y,12+hubE*5,(.42+hubE*.25)*f);
       ctx.beginPath(); ctx.arc(x,y,2.2+hubE*.6,0,7); ctx.fillStyle='rgba('+PH+','+(.9*f)+')'; ctx.fill();
     });
+    /* от узла, на который навели, связи расходятся ко всем остальным узлам схемы */
+    if(hover){
+      var hf=1;
+      pts.forEach(function(p){
+        if(p===hover) return;
+        ctx.beginPath(); ctx.moveTo(hover.x,hover.y); ctx.lineTo(p.x,p.y);
+        ctx.strokeStyle='rgba('+PH+',.16)'; ctx.lineWidth=.7; ctx.stroke();
+      });
+      glow(hover.x,hover.y,26,.24);
+    }
     /* при наведении на ядро от него расходятся связи ко всем узлам обоих контуров */
     if(hubE>.03){
       pts.forEach(function(p,i){

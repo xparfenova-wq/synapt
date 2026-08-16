@@ -641,6 +641,16 @@ footer .wrap{display:block}
 .f-legal a{font-size:13px;color:var(--text-2);border-bottom:1px solid var(--line);width:fit-content;margin-top:4px}
 .f-legal a:hover{color:var(--accent-txt)}
 .f-copy{margin-top:14px;font-size:12.5px;color:var(--text-dim)}
+
+/* шапка прозрачная над обложкой, подложка включается ниже первого экрана */
+.nav{background:transparent!important;border-bottom:1px solid transparent!important;
+  transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease}
+.nav.solid{background:color-mix(in srgb,var(--bg) 46%,transparent)!important;
+  backdrop-filter:saturate(150%) blur(18px);border-bottom-color:var(--line)!important}
+.nav .wrap{max-width:1400px}
+.type-cur{display:inline-block;width:.06em;height:.86em;margin-left:.06em;vertical-align:-.06em;
+  background:var(--accent);animation:typeBlink 1s steps(1) infinite}
+@keyframes typeBlink{0%,50%{opacity:1}51%,100%{opacity:0}}
 </style>
 </head>
 <body>
@@ -1121,6 +1131,32 @@ footer .wrap{display:block}
     if (!warm) { warm = true; for (var i = 0; i < 320; i++) { t++; draw(.028) } }
     draw(.028);
   })();
+})();
+</script>
+
+<script>
+/* заголовок обложки набирается, как на клавиатуре, и только один раз за загрузку */
+(function(){
+  var h1=document.querySelector('h1'); if(!h1) return;
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  var html=h1.innerHTML, text=h1.textContent;
+  h1.textContent=''; h1.style.minHeight=h1.offsetHeight+'px';
+  var cur=document.createElement('span'); cur.className='type-cur'; h1.appendChild(cur);
+  var i=0;
+  (function step(){
+    if(i>=text.length){ setTimeout(function(){ h1.innerHTML=html }, 700); return }
+    var chunk=text.slice(i, i+(text[i]===' '?2:1));
+    cur.insertAdjacentText('beforebegin', chunk);
+    i+=chunk.length;
+    setTimeout(step, 18+Math.random()*26);
+  })();
+})();
+/* подложка шапки появляется, когда обложка уходит вверх */
+(function(){
+  var nav=document.querySelector('.nav'); if(!nav) return;
+  var hero=document.querySelector('.hero')||document.querySelector('header');
+  function upd(){ nav.classList.toggle('solid', scrollY > (hero?hero.offsetHeight-80:120)) }
+  upd(); addEventListener('scroll',upd,{passive:true});
 })();
 </script>
 </body>
