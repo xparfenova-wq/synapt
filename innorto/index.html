@@ -422,7 +422,8 @@ footer .brand svg{height:28px}
 .lf{display:flex;flex-direction:column;gap:10px}
 .lf label{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--sage)}
 .lf input,.lf textarea{background:transparent;border:0;border-bottom:1px solid var(--line-2);border-radius:0;
-  padding:10px 2px;color:var(--text);font-family:var(--sans);font-size:15px;outline:none;resize:none}
+  padding:10px 2px;color:var(--text);font-family:var(--sans);font-size:16px;outline:none;resize:none}
+/* кегль поля не меньше 16px: на iOS страница зумится при фокусе и экран начинает ездить вбок */
 .lf input:focus,.lf textarea:focus{border-bottom-color:var(--accent)}
 .lf-check{display:flex;align-items:center;gap:12px;min-height:44px}
 .lf-check input[type=checkbox]{flex:none;appearance:none;width:22px;height:22px;border:1px solid var(--line-2);

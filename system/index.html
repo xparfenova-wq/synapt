@@ -422,7 +422,11 @@ footer .fmeta a:hover{color:var(--text)}
 
 /* тап-зоны на мобильной */
 @media(max-width:860px){
-  a.more,a.morelink,.ccard .morelink,.rcard a{position:relative;display:inline-flex;align-items:center;min-height:44px}
+  /* зона нажатия 44px даётся псевдоэлементом: у самой ссылки высота остаётся
+     по строке, поэтому подчёркивание держится вплотную к тексту */
+  a.more,a.morelink,.ccard .morelink,.rcard a{position:relative}
+  a.morelink::after,.ccard .morelink::after,.rcard a::after{content:"";position:absolute;
+   left:0;right:0;top:50%;transform:translateY(-50%);height:44px}
   .lf-check{min-height:44px}
   .lf-check input[type=checkbox]{position:relative}
   .lf-check input[type=checkbox]::before{content:"";position:absolute;inset:-12px;border-radius:50%}
@@ -474,7 +478,9 @@ footer .fmeta a:hover{color:var(--text)}
 /* ссылка на политику внутри согласия: зона нажатия крупнее, но не перекрывает сам чекбокс */
 @media(max-width:860px){
   .lf-check>span{line-height:1.65}
-  .lf-check>span a{display:inline-block;padding-block:12px;margin-block:-12px;border-bottom:0;
+  /* inline вместо inline-block: атомарный бокс не разрывался по словам
+     и уводил ссылку на политику отдельной строкой посреди согласия */
+  .lf-check>span a{display:inline;padding-block:12px;margin-block:-12px;border-bottom:0;
    text-decoration:underline;text-decoration-color:var(--line-accent);text-underline-offset:3px}
   /* ссылка внутри сноски: подчёркивание остаётся у текста, зона нажатия 44px невидимой полосой */
   .note a,.src a{position:relative;display:inline-block}
@@ -484,16 +490,9 @@ footer .fmeta a:hover{color:var(--text)}
 /* обёртка инпута больше не занимает 44px ширины: подпись стоит вплотную к кружку */
 .lf-check .box{display:contents}
 
-/* подвал: реквизиты читаются парами подпись — значение, а не одной склейкой */
-.legal>div{display:flex;flex-wrap:wrap;gap:2px 12px;margin-bottom:4px}
-.legal>div>span{flex:none;min-width:82px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;
- color:var(--text-dim);font-feature-settings:"case" 1,"liga" 0}
-.legal a:hover{color:var(--text-2)}
-/* на узком экране подпись реквизита всегда отдельной строкой над значением */
-@media(max-width:640px){
-  .legal>div{gap:0;margin-bottom:10px}
-  .legal>div>span{min-width:100%;margin-bottom:1px}
-}
+/* реквизиты подвала описаны ниже, в блоке с колонками .lg-col:
+   старые правила по .legal>div тут убраны, они били по колонке целиком
+   и на узком экране сводили отступ между парами реквизитов к нулю */
 
 /* длина строки в кейсе не уходит за 75 знаков */
 .case p{max-width:58ch}
@@ -537,6 +536,14 @@ footer .fmeta a:hover{color:var(--text)}
 @media(max-width:760px){
   .rule{grid-template-columns:88px 1fr;gap:6px 14px}
   .rule .rd{grid-column:2/-1}
+}
+/* на телефоне колонка-кикер съедала половину ширины и оставляла описанию
+   строки в три слова: кикер уходит своей строкой наверх, текст берёт весь экран */
+@media(max-width:420px){
+  .row,.rule{grid-template-columns:minmax(0,1fr);gap:4px}
+  .row .rn,.rule .rn{grid-column:1;margin-bottom:2px}
+  .row .rt,.rule .rt{grid-column:1}
+  .row .rd,.rule .rd{grid-column:1;margin-top:4px}
 }
 
 /* ---------- сноска под блоком ---------- */
@@ -701,6 +708,14 @@ footer .fmeta a:hover{color:var(--text)}
   .tg-txt{grid-area:txt}
   .tg-btn{grid-area:btn;width:100%;min-height:48px}
 }
+/* на телефоне фото уходит своей строкой: подпись и текст берут всю ширину карточки,
+   иначе на 320 оставалось около 190px и строки шли по три слова */
+@media(max-width:420px){
+  .tg-after{grid-template-columns:minmax(0,1fr);grid-template-areas:"ava" "txt" "btn";gap:12px}
+}
+
+/* кегль полей не меньше 16px: иначе iOS зумит страницу при фокусе и экран едет вбок */
+input:not([type=checkbox]),textarea,select{font-size:16px}
 </style>
 </head>
 <body>

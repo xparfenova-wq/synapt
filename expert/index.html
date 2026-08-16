@@ -395,7 +395,11 @@ footer .brand svg{height:22px}
  .dom{font-size:clamp(64px,19vw,84px)}
  .eyebrow{flex-wrap:wrap;gap:8px}
  .eyebrow .n{flex:none}
- .faq summary{font-size:16.5px;gap:12px}
+ /* открытый плюс повёрнут на 45°, его габарит 36,8px вместо 26px – держим запас справа */
+ .faq summary{font-size:16.5px;gap:12px;padding-right:8px}
+ .hero .lead{margin-top:18px}
+ .cta-row{margin-top:26px}
+ .hero-grid{gap:36px}
  #now{padding:56px 0 64px}
  #fit{padding:64px 0}
  #creed{padding:88px 0 96px}
@@ -456,6 +460,9 @@ footer .brand svg{height:22px}
   footer .brand{min-height:44px;display:inline-flex;align-items:center}
   footer a,.fmeta a,.fmeta span,.legal a{min-height:44px;display:inline-flex;align-items:center;
     padding-inline:8px;margin-inline:-8px}
+  /* тап-запас выносим на контейнер, иначе крайняя ссылка торчит за строку */
+  .fmeta{margin-inline:-8px}
+  .fmeta a,.fmeta span{margin-inline:0}
 }
 @media(max-width:420px){*{min-width:0}}
 
@@ -496,6 +503,9 @@ footer .brand svg{height:22px}
 .nxt a:hover .nt{color:var(--accent-txt)}
 @media(max-width:900px){.nxt{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.nxt{grid-template-columns:1fr}.nxt a{min-height:0;padding:18px 20px}}
+
+/* кегль полей не меньше 16px: иначе iOS зумит страницу при фокусе и экран едет вбок */
+input:not([type=checkbox]),textarea,select{font-size:16px}
 </style>
 </head>
 <body>
@@ -775,7 +785,7 @@ footer .brand svg{height:22px}
   </div>
   <div class="faq reveal">
     <details open><summary>Эксперт боится, что&nbsp;его&nbsp;обесценят<span class="pl">+</span></summary><div class="ans">Вопрос закономерный, и&nbsp;мы&nbsp;разбираем его&nbsp;на&nbsp;первой встрече с&nbsp;самим экспертом. Агент берёт повторяющиеся вопросы, у&nbsp;которых есть готовый ответ в&nbsp;материалах. Сложные случаи и&nbsp;спорные решения остаются за&nbsp;человеком, и&nbsp;границу между этими зонами описывает сам эксперт. Он&nbsp;же&nbsp;принимает ответы перед запуском: без его&nbsp;согласия агент не&nbsp;включается</div></details>
-    <details><summary>Команда решит, что&nbsp;её&nbsp;готовят к&nbsp;сокращению<span class="pl">+</span></summary><div class="ans">Это возражение живёт не&nbsp;у&nbsp;собственника, а&nbsp;внутри команды, и&nbsp;именно оно чаще всего убивает внедрение уже после подписания. Ответ у&nbsp;нас один и&nbsp;он&nbsp;проверяемый: агент забирает повторяющееся, у&nbsp;людей высвобождаются часы на&nbsp;работу, до&nbsp;которой раньше не&nbsp;доходили руки. Сокращение штата мы&nbsp;не&nbsp;обещаем и&nbsp;в&nbsp;критерии приёмки не&nbsp;пишем. Крупный публичный пример такой развилки – IKEA: 8 500 ролей поддержки перевели на&nbsp;AI, а&nbsp;самих сотрудников переучили в&nbsp;консультантов по&nbsp;дизайну интерьера и&nbsp;получили из&nbsp;этого новую линию выручки. Носители знания при этом должны видеть свою выгоду: эксперт остаётся владельцем методологии, а&nbsp;его&nbsp;имя и&nbsp;роль прописаны в&nbsp;спецификации</div></details>
+    <details><summary>Команда решит, что&nbsp;её&nbsp;готовят к&nbsp;сокращению<span class="pl">+</span></summary><div class="ans">Это возражение живёт внутри команды, и&nbsp;именно оно чаще всего убивает внедрение уже после подписания. Ответ у&nbsp;нас один и&nbsp;он&nbsp;проверяемый: агент забирает повторяющееся, у&nbsp;людей высвобождаются часы на&nbsp;работу, до&nbsp;которой раньше не&nbsp;доходили руки. Сокращение штата мы&nbsp;не&nbsp;обещаем и&nbsp;в&nbsp;критерии приёмки не&nbsp;пишем. Крупный публичный пример такой развилки – IKEA: 8 500 ролей поддержки перевели на&nbsp;AI, а&nbsp;самих сотрудников переучили в&nbsp;консультантов по&nbsp;дизайну интерьера и&nbsp;получили из&nbsp;этого новую линию выручки. Носители знания при этом должны видеть свою выгоду: эксперт остаётся владельцем методологии, а&nbsp;его&nbsp;имя и&nbsp;роль прописаны в&nbsp;спецификации</div></details>
     <details><summary>Мы&nbsp;уже внедряли AI, эффекта не&nbsp;увидели<span class="pl">+</span></summary><div class="ans">Обычно ломается одно и&nbsp;то&nbsp;же. Компания набирает пробные сборки и&nbsp;ни&nbsp;одну не&nbsp;доводит до&nbsp;живого процесса. Ускоряется отдельный кусок, а&nbsp;очередь переезжает на&nbsp;следующий участок. Процесс остаётся прежним, потому что&nbsp;AI хорошо показывает узкое место, но&nbsp;сам процесс не&nbsp;переписывает. Агентов становится много, и&nbsp;за&nbsp;них никто не&nbsp;отвечает. Поэтому мы&nbsp;берём один участок, доводим его&nbsp;до&nbsp;живой работы с&nbsp;замером до&nbsp;и&nbsp;после, назначаем владельца на&nbsp;вашей стороне и&nbsp;только после этого обсуждаем следующий</div></details>
     <details><summary>Мы&nbsp;соберём такого агента сами<span class="pl">+</span></summary><div class="ans">Иногда это правда, и&nbsp;мы&nbsp;говорим об&nbsp;этом прямо. Платить есть смысл в&nbsp;пяти случаях. Первый: собрать рабочий сценарий за&nbsp;выходные можно, а&nbsp;поддерживать его&nbsp;год – отдельная работа. Второй: простой чат по&nbsp;документам соберёт любой, разбор со&nbsp;ссылкой на&nbsp;источник и&nbsp;воспроизводимым ответом – нет. Третий: вокруг агента нужна инфраструктура, которую не&nbsp;видно снаружи, – логирование, подтверждения, мониторинг, возврат к&nbsp;прежним промптам. Четвёртый: нужен тот, кто&nbsp;отвечает за&nbsp;кусок работы целиком и&nbsp;чинит его&nbsp;по&nbsp;договору. Пятый: методология и&nbsp;границы компетенции достаются интервью с&nbsp;экспертом, и&nbsp;это самая долгая часть, которую внутри почти никогда не&nbsp;доводят до&nbsp;конца</div></details>
     <details><summary>Агент ответит неверно, а&nbsp;отвечать нам<span class="pl">+</span></summary><div class="ans">Поэтому в&nbsp;спецификации мы&nbsp;прописываем темы, где агент отвечает сам, и&nbsp;темы, где он&nbsp;сразу зовёт человека. У&nbsp;каждого ответа остаётся ссылка на&nbsp;источник в&nbsp;базе, все диалоги логируются. Перед запуском эксперт проверяет ответы на&nbsp;реальных вопросах, а&nbsp;после запуска мы&nbsp;выборочно читаем диалоги и&nbsp;правим формулировки</div></details>

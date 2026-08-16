@@ -613,7 +613,12 @@ footer .fmeta a:hover{color:var(--text)}
   .cmp-hint{display:none}
   /* открытый плюс поворачивается на 45 градусов и углом выходил за колонку */
   .faq summary{padding-right:7px}
+  /* ни одно поле формы не мельче 16px, иначе iOS зумит страницу при фокусе */
+  .lf input,.lf textarea,.lf-check input[type=checkbox]{font-size:16px}
 }
+
+/* кегль полей не меньше 16px: иначе iOS зумит страницу при фокусе и экран едет вбок */
+input:not([type=checkbox]),textarea,select{font-size:16px}
 </style>
 </head>
 <body>

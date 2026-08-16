@@ -275,7 +275,8 @@ h4{font-size:16.5px;font-weight:560;letter-spacing:-.012em;line-height:1.35}
   -webkit-mask-composite:source-in;
   mask-image:linear-gradient(to bottom,#000 0,#000 54%,transparent 97%),linear-gradient(#000,#000);
   mask-composite:intersect}
- :root[data-theme="light"] .fullwide>canvas{opacity:.36}
+ /* на светлой теме линии рисуются втрое контрастнее, поэтому прозрачность ниже */
+ :root[data-theme="light"] .fullwide>canvas{opacity:.26}
 }
 .fullwide>.wrap{position:relative;z-index:1}
 .fx-cap{font-size:13.5px;font-weight:450;color:var(--text-muted);margin-top:28px;max-width:52ch}
@@ -598,6 +599,9 @@ footer .fm a:hover{color:var(--text)}
 @media(max-width:480px){
   .tg-after{grid-template-columns:minmax(0,1fr);grid-template-areas:"ava" "txt" "btn";gap:12px}
 }
+
+/* кегль полей не меньше 16px: иначе iOS зумит страницу при фокусе и экран едет вбок */
+input:not([type=checkbox]),textarea,select{font-size:16px}
 </style>
 </head>
 <body>

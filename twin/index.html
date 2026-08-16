@@ -400,6 +400,9 @@ footer .flinks a:hover{color:var(--accent)}
   .rel-card{min-height:44px}
 }
 .lf-done.fail b{color:var(--danger,#c2544d)}
+
+/* кегль полей не меньше 16px: иначе iOS зумит страницу при фокусе и экран едет вбок */
+input:not([type=checkbox]),textarea,select{font-size:16px}
 </style>
 </head>
 <body>

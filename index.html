@@ -21,7 +21,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* =========================================================
-   SYNAPT — дизайн-система, две темы (тёмная тёплый графит + светлая)
+   SYNAPT – дизайн-система, две темы (тёмная тёплый графит + светлая)
    Manrope нежирным, электрик-синий акцент, один акцент на всё
    ========================================================= */
 :root{
@@ -35,7 +35,7 @@
   --ease:cubic-bezier(.22,.7,.3,1);
   --maxw:1180px; --gutter:28px;
 }
-/* ТЁМНАЯ — графит с холодным зелёным подтоном */
+/* ТЁМНАЯ – графит с холодным зелёным подтоном */
 :root[data-theme="dark"]{
   --bg:#131514; --bg-deep:#0D0F0E; --surface:#191C1B; --surface-2:#212524; --surface-3:#2A2E2C;
   --line:rgba(180,214,190,.10); --line-2:rgba(180,214,190,.18); --line-accent:rgba(121,201,142,.32);
@@ -46,7 +46,7 @@
   --btn-shadow:0 6px 20px -8px rgba(121,201,142,.7);
   --accent-txt:#B9C1BE; --sage:#9DB2A3;
 }
-/* СВЕТЛАЯ — молочно-белый */
+/* СВЕТЛАЯ – молочно-белый */
 :root[data-theme="light"]{
   --bg:#FBFBFB; --bg-deep:#F1F3F2; --surface:#FFFFFF; --surface-2:#F4F6F5; --surface-3:#EBEEEC;
   --line:#E6E9E8; --line-2:#DBDFDD; --line-accent:rgba(78,143,98,.35);
@@ -1140,7 +1140,7 @@ body.cs-lock{overflow:hidden}
 @media(max-width:1100px){.fab{display:flex}
   /* запас снизу, чтобы плавающие кнопки не ложились на последнюю строку блока */
   footer{padding-bottom:104px}
-  .hero{padding-bottom:96px}}
+  .hero{padding-bottom:120px}}
 @media(max-width:380px){.fab-lead span{display:none}.fab-lead{width:52px;padding:0;justify-content:center}}
 
 /* первый экран на телефоне: сверху графика, под ней заголовок, кнопка и цифры.
@@ -1253,6 +1253,44 @@ footer .wrap{display:block}
    вместе со следующим словом, а pretty дополнительно убирает висячие слова в конце абзаца */
 p,li,.lead,.ip,.cc-task,.cc-cap,.rm-d,.pr-d,.card p,.wcard p{text-wrap:pretty}
 h1,h2,h3,h4,.step-t,.rm-t{text-wrap:balance}
+
+/* ---------- правки под телефон: 320-390 ----------
+   блок идёт последним, поэтому перебивает более ранние правила без их удаления */
+
+/* плавающая пара уходит, когда на экране форма заявки: иначе кнопка ложится
+   поверх «Обсудить задачу» и отправить заявку с телефона нечем */
+.fab{transition:opacity .24s var(--ease),transform .24s var(--ease),visibility .24s}
+.fab.is-off{opacity:0;transform:translateY(16px);visibility:hidden;pointer-events:none}
+
+/* плюс в FAQ поворачивается вместе с иконкой, а не с рамкой: у повёрнутого
+   квадрата 26px угол выходил на 5px правее колонки и ломал выравнивание */
+.faq summary .pl svg{transition:transform .2s var(--ease)}
+.faq details[open] summary .pl{transform:none}
+.faq details[open] summary .pl svg{transform:rotate(45deg)}
+
+/* крестик поп-апа кейса дотягивается до 44px */
+.cs-x{width:44px;height:44px}
+
+@media(max-width:860px){
+  /* ссылка на кейс под цифрой получает зону нажатия 44px, сама строка не двигается */
+  .now-f .src{position:relative}
+  .now-f .src::after{content:"";position:absolute;left:0;right:0;top:50%;
+    transform:translateY(-50%);height:44px}
+  /* телеграм менеджера в блоке заявки: та же зона нажатия */
+  .lc-mgr-t b a{position:relative;display:inline-block}
+  .lc-mgr-t b a::after{content:"";position:absolute;left:0;right:0;top:50%;
+    transform:translateY(-50%);height:44px}
+}
+
+@media(max-width:640px){
+  /* подпись под графикой кейса читалась на пределе: 10px мелковато для моноширинного */
+  .cc-cap{font-size:11.5px;line-height:1.5;min-height:0}
+  /* разделы в подвале: 32px не дотягивали до пальца */
+  .f-nav a,.f-nav2 a{min-height:44px;display:inline-flex;align-items:center}
+}
+
+/* кегль полей не меньше 16px: иначе iOS зумит страницу при фокусе и экран едет вбок */
+input:not([type=checkbox]),textarea,select{font-size:16px}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
@@ -1932,7 +1970,7 @@ function LEAD_API(url, opts){
 
 <script>
 /* ==========================================================
-   SYNAPT — графика связей, единая система
+   SYNAPT – графика связей, единая система
    белые и серые узлы, зелёный только на несущих смысл
    обложка: <canvas id="synFx" data-fx="converge|flow|mesh|contour"></canvas>
    в блоках: canvas.fx-matrix .fx-layers .fx-signal .fx-flow .fx-multiples .fx-halftone .fx-mesh
@@ -3033,5 +3071,20 @@ function LEAD_API(url, opts){
     <span>Оставить заявку</span>
   </a>
 </div>
+<script>
+/* пока форма заявки на экране, плавающая пара прячется: на телефоне она
+   ложилась ровно на кнопку отправки и перекрывала последнюю строку подвала */
+(function(){
+  var fab=document.querySelector('.fab'),lead=document.getElementById('lead');
+  if(!fab||!lead||!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(en){
+    en.forEach(function(e){
+      fab.classList.toggle('is-off',e.isIntersecting);
+      fab.setAttribute('aria-hidden',e.isIntersecting?'true':'false');
+    });
+  },{rootMargin:'0px 0px -20% 0px'});
+  io.observe(lead);
+})();
+</script>
 </body>
 </html>
