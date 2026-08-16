@@ -1108,6 +1108,12 @@ footer .f-tg:hover,footer .f-legal a:hover{border-bottom-color:var(--accent)}
 /* плавающая пара стоит на той же правой линии, что бургер: поле страницы уже 20px */
 @media(max-width:600px){.fab{right:20px}}
 
+/* кикер обложки на узком экране переносится под чип, а не уезжает за край */
+@media(max-width:480px){
+  .cover .cover-kick{flex-wrap:wrap;gap:8px 10px}
+  .cover .cover-kick .eyebrow{white-space:normal;flex:0 1 auto;min-width:0}
+}
+
 .r64-80-64-56{padding:64px 0 80px}.r64-130-64-80{padding:64px 0 130px}.r72-96-48-64{padding:72px 0 96px}.r80-96-56-64{padding:80px 0 96px}.r96-120-64-80{padding:96px 0 120px}.r140-96-96-64{padding:140px 0 96px}@media(max-width:720px){.r64-80-64-56{padding:64px 0 56px}.r64-130-64-80{padding:64px 0 80px}.r72-96-48-64{padding:48px 0 64px}.r80-96-56-64{padding:56px 0 64px}.r96-120-64-80{padding:64px 0 80px}.r140-96-96-64{padding:96px 0 64px}}</style>
 <style media="print">
 @page{size:A4 portrait;margin:15mm 13mm 17mm}

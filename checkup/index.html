@@ -847,6 +847,9 @@ img,svg,canvas,video{max-width:100%}
 footer{padding-bottom:104px}
 @media(max-width:640px){.fab{right:18px}}
 
+/* с открытым меню шапка получает фон, иначе строки страницы просвечивают под ним */
+.nav.sheet-open{background:var(--bg)!important;border-bottom-color:var(--line)!important}
+
 /* когда нужен чекап: номер, короткий вывод, цитата и разбор в три колонки */
 #why .rules{border-top:0}
 #why .rule{display:grid;grid-template-columns:56px minmax(0,.92fr) minmax(0,1.12fr);
@@ -1133,10 +1136,14 @@ footer{padding-bottom:104px}
 /* бургер-меню */
 (function(){
   var b=document.getElementById('burger'),s=document.getElementById('navSheet');if(!b||!s)return;
-  function close(){s.classList.remove('open');b.setAttribute('aria-expanded','false')}
+  function close(){s.classList.remove('open');b.setAttribute('aria-expanded','false');
+    var n=document.querySelector('.nav'); if(n) n.classList.remove('sheet-open')}
+  var nav=document.querySelector('.nav');
+  function mark(open){ if(nav) nav.classList.toggle('sheet-open',open) }
   b.addEventListener('click',function(){
     var open=s.classList.toggle('open');
     b.setAttribute('aria-expanded',open?'true':'false');
+    mark(open);
   });
   s.addEventListener('click',function(e){if(e.target.tagName==='A')close()});
   addEventListener('keydown',function(e){if(e.key==='Escape')close()});
