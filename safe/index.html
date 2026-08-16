@@ -621,7 +621,8 @@ footer .wrap{display:block}
 /* при перевороте графика уходит вправо, поэтому широкой становится правая колонка */
 .fig-side.big.flip{grid-template-columns:minmax(0,.8fr) minmax(0,1.5fr)}
 .fig-side.big .figbox canvas{min-height:420px}
-@media(max-width:860px){.fig-side.big{grid-template-columns:1fr}.fig-side.big .figbox canvas{min-height:300px}}
+@media(max-width:860px){.fig-side.big,.fig-side.big.flip{grid-template-columns:1fr}
+  .fig-side.big .figbox canvas{min-height:300px}}
 
 /* обложка живёт как первый экран главной: графика сверху, текст прижат к низу */
 @media(min-width:981px){

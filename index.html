@@ -158,7 +158,7 @@ h3{font-size:21px;font-weight:620;letter-spacing:-.01em;line-height:1.25}
 /* силуэт мозга из узлов держится правее текста, левый край растворяется маской */
 /* вторая маска по вертикали: без неё узлы и рёбра проходили прямо по строке метрик
    под кнопками, и на светлой теме линия перечёркивала цифры */
-#synFx{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0;opacity:.62;-webkit-mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.06) 26%,rgba(0,0,0,.5) 44%,#000 58%,#000 100%);mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.06) 26%,rgba(0,0,0,.5) 44%,#000 58%,#000 100%)}
+#synFx{position:absolute;left:0;right:0;top:0;width:100%;height:calc(100% + 380px);display:block;pointer-events:none;z-index:0;opacity:.62}
 /* на светлой узлы темнее текста и лезли на заголовок, поэтому холст глуше */
 :root[data-theme="light"] #synFx{opacity:.78}
 .hero .wrap{position:relative;z-index:1}
@@ -166,7 +166,7 @@ h3{font-size:21px;font-weight:620;letter-spacing:-.01em;line-height:1.25}
 @media(max-width:900px){#synFx{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0;opacity:.62;-webkit-mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.06) 26%,rgba(0,0,0,.5) 44%,#000 58%,#000 100%);mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.06) 26%,rgba(0,0,0,.5) 44%,#000 58%,#000 100%)}
   :root[data-theme="light"] #synFx{opacity:.78}}
 /* верх подобран так, чтобы метрики попадали на первый экран при высоте 820 */
-.hero{position:relative;overflow:hidden;padding:154px 0 88px;min-height:100svh;display:flex;align-items:center}
+.hero{position:relative;overflow:visible;padding:154px 0 88px;min-height:100svh;display:flex;align-items:center}
 /* высота окна режет первый экран: воздух ужимается ступенями,
    кегль h1 не трогаем, иначе ломается иерархия к h2 */
 @media(max-height:900px) and (min-width:981px){.hero{padding:138px 0 72px}.hero h1{max-width:26ch;margin-bottom:26px;font-size:clamp(40px,4.4vw,54px);line-height:1.06}.hero .lead{margin-bottom:24px}.hero-meta{margin-top:44px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 44px;padding-top:24px;border-top:1px solid var(--line)}}
@@ -1303,13 +1303,13 @@ input:not([type=checkbox]),textarea,select{font-size:16px}
   .hero{align-items:flex-end;padding:120px 0 76px}
   /* текст слева, цифры отдельной колонкой справа */
   .hero-grid{grid-template-columns:1fr;gap:0}
-  .hero-grid>div{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(300px,.58fr);
-    column-gap:clamp(32px,4vw,64px);row-gap:14px;align-items:end;width:100%}
+  .hero-grid>div{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(360px,.62fr);
+    column-gap:clamp(32px,4vw,64px);row-gap:8px;align-items:end;width:100%}
   .hero-grid .eyebrow,.hero-grid h1{grid-column:1}
-  .hero h1{max-width:none;font-size:clamp(30px,2.55vw,38px);margin-bottom:0;margin-top:0;text-wrap:balance}
+  .hero h1{max-width:none;font-size:clamp(34px,3.05vw,46px);margin-bottom:0;margin-top:0;text-wrap:balance}
   .hero-meta{grid-column:2;grid-row:1/3;display:grid;grid-auto-flow:column;
     grid-template-rows:auto auto;grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:24px clamp(24px,3vw,54px);margin:0;padding-top:0;border-top:0;align-self:end}
+    gap:26px clamp(36px,4.2vw,74px);margin:0;padding-top:0;border-top:0;align-self:end;min-width:0}
   /* разделитель вертикальный, между колонками цифр */
   .hero-meta::before{content:"";position:absolute;left:50%;top:6px;bottom:6px;width:1px;
     background:var(--line);transform:translateX(-50%)}
@@ -1338,9 +1338,9 @@ input:not([type=checkbox]),textarea,select{font-size:16px}
 #lead .lead-grid{max-width:var(--contentw)}
 @media(max-width:1240px){:root{--contentw:100%}}
 
-/* единое скругление: за образец взята кнопка первого экрана */
-:root{--r-sm:999px}
-.btn,.tgl,.nav-burger,.fab-b,.chip,.cc-tag,.svc-sep span{border-radius:999px}
+/* единое скругление: за образец взята кнопка первого экрана, 16px */
+.btn,.btn.lg,.btn.sm,.nav .btn,.chip,.cc-tag,.svc-sep span,.fab-b{border-radius:16px}
+.tgl,.nav-burger{border-radius:14px}
 .card,.wcard,.ccard,.leadbox,.cs-win,.off-card,.nxt,.rel-grid,.figbox,.tsyn{border-radius:var(--r-lg)}
 
 /* ритм секций: первый блок после экрана не должен липнуть к нему */
@@ -1365,6 +1365,10 @@ input:not([type=checkbox]),textarea,select{font-size:16px}
 #how .rmap-head,#how .rmap-row{grid-template-columns:34px minmax(0,1fr) minmax(0,1fr);column-gap:20px}
 /* схема команды и содержимое смысловых блоков центрируются в контентной колонке */
 #idea .tsyn-box,#idea .tsyn,#how .rmap,#how .rm-speed{margin-left:auto;margin-right:auto}
+
+/* сеть уходит под следующий блок, страница вбок при этом не едет */
+html,body{overflow-x:clip}
+#now{position:relative;z-index:1}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
@@ -2134,8 +2138,8 @@ function LEAD_API(url, opts){
          а читаемость текста слева держит маска затухания на самом холсте */
       var pad = Math.max(20, Math.min(W, H) * .04);
       var aspect = W / Math.max(1, H);
-      var cols = Math.max(8, Math.round((narrow ? 6 : 13) * Math.sqrt(aspect)));
-      var rows = Math.max(6, Math.round((narrow ? 7.6 : 10.5) / Math.sqrt(aspect)));
+      var cols = Math.max(8, Math.round((narrow ? 6.4 : 14) * Math.sqrt(aspect)));
+      var rows = Math.max(6, Math.round((narrow ? 8 : 12) / Math.sqrt(aspect)));
       var stepX = (W - pad * 2) / (cols - 1), stepY = (H - pad * 2) / (rows - 1);
       var R = Math.hypot(stepX, stepY);
       nodes = [];
@@ -2180,8 +2184,8 @@ function LEAD_API(url, opts){
       if (c.getBoundingClientRect().bottom < -100) { t++; return; }
       ctx.clearRect(0, 0, W, H);
 
-      var k = reduce ? CYCLE : (t % CYCLE);
-      var fade = k > CYCLE - 90 ? (CYCLE - k) / 90 : (k < 40 ? k / 40 : 1);
+      var k = reduce ? CYCLE : t;
+      var fade = k < 40 ? k / 40 : 1;
 
       /* фаза 1: сигналы летят к своим местам */
       var pos = nodes.map(function (n) {
@@ -2251,13 +2255,24 @@ function LEAD_API(url, opts){
           ctx.lineWidth = 1.2; ctx.lineCap = 'round'; ctx.stroke();
         }
       });
-      /* верхняя часть кадра уходит в темноту: шапка читается, а сеть не спорит с заголовком */
+      /* затухание рисуем прямо на холсте: слева под текстом, сверху под шапкой,
+         снизу сеть растворяется и уходит под следующий блок без резкого обреза */
       ctx.globalCompositeOperation = 'destination-out';
       var mg = ctx.createLinearGradient(0, 0, 0, H * .62);
       mg.addColorStop(0, 'rgba(0,0,0,.72)');
       mg.addColorStop(.45, 'rgba(0,0,0,.28)');
       mg.addColorStop(1, 'rgba(0,0,0,0)');
       ctx.fillStyle = mg; ctx.fillRect(0, 0, W, H * .62);
+      var lg2 = ctx.createLinearGradient(0, 0, W * .62, 0);
+      lg2.addColorStop(0, 'rgba(0,0,0,1)');
+      lg2.addColorStop(.42, 'rgba(0,0,0,.5)');
+      lg2.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = lg2; ctx.fillRect(0, 0, W * .62, H);
+      var bg2 = ctx.createLinearGradient(0, H - 400, 0, H - 30);
+      bg2.addColorStop(0, 'rgba(0,0,0,0)');
+      bg2.addColorStop(.55, 'rgba(0,0,0,.55)');
+      bg2.addColorStop(1, 'rgba(0,0,0,1)');
+      ctx.fillStyle = bg2; ctx.fillRect(0, H - 400, W, 400);
       ctx.globalCompositeOperation = 'source-over';
       t++;
     })();
@@ -2427,44 +2442,62 @@ function LEAD_API(url, opts){
        слева разрозненные обращения, в центре база знаний, справа ровный разобранный ответ ---------- */
   /* агент на знаниях: вопрос уходит в базу клуба и возвращается ответом со ссылкой на источник */
   [].forEach.call(document.querySelectorAll('canvas.fx-flow'), function (c) {
+    /* вопрос уходит в базу клуба, слои базы по очереди отзываются,
+       и наружу выходит ответ со ссылкой на источник. Подписи стоят
+       строкой сверху и строкой снизу, линия идёт между ними и ничего не пересекает */
+    var LAY = 4;
     loop(c, function (s, t) {
       var ctx = s.ctx, W = s.W, H = s.H, i;
       ctx.clearRect(0, 0, W, H);
-      var qx = W * .1, ax = W * .9, hx = W * .5, hy = H * .5;
-      /* стопка материалов базы */
-      for (i = 0; i < 4; i++) {
-        var yy = hy - 22 + i * 11, ww = 46 - i * 4;
+      var midY = H * .52, qx = 16, ax = W - 16, hx = W * .5;
+      var ph = (t * .0038) % 1;
+      /* 0-.34 вопрос летит в базу, .34-.62 база отзывается слоями, .62-1 ответ уходит */
+      var qp = Math.min(1, ph / .34);
+      var sp = ph < .34 ? 0 : Math.min(1, (ph - .34) / .28);
+      var rp = ph < .62 ? 0 : (ph - .62) / .38;
+      var stackW = 54, lh = 8, gap = 3, top = midY - (LAY * (lh + gap) - gap) / 2;
+      /* стопка базы: слои загораются по очереди, пока агент ищет ответ */
+      for (i = 0; i < LAY; i++) {
+        var yy = top + i * (lh + gap), lit = Math.max(0, Math.min(1, sp * LAY - i));
+        var ww = stackW - i * 5;
         ctx.beginPath();
-        if (ctx.roundRect) ctx.roundRect(hx - ww / 2, yy, ww, 7, 2); else ctx.rect(hx - ww / 2, yy, ww, 7);
-        ctx.strokeStyle = 'rgba(' + GR + ',' + (.5 - i * .07) + ')'; ctx.lineWidth = 1; ctx.stroke();
+        if (ctx.roundRect) ctx.roundRect(hx - ww / 2, yy, ww, lh, 3); else ctx.rect(hx - ww / 2, yy, ww, lh);
+        ctx.fillStyle = 'rgba(' + PH + ',' + (.05 + lit * .32) + ')'; ctx.fill();
+        ctx.strokeStyle = lit > .1 ? 'rgba(' + PH + ',' + (.35 + lit * .5) + ')' : 'rgba(' + GR + ',.42)';
+        ctx.lineWidth = 1; ctx.stroke();
       }
-      /* дуги вопроса и ответа */
-      ctx.beginPath(); ctx.moveTo(qx, hy); ctx.quadraticCurveTo((qx + hx) / 2, hy - 26, hx - 26, hy);
-      ctx.strokeStyle = 'rgba(' + GR + ',.35)'; ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(hx + 26, hy); ctx.quadraticCurveTo((hx + ax) / 2, hy + 26, ax, hy);
-      ctx.strokeStyle = 'rgba(' + PH + ',.45)'; ctx.stroke();
-      /* вопрос идёт слева, ответ уходит вправо */
-      var ph = (t * .006) % 1;
-      var q = Math.min(1, ph * 2), r = Math.max(0, ph * 2 - 1);
-      var m1 = 1 - q, x1 = m1 * m1 * qx + 2 * m1 * q * ((qx + hx) / 2) + q * q * (hx - 26);
-      var y1 = m1 * m1 * hy + 2 * m1 * q * (hy - 26) + q * q * hy;
-      var m2 = 1 - r, x2 = m2 * m2 * (hx + 26) + 2 * m2 * r * ((hx + ax) / 2) + r * r * ax;
-      var y2 = m2 * m2 * hy + 2 * m2 * r * (hy + 26) + r * r * hy;
-      if (ph < .5) { ctx.beginPath(); ctx.arc(x1, y1, 2.6, 0, 7); ctx.fillStyle = 'rgba(' + GR + ',.9)'; ctx.fill(); }
-      else {
-        var g = ctx.createRadialGradient(x2, y2, 0, x2, y2, 11);
+      if (sp > 0 && sp < 1) {
+        var g0 = ctx.createRadialGradient(hx, midY, 0, hx, midY, 34);
+        g0.addColorStop(0, 'rgba(' + PH + ',' + (.16 * Math.sin(sp * Math.PI)) + ')');
+        g0.addColorStop(1, 'rgba(' + PH + ',0)');
+        ctx.fillStyle = g0; ctx.beginPath(); ctx.arc(hx, midY, 34, 0, 7); ctx.fill();
+      }
+      /* путь вопроса и путь ответа: две прямые линии на одной высоте */
+      var inX = hx - stackW / 2 - 8, outX = hx + stackW / 2 + 8;
+      ctx.beginPath(); ctx.moveTo(qx, midY); ctx.lineTo(inX, midY);
+      ctx.strokeStyle = 'rgba(' + GR + ',.32)'; ctx.lineWidth = 1; ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(outX, midY); ctx.lineTo(ax, midY);
+      ctx.strokeStyle = 'rgba(' + PH + ',' + (.2 + rp * .3) + ')'; ctx.lineWidth = 1; ctx.stroke();
+      if (ph < .34) {
+        var x1 = qx + (inX - qx) * qp;
+        ctx.beginPath(); ctx.arc(x1, midY, 2.6, 0, 7);
+        ctx.fillStyle = 'rgba(' + WH + ',.85)'; ctx.fill();
+      } else if (rp > 0) {
+        var x2 = outX + (ax - outX) * Math.min(1, rp);
+        var g = ctx.createRadialGradient(x2, midY, 0, x2, midY, 12);
         g.addColorStop(0, 'rgba(' + PH + ',.5)'); g.addColorStop(1, 'rgba(' + PH + ',0)');
-        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x2, y2, 11, 0, 7); ctx.fill();
-        ctx.beginPath(); ctx.arc(x2, y2, 2.6, 0, 7); ctx.fillStyle = 'rgba(' + PH + ',.95)'; ctx.fill();
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x2, midY, 12, 0, 7); ctx.fill();
+        ctx.beginPath(); ctx.arc(x2, midY, 2.8, 0, 7);
+        ctx.fillStyle = 'rgba(' + PH + ',.95)'; ctx.fill();
       }
-      /* подписи концов */
-      ctx.font = '9.5px "JetBrains Mono", ui-monospace, monospace';
-      ctx.fillStyle = 'rgba(' + GR + ',.8)'; ctx.textAlign = 'left';
-      ctx.fillText('вопрос', 6, hy - 12);
+      /* подписи: верхняя строка и нижняя строка, между ними только графика */
+      ctx.textAlign = 'left'; ctx.fillStyle = 'rgba(' + GR + ',.8)';
+      capt(ctx, 'вопрос участника', 8, 13, W * .42);
       ctx.textAlign = 'right'; ctx.fillStyle = 'rgba(' + PH + ',.85)';
-      ctx.fillText('ответ с источником', W - 6, hy + 20);
-      ctx.textAlign = 'center'; ctx.fillStyle = 'rgba(' + GR + ',.7)';
-      ctx.fillText('база клуба', hx, hy + 36); ctx.textAlign = 'left';
+      capt(ctx, 'ответ со ссылкой на источник', W - 8, 13, W * .5);
+      ctx.textAlign = 'center'; ctx.fillStyle = 'rgba(' + (sp > .1 ? PH : GR) + ',.8)';
+      capt(ctx, 'база клуба: 1 500+ пар вопрос-ответ', hx, H - 7, W - 16);
+      ctx.textAlign = 'left';
     }, null);
   });
 
@@ -2519,33 +2552,42 @@ function LEAD_API(url, opts){
   /* ---------- блок: сигнал до и после ---------- */
   /* отдел продаж: раньше слушали пять диалогов из трёхсот, теперь разбираются все */
   [].forEach.call(document.querySelectorAll('canvas.fx-signal'), function (c) {
+    /* до и после: сверху лента из 300 звонков, где разобрано только пять,
+       снизу та же лента, которую агент проходит целиком каждый день.
+       Подписи слева, графика справа, друг на друга не наезжают */
     loop(c, function (s, t) {
-      var ctx = s.ctx, W = s.W, H = s.H;
+      var ctx = s.ctx, W = s.W, H = s.H, i;
       ctx.clearRect(0, 0, W, H);
-      var cols = 30, rows = 5, padX = 14, padY = 34;
-      var gx = (W - padX * 2) / (cols - 1), gy = (H - padY - 16) / (rows - 1);
-      var wave = (t * .012) % (cols + 14);
-      ctx.fillStyle = 'rgba(' + GR + ',.75)';
-      capt(ctx, 'было: слушали 5 из 300', padX, 13, W - padX * 2);
-      ctx.fillStyle = 'rgba(' + PH + ',.85)';
-      capt(ctx, 'стало: разбираются все 300', padX, 26, W - padX * 2);
-      for (var r = 0; r < rows; r++) {
-        for (var i = 0; i < cols; i++) {
-          var x = padX + i * gx, y = padY + r * gy;
-          var idx = r * cols + i;
-          var old5 = (idx % 31 === 0);
-          var lit = (i + r * 2) < wave;
-          if (lit) {
-            var g = ctx.createRadialGradient(x, y, 0, x, y, 5);
-            g.addColorStop(0, 'rgba(' + PH + ',.45)'); g.addColorStop(1, 'rgba(' + PH + ',0)');
-            ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, 5, 0, 7); ctx.fill();
-          }
-          ctx.beginPath(); ctx.arc(x, y, lit ? 1.9 : 1.4, 0, 7);
-          ctx.fillStyle = lit ? 'rgba(' + PH + ',.9)'
-            : (old5 ? 'rgba(' + WH + ',.55)' : 'rgba(' + GR + ',.28)');
-          ctx.fill();
+      var labW = Math.min(52, W * .16), x0 = labW + 12, x1 = W - 10;
+      var n = 60, gx = (x1 - x0) / n, hBar = 11;
+      var yA = H * .3, yB = H * .74;
+      var scan = (t * .0055) % 1.35;
+      ctx.textAlign = 'left';
+      ctx.fillStyle = 'rgba(' + GR + ',.8)'; capt(ctx, 'было', 8, yA + 4, labW);
+      ctx.fillStyle = 'rgba(' + PH + ',.85)'; capt(ctx, 'стало', 8, yB + 4, labW);
+      for (i = 0; i < n; i++) {
+        var x = x0 + i * gx;
+        /* верхняя лента: разобран каждый двенадцатый штрих, это пять записей из трёхсот */
+        var old = (i % 12 === 5);
+        ctx.beginPath(); ctx.rect(x, yA - hBar / 2, Math.max(1.4, gx - 1.6), hBar);
+        ctx.fillStyle = old ? 'rgba(' + WH + ',.6)' : 'rgba(' + GR + ',.2)';
+        ctx.fill();
+        /* нижняя лента: волна проходит по всем звонкам и оставляет их разобранными */
+        var lit = (i / n) < scan;
+        if (lit && Math.abs(i / n - scan) < .06) {
+          var g = ctx.createRadialGradient(x, yB, 0, x, yB, 13);
+          g.addColorStop(0, 'rgba(' + PH + ',.42)'); g.addColorStop(1, 'rgba(' + PH + ',0)');
+          ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, yB, 13, 0, 7); ctx.fill();
         }
+        ctx.beginPath(); ctx.rect(x, yB - hBar / 2, Math.max(1.4, gx - 1.6), hBar);
+        ctx.fillStyle = lit ? 'rgba(' + PH + ',.78)' : 'rgba(' + GR + ',.2)';
+        ctx.fill();
       }
+      ctx.textAlign = 'right'; ctx.fillStyle = 'rgba(' + GR + ',.75)';
+      capt(ctx, 'слушали 5 из 300 аудиозаписей', x1, yA - hBar / 2 - 6, x1 - x0);
+      ctx.fillStyle = 'rgba(' + PH + ',.8)';
+      capt(ctx, 'разбираются все 300 каждый день', x1, yB + hBar / 2 + 13, x1 - x0);
+      ctx.textAlign = 'left';
     }, null);
   });
 
@@ -3268,13 +3310,16 @@ function LEAD_API(url, opts){
 (function(){
   var fab=document.querySelector('.fab'),lead=document.getElementById('lead');
   if(!fab||!lead||!('IntersectionObserver' in window))return;
+  /* пара прячется и на первом экране: там своя кнопка, и они накладывались */
+  var near={};
   var io=new IntersectionObserver(function(en){
-    en.forEach(function(e){
-      fab.classList.toggle('is-off',e.isIntersecting);
-      fab.setAttribute('aria-hidden',e.isIntersecting?'true':'false');
-    });
+    en.forEach(function(e){ near[e.target.id||'hero']=e.isIntersecting });
+    var hide=Object.keys(near).some(function(k){return near[k]});
+    fab.classList.toggle('is-off',hide);
+    fab.setAttribute('aria-hidden',hide?'true':'false');
   },{rootMargin:'0px 0px -20% 0px'});
   io.observe(lead);
+  var heroEl=document.querySelector('.hero'); if(heroEl) io.observe(heroEl);
 })();
 </script>
 
