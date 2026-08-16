@@ -160,16 +160,12 @@ h3{font-size:21px;font-weight:620;letter-spacing:-.01em;line-height:1.25}
 
 /* ---------- hero ---------- */
 
-/* силуэт мозга из узлов держится правее текста, левый край растворяется маской */
-/* вторая маска по вертикали: без неё узлы и рёбра проходили прямо по строке метрик
-   под кнопками, и на светлой теме линия перечёркивала цифры */
-#synFx{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0;opacity:.8}
-/* на светлой узлы темнее текста и лезли на заголовок, поэтому холст глуше */
-:root[data-theme="light"] #synFx{opacity:.78}
+/* сеть занимает весь кадр обложки и уходит за его края: масок по форме нет,
+   плотность гасится в самой графике, а не обрезанием холста */
+#synFx{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0;opacity:.92}
+/* на светлой узлы темнее текста, поэтому холст заметно глуше */
+:root[data-theme="light"] #synFx{opacity:.6}
 .hero .wrap{position:relative;z-index:1}
-/* на узкой холст гасим до метрик: иначе узлы и рёбра идут прямо по строке цифр */
-@media(max-width:900px){#synFx{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0;opacity:.62;-webkit-mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.06) 26%,rgba(0,0,0,.5) 44%,#000 58%,#000 100%);mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.06) 26%,rgba(0,0,0,.5) 44%,#000 58%,#000 100%)}
-  :root[data-theme="light"] #synFx{opacity:.78}}
 /* верх подобран так, чтобы метрики попадали на первый экран при высоте 820 */
 .hero{position:relative;overflow:hidden;padding:154px 0 88px;min-height:100svh;display:flex;align-items:center}
 /* высота окна режет первый экран: воздух ужимается ступенями,
@@ -1144,7 +1140,9 @@ body.cs-lock{overflow:hidden}
 
 /* плавающая пара внизу: письмо ведёт на форму, самолётик в Telegram.
    в шапке остаётся только Telegram, чтобы действия не спорили между собой */
-.fab{position:fixed;right:16px;bottom:16px;z-index:95;display:none;gap:10px;align-items:center}
+/* пара стоит по той же правой линии, что бургер в шапке, и отодвинута от угла:
+   на первом экране она попадает ровно в пустую четвёртую ячейку сетки цифр */
+.fab{position:fixed;right:36px;bottom:18px;z-index:95;display:none;gap:10px;align-items:center}
 .fab-b{display:inline-flex;align-items:center;gap:9px;height:52px;padding:0 18px;border-radius:26px;
   font-size:14.5px;font-weight:560;box-shadow:0 10px 30px rgba(0,0,0,.22)}
 .fab-lead{background:var(--accent);color:var(--accent-ink)}
@@ -1153,25 +1151,23 @@ body.cs-lock{overflow:hidden}
 .fab-tg:active{color:var(--accent-txt)}
 @media(max-width:1100px){.fab{display:flex}
   /* запас снизу, чтобы плавающие кнопки не ложились на последнюю строку блока */
-  footer{padding-bottom:104px}
-  .hero{padding-bottom:150px}}
+  footer{padding-bottom:104px}}
+@media(max-width:640px){.fab{right:18px}}
 @media(max-width:380px){.fab-lead span{display:none}.fab-lead{width:52px;padding:0;justify-content:center}}
 
-/* первый экран на телефоне: сверху графика, под ней заголовок, кнопка и цифры.
-   .hero сам становится колонкой, потому что холст лежит рядом с .wrap, а не внутри */
+/* первый экран на телефоне: сеть во весь кадр, текст и цифры прижаты к низу.
+   холст лежит рядом с .wrap, поэтому растягивается по всей обложке */
 @media(max-width:760px){
-  .hero{display:flex;flex-direction:column;align-items:stretch;padding:86px 0 40px;min-height:auto}
-  .hero>.wrap{order:2}
-  #synFx{position:relative;inset:auto;order:1;width:100%;height:330px;margin:6px 0 14px;opacity:.95;
-    -webkit-mask-image:linear-gradient(180deg,#000 72%,transparent);
-    mask-image:linear-gradient(180deg,#000 72%,transparent)}
-  /* цифры парой: крупное число сверху, подпись под ним, третья занимает всю строку */
-  .hero-meta{display:grid;grid-template-columns:1fr 1fr;gap:20px 18px;margin-top:34px;padding-top:22px}
+  .hero{display:flex;flex-direction:column;justify-content:flex-end;align-items:stretch;
+    padding:92px 0 18px;min-height:100vh;min-height:100svh}
+  .hero>.wrap{order:2;width:100%}
+  #synFx{position:absolute;inset:0;order:0;width:100%;height:100%;margin:0;opacity:.95;
+    -webkit-mask-image:none;mask-image:none}
+  /* цифры сеткой два на два: четвёртая ячейка пустая, её занимают плавающие кнопки */
+  .hero-meta{display:grid;grid-template-columns:1.18fr .82fr;gap:20px 16px;margin-top:30px;padding-top:22px}
   .hero-meta .m{flex-direction:column;align-items:flex-start;gap:6px}
   .hero-meta .m b{font-size:23px;width:auto;flex:none}
-  .hero-meta .m>span{font-size:12.5px;line-height:1.45;max-width:22ch}
-  .hero-meta .m:last-child{grid-column:1/-1;flex-direction:row;align-items:baseline;gap:12px}
-  .hero-meta .m:last-child>span{max-width:none}
+  .hero-meta .m>span{font-size:12.5px;line-height:1.45;max-width:none}
 }
 
 /* принципы читаются списком с номерами: блок сознательно не похож на карточки шагов и кейсов */
@@ -1561,11 +1557,15 @@ footer .f-tg{display:inline-block;min-height:0;position:relative;line-height:1.5
 footer .f-tg::after{content:"";position:absolute;left:0;right:0;top:50%;
   transform:translateY(-50%);height:44px}
 
-/* ---------- 7. графика первого экрана не заходит на текст и цифры ---------- */
-@media(min-width:761px){
-  #synFx{-webkit-mask-image:linear-gradient(180deg,#000 74%,rgba(0,0,0,.5) 84%,transparent 96%);
-    mask-image:linear-gradient(180deg,#000 60%,rgba(0,0,0,.42) 69%,transparent 77%)}
-}
+/* ---------- 7. текст читается поверх сети без обрезания графики ----------
+   вместо маски по холсту работает мягкая заливка фоном снизу вверх:
+   сеть остаётся видимой до самого нижнего края кадра, в том числе
+   в правом нижнем углу под плавающими кнопками */
+.hero::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(180deg,transparent 30%,
+    color-mix(in srgb,var(--bg) 26%,transparent) 56%,
+    color-mix(in srgb,var(--bg) 58%,transparent) 80%,
+    color-mix(in srgb,var(--bg) 72%,transparent) 100%)}
 .hero-meta::after{background:radial-gradient(130% 130% at 55% 50%,var(--bg) 0%,var(--bg) 52%,
   color-mix(in srgb,var(--bg) 70%,transparent) 78%,transparent 100%)}
 
@@ -1622,6 +1622,30 @@ footer .f-tg:hover,footer .f-legal a:hover{border-bottom-color:var(--accent)}
   /* бургер остаётся кликабельным в самом низу страницы */
   .nav{pointer-events:auto}
   .fab{z-index:90}
+}
+
+/* ==========================================================
+   ПЕРВЫЙ ЭКРАН: одна правая линия, цифры и плавающая пара
+   ========================================================== */
+/* кнопка меню одного размера с плавающими кнопками */
+@media(max-width:1100px){
+  .nav-burger{width:52px;height:52px}
+  .nav-burger svg{width:21px;height:21px}
+}
+/* на телефоне шапка идёт тем же отступом, что и контент: бургер,
+   правый край цифр и плавающая пара стоят на одной вертикали */
+@media(max-width:640px){
+  .nav .wrap{padding-left:18px;padding-right:18px}
+}
+/* подписи цифр держат одну строку: колонка со стоимостью чекапа длиннее соседней */
+@media(max-width:760px){
+  .hero-meta .m>span{font-size:12.5px;text-wrap:nowrap;white-space:normal}
+  .hero-meta .m:first-child>span{white-space:nowrap}
+}
+@media(max-width:400px){
+  .hero-meta{gap:18px 12px}
+  .hero-meta .m>span{font-size:11.5px}
+  .hero-meta .m b{font-size:21px}
 }
 </style>
 <script>

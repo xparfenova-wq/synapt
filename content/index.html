@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="ru" data-theme="dark"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<title>Synapt – шаблоны контента</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+ --bg:#0E1211;--surface:#151A18;--surface2:#1B221F;--line:#212826;--line2:#2C3532;
+ --text:#E8EEEC;--text2:#C4CAC7;--muted:#9AA5A1;--dim:#6E7975;
+ --accent:#79C98E;--accent-deep:#4E8F62;--ink:#0E1211;
+ --sans:"Manrope",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
+ --gutter:24px;--r:16px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.5;
+ -webkit-font-smoothing:antialiased;padding-bottom:90px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--gutter)}
+header.top{padding:64px 0 32px}
+.kick{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--dim);margin-bottom:14px}
+h1{font-size:clamp(30px,3.6vw,46px);font-weight:600;letter-spacing:-.03em;line-height:1.06}
+.lead{color:var(--muted);margin-top:14px;max-width:66ch;font-size:16.5px}
+section{margin-top:56px;border-top:1px solid var(--line);padding-top:28px}
+h2{font-size:clamp(22px,2.4vw,30px);font-weight:600;letter-spacing:-.025em;margin-bottom:8px}
+.sub{color:var(--muted);max-width:70ch;margin-bottom:26px}
+h3{font-size:19px;font-weight:600;letter-spacing:-.015em}
+
+/* правила */
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.rule{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px}
+.rule .k{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--dim);margin-bottom:8px}
+.rule p{font-size:14.5px;color:var(--text2);line-height:1.55}
+.sw{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.sw span{width:34px;height:34px;border-radius:9px;display:block;border:1px solid var(--line2)}
+
+/* сетка шаблонов */
+.grid{display:grid;gap:26px}
+.grid.stories{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.grid.posts{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.tpl{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+ display:flex;flex-direction:column}
+.tpl .cap{padding:14px 16px 16px;border-top:1px solid var(--line)}
+.tpl .cap .n{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--accent)}
+.tpl .cap h3{margin:6px 0 6px;font-size:16px}
+.tpl .cap p{font-size:13.5px;color:var(--muted);line-height:1.5}
+
+/* холст макета */
+.cv{position:relative;background:#0B0E0D;overflow:hidden}
+.cv.story{aspect-ratio:9/16}
+.cv.post{aspect-ratio:4/5}
+.cv .pad{position:absolute;inset:0;padding:9%;display:flex;flex-direction:column}
+.cv .mk{font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--accent);text-transform:lowercase}
+.cv .big{font-weight:600;letter-spacing:-.03em;line-height:1.02;color:#fff}
+.cv .num{font-family:var(--mono);font-weight:500;letter-spacing:-.03em;color:#fff;line-height:1}
+.cv .txt{color:#B9C1BE;line-height:1.45}
+.cv .logo{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:#6E7975}
+.cv .bar{height:1px;background:#252C2A}
+.cv .btn{display:inline-flex;align-items:center;justify-content:center;background:var(--accent);
+ color:var(--ink);border-radius:10px;font-size:10px;font-weight:600;padding:8px 12px;width:fit-content}
+.cv .chip{display:inline-flex;border:1px solid #2C3532;border-radius:999px;padding:4px 9px;
+ font-family:var(--mono);font-size:8.5px;color:#9AA5A1;width:fit-content}
+.net{position:absolute;inset:0;opacity:.5}
+.dot{position:absolute;width:4px;height:4px;border-radius:50%;background:#2F3B37}
+.dot.on{background:var(--accent);box-shadow:0 0 10px rgba(121,201,142,.55)}
+.ln{position:absolute;height:1px;background:#232A28;transform-origin:0 50%}
+.row{display:flex;gap:8px;align-items:center}
+.spacer{flex:1}
+/* до и после */
+.ba{display:grid;grid-template-columns:1fr;gap:8px}
+.ba>div{border:1px solid #232A28;border-radius:10px;padding:9px 10px}
+.ba .after{border-color:rgba(121,201,142,.45);background:rgba(121,201,142,.07)}
+.ba .k{font-family:var(--mono);font-size:8.5px;color:#6E7975;letter-spacing:.06em;margin-bottom:4px}
+.ba .v{font-size:11px;color:#DDE3E1}
+.qm{font-size:34px;line-height:.7;color:var(--accent);font-weight:600}
+.tbl{display:grid;grid-template-columns:auto 1fr;gap:6px 10px;font-size:10px;color:#B9C1BE}
+.tbl .i{font-family:var(--mono);color:#6E7975}
+.list{display:flex;flex-direction:column;gap:7px}
+.list .it{display:grid;grid-template-columns:16px 1fr;gap:8px;font-size:10.5px;color:#C4CAC7}
+.list .it b{font-family:var(--mono);font-size:9px;font-weight:500;color:var(--accent)}
+.calc{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
+.calc>div{border:1px solid #232A28;border-radius:9px;padding:8px}
+.calc .v{font-family:var(--mono);font-size:14px;color:#fff}
+.calc .c{font-size:8.5px;color:#7E8582;margin-top:3px;line-height:1.35}
+
+/* тексты-рыбы */
+.copy{margin-top:14px;background:var(--surface2);border:1px solid var(--line);border-radius:12px;
+ padding:14px 16px}
+.copy .k{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--dim);margin-bottom:7px}
+.copy p{font-size:13.5px;color:var(--text2);line-height:1.55}
+.copy p + p{margin-top:8px}
+footer{margin-top:64px;border-top:1px solid var(--line);padding-top:22px;color:var(--dim);font-size:13px}
+@media(max-width:640px){
+ header.top{padding:40px 0 22px}
+ .grid.stories{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
+ .grid.posts{grid-template-columns:1fr;gap:18px}
+}
+</style></head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="kick">Соцсети Synapt</div>
+  <h1>Двенадцать шаблонов для&nbsp;сторис и&nbsp;постов</h1>
+  <p class="lead">Готовые схемы вёрстки под фирменный стиль студии: что&nbsp;стоит в&nbsp;кадре, каким кеглем и&nbsp;в&nbsp;каком порядке. Под каждым макетом текст-рыба, который можно заменить своим, сохранив структуру.</p>
+</header>
+
+<section>
+  <h2>Правила, которые держат стиль</h2>
+  <p class="sub">Всё построено на&nbsp;трёх вещах: тёмный графит, один акцент и&nbsp;много воздуха. Акцентом красим только то, что&nbsp;несёт смысл: цифру, кнопку, активный узел.</p>
+  <div class="rules">
+    <div class="rule">
+      <div class="k">шрифты</div>
+      <p>Manrope для&nbsp;заголовков и&nbsp;текста, JetBrains Mono для&nbsp;цифр, меток и&nbsp;подписей. Никаких третьих гарнитур.</p>
+    </div>
+    <div class="rule">
+      <div class="k">палитра</div>
+      <p>Фон графит, текст молочный, акцент один. Крупные плашки акцентом не&nbsp;красим.</p>
+      <div class="sw">
+        <span style="background:#0E1211"></span><span style="background:#151A18"></span>
+        <span style="background:#E8EEEC"></span><span style="background:#79C98E"></span>
+      </div>
+    </div>
+    <div class="rule">
+      <div class="k">поля</div>
+      <p>Отступ от&nbsp;края кадра не&nbsp;меньше 9 процентов ширины. Текст не&nbsp;подходит к&nbsp;краю ближе этой границы.</p>
+    </div>
+    <div class="rule">
+      <div class="k">кегли</div>
+      <p>В&nbsp;сторис заголовок 60-72 пункта, подпись 26-30. В&nbsp;постах заголовок 44-56, текст 24-28. Мелче 22 не&nbsp;опускаемся.</p>
+    </div>
+    <div class="rule">
+      <div class="k">чего не&nbsp;делаем</div>
+      <p>Без градиентных заливок во&nbsp;весь кадр, без стоковых фото людей, без курсива и&nbsp;без длинного тире.</p>
+    </div>
+    <div class="rule">
+      <div class="k">подпись студии</div>
+      <p>Внизу кадра мелкая метка synapt. Логотип не&nbsp;увеличиваем и&nbsp;не&nbsp;ставим по&nbsp;центру.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Сторис, вертикаль 9 на&nbsp;16</h2>
+  <p class="sub">Шесть схем под ежедневный ритм: метрика, цитата, сравнение, тезис, кейс и&nbsp;приглашение.</p>
+  <div class="grid stories">
+
+    <div class="tpl">
+      <div class="cv story">
+        <div class="net">
+          <span class="dot on" style="left:22%;top:18%"></span>
+          <span class="dot" style="left:62%;top:12%"></span>
+          <span class="dot" style="left:78%;top:30%"></span>
+          <span class="dot on" style="left:44%;top:26%"></span>
+          <span class="ln" style="left:22%;top:18%;width:24%;transform:rotate(14deg)"></span>
+          <span class="ln" style="left:44%;top:26%;width:20%;transform:rotate(-32deg)"></span>
+        </div>
+        <div class="pad">
+          <div class="mk">цифра недели</div>
+          <div class="spacer"></div>
+          <div class="num" style="font-size:44px">26 из&nbsp;27</div>
+          <div class="txt" style="font-size:11px;margin-top:10px">сотрудников работают с&nbsp;нейросетями каждый день</div>
+          <div class="spacer"></div>
+          <div class="row"><span class="logo">synapt</span></div>
+        </div>
+      </div>
+      <div class="cap">
+        <div class="n">01 метрика</div>
+        <h3>Одна цифра на&nbsp;весь экран</h3>
+        <p>Цифра моно, под ней одна строка расшифровки. Фон – редкая сеть с&nbsp;двумя активными узлами.</p>
+      </div>
+    </div>
+
+    <div class="tpl">
+      <div class="cv story">
+        <div class="pad">
+          <div class="mk">говорит клиент</div>
+          <div class="spacer"></div>
+          <div class="qm">«</div>
+          <div class="big" style="font-size:19px;margin-top:6px">Менеджер десять минут забивал одну заявку в&nbsp;1С</div>
+          <div class="txt" style="font-size:10px;margin-top:12px">собственник производственной компании</div>
+          <div class="spacer"></div>
+          <div class="bar"></div>
+          <div class="row" style="margin-top:10px"><span class="logo">synapt</span></div>
+        </div>
+      </div>
+      <div class="cap">
+        <div class="n">02 цитата</div>
+        <h3>Реплика с&nbsp;встречи</h3>
+        <p>Живая фраза клиента без причёсывания. Кавычка акцентом, подпись мелким моно.</p>
+      </div>
+    </div>
+
+    <div class="tpl">
+      <div class="cv story">
+        <div class="pad">
+          <div class="mk">до&nbsp;и&nbsp;после</div>
+          <div class="spacer"></div>
+          <div class="ba">
+            <div><div class="k">до</div><div class="v">10 минут вручную</div></div>
+            <div class="after"><div class="k">после</div><div class="v">2 минуты, AI готовит черновик</div></div>
+          </div>
+          <div class="txt" style="font-size:10px;margin-top:12px">разбор заявки в&nbsp;закупках</div>
+          <div class="spacer"></div>
+          <div class="row"><span class="logo">synapt</span></div>
+        </div>
+      </div>
+      <div class="cap">
+        <div class="n">03 сравнение</div>
+        <h3>До&nbsp;и&nbsp;после одной задачи</h3>
+        <p>Две карточки друг под другом, нижняя с&nbsp;акцентной рамкой. Внизу название процесса.</p>
+      </div>
+    </div>
+
+    <div class="tpl">
+      <div class="cv story">
+        <div class="pad">
+          <div class="mk">мысль</div>
+          <div class="spacer"></div>
+          <div class="big" style="font-size:20px">AI не&nbsp;заменяет процесс. Он&nbsp;делает видимым то, что&nbsp;в&nbsp;нём сломано</div>
+          <div class="spacer"></div>
+          <div class="bar"></div>
+          <div class="row" style="margin-top:10px"><span class="logo">synapt</span><span class="spacer"></span><span class="chip">подход</span></div>
+        </div>
+      </div>
+      <div class="cap">
+        <div class="n">04 тезис</div>
+        <h3>Мысль без картинки</h3>
+        <p>Только типографика: крупная фраза по&nbsp;центру кадра, метка темы внизу справа.</p>
+      </div>
+    </div>
+
+    <div class="tpl">
+      <div class="cv story">
+        <div class="pad">
+          <div class="mk">кейс</div>
+          <div class="big" style="font-size:17px;margin-top:8px">Разбор бизнеса клиники приходит в&nbsp;чат за&nbsp;минуты</div>
+          <div class="spacer"></div>
+          <div class="calc">
+            <div><div class="v">1 500+</div><div class="c">пар вопрос-ответ в&nbsp;базе</div></div>
+            <div><div class="v">24/7</div><div class="c">ответ участнику клуба</div></div>
+          </div>
+          <div class="spacer"></div>
+          <div class="row"><span class="chip">GlobalDent</span><span class="spacer"></span><span class="logo">synapt</span></div>
+        </div>
+      </div>
+      <div class="cap">
+        <div class="n">05 кейс</div>
+        <h3>Кейс в&nbsp;две метрики</h3>
+        <p>Заголовок сверху, пара цифр внизу, чип с&nbsp;названием клиента. Больше двух метрик не&nbsp;ставим.</p>
+      </div>
+    </div>
+
+    <div class="tpl">
+      <div class="cv story">
+        <div class="pad">
+          <div class="mk">следующий шаг</div>
+          <div class="spacer"></div>
+          <div class="big" style="font-size:22px">30 минут в&nbsp;Zoom</div>
+          <div class="txt" style="font-size:11px;margin-top:10px">разберём процессы и&nbsp;покажем, где нейросети дадут эффект быстрее всего</div>
+          <div class="btn" style="margin-top:14px">Оставить заявку</div>
+          <div class="spacer"></div>
+          <div class="row"><span class="logo">synapt</span></div>
+        </div>
+      </div>
+      <div class="cap">
+        <div class="n">06 приглашение</div>
+        <h3>Призыв на&nbsp;встречу</h3>
+        <p>Единственный шаблон с&nbsp;кнопкой. Кнопка акцентом, текст на&nbsp;ней тёмный.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>Посты, вертикаль 4 на&nbsp;5</h2>
+  <p class="sub">Шесть схем под ленту: кейс, карта процесса, принципы, вопрос и&nbsp;ответ, экспертное мнение и&nbsp;блок услуги.</p>
+  <div class="grid posts">
+
+    <div class="tpl">
+      <div class="cv post">
+        <div class="pad">
+          <div class="row"><span class="mk">кейс</span><span class="spacer"></span><span class="chip">INNORTO</span></div>
+          <div class="big" style="font-size:20px;margin-top:12px">Заявка в&nbsp;закупках оформляется за&nbsp;2 минуты, раньше уходило 10</div>
+          <div class="spacer"></div>
+          <div class="calc">
+            <div><div class="v">26 из&nbsp;27</div><div class="c">сотрудников работают с&nbsp;AI</div></div>
+            <div><div class="v">25-35 ч</div><div class="c">рутины в&nbsp;неделю освободилось</div></div>
+          </div>
+          <div class="row" style="margin-top:12px"><span class="logo">synapt</span></div>
+        </div>
+      </div>
+      <div class="cap">
+        <div class="n">07 кейс в&nbsp;ленте</div>
+        <h3>Результат и&nbsp;две цифры</h3>
+        <p>Заголовок формулируем как&nbsp;факт с&nbsp;числом. Метрики внизу, чип клиента вверху справа.</p>
+      </div>
+      <div class="copy">
+        <div class="k">текст под пост</div>
+        <p>Месяц назад нейросетями в&nbsp;компании пользовались два человека. Сегодня их&nbsp;двадцать шесть из&nbsp;двадцати семи, и&nbsp;заявка в&nbsp;закупках оформляется за&nbsp;две минуты вместо десяти.</p>
+        <p>Что&nbsp;сделали: разобрали процессы отделов, собрали инструменты под конкретные задачи и&nbsp;научили команду работать с&nbsp;ними в&nbsp;обычном рабочем дне.</p>
+      </div>
+    </div>
+
+    <div class="tpl">
+      <div class="cv post">
+        <div class="net">
+          <span class="dot" style="left:16%;top:44%"></span>
+          <span class="dot on" style="left:38%;top:36%"></span>
+          <span class="dot" style="left:60%;top:50%"></span>
+          <span class="dot on" style="left:80%;top:40%"></span>
+          <span class="ln" style="left:16%;top:44%;width:24%;transform:rotate(-14deg)"></span>
+          <span class="ln" style="left:38%;top:36%;width:24%;transform:rotate(22deg)"></span>
+          <span class="ln" style="left:60%;top:50%;width:22%;transform:rotate(-18deg)"></span>
+        </div>
+        <div class="pad">
+          <div class="mk">как&nbsp;это устроено</div>
+          <div class="spacer"></div>
+          <div class="big" style="font-size:19px">Карта процессов показывает, где теряются часы и&nbsp;деньги</div>
+          <div class="txt" style="font-size:10.5px;margin-top:10px">две недели, фиксированная стоимость</div>
+          <div class="spacer"></div>
+          <div class="row"><span class="logo">synapt</span></div>
+        </div>
+      </div>
+      <div class="cap">
+        <div class="n">08 схема</div>
+        <h3>Процесс линией связей</h3>
+        <p>Фоновая сеть с&nbsp;двумя активными узлами. Текст всегда поверх пустой части кадра.</p>
+      </div>
+      <div class="copy">
+        <div class="k">текст под пост</div>
+        <p>Чекап это две недели и&nbsp;фиксированная стоимость. На&nbsp;выходе карта всех процессов компании с&nbsp;узкими местами, план внедрения с&nbsp;вилкой бюджета и&nbsp;один собранный агент.</p>
+      </div>
+    </div>
+
+    <div class="tpl">
+      <div class="cv post">
+        <div class="pad">
+          <div class="mk">принципы</div>
+          <div class="big" style="font-size:17px;margin-top:10px">Как&nbsp;мы&nbsp;работаем</div>
+          <div class="spacer"></div>
+          <div class="list">
+            <div class="it"><b>01</b><span>Сначала анализ, потом стоимость и&nbsp;критерии</span></div>
+            <div class="it"><b>02</b><span>Первый результат через три-пять недель</span></div>
+            <div class="it"><b>03</b><span>Система остаётся у&nbsp;вас целиком</span></div>
+            <div class="it"><b>04</b><span>Данные не&nbsp;покидают ваш контур</span></div>
+          </div>
+          <div class="spacer"></div>
+          <div class="row"><span class="logo">synapt</span></div>
+        </div>
+      </div>
+      <div class="cap">
+        <div class="n">09 список</div>
+        <h3>Четыре пункта максимум</h3>
+        <p>Номера моно акцентом, строки короткие. Пятый пункт уже не&nbsp;читается в&nbsp;ленте.</p>
+      </div>
+      <div class="copy">
+        <div class="k">текст под пост</div>
+        <p>Четыре правила, по&nbsp;которым идёт любой наш проект. Они же&nbsp;лежат в&nbsp;договоре: критерии приёмки, сроки, передача системы и&nbsp;работа с&nbsp;данными.</p>
+      </div>
+    </div>
+
+    <div class="tpl">
+      <div class="cv post">
+        <div class="pad">
+          <div class="mk">частый вопрос</div>
+          <div class="spacer"></div>
+          <div class="big" style="font-size:18px">А&nbsp;если у&nbsp;нас есть свои разработчики?</div>
+          <div class="txt" style="font-size:10.5px;margin-top:12px">Одного агента ваш разработчик соберёт за&nbsp;выходные. Платят не&nbsp;за&nbsp;это, а&nbsp;за&nbsp;то, чтобы решение продолжало работать через полгода.</div>
+          <div class="spacer"></div>
+          <div class="row"><span class="logo">synapt</span><span class="spacer"></span><span class="chip">FAQ</span></div>
+        </div>
+      </div>
+      <div class="cap">
+        <div class="n">10 вопрос и&nbsp;ответ</div>
+        <h3>Возражение и&nbsp;разбор</h3>
+        <p>Вопрос крупно, ответ спокойным текстом. Один вопрос на&nbsp;пост, без списков.</p>
+      </div>
+      <div class="copy">
+        <div class="k">текст под пост</div>
+        <p>Спрос, адаптация, сценарии, длинные цепочки и&nbsp;обвязка вокруг агента: пять вещей, из-за&nbsp;которых решение живёт дольше демонстрации. В&nbsp;карусели разобрали каждую.</p>
+      </div>
+    </div>
+
+    <div class="tpl">
+      <div class="cv post">
+        <div class="pad">
+          <div class="row"><span class="mk">мнение</span><span class="spacer"></span><span class="chip">партнёр студии</span></div>
+          <div class="spacer"></div>
+          <div class="qm">«</div>
+          <div class="big" style="font-size:17px;margin-top:6px">Мы&nbsp;не&nbsp;продаём инструменты. Мы&nbsp;забираем у&nbsp;людей повторяющуюся работу</div>
+          <div class="txt" style="font-size:10px;margin-top:12px">Антон Орешкин, стратегический партнёр</div>
+          <div class="spacer"></div>
+          <div class="row"><span class="logo">synapt</span></div>
+        </div>
+      </div>
+      <div class="cap">
+        <div class="n">11 экспертное</div>
+        <h3>Фраза основателя</h3>
+        <p>Портрет не&nbsp;ставим, работает типографика. Имя и&nbsp;роль мелким моно под цитатой.</p>
+      </div>
+      <div class="copy">
+        <div class="k">текст под пост</div>
+        <p>Автоматизация начинается не&nbsp;с&nbsp;модели, а&nbsp;с&nbsp;вопроса, какую работу человек делает руками каждый день и&nbsp;почему.</p>
+      </div>
+    </div>
+
+    <div class="tpl">
+      <div class="cv post">
+        <div class="pad">
+          <div class="row"><span class="mk">услуга</span><span class="spacer"></span><span class="chip">блок системы</span></div>
+          <div class="big" style="font-size:19px;margin-top:12px">AI-десант</div>
+          <div class="txt" style="font-size:10.5px;margin-top:8px">специалист на&nbsp;месяц входит в&nbsp;команду, учит работать с&nbsp;нейросетями и&nbsp;запускает первые решения</div>
+          <div class="spacer"></div>
+          <div class="calc">
+            <div><div class="v">30 дней</div><div class="c">один специалист</div></div>
+            <div><div class="v">от&nbsp;80</div><div class="c">тыс. руб. в&nbsp;месяц</div></div>
+          </div>
+          <div class="row" style="margin-top:12px"><span class="logo">synapt</span></div>
+        </div>
+      </div>
+      <div class="cap">
+        <div class="n">12 услуга</div>
+        <h3>Продукт с&nbsp;условиями</h3>
+        <p>Название, одна строка сути, две цифры условий. Цену пишем словами: тыс. руб.</p>
+      </div>
+      <div class="copy">
+        <div class="k">текст под пост</div>
+        <p>Инструменты купили, а&nbsp;привычки ими пользоваться нет. Десант закрывает именно это: месяц внутри команды, работа на&nbsp;живых задачах, регламенты и&nbsp;доступы остаются у&nbsp;вас.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>Как&nbsp;этим пользоваться</h2>
+  <p class="sub">Схемы не&nbsp;финальные макеты, а&nbsp;каркас. Дизайнер собирает по&nbsp;ним карточки в&nbsp;Figma, копирайтер подставляет свои цифры и&nbsp;фразы.</p>
+  <div class="rules">
+    <div class="rule">
+      <div class="k">ритм</div>
+      <p>На&nbsp;неделю: две сторис с&nbsp;метрикой или&nbsp;цитатой, один пост-кейс, один пост с&nbsp;принципами или&nbsp;вопросом.</p>
+    </div>
+    <div class="rule">
+      <div class="k">цифры</div>
+      <p>Любая цифра в&nbsp;кадре должна быть подтверждена кейсом. Придуманных метрик не&nbsp;публикуем.</p>
+    </div>
+    <div class="rule">
+      <div class="k">клиенты</div>
+      <p>Название компании ставим только там, где есть согласие. Иначе пишем отрасль и&nbsp;размер команды.</p>
+    </div>
+    <div class="rule">
+      <div class="k">ссылки</div>
+      <p>В&nbsp;сторис ссылка ведёт на&nbsp;страницу услуги или&nbsp;кейса, а&nbsp;не&nbsp;на&nbsp;главную. Список адресов у&nbsp;Ксении.</p>
+    </div>
+  </div>
+</section>
+
+<footer>Synapt, шаблоны для&nbsp;соцсетей, август 2026</footer>
+</div>
+</body></html>
