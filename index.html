@@ -1812,6 +1812,12 @@ footer .f-nav a:hover,footer .f-legal a:hover{color:var(--text)!important}
 
 /* плавающие кнопки только на телефоне: в вебе есть кнопка в шапке */
 @media(min-width:981px){.fab{display:none!important}}
+
+/* на телефоне сеть за текстом приглушена сильнее: буквы читаются без плашки */
+@media(max-width:760px){
+  .hero .scrim,.hero::after{background:rgba(8,12,10,.22)!important;backdrop-filter:blur(3px)!important}
+  #synFx{opacity:.8!important}
+}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
