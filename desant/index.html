@@ -1126,6 +1126,34 @@ footer .f-tg:hover,footer .f-legal a:hover{border-bottom-color:var(--accent)}
   .cost-top .desc{max-width:none}
 }
 
+/* ---------- INNORTO: доля «26 из 27» ----------
+   главная цифра остаётся крупной, остаток доли набирается мельче */
+.cover-stats .cs-of{font-size:.5em;margin-left:.34em;color:var(--text-2);
+  font-family:var(--mono);letter-spacing:0}
+@media(max-width:480px){.cover-stats .cs-of{font-size:.54em;margin-left:.3em}}
+
+/* ---------- метрики в две колонки ----------
+   две цифры друг под другом слева, третья по центру второй колонки,
+   разделительная линия отодвинута от текста с обеих сторон */
+.bignum.split{grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  border-top:1px solid var(--line-2);column-gap:0}
+.bignum.split .bn{border-left:0;padding:26px 40px 26px 0}
+.bignum.split .bn:nth-child(1){grid-column:1;grid-row:1}
+.bignum.split .bn:nth-child(2){grid-column:1;grid-row:2;
+  border-top:1px solid var(--line);padding-top:26px}
+.bignum.split .bn:nth-child(3){grid-column:2;grid-row:1/3;
+  border-left:1px solid var(--line);padding:26px 0 26px 48px;justify-content:center}
+.bignum.split .bn b,.bignum.split .bn:first-child b{font-size:clamp(30px,3.4vw,46px);letter-spacing:-.025em}
+.bignum.split .bn .cap{max-width:26ch;padding-right:4px}
+@media(max-width:720px){
+  .bignum.split{grid-template-columns:1fr}
+  .bignum.split .bn,.bignum.split .bn:nth-child(1),
+  .bignum.split .bn:nth-child(2),.bignum.split .bn:nth-child(3){
+    grid-column:1;grid-row:auto;border-left:0;padding:22px 0 0;
+    border-top:1px solid var(--line);justify-content:flex-start}
+  .bignum.split .bn:first-child{border-top:0;padding-top:0}
+}
+
 .r64-80-64-56{padding:64px 0 80px}.r64-130-64-80{padding:64px 0 130px}.r72-96-48-64{padding:72px 0 96px}.r80-96-56-64{padding:80px 0 96px}.r96-120-64-80{padding:96px 0 120px}.r140-96-96-64{padding:140px 0 96px}@media(max-width:720px){.r64-80-64-56{padding:64px 0 56px}.r64-130-64-80{padding:64px 0 80px}.r72-96-48-64{padding:48px 0 64px}.r80-96-56-64{padding:56px 0 64px}.r96-120-64-80{padding:64px 0 80px}.r140-96-96-64{padding:96px 0 64px}}</style>
 <style media="print">
 @page{size:A4 portrait;margin:15mm 13mm 17mm}
@@ -1881,87 +1909,165 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
   });
 
   /* ---------- блок: переписка с агентом клуба ----------
-     слева приходит вопрос собственника клиники, агент поднимает базу знаний
-     и возвращает ответ со ссылкой на источник ---------- */
+     вопрос участника сверху слева, база знаний полками по центру,
+     ответ агента снизу справа: сообщением со ссылкой или готовым файлом.
+     Связи идут мягкими дугами, прямых пунктиров нет ---------- */
   [].forEach.call(document.querySelectorAll('canvas.fx-dialog'), function (c) {
-    var Q = ['Как поднять загрузку стоматологических кресел?', 'Что делать с оттоком пациентов клиники?',
-             'Как построить систему оплаты труда врачей?'];
-    var A = ['Разобрал ваш P&L и график записи', 'Собрал разбор по методологии клуба', 'Готовлю расчёт по вашим данным'];
-    function bubble(ctx, x, y, w, h, accent, alpha, right) {
+    var Q = ['Как поднять загрузку кресел?', 'Что делать с оттоком пациентов?',
+             'Как платить врачам?'];
+    var A = [{t: 'Разбор по методологии клуба', f: 'разбор.pdf'},
+             {t: 'Собрал аудит по вашим данным', f: null, src: 'источник: стандарт клуба'},
+             {t: 'Расчёт оплаты труда готов', f: 'расчёт.xlsx'}];
+    function rows(ctx, text, maxw) {
+      var words = text.split(' '), out = [], cur = '';
+      for (var i = 0; i < words.length; i++) {
+        var test = cur ? cur + ' ' + words[i] : words[i];
+        if (ctx.measureText(test).width > maxw && cur) { out.push(cur); cur = words[i]; }
+        else cur = test;
+      }
+      if (cur) out.push(cur);
+      return out;
+    }
+    function bubble(ctx, x, y, w, h, accent, a, right) {
+      var col = accent ? PH : GR;
       ctx.beginPath();
-      if (ctx.roundRect) ctx.roundRect(x, y, w, h, 10); else ctx.rect(x, y, w, h);
-      ctx.fillStyle = accent ? 'rgba(' + PH + ',' + (.1 * alpha) + ')' : 'rgba(' + GR + ',' + (.08 * alpha) + ')';
-      ctx.fill();
-      ctx.strokeStyle = accent ? 'rgba(' + PH + ',' + (.45 * alpha) + ')' : 'rgba(' + GR + ',' + (.4 * alpha) + ')';
-      ctx.lineWidth = 1; ctx.stroke();
+      if (ctx.roundRect) ctx.roundRect(x, y, w, h, 12); else ctx.rect(x, y, w, h);
+      ctx.fillStyle = 'rgba(' + col + ',' + (.1 * a) + ')'; ctx.fill();
+      ctx.strokeStyle = 'rgba(' + col + ',' + (.42 * a) + ')'; ctx.lineWidth = 1; ctx.stroke();
       ctx.beginPath();
-      if (right) { ctx.moveTo(x + w - 12, y + h); ctx.lineTo(x + w - 2, y + h + 6); ctx.lineTo(x + w - 4, y + h) }
-      else { ctx.moveTo(x + 12, y + h); ctx.lineTo(x + 2, y + h + 6); ctx.lineTo(x + 4, y + h) }
-      ctx.fillStyle = accent ? 'rgba(' + PH + ',' + (.45 * alpha) + ')' : 'rgba(' + GR + ',' + (.4 * alpha) + ')';
-      ctx.fill();
+      if (right) { ctx.moveTo(x + w - 14, y + h); ctx.lineTo(x + w - 3, y + h + 6); ctx.lineTo(x + w - 5, y + h); }
+      else { ctx.moveTo(x + 14, y + h); ctx.lineTo(x + 3, y + h + 6); ctx.lineTo(x + 5, y + h); }
+      ctx.fillStyle = 'rgba(' + col + ',' + (.42 * a) + ')'; ctx.fill();
+    }
+    /* дуга вместо прямой линии: видно направление, но линия не режет кадр */
+    function arc(ctx, x0, y0, x1, y1, cx, cy, accent, a, prog) {
+      var col = accent ? PH : GR;
+      ctx.beginPath(); ctx.moveTo(x0, y0); ctx.quadraticCurveTo(cx, cy, x1, y1);
+      ctx.strokeStyle = 'rgba(' + col + ',' + (.1 + a * .22) + ')'; ctx.lineWidth = 1; ctx.stroke();
+      if (prog > 0 && prog < 1) {
+        var u = prog, iu = 1 - u;
+        var px = iu * iu * x0 + 2 * iu * u * cx + u * u * x1;
+        var py = iu * iu * y0 + 2 * iu * u * cy + u * u * y1;
+        var g = ctx.createRadialGradient(px, py, 0, px, py, 9);
+        g.addColorStop(0, 'rgba(' + col + ',.5)'); g.addColorStop(1, 'rgba(' + col + ',0)');
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(px, py, 9, 0, 7); ctx.fill();
+        ctx.beginPath(); ctx.arc(px, py, 2.4, 0, 7);
+        ctx.fillStyle = 'rgba(' + col + ',.95)'; ctx.fill();
+      }
     }
     loop(c, function (s, t) {
       var ctx = s.ctx, W = s.W, H = s.H, i;
       ctx.clearRect(0, 0, W, H);
       var narrow = W < 470;
-      var fs = narrow ? 10 : 12.5;
-      var cycle = 460, k = t % cycle, idx = Math.floor(t / cycle) % Q.length;
-      var qa = Math.min(1, k / 70);
-      var sp = k < 90 ? 0 : Math.min(1, (k - 90) / 90);
-      var ra = k < 190 ? 0 : Math.min(1, (k - 190) / 90);
-      var pad = narrow ? 8 : 16, bw = narrow ? W - pad * 2 : Math.min(330, W * .46);
-      var qy = narrow ? 26 : 40, ay = narrow ? H - 76 : H - 106;
-      /* база знаний клуба в центре */
-      var mx = W / 2, LAY = 4, lh = narrow ? 6 : 10, gp = narrow ? 3 : 5;
-      var top = H / 2 - (LAY * (lh + gp) - gp) / 2;
-      for (i = 0; i < LAY; i++) {
-        var lit = Math.max(0, Math.min(1, sp * LAY - (LAY - 1 - i)));
-        var ww = (narrow ? 54 : 88) - i * (narrow ? 5 : 9);
-        ctx.beginPath();
-        if (ctx.roundRect) ctx.roundRect(mx - ww / 2, top + i * (lh + gp), ww, lh, 3);
-        else ctx.rect(mx - ww / 2, top + i * (lh + gp), ww, lh);
-        ctx.fillStyle = 'rgba(' + PH + ',' + (.05 + lit * .22) + ')'; ctx.fill();
-        ctx.strokeStyle = lit > .1 ? 'rgba(' + PH + ',' + (.3 + lit * .35) + ')' : 'rgba(' + GR + ',.4)';
-        ctx.lineWidth = 1; ctx.stroke();
+      var fs = narrow ? 10.5 : 12, lh = fs + 5, pad = narrow ? 10 : 14;
+      var bw = narrow ? Math.min(W - pad * 2 - 24, 236) : Math.min(W * .46, 250);
+      /* темп вдвое быстрее прежнего: полный цикл около пяти секунд */
+      var cycle = 290, k = t % cycle, idx = Math.floor(t / cycle) % Q.length;
+      var qa = Math.min(1, k / 24);
+      var sp = k < 34 ? 0 : Math.min(1, (k - 34) / 44);
+      var ra = k < 92 ? 0 : Math.min(1, (k - 92) / 38);
+      var p1 = Math.max(0, Math.min(1, (k - 18) / 34));
+      var p2 = Math.max(0, Math.min(1, (k - 70) / 30));
+      ctx.font = fs + 'px "JetBrains Mono", ui-monospace, monospace';
+      ctx.textAlign = 'left';
+
+      /* база знаний: стеллаж с корешками книг, читается как библиотека */
+      var shW = narrow ? 148 : 188, shelfH = narrow ? 28 : 34, SH_ROWS = 3;
+      var shH = SH_ROWS * shelfH + 14;
+      var sx = W / 2 - shW / 2, sy = H / 2 - shH / 2;
+      ctx.beginPath();
+      if (ctx.roundRect) ctx.roundRect(sx, sy, shW, shH, 8); else ctx.rect(sx, sy, shW, shH);
+      ctx.fillStyle = 'rgba(' + GR + ',.06)'; ctx.fill();
+      ctx.strokeStyle = 'rgba(' + GR + ',' + (.34 + sp * .24) + ')'; ctx.lineWidth = 1.4; ctx.stroke();
+      /* боковые стойки стеллажа */
+      var wall = 3;
+      ctx.fillStyle = 'rgba(' + GR + ',.24)';
+      ctx.fillRect(sx + 5, sy + 7, wall, shH - 14);
+      ctx.fillRect(sx + shW - 5 - wall, sy + 7, wall, shH - 14);
+      var inx = sx + 12, inw = shW - 24, total = 0, hot = 7 + idx * 9, BOOKS = 33;
+      for (var r = 0; r < SH_ROWS; r++) {
+        var base = sy + 7 + (r + 1) * shelfH - 4, ih = shelfH - 9, x = inx;
+        for (i = 0; i < 20; i++) {
+          var wd = (narrow ? 7 : 8) + rnd(r * 17 + i * 5) * (narrow ? 5 : 7);
+          if (x + wd > inx + inw) break;
+          var hh = ih * (.6 + rnd(r * 23 + i * 3) * .4);
+          var tilt = rnd(r * 31 + i * 11) > .87 ? -.2 : 0;
+          var on = sp * BOOKS > total, mine = total === hot;
+          var col = on || mine ? PH : GR;
+          var al = mine && ra > 0 ? .3 + .26 * Math.sin(t * .13) : (on ? .2 : .07);
+          ctx.save();
+          ctx.translate(x, base); ctx.rotate(tilt);
+          ctx.beginPath();
+          if (ctx.roundRect) ctx.roundRect(0, -hh, wd, hh, 1.5); else ctx.rect(0, -hh, wd, hh);
+          ctx.fillStyle = 'rgba(' + col + ',' + al + ')'; ctx.fill();
+          ctx.strokeStyle = 'rgba(' + col + ',' + (on || mine ? .5 : .3) + ')';
+          ctx.lineWidth = 1; ctx.stroke();
+          /* поперечная насечка на корешке: книга, а не просто блок */
+          ctx.beginPath(); ctx.moveTo(1.5, -hh + 5); ctx.lineTo(wd - 1.5, -hh + 5);
+          ctx.strokeStyle = 'rgba(' + col + ',' + (on || mine ? .38 : .18) + ')';
+          ctx.lineWidth = .8; ctx.stroke();
+          ctx.restore();
+          x += wd + 2.4; total++;
+        }
+        /* полка под корешками */
+        ctx.beginPath(); ctx.moveTo(sx + 5, base + 2); ctx.lineTo(sx + shW - 5, base + 2);
+        ctx.strokeStyle = 'rgba(' + GR + ',.36)'; ctx.lineWidth = 1.4; ctx.stroke();
       }
-      ctx.textAlign = 'center'; ctx.fillStyle = 'rgba(' + (sp > .1 ? PH : GR) + ',.8)';
-      cap(ctx, 'база знаний клуба', mx, top - 14, W * .5, narrow ? 9.5 : 11);
-      /* вопрос слева */
-      bubble(ctx, pad, qy, bw, narrow ? 34 : 48, false, qa, false);
-      ctx.textAlign = 'left'; ctx.fillStyle = 'rgba(' + WH + ',' + (.85 * qa) + ')';
-      cap(ctx, Q[idx], pad + 12, qy + (narrow ? 21 : 28), bw - 24, fs);
+      ctx.textAlign = 'center'; ctx.fillStyle = 'rgba(' + (sp > .15 ? PH : GR) + ',.85)';
+      cap(ctx, 'база знаний клуба', W / 2, sy - 10, shW + 60, narrow ? 9.5 : 10.5);
+
+      /* вопрос участника сверху слева */
+      ctx.font = fs + 'px "JetBrains Mono", ui-monospace, monospace';
+      var qr = rows(ctx, Q[idx], bw - 26), qh = qr.length * lh + 15, qy = narrow ? 20 : 26;
       ctx.textAlign = 'left'; ctx.fillStyle = 'rgba(' + GR + ',.75)';
-      cap(ctx, 'участник клуба', pad + 2, qy - 10, bw, narrow ? 9.5 : 11);
-      /* ответ справа со ссылкой на источник */
+      cap(ctx, 'участник клуба', pad + 2, qy - 8, bw, narrow ? 9.5 : 10.5);
+      bubble(ctx, pad, qy, bw, qh, false, qa, false);
+      ctx.font = fs + 'px "JetBrains Mono", ui-monospace, monospace';
+      ctx.fillStyle = 'rgba(' + WH + ',' + (.88 * qa) + ')';
+      qr.forEach(function (line, j) { ctx.fillText(line, pad + 13, qy + 13 + j * lh + 3); });
+
+      /* ответ агента снизу справа: сообщение со ссылкой либо готовый файл */
+      var ans = A[idx];
+      var ar = rows(ctx, ans.t, bw - 26);
+      var attach = narrow ? 20 : 22;
+      var ah = ar.length * lh + 15 + attach;
+      var ax = W - pad - bw, ay = H - pad - ah - (narrow ? 10 : 12);
       if (ra > 0) {
-        var ax = narrow ? pad : W - pad - bw;
-        bubble(ctx, ax, ay, bw, narrow ? 40 : 54, true, ra, true);
-        ctx.textAlign = 'left'; ctx.fillStyle = 'rgba(' + WH + ',' + (.9 * ra) + ')';
-        cap(ctx, A[idx], ax + 12, ay + (narrow ? 20 : 26), bw - 24, fs);
-        if (ra > .6) {
-          var la = (ra - .6) / .4, lw = (bw - 24) * .52;
-          ctx.beginPath();
-          if (ctx.roundRect) ctx.roundRect(ax + 12, ay + 32, lw, 3, 1.5); else ctx.rect(ax + 12, ay + 32, lw, 3);
-          ctx.fillStyle = 'rgba(' + PH + ',' + (.8 * la) + ')'; ctx.fill();
-          /* к ответу прикладывается готовый файл разбора */
-          var fx = ax + 12, fy = ay + (narrow ? 46 : 56);
-          ctx.beginPath();
-          if (ctx.roundRect) ctx.roundRect(fx, fy, 74, 18, 5); else ctx.rect(fx, fy, 74, 18);
-          ctx.fillStyle = 'rgba(' + PH + ',' + (.12 * la) + ')'; ctx.fill();
-          ctx.strokeStyle = 'rgba(' + PH + ',' + (.5 * la) + ')'; ctx.lineWidth = 1; ctx.stroke();
-          ctx.textAlign = 'left'; ctx.fillStyle = 'rgba(' + PH + ',' + (.9 * la) + ')';
-          cap(ctx, 'разбор.pdf', fx + 8, fy + 12, 66, 9.5);
-          ctx.textAlign = 'right'; ctx.fillStyle = 'rgba(' + PH + ',' + (.7 * la) + ')';
-          cap(ctx, 'со ссылкой на источник', W - pad - 2, ay + (narrow ? 84 : 96), bw, 10);
+        ctx.textAlign = 'left'; ctx.fillStyle = 'rgba(' + PH + ',' + (.7 * ra) + ')';
+        cap(ctx, 'агент клуба', ax + 2, ay - 8, bw, narrow ? 9.5 : 10.5);
+        bubble(ctx, ax, ay, bw, ah, true, ra, true);
+        ctx.font = fs + 'px "JetBrains Mono", ui-monospace, monospace';
+        ctx.fillStyle = 'rgba(' + WH + ',' + (.92 * ra) + ')';
+        ar.forEach(function (line, j) { ctx.fillText(line, ax + 13, ay + 13 + j * lh + 3); });
+        var fy = ay + ar.length * lh + 13;
+        if (ra > .55) {
+          var la = (ra - .55) / .45;
+          if (ans.f) {
+            var fw = narrow ? 84 : 92, fh = narrow ? 16 : 18;
+            ctx.beginPath();
+            if (ctx.roundRect) ctx.roundRect(ax + 13, fy, fw, fh, 5); else ctx.rect(ax + 13, fy, fw, fh);
+            ctx.fillStyle = 'rgba(' + PH + ',' + (.14 * la) + ')'; ctx.fill();
+            ctx.strokeStyle = 'rgba(' + PH + ',' + (.5 * la) + ')'; ctx.lineWidth = 1; ctx.stroke();
+            ctx.textAlign = 'left'; ctx.fillStyle = 'rgba(' + PH + ',' + (.92 * la) + ')';
+            cap(ctx, ans.f, ax + 21, fy + fh - 5, fw - 14, 9.5);
+          } else {
+            /* ссылка на источник: подчёркивание идёт ровно под своим текстом */
+            ctx.textAlign = 'left'; ctx.font = '9.5px "JetBrains Mono", ui-monospace, monospace';
+            var tw = Math.min(ctx.measureText(ans.src).width, bw - 30);
+            ctx.fillStyle = 'rgba(' + PH + ',' + (.9 * la) + ')';
+            ctx.fillText(ans.src, ax + 13, fy + 10);
+            ctx.beginPath(); ctx.moveTo(ax + 13, fy + 13.5); ctx.lineTo(ax + 13 + tw, fy + 13.5);
+            ctx.strokeStyle = 'rgba(' + PH + ',' + (.6 * la) + ')'; ctx.lineWidth = 1; ctx.stroke();
+          }
         }
       }
-      /* дорожки сигнала между участниками и базой */
-      ctx.setLineDash([3, 5]);
-      ctx.beginPath(); ctx.moveTo(Math.min(pad + bw, mx - 60), qy + (narrow ? 40 : 52)); ctx.lineTo(mx - 30, H / 2 - 10);
-      ctx.strokeStyle = 'rgba(' + GR + ',' + (.14 + qa * .16) + ')'; ctx.lineWidth = 1; ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(mx + 30, H / 2 + 10); ctx.lineTo(Math.max(W - pad - bw, mx + 60), ay);
-      ctx.strokeStyle = 'rgba(' + PH + ',' + (.12 + ra * .26) + ')'; ctx.lineWidth = 1; ctx.stroke();
-      ctx.setLineDash([]);
+
+      /* дуги: вопрос идёт к полкам, ответ возвращается из них */
+      arc(ctx, pad + 22, qy + qh + 7, sx + 12, sy - 3,
+          pad + 16, sy - 26, false, qa, p1);
+      arc(ctx, sx + shW - 12, sy + shH + 3, ax + bw - 26, ay - 6,
+          ax + bw - 20, sy + shH + 22, true, ra + sp * .4, p2);
+      ctx.textAlign = 'left';
     }, function () { return innerWidth < 700 ? 1.1 : 1.55; });
   });
 
