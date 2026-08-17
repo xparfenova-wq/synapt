@@ -911,6 +911,18 @@ footer{padding-bottom:104px}
   .hero.rh-hero .hero-bottom{padding-top:min(30vh,250px)}
   #chkFx{opacity:.85}
 }
+
+
+/* единый мобильный ритм: одинаковые поля и вертикальные интервалы на всех страницах */
+@media(max-width:640px){
+  :root{--gutter:28px}
+  body>section[id]{padding-top:64px!important;padding-bottom:72px!important}
+  body>section[id]:first-of-type{padding-top:72px!important}
+  body>section[id]:last-of-type{padding-bottom:80px!important}
+  body>section>.wrap>.sec-head,body>section>.wrap>.rsec-head{margin-bottom:28px}
+  h2{margin-bottom:0}
+  .lead,.sub{margin-top:18px}
+}
 </style>
 </head>
 <body>

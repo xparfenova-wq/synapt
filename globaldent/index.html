@@ -1154,7 +1154,18 @@ footer .f-tg:hover,footer .f-legal a:hover{border-bottom-color:var(--accent)}
   .bignum.split .bn:first-child{border-top:0;padding-top:0}
 }
 
-.r64-130-64-80{padding:64px 0 130px}.r72-96-48-64{padding:72px 0 96px}.r96-120-64-80{padding:96px 0 120px}.r130-150-80-96{padding:130px 0 150px}.r140-96-96-64{padding:140px 0 96px}@media(max-width:720px){.r64-130-64-80{padding:64px 0 80px}.r72-96-48-64{padding:48px 0 64px}.r96-120-64-80{padding:64px 0 80px}.r130-150-80-96{padding:80px 0 96px}.r140-96-96-64{padding:96px 0 64px}}</style>
+.r64-130-64-80{padding:64px 0 130px}.r72-96-48-64{padding:72px 0 96px}.r96-120-64-80{padding:96px 0 120px}.r130-150-80-96{padding:130px 0 150px}.r140-96-96-64{padding:140px 0 96px}@media(max-width:720px){.r64-130-64-80{padding:64px 0 80px}.r72-96-48-64{padding:48px 0 64px}.r96-120-64-80{padding:64px 0 80px}.r130-150-80-96{padding:80px 0 96px}.r140-96-96-64{padding:96px 0 64px}}
+/* единый мобильный ритм: одинаковые поля и вертикальные интервалы на всех страницах */
+@media(max-width:640px){
+  :root{--gutter:28px}
+  body>section[id]{padding-top:64px!important;padding-bottom:72px!important}
+  body>section[id]:first-of-type{padding-top:72px!important}
+  body>section[id]:last-of-type{padding-bottom:80px!important}
+  body>section>.wrap>.sec-head,body>section>.wrap>.rsec-head{margin-bottom:28px}
+  h2{margin-bottom:0}
+  .lead,.sub{margin-top:18px}
+}
+</style>
 <style media="print">
 @page{size:A4 portrait;margin:15mm 13mm 17mm}
 
@@ -1244,6 +1255,7 @@ footer{margin-top:26px;padding:24px 0 0;break-inside:avoid;page-break-inside:avo
 .pc-i span{font-size:12.5px;color:var(--text-dim);line-height:1.4}
 .pc-i a{font-family:var(--mono);font-size:13px;color:var(--text-2);line-height:1.45;
   border-bottom:1px solid var(--line-accent);width:fit-content;font-feature-settings:"liga" 0}
+
 </style>
 </head>
 <body>

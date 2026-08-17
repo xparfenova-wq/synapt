@@ -635,7 +635,7 @@ footer .fmeta a:hover{color:var(--text)}
   .step{display:block;border-top:0;padding-top:0}
   .step-rail{display:contents}
   .step+.step{margin-top:44px}
-  .step-rail-in{position:sticky;top:66px;z-index:8;flex-direction:row;align-items:baseline;gap:12px;
+  .step-rail-in{position:sticky;top:65px;z-index:8;box-shadow:0 -1px 0 var(--bg);flex-direction:row;align-items:baseline;gap:12px;
     background:var(--bg);border-top:0;border-bottom:1px solid var(--line);
     padding:11px var(--gutter);margin:0 calc(var(--gutter)*-1) 24px}
   .step-n{font-size:30px;line-height:1.1}
@@ -1013,7 +1013,7 @@ b .nb,h1 .nb,h2 .nb,h3 .nb,h4 .nb,p .nb,summary .nb,.ans .nb,.rm-d .nb,.rd .nb{
 .chk-fx{width:100%;display:block}
 .chk-side{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
 .chk-price{font-family:var(--mono);font-size:clamp(28px,3.2vw,40px);font-weight:500;letter-spacing:-.03em;color:var(--text)}
-.chk-note{font-size:13.5px;color:var(--text-muted);line-height:1.5;margin-bottom:6px}
+.chk-note{font-size:13.5px;color:var(--text-muted);line-height:1.5;margin:-5px 0 6px}
 @media(max-width:860px){.chk{grid-template-columns:1fr;gap:22px;padding:22px}}
 
 /* дорожная карта: линия за текстом и до последнего этапа */
@@ -1161,10 +1161,9 @@ body.cs-lock{overflow:hidden}
   .hero>.wrap{order:2;width:100%}
   #synFx{position:absolute;inset:0;order:0;width:100%;height:100%;margin:0;opacity:.95;
     -webkit-mask-image:none;mask-image:none}
-  /* цифры сеткой два на два: четвёртая ячейка пустая, её занимают плавающие кнопки,
-     поэтому нижняя строка цифр стоит ровно на их линии */
-  .hero-meta{display:grid;grid-template-columns:1.18fr .82fr;gap:20px 16px;
-    margin-top:30px;margin-bottom:0;padding-top:22px}
+  /* две цифры друг под другом слева, справа остаётся место под плавающие кнопки */
+  .hero-meta{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;
+    margin-top:30px;margin-bottom:0;padding-top:22px;max-width:63%}
   .hero-meta .m{flex-direction:column;align-items:flex-start;gap:6px}
   .hero-meta .m b{font-size:23px;width:auto;flex:none}
   .hero-meta .m>span{font-size:12.5px;line-height:1.45;max-width:none}
@@ -1708,6 +1707,18 @@ footer .f-legal a::after{content:"";position:absolute;left:0;right:0;top:50%;
 /* единая шкала: шаги и крупные подзаголовки на H3, карточки и вопросы на H4 */
 .step-t{font-size:var(--fs-h3);letter-spacing:-.02em;line-height:1.2}
 .rm-t,.pr-main h4,.faq summary,.cs-head h3{font-size:var(--fs-h4);letter-spacing:-.015em;line-height:1.3}
+
+
+/* единый мобильный ритм: одинаковые поля и вертикальные интервалы на всех страницах */
+@media(max-width:640px){
+  :root{--gutter:28px}
+  body>section[id]{padding-top:64px!important;padding-bottom:72px!important}
+  body>section[id]:first-of-type{padding-top:72px!important}
+  body>section[id]:last-of-type{padding-bottom:80px!important}
+  body>section>.wrap>.sec-head,body>section>.wrap>.rsec-head{margin-bottom:28px}
+  h2{margin-bottom:0}
+  .lead,.sub{margin-top:18px}
+}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
@@ -1778,8 +1789,7 @@ function LEAD_API(url, opts){
       <h1 class="reveal d1">Соединяем AI, процессы и&nbsp;людей в&nbsp;устойчивую рабочую систему</h1>
       
       <div class="hero-meta reveal d4">
-        <div class="m"><b><span class="nb">19 900 ₽</span></b><span>чекап бизнеса за&nbsp;две недели</span></div>
-        <div class="m"><b><span class="nb">3-5 недель</span></b><span>до&nbsp;готового продукта</span></div>
+                <div class="m"><b><span class="nb">3-5 недель</span></b><span>до&nbsp;готового продукта</span></div>
         <div class="m"><b><span class="nb">60 дней</span></b><span>на&nbsp;связи после завершения</span></div>
         <div class="m m-cta"><a class="btn pri lg" href="#lead">Обсудить задачу</a></div>
       </div>
@@ -1864,8 +1874,8 @@ function LEAD_API(url, opts){
           <div class="card s3 reveal">
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8"/></svg></div>
             <h3>Обучение команды</h3>
-            <span class="kick-to">погружение и&nbsp;кураторская работа</span>
-            <p>Если нужны знания и&nbsp;кураторская работа с&nbsp;командой. Курс Automy AI: шесть недель, на&nbsp;выходе база знаний компании и&nbsp;свои агенты под&nbsp;задачу</p>
+            <span class="kick-to">погружение с&nbsp;поддержкой</span>
+            <p>Если нужны знания и&nbsp;сопровождение кураторов. Курс Automy AI: шесть недель, на&nbsp;выходе база знаний компании и&nbsp;свои агенты под&nbsp;задачу</p>
             <a class="morelink" href="https://automyai.ru">Подробнее</a>
           </div>
         </div>
@@ -1883,7 +1893,7 @@ function LEAD_API(url, opts){
       <div class="step-body">
         <div class="step-intro reveal">
           <h3 class="step-t">AI-система, усиливающая и&nbsp;ускоряющая бизнес</h3>
-          <p class="step-d">Система разрабатывается из&nbsp;блоков. Какие именно нужны вашей компании, показывают AI-чекап и&nbsp;AI-десант: они дают карту процессов и&nbsp;живую картину того, где команда теряет время</p>
+          <p class="step-d">Система разрабатывается из&nbsp;блоков. Какие именно нужны вам, показывают AI-чекап и&nbsp;AI-десант. Они дают карту процессов и&nbsp;показывают, где команда теряет время</p>
         </div>
 
         <div class="svc mods">
@@ -1891,15 +1901,15 @@ function LEAD_API(url, opts){
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
             <span class="mod-chip"><span class="mc-n">01</span>продажи</span>
             <h3>Работа с&nbsp;клиентом</h3>
-            <p>Заявки приходят в&nbsp;мессенджеры и&nbsp;теряются между менеджерами. Система отвечает клиенту за&nbsp;секунды, выясняет потребность и&nbsp;доводит до&nbsp;заявки, а&nbsp;после разбирает диалоги и&nbsp;показывает, где сделка ушла</p>
+            <p>Заявки приходят в&nbsp;мессенджеры и&nbsp;теряются между менеджерами. Система отвечает клиенту за&nbsp;секунды, выясняет потребность и&nbsp;доводит до&nbsp;заявки, а&nbsp;после разбирает диалоги и&nbsp;показывает зоны роста</p>
             <a class="btn ghost sm" href="#lead">Обсудить задачу</a>
           </div>
 
           <div class="card s3 reveal">
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V9M10 20V4M16 20v-7M22 20H2"/></svg></div>
             <span class="mod-chip"><span class="mc-n">02</span>управление</span>
-            <h3>Картина для&nbsp;собственника</h3>
-            <p>Цифры лежат в&nbsp;разных отчётах и&nbsp;приходят поздно. Система разбирает воронку, найм и&nbsp;маржу, присылает регулярный разбор и&nbsp;у&nbsp;каждого вывода даёт ссылку на&nbsp;источник данных</p>
+            <h3>AI-дашборд для&nbsp;собственника</h3>
+            <p>Цифры находятся в&nbsp;разных отчётах и&nbsp;приходят поздно. Система разбирает воронку, найм, маржу и&nbsp;другие процессы, присылает регулярный разбор и&nbsp;на&nbsp;каждый вывод даёт рекомендации и&nbsp;ссылки на&nbsp;источники данных</p>
             <a class="btn ghost sm" href="#lead">Обсудить задачу</a>
           </div>
 
@@ -1907,7 +1917,7 @@ function LEAD_API(url, opts){
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg></div>
             <span class="mod-chip"><span class="mc-n">03</span>команда</span>
             <h3>Знания и&nbsp;адаптация</h3>
-            <p>Новичок долго входит в&nbsp;курс дела, а&nbsp;команда задаёт руководителям разные вопросы по&nbsp;работе. Агент отвечает по&nbsp;вашим документам и&nbsp;истории решений, ведёт адаптацию и&nbsp;выводит человека на&nbsp;задачи быстрее</p>
+            <p>Новичок долго адаптируется, а&nbsp;у&nbsp;команды регулярно возникают разные вопросы. Агент отвечает по&nbsp;внутренним документам и&nbsp;истории решений, анбордит новых специалистов и&nbsp;помогает с&nbsp;принятием решений опытным</p>
             <a class="btn ghost sm" href="#lead">Обсудить задачу</a>
           </div>
 
@@ -1915,7 +1925,7 @@ function LEAD_API(url, opts){
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-5 4z"/><path d="M8 8h6M8 11h4"/><circle cx="19" cy="17.5" r="2.4"/><path d="M15.4 22c.5-1.6 1.9-2.6 3.6-2.6s3.1 1 3.6 2.6"/></svg></div>
             <span class="mod-chip"><span class="mc-n">04</span>экспертиза</span>
             <h3>AI-эксперт</h3>
-            <p>Спрос на&nbsp;вашего ключевого специалиста выше, чем его&nbsp;рабочее время. Цифровая копия эксперта отвечает клиентам по&nbsp;авторским материалам и&nbsp;методологиям, а&nbsp;сложные случаи передаёт человеку</p>
+            <p>Спрос на&nbsp;вашего ключевого специалиста выше, чем его&nbsp;временные ресурсы. Цифровая копия эксперта отвечает клиентам по&nbsp;авторским материалам и&nbsp;методологиям, а&nbsp;сложные случаи передаёт человеку</p>
             <a class="btn ghost sm" href="#lead">Обсудить задачу</a>
           </div>
 
@@ -1923,7 +1933,7 @@ function LEAD_API(url, opts){
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
             <span class="mod-chip"><span class="mc-n">05</span>операции</span>
             <h3>Интеграции и&nbsp;автоматизация</h3>
-            <p>Данные лежат в&nbsp;разных системах, и&nbsp;люди переносят их&nbsp;вручную. Связываем CRM, 1С, таблицы и&nbsp;мессенджеры так, чтобы цифры работали между собой и&nbsp;появлялись там, где нужны, без&nbsp;участия человека</p>
+            <p>Данные лежат в&nbsp;разных системах, и&nbsp;люди переносят их&nbsp;вручную. Связываем CRM, 1С, таблицы и&nbsp;мессенджеры так, чтобы цифры работали между собой и&nbsp;действительно помогали в&nbsp;росте показателей</p>
             <a class="btn ghost sm" href="#lead">Обсудить задачу</a>
           </div>
 
@@ -1931,8 +1941,8 @@ function LEAD_API(url, opts){
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7.5 3.6v5.2c0 4.1-3.1 7.6-7.5 8.6-4.4-1-7.5-4.5-7.5-8.6V6.6z"/><path d="M9.1 12.1l2 2 3.7-4"/></svg></div>
             <span class="mod-chip"><span class="mc-n">06</span>основа всех блоков</span>
             <h3>Безопасный слой</h3>
-            <p>В&nbsp;работу попадают персональные данные и&nbsp;коммерческая тайна. Обезличивание перед отправкой в&nbsp;модель, ролевой доступ и&nbsp;журнал обращений. Настраивается один раз и&nbsp;держит под&nbsp;собой всю систему</p>
-            <a class="btn ghost sm" href="#lead">Обсудить задачу</a>
+            <p>В&nbsp;работу попадают персональные данные и&nbsp;коммерческая тайна. Обезличивание перед отправкой в&nbsp;модель, ролевой доступ и&nbsp;журнал обращений. Настраивается один раз и&nbsp;встраивается в&nbsp;основу всей системы</p>
+            <a class="btn ghost sm" href="https://synapt-bezopasnost.vercel.app">Подробнее</a>
           </div>
         </div>
 
@@ -1941,7 +1951,7 @@ function LEAD_API(url, opts){
           <div class="card s3 reveal">
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 17l6-6-6-6"/><path d="M12 19h8"/></svg></div>
             <h3>Разработка продукта</h3>
-            <p>Если задача больше отдельного блока: SaaS, мобильное приложение, внутренняя система. Вместе сформируем техническое задание и&nbsp;возьмём работу целиком: интерфейс, backend, инфраструктуру и&nbsp;запуск, разработку ведём с&nbsp;AI-агентами</p>
+            <p>Если задача больше отдельного блока: SaaS, мобильное приложение, внутренняя система. Вместе сформируем техническое задание и&nbsp;возьмём работу целиком: интерфейс, backend, инфраструктуру и&nbsp;запуск</p>
             <a class="morelink" href="#lead">Описать запрос</a>
           </div>
 
@@ -2000,7 +2010,7 @@ function LEAD_API(url, opts){
       <div class="cc-top"><span class="cc-tag">AI-агент в&nbsp;подборе</span><span class="cc-ind">04</span></div>
       <h3>Бот подбирает блюда только из&nbsp;того, что&nbsp;сейчас есть на&nbsp;складе</h3>
       <div class="cc-client">FoodTech-сервис, имя под NDA</div>
-      <div class="cc-res"><div><b><span class="nb">1 200+</span></b><span>карт меню поставщиков оцифровано</span></div><div><b><span class="nb">30 тысяч</span></b><span>сообщений обрабатывает ежемесячно</span></div></div><p class="cc-task">Меню поставщиков приходили PDF-файлами, подбор под запрос клиента менеджер собирал вручную, задача&nbsp;– ускорить процесс на&nbsp;основе остатков и&nbsp;наличия на&nbsp;складе</p>
+      <div class="cc-res"><div><b><span class="nb">1 200+</span></b><span>карт меню поставщиков оцифровано</span></div><div><b><span class="nb">30 тысяч</span></b><span>сообщений обрабатывает ежемесячно</span></div></div><p class="cc-task">Клиент обрабатывает запрос вручную, задача&nbsp;– автоматизировать и&nbsp;ускорить процесс на&nbsp;основе остатков и&nbsp;наличия на&nbsp;складе</p>
       <div class="cc-fig"><canvas class="fx-dishes" data-maxh="126"></canvas></div>
       <button type="button" class="morelink cs-open" data-case="0">Подробнее</button>
     </article><article class="ccard">
@@ -2088,7 +2098,7 @@ function LEAD_API(url, opts){
     </div>
     <div class="rm-speed">
       <span class="rs-k">о&nbsp;сроках</span>
-      <p>Разработку ведём с&nbsp;AI и&nbsp;агентами, длительность у&nbsp;проектов разная: на&nbsp;разбор одного хватит недели, а&nbsp;на&nbsp;другой может потребоваться три. Точные сроки и&nbsp;стоимость фиксируем в&nbsp;спецификации после&nbsp;встречи</p>
+      <p>Длительность этапов у&nbsp;проектов разная: на&nbsp;разбор одного хватит недели, а&nbsp;на&nbsp;другой может потребоваться три. Точные сроки и&nbsp;стоимость фиксируем в&nbsp;спецификации после&nbsp;встречи</p>
     </div>
   </div>
 </div></section>
@@ -2169,11 +2179,11 @@ function LEAD_API(url, opts){
     </details>
     <details>
       <summary>Можно начать с&nbsp;небольшого решения? <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-      <div class="ans">Да, чекап за&nbsp;две недели или&nbsp;компактное решение под&nbsp;один процесс. Дальше добавляем модули по&nbsp;тому, что&nbsp;показала работа первого, и&nbsp;масштабирование идёт по&nbsp;вашему запросу</div>
+      <div class="ans">Да, чекап за&nbsp;две недели или&nbsp;компактное решение под&nbsp;один процесс. Дальше добавляем модули по&nbsp;тому, что&nbsp;показала работа первого, масштабирование идёт по&nbsp;вашему запросу</div>
     </details>
     <details>
       <summary>Что&nbsp;если у&nbsp;нас есть своя команда разработки? <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-      <div class="ans">Одного агента ваш разработчик соберёт за&nbsp;выходные, это&nbsp;правда. Но&nbsp;решение начинает работать и&nbsp;приносить деньги, когда за&nbsp;ним стоит пять вещей:<ul class="ans-list"><li>Спрос: продукт закрывает работу, которая людям действительно нужна, а&nbsp;не&nbsp;остаётся экспериментом ради эксперимента&nbsp;– проверяем это&nbsp;до&nbsp;сборки</li><li>Адаптация: учим команду работать с&nbsp;новым инструментом, чтобы через месяц всё не&nbsp;откатилось назад</li><li>Сценарии: закладываем запас на&nbsp;будущее и&nbsp;держим систему живой, когда меняются модель, интерфейс, прайсы поставщиков и&nbsp;условия рынка</li><li>Цепочки: ведём длинные маршруты, где агент ходит по&nbsp;нескольким системам, и&nbsp;отвечаем за&nbsp;то, чтобы ошибка в&nbsp;середине не&nbsp;стоила дорого</li><li>Обвязка: собираем вокруг агента журнал действий, подтверждения и&nbsp;контроль качества ответов</li></ul>Всё это&nbsp;закрываем сами, вашей команде остаётся работа, ради которой её&nbsp;нанимали</div>
+      <div class="ans">Одного агента ваш разработчик соберёт за&nbsp;выходные, это&nbsp;правда. Но&nbsp;решение начинает работать и&nbsp;приносить деньги, когда за&nbsp;ним стоит пять вещей:<ul class="ans-list"><li>Спрос: продукт закрывает работу, которая людям действительно нужна, а&nbsp;не&nbsp;остаётся экспериментом ради эксперимента&nbsp;– мы&nbsp;проверяем это&nbsp;до&nbsp;сборки</li><li>Адаптация: учим команду работать с&nbsp;новым инструментом, чтобы через месяц всё не&nbsp;откатилось назад</li><li>Сценарии: закладываем запас на&nbsp;будущее и&nbsp;держим систему живой, когда меняются модель, интерфейс, прайсы поставщиков и&nbsp;условия рынка</li><li>Цепочки: ведём длинные маршруты, где агент ходит по&nbsp;нескольким системам, и&nbsp;отвечаем за&nbsp;то, чтобы ошибка в&nbsp;середине не&nbsp;стоила дорого</li><li>Обвязка: собираем вокруг агента журнал действий, подтверждения и&nbsp;контроль качества ответов</li></ul>Всё это&nbsp;закрываем сами, вашей команде остаётся работа, ради которой её&nbsp;нанимали</div>
     </details>
     <details>
       <summary>Почему получится сейчас, если раньше не&nbsp;вышло? <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
@@ -2181,7 +2191,7 @@ function LEAD_API(url, opts){
     </details>
     <details>
       <summary>Что&nbsp;будет с&nbsp;командой после интеграции AI? <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-      <div class="ans">До&nbsp;старта вместе с&nbsp;вами разбираем роли: что&nbsp;забирает агент, что&nbsp;остаётся за&nbsp;человеком и&nbsp;как&nbsp;меняется его&nbsp;рабочий день. Сокращения мы&nbsp;не&nbsp;предлагаем и&nbsp;не&nbsp;планируем, это&nbsp;решение собственника. Наша задача снять с&nbsp;людей повторяющуюся работу, а&nbsp;не&nbsp;людей с&nbsp;работы</div>
+      <div class="ans">До&nbsp;старта вместе с&nbsp;вами разбираем роли: что&nbsp;забирает агент, что&nbsp;остаётся за&nbsp;человеком и&nbsp;как&nbsp;меняется его&nbsp;рабочий день. Сокращения мы&nbsp;не&nbsp;предлагаем и&nbsp;не&nbsp;планируем, это&nbsp;решение собственника. Наша задача&nbsp;– снять с&nbsp;людей повторяющуюся рутину, а&nbsp;не&nbsp;отнять у&nbsp;них работу</div>
     </details>
     <details>
       <summary>Вы&nbsp;интегрируетесь с&nbsp;нашими системами? <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
@@ -2189,11 +2199,11 @@ function LEAD_API(url, opts){
     </details>
     <details>
       <summary>Что&nbsp;происходит после запуска? <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-      <div class="ans"><span class="nb">60 дней</span> поддержки: остаёмся на&nbsp;связи и&nbsp;дорабатываем без&nbsp;доплаты. Дальше по&nbsp;выбору: продлеваем договор или&nbsp;полностью передаём систему вашей команде. Код, документация и&nbsp;методология в&nbsp;любом случае остаются у&nbsp;вас</div>
+      <div class="ans"><span class="nb">60 дней</span> поддержки: остаёмся на&nbsp;связи и&nbsp;обкатываем систему на&nbsp;реальных процессах, донастраиваем под&nbsp;то, как&nbsp;работает команда. Дальше продлеваем договор или&nbsp;полностью передаём систему вашей команде. Код, документация и&nbsp;методология в&nbsp;любом случае остаются у&nbsp;вас</div>
     </details>
     <details>
       <summary>Как&nbsp;вы&nbsp;работаете с&nbsp;конфиденциальными данными? <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-      <div class="ans">Через безопасный слой: персональные данные обезличиваем до&nbsp;отправки в&nbsp;модель, доступ к&nbsp;данным раздаём по&nbsp;ролям, каждое обращение пишем в&nbsp;журнал, подписываем соглашение о&nbsp;неразглашении и&nbsp;соблюдаем остальные требования 152-ФЗ по&nbsp;хранению и&nbsp;обработке. Модель и&nbsp;схему размещения подбираем на&nbsp;основе ваших требований к&nbsp;безопасности, а&nbsp;локальное развёртывание обсуждаем отдельно на&nbsp;чекапе</div>
+      <div class="ans">Через безопасный слой: персональные данные обезличиваем до&nbsp;отправки в&nbsp;модель, доступ к&nbsp;данным раздаём по&nbsp;ролям, каждое обращение пишем в&nbsp;журнал, подписываем соглашение о&nbsp;неразглашении и&nbsp;соблюдаем остальные требования 152-ФЗ по&nbsp;хранению и&nbsp;обработке. Модель и&nbsp;схему размещения подбираем на&nbsp;основе ваших требований к&nbsp;безопасности, а&nbsp;по&nbsp;запросу обсуждаем локальное развёртывание</div>
     </details>
   </div>
 </div></section>
@@ -3396,10 +3406,13 @@ function LEAD_API(url, opts){
          снизу команда, в месте пересечения контуров общая работа */
       hub={x:W*0.5, y:H*0.5, vertical:true,
            rx:W*0.42, ry:H*0.235, U:{y:H*0.31}, D:{y:H*0.67}};
+      /* процессы разведены по колонкам и подняты: подписи не задевают контур */
+      var BPOS={'заявки':[0.20,0.150],'продажи':[0.53,0.150],'закупки':[0.84,0.150],
+                'документы':[0.18,0.232],'клиенты':[0.46,0.232],'знания':[0.79,0.232]};
       BIZ.forEach(function(n,i){
-        var col=i%3, row=Math.floor(i/3);
+        var pos=BPOS[n]||[0.22+(i%3)*0.28, 0.150+Math.floor(i/3)*0.082];
         pts.push({kind:'biz',n:n,r:BIZR[n],lab:'top',
-          x:W*(0.22+col*0.28), y:H*(0.19+row*0.095), rr:3.6});
+          x:W*pos[0], y:H*pos[1], rr:3.6});
       });
       pts.push({kind:'core',n:CORE[0].n,r:CORE[0].r,x:W*0.27,y:H*0.78,rr:6,lab:'down'});
       pts.push({kind:'core',n:CORE[1].n,r:CORE[1].r,x:W*0.73,y:H*0.78,rr:6,lab:'down'});
