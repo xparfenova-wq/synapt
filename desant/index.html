@@ -1263,6 +1263,15 @@ footer .f-tg:hover,footer .f-legal a:hover{border-bottom-color:var(--accent)}
 .contour .ct-row:hover{background:transparent!important}
 .contour .ct-row:hover .ct-i{color:var(--accent)!important}
 .contour .ct-row *{transform:none!important;transition:color .2s ease}
+
+/* кейс: кнопка «Подробнее» рамкой, полоса под ней не тянется на всю ячейку */
+.metric-more{align-self:center}
+.metric-more .mm-t{display:inline-flex;align-items:center;justify-content:center;min-height:44px;
+  padding:0 22px;border:1px solid var(--line-accent);border-radius:var(--r-sm);font-size:15px}
+.metric-more .mm-r{display:none}
+.metric-more:hover .mm-t{border-color:var(--accent);color:var(--accent)}
+/* цифры кейса чуть спокойнее */
+.case-split .metrics.quad .metric b{font-size:clamp(24px,2.4vw,32px)}
 </style>
 <style media="print">
 @page{size:A4 portrait;margin:15mm 13mm 17mm}
