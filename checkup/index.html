@@ -923,6 +923,31 @@ footer{padding-bottom:104px}
   h2{margin-bottom:0}
   .lead,.sub{margin-top:18px}
 }
+
+@media(max-width:760px){
+  /* бургер прижат к правому краю: кнопки темы и Telegram спрятаны в меню */
+  .nav .burger,.nav #burger{margin-left:auto}
+  /* две цифры обложки идут друг под другом */
+  .hero.rh-hero .hero-stats{grid-template-columns:minmax(0,1fr);gap:18px}
+  .hero.rh-hero .hero-stats .hs{padding:0;border:0}
+  .hero.rh-hero .hero-bottom{padding-top:min(22vh,170px)}
+}
+
+/* формы: единый вид на всех страницах */
+.lf label,.f-l,.fld label{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.06em;color:var(--text-muted)}
+.slots{margin-top:14px!important}
+.lf-check,.agree{align-items:flex-start}
+.lf-check input,.agree input{margin-top:2px}
+.lf-check a,.agree a{text-decoration:none;border-bottom:1px solid var(--line-accent);padding-bottom:1px}
+.lf-check a:hover,.agree a:hover{border-bottom-color:var(--accent)}
+.lf-after{margin-top:10px!important}
+
+/* формы, финальная сверка: одинаковые интервалы и подчёркивание политики */
+.lf{margin-bottom:18px!important}
+.slots{margin-top:14px!important}
+.lf-check input{margin-top:2px!important}
+.lf-check a{text-decoration:none!important;border-bottom:1px solid var(--line-accent)!important;padding-bottom:1px}
+.lf-after{margin-top:10px!important}
 </style>
 </head>
 <body>
@@ -946,16 +971,16 @@ footer{padding-bottom:104px}
 <header class="hero rh-hero"><canvas id="chkFx" aria-hidden="true"></canvas><div class="wrap hero-in">
   <div class="hero-txt">
     <div class="hero-bottom">
-      <div class="hero-kick reveal"><div class="eyebrow">Студия AI и&nbsp;IT-разработки</div><span class="hero-chip">Услуга</span></div>
+      <div class="hero-kick reveal"><span class="hero-chip">Услуга</span></div>
       <h1 class="reveal d1">AI-чекап бизнеса</h1>
-      <p class="lead reveal d2">За&nbsp;две недели вы&nbsp;видите, где теряете деньги и&nbsp;что&nbsp;делать первым: карту всех процессов компании с&nbsp;узкими местами и&nbsp;приоритетами, одну автоматизацию и&nbsp;чёткий план дальнейшей AI-интеграции с&nbsp;вилкой бюджета</p>
+      <p class="lead reveal d2">За&nbsp;две недели показываем, где теряются деньги и&nbsp;что&nbsp;делать первым: даём карту всех процессов компании с&nbsp;узкими местами и&nbsp;приоритетами, одну автоматизацию и&nbsp;чёткий план дальнейшей AI-интеграции с&nbsp;вилкой бюджета</p>
     </div>
   </div>
   <div class="hero-stats reveal d2">
-    <div class="hs"><b>14 дней</b><span>от&nbsp;первого Zoom до&nbsp;карты процессов, плана интеграции и&nbsp;первого собранного агента</span></div>
+    <div class="hs"><b>14 дней</b><span>от&nbsp;Zoom до&nbsp;карты процессов бизнеса и&nbsp;первого собранного агента</span></div>
     <div class="hs"><b>19&nbsp;900&nbsp;₽</b><span>чекап целиком, сумма фиксированная</span></div>
-    <div class="hs"><b>1 агент</b><span>собираем сразу на&nbsp;ваших материалах</span></div>
-    <div class="hs"><b>до&nbsp;6 часов</b><span>интервью с&nbsp;вашей командой за&nbsp;две недели</span></div>
+    
+    
   </div>
 </div></header>
 
@@ -971,7 +996,7 @@ footer{padding-bottom:104px}
     <div class="rule reveal d1"><span class="rn">0x02</span><span class="rk">клиент уходит к&nbsp;тому, кто ответил первым</span><div class="rt">«Заявка приходит в&nbsp;мессенджер в&nbsp;одиннадцать вечера, а&nbsp;отвечаем мы&nbsp;в&nbsp;десять утра»</div><div class="rd">Лиды идут из&nbsp;нескольких каналов, часть оседает в&nbsp;личных переписках. Пока ответ ждёт до&nbsp;утра, клиент уходит к&nbsp;тому, кто ответил первым</div></div>
     <div class="rule reveal d2"><span class="rn">0x03</span><span class="rk">инструменты есть, привычки нет</span><div class="rt">«Купили команде курс за&nbsp;сто восемьдесят тысяч, посмотрели два урока и&nbsp;вернулись к&nbsp;прежней работе»</div><div class="rd">Инструменты в&nbsp;компании есть, привычки ими пользоваться нет. AI внедряют в&nbsp;отдельные задачи, но&nbsp;процессы вокруг них остаются прежними</div></div>
     <div class="rule reveal d3"><span class="rn">0x04</span><span class="rk">решения принимаются вслепую</span><div class="rt">«Я&nbsp;вижу выручку, но&nbsp;не&nbsp;вижу общую картину: как&nbsp;менеджеры ведут коммуникацию с&nbsp;клиентами»</div><div class="rd">Руководитель выборочно слушает единицы диалогов и&nbsp;не&nbsp;может разобрать причины падения конверсии</div></div>
-    <div class="rule reveal"><span class="rn">0x05</span><span class="rk">непонятно, как&nbsp;сравнивать подрядчиков</span><div class="rt">«Мне нужна команда, которая придёт, посмотрит процессы и&nbsp;скажет, что&nbsp;точно имеет смысл автоматизировать»</div><div class="rd">Подрядчики называют разные цены, не&nbsp;объясняют содержание работ и&nbsp;дают большие сроки. Нет понимания, как&nbsp;сравнивать предложения и&nbsp;кого выбирать</div></div>
+    <div class="rule reveal"><span class="rn">0x05</span><span class="rk">непонятно, как&nbsp;расти в&nbsp;новом мире</span><div class="rt">«Мне нужна команда, которая придёт, посмотрит процессы и&nbsp;скажет, как&nbsp;кратно вырасти за&nbsp;счёт оптимизации и&nbsp;новых технологий»</div><div class="rd">Про AI много обсуждений, желание и&nbsp;энтузиазм внедрять есть, а&nbsp;понимания, с&nbsp;чего начать и&nbsp;что&nbsp;даст рост, нет</div></div>
   </div>
 </div></section>
 
@@ -1049,8 +1074,8 @@ footer{padding-bottom:104px}
   <div class="lead-grid">
     <div class="lead-copy reveal">
       <div class="eyebrow"><span class="n">06</span> Следующий шаг</div>
-      <h2>Записаться на&nbsp;AI-чекап</h2>
-      <p class="lead">Оставьте контакты и&nbsp;удобное время. Мы&nbsp;подтвердим первый Zoom и&nbsp;пришлём короткий список материалов, которые пригодятся к&nbsp;старту</p>
+      <h2><span class="nb">30 минут</span> в&nbsp;Zoom с&nbsp;партнёрами студии</h2>
+  <p class="lead">Вы&nbsp;рассказываете про&nbsp;бизнес, мы&nbsp;задаём вопросы и&nbsp;совместно определяем запрос. После присылаем запись разговора и&nbsp;разбор: что&nbsp;увидели и&nbsp;с&nbsp;чего рекомендуем начать</p>
     </div>
     <div class="leadbox reveal d1">
       <form id="leadForm" novalidate>

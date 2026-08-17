@@ -1681,7 +1681,8 @@ footer .f-tg:hover,footer .f-legal a:hover{border-bottom-color:var(--accent)}
 #lead .lc-mgr.lc-after{max-width:var(--contentw);margin:34px auto 0;padding-top:26px;
   border-top:1px solid var(--line)}
 /* имя менеджера акцентным зелёным */
-.lc-name{color:var(--accent-text)}
+.lc-name{color:var(--accent)}
+.lc-mgr-t b a{color:var(--accent)}
 
 /* перенос перед ссылкой на политику нужен только на широком экране:
    на телефоне строка идёт сплошняком и лишний разрыв рвёт абзац */
@@ -1719,6 +1720,35 @@ footer .f-legal a::after{content:"";position:absolute;left:0;right:0;top:50%;
   h2{margin-bottom:0}
   .lead,.sub{margin-top:18px}
 }
+
+/* карточка кейса кликается целиком */
+.ccard{position:relative}
+.ccard .morelink,.ccard .cs-open{position:relative;z-index:2}
+.ccard .cc-hit{position:absolute;inset:0;z-index:1;border-radius:inherit;background:transparent;border:0;cursor:pointer;padding:0}
+.ccard:hover{border-color:var(--line-2)}
+/* ритм внутри карточки кейса: смысловые блоки разведены, строки внутри блока рядом */
+.ccard{gap:0}
+.ccard .cc-top{margin-bottom:14px}
+.ccard h3{margin-bottom:6px}
+.ccard .cc-client{margin:0 0 18px}
+.ccard .cc-res{margin-top:0;margin-bottom:18px;padding-top:0}
+.ccard .cc-task{margin-bottom:14px}
+
+/* формы: единый вид на всех страницах */
+.lf label,.f-l,.fld label{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.06em;color:var(--text-muted)}
+.slots{margin-top:14px!important}
+.lf-check,.agree{align-items:flex-start}
+.lf-check input,.agree input{margin-top:2px}
+.lf-check a,.agree a{text-decoration:none;border-bottom:1px solid var(--line-accent);padding-bottom:1px}
+.lf-check a:hover,.agree a:hover{border-bottom-color:var(--accent)}
+.lf-after{margin-top:10px!important}
+
+/* формы, финальная сверка: одинаковые интервалы и подчёркивание политики */
+.lf{margin-bottom:18px!important}
+.slots{margin-top:14px!important}
+.lf-check input{margin-top:2px!important}
+.lf-check a{text-decoration:none!important;border-bottom:1px solid var(--line-accent)!important;padding-bottom:1px}
+.lf-after{margin-top:10px!important}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
@@ -1983,7 +2013,7 @@ function LEAD_API(url, opts){
   <div class="crail-wrap"><div class="crail reveal" id="crail">
 
     <article class="ccard">
-      <div class="cc-top"><span class="cc-tag">AI-десант</span><span class="cc-ind">01</span></div>
+      <a class="cc-hit" href="/synapt/innorto/" aria-label="открыть кейс"></a><div class="cc-top"><span class="cc-tag">AI-десант</span><span class="cc-ind">01</span></div>
       <h3>Заявка в&nbsp;закупках оформляется за&nbsp;<span class="nb">2 минуты</span>, раньше уходило 10</h3>
       <div class="cc-client">INNORTO, оптовые закупки</div>
       <div class="cc-res"><div><b><span class="nb">26 из&nbsp;27</span></b><span>сотрудников работают с&nbsp;AI каждый день</span></div><div><b>1 месяц</b><span>десанта внутри команды на&nbsp;конкретных задачах</span></div></div>
@@ -1991,15 +2021,15 @@ function LEAD_API(url, opts){
       <div class="cc-fig"><canvas class="fx-halftone" data-maxh="126"></canvas></div>
       <a class="morelink" href="/synapt/innorto/">Подробнее</a>
     </article><article class="ccard">
-      <div class="cc-top"><span class="cc-tag">AI-агент на&nbsp;базе знаний</span><span class="cc-ind">02</span></div>
+      <a class="cc-hit" href="/synapt/globaldent/" aria-label="открыть кейс"></a><div class="cc-top"><span class="cc-tag">AI-агент на&nbsp;базе знаний</span><span class="cc-ind">02</span></div>
       <h3>Разбор бизнеса клиники приходит в&nbsp;чат за&nbsp;минуты</h3>
       <div class="cc-client">GlobalDent, клуб стоматологов</div>
       <div class="cc-res"><div><b><span class="nb">1 500+</span></b><span>пар вопрос-ответ в&nbsp;базе знаний клуба</span></div><div><b>24/7</b><span>ответ участнику клуба в&nbsp;любое время</span></div></div>
-      <p class="cc-task">Участники клуба задавали разные вопросы по&nbsp;управлению клиникой. Задача&nbsp;– автоматизировать экспертизу собственников</p>
+      <p class="cc-task">Участники клуба задавали разные вопросы по&nbsp;управлению клиникой. Задача&nbsp;– автоматизировать экспертизу собственника</p>
       <div class="cc-fig"><canvas class="fx-flow" data-maxh="126"></canvas></div>
       <a class="morelink" href="/synapt/globaldent/">Подробнее</a>
     </article><article class="ccard">
-      <div class="cc-top"><span class="cc-tag">Отдел продаж</span><span class="cc-ind">03</span></div>
+      <button type="button" class="cc-hit cs-open" data-case="3" aria-label="открыть кейс"></button><div class="cc-top"><span class="cc-tag">Отдел продаж</span><span class="cc-ind">03</span></div>
       <h3>Руководитель впервые видит все диалоги и&nbsp;причины потерь</h3>
       <div class="cc-client">Оптовая компания, имя под NDA</div>
       <div class="cc-res"><div><b>100%</b><span>звонков и&nbsp;переписок в&nbsp;разборе</span></div><div><b>+20%</b><span>рост конверсии в&nbsp;сделку</span></div></div>
@@ -2007,21 +2037,21 @@ function LEAD_API(url, opts){
       <div class="cc-fig"><canvas class="fx-signal" data-maxh="126" data-a="до: слушали 5 из&nbsp;300" data-b="после: разбираются все 300 каждый день"></canvas></div>
       <button type="button" class="morelink cs-open" data-case="3">Подробнее</button>
     </article><article class="ccard">
-      <div class="cc-top"><span class="cc-tag">AI-агент в&nbsp;подборе</span><span class="cc-ind">04</span></div>
+      <button type="button" class="cc-hit cs-open" data-case="0" aria-label="открыть кейс"></button><div class="cc-top"><span class="cc-tag">AI-агент в&nbsp;подборе</span><span class="cc-ind">04</span></div>
       <h3>Бот подбирает блюда только из&nbsp;того, что&nbsp;сейчас есть на&nbsp;складе</h3>
       <div class="cc-client">FoodTech-сервис, имя под NDA</div>
       <div class="cc-res"><div><b><span class="nb">1 200+</span></b><span>карт меню поставщиков оцифровано</span></div><div><b><span class="nb">30 тысяч</span></b><span>сообщений обрабатывает ежемесячно</span></div></div><p class="cc-task">Клиент обрабатывает запрос вручную, задача&nbsp;– автоматизировать и&nbsp;ускорить процесс на&nbsp;основе остатков и&nbsp;наличия на&nbsp;складе</p>
       <div class="cc-fig"><canvas class="fx-dishes" data-maxh="126"></canvas></div>
       <button type="button" class="morelink cs-open" data-case="0">Подробнее</button>
     </article><article class="ccard">
-      <div class="cc-top"><span class="cc-tag">AI-консультант</span><span class="cc-ind">05</span></div>
+      <button type="button" class="cc-hit cs-open" data-case="1" aria-label="открыть кейс"></button><div class="cc-top"><span class="cc-tag">AI-консультант</span><span class="cc-ind">05</span></div>
       <h3>Консультант разбирает запрос по&nbsp;методике компании прямо в&nbsp;Telegram</h3>
       <div class="cc-client">Консалтинговая компания, имя под NDA</div>
       <div class="cc-res"><div><b>300+</b><span>часов работы экспертов экономим каждый месяц</span></div><div><b>800+</b><span>страниц методики внутри базы знаний</span></div></div><p class="cc-task">Авторскую методику знали несколько экспертов. Задача&nbsp;– ускорить работу с&nbsp;клиентами, сохранив точность</p>
       <div class="cc-fig"><canvas class="fx-mesh" data-maxh="126"></canvas></div>
       <button type="button" class="morelink cs-open" data-case="1">Подробнее</button>
     </article><article class="ccard">
-      <div class="cc-top"><span class="cc-tag">Разработка</span><span class="cc-ind">06</span></div>
+      <button type="button" class="cc-hit cs-open" data-case="2" aria-label="открыть кейс"></button><div class="cc-top"><span class="cc-tag">Разработка</span><span class="cc-ind">06</span></div>
       <h3>30 лет расчётов переехали в&nbsp;браузер без расхождений</h3>
       <div class="cc-client">Инженерное бюро, имя под NDA</div>
       <div class="cc-res"><div><b>100%</b><span>совпадение расчётов со&nbsp;старой системой</span></div><div><b><span class="nb">30+ лет</span></b><span>накопленной логики сохранено</span></div></div><p class="cc-task">Формулы 1992&nbsp;года остались в&nbsp;основании, над ними поставили ядро, расчётный слой и&nbsp;интерфейс</p>
@@ -2224,7 +2254,7 @@ function LEAD_API(url, opts){
         <div class="lf"><label for="lfContact">Телефон, почта или&nbsp;Telegram <span class="req" title="обязательное поле">*</span></label><input id="lfContact" name="contact" type="text" autocomplete="off" required></div>
       </div>
       <div class="lf"><label for="lfCompany">Компания и&nbsp;сфера деятельности</label><input id="lfCompany" name="company" type="text" autocomplete="organization"></div>
-      <div class="lf"><label for="lfTask">Коротко о&nbsp;контексте</label><textarea id="lfTask" name="task" rows="2"></textarea></div>
+      <div class="lf"><label for="lfTask">Коротко о&nbsp;запросе</label><textarea id="lfTask" name="task" rows="2"></textarea></div>
     <div class="slots" id="slots">
       <div class="sl-h">Когда вам удобно</div>
       <div class="sl-days" id="slDays"></div>
@@ -2901,6 +2931,17 @@ function LEAD_API(url, opts){
         ctx.beginPath(); ctx.moveTo(mx + 26, H / 2 + 6);
         ctx.lineTo(mx + 26 + (ax - mx - 26) * Math.min(1, ra * 1.4), ay + 4);
         ctx.strokeStyle = 'rgba(' + PH + ',' + (.2 + ra * .3) + ')'; ctx.lineWidth = 1; ctx.stroke();
+        /* готовый файл, который агент прикладывает к ответу */
+        if (ra > .4) {
+          var fa = Math.min(1, (ra - .4) / .35), fw = 24, fh = 19, fx = ax + bw - fw, fy = ay - fh - 9;
+          ctx.beginPath();
+          if (ctx.roundRect) ctx.roundRect(fx, fy, fw, fh, 3); else ctx.rect(fx, fy, fw, fh);
+          ctx.fillStyle = 'rgba(' + PH + ',' + (.1 * fa) + ')'; ctx.fill();
+          ctx.strokeStyle = 'rgba(' + PH + ',' + (.55 * fa) + ')'; ctx.lineWidth = 1; ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(fx + fw - 7, fy); ctx.lineTo(fx + fw, fy + 7); ctx.lineTo(fx + fw - 7, fy + 7); ctx.closePath();
+          ctx.fillStyle = 'rgba(' + PH + ',' + (.42 * fa) + ')'; ctx.fill();
+          lines(ctx, fx + 5, fy + 10, fw - 10, 2, fa, true, true);
+        }
         /* ответ со ссылкой на источник */
         bubble(ctx, ax, ay, bw, 20, true, ra, true);
         lines(ctx, ax + 6, ay + 5, bw - 12, 2, ra, true, false);
@@ -3773,7 +3814,7 @@ function LEAD_API(url, opts){
 
 <div id="caseStore" hidden>
   <div class="cs-item" data-case="0"><p>Меню приходит от&nbsp;поставщиков в&nbsp;PDF, состав и&nbsp;остатки меняются каждый день. Сначала научились разбирать эти файлы и&nbsp;превращать их&nbsp;в&nbsp;структурированную базу: позиции, состав, вес, пропорции</p><p>Поверх встал семантический поиск: клиент пишет обычными словами, а&nbsp;движок подбирает блюда по&nbsp;смыслу, даже если в&nbsp;меню они названы иначе. Выдача фильтруется по&nbsp;реальным остаткам, пропорции пересчитываются сразу</p></div>
-  <div class="cs-item" data-case="1"><p>У&nbsp;клиента своя методология консультирования: свой порядок разбора, свои критерии, свой язык. Обычный чат такую задачу не&nbsp;решает, потому что&nbsp;отвечает из&nbsp;общих знаний модели</p><p>Собрали и&nbsp;разметили материалы автора: правила разбора, примеры, критерии решений, типовые ошибки. Модель освоила порядок, в&nbsp;котором методология разбирает данные клиента, и&nbsp;сохраняет его&nbsp;в&nbsp;каждом ответе</p><p>Консультант живёт в&nbsp;Telegram, отдельного сайта и&nbsp;логина не&nbsp;нужно. База знаний выросла до&nbsp;800 страниц, эксперту освобождается больше 300 часов в&nbsp;месяц</p></div>
+  <div class="cs-item" data-case="1"><p>У&nbsp;клиента своя методология консультирования: свой порядок разбора, свои критерии, свой язык. Обычный чат-бот такую задачу не&nbsp;решает, потому что&nbsp;отвечает из&nbsp;общих знаний модели</p><p>Собрали и&nbsp;разметили материалы автора: правила разбора, примеры, критерии решений, типовые ошибки. Модель освоила порядок, в&nbsp;котором методология разбирает данные клиента, и&nbsp;сохраняет его&nbsp;в&nbsp;каждом ответе</p><p>AI-консультант встроен в&nbsp;Telegram, отдельного сайта и&nbsp;логина не&nbsp;нужно. База знаний выросла до&nbsp;800 страниц, а&nbsp;эксперт освободил больше 300 часов</p></div>
   <div class="cs-item" data-case="2"><p>Документации на&nbsp;исходную логику не&nbsp;сохранилось, поэтому сначала разобрали код построчно и&nbsp;восстановили, как&nbsp;система считает: формулы, поправки, порядок операций</p><p>Затем собрали расчётное ядро заново, уже под браузер, и&nbsp;сверяли результат с&nbsp;исходной системой на&nbsp;каждом шаге. Астрономические данные, которые раньше выводились текстом, стали графиками и&nbsp;картами</p><p>Проверка шла цифра в&nbsp;цифру: расхождений с&nbsp;исходной системой нет ни&nbsp;в&nbsp;одном сценарии</p></div>
   <div class="cs-item" data-case="3"><p>Руководитель слушал разговоры выборочно: пять записей из&nbsp;трёхсот в&nbsp;месяц. Команду оценивали по&nbsp;ощущению, а&nbsp;причины отказов узнавали со&nbsp;слов самих менеджеров</p><p>Агент разбирает все звонки и&nbsp;переписки: расшифровывает разговор, сверяет его&nbsp;со&nbsp;сценарием продажи и&nbsp;отмечает, где менеджер не&nbsp;задал вопрос, не&nbsp;отработал возражение или&nbsp;не&nbsp;довёл клиента до&nbsp;следующего шага</p><p>Руководитель видит картину по&nbsp;отделу и&nbsp;по&nbsp;каждому менеджеру: повторяющиеся ошибки, причины потерь, сильные диалоги как&nbsp;образец для&nbsp;обучения. Конверсия в&nbsp;сделку выросла на&nbsp;20%</p><p>Тот&nbsp;же&nbsp;агент отвечает клиенту в&nbsp;мессенджере за&nbsp;секунды, уточняет объём и&nbsp;сроки и&nbsp;передаёт диалог менеджеру уже с&nbsp;контекстом</p></div>
 </div>
