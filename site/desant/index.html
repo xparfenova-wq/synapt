@@ -1370,6 +1370,28 @@ footer .f-nav{gap:5px}
   .leadbox,.mform,.cta-form,form{order:2}
   .lc-mgr{order:3!important;margin-top:22px}
 }
+
+/* обложка: текстовый блок чуть ниже, как на других страницах */
+.cover .cover-grid>div:not(.cover-stats){padding-top:14px}
+/* цифра и её подпись стоят плотнее */
+.cover-stats .cs-c{margin-top:6px!important;line-height:1.45}
+.cover-stats .cs-n .cs-u,.cover-stats .cs-n .cs-of,.cover-stats .cs-n .cs-pre{margin-left:.06em!important}
+/* кнопка кейса: как соседний блок цифр, белым текстом с подчёркиванием */
+.metric.metric-more{align-self:stretch}
+.metric-more .mm-t{display:flex;align-items:center;justify-content:center;width:100%;min-height:92px;
+  border:1px solid var(--line-2);border-radius:var(--r-md);color:var(--text)!important;
+  font-size:16px;font-weight:560;text-decoration:underline;text-underline-offset:4px}
+.metric-more:hover .mm-t{border-color:var(--accent);color:var(--accent)!important}
+/* цена: цифра крупнее, справа и на одной линии с заголовком */
+.cost-top{align-items:start!important}
+.price-line{align-items:flex-end!important}
+.price-line .big{font-size:clamp(52px,7vw,104px)!important;justify-content:flex-end}
+.price-line{margin-left:auto;text-align:right}
+.price-line .pl-side{text-align:left}
+
+/* кнопка кейса: подпись по центру блока */
+.metric.metric-more{justify-content:stretch!important;height:100%}
+.metric-more .mm-t{flex:1 1 auto;min-height:0}
 </style>
 <style media="print">
 @page{size:A4 portrait;margin:15mm 13mm 17mm}
@@ -1499,7 +1521,7 @@ footer{margin-top:26px;padding:24px 0 0;break-inside:avoid;page-break-inside:avo
 </div></section><section id="safe" class="r80-96-56-64"><div class="wrap"><div class="sec-head reveal"><div class="eyebrow"><span class="n">06</span> Безопасность</div><h2>Данные компании остаются внутри контура</h2></div><div class="contour reveal"><div class="ct-frame"><div class="ct-row"><span class="ct-i">01</span><span class="ct-k">соглашение</span><p>Соглашение о&nbsp;неразглашении подписываем до&nbsp;старта. Специалист работает внутри вашего бизнеса, и&nbsp;всё, что&nbsp;он&nbsp;видит, не&nbsp;выходит наружу</p></div><div class="ct-row"><span class="ct-i">02</span><span class="ct-k">персональные данные</span><p>Имена, телефоны и&nbsp;реквизиты заменяются на&nbsp;метки до&nbsp;отправки в&nbsp;модель, как&nbsp;требует 152-ФЗ</p></div><div class="ct-row"><span class="ct-i">03</span><span class="ct-k">базы</span><p>Клиентские базы и&nbsp;выгрузки из&nbsp;CRM и&nbsp;бухгалтерии не&nbsp;выгружаются во&nbsp;внешние системы без запроса</p></div><div class="ct-row"><span class="ct-i">04</span><span class="ct-k">инфраструктура</span><p>Свой сервер и&nbsp;свой защищённый доступ: данные остаются под контролем компании</p></div></div></div></div></section><section id="cost" class="r140-96-96-64"><div class="wrap">
   <div class="cost-top"><div class="cost-head reveal"><div class="eyebrow"><span class="n">07</span> Условия</div><h2>Стоимость и&nbsp;старт</h2></div>
   <div class="price-line reveal">
-    <div class="big"><span class="pre">от</span> 80 <small>тыс. ₽ в&nbsp;месяц</small></div>
+    <div class="big"><span class="pre">от</span> 80 <small>тыс. ₽</small></div>
     <div class="pl-side"><div class="desc">Месяц работы специалиста внутри вашей команды. Цена зависит от&nbsp;масштаба: сколько отделов, людей и&nbsp;процессов вовлечено. Точную сумму называем после первичной оценки</div><div class="start"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg> Старт в&nbsp;течение недели</div></div>
   </div></div>
   <div class="incl reveal d1"><div class="icol"><div class="k">Что&nbsp;входит</div><ul><li><span class="ix">01</span><span>Разбор процессов и&nbsp;список задач для&nbsp;AI</span></li><li><span class="ix">02</span><span>Обучение сотрудников под ваши задачи</span></li><li><span class="ix">03</span><span>Внедрение первых рабочих инструментов</span></li><li><span class="ix">04</span><span>Регламенты и&nbsp;передача команде</span></li></ul></div><div class="icol"><div class="k">Какой результат</div><ul><li><span class="ix">01</span><span>Команда, которая работает с&nbsp;AI сама</span></li><li><span class="ix">02</span><span>Работающие инструменты в&nbsp;процессах</span></li><li><span class="ix">03</span><span>Время, освободившееся от&nbsp;рутины</span></li><li><span class="ix">04</span><span>Весь код, наработки, доступы и&nbsp;регламенты</span></li></ul></div></div>

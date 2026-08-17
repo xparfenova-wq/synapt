@@ -1370,6 +1370,28 @@ footer .f-nav{gap:5px}
   .leadbox,.mform,.cta-form,form{order:2}
   .lc-mgr{order:3!important;margin-top:22px}
 }
+
+/* обложка: текстовый блок чуть ниже, как на других страницах */
+.cover .cover-grid>div:not(.cover-stats){padding-top:14px}
+/* цифра и её подпись стоят плотнее */
+.cover-stats .cs-c{margin-top:6px!important;line-height:1.45}
+.cover-stats .cs-n .cs-u,.cover-stats .cs-n .cs-of,.cover-stats .cs-n .cs-pre{margin-left:.06em!important}
+/* кнопка кейса: как соседний блок цифр, белым текстом с подчёркиванием */
+.metric.metric-more{align-self:stretch}
+.metric-more .mm-t{display:flex;align-items:center;justify-content:center;width:100%;min-height:92px;
+  border:1px solid var(--line-2);border-radius:var(--r-md);color:var(--text)!important;
+  font-size:16px;font-weight:560;text-decoration:underline;text-underline-offset:4px}
+.metric-more:hover .mm-t{border-color:var(--accent);color:var(--accent)!important}
+/* цена: цифра крупнее, справа и на одной линии с заголовком */
+.cost-top{align-items:start!important}
+.price-line{align-items:flex-end!important}
+.price-line .big{font-size:clamp(52px,7vw,104px)!important;justify-content:flex-end}
+.price-line{margin-left:auto;text-align:right}
+.price-line .pl-side{text-align:left}
+
+/* кнопка кейса: подпись по центру блока */
+.metric.metric-more{justify-content:stretch!important;height:100%}
+.metric-more .mm-t{flex:1 1 auto;min-height:0}
 </style>
 <style media="print">
 @page{size:A4 portrait;margin:15mm 13mm 17mm}

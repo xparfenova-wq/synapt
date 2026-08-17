@@ -1872,6 +1872,14 @@ footer .f-nav{gap:5px}
   .leadbox,.mform,.cta-form,form{order:2}
   .lc-mgr{order:3!important;margin-top:22px}
 }
+
+/* хвост метрики мельче самой цифры */
+.cc-res b .tail,.nb + .tail,.tail{font-size:.62em;color:var(--text-muted);letter-spacing:0}
+/* анимация в карточке кейса: увеличивается область, а не сама графика */
+.ccard .cc-fig{align-items:center;justify-content:center;overflow:hidden}
+.ccard .cc-fig canvas{width:100%;height:auto!important;min-height:0!important;max-height:none;object-fit:contain}
+/* подписи в схеме команды читаются белым */
+.tsyn .tn-name,.tsyn text,.tn .n text{fill:#F0F2F1!important;color:#F0F2F1!important}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
@@ -1968,7 +1976,7 @@ function LEAD_API(url, opts){
   
 </div>
     <div class="now-figs">
-      <div class="now-f"><b><span class="nb">26 из&nbsp;27</span></b><span>сотрудников INNORTO работают с&nbsp;AI каждый день, потому что&nbsp;через него быстрее</span><a class="src" href="/innorto/">наш кейс, месяц AI-десанта</a></div>
+      <div class="now-f"><b><span class="nb">26</span><span class="tail"> из&nbsp;27</span></b><span>сотрудников INNORTO работают с&nbsp;AI каждый день, потому что&nbsp;через него быстрее</span><a class="src" href="/innorto/">наш кейс, месяц AI-десанта</a></div>
       <div class="now-f"><b><span class="nb">2 минуты</span></b><span>уходит у&nbsp;агента на&nbsp;стратегический аудит для&nbsp;собственника клиники на&nbsp;основе <span class="nb">17 разделов</span> методологии клуба и&nbsp;<span class="nb">1 500+</span> пар вопрос-ответ</span><a class="src" href="/globaldent/">наш кейс, агент Global Dent Club</a></div>
     </div>
   </div>
@@ -2144,9 +2152,9 @@ function LEAD_API(url, opts){
 
     <article class="ccard">
       <a class="cc-hit" href="/innorto/" aria-label="открыть кейс"></a><div class="cc-top"><span class="cc-tag">AI-десант</span><span class="cc-ind">01</span></div>
-      <h3>Заявка в&nbsp;закупках оформляется за&nbsp;<span class="nb">2 минуты</span>, раньше уходило 10</h3>
+      <h3>Заявка в&nbsp;закупках оформляется за&nbsp;<span class="nb">2</span><span class="tail"> минуты</span>, раньше уходило 10</h3>
       <div class="cc-client">INNORTO, оптовые закупки</div>
-      <div class="cc-res"><div><b><span class="nb">26 из&nbsp;27</span></b><span>сотрудников работают с&nbsp;AI каждый день</span></div><div><b>1 месяц</b><span>десанта внутри команды на&nbsp;конкретных задачах</span></div></div>
+      <div class="cc-res"><div><b><span class="nb">26</span><span class="tail"> из&nbsp;27</span></b><span>сотрудников работают с&nbsp;AI каждый день</span></div><div><b>1 месяц</b><span>десанта внутри команды на&nbsp;конкретных задачах</span></div></div>
       <p class="cc-task">Нейросетями в&nbsp;компании пользовались два энтузиаста, задачей было распространить навыки на&nbsp;всех</p>
       <div class="cc-fig"><canvas class="fx-halftone" data-maxh="126"></canvas></div>
       <a class="morelink" href="/innorto/">Подробнее</a>
@@ -3065,14 +3073,14 @@ function LEAD_API(url, opts){
         ctx.strokeStyle = 'rgba(' + PH + ',' + (.2 + ra * .3) + ')'; ctx.lineWidth = 1; ctx.stroke();
         /* готовый файл, который агент прикладывает к ответу */
         if (ra > .4) {
-          var fa = Math.min(1, (ra - .4) / .35), fw = 24, fh = 19, fx = ax + bw - fw, fy = ay - fh - 9;
+          var fa = Math.min(1, (ra - .4) / .35), fw = 17, fh = 13, fx = ax + bw - fw, fy = ay - fh - 7;
           ctx.beginPath();
           if (ctx.roundRect) ctx.roundRect(fx, fy, fw, fh, 3); else ctx.rect(fx, fy, fw, fh);
           ctx.fillStyle = 'rgba(' + PH + ',' + (.1 * fa) + ')'; ctx.fill();
           ctx.strokeStyle = 'rgba(' + PH + ',' + (.55 * fa) + ')'; ctx.lineWidth = 1; ctx.stroke();
           ctx.beginPath(); ctx.moveTo(fx + fw - 7, fy); ctx.lineTo(fx + fw, fy + 7); ctx.lineTo(fx + fw - 7, fy + 7); ctx.closePath();
           ctx.fillStyle = 'rgba(' + PH + ',' + (.42 * fa) + ')'; ctx.fill();
-          lines(ctx, fx + 5, fy + 10, fw - 10, 2, fa, true, true);
+          lines(ctx, fx + 4, fy + 7, fw - 8, 2, fa, true, true);
         }
         /* ответ со ссылкой на источник */
         bubble(ctx, ax, ay, bw, 20, true, ra, true);
@@ -3676,7 +3684,7 @@ function LEAD_API(url, opts){
     /* у верхнего партнёра роль стоит над именем, у нижнего под ним */
     /* у партнёров роль всегда идёт строкой ниже имени */
     var y = (p.kind==='core' || p.lab==='down') ? p.y+36 : (p.lab==='up' ? p.y-31-(lines.length-1)*lh : p.y+34);
-    ctx.fillStyle='rgba('+WH+','+(.72*alpha)+')';
+    ctx.fillStyle='rgba('+WH+','+(.95*alpha)+')';
     ctx.textAlign = p.lab ? 'center' : (p.kind!=='biz'&&p.side!=='l' ? 'left' : 'right');
     var x = p.lab ? p.x : (ctx.textAlign==='left' ? p.x+11 : p.x-11);
     /* подпись не должна вылезать за холст: у правого края разворачиваем влево */
@@ -3760,7 +3768,7 @@ function LEAD_API(url, opts){
     ctx.font='400 '+(10.5*S)+'px "JetBrains Mono", ui-monospace, monospace';
     ctx.textAlign='center';
     if(hub.vertical){
-      ctx.fillStyle='rgba('+GR+','+(.6+hubE*.3)+')';
+      ctx.fillStyle='rgba('+WH+','+(.8+hubE*.2)+')';
       ctx.fillText('ваша компания', hub.x, hub.U.y-hub.ry-16);
       /* нижняя подпись прижимается к краю холста, но не заезжает за него:
          на мобильной у «команда Synapt» срезало нижние выносные элементы */
@@ -3768,7 +3776,7 @@ function LEAD_API(url, opts){
       ctx.fillText('команда Synapt', hub.x,
         Math.min(H-(mS.actualBoundingBoxDescent||3)-12, hub.D.y+hub.ry+28));
     } else {
-      ctx.fillStyle='rgba('+GR+','+(.6+hubE*.3)+')';
+      ctx.fillStyle='rgba('+WH+','+(.8+hubE*.2)+')';
       ctx.fillText('ваша компания', hub.L.x, hub.y-hub.ry-22);
       ctx.fillText('команда Synapt', hub.R.x, hub.y-hub.ry-22);
     }
