@@ -1763,9 +1763,9 @@ footer .f-legal a::after{content:"";position:absolute;left:0;right:0;top:50%;
 
 /* на широком экране три цифры, на телефоне две: цена уходит в блок услуг */
 @media(max-width:760px){.hero-meta .m-price{display:none}}
-@media(min-width:981px){.hero-meta{grid-template-columns:repeat(4,1fr)}}
 /* кнопки первого экрана выровнены по правому краю вместе с меню */
-.nav .wrap>.tgl:first-of-type{margin-left:auto}
+/* пока шапка прозрачная, кнопки прижаты к правому краю: место скрытой кнопки не занимается */
+.nav:not(.solid) .nav-act>.btn.pri{display:none}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
