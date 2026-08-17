@@ -1880,6 +1880,19 @@ footer .f-nav{gap:5px}
 .ccard .cc-fig canvas{width:100%;height:auto!important;min-height:0!important;max-height:none;object-fit:contain}
 /* подписи в схеме команды читаются белым */
 .tsyn .tn-name,.tsyn text,.tn .n text{fill:#F0F2F1!important;color:#F0F2F1!important}
+
+/* согласие отделено от выбора времени так же, как от кнопки */
+.lf-check{margin-top:30px!important}
+.mform .lf-check{margin-top:26px!important}
+/* цифры обложки на телефоне: тот же отступ от края, что у всей страницы */
+@media(max-width:900px){
+  .cover .cover-stats,.hero.rh-hero .hero-stats{padding-right:0!important;margin-right:0!important}
+  .cover .wrap,.hero .wrap{padding-left:var(--gutter);padding-right:var(--gutter)}
+}
+/* цена и заголовок раздела условий стоят на одной верхней линии */
+.cost-top{align-items:start!important}
+.price-line{padding-top:34px}
+@media(max-width:900px){.price-line{padding-top:0}}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */

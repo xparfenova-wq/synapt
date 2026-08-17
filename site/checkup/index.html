@@ -1103,6 +1103,19 @@ footer .f-nav a{margin-bottom:5px}
   .hero.rh-hero .hero-stats .hs b{font-size:26px!important;letter-spacing:-.02em}
   .hero.rh-hero .hero-txt{order:1!important}
 }
+
+/* согласие отделено от выбора времени так же, как от кнопки */
+.lf-check{margin-top:30px!important}
+.mform .lf-check{margin-top:26px!important}
+/* цифры обложки на телефоне: тот же отступ от края, что у всей страницы */
+@media(max-width:900px){
+  .cover .cover-stats,.hero.rh-hero .hero-stats{padding-right:0!important;margin-right:0!important}
+  .cover .wrap,.hero .wrap{padding-left:var(--gutter);padding-right:var(--gutter)}
+}
+/* цена и заголовок раздела условий стоят на одной верхней линии */
+.cost-top{align-items:start!important}
+.price-line{padding-top:34px}
+@media(max-width:900px){.price-line{padding-top:0}}
 </style>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-512.png" sizes="512x512" type="image/png">
