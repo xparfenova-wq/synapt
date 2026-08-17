@@ -989,6 +989,16 @@ footer{padding-bottom:104px}
 footer .f-k{color:var(--text)!important;font-weight:500}
 footer .f-nav a,footer .f-legal p,footer .f-legal a,footer .f-note{color:var(--text-muted)!important}
 footer .f-nav a:hover,footer .f-legal a:hover{color:var(--text)!important}
+
+/* обложка чекапа: анимация работает фоном, как на других страницах */
+#chkFx{opacity:.34!important}
+@media(max-width:760px){#chkFx{opacity:.4!important}}
+/* цифры обложки идут друг под другом и в вебе, и на телефоне */
+.hero.rh-hero .hero-stats{grid-template-columns:minmax(0,1fr)!important;gap:22px!important}
+.hero.rh-hero .hero-stats .hs{padding:0!important;border:0!important}
+.hero.rh-hero .hero-stats .hs:nth-child(2n){padding-left:0!important;border-left:0!important}
+/* плавающие кнопки только на телефоне: в вебе есть кнопка в шапке */
+@media(min-width:981px){.fab,.fabs,.float-cta,.tg-float,.floating,.f-actions{display:none!important}}
 </style>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-512.png" sizes="512x512" type="image/png">

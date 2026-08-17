@@ -1809,6 +1809,9 @@ footer .f-legal a::after{content:"";position:absolute;left:0;right:0;top:50%;
 footer .f-k{color:var(--text)!important;font-weight:500}
 footer .f-nav a,footer .f-legal p,footer .f-legal a,footer .f-note{color:var(--text-muted)!important}
 footer .f-nav a:hover,footer .f-legal a:hover{color:var(--text)!important}
+
+/* плавающие кнопки только на телефоне: в вебе есть кнопка в шапке */
+@media(min-width:981px){.fab{display:none!important}}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
@@ -2328,7 +2331,7 @@ function LEAD_API(url, opts){
       <div class="sl-note" id="slNote"></div>
     </div>
       <label class="lf-check"><input type="checkbox" id="lfAgree" required>
-        <span>Согласен на&nbsp;обработку персональных данных и&nbsp;принимаю <br class="br-web"><a href="/privacy" target="_blank">политику обработки персональных данных</a></span></label>
+        <span>Согласен на&nbsp;обработку персональных данных и&nbsp;принимаю <br class="br-web"><a href="/synapt/privacy/" target="_blank">политику обработки персональных данных</a></span></label>
       <div class="lf-err" id="lfErr" role="alert">Не&nbsp;хватает вашего имени, контактов и&nbsp;согласия на&nbsp;обработку персональных данных</div>
       <button class="btn pri lg" type="submit">Оставить заявку</button>
       <p class="lf-after">Подтвердим встречу в&nbsp;ответном сообщении в&nbsp;течение <span class="nb">1</span>&nbsp;рабочего дня</p>
@@ -2373,7 +2376,7 @@ function LEAD_API(url, opts){
       <p>ОГРНИП 324100000000411</p>
       <p>185014, Республика Карелия, Петрозаводск</p>
       <p>переулок Попова, дом&nbsp;6, квартира&nbsp;42</p>
-      <a href="/privacy">Политика обработки персональных данных</a>
+      <a href="/synapt/privacy/">Политика обработки персональных данных</a>
     </div>
   </div>
   <div class="f-bottom"><span>© 2026 Synapt</span></div>
