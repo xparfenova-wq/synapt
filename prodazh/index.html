@@ -1222,6 +1222,12 @@ footer .f-tg:hover,footer .f-legal a:hover{border-bottom-color:var(--accent)}
 .cost-head{padding-top:0}
 .price-line{margin-top:0!important}
 .price-line .big{line-height:.92}
+
+/* крайние разделители списков: перед первым и после последнего линии нет */
+.rule:first-child,.pr-row:first-child,.mstep:first-child,.step:first-child,
+.zoom-row:first-child,.dayrow:first-child,.lstep:first-child{border-top:0}
+.rule:last-child,.pr-row:last-child,.mstep:last-child,.step:last-child,
+.zoom-row:last-child,.dayrow:last-child,.lstep:last-child,.faq details:last-child{border-bottom:0}
 </style>
 <style media="print">
 @page{size:A4 portrait;margin:15mm 13mm 17mm}

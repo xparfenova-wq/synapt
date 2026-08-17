@@ -1749,6 +1749,12 @@ footer .f-legal a::after{content:"";position:absolute;left:0;right:0;top:50%;
 .lf-check input{margin-top:2px!important}
 .lf-check a{text-decoration:none!important;border-bottom:1px solid var(--line-accent)!important;padding-bottom:1px}
 .lf-after{margin-top:10px!important}
+
+/* крайние разделители списков: перед первым и после последнего линии нет */
+.rule:first-child,.pr-row:first-child,.mstep:first-child,.step:first-child,
+.zoom-row:first-child,.dayrow:first-child,.lstep:first-child{border-top:0}
+.rule:last-child,.pr-row:last-child,.mstep:last-child,.step:last-child,
+.zoom-row:last-child,.dayrow:last-child,.lstep:last-child,.faq details:last-child{border-bottom:0}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
