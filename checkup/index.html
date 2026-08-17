@@ -892,6 +892,25 @@ footer{padding-bottom:104px}
 .lc-mgr-t b a{color:var(--text-2);font-weight:500;border-bottom:1px solid var(--line)}
 .lc-mgr-t b a:hover{color:var(--accent-txt);border-bottom-color:var(--line-accent)}
 @media(max-width:520px){.lc-mgr{flex-direction:column;gap:14px}}
+
+@media(max-width:760px){
+  .hero.rh-hero .hero-in{display:flex;flex-direction:column;gap:0}
+  .hero.rh-hero .hero-stats{order:-1;margin-top:0;padding-top:0;border-top:0;
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 18px;text-align:right}
+  .hero.rh-hero .hero-stats .hs{padding:0}
+  .hero.rh-hero .hero-stats .hs:nth-child(2n){padding-left:0;border-left:0}
+  .hero.rh-hero .hero-stats .hs b{font-size:20px}
+  .hero.rh-hero .hero-stats .hs span{margin-left:auto;max-width:22ch}
+  .hero.rh-hero .hero-bottom{margin-top:auto;padding-top:min(24vh,190px)}
+  .hero.rh-hero .hero-txt{flex:1}
+}
+
+@media(max-width:760px){
+  .nav .tgl,.nav .nav-tg{display:none}
+  .hero.rh-hero .hero-kick{margin-bottom:14px}
+  .hero.rh-hero .hero-bottom{padding-top:min(30vh,250px)}
+  #chkFx{opacity:.6}
+}
 </style>
 </head>
 <body>
@@ -914,8 +933,8 @@ footer{padding-bottom:104px}
 
 <header class="hero rh-hero"><canvas id="chkFx" aria-hidden="true"></canvas><div class="wrap hero-in">
   <div class="hero-txt">
-    <div class="hero-kick reveal"><div class="eyebrow">Студия AI и&nbsp;IT-разработки</div><span class="hero-chip">Услуга</span></div>
     <div class="hero-bottom">
+      <div class="hero-kick reveal"><div class="eyebrow">Студия AI и&nbsp;IT-разработки</div><span class="hero-chip">Услуга</span></div>
       <h1 class="reveal d1">AI-чекап бизнеса</h1>
       <p class="lead reveal d2">За&nbsp;две недели вы&nbsp;видите, где теряете деньги и&nbsp;что&nbsp;делать первым: карту всех процессов компании с&nbsp;узкими местами и&nbsp;приоритетами, одну автоматизацию и&nbsp;чёткий план дальнейшей AI-интеграции с&nbsp;вилкой бюджета</p>
     </div>
@@ -1332,8 +1351,8 @@ footer{padding-bottom:104px}
 (function(){
   var nav=document.querySelector('.nav'); if(!nav) return;
   var hero=document.querySelector('.hero')||document.querySelector('header');
-  function upd(){ var b=hero?hero.getBoundingClientRect().bottom:0;
-    nav.classList.toggle('solid', b<=66) }
+  function upd(){ var h=hero?hero.getBoundingClientRect().height:0;
+    nav.classList.toggle('solid', (window.scrollY||window.pageYOffset) > Math.max(120, h-80)) }
   upd(); addEventListener('scroll',upd,{passive:true}); addEventListener('resize',upd);
 })();
 /* подписи иконок шапки: тема и Telegram */
