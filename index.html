@@ -1766,6 +1766,18 @@ footer .f-legal a::after{content:"";position:absolute;left:0;right:0;top:50%;
 /* кнопки первого экрана выровнены по правому краю вместе с меню */
 /* пока шапка прозрачная, кнопки прижаты к правому краю: место скрытой кнопки не занимается */
 .nav:not(.solid) .nav-act>.btn.pri{display:none}
+
+/* этапы: цифра загорается акцентом при наведении, линия между первым и вторым на месте */
+.rmap-row:hover .rm-n,.rmap-row:hover .rm-num{color:var(--accent)!important}
+.rmap-row{border-bottom:1px solid var(--line)}
+.rmap-row:first-of-type{border-top:1px solid var(--line)}
+/* подпись-связка между шагами читается наравне с текстом блока */
+.step-link span:last-child{font-size:13.5px;letter-spacing:.02em;color:var(--text-muted)}
+/* подвал: колонки ближе друг к другу, пункты плотнее, названия белым */
+.legal{grid-template-columns:1.1fr .62fr .72fr 1.25fr 1.3fr;column-gap:18px}
+.legal div{line-height:1.45}
+.f-nav a,.f-links a{margin-bottom:8px}
+.f-col .f-k,.f-title,.legal b{color:var(--text)}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
@@ -3425,7 +3437,7 @@ function LEAD_API(url, opts){
     'документы':'договоры, акты и всё, что сейчас готовится вручную',
     'клиенты':'обслуживание и повторные обращения',
     'знания':'то, что знает команда, но нигде не записано'};
-  var CORE=[{n:'Виктор Калугин',r:'технический партнёр,|архитектура системы',below:true},
+  var CORE=[{n:'Виктор Калугин',r:'технический партнёр,|архитектура системы',below:false},
             {n:'Антон Орешкин', r:'стратегический партнёр,|продукт и развитие',below:true}];
   var SPEC=[
     {n:'продукт',      r:'переводит задачу бизнеса в требования и критерии приёмки'},
