@@ -1021,6 +1021,48 @@ footer .f-nav a:hover,footer .f-legal a:hover{color:var(--text)!important}
 .cover-kick .chip,.chip{font-family:var(--sans)!important;letter-spacing:0!important;font-size:12.5px!important;font-weight:500}
 /* под блоком цифр линии нет */
 #metrics .bignum{border-bottom:0!important;padding-bottom:0!important}
+
+/* мобильная обложка: цифры в правом верхнем углу, текст ниже слева */
+@media(max-width:900px){
+  .cover .cover-grid{display:flex;flex-direction:column;gap:0}
+  .cover .cover-stats{order:-1!important;text-align:right;margin:0 0 clamp(90px,22vh,190px);
+    display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+  .cover .cover-stats .cs{padding:0;border:0;background:none}
+  .cover .cover-stats .cs-c{margin-left:auto;max-width:26ch}
+  .cover .cover-grid>div:not(.cover-stats){order:1}
+}
+/* на телефоне блок про Никиту идёт после формы */
+@media(max-width:980px){
+  .lead-grid,.cta-grid,.cta-in{display:flex;flex-direction:column}
+  .lead-copy,.cta-copy{order:1}
+  .leadbox,.mform,.cta-form{order:2}
+  .lc-mgr{order:3;margin-top:22px}
+}
+/* форма: воздух перед согласием и после кнопки */
+.lf-check{margin-top:14px!important}
+.lf-after{margin-top:16px!important;margin-bottom:6px}
+/* подвал: пункты разделов плотнее */
+footer .f-nav a{margin-bottom:5px}
+footer .f-nav{gap:5px}
+
+@media(max-width:900px){
+  .cover .cover-stats .cs{display:flex;flex-direction:column;align-items:flex-end}
+  .cover .cover-stats .cs-n{display:flex;justify-content:flex-end;width:100%}
+  .cover .cover-stats .cs-c{text-align:right}
+}
+
+@media(max-width:900px){
+  .cover .cover-stats{display:block!important;text-align:right!important;width:100%!important}
+  .cover .cover-stats .cs{display:block!important;text-align:right!important;margin-bottom:18px}
+  .cover .cover-stats .cs-n{display:block!important;text-align:right!important;white-space:nowrap}
+  .cover .cover-stats .cs-c{display:block!important;text-align:right!important;margin-left:auto!important}
+}
+
+@media(max-width:900px){
+  .cover .cover-grid{align-items:stretch!important}
+  .cover .cover-stats{align-self:stretch!important;max-width:none!important;padding-right:0!important}
+  .cover .cover-stats .cs-c{max-width:none!important;width:100%!important}
+}
 </style>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-512.png" sizes="512x512" type="image/png">
