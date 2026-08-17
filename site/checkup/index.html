@@ -1,0 +1,1565 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>AI-чекап бизнеса за&nbsp;две недели – Synapt</title>
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="Synapt">
+<meta property="og:title" content="За&nbsp;две недели видно, где теряете деньги и&nbsp;что&nbsp;делать первым">
+<meta property="og:description" content="AI-чекап бизнеса за&nbsp;две недели: три Zoom, карта всех процессов компании с&nbsp;узкими местами, приоритеты, план с&nbsp;вилкой бюджета и&nbsp;собранный агент на&nbsp;ваших материалах. 19 900 ₽">
+<meta property="og:url" content="/checkup/">
+<meta property="og:image" content="/checkup/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="AI-чекап бизнеса за&nbsp;две недели: три Zoom, карта всех процессов компании с&nbsp;узкими местами, приоритеты, план с&nbsp;вилкой бюджета и&nbsp;собранный агент на&nbsp;ваших материалах. 19&nbsp;900 ₽">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(){var s;try{s=localStorage.getItem('synapt-theme')}catch(e){}
+if(s!=='light'&&s!=='dark'){s='dark'}
+document.documentElement.setAttribute('data-theme',s)})();</script>
+<style>
+/* ===== токены Synapt ===== */
+:root{
+  --accent:#D0E865; --accent-glow:#E2F291; --accent-deep:#A6BF41; --accent-light:#EDF7BD;
+  --accent-txt:#B9C1BE; --accent-text:#D0E865; --sage:#9DB2A3; --accent-ink:#12150A; --danger:#FF7A8A;
+  --sans:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r-xs:8px; --r-sm:10px; --r-md:16px; --r-lg:22px; --r-pill:999px;
+  --maxw:1180px; --gutter:28px;
+  --ease:cubic-bezier(.22,.7,.3,1);
+  --dur-fast:.16s; --dur:.2s; --dur-theme:.35s; --dur-reveal:.7s;
+  --bg-deep:#0D0F0E; --bg:#131514; --surface:#191C1B; --surface-2:#212524; --surface-3:#2A2E2C;
+  --text:#F0F2F1; --text-2:#C4CAC7; --text-muted:#A8B0AC; --text-dim:#929A96;
+  --line:rgba(180,214,190,.10); --line-2:rgba(180,214,190,.18); --line-accent:rgba(208,232,101,.32);
+  --glow:radial-gradient(58% 52% at 74% 6%,rgba(208,232,101,.10),transparent 72%);
+  --card-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 12px 40px -20px rgba(0,0,0,.6);
+  --btn-shadow:0 6px 20px -8px rgba(208,232,101,.7);
+}
+:root[data-theme="light"]{
+  --bg-deep:#EDF1EE; --bg:#FBFBFB; --surface:#FFFFFF; --surface-2:#F4F6F5; --surface-3:#EBEEEC;
+  --text:#161918; --text-2:#3A3F3D; --text-muted:#525956; --text-dim:#626966; --danger:#B4232F;
+  --accent-txt:#4C534F; --accent-text:#6E8A1F; --sage:#6E7A45;
+  --line:#E6E9E8; --line-2:#DBDFDD; --line-accent:rgba(139,166,44,.35);
+  --glow:radial-gradient(58% 52% at 74% 6%,rgba(208,232,101,.08),transparent 72%);
+  --card-shadow:0 1px 2px rgba(20,25,22,.04),0 14px 40px -24px rgba(30,50,38,.18);
+  --btn-shadow:0 6px 20px -10px rgba(139,166,44,.5);
+}
+
+/* ===== база ===== */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{font-family:var(--sans);font-size:17px;font-weight:450;line-height:1.6;
+ background:var(--bg);color:var(--text);font-feature-settings:"tnum" 1;
+ -webkit-font-smoothing:antialiased;overflow-x:hidden;
+ transition:background var(--dur-theme) ease,color var(--dur-theme) ease}
+a{color:inherit;text-decoration:none}
+svg{display:block}
+::selection{background:rgba(208,232,101,.24)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+.mono{font-family:var(--mono);font-feature-settings:"liga" 0,"calt" 0}
+/* диапазоны не рвутся по дефису: «200-» на одной строке и «300» на другой читается как ошибка */
+.nb{white-space:nowrap}
+
+/* шкала подобрана так, чтобы h1 был крупнее h2 не меньше чем в 1,8 раза на любой ширине */
+h1{font-size:clamp(40px,5.9vw,72px);font-weight:620;letter-spacing:-.03em;line-height:1.04;max-width:21ch}
+h2{font-size:clamp(23px,3.25vw,38px);font-weight:600;letter-spacing:-.025em;line-height:1.1;max-width:24ch}
+h3{font-size:21px;font-weight:620;letter-spacing:-.01em;line-height:1.25}
+h4{font-size:16.5px;font-weight:560;letter-spacing:-.012em;line-height:1.35}
+.lead{font-size:clamp(18px,2vw,21px);font-weight:450;letter-spacing:-.005em;line-height:1.6;color:var(--text-2);max-width:640px}
+.eyebrow{font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.14em;
+ color:var(--sage);margin-bottom:18px;display:flex;align-items:center;gap:10px;
+ font-feature-settings:"case" 1,"liga" 0,"calt" 0}
+.eyebrow .n{color:var(--text-dim)}
+.sec-head{margin-bottom:52px}
+.sec-head h2{margin-bottom:18px}
+.sec-head .lead{margin-top:0}
+
+/* ===== ритм секций ===== */
+.rh-hero{padding:96px 0 120px}
+.rh-list{padding:64px 0}
+.rh-list-b{padding:72px 0 88px}
+.rh-think{padding:130px 0 150px}
+.rh-dense{padding:72px 0 96px}
+.rh-scheme{padding:64px 0 130px}
+.rh-dense-b{padding:64px 0 96px}
+.rh-price{padding:96px 0 72px}
+.rh-thin{padding:72px 0 64px}
+.rh-pre{padding:64px 0 88px}
+.rh-cta{padding:80px 0 110px}
+/* лестница отступов: до вопросов 160, после 152, перед заявкой 168 – два соседних промежутка не совпадают */
+@media(min-width:721px){#faq{padding-bottom:88px}}
+
+/* ===== движение ===== */
+.reveal{opacity:0;transform:translateY(18px);
+ transition:opacity var(--dur-reveal) var(--ease),transform var(--dur-reveal) var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.06s}.d2{transition-delay:.12s}.d3{transition-delay:.18s}.d4{transition-delay:.24s}
+@media(prefers-reduced-motion:reduce){
+ .reveal{opacity:1;transform:none;transition:none}
+ html{scroll-behavior:auto}
+ *{animation:none!important}
+}
+
+/* ===== кнопки ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;
+ font-size:14.5px;font-weight:560;letter-spacing:-.005em;padding:10px 18px;border-radius:var(--r-sm);
+ border:1px solid transparent;cursor:pointer;min-height:44px;
+ transition:background var(--dur-fast) ease,border-color var(--dur-fast) ease,transform var(--dur-fast) ease,box-shadow var(--dur-fast) ease}
+.btn.pri{background:var(--accent);color:var(--accent-ink);box-shadow:var(--btn-shadow)}
+.btn.pri:hover{background:var(--accent-glow);transform:translateY(-1px)}
+.btn.pri:active{transform:none;box-shadow:none}
+.btn.ghost{background:var(--surface);color:var(--text);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--line-2)}
+.btn.ghost:active{background:var(--surface-2)}
+.btn.lg{font-size:16px;padding:14px 26px;border-radius:var(--r-md)}
+.morelink{align-self:flex-start;width:fit-content;display:inline-block;font-size:13.5px;font-weight:560;color:var(--accent-txt);
+ border-bottom:1px solid var(--line-accent);padding-bottom:1px;margin-top:16px;
+ transition:border-color var(--dur-fast) ease}
+.morelink:hover{border-color:var(--accent-txt)}
+
+/* ===== шапка ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:66px;display:flex;align-items:center;
+ background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:saturate(160%) blur(14px);
+ -webkit-backdrop-filter:saturate(160%) blur(14px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:14px;width:100%}
+.brand{display:inline-flex;align-items:center;color:var(--text);flex:none;min-height:44px}
+.brand svg{height:28px;width:auto}
+.nav-links{display:flex;gap:2px;flex:1;margin-left:8px;min-width:0}
+.nav-links a{font-size:14px;font-weight:500;color:var(--text-muted);padding:11px 10px;border-radius:var(--r-sm);
+ white-space:nowrap;transition:color var(--dur-fast) ease,background var(--dur-fast) ease}
+.nav-links a:hover{color:var(--text);background:var(--surface)}
+.nav-links a:active{background:var(--surface-2)}
+.tgl,.burger{flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+ background:transparent;border:1px solid var(--line);border-radius:var(--r-sm);color:var(--text-muted);
+ cursor:pointer;transition:border-color var(--dur-fast) ease,color var(--dur-fast) ease}
+.tgl:hover,.burger:hover{border-color:var(--line-2);color:var(--text)}
+.tgl svg{width:17px;height:17px}
+.tgl .i-sun{display:none}
+:root[data-theme="light"] .tgl .i-sun{display:block}
+:root[data-theme="light"] .tgl .i-moon{display:none}
+.burger{display:none}
+.burger .bl{display:block;width:16px;height:1.5px;background:currentColor;position:relative;transition:transform var(--dur) var(--ease)}
+.burger .bl::before,.burger .bl::after{content:"";position:absolute;left:0;width:16px;height:1.5px;background:currentColor;
+ transition:transform var(--dur) var(--ease),opacity var(--dur) var(--ease)}
+.burger .bl::before{top:-5px}
+.burger .bl::after{top:5px}
+.burger[aria-expanded="true"] .bl{background:transparent}
+.burger[aria-expanded="true"] .bl::before{transform:translateY(5px) rotate(45deg)}
+.burger[aria-expanded="true"] .bl::after{transform:translateY(-5px) rotate(-45deg)}
+.nav-sheet{display:none;position:fixed;inset:66px 0 auto 0;z-index:99;background:var(--bg);
+ border-bottom:1px solid var(--line);padding:12px var(--gutter) 20px;max-height:calc(100vh - 66px);overflow-y:auto}
+.nav-sheet.open{display:block}
+.nav-sheet a{display:flex;align-items:center;min-height:48px;font-size:16px;font-weight:500;color:var(--text-2);
+ border-bottom:1px solid var(--line)}
+.nav-sheet a:last-of-type{border-bottom:0}
+.nav-sheet .btn{display:inline-flex;width:100%;margin-top:16px;border-bottom:0}
+.nav .btn{white-space:nowrap;margin-left:auto}
+@media(max-width:980px){.nav-links{display:none}.burger{display:flex}.nav .btn{margin-left:0}}
+@media(max-width:600px){.nav>.wrap>.btn{display:none}}
+
+/* ===== первый экран ===== */
+.hero{position:relative;padding-top:calc(66px + 96px)}
+.hero::before{content:"";position:absolute;inset:0;background:var(--glow);pointer-events:none}
+/* три ряда одной сетки: текст и число сверху, линия с метриками во всю ширину контейнера */
+.hero-in{position:relative;display:grid;grid-template-columns:1.4fr .6fr;gap:48px;align-items:start}
+.hero-txt{grid-column:1}
+.hero-dom{grid-column:2}
+.hero .facts{grid-column:1/-1}
+.hero h1{margin-bottom:24px}
+.hero .lead{margin-bottom:32px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.facts{display:flex;flex-wrap:wrap;gap:34px;margin-top:48px;padding-top:26px;border-top:1px solid var(--line)}
+.hero .facts{margin-top:0}
+.metric b{display:block;font-family:var(--mono);font-weight:500;font-size:23px;letter-spacing:-.03em;line-height:1.1;
+ word-spacing:-.22em;color:var(--text);font-feature-settings:"tnum" 1,"liga" 0,"calt" 0}
+.metric>span{display:block;font-size:13.5px;line-height:1.5;color:var(--text-muted);margin-top:8px;max-width:24ch}
+.metric.big b{font-size:clamp(26px,3vw,38px);letter-spacing:-.02em;line-height:1}
+/* на большом экране три метрики держатся одной строкой и одним кеглем */
+@media(min-width:901px){
+ .hero .facts{flex-wrap:nowrap;align-items:flex-start}
+ .hero .facts .metric{flex:1 1 0;min-width:0}
+ .hero .facts .metric>span{max-width:23ch}
+}
+.hero .facts .metric.big b{font-size:23px;letter-spacing:-.03em;line-height:1.1}
+.hero-dom{justify-self:end;text-align:right}
+.dom{font-family:var(--mono);font-weight:500;font-size:clamp(96px,13vw,200px);letter-spacing:-.045em;
+ line-height:.9;color:var(--text);font-feature-settings:"tnum" 1,"liga" 0,"calt" 0}
+.dom-cap{font-size:13.5px;font-weight:450;color:var(--text-muted);
+ line-height:1.5;margin-top:14px;max-width:20ch;margin-left:auto}
+
+/* ===== строки-механизмы ===== */
+.rules{border-top:1px solid var(--line)}
+/* колонка метки считана по самой длинной подписи «после запуска», иначе она наезжала на заголовок */
+.rule{display:grid;grid-template-columns:112px 1fr 1.25fr;gap:24px;align-items:baseline;
+ padding:20px 0;border-bottom:1px solid var(--line)}
+.rule .rn{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.04em;color:var(--text-dim);white-space:nowrap;
+ transition:color var(--dur-fast) ease;font-feature-settings:"liga" 0,"calt" 0}
+.rule:hover .rn{color:var(--accent)}
+.rule .rt{font-size:16.5px;font-weight:560;letter-spacing:-.012em;line-height:1.35}
+.rule .rd{font-size:15px;line-height:1.55;color:var(--text-muted)}
+.rule .rd a{color:var(--accent-txt);border-bottom:1px solid var(--line-accent);
+ transition:color var(--dur-fast) ease,border-color var(--dur-fast) ease}
+.rule .rd a:hover{color:var(--text);border-bottom-color:currentColor}
+
+/* ===== блок-мысль ===== */
+.stmt{border-left:2px solid var(--accent);padding:4px 0 4px 26px;max-width:820px}
+.stmt p{font-size:clamp(21px,2.7vw,30px);font-weight:500;letter-spacing:-.015em;line-height:1.32}
+.stmt b{color:var(--accent-txt);font-weight:620}
+
+/* ===== карточки и бенто ===== */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:30px;
+ box-shadow:var(--card-shadow);transition:border-color var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.card:hover{border-color:var(--line-2);transform:translateY(-3px)}
+.card h3{margin-bottom:10px}
+.card p{font-size:15px;line-height:1.55;color:var(--text-muted);max-width:42ch}
+.tag{display:inline-block;font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.10em;
+ color:var(--accent-txt);border:1px solid var(--line-accent);border-radius:var(--r-pill);
+ padding:4px 11px;margin-bottom:16px;font-feature-settings:"case" 1,"liga" 0,"calt" 0}
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.bento>*:nth-child(1){grid-column:span 4}
+.bento>*:nth-child(2){grid-column:span 2}
+/* вертикальный шов чередуется зеркально: 4+2 и 2+4, а не 4+2 и 3+3 в разнобой */
+.bento>*:nth-child(3){grid-column:span 2}
+.bento>*:nth-child(4){grid-column:span 4}
+/* обе колонки начинаются от одной линии: смещение читалось как съехавший блок */
+.pair{display:grid;grid-template-columns:1.35fr 1fr;gap:22px;align-items:stretch}
+/* строка сноски держит ту же меру чтения, что и лид: 640px текста, иначе строка уходила за 140 знаков */
+.note{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+ padding:20px 24px;font-size:16px;line-height:1.6;color:var(--text-2);margin-top:22px;max-width:688px}
+.note b{color:var(--text);font-weight:560}
+
+/* ===== кейсы ===== */
+.case{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:30px;
+ box-shadow:var(--card-shadow);transition:border-color var(--dur) var(--ease)}
+.case:hover{border-color:var(--line-2)}
+.case h3{font-size:21px;letter-spacing:-.01em;margin-bottom:6px}
+.case .who{font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--text-dim);margin-bottom:14px;
+ font-feature-settings:"liga" 0,"calt" 0}
+.case p{font-size:15px;line-height:1.55;color:var(--text-muted);margin-bottom:24px;max-width:46ch}
+/* обе цифры в кейсе одного кегля: разный кегль ронял базовые линии и подписи под ними */
+.case .metrics{display:flex;flex-wrap:wrap;gap:32px;align-items:baseline}
+.case .metrics .metric.big b{font-size:23px;letter-spacing:-.03em;line-height:1.1}
+
+/* ===== полоса во всю ширину ===== */
+.fullwide{background:var(--bg-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+ border-radius:0;position:relative;overflow:hidden}
+/* мягкая виньетка вместо линейной маски: графика гаснет ко всем краям, полос и обрезанных кусков нет */
+/* графика занимает правую половину блока: текст слева читается по чистому фону */
+.fullwide>canvas{position:absolute;top:0;right:0;bottom:0;left:auto;width:52%;height:100%;
+ opacity:.5;pointer-events:none;z-index:0;
+ -webkit-mask-image:radial-gradient(74% 106% at 56% 50%,#000 0,rgba(0,0,0,.40) 56%,transparent 84%),
+  linear-gradient(to right,transparent 0,#000 18%,#000 76%,transparent 99%);
+ -webkit-mask-composite:source-in;
+ mask-image:radial-gradient(74% 106% at 56% 50%,#000 0,rgba(0,0,0,.40) 56%,transparent 84%),
+  linear-gradient(to right,transparent 0,#000 18%,#000 76%,transparent 99%);
+ mask-composite:intersect}
+/* графика остаётся фоном: на светлой теме и на узком экране она не должна перечёркивать строки текста */
+:root[data-theme="light"] .fullwide>canvas{opacity:.62}
+/* светлая тема задавала прозрачность правилом выше по весу, поэтому мобильные значения
+   до неё не доходили и графика шла в полную силу через текст */
+@media(max-width:900px){
+ .fullwide>canvas,:root[data-theme="light"] .fullwide>canvas{width:64%;opacity:.5}
+}
+@media(max-width:600px){
+ /* на узком экране графика становится полосой в шапке блока: раньше холст тянулся
+    на полторы высоты экрана и линии шли сквозь всю дорожную карту */
+ .fullwide>canvas,:root[data-theme="light"] .fullwide>canvas{
+  width:100%;left:0;height:min(46vh,380px);bottom:auto;opacity:.3;
+  -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 54%,transparent 97%),linear-gradient(#000,#000);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to bottom,#000 0,#000 54%,transparent 97%),linear-gradient(#000,#000);
+  mask-composite:intersect}
+ /* на светлой теме линии рисуются втрое контрастнее, поэтому прозрачность ниже */
+ :root[data-theme="light"] .fullwide>canvas{opacity:.26}
+}
+.fullwide>.wrap{position:relative;z-index:1}
+.fx-cap{font-size:13.5px;font-weight:450;color:var(--text-muted);margin-top:28px;max-width:52ch}
+
+/* ===== тарифы ===== */
+.plan{background:var(--bg-deep);border:1px solid var(--line);border-radius:var(--r-lg);padding:30px;
+ display:flex;flex-direction:column}
+.plan.main{border-color:var(--line-accent)}
+.plan .pn{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.10em;
+ color:var(--sage);margin-bottom:16px;font-feature-settings:"case" 1,"liga" 0,"calt" 0}
+.plan .sum{font-family:var(--mono);font-weight:500;font-size:clamp(26px,3vw,38px);letter-spacing:-.02em;line-height:1;
+ word-spacing:-.22em;color:var(--text);font-feature-settings:"tnum" 1,"liga" 0,"calt" 0}
+.plan .per{font-size:13.5px;color:var(--text-muted);margin:12px 0 22px}
+.plan ul{list-style:none;flex:1;margin-bottom:24px;border-top:1px solid var(--line)}
+.plan li{font-size:15px;line-height:1.5;color:var(--text-2);padding:12px 0;border-bottom:1px solid var(--line)}
+.plan .btn{align-self:flex-start}
+
+/* ===== аккордеон ===== */
+.faq{max-width:840px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:22px 2px;
+ font-size:17.5px;font-weight:560;letter-spacing:-.01em;min-height:44px;transition:color var(--dur-fast) ease}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--text-2)}
+.faq summary .pl{margin-left:auto;flex:none;width:26px;height:26px;border-radius:var(--r-xs);
+ border:1px solid var(--line);color:var(--text-dim);display:flex;align-items:center;justify-content:center;
+ font-size:15px;line-height:1;transition:transform var(--dur) var(--ease),border-color var(--dur) var(--ease)}
+.faq details[open] summary .pl{transform:rotate(45deg);border-color:var(--line-2);color:var(--text-2)}
+.faq .ans{padding:0 2px 22px;font-size:15px;line-height:1.65;color:var(--text-2);max-width:60ch}
+
+/* ===== пилюли смежных материалов ===== */
+.pills{display:flex;flex-wrap:wrap;gap:10px}
+.pill{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:10px 16px;
+ background:var(--surface);border:1px solid var(--line);border-radius:var(--r-pill);
+ font-size:14.5px;font-weight:500;color:var(--text-2);
+ transition:border-color var(--dur-fast) ease,color var(--dur-fast) ease}
+.pill:hover{border-color:var(--line-2);color:var(--text)}
+.pill .pk{font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.10em;
+ color:var(--text-dim);font-feature-settings:"case" 1,"liga" 0,"calt" 0}
+
+/* ===== форма ===== */
+.leadbox{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
+ padding:clamp(24px,3.4vw,38px);max-width:820px;box-shadow:var(--card-shadow)}
+/* между полями воздуха больше, чем между подписью и её полем: иначе подпись читалась вместе с чужим полем */
+.lf-row{display:grid;grid-template-columns:1fr 1fr;column-gap:20px;row-gap:0}
+.lf{margin-bottom:28px}
+.lf label{display:block;font-size:13.5px;font-weight:560;color:var(--text-2);margin-bottom:6px}
+/* поле это прямая линия: прозрачный фон, только нижняя граница, радиус 0 */
+.lf input,.lf textarea{width:100%;display:block;font-family:inherit;font-size:15px;color:var(--text);
+ background:transparent;border:0;border-bottom:1px solid var(--line-2);border-radius:0;
+ padding:12px 2px;min-height:44px;outline:none;resize:vertical;transition:border-color var(--dur-fast) ease}
+.lf input::placeholder,.lf textarea::placeholder{color:var(--text-dim)}
+.lf input:hover,.lf textarea:hover{border-bottom-color:var(--text-dim)}
+.lf input:focus,.lf textarea:focus{border-bottom-color:var(--accent)}
+.lf input:focus-visible,.lf textarea:focus-visible{outline:none}
+.lf input.err,.lf textarea.err{border-bottom-color:var(--danger)}
+.lf input:-webkit-autofill{-webkit-text-fill-color:var(--text);transition:background-color 9999s}
+.lf textarea{min-height:88px}
+.lf-check{display:flex;gap:12px;align-items:flex-start;margin:22px 0 4px;font-size:14px;line-height:1.5;
+ color:var(--text-muted);cursor:pointer}
+.lf-check input[type=checkbox]{appearance:none;-webkit-appearance:none;flex:none;width:20px;height:20px;
+ border-radius:0;border:1px solid var(--line-2);background:transparent;cursor:pointer;
+ position:relative;margin-top:2px;transition:border-color var(--dur-fast) ease,background var(--dur-fast) ease}
+/* зона нажатия у чекбокса 44px, визуально квадрат остаётся 22px */
+.lf-check input[type=checkbox]::before{content:"";position:absolute;left:50%;top:50%;
+ width:44px;height:44px;transform:translate(-50%,-50%)}
+.lf-check input[type=checkbox]:hover{border-color:var(--accent)}
+.lf-check input[type=checkbox]:checked{border-color:var(--accent);background:rgba(208,232,101,.14)}
+.lf-check input[type=checkbox]:checked::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;
+ border:solid var(--accent);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.lf-check a{color:var(--accent-txt);border-bottom:1px solid var(--line-accent)}
+.lf-err{display:none;color:var(--danger);font-size:13.5px;margin-top:14px}
+.lf-err.show{display:block}
+.leadbox button[type=submit]{margin-top:22px}
+.lf-done{display:none;font-size:16px;line-height:1.6;color:var(--text-2)}
+.lf-done.show{display:block}
+.lf-done b{color:var(--text);font-weight:560}
+.lf-done a{color:var(--accent-txt);border-bottom:1px solid var(--line-accent)}
+.lf-hint{font-size:13.5px;color:var(--text-dim);margin-top:16px;max-width:56ch}
+
+/* ===== подвал ===== */
+footer{padding:56px 0 64px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:22px;flex-wrap:wrap}
+footer .brand svg{height:24px}
+/* подпись года выравнивается по той же линии, что и ссылки, а не висит выше */
+footer .fm{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:13.5px;color:var(--text-dim)}
+footer .fm span{display:inline-flex;align-items:center;min-height:44px}
+footer .fm a{display:inline-flex;align-items:center;min-height:44px;transition:color var(--dur-fast) ease}
+footer .fm a:hover{color:var(--text)}
+.legal{font-family:var(--mono);font-size:11.5px;line-height:1.6;color:var(--text-2);margin-top:20px;
+ font-feature-settings:"liga" 0,"calt" 0}
+/* подпись реквизита и значение стояли вплотную: «ИННИндивидуальный…». Разводим в две колонки по одной линии */
+.legal>div{display:grid;grid-template-columns:104px minmax(0,1fr);gap:2px 16px;align-items:baseline}
+/* подпись реквизита отличается тоном, а не прозрачностью: на .72 контраст падал до 3,1:1 */
+.legal>div>span{color:var(--text-dim);opacity:1}
+@media(max-width:560px){
+ .legal>div{grid-template-columns:1fr;gap:0}
+ .legal>div>span{display:block;margin-top:10px}
+}
+
+/* ===== адаптив ===== */
+@media(max-width:1080px){
+ .hero-in{grid-template-columns:1.25fr .75fr;gap:32px}
+}
+@media(max-width:900px){
+ .hero-in{grid-template-columns:1fr;gap:48px}
+ .hero-txt,.hero-dom,.hero .facts{grid-column:1}
+ /* крупное «7» идёт сразу за обещанием и кнопками, метрики закрывают экран: иначе число висело в конце ни к чему */
+ .hero-dom{order:2;justify-self:start;text-align:left}
+ .hero .facts{order:3}
+ .dom-cap{margin-left:0}
+ /* два длинных блока во всю ширину, два коротких в паре: пустых ячеек в сетке не остаётся */
+ .bento{grid-template-columns:repeat(2,1fr)}
+ .bento>*:nth-child(2),.bento>*:nth-child(3){grid-column:span 1}
+ .bento>*:nth-child(1),.bento>*:nth-child(4){grid-column:span 2}
+ .pair{grid-template-columns:1fr}
+ /* на узком экране метка, заголовок и описание идут одной колонкой от общего левого края */
+ .rule{grid-template-columns:1fr;gap:6px}
+ .rule .rn{grid-column:1;margin-bottom:2px}
+ .rule .rt,.rule .rd{grid-column:1}
+ .rule .rd{max-width:62ch}
+}
+@media(max-width:720px){
+ :root{--gutter:20px}
+ /* на узком экране заголовок держит перевес над подзаголовком не меньше 1,8 раза */
+ h1{font-size:clamp(40px,11.6vw,50px)}
+ h2{font-size:clamp(21px,6vw,25px)}
+ .rh-hero{padding:64px 0 80px}
+ .hero{padding-top:calc(66px + 64px)}
+ .rh-list{padding:64px 0}
+ .rh-think{padding:88px 0 96px}
+ .rh-dense{padding:48px 0 64px}
+ .rh-scheme{padding:48px 0 88px}
+ .rh-dense-b{padding:48px 0 64px}
+ .rh-price{padding:64px 0 48px}
+ .rh-thin{padding:48px 0 64px}
+ .rh-pre{padding:48px 0 96px}
+ .rh-cta{padding:64px 0 80px}
+ .sec-head{margin-bottom:36px}
+ .bento{grid-template-columns:1fr;gap:14px}
+ .bento>*:nth-child(1),.bento>*:nth-child(4){grid-column:span 1}
+ .card,.case,.plan{padding:24px}
+ .facts{gap:26px}
+ .case .metrics{gap:24px}
+ .lf-row{grid-template-columns:1fr;column-gap:0}
+ .btn.lg{width:100%}
+ .lf input,.lf textarea{font-size:16px}
+ footer .wrap{align-items:flex-start}
+ /* лестница промежутков на мобильной: 128-144-152-144-112-136-128-112-128-96-128-112-160,
+    два соседних промежутка нигде не совпадают */
+ #why{padding-top:72px}
+ #estimate{padding-top:64px}
+ #faq{padding-top:64px}
+}
+
+/* ===== короткий экран: заголовок, лид и кнопки помещаются до сгиба ===== */
+@media(min-width:721px) and (max-height:900px){
+ .hero{padding-top:calc(66px + 28px)}
+ .rh-hero{padding-bottom:72px}
+ /* кегль держит перевес над h2 не меньше 1,8 на всей полосе 721-1440:
+    на 5.2vw отношение проваливалось до 1,60 при ширине около 1024 */
+ .hero h1{font-size:clamp(46px,5.9vw,70px);margin-bottom:16px}
+ .hero .lead{margin-bottom:20px}
+ .hero-in{gap:20px}
+ .facts{margin-top:34px;padding-top:18px}
+ .hero .facts .metric>span{margin-top:6px;max-width:30ch}
+ .dom{font-size:clamp(80px,10vw,156px)}
+}
+@media(max-width:720px) and (max-height:880px){
+ .hero{padding-top:calc(66px + 40px)}
+ .rh-hero{padding-bottom:64px}
+ .hero h1{font-size:clamp(38px,11.2vw,48px);margin-bottom:18px}
+ .hero .lead{margin-bottom:22px}
+ .facts{margin-top:32px;padding-top:20px;gap:22px}
+ .dom{font-size:clamp(80px,22vw,120px)}
+}
+
+/* тап-зоны на мобильной */
+@media(max-width:860px){
+  a.more,.ccard .morelink,.rcard a{position:relative;display:inline-flex;align-items:center;min-height:44px}
+  /* ссылки внутри абзаца остаются строчными, но зона нажатия дотягивается до 44px;
+     подчёркивание рисуем decoration, иначе граница уезжает вниз от текста отдельной чертой */
+  .rule .rd a,.faq .ans a,.note a,.lf-hint a,.lf-check>span a,.lf-done a,a.morelink{
+    position:relative;display:inline;padding:14px 3px;margin:-14px -3px;
+    border-bottom:0;text-decoration:underline;text-decoration-thickness:1px;
+    text-underline-offset:3px;text-decoration-color:color-mix(in srgb,currentColor 45%,transparent)}
+  a.morelink{padding:14px 3px;margin:-14px -3px}
+  .lf-check{min-height:44px}
+  .lf-check input[type=checkbox]{position:relative}
+  .lf-check input[type=checkbox]::before{content:"";position:absolute;inset:-12px;border-radius:50%}
+  footer .brand{min-height:44px;display:inline-flex;align-items:center}
+}
+
+/* чекбокс согласия: круг с зоной нажатия 44px */
+.lf-check{display:flex;align-items:flex-start;gap:12px;min-height:44px;padding:6px 0}
+.lf-check input[type=checkbox]{appearance:none;-webkit-appearance:none;flex:none;
+  width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line-2);background:transparent;
+  cursor:pointer;position:relative;margin-top:1px;transition:.16s}
+.lf-check input[type=checkbox]::before{content:"";position:absolute;inset:-11px;border-radius:50%}
+.lf-check input[type=checkbox]:checked{background:var(--accent);border-color:var(--accent)}
+.lf-check input[type=checkbox]:checked::after{content:"";position:absolute;left:7px;top:4px;
+  width:6px;height:10px;border:2px solid var(--accent-ink);border-top:0;border-left:0;transform:rotate(43deg)}
+.lf-check input[type=checkbox]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* тап-зоны в подвале и на планшете */
+@media(max-width:1024px){
+  footer .brand{min-height:44px;display:inline-flex;align-items:center}
+  footer a,.fmeta a,.fmeta span,.legal a{min-height:44px;display:inline-flex;align-items:center;
+    padding-inline:8px;margin-inline:-8px}
+}
+@media(max-width:420px){
+  .tn-mob,.tm-grid{flex-wrap:wrap;max-width:100%}
+  .tm-i{max-width:100%;white-space:normal}
+  *{min-width:0}
+}
+
+/* чекбокс: сам круг 22px, кликабельная область 44px */
+.lf-check{position:relative}
+.lf-check input[type=checkbox]{width:22px;height:22px;margin:11px 0 11px 0}
+.lf-check input[type=checkbox]::before{content:"";position:absolute;left:0;top:0;width:44px;height:44px;
+  border-radius:50%;transform:translate(-11px,-11px)}
+.lf-check>span{padding-top:11px}
+
+/* чекбокс согласия: круг 22px, нажатие 44px, клик по тексту работает */
+.lf-check{position:relative;display:flex;align-items:flex-start;gap:0;padding-left:36px;min-height:44px}
+.lf-check input[type=checkbox]{position:absolute;left:-11px;top:50%;transform:translateY(-50%);
+  width:44px;height:44px;margin:0;opacity:0;cursor:pointer;z-index:2;appearance:none;-webkit-appearance:none}
+.lf-check::before{content:"";position:absolute;left:0;top:11px;width:22px;height:22px;border-radius:50%;
+  border:1.5px solid var(--line-2);background:transparent;transition:.16s;pointer-events:none}
+.lf-check:has(input:checked)::before{background:var(--accent);border-color:var(--accent)}
+.lf-check:has(input:checked)::after{content:"";position:absolute;left:7.5px;top:15px;width:6px;height:10px;
+  border:2px solid var(--accent-ink);border-top:0;border-left:0;transform:rotate(43deg);pointer-events:none}
+.lf-check:has(input:focus-visible)::before{outline:2px solid var(--accent);outline-offset:3px}
+.lf-check>span{padding-top:9px;font-size:13.5px;line-height:1.5;color:var(--text-muted)}
+.lf-check>span a{color:var(--text-2);position:relative;z-index:3;
+  border-bottom:1px solid var(--line-2);transition:color var(--dur-fast) ease,border-color var(--dur-fast) ease}
+.lf-check>span a:hover,.lf-done a:hover{color:var(--text);border-bottom-color:currentColor}
+
+/* тап-зоны: логотип в шапке и подвале, ссылки-кнопки */
+@media(max-width:860px){
+  .nav .brand,footer .brand{min-height:44px;display:inline-flex;align-items:center}
+  a.btn,.btn.ghost,.btn.pri{min-height:44px}
+  .rel-card{min-height:44px}
+  /* ссылка в согласии: у неё зона нажатия 14px сверху и снизу, поэтому border-bottom
+     отваливался от текста отдельной чертой под блоком. Подчёркиваем только decoration */
+  .lf-check>span a{border-bottom:0;text-decoration:underline;text-decoration-thickness:1px;
+    text-underline-offset:3px;text-decoration-color:color-mix(in srgb,currentColor 45%,transparent)}
+}
+
+/* реквизиты в две колонки */
+.legal{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);
+  display:grid;grid-template-columns:1fr 1fr;gap:14px 48px;align-items:start}
+.lg-col{display:flex;flex-direction:column;gap:14px}
+.legal div{font-size:13px;color:var(--text-2);line-height:1.5}
+.legal span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;
+  color:var(--text-dim);margin-bottom:4px}
+.legal a{color:var(--text-2)}
+.legal a:hover{color:var(--accent-text,var(--accent))}
+@media(max-width:760px){.legal{grid-template-columns:1fr;gap:14px}}
+/* чекбокс согласия ровно по центру строки */
+.lf-check{display:flex;align-items:center;gap:12px}
+.lf-check input[type=checkbox]{flex:none;align-self:center;margin:0}
+.lf-check span{line-height:1.5}
+
+/* смежное: строки-карточки вместо пилюль, тип слева, название крупно */
+.nxt{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+.nxt a{display:flex;flex-direction:column;gap:9px;padding:22px 22px 24px;background:var(--bg);
+  min-height:96px;justify-content:center;transition:background .22s var(--ease)}
+.nxt a:hover{background:var(--surface)}
+.nxt .nk{font-family:var(--mono);font-size:10.5px;letter-spacing:.11em;color:var(--text-dim);
+  font-feature-settings:"case" 1}
+.nxt .nt{font-size:16px;font-weight:560;color:var(--text);line-height:1.35}
+.nxt a:hover .nt{color:var(--accent-txt)}
+@media(max-width:900px){.nxt{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.nxt{grid-template-columns:1fr}.nxt a{min-height:0;padding:18px 20px}}
+.lf-done.fail b{color:var(--danger,#c2544d)}
+
+/* заявка: слева заголовок и объяснение, справа форма, ниже широкая полоса с менеджером */
+.lead-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);
+  gap:clamp(28px,4vw,60px);align-items:start}
+.lead-copy{padding-top:4px}
+.lead-copy h2{margin-bottom:14px}
+.lead-copy .lead{max-width:38ch}
+#lead .leadbox{max-width:none;width:100%}
+@media(max-width:980px){.lead-grid{grid-template-columns:1fr;gap:26px}.lead-copy .lead{max-width:60ch}}
+/* короткий формат встречи под описанием */
+.lc-list{list-style:none;margin-top:26px;display:flex;flex-direction:column;gap:14px;max-width:42ch}
+.lc-list li{display:flex;gap:14px;align-items:baseline;font-size:14.5px;color:var(--text-2);line-height:1.5}
+.lc-list .lk{flex:none;width:96px;font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;
+  color:var(--text-dim);font-feature-settings:"case" 1,"liga" 0,"calt" 0}
+@media(max-width:520px){.lc-list li{flex-direction:column;gap:4px}.lc-list .lk{width:auto}}
+.lf-done span{display:block;margin-top:6px;font-size:15px;color:var(--text-muted)}
+.lf-acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.btn.sm{padding:9px 16px;font-size:13.5px;min-height:40px}
+
+/* полоса менеджера: фото, имя с ником, строка про ответ и кнопка */
+.tg-after{margin-top:clamp(22px,3vw,34px);padding:20px 24px;border:1px solid var(--line);
+  border-radius:var(--r-lg);background:var(--surface);display:flex;align-items:center;gap:18px}
+.tg-ava{flex:none;width:60px;height:60px;border-radius:50%;object-fit:cover;border:1px solid var(--line-2)}
+.tg-txt{flex:1;min-width:0}
+.tg-after b{display:block;font-size:15.5px;font-weight:600;color:var(--text);margin-bottom:5px}
+.tg-after span{font-size:14px;color:var(--text-muted);line-height:1.55;display:block}
+.tg-after .tg-nick{display:inline;font-family:var(--mono);font-size:12px;color:var(--text-dim);
+  font-feature-settings:"liga" 0,"calt" 0}
+.tg-btn{flex:none;display:inline-flex;align-items:center;justify-content:center;
+  padding:12px 22px;min-height:48px;border:1px solid var(--line-2);border-radius:var(--r-md);
+  font-size:14.5px;font-weight:560;color:var(--text);
+  transition:border-color var(--dur) var(--ease),color var(--dur) var(--ease)}
+.tg-btn:hover{border-color:var(--accent);color:var(--accent-txt)}
+@media(max-width:760px){
+  .tg-after{display:grid;grid-template-columns:52px minmax(0,1fr);
+    grid-template-areas:"ava txt" "btn btn";gap:14px;align-items:start;padding:18px 20px}
+  .tg-ava{grid-area:ava;width:52px;height:52px}
+  .tg-txt{grid-area:txt}
+  .tg-btn{grid-area:btn;width:100%}
+}
+/* на узком экране колонка текста рядом с фото ужималась до 170px и строка ломалась
+   после каждых двух слов: фото уходит на свою строку, текст идёт во всю ширину */
+@media(max-width:480px){
+  .tg-after{grid-template-columns:minmax(0,1fr);grid-template-areas:"ava" "txt" "btn";gap:12px}
+}
+
+/* кегль полей не меньше 16px: иначе iOS зумит страницу при фокусе и экран едет вбок */
+input:not([type=checkbox]),textarea,select{font-size:16px}
+
+/* единый футер, как на главной */
+footer{padding:56px 0 70px;border-top:1px solid var(--line);margin-top:20px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+footer .brand svg{height:26px}
+footer .fmeta{font-size:13px;color:var(--text-dim);display:flex;gap:22px;flex-wrap:wrap}
+footer .fmeta a:hover{color:var(--text)}
+  footer .fmeta{gap:6px 18px}
+  footer .fmeta a,footer .fmeta span{display:inline-flex;align-items:center;min-height:44px}
+  footer .brand{min-height:44px;display:inline-flex;align-items:center}
+  footer .fmeta a,footer .fmeta span{min-width:44px;justify-content:center;padding-inline:10px;margin-inline:-10px}
+  footer a,.fmeta a,.fmeta span,.legal a{min-height:44px;display:inline-flex;align-items:center;
+    padding-inline:8px;margin-inline:-8px}
+.nav-links a:active,.nav-sheet a:active,.faq summary:active,.morelink:active,footer a:active{color:var(--accent-text)}
+  .nav .brand,footer .brand{min-height:44px;display:inline-flex;align-items:center}
+  footer{padding-bottom:104px}
+footer{padding:64px 0 40px;border-top:1px solid var(--line);margin-top:20px}
+footer .wrap{display:block}
+.f-main{display:grid;grid-template-columns:1.4fr .8fr 1.1fr 1.3fr;gap:clamp(24px,3vw,48px);align-items:start}
+  .f-main{grid-template-columns:1fr;row-gap:28px}
+.f-main{grid-template-columns:1.3fr 1.2fr 1.2fr}
+.f-brand .brand svg{height:26px}
+.f-note{margin-top:14px;font-size:13.5px;color:var(--text-dim);line-height:1.5;max-width:26ch}
+.f-tg{display:inline-block;margin-top:16px;font-size:14px;color:var(--text-2);
+  border-bottom:1px solid var(--line);width:fit-content}
+.f-tg:hover{color:var(--accent-txt);border-bottom-color:var(--line-accent)}
+.f-nav,.f-legal{display:flex;flex-direction:column;gap:9px}
+.f-nav a{font-size:14px;color:var(--text-2);width:fit-content}
+.f-nav a:hover{color:var(--text)}
+  .f-nav a{min-height:32px;display:inline-flex;align-items:center}
+.f-nav2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 18px;align-content:start}
+.f-nav2 .f-k{grid-column:1/-1}
+  .f-nav a,.f-nav2 a{min-height:44px;display:inline-flex;align-items:center}
+.f-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--text-dim);
+  margin-bottom:4px;font-feature-settings:"case" 1}
+.f-legal p{font-size:13px;color:var(--text-dim);line-height:1.55}
+.f-legal a{font-size:13px;color:var(--text-2);border-bottom:1px solid var(--line);width:fit-content;margin-top:4px}
+.f-legal a:hover{color:var(--accent-txt)}
+.f-copy{margin-top:14px;font-size:12.5px;color:var(--text-dim)}
+
+/* шапка прозрачная над обложкой, подложка включается ниже первого экрана */
+.nav{background:transparent!important;border-bottom:1px solid transparent!important;
+  transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease}
+.nav.solid{background:color-mix(in srgb,var(--bg) 46%,transparent)!important;
+  backdrop-filter:saturate(150%) blur(18px);border-bottom-color:var(--line)!important}
+.nav .wrap{max-width:1400px}
+.type-cur{display:inline-block;width:.06em;height:.86em;margin-left:.06em;vertical-align:-.06em;
+  background:var(--accent);animation:typeBlink 1s steps(1) infinite}
+@keyframes typeBlink{0%,50%{opacity:1}51%,100%{opacity:0}}
+
+/* хвост строки в подвале не должен растягивать страницу вбок на телефоне */
+html,body{overflow-x:clip}
+footer .wrap{overflow-wrap:anywhere}
+
+/* ---------- единая шкала заголовков ----------
+   один набор размеров на главной и на всех внутренних страницах:
+   H1 обложка, H2 заголовок секции, H3 крупный подзаголовок и шаг,
+   H4 заголовок карточки. Разночтений между страницами быть не должно */
+:root{--fs-h1:clamp(34px,3.05vw,46px);--fs-h2:clamp(26px,2.6vw,36px);
+  --fs-h3:clamp(22px,2.1vw,28px);--fs-h4:clamp(18px,1.55vw,21px)}
+h1,.hero h1,.cover h1{font-size:var(--fs-h1);letter-spacing:-.03em;line-height:1.06}
+h2,.sec-head h2{font-size:var(--fs-h2);letter-spacing:-.025em;line-height:1.14}
+.step-h,.svc-extra h3,.off-card h3,.idea h3,#services .step-body h3,.nxt h3{font-size:var(--fs-h3);line-height:1.2}
+.ccard h3,.svc h3,.card h3,.wcard h3,.prlist h3,.faq h3,.rel-card .rel-t,.arte h3,.contour h3{
+  font-size:var(--fs-h4);letter-spacing:-.015em;line-height:1.3}
+
+/* блок менеджера и форма приведены к виду главной */
+.lc-mgr{display:flex;gap:16px;align-items:flex-start;margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+.lc-ava{width:52px;height:52px;border-radius:50%;object-fit:cover;flex:none}
+.lc-mgr-t b{display:block;font-size:15.5px;font-weight:600;letter-spacing:-.012em;margin-bottom:6px}
+.lc-mgr-t b a{color:var(--accent-text,var(--accent))}
+.lc-mgr-t span{display:block;font-size:14px;line-height:1.55;color:var(--text-muted)}
+.mgr-pdf{display:none}
+.req{color:var(--accent-text,var(--accent))}
+.leadbox textarea{min-height:56px;height:56px;resize:vertical}
+
+/* обложка чекапа: текст слева, четыре цифры справа сверху, графика на фоне */
+#chkFx{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0;opacity:.8}
+.hero.rh-hero{position:relative;overflow:hidden}
+.hero-in{position:relative;z-index:1}
+@media(min-width:981px){
+  .hero-in{display:grid;grid-template-columns:minmax(0,1.32fr) minmax(300px,.68fr);
+    column-gap:clamp(32px,4vw,64px);align-items:stretch;min-height:70vh}
+  .hero-txt{grid-column:1;display:flex;flex-direction:column}
+  /* заголовок и лид прижаты к низу колонки, кикер остаётся наверху */
+  .hero-bottom{margin-top:auto;padding-top:72px}
+  .hero-stats{grid-column:2;grid-row:1;align-self:start;display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 28px;padding-top:6px}
+}
+.hero-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:28px}
+.hs b{display:block;font-family:var(--mono);font-size:clamp(22px,2.4vw,30px);font-weight:500;
+  letter-spacing:-.02em;line-height:1;color:var(--text)}
+.hs span{display:block;font-size:13.5px;line-height:1.5;color:var(--text-muted);margin-top:8px}
+/* цена и ценность: число крупно справа, объяснение слева */
+.price-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.62fr);
+  gap:clamp(28px,4vw,60px);align-items:center}
+.ph-num{order:2;text-align:right}
+.ph-num b{display:block;font-family:var(--mono);font-size:clamp(48px,7vw,104px);font-weight:500;
+  letter-spacing:-.04em;line-height:.95;color:var(--text)}
+.ph-num small{display:block;font-size:15px;color:var(--text-muted);margin-top:10px}
+.ph-txt{order:1;font-size:clamp(16px,1.6vw,19px);line-height:1.6;color:var(--text-muted);max-width:56ch}
+@media(max-width:860px){
+  .price-hero{grid-template-columns:1fr;gap:20px}
+  .ph-num{order:1;text-align:left}.ph-txt{order:2}
+}
+
+/* кнопка в шапке появляется после первого экрана */
+.nav .btn.nav-cta{opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s}
+.nav.solid .btn.nav-cta{opacity:1;visibility:visible}
+/* графика обложки держится в стороне от текста */
+#chkFx{opacity:.72}
+
+/* ================= сверка со стандартом сайта ================= */
+/* подвал: три колонки на десктопе, две на планшете, одна на телефоне */
+.f-main{grid-template-columns:1.3fr 1.2fr 1.2fr}
+@media(max-width:900px){.f-main{grid-template-columns:1fr 1fr;row-gap:30px}}
+@media(max-width:560px){.f-main{grid-template-columns:1fr;row-gap:28px}}
+footer .wrap{overflow-wrap:break-word}
+.f-nav a,.f-nav2 a,.f-legal p,.f-legal a,.f-k{overflow-wrap:break-word;word-break:normal;hyphens:none}
+/* реквизиты и политика одним серым тоном */
+.f-legal p,.f-legal a,.f-legal a:hover,.f-copy{color:var(--text-dim)}
+
+/* шапка над обложкой: ни подложки, ни размытия до конца первого экрана */
+.nav{background:transparent!important;border-bottom-color:transparent!important;
+  backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+  transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease}
+.nav.solid{background:color-mix(in srgb,var(--bg) 46%,transparent)!important;
+  backdrop-filter:saturate(150%) blur(18px)!important;
+  -webkit-backdrop-filter:saturate(150%) blur(18px)!important;
+  border-bottom-color:var(--line)!important}
+/* кнопка шапки приходит вместе с подложкой, одинаково на всех страницах */
+.nav>.wrap .btn{opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s}
+.nav.solid>.wrap .btn{opacity:1;visibility:visible}
+
+/* единое скругление: за образец взята кнопка первого экрана, 16px */
+.btn,.btn.lg,.btn.sm,.btn.pri,.btn.ghost,.btn.sec,.nav .btn,.chip,.tg-btn,.sl-t,.sl-day,.hero-chip{border-radius:16px}
+.tgl,.burger,.nav-tg,.nav-burger{border-radius:14px}
+
+/* надзаголовки обычным шрифтом и без разрядки */
+.eyebrow,.f-k,.sl-h,.hero-chip{font-family:var(--sans);letter-spacing:0;font-feature-settings:normal}
+.f-k{font-size:12.5px;font-weight:500}
+.hero .eyebrow{font-size:15px;font-weight:500;margin-bottom:0;display:block}
+.hero .eyebrow .n{margin-right:8px}
+
+/* кикер и чип одной строкой по левому краю */
+.hero-kick{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.hero-chip{display:inline-block;height:26px;line-height:24px;padding:0 12px;
+  border:1px solid var(--line);font-size:12.5px;font-weight:500;color:var(--text-dim);white-space:nowrap}
+
+/* набор текста: символы стоят на своих местах и только проявляются,
+   поэтому во время набора вёрстка не двигается. Символ всегда остаётся
+   строчным элементом и наследует кегль родителя, иначе правила вида
+   .hs span{display:block} разложили бы буквы столбиком */
+.tch{opacity:0}
+.tch.on{opacity:1}
+.tch,.tch.on{display:inline!important;font-size:inherit!important;font-family:inherit!important;
+  font-weight:inherit!important;line-height:inherit!important;letter-spacing:inherit!important;
+  color:inherit!important;margin:0!important;padding:0!important;width:auto!important;
+  max-width:none!important;flex:none!important;background:none!important;border:0!important}
+.hero .reveal{opacity:1;transform:none;transition:none}
+
+/* кегль полей не меньше 16px: иначе iOS зумит страницу при фокусе */
+.lf input,.lf textarea,.leadbox input,.leadbox textarea,
+input:not([type=checkbox]),textarea,select{font-size:16px}
+.leadbox textarea,#lfTask{min-height:56px}
+.lf input:focus,.lf textarea:focus,.leadbox input:focus,.leadbox textarea:focus{background:var(--surface-2,transparent)}
+
+/* выбор дня и времени, как на главной */
+.slots{margin-top:24px}
+.sl-h{font-size:13.5px;font-weight:500;color:var(--text);margin-bottom:12px}
+.sl-days{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:6px;margin-bottom:14px;max-width:100%}
+.sl-day{flex:none;min-width:76px;min-height:60px;padding:9px 12px;border:1px solid var(--line-2,var(--line));
+  background:transparent;color:var(--text-2);cursor:pointer;text-align:center;font-family:var(--sans);transition:.16s}
+.sl-day b{display:block;font-size:17px;font-weight:600;color:var(--text)}
+.sl-day span{display:block;font-size:11px;color:var(--text-dim)}
+.sl-day:hover{border-color:var(--text-dim)}
+.sl-day.on{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent)}
+.sl-slots{display:flex;flex-wrap:wrap;gap:8px}
+.sl-t{min-height:44px;padding:10px 16px;border:1px solid var(--line-2,var(--line));background:transparent;
+  color:var(--text-2);font-family:var(--sans);font-size:14px;cursor:pointer;transition:.16s}
+.sl-t:hover{border-color:var(--text-dim)}
+.sl-t.on{border-color:var(--accent);background:var(--accent);color:var(--accent-ink,#12150A)}
+.sl-note{margin-top:12px;font-size:13px;color:var(--text-dim);line-height:1.5}
+
+
+/* подписи полей как на главной: обычный шрифт, без разрядки */
+.lf label{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:0;
+  color:var(--text-muted);text-transform:none;line-height:1.45}
+
+/* кикер и чип держатся одной строкой и на узком экране */
+@media(max-width:560px){
+  .hero .eyebrow{font-size:13.5px}
+  .hero-chip{font-size:11.5px;padding:0 10px;height:24px;line-height:22px}
+  .hero-kick{gap:8px}
+}
+/* страница не едет вбок ни на одной ширине */
+html,body{overflow-x:clip;max-width:100%}
+img,svg,canvas,video{max-width:100%}
+
+/* обложка чекапа: цифры по две в ряд справа сверху, разделитель между колонками */
+@media(min-width:981px){
+  .hero-stats{align-self:start;padding-top:6px;gap:26px 0}
+  .hero-stats .hs{padding-right:26px}
+  .hero-stats .hs:nth-child(2n){padding-left:26px;padding-right:0;border-left:1px solid var(--line)}
+}
+/* телефон: кикер сверху, графика в середине, заголовок в левом нижнем углу обложки,
+   четыре цифры идут отдельным блоком ниже по две в ряд */
+@media(max-width:980px){
+  .hero.rh-hero{padding-top:calc(66px + 26px);padding-bottom:56px}
+  .hero-in{display:flex;flex-direction:column;gap:0}
+  .hero-txt{display:flex;flex-direction:column}
+  .hero-bottom{margin-top:auto;padding-top:min(26vh,210px)}
+  .hero .lead{font-size:15px;line-height:1.5;margin-bottom:0}
+  .hero-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:20px 18px;margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}
+  .hs{display:block}
+  .hs b{font-size:19px}
+  .hs span{margin-top:7px;font-size:12.5px;line-height:1.45}
+}
+@media(max-width:380px){
+  .hero-bottom{padding-top:min(22vh,170px)}
+  .hero-stats{gap:18px 14px}
+  .hs b{font-size:17.5px}
+  .hs span{font-size:12px}
+}
+/* полоса времени переносится, а не уезжает вбок */
+.sl-days{flex-wrap:wrap;overflow-x:visible}
+
+/* ================= правки чекапа ================= */
+
+/* плавающая пара внизу: самолётик в Telegram, конверт на форму заявки.
+   стоит по той же правой линии, что бургер в шапке, и отодвинута от угла */
+.fab{position:fixed;right:36px;bottom:calc(18px + env(safe-area-inset-bottom,0px));
+  z-index:95;display:flex;gap:10px;align-items:center;
+  transition:opacity .24s var(--ease),transform .24s var(--ease),visibility .24s}
+.fab.is-off{opacity:0;transform:translateY(16px);visibility:hidden;pointer-events:none}
+.fab-b{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;
+  border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.22)}
+.fab-lead{background:var(--accent);color:var(--accent-ink)}
+.fab-tg{background:var(--surface);color:var(--text-2);border:1px solid var(--line-2)}
+.fab-tg:hover,.fab-tg:active{color:var(--accent-txt);border-color:var(--line-accent)}
+/* запас снизу, чтобы кнопки не ложились на последнюю строку подвала */
+footer{padding-bottom:104px}
+@media(max-width:640px){.fab{right:18px}}
+
+/* с открытым меню шапка получает фон, иначе строки страницы просвечивают под ним */
+.nav.sheet-open{background:var(--bg)!important;border-bottom-color:var(--line)!important}
+
+/* когда нужен чекап: номер, короткий вывод, цитата и разбор в три колонки */
+#why .rules{border-top:0}
+#why .rule{display:grid;grid-template-columns:56px minmax(0,.92fr) minmax(0,1.12fr);
+  gap:0 clamp(20px,3vw,40px);align-items:start;padding:26px 0}
+#why .rule .rn{grid-column:1;grid-row:1/span 2;padding-top:3px}
+#why .rule .rk{grid-column:2;grid-row:1;display:block;font-size:13px;line-height:1.45;
+  color:var(--text-dim);margin-bottom:9px}
+#why .rule .rt{grid-column:2;grid-row:2}
+#why .rule .rd{grid-column:3;grid-row:1/span 2}
+@media(max-width:900px){
+  #why .rule{grid-template-columns:auto minmax(0,1fr);gap:0 12px;padding:22px 0}
+  #why .rule .rn{grid-column:1;grid-row:1;padding-top:0}
+  #why .rule .rk{grid-column:2;grid-row:1;margin-bottom:0}
+  #why .rule .rt{grid-column:1/-1;grid-row:2;margin-top:11px}
+  #why .rule .rd{grid-column:1/-1;grid-row:3;margin-top:9px;max-width:62ch}
+}
+
+/* линия после последнего шага не нужна: раздел и так закрыт отступом */
+#days .rules .rule:last-child{border-bottom:0}
+
+/* цифры обложки: слово с числом держится одной строкой */
+.hs b{word-spacing:-.2em}
+@media(min-width:981px){.hs b{font-size:clamp(21px,1.95vw,26px)}}
+
+/* цена: подпись стоит вплотную к сумме */
+.ph-num b{white-space:nowrap;word-spacing:-.2em}
+.ph-num small{margin-top:8px}
+@media(max-width:520px){.ph-num b{font-size:36px}}
+
+/* буллеты в ответе идут внутри текстовой колонки, между пунктами воздух */
+.faq .ans .ans-list{list-style:none;margin:14px 0 16px;padding:0;
+  display:flex;flex-direction:column;gap:13px}
+.faq .ans .ans-list li{position:relative;padding-left:20px}
+.faq .ans .ans-list li::before{content:"";position:absolute;left:2px;top:.62em;
+  width:5px;height:5px;border-radius:50%;background:var(--accent)}
+
+/* менеджер стоит под формой во всю ширину колонки, имя акцентным зелёным */
+#lead .lc-mgr.lc-after{margin-top:34px;padding-top:26px;border-top:1px solid var(--line)}
+.lc-mgr-t b .lc-name{display:inline;color:var(--accent-text);font-size:inherit;line-height:inherit}
+.lc-mgr-t b a{color:var(--text-2);font-weight:500;border-bottom:1px solid var(--line)}
+.lc-mgr-t b a:hover{color:var(--accent-txt);border-bottom-color:var(--line-accent)}
+@media(max-width:520px){.lc-mgr{flex-direction:column;gap:14px}}
+
+@media(max-width:760px){
+  .hero.rh-hero .hero-in{display:flex;flex-direction:column;gap:0}
+  .hero.rh-hero .hero-stats{order:-1;margin-top:0;padding-top:0;border-top:0;
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 18px;text-align:right}
+  .hero.rh-hero .hero-stats .hs{padding:0}
+  .hero.rh-hero .hero-stats .hs:nth-child(2n){padding-left:0;border-left:0}
+  .hero.rh-hero .hero-stats .hs b{font-size:20px}
+  .hero.rh-hero .hero-stats .hs span{margin-left:auto;max-width:22ch}
+  .hero.rh-hero .hero-bottom{margin-top:auto;padding-top:min(24vh,190px)}
+  .hero.rh-hero .hero-txt{flex:1}
+}
+
+@media(max-width:760px){
+  .nav .tgl,.nav .nav-tg{display:none}
+  .hero.rh-hero .hero-kick{margin-bottom:14px}
+  .hero.rh-hero .hero-bottom{padding-top:min(30vh,250px)}
+  #chkFx{opacity:.85}
+}
+
+
+/* единый мобильный ритм: одинаковые поля и вертикальные интервалы на всех страницах */
+@media(max-width:640px){
+  :root{--gutter:28px}
+  body>section[id]{padding-top:64px!important;padding-bottom:72px!important}
+  body>section[id]:first-of-type{padding-top:72px!important}
+  body>section[id]:last-of-type{padding-bottom:80px!important}
+  body>section>.wrap>.sec-head,body>section>.wrap>.rsec-head{margin-bottom:28px}
+  h2{margin-bottom:0}
+  .lead,.sub{margin-top:18px}
+}
+
+@media(max-width:760px){
+  /* бургер прижат к правому краю: кнопки темы и Telegram спрятаны в меню */
+  .nav .burger,.nav #burger{margin-left:auto}
+  /* две цифры обложки идут друг под другом */
+  .hero.rh-hero .hero-stats{grid-template-columns:minmax(0,1fr);gap:18px}
+  .hero.rh-hero .hero-stats .hs{padding:0;border:0}
+  .hero.rh-hero .hero-bottom{padding-top:min(22vh,170px)}
+}
+
+/* формы: единый вид на всех страницах */
+.lf label,.f-l,.fld label{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.06em;color:var(--text-muted)}
+.slots{margin-top:14px!important}
+.lf-check,.agree{align-items:flex-start}
+.lf-check input,.agree input{margin-top:2px}
+.lf-check a,.agree a{text-decoration:none;border-bottom:1px solid var(--line-accent);padding-bottom:1px}
+.lf-check a:hover,.agree a:hover{border-bottom-color:var(--accent)}
+.lf-after{margin-top:10px!important}
+
+/* формы, финальная сверка: одинаковые интервалы и подчёркивание политики */
+.lf{margin-bottom:18px!important}
+.slots{margin-top:14px!important}
+.lf-check input{margin-top:2px!important}
+.lf-check a{text-decoration:none!important;border-bottom:1px solid var(--line-accent)!important;padding-bottom:1px}
+.lf-after{margin-top:10px!important}
+
+/* крайние разделители списков: перед первым и после последнего линии нет */
+.rule:first-child,.pr-row:first-child,.mstep:first-child,.step:first-child,
+.zoom-row:first-child,.dayrow:first-child,.lstep:first-child{border-top:0}
+.rule:last-child,.pr-row:last-child,.mstep:last-child,.step:last-child,
+.zoom-row:last-child,.dayrow:last-child,.lstep:last-child,.faq details:last-child{border-bottom:0}
+
+/* согласие: чекбокс одного размера и по верхней линии текста на всех страницах */
+.lf-check{align-items:flex-start!important}
+.lf-check input{width:20px!important;height:20px!important;margin-top:2px!important;align-self:flex-start!important}
+.lf-check span{padding-top:1px}
+
+/* цифры обложки крупнее, подпись ближе, плашки под ними нет */
+.cs{background:transparent!important;backdrop-filter:blur(6px)!important;-webkit-backdrop-filter:blur(6px)!important}
+.cs-n{font-size:clamp(38px,4.4vw,54px)!important;line-height:1}
+.cs-c{margin-top:8px}
+.hs b{font-size:clamp(30px,3.6vw,44px)!important;line-height:1}
+.hs span{margin-top:8px}
+
+/* согласие ближе к предыдущему блоку и на пару пикселей выше */
+.lf-check{margin-top:-6px!important;padding-top:0!important}
+.lf-check input{margin-top:0!important}
+.lf-check span{padding-top:0}
+.mform .lf-check{margin-top:-8px!important}
+
+/* чипы: моно без разрядки */
+.chip,.hero-chip,.cc-tag,.rel-k{letter-spacing:.02em!important}
+
+/* ссылка на политику: текст спокойный, акцент только в полоске */
+.lf-check a,.agree a{color:var(--text-muted)!important;border-bottom-color:var(--line-accent)!important}
+.lf-check a:hover,.agree a:hover{color:var(--text)!important;border-bottom-color:var(--accent)!important}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="/"><svg viewBox="0 0 839 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-30,0)"><path d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/></g><path d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></svg></a>
+  <div class="nav-links"><a href="#why">Для&nbsp;чего</a><a href="#entry">Цена</a><a href="#days">Как&nbsp;проходит</a><a href="#result">Результат</a><a href="#faq">FAQ</a></div>
+  <button class="tgl" id="themeTgl" type="button" aria-label="Сменить тему">
+    <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+    <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4L17 7M7 17l-1.6 1.6"/></svg>
+  </button>
+  <a class="tgl nav-tg" href="https://t.me/Anti4ay" target="_blank" rel="noopener" aria-label="Написать в&nbsp;Telegram" title="Написать в&nbsp;Telegram">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 4.3 3.3 11.4c-.9.35-.88 1.63.02 1.96l4.5 1.63 1.72 5.2c.24.72 1.16.92 1.68.37l2.5-2.63 4.55 3.34c.62.46 1.5.12 1.66-.63l3.03-14.4c.17-.8-.62-1.47-1.36-1.19zM8.9 14.1l9.1-5.6-7.2 6.6-.35 2.9-1.55-3.9z"/></svg>
+  </a>
+  <button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="navSheet"><span class="bl"></span></button>
+  <a class="btn pri nav-cta" href="#lead">Оставить заявку</a>
+</div>
+<div class="nav-sheet" id="navSheet"><a href="#why">Для&nbsp;чего</a><a href="#entry">Цена</a><a href="#days">Как&nbsp;проходит</a><a href="#result">Результат</a><a href="#faq">FAQ</a><a class="btn pri" href="#lead">Оставить заявку</a></div>
+</nav>
+<span id="top"></span>
+
+<header class="hero rh-hero"><canvas id="chkFx" aria-hidden="true"></canvas><div class="wrap hero-in">
+  <div class="hero-txt">
+    <div class="hero-bottom">
+      <div class="hero-kick reveal"><span class="hero-chip">Услуга</span></div>
+      <h1 class="reveal d1">AI-чекап бизнеса</h1>
+      <p class="lead reveal d2">За&nbsp;две недели показываем, где теряются деньги и&nbsp;что&nbsp;делать первым: даём карту всех процессов компании с&nbsp;узкими местами и&nbsp;приоритетами, одну автоматизацию и&nbsp;чёткий план дальнейшей AI-интеграции с&nbsp;вилкой бюджета</p>
+    </div>
+  </div>
+  <div class="hero-stats reveal d2">
+    <div class="hs"><b>14 дней</b><span>от&nbsp;Zoom до&nbsp;карты процессов бизнеса и&nbsp;первого собранного агента</span></div>
+    <div class="hs"><b>19&nbsp;900&nbsp;₽</b><span>чекап целиком, сумма фиксированная</span></div>
+    
+    
+  </div>
+</div></header>
+
+
+
+<section id="why" class="rh-list"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">01</span> Для&nbsp;чего</div>
+    <h2>Когда нужен чекап</h2>
+  </div>
+  <div class="rules">
+    <div class="rule reveal"><span class="rn">0x01</span><span class="rk">рутина съедает полторы ставки</span><div class="rt">«Все вокруг обсуждают ИИ, а&nbsp;у&nbsp;меня менеджер до&nbsp;сих пор десять минут одну заявку в&nbsp;1С забивает»</div><div class="rd">Люди тратят месяцы на&nbsp;рутину и&nbsp;старые инструменты вместо работы, которая приносит деньги: десять минут на&nbsp;заявку и&nbsp;сорок заявок в&nbsp;день превращаются в&nbsp;полторы ставки, растворённые в&nbsp;зарплатном фонде</div></div>
+    <div class="rule reveal d1"><span class="rn">0x02</span><span class="rk">клиент уходит к&nbsp;тому, кто ответил первым</span><div class="rt">«Заявка приходит в&nbsp;мессенджер в&nbsp;одиннадцать вечера, а&nbsp;отвечаем мы&nbsp;в&nbsp;десять утра»</div><div class="rd">Лиды идут из&nbsp;нескольких каналов, часть оседает в&nbsp;личных переписках. Пока ответ ждёт до&nbsp;утра, клиент уходит к&nbsp;тому, кто ответил первым</div></div>
+    <div class="rule reveal d2"><span class="rn">0x03</span><span class="rk">инструменты есть, привычки нет</span><div class="rt">«Купили команде курс за&nbsp;сто восемьдесят тысяч, посмотрели два урока и&nbsp;вернулись к&nbsp;прежней работе»</div><div class="rd">Инструменты в&nbsp;компании есть, привычки ими пользоваться нет. AI внедряют в&nbsp;отдельные задачи, но&nbsp;процессы вокруг них остаются прежними</div></div>
+    <div class="rule reveal d3"><span class="rn">0x04</span><span class="rk">решения принимаются вслепую</span><div class="rt">«Я&nbsp;вижу выручку, но&nbsp;не&nbsp;вижу общую картину: как&nbsp;менеджеры ведут коммуникацию с&nbsp;клиентами»</div><div class="rd">Руководитель выборочно слушает единицы диалогов и&nbsp;не&nbsp;может разобрать причины падения конверсии</div></div>
+    <div class="rule reveal"><span class="rn">0x05</span><span class="rk">непонятно, как&nbsp;расти в&nbsp;новом мире</span><div class="rt">«Мне нужна команда, которая придёт, посмотрит процессы и&nbsp;скажет, как&nbsp;кратно вырасти за&nbsp;счёт оптимизации и&nbsp;новых технологий»</div><div class="rd">Про AI много обсуждений, желание и&nbsp;энтузиазм внедрять есть, а&nbsp;понимания, с&nbsp;чего начать и&nbsp;что&nbsp;даст рост, нет</div></div>
+  </div>
+</div></section>
+
+<section id="entry" class="rh-think"><div class="wrap">
+  <div class="eyebrow reveal"><span class="n">02</span> Цена и&nbsp;ценность</div>
+  <div class="price-hero reveal d1">
+    <div class="ph-num"><b>19&nbsp;900&nbsp;₽</b><small>за&nbsp;чекап целиком</small></div>
+    <p class="ph-txt">Первый шаг стоит в&nbsp;несколько раз меньше месячной зарплаты одного менеджера, но&nbsp;уже через две недели вы&nbsp;получаете карту процессов, одну автоматизацию и&nbsp;чёткий план дальнейшей AI-интеграции</p>
+  </div>
+</div></section>
+
+
+
+<section id="days" class="rh-scheme fullwide">
+<div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">03</span> Как&nbsp;проходит</div>
+    <h2>Три Zoom за&nbsp;две недели, между ними разбираем работу</h2>
+    <p class="lead">От&nbsp;вас нужны до&nbsp;6&nbsp;часов, доступ к&nbsp;рабочим инструментам и&nbsp;один-два человека, к&nbsp;которым можно обратиться с&nbsp;вопросами</p>
+  </div>
+  <div class="rules">
+    <div class="rule reveal"><span class="rn">Zoom 1</span><div class="rt">Знакомство и&nbsp;постановка целей</div><div class="rd">Разбираем, чем занимается компания, какие процессы болят и&nbsp;что&nbsp;хотите изменить. Договариваемся о&nbsp;доступах</div></div>
+    <div class="rule reveal d1"><span class="rn">неделя 1</span><div class="rt">Смотрим, как&nbsp;устроена работа</div><div class="rd">Читаем рабочие материалы, изучаем принципы, регламенты и&nbsp;выгрузки, считаем, сколько времени уходит на&nbsp;повторяющиеся операции</div></div>
+    <div class="rule reveal d2"><span class="rn">Zoom 2</span><div class="rt">Делимся инсайтами</div><div class="rd">Показываем, что&nbsp;нашли, и&nbsp;проверяем: где мы&nbsp;правы, где картина другая. Затем выбираем участок, под&nbsp;который собираем агента</div></div>
+    <div class="rule reveal d3"><span class="rn">неделя 2</span><div class="rt">Собираем агента</div><div class="rd">Под&nbsp;конкретный запрос и&nbsp;проверяем на&nbsp;рабочих процессах вместе с&nbsp;командой</div></div>
+    <div class="rule reveal d4"><span class="rn">Zoom 3</span><div class="rt">Отдаём результат</div><div class="rd">Показываем карту всех процессов, приоритеты по&nbsp;эффекту и&nbsp;план дальнейшей AI-интеграции с&nbsp;вилкой бюджета. Отвечаем на&nbsp;вопросы команды и&nbsp;передаём собранного агента</div></div>
+  </div>
+</div></section>
+<section id="result" class="rh-dense"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">04</span> Результат</div>
+    <h2>Четыре артефакта, которые остаются у&nbsp;вас</h2>
+  </div>
+  <div class="bento">
+    <article class="card reveal"><span class="tag">01 разбор</span><h3>Карта всех процессов компании</h3><p>Как&nbsp;сейчас устроена работа, где теряются заявки, часы и&nbsp;деньги. Что&nbsp;чинится на&nbsp;уровне процесса, а&nbsp;что&nbsp;закрывается автоматизацией. Анализируем работу отделов и&nbsp;регламенты</p></article>
+    <article class="card reveal d1"><span class="tag">02 приоритеты</span><h3>Порядок внедрения</h3><p>Что&nbsp;даёт эффект первым, что&nbsp;можно отложить и&nbsp;почему. По&nbsp;каждому участку считаем, сколько времени требуется сейчас и&nbsp;сколько можно сократить</p></article>
+    <article class="card reveal d2"><span class="tag">03 деньги</span><h3>План с&nbsp;вилкой бюджета</h3><p>Сколько будет стоить внедрение по&nbsp;каждому направлению. Предлагаем несколько форматов в&nbsp;зависимости от&nbsp;участка и&nbsp;объёма работ</p></article>
+    <article class="card reveal d3"><span class="tag">04 агент</span><h3>Собранный агент</h3><p>Готовый агент под&nbsp;один конкретный процесс. Настраиваем работу и&nbsp;учим команду пользоваться им&nbsp;регулярно</p></article>
+  </div>
+</div></section>
+
+
+
+
+
+
+
+
+
+
+
+<section id="faq" class="rh-dense"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">05</span> FAQ</div>
+    <h2>Частые вопросы</h2>
+  </div>
+  <div class="faq reveal">
+    <details open><summary>Что&nbsp;если после чекапа мы&nbsp;не&nbsp;пойдём в&nbsp;разработку? <span class="pl">+</span></summary><div class="ans">Чекап даёт честную оценку текущих процессов и&nbsp;потенциал эффекта от&nbsp;AI. Через две недели у&nbsp;вас уже есть агент, который ускоряет работу, карта процессов и&nbsp;план. Масштабировать автоматизацию дальше&nbsp;– свободный выбор компании</div></details>
+    <details><summary>Как&nbsp;быть с&nbsp;конфиденциальными данными? <span class="pl">+</span></summary><div class="ans">Разбор контура данных идёт первым делом, ещё до&nbsp;разговора про&nbsp;разработку. Списком фиксируем, какие поля уходят в&nbsp;модель и&nbsp;какие остаются внутри. Подписываем соглашение о&nbsp;неразглашении до&nbsp;старта, работаем на&nbsp;обезличенных выгрузках, для&nbsp;чувствительных данных разворачиваем агента в&nbsp;вашем контуре по&nbsp;152-ФЗ</div></details>
+    <details><summary>Что&nbsp;если не&nbsp;хватит двух недель? <span class="pl">+</span></summary><div class="ans">Срок фиксированный, состав пакета рассчитан под него, и&nbsp;мы&nbsp;гарантируем, что&nbsp;выполним весь заявленный объём. До&nbsp;старта отдельно обсуждаем и&nbsp;фиксируем контекст вашей компании, чтобы рамка чекапа была реалистичной</div></details>
+    <details>
+      <summary>Что&nbsp;если у&nbsp;нас есть свои разработчики? <span class="pl">+</span></summary>
+      <div class="ans">Одного агента ваш разработчик соберёт за&nbsp;выходные, это&nbsp;правда. Но&nbsp;решение начинает работать и&nbsp;приносить деньги, когда за&nbsp;ним стоит пять вещей:<ul class="ans-list"><li>Спрос: продукт закрывает работу, которая людям действительно нужна, а&nbsp;не&nbsp;остаётся экспериментом ради эксперимента&nbsp;– проверяем это&nbsp;до&nbsp;сборки</li><li>Адаптация: учим команду работать с&nbsp;новым инструментом, чтобы через месяц всё не&nbsp;откатилось назад</li><li>Сценарии: закладываем запас на&nbsp;будущее и&nbsp;держим систему живой, когда меняются модель, интерфейс, прайсы поставщиков и&nbsp;условия рынка</li><li>Цепочки: ведём длинные маршруты, где агент ходит по&nbsp;нескольким системам, и&nbsp;отвечаем за&nbsp;то, чтобы ошибка в&nbsp;середине не&nbsp;стоила дорого</li><li>Обвязка: собираем вокруг агента журнал действий, подтверждения и&nbsp;контроль качества ответов</li></ul>Всё это&nbsp;закрываем сами, вашей команде остаётся работа, ради которой её&nbsp;нанимали</div>
+    </details>
+    <details>
+      <summary>Что&nbsp;будет с&nbsp;командой после интеграции AI? <span class="pl">+</span></summary>
+      <div class="ans">До&nbsp;старта вместе с&nbsp;вами разбираем роли: что&nbsp;забирает агент, что&nbsp;остаётся за&nbsp;человеком и&nbsp;как&nbsp;меняется его&nbsp;рабочий день. Сокращения мы&nbsp;не&nbsp;предлагаем и&nbsp;не&nbsp;планируем, это&nbsp;решение собственника. Наша задача снять с&nbsp;людей повторяющиеся процессы, а&nbsp;не&nbsp;отнять у&nbsp;них работу</div>
+    </details>
+    <details><summary>Мы&nbsp;уже внедряли, эффекта не&nbsp;было? <span class="pl">+</span></summary><div class="ans">Так бывает, когда инструмент дают людям без&nbsp;разбора процесса: инструкция есть, привычки нет. Мы&nbsp;начинаем с&nbsp;процессов и&nbsp;задач конкретных людей, а&nbsp;инструмент подбираем под&nbsp;них</div></details>
+    <details><summary>У&nbsp;нас нет данных: CRM ведётся не&nbsp;полностью, цифр нет? <span class="pl">+</span></summary><div class="ans">Чекап рассчитан и&nbsp;на&nbsp;такую ситуацию: работаем с&nbsp;тем, что&nbsp;есть&nbsp;– переписки в&nbsp;мессенджерах, почта, документы, записи звонков. Отдельно порекомендуем, что&nbsp;может закрыться изменением регламента и&nbsp;какие данные стоит начать собирать</div></details>
+  </div>
+</div></section>
+
+<section id="lead" class="rh-cta"><div class="wrap">
+  <div class="lead-grid">
+    <div class="lead-copy reveal">
+      <div class="eyebrow"><span class="n">06</span> Следующий шаг</div>
+      <h2><span class="nb">30 минут</span> в&nbsp;Zoom с&nbsp;партнёрами студии</h2>
+  <p class="lead">Вы&nbsp;рассказываете про&nbsp;бизнес, мы&nbsp;задаём вопросы и&nbsp;совместно определяем запрос. После присылаем запись разговора и&nbsp;разбор: что&nbsp;увидели и&nbsp;с&nbsp;чего рекомендуем начать</p>
+    </div>
+    <div class="leadbox reveal d1">
+      <form id="leadForm" novalidate>
+        <div class="lf-row">
+          <div class="lf"><label for="lfName">Как&nbsp;вас зовут <span class="req" title="обязательное поле">*</span></label><input id="lfName" name="name" type="text" autocomplete="name" required></div>
+          <div class="lf"><label for="lfContact">Телефон, почта или&nbsp;Telegram <span class="req" title="обязательное поле">*</span></label><input id="lfContact" name="contact" type="text" autocomplete="off" required></div>
+        </div>
+        <div class="lf"><label for="lfCompany">Компания и&nbsp;сфера деятельности</label><input id="lfCompany" name="company" type="text" autocomplete="organization"></div>
+        <div class="lf"><label for="lfTask">Коротко о&nbsp;контексте: какой сейчас уровень использования AI в&nbsp;команде и&nbsp;к&nbsp;какому результату хотите прийти</label><textarea id="lfTask" name="task" rows="2"></textarea></div>
+        <div class="slots" id="slots">
+          <div class="sl-h">Когда вам удобно</div>
+          <div class="sl-days" id="slDays"></div>
+          <div class="sl-slots" id="slSlots"></div>
+          <input type="hidden" id="lfSlot" name="slot">
+          <div class="sl-note" id="slNote"></div>
+        </div>
+        <label class="lf-check"><input type="checkbox" id="lfAgree" required>
+          <span>Согласен на&nbsp;обработку персональных данных и&nbsp;принимаю <a href="/privacy" target="_blank" rel="noopener">политику обработки персональных данных</a></span></label>
+        <div class="lf-err" id="lfErr" role="alert">Не&nbsp;хватает вашего имени, контактов и&nbsp;согласия на&nbsp;обработку персональных данных</div>
+        <button class="btn pri lg" type="submit">Оставить заявку</button>
+      </form>
+      <div class="lf-done" id="lfDone">
+        <b>Заявка принята</b>
+        <span>Ответим в&nbsp;течение 1&nbsp;рабочего дня и&nbsp;подтвердим встречу</span>
+        <div class="lf-acts"><a class="btn ghost sm" href="https://t.me/Anti4ay" target="_blank" rel="noopener">Написать в&nbsp;Telegram</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="lc-mgr lc-after reveal">
+      <img class="lc-ava" src="data:image/jpeg;base64,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" alt="Никита, project manager студии" width="52" height="52" loading="lazy">
+      <div class="lc-mgr-t">
+        <b><span class="lc-name">Никита</span>&nbsp;– project manager студии, <a href="https://t.me/Anti4ay" target="_blank" rel="noopener">@Anti4ay</a></b>
+        <span>На&nbsp;запись по&nbsp;форме ответим в&nbsp;течение 1&nbsp;рабочего дня, а&nbsp;если задача срочная и&nbsp;нужен ещё более быстрый ответ, напишите нам напрямую</span>
+      </div>
+    </div>
+  
+</div></section>
+
+<section id="related" class="rh-pre"><div class="wrap">
+  <div class="sec-head reveal">
+    <div class="eyebrow"><span class="n">07</span> Другие услуги и&nbsp;кейсы студии</div>
+  </div>
+  <div class="nxt reveal">
+    <a href="/innorto/"><span class="nk">кейс</span><span class="nt">INNORTO</span></a>
+    <a href="/globaldent/"><span class="nk">кейс</span><span class="nt">GlobalDent</span></a>
+    <a href="/desant/"><span class="nk">блок системы</span><span class="nt">AI-десант</span></a>
+    <a href="/safe/"><span class="nk">блок системы</span><span class="nt">Безопасный слой</span></a>
+    <a href="/prodazh/"><span class="nk">блок системы</span><span class="nt">AI-продавец в&nbsp;переписке</span></a>
+    <a href="https://automyai.ru"><span class="nk">обучение</span><span class="nt">Automy AI</span></a>
+  </div>
+</div></section>
+<footer><div class="wrap">
+  <div class="f-main">
+    <div class="f-brand">
+      <a class="brand" href="/" aria-label="synapt"><svg viewBox="0 0 839 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-30,0)"><path d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/></g><path d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></svg></a>
+      <p class="f-note">Студия AI и&nbsp;IT-разработки для&nbsp;бизнеса</p>
+      <a class="f-tg" href="https://t.me/Anti4ay" target="_blank" rel="noopener">Telegram менеджера</a>
+    </div>
+    <nav class="f-nav f-nav2"><span class="f-k">Разделы</span><a href="#why">Для&nbsp;чего</a><a href="#entry">Цена и&nbsp;ценность</a><a href="#days">Как&nbsp;проходит</a><a href="#result">Результат</a><a href="#faq">FAQ</a><a href="#lead">Оставить заявку</a></nav>
+    <div class="f-legal">
+      <span class="f-k">Формальности</span>
+      <p>ИП Орешкин Антон Вадимович</p>
+      <p>ИНН 100123323420, ОГРНИП 324100000000411</p>
+      <p>185014, Республика Карелия, Петрозаводск, переулок Попова, дом&nbsp;6, квартира&nbsp;42</p>
+      <a href="/privacy">Политика обработки персональных данных</a>
+      <p class="f-copy">© 2026 Synapt</p>
+    </div>
+  </div>
+</div></footer>
+<div class="fab" aria-hidden="false">
+  <a class="fab-b fab-tg" href="https://t.me/Anti4ay" target="_blank" rel="noopener" aria-label="Написать в&nbsp;Telegram" title="Написать в&nbsp;Telegram">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="19" height="19" aria-hidden="true"><path d="M21.9 4.3 18.9 19c-.2 1-.8 1.2-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-1 .5l.3-4.7L18.3 6c.4-.3-.1-.5-.6-.2L7.2 12.4l-4.5-1.4c-1-.3-1-1 .2-1.4l17.6-6.8c.8-.3 1.5.2 1.4 1.5z"/></svg>
+  </a>
+  <a class="fab-b fab-lead" href="#lead" aria-label="Оставить заявку" title="Оставить заявку">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M3.4 6.2 12 12.1l8.6-5.9c-.3-.7-1-1.1-1.8-1.1H5.2c-.8 0-1.5.4-1.8 1.1zM21 8.1l-8.4 5.8c-.4.3-.9.3-1.2 0L3 8.1v9c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2z"/></svg>
+  </a>
+</div>
+<script>
+/* пока форма заявки на экране, плавающая пара прячется: иначе кнопка
+   ложится ровно на кнопку отправки и заявку с телефона отправить нечем */
+(function(){
+  var fab=document.querySelector('.fab'),lead=document.getElementById('lead');
+  if(!fab||!lead||!('IntersectionObserver' in window))return;
+  var io=new IntersectionObserver(function(en){
+    en.forEach(function(e){
+      fab.classList.toggle('is-off',e.isIntersecting);
+      fab.setAttribute('aria-hidden',e.isIntersecting?'true':'false');
+    });
+  },{rootMargin:'0px 0px -20% 0px'});
+  io.observe(lead);
+})();
+</script>
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.1,rootMargin:'0px 0px -6% 0px'});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+<script>
+/* тема: тумблер в шапке, состояние хранится */
+(function(){
+  var b=document.getElementById('themeTgl');if(!b)return;
+  b.addEventListener('click',function(){
+    var next=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+    document.documentElement.setAttribute('data-theme',next);
+    try{localStorage.setItem('synapt-theme',next)}catch(e){}
+  });
+})();
+/* бургер-меню */
+(function(){
+  var b=document.getElementById('burger'),s=document.getElementById('navSheet');if(!b||!s)return;
+  function close(){s.classList.remove('open');b.setAttribute('aria-expanded','false');
+    var n=document.querySelector('.nav'); if(n) n.classList.remove('sheet-open')}
+  var nav=document.querySelector('.nav');
+  function mark(open){ if(nav) nav.classList.toggle('sheet-open',open) }
+  b.addEventListener('click',function(){
+    var open=s.classList.toggle('open');
+    b.setAttribute('aria-expanded',open?'true':'false');
+    mark(open);
+  });
+  s.addEventListener('click',function(e){if(e.target.tagName==='A')close()});
+  addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+  addEventListener('resize',function(){if(innerWidth>980)close()});
+})();
+/* уважаем запрос на пониженную анимацию: фоновая графика не запускается */
+(function(){
+  if(!window.matchMedia)return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var c=document.getElementById('synFx');if(c&&c.parentNode)c.parentNode.removeChild(c);
+  }
+})();
+/* форма: собираем письмо в почтовой программе, ложных подтверждений не показываем */
+(function(){
+  var f=document.getElementById('leadForm');if(!f)return;
+  var err=document.getElementById('lfErr'),done=document.getElementById('lfDone');
+  var name=document.getElementById('lfName'),contact=document.getElementById('lfContact'),
+      company=document.getElementById('lfCompany'),task=document.getElementById('lfTask'),
+      agree=document.getElementById('lfAgree');
+  function clean(){[name,contact].forEach(function(x){x.classList.remove('err')});err.classList.remove('show')}
+  [name,contact].forEach(function(x){x.addEventListener('input',clean)});
+  agree.addEventListener('change',clean);
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var bad=false;
+    if(!name.value.trim()){name.classList.add('err');bad=true}
+    if(!contact.value.trim()){contact.classList.add('err');bad=true}
+    if(!agree.checked)bad=true;
+    if(bad){err.classList.add('show');return}
+    /* заявка уходит на сервер, ложного подтверждения без доставки не показываем */
+    var btn=f.querySelector('button[type=submit]'), was=btn?btn.textContent:'';
+    if(btn){btn.disabled=true;btn.textContent='Отправляем'}
+    var slotEl=document.getElementById('lfSlot');
+    fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name:name.value,contact:contact.value,
+        company:(company&&company.value)||'',task:(task&&task.value)||'',
+        slot:slotEl?slotEl.value:'',page:'AI-чекап бизнеса'})})
+      .then(function(r){return r.ok?r.json():Promise.reject(r.status)})
+      .then(function(){f.style.display='none';done.classList.remove('fail');done.classList.add('show')})
+      .catch(function(){
+        f.style.display='none';done.classList.add('show','fail');
+        var b=done.querySelector('b'); if(b) b.textContent='Заявка не ушла';
+        var t=done.querySelector('span'); if(t) t.innerHTML='Форма не\u00A0достучалась до\u00A0нас. Напишите Никите в\u00A0Telegram, он\u00A0примет заявку';
+      })
+      .then(function(){if(btn){btn.disabled=false;btn.textContent=was}});
+  });
+})();
+</script>
+<script>
+/* ==========================================================
+   SYNAPT – фоновая графика: поток обращений
+   разрозненные обращения идут слева, сходятся в одно русло
+   единственная графика на странице, дублей нет
+   ========================================================== */
+(function () {
+  var c = document.getElementById('synFx');
+  if (!c) return;
+  var DPR = Math.min(devicePixelRatio || 1, 2);
+  var GR = '128,140,136', PH = '208,232,101', A = 1;
+  function applyTheme() {
+    var light = document.documentElement.getAttribute('data-theme') === 'light';
+    GR = light ? '74,86,80' : '128,140,136';
+    PH = light ? '118,146,34' : '208,232,101';
+    A = light ? 2.2 : 1.15;
+  }
+  applyTheme();
+  new MutationObserver(applyTheme).observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme']});
+  function rnd(s) { var x = Math.sin(s * 127.1) * 43758.5453; return x - Math.floor(x); }
+
+  var ctx = c.getContext('2d'), W = 0, H = 0, ps = [], t = 0, warm = false;
+  function reset(p, i, first) {
+    p.x = first ? rnd(i) * W : -20 - rnd(i + t) * 60;
+    p.y = (first ? rnd(i + 100) : Math.random()) * H;
+    p.sp = .55 + rnd(i + 7) * 1.1;
+    p.ph = rnd(i + 21) * 6.28;
+    p.life = 0;
+    p.hot = rnd(i + 55) > .86;
+  }
+  function build() {
+    var r = c.getBoundingClientRect(); W = r.width; H = r.height;
+    if (!W || !H) return;
+    c.width = W * DPR; c.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    ps = []; var n = W < 700 ? 90 : 210;
+    for (var i = 0; i < n; i++) { var p = {}; reset(p, i, true); ps.push(p); }
+    warm = false;
+  }
+  build();
+  var rt; addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(build, 180) });
+  /* русло: горизонтальный снос вправо, вертикальная составляющая гасится к оси */
+  var mx = null, my = null;
+  var host = c.parentElement || c;
+  host.addEventListener('pointermove', function (e) {
+    var r = c.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top;
+  });
+  host.addEventListener('pointerleave', function () { mx = my = null; });
+
+  function step(p) {
+    var k = .010 + (p.x / W) * .022;                     // ближе к правому краю стягивает сильнее
+    var wob = Math.sin(p.x * .006 + p.ph) * (1 - p.x / W) * 1.15;
+    p.vx = p.sp * 2.2;
+    p.vy = (H * .5 - p.y) * k + wob;
+    /* курсор подтягивает поток к себе: линии идут туда, куда ведёт рука */
+    if (mx !== null) {
+      var dx = mx - p.x, dy = my - p.y, d = Math.hypot(dx, dy);
+      if (d < 320 && d > 1) {
+        var pull = Math.pow(1 - d / 320, 2) * 2.4;
+        p.vx += (dx / d) * pull;
+        p.vy += (dy / d) * pull;
+      }
+    }
+  }
+  function draw(fade) {
+    /* хвосты: гасим предыдущий кадр, а не стираем его целиком */
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.fillStyle = 'rgba(0,0,0,' + fade + ')';
+    ctx.fillRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.lineCap = 'round';
+    ps.forEach(function (p, i) {
+      step(p);
+      var nx = p.x + p.vx, ny = p.y + p.vy;
+      var mid = 1 - Math.min(1, Math.abs(p.y - H * .5) / (H * .46));
+      ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(nx, ny);
+      ctx.strokeStyle = p.hot ? 'rgba(' + PH + ',' + (.20 + mid * .40) * A + ')'
+                              : 'rgba(' + GR + ',' + (.10 + mid * .26) * A + ')';
+      ctx.lineWidth = .8 + mid * 1.3; ctx.stroke();
+      p.x = nx; p.y = ny; p.life++;
+      if (p.x > W + 14 || p.life > 420) reset(p, i, false);
+    });
+  }
+  (function frame() {
+    requestAnimationFrame(frame);
+    t++;
+    var r = c.getBoundingClientRect();
+    if (r.bottom < -100 || r.top > innerHeight + 100) return;
+    /* прогрев: к моменту, когда секция попала в кадр, русло уже прорисовано, а не пустое */
+    if (!warm) { warm = true; for (var i = 0; i < 320; i++) { t++; draw(.028) } }
+    draw(.028);
+  })();
+})();
+</script>
+
+<script>
+/* набор текста первого экрана: кикер, заголовок, лид и цифры печатаются
+   одновременно и посимвольно. Символы заранее стоят на своих местах,
+   поэтому во время набора вёрстка не двигается и строки не перескакивают */
+(function(){
+  var hero=document.querySelector('.hero'); if(!hero) return;
+  var sel='.eyebrow, h1, .lead, .hero-meta b, .hero-stats b, .hero-chip';
+  var targets=[].slice.call(hero.querySelectorAll(sel));
+  if(!targets.length) return;
+  var runs=[];
+  targets.forEach(function(el){
+    var chars=[];
+    (function walk(node){
+      [].slice.call(node.childNodes).forEach(function(n){
+        if(n.nodeType===3){
+          var frag=document.createDocumentFragment();
+          n.nodeValue.split('').forEach(function(ch){
+            var sp=document.createElement('span');
+            sp.className='tch'; sp.textContent=ch;
+            frag.appendChild(sp); chars.push(sp);
+          });
+          node.replaceChild(frag,n);
+        } else if(n.nodeType===1) walk(n);
+      });
+    })(el);
+    if(chars.length) runs.push(chars);
+  });
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){
+    runs.forEach(function(r){r.forEach(function(s){s.classList.add('on')})});
+    return;
+  }
+  var maxLen=0;
+  runs.forEach(function(r){ if(r.length>maxLen) maxLen=r.length });
+  var step=Math.max(5, Math.min(26, 2000/(maxLen*1.3)));
+  runs.forEach(function(chars){
+    var i=0;
+    (function tick(){
+      if(i>=chars.length) return;
+      /* пробелы проявляются вместе со следующей буквой, набор идёт ровно */
+      do { chars[i].classList.add('on'); i++ } while(i<chars.length && chars[i-1].textContent===' ');
+      setTimeout(tick, step + Math.random()*step*0.6);
+    })();
+  });
+})();
+/* подложка шапки включается сразу после первого экрана: пока обложка
+   не ушла под шапку, фона и размытия нет */
+(function(){
+  var nav=document.querySelector('.nav'); if(!nav) return;
+  var hero=document.querySelector('.hero')||document.querySelector('header');
+  function upd(){ var h=hero?hero.getBoundingClientRect().height:0;
+    nav.classList.toggle('solid', (window.scrollY||window.pageYOffset) > Math.max(120, h-80)) }
+  upd(); addEventListener('scroll',upd,{passive:true}); addEventListener('resize',upd);
+})();
+/* подписи иконок шапки: тема и Telegram */
+(function(){
+  function sync(){
+    var dark=document.documentElement.getAttribute('data-theme')!=='light';
+    var lbl=dark?'Светлая тема':'Тёмная тема';
+    [].forEach.call(document.querySelectorAll('.tgl'),function(b){
+      if(b.classList.contains('nav-tg')) return;
+      b.title=lbl; b.setAttribute('aria-label',lbl);
+    });
+    [].forEach.call(document.querySelectorAll('.nav-tg'),function(a){
+      a.title='Написать в Telegram'; a.setAttribute('aria-label','Написать в Telegram');
+    });
+  }
+  sync(); addEventListener('click',function(){setTimeout(sync,0)},true);
+  new MutationObserver(sync).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+})();
+</script>
+
+<script>
+/* выбор дня и времени для Zoom: ближайшие рабочие дни, слоты по часу */
+(function(){
+  var days=document.getElementById('slDays'), slotBox=document.getElementById('slSlots'),
+      hid=document.getElementById('lfSlot'), note=document.getElementById('slNote');
+  if(!days||!slotBox) return;
+  var MN=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+  var WD=['вс','пн','вт','ср','чт','пт','сб'];
+  var HOURS=['10:00','11:00','12:00','14:00','15:00','16:00','17:00'];
+  var list=[], d=new Date(); d.setHours(0,0,0,0);
+  while(list.length<6){ d.setDate(d.getDate()+1); if(d.getDay()!==0&&d.getDay()!==6) list.push(new Date(d)) }
+  var sel={day:null,time:null};
+  function label(x){ return '<b>'+x.getDate()+'</b><span>'+WD[x.getDay()]+', '+MN[x.getMonth()].slice(0,3)+'</span>' }
+  list.forEach(function(x){
+    var b=document.createElement('button'); b.type='button'; b.className='sl-day'; b.innerHTML=label(x);
+    b.addEventListener('click',function(){
+      var same=b.classList.contains('on');
+      [].forEach.call(days.children,function(e){e.classList.remove('on')});
+      if(same){ sel.day=null; sel.time=null; render(); return }
+      b.classList.add('on'); sel.day=x; sel.time=null; render();
+    });
+    days.appendChild(b);
+  });
+  function render(){
+    slotBox.innerHTML='';
+    if(!sel.day){ sync(); return }
+    HOURS.forEach(function(t){
+      var b=document.createElement('button'); b.type='button'; b.className='sl-t'+(sel.time===t?' on':''); b.textContent=t;
+      b.addEventListener('click',function(){ sel.time=t; render() });
+      slotBox.appendChild(b);
+    });
+    sync();
+  }
+  function sync(){
+    if(sel.day&&sel.time){
+      var v=sel.day.getDate()+' '+MN[sel.day.getMonth()]+', '+sel.time+' по Москве';
+      if(hid) hid.value=v;
+      if(note) note.textContent='Выбрано: '+v;
+    } else { if(hid) hid.value=''; if(note) note.textContent='' }
+  }
+  render();
+})();
+</script>
+
+<script>
+/* обложка чекапа: дорожки процессов, по ним идёт разбор и находит узкие места */
+(function(){
+  var c=document.getElementById('chkFx'); if(!c) return;
+  var ctx=c.getContext('2d'), DPR=Math.min(devicePixelRatio||1,2), W=0,H=0,t=0;
+  var LANES=[{n:'заявки',stuck:.62},{n:'продажи',stuck:.38},{n:'закупки',stuck:.74},
+             {n:'документы',stuck:.5},{n:'поддержка',stuck:.28}];
+  var GR='128,140,136', PH='208,232,101', WH='232,238,236';
+  function theme(){var l=document.documentElement.getAttribute('data-theme')==='light';
+    GR=l?'40,48,45':'128,140,136'; PH=l?'118,146,34':'208,232,101'; WH=l?'26,30,28':'232,238,236'}
+  theme(); new MutationObserver(theme).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+  function build(){var r=c.getBoundingClientRect(); W=r.width; H=r.height;
+    if(!W||!H) return; c.width=W*DPR; c.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0)}
+  build(); addEventListener('resize',build);
+  (function frame(){
+    requestAnimationFrame(frame);
+    if(!W||!H){build(); return}
+    if(c.getBoundingClientRect().bottom<-100){t++; return}
+    ctx.clearRect(0,0,W,H);
+    var narrow=W<981;
+    var x0=narrow?76:W*.15, x1=narrow?W-22:W*.60;
+    var gap=narrow?21:30;
+    /* дорожки идут выше заголовка: на телефоне в середине обложки,
+       на широком экране в свободной правой части под цифрами */
+    var st=document.querySelector('.hero-stats');
+    var sb=st?st.getBoundingClientRect().bottom-c.getBoundingClientRect().top:0;
+    var top=narrow?Math.max(sb+42,H*.36):Math.max(150,H*.30);
+    var scan=((t*.0016)%1.3);
+    LANES.forEach(function(l,i){
+      var y=top+i*gap;
+      ctx.beginPath(); ctx.moveTo(x0,y); ctx.lineTo(x1,y);
+      ctx.strokeStyle='rgba('+GR+',.34)'; ctx.lineWidth=1.2; ctx.stroke();
+      /* подпись дорожки мелким моно */
+      ctx.font='9px "JetBrains Mono", ui-monospace, monospace';
+      ctx.textBaseline='middle'; ctx.textAlign='right';
+      ctx.fillStyle='rgba('+GR+','+(found?.85:.5)+')';
+      ctx.fillText(l.n, x0-10, y);
+      /* узкое место на дорожке */
+      var sx=x0+(x1-x0)*l.stuck;
+      var found=scan>l.stuck;
+      if(found){
+        var pulse=.5+.5*Math.sin(t*.05+i);
+        var g=ctx.createRadialGradient(sx,y,0,sx,y,16+pulse*8);
+        g.addColorStop(0,'rgba('+PH+','+(.42+pulse*.24)+')'); g.addColorStop(1,'rgba('+PH+',0)');
+        ctx.fillStyle=g; ctx.beginPath(); ctx.arc(sx,y,16+pulse*8,0,7); ctx.fill();
+      }
+      ctx.beginPath(); ctx.arc(sx,y,found?4.2:2.8,0,7);
+      ctx.fillStyle=found?'rgba('+PH+',1)':'rgba('+GR+',.62)'; ctx.fill();
+      /* поток по дорожке */
+      var px=x0+((t*1.1+i*90)%(x1-x0));
+      ctx.beginPath(); ctx.arc(px,y,2.2,0,7);
+      ctx.fillStyle='rgba('+WH+',.6)'; ctx.fill();
+      ctx.beginPath(); ctx.moveTo(px-16,y); ctx.lineTo(px,y);
+      ctx.strokeStyle='rgba('+WH+',.18)'; ctx.lineWidth=1.2; ctx.stroke();
+    });
+    /* линия разбора идёт слева направо и подсвечивает найденное */
+    if(scan<=1){
+      var lx=x0+(x1-x0)*scan;
+      ctx.beginPath(); ctx.moveTo(lx,top-26); ctx.lineTo(lx,top+(LANES.length-1)*gap+26);
+      ctx.strokeStyle='rgba('+PH+',.7)'; ctx.lineWidth=1.6; ctx.stroke();
+    }
+    /* места текста и цифр стираются с холста, линии по ним не идут */
+    (function(){
+      var cr=c.getBoundingClientRect();
+      ['.hero .hero-kick','.hero h1','.hero .lead','.hero .hero-stats'].forEach(function(sel){
+        [].forEach.call(document.querySelectorAll(sel),function(el){
+          var r=el.getBoundingClientRect();
+          if(!r.width||!r.height) return;
+          ctx.clearRect(r.left-cr.left-10, r.top-cr.top-8, r.width+20, r.height+16);
+        });
+      });
+    })();
+    t++;
+  })();
+})();
+</script>
+</body>
+</html>
