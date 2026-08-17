@@ -1863,6 +1863,15 @@ footer .f-nav{gap:5px}
   .cover .cover-stats{align-self:stretch!important;max-width:none!important;padding-right:0!important}
   .cover .cover-stats .cs-c{max-width:none!important;width:100%!important}
 }
+
+/* на телефоне текстовая колонка раскрывается, и блок про Никиту встаёт после формы */
+@media(max-width:980px){
+  .lead-grid,.cta-in,.cta-grid{display:flex!important;flex-direction:column!important}
+  .lead-copy,.cta-copy{display:contents!important}
+  .lead-copy>*,.cta-copy>*{order:1}
+  .leadbox,.mform,.cta-form,form{order:2}
+  .lc-mgr{order:3!important;margin-top:22px}
+}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
