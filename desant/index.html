@@ -37,7 +37,7 @@
   --bg-deep:#0D0F0E; --bg:#131514; --surface:#191C1B; --surface-2:#212524; --surface-3:#2A2E2C;
   --text:#F0F2F1; --text-2:#C4CAC7; --text-muted:#939B98; --text-dim:#7C8480;
   --accent-txt:#B9C1BE; --sage:#9DB2A3;
-  --line:rgba(180,214,190,.10); --line-2:rgba(180,214,190,.18); --line-accent:rgba(208,232,101,.32);
+  --line:rgba(226,242,145,.10); --line-2:rgba(226,242,145,.18); --line-accent:rgba(208,232,101,.32);
   --glow:radial-gradient(58% 52% at 74% 6%, rgba(208,232,101,.10), transparent 72%);
   --card-shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 12px 40px -20px rgba(0,0,0,.6);
   --btn-shadow:0 6px 20px -8px rgba(208,232,101,.7);
@@ -1299,6 +1299,16 @@ footer .f-tg:hover,footer .f-legal a:hover{border-bottom-color:var(--accent)}
 /* ссылка на политику: текст спокойный, акцент только в полоске */
 .lf-check a,.agree a{color:var(--text-muted)!important;border-bottom-color:var(--line-accent)!important}
 .lf-check a:hover,.agree a:hover{color:var(--text)!important;border-bottom-color:var(--accent)!important}
+
+/* формы: подписи полей и заголовок выбора времени одним начертанием, мельче */
+.lf label,.f-l,.fld label,.slots .sl-h,.sl-h{font-family:var(--mono)!important;font-size:10.5px!important;
+  font-weight:400!important;letter-spacing:.05em!important;color:var(--text-muted)!important}
+.lf label .req{font-size:10.5px}
+
+/* подвал: названия колонок белым, содержимое серым */
+footer .f-k{color:var(--text)!important;font-weight:500}
+footer .f-nav a,footer .f-legal p,footer .f-legal a,footer .f-note{color:var(--text-muted)!important}
+footer .f-nav a:hover,footer .f-legal a:hover{color:var(--text)!important}
 </style>
 <style media="print">
 @page{size:A4 portrait;margin:15mm 13mm 17mm}

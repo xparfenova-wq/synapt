@@ -35,7 +35,7 @@ document.documentElement.setAttribute('data-theme',s)})();</script>
   --dur-fast:.16s; --dur:.2s; --dur-theme:.35s; --dur-reveal:.7s;
   --bg-deep:#0D0F0E; --bg:#131514; --surface:#191C1B; --surface-2:#212524; --surface-3:#2A2E2C;
   --text:#F0F2F1; --text-2:#C4CAC7; --text-muted:#A8B0AC; --text-dim:#929A96;
-  --line:rgba(180,214,190,.10); --line-2:rgba(180,214,190,.18); --line-accent:rgba(208,232,101,.32);
+  --line:rgba(226,242,145,.10); --line-2:rgba(226,242,145,.18); --line-accent:rgba(208,232,101,.32);
   --glow:radial-gradient(58% 52% at 74% 6%,rgba(208,232,101,.10),transparent 72%);
   --card-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 12px 40px -20px rgba(0,0,0,.6);
   --btn-shadow:0 6px 20px -8px rgba(208,232,101,.7);
@@ -979,6 +979,16 @@ footer{padding-bottom:104px}
 /* ссылка на политику: текст спокойный, акцент только в полоске */
 .lf-check a,.agree a{color:var(--text-muted)!important;border-bottom-color:var(--line-accent)!important}
 .lf-check a:hover,.agree a:hover{color:var(--text)!important;border-bottom-color:var(--accent)!important}
+
+/* формы: подписи полей и заголовок выбора времени одним начертанием, мельче */
+.lf label,.f-l,.fld label,.slots .sl-h,.sl-h{font-family:var(--mono)!important;font-size:10.5px!important;
+  font-weight:400!important;letter-spacing:.05em!important;color:var(--text-muted)!important}
+.lf label .req{font-size:10.5px}
+
+/* подвал: названия колонок белым, содержимое серым */
+footer .f-k{color:var(--text)!important;font-weight:500}
+footer .f-nav a,footer .f-legal p,footer .f-legal a,footer .f-note{color:var(--text-muted)!important}
+footer .f-nav a:hover,footer .f-legal a:hover{color:var(--text)!important}
 </style>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-512.png" sizes="512x512" type="image/png">
@@ -1110,7 +1120,7 @@ footer{padding-bottom:104px}
     <div class="lead-copy reveal">
       <div class="eyebrow"><span class="n">06</span> Следующий шаг</div>
       <h2><span class="nb">30 минут</span> в&nbsp;Zoom с&nbsp;партнёрами студии</h2>
-  <p class="lead">Вы&nbsp;рассказываете про&nbsp;бизнес, мы&nbsp;задаём вопросы и&nbsp;совместно определяем запрос. После присылаем запись разговора и&nbsp;разбор: что&nbsp;увидели и&nbsp;с&nbsp;чего рекомендуем начать</p>
+  <p class="lead">Вы&nbsp;рассказываете про&nbsp;бизнес, мы&nbsp;задаём вопросы и&nbsp;совместно определяем цели. После присылаем запись разговора и&nbsp;разбор: что&nbsp;увидели и&nbsp;с&nbsp;чего рекомендуем начать</p>
     </div>
     <div class="leadbox reveal d1">
       <form id="leadForm" novalidate>

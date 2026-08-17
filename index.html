@@ -38,7 +38,7 @@
 /* ТЁМНАЯ – графит с холодным зелёным подтоном */
 :root[data-theme="dark"]{
   --bg:#131514; --bg-deep:#0D0F0E; --surface:#191C1B; --surface-2:#212524; --surface-3:#2A2E2C;
-  --line:rgba(180,214,190,.10); --line-2:rgba(180,214,190,.18); --line-accent:rgba(208,232,101,.32);
+  --line:rgba(226,242,145,.10); --line-2:rgba(226,242,145,.18); --line-accent:rgba(208,232,101,.32);
   --text:#F0F2F1; --text-2:#C4CAC7; --text-muted:#939B98; --text-dim:#7E8582; --white:#fff;
   --accent-text:#D0E865;
   --glow:radial-gradient(58% 52% at 74% 6%, rgba(208,232,101,.10), transparent 72%);
@@ -1799,6 +1799,16 @@ footer .f-legal a::after{content:"";position:absolute;left:0;right:0;top:50%;
 /* ссылка на политику: текст спокойный, акцент только в полоске */
 .lf-check a,.agree a{color:var(--text-muted)!important;border-bottom-color:var(--line-accent)!important}
 .lf-check a:hover,.agree a:hover{color:var(--text)!important;border-bottom-color:var(--accent)!important}
+
+/* формы: подписи полей и заголовок выбора времени одним начертанием, мельче */
+.lf label,.f-l,.fld label,.slots .sl-h,.sl-h{font-family:var(--mono)!important;font-size:10.5px!important;
+  font-weight:400!important;letter-spacing:.05em!important;color:var(--text-muted)!important}
+.lf label .req{font-size:10.5px}
+
+/* подвал: названия колонок белым, содержимое серым */
+footer .f-k{color:var(--text)!important;font-weight:500}
+footer .f-nav a,footer .f-legal p,footer .f-legal a,footer .f-note{color:var(--text-muted)!important}
+footer .f-nav a:hover,footer .f-legal a:hover{color:var(--text)!important}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
@@ -2299,7 +2309,7 @@ function LEAD_API(url, opts){
     <div class="lead-copy reveal">
       <div class="eyebrow"><span class="n">07</span> Консультация</div>
       <h2><span class="nb">30 минут</span> в&nbsp;Zoom с&nbsp;партнёрами студии</h2>
-      <p class="lead">Вы&nbsp;рассказываете про&nbsp;бизнес, мы&nbsp;задаём вопросы и&nbsp;совместно определяем запрос. После присылаем запись разговора и&nbsp;разбор: что&nbsp;увидели и&nbsp;с&nbsp;чего рекомендуем начать</p>
+      <p class="lead">Вы&nbsp;рассказываете про&nbsp;бизнес, мы&nbsp;задаём вопросы и&nbsp;совместно определяем цели. После присылаем запись разговора и&nbsp;разбор: что&nbsp;увидели и&nbsp;с&nbsp;чего рекомендуем начать</p>
     </div>
     <div class="leadbox reveal">
     <!-- заявки: endpoint подключает разработчик, сейчас форма показывает подтверждение -->
@@ -3357,7 +3367,7 @@ function LEAD_API(url, opts){
   /* узкие места помечаем тем же зелёным, только ярче: оранжевый выбивался из стиля */
   function theme(){var l=document.documentElement.getAttribute('data-theme')==='light';
     WH=l?'26,30,28':'232,238,236'; GR=l?'96,106,102':'128,140,136';
-    PH=l?'118,146,34':'208,232,101'; WARN=l?'96,122,26':'168,232,186';}
+    PH=l?'118,146,34':'208,232,101'; WARN=l?'96,122,26':'226,242,145';}
   theme(); new MutationObserver(theme).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 
   /* участки идут двумя рядами, маршрут между ними читается как схема линий */
