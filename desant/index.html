@@ -25,8 +25,8 @@
    Графит и фосфорная зелень как индикатор. Manrope на тексте, JetBrains Mono на числах.
    Ритм секций задаётся классами r-*, которые генерирует build.py */
 :root{
-  --accent:#79C98E; --accent-glow:#96DCA8; --accent-deep:#4E8F62; --accent-light:#BEE9CB;
-  --accent-ink:#101312; --grad:linear-gradient(180deg,#96DCA8,#4E8F62); --danger:#FF7A8A;
+  --accent:#D0E865; --accent-glow:#E2F291; --accent-deep:#A6BF41; --accent-light:#EDF7BD;
+  --accent-ink:#12150A; --grad:linear-gradient(180deg,#E2F291,#A6BF41); --danger:#FF7A8A;
   --sans:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
   --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
   --r-xs:8px; --r-sm:10px; --r-md:16px; --r-lg:22px; --r-pill:999px;
@@ -37,19 +37,19 @@
   --bg-deep:#0D0F0E; --bg:#131514; --surface:#191C1B; --surface-2:#212524; --surface-3:#2A2E2C;
   --text:#F0F2F1; --text-2:#C4CAC7; --text-muted:#939B98; --text-dim:#7C8480;
   --accent-txt:#B9C1BE; --sage:#9DB2A3;
-  --line:rgba(180,214,190,.10); --line-2:rgba(180,214,190,.18); --line-accent:rgba(121,201,142,.32);
-  --glow:radial-gradient(58% 52% at 74% 6%, rgba(121,201,142,.10), transparent 72%);
+  --line:rgba(180,214,190,.10); --line-2:rgba(180,214,190,.18); --line-accent:rgba(208,232,101,.32);
+  --glow:radial-gradient(58% 52% at 74% 6%, rgba(208,232,101,.10), transparent 72%);
   --card-shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 12px 40px -20px rgba(0,0,0,.6);
-  --btn-shadow:0 6px 20px -8px rgba(121,201,142,.7);
+  --btn-shadow:0 6px 20px -8px rgba(208,232,101,.7);
 }
 :root[data-theme="light"]{
   --bg-deep:#F1F3F2; --bg:#FBFBFB; --surface:#FFFFFF; --surface-2:#F4F6F5; --surface-3:#EBEEEC;
   --text:#161918; --text-2:#3A3F3D; --text-muted:#69706D; --text-dim:#767D7A;
   --accent-txt:#4C534F; --sage:#5C6F62;
-  --line:#E6E9E8; --line-2:#DBDFDD; --line-accent:rgba(78,143,98,.35);
-  --glow:radial-gradient(58% 52% at 74% 6%, rgba(121,201,142,.08), transparent 72%);
+  --line:#E6E9E8; --line-2:#DBDFDD; --line-accent:rgba(139,166,44,.35);
+  --glow:radial-gradient(58% 52% at 74% 6%, rgba(208,232,101,.08), transparent 72%);
   --card-shadow:0 1px 2px rgba(20,25,22,.04), 0 14px 40px -24px rgba(30,50,38,.18);
-  --btn-shadow:0 6px 20px -10px rgba(78,143,98,.5);
+  --btn-shadow:0 6px 20px -10px rgba(139,166,44,.5);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:82px;overflow-x:hidden;overflow-x:clip}
@@ -58,8 +58,8 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:17
   transition:background .35s ease,color .35s ease;overflow-x:hidden;overflow-x:clip}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
 a{color:inherit;text-decoration:none} svg{display:block}
-::selection{background:rgba(121,201,142,.28)}
-:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(121,201,142,.35);border-radius:var(--r-sm)}
+::selection{background:rgba(208,232,101,.28)}
+:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(208,232,101,.35);border-radius:var(--r-sm)}
 section{position:relative}
 .mono{font-family:var(--mono);font-feature-settings:"liga" 0,"calt" 0}
 
@@ -430,7 +430,7 @@ footer .brand svg{height:28px}
   border-radius:50%;position:relative;cursor:pointer}
 .lf-check input[type=checkbox]:checked{border-color:var(--accent);background:var(--accent)}
 .lf-check input[type=checkbox]:checked::after{content:"";position:absolute;left:7px;top:3px;width:6px;height:11px;
-  border:2px solid var(--accent-ink,#101312);border-top:0;border-left:0;transform:rotate(45deg)}
+  border:2px solid var(--accent-ink,#12150A);border-top:0;border-left:0;transform:rotate(45deg)}
 .lf-check span{font-size:13.5px;line-height:1.5;color:var(--text-muted)}
 .lf-check a{color:var(--accent)}
 .mf-err,.mf-ok,.mf-fail{display:none;font-size:14px;line-height:1.5}
@@ -798,13 +798,13 @@ h3,.card h3,.arte h3,.contour h3,.step h3,.rel-card .rel-t{font-size:var(--fs-h4
 .sl-day b{display:block;font-size:17px;font-weight:600;color:var(--text)}
 .sl-day span{font-family:var(--mono);font-size:10.5px;color:var(--text-dim)}
 .sl-day:hover{border-color:var(--text-dim)}
-.sl-day.on{border-color:var(--accent);background:rgba(121,201,142,.1)}
+.sl-day.on{border-color:var(--accent);background:rgba(208,232,101,.1)}
 .sl-day.on b{color:var(--accent-text,var(--accent))}
 .sl-slots{display:flex;flex-wrap:wrap;gap:8px}
 .sl-t{min-height:44px;padding:10px 16px;border:1px solid var(--line-2);border-radius:var(--r-pill);
   background:transparent;color:var(--text-2);font-family:var(--mono);font-size:13px;cursor:pointer;transition:.16s}
 .sl-t:hover{border-color:var(--text-dim)}
-.sl-t.on{border-color:var(--accent);background:var(--accent);color:var(--accent-ink,#101312)}
+.sl-t.on{border-color:var(--accent);background:var(--accent);color:var(--accent-ink,#12150A)}
 .sl-note{margin-top:12px;font-size:13px;color:var(--text-dim);line-height:1.5}
 
 /* цифра на обложке кейса читается как метрика, а не как подпись */
@@ -1251,9 +1251,9 @@ footer .f-tg:hover,footer .f-legal a:hover{border-bottom-color:var(--accent)}
 :root,:root[data-theme="dark"],:root[data-theme="light"]{
   --bg-deep:#F4F6F5;--bg:#FFFFFF;--surface:#FFFFFF;--surface-2:#F6F8F7;--surface-3:#EDF0EE;
   --text:#161918;--text-2:#333836;--text-muted:#565C59;--text-dim:#6A716E;
-  --accent:#79C98E;--accent-glow:#79C98E;--accent-deep:#4E8F62;--accent-light:#BEE9CB;
-  --accent-txt:#3F6B4E;--sage:#4E8F62;--danger:#C2544D;
-  --line:#E1E5E3;--line-2:#D0D5D3;--line-accent:rgba(78,143,98,.45);
+  --accent:#D0E865;--accent-glow:#D0E865;--accent-deep:#A6BF41;--accent-light:#EDF7BD;
+  --accent-txt:#5F7A18;--sage:#A6BF41;--danger:#C2544D;
+  --line:#E1E5E3;--line-2:#D0D5D3;--line-accent:rgba(139,166,44,.45);
   --glow:none;--card-shadow:none;--btn-shadow:none;
   --maxw:none;--gutter:0px;--nav-h:0px;
 }
@@ -1408,7 +1408,7 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
    ========================================================== */
 (function () {
   var DPR = Math.min(devicePixelRatio || 1, 2);
-  var WH = '232,238,236', GR = '128,140,136', PH = '121,201,142';
+  var WH = '232,238,236', GR = '128,140,136', PH = '208,232,101';
   function rnd(s) { var x = Math.sin(s * 127.1) * 43758.5453; return x - Math.floor(x); }
   function vis(c) { var r = c.getBoundingClientRect(); return r.bottom > -200 && r.top < innerHeight + 200; }
   function fit(c, ratio) {

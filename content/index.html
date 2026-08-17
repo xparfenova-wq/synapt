@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0E1211;--surface:#151A18;--surface2:#1B221F;--line:#212826;--line2:#2C3532;
- --text:#E8EEEC;--text2:#C4CAC7;--muted:#9AA5A1;--dim:#6E7975;--accent:#79C98E;--ink:#0E1211;
+ --text:#E8EEEC;--text2:#C4CAC7;--muted:#9AA5A1;--dim:#6E7975;--accent:#D0E865;--ink:#0E1211;
  --sans:"Manrope",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;--gutter:24px;--r:16px}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.5;
@@ -41,7 +41,7 @@ h3{font-size:19px;font-weight:600;letter-spacing:-.015em}
 .tpl .cap p{font-size:13px;color:var(--muted);line-height:1.5}
 .tag{display:inline-flex;align-items:center;margin-top:9px;padding:4px 9px;border-radius:999px;
  border:1px solid var(--line2);font-family:var(--mono);font-size:10px;color:var(--text2)}
-.tag.anim{border-color:rgba(121,201,142,.5);color:var(--accent)}
+.tag.anim{border-color:rgba(208,232,101,.5);color:var(--accent)}
 .cv{position:relative;background:#0B0E0D;overflow:hidden}
 .cv.story{aspect-ratio:9/16}
 .cv.post{aspect-ratio:4/5}
@@ -61,12 +61,12 @@ h3{font-size:19px;font-weight:600;letter-spacing:-.015em}
 .spacer{flex:1}
 .net{position:absolute;inset:0;opacity:.55}
 .dot{position:absolute;width:4px;height:4px;border-radius:50%;background:#2F3B37}
-.dot.on{background:var(--accent);box-shadow:0 0 10px rgba(121,201,142,.55);animation:pulse 2.6s ease-in-out infinite}
+.dot.on{background:var(--accent);box-shadow:0 0 10px rgba(208,232,101,.55);animation:pulse 2.6s ease-in-out infinite}
 .ln{position:absolute;height:1px;background:#232A28;transform-origin:0 50%}
 @keyframes pulse{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:1;transform:scale(1.35)}}
 .ba{display:grid;gap:7px}
 .ba>div{border:1px solid #232A28;border-radius:10px;padding:9px 10px}
-.ba .after{border-color:rgba(121,201,142,.45);background:rgba(121,201,142,.07)}
+.ba .after{border-color:rgba(208,232,101,.45);background:rgba(208,232,101,.07)}
 .ba .k{font-family:var(--mono);font-size:9px;color:#6E7975;letter-spacing:.06em;margin-bottom:4px}
 .ba .v{font-size:11.5px;color:#DDE3E1}
 .cv .sign{margin-top:8px;font-family:var(--mono);font-size:10px;color:#8A928F;letter-spacing:.02em}
@@ -83,10 +83,10 @@ h3{font-size:19px;font-weight:600;letter-spacing:-.015em}
 .shot .head{display:flex;gap:4px;align-items:center;margin-bottom:2px}
 .shot .head span{width:5px;height:5px;border-radius:50%;background:#2C3532;display:block}
 .shot .l{height:5px;border-radius:3px;background:#232A28}
-.shot .l.a{background:rgba(121,201,142,.55)}
+.shot .l.a{background:rgba(208,232,101,.55)}
 .shot .msg{border-radius:8px;padding:6px 7px;font-size:9.5px;line-height:1.35;color:#C4CAC7;
  background:#171C1B;border:1px solid #232A28;max-width:88%}
-.shot .msg.me{align-self:flex-end;border-color:rgba(121,201,142,.4);background:rgba(121,201,142,.09)}
+.shot .msg.me{align-self:flex-end;border-color:rgba(208,232,101,.4);background:rgba(208,232,101,.09)}
 .photo{position:relative;border-radius:10px;overflow:hidden;
  background:linear-gradient(135deg,#1A211F 0%,#141918 55%,#101413 100%);border:1px solid #232A28}
 .photo::after{content:"фото или видео";position:absolute;inset:0;display:flex;align-items:center;
@@ -94,7 +94,7 @@ h3{font-size:19px;font-weight:600;letter-spacing:-.015em}
 .poll{border:1px solid #232A28;border-radius:10px;overflow:hidden}
 .poll div{padding:7px 9px;font-size:11px;color:#C4CAC7;border-bottom:1px solid #232A28}
 .poll div:last-child{border-bottom:0}
-.poll div.win{background:rgba(121,201,142,.12);color:#fff}
+.poll div.win{background:rgba(208,232,101,.12);color:#fff}
 .cv.post .txt{font-size:11.5px}
 .cv.post .calc .v{font-size:16px}
 .copy{margin-top:12px;background:var(--surface2);border:1px solid var(--line);border-radius:12px;padding:13px 15px}
@@ -201,14 +201,14 @@ h3{font-size:19px;font-weight:600;letter-spacing:-.015em}
 .cv.light{background:#F4F6F5}
 .cv.light .big,.cv.light .num{color:#0E1211}
 .cv.light .txt{color:#4A534F}
-.cv.light .mk{color:#3E7F55}
+.cv.light .mk{color:#6E8A1F}
 .cv.light .logo{color:#5A6360}
 .cv.light .sign{color:#6E7975}
 .cv.light .calc>div{border-color:#DDE2E0}
 .cv.light .calc .v{color:#0E1211}
 .cv.light .calc .c{color:#6E7975}
 .cv.light .chip{border-color:#D5DBD8;color:#5A6360}
-.cv.accent{background:#79C98E}
+.cv.accent{background:#D0E865}
 .cv.accent .big,.cv.accent .num{color:#0B1A10}
 .cv.accent .txt{color:#12331F}
 .cv.accent .mk{color:#0E2A18}
@@ -245,17 +245,17 @@ h3{font-size:19px;font-weight:600;letter-spacing:-.015em}
 .cv.light .ba>div{border-color:#DDE2E0;background:#fff}
 .cv.light .ba .k{color:#6E7975}
 .cv.light .ba .v{color:#0E1211}
-.cv.light .ba .after{border-color:#4E8F62;background:rgba(78,143,98,.1)}
+.cv.light .ba .after{border-color:#A6BF41;background:rgba(139,166,44,.1)}
 .cv.light .list .it{color:#3A423F}
-.cv.light .list .it b{color:#2F6B45}
+.cv.light .list .it b{color:#5F7A18}
 .cv.light .poll div{color:#3A423F;border-color:#DDE2E0}
-.cv.light .poll div.win{background:rgba(78,143,98,.14);color:#0E1211}
+.cv.light .poll div.win{background:rgba(139,166,44,.14);color:#0E1211}
 .cv.light .shot{background:#fff;border-color:#DDE2E0}
 .cv.light .shot .msg{background:#F4F6F5;border-color:#DDE2E0;color:#3A423F}
-.cv.light .shot .msg.me{background:rgba(78,143,98,.12);border-color:#9FC7AC}
+.cv.light .shot .msg.me{background:rgba(139,166,44,.12);border-color:#D5E79A}
 .cv.light .shot .l{background:#E2E7E5}
-.cv.light .shot .l.a{background:#7FB894}
-.cv.light .btn{background:#2F6B45;color:#fff}
+.cv.light .shot .l.a{background:#C2DB6E}
+.cv.light .btn{background:#5F7A18;color:#fff}
 .cv.light .bar{background:#DDE2E0}
 .cv.light .pre{color:#6E7975}
 /* карточки постов не растягиваются: пустоты под примером текста нет */
@@ -290,7 +290,7 @@ h3{font-size:19px;font-weight:600;letter-spacing:-.015em}
 .steps{display:grid;gap:8px;margin-top:12px;position:relative}
 .steps .st{border:1px solid #232A28;border-radius:9px;padding:9px 10px;font-size:11px;color:#C6CFCC;line-height:1.4}
 .steps .st b{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;color:#7E8582;margin-bottom:4px;font-weight:400}
-.steps .st.on{border-color:rgba(121,201,142,.45);color:#E8EEEC}
+.steps .st.on{border-color:rgba(208,232,101,.45);color:#E8EEEC}
 .lgv{display:flex;align-items:center;gap:22px;margin-top:12px}
 .lgv .logo{margin-top:0;color:#9AA5A1}
 .lgv .logo svg{height:16px}
@@ -329,7 +329,7 @@ h3{font-size:19px;font-weight:600;letter-spacing:-.015em}
         <div><span style="background:#F4F6F5"></span><b>#F4F6F5</b><i>молоко, светлый кадр</i></div>
         <div><span style="background:#E8EEEC"></span><b>#E8EEEC</b><i>иней, текст</i></div>
         <div><span style="background:#9AA5A1"></span><b>#9AA5A1</b><i>дым, вторичный текст</i></div>
-        <div><span style="background:#79C98E"></span><b>#79C98E</b><i>хвоя, акцент</i></div>
+        <div><span style="background:#D0E865"></span><b>#D0E865</b><i>хвоя, акцент</i></div>
       </div></div>
 <div class="rule w2"><div class="k">иерархия и&nbsp;кегли</div>
       <p>Две отдельные шкалы, внутри кадра смешивать их&nbsp;нельзя. В&nbsp;каждой ровно три ступени заголовка: крупная для&nbsp;одной мысли на&nbsp;весь кадр, средняя для&nbsp;заголовка с&nbsp;текстом, малая для&nbsp;кадра со&nbsp;схемой или&nbsp;скриншотом. Промежуточных значений не&nbsp;придумываем</p>
@@ -959,9 +959,9 @@ h3{font-size:19px;font-weight:600;letter-spacing:-.015em}
       'карточка     #151A18\n'+
       'текст        #E8EEEC\n'+
       'вторичный    #9AA5A1\n'+
-      'акцент       #79C98E\n\n'+
+      'акцент       #D0E865\n\n'+
       'CSS\n'+
-      ':root{--bg:#0E1211;--surface:#151A18;--text:#E8EEEC;--muted:#9AA5A1;--accent:#79C98E}\n');
+      ':root{--bg:#0E1211;--surface:#151A18;--text:#E8EEEC;--muted:#9AA5A1;--accent:#D0E865}\n');
   };
   var pd=document.getElementById('dlPdf');
   if(pd) pd.onclick=function(){ window.print() };

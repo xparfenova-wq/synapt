@@ -25,10 +25,10 @@
    Manrope нежирным, электрик-синий акцент, один акцент на всё
    ========================================================= */
 :root{
-  --accent:#79C98E; --accent-glow:#96DCA8; --accent-deep:#4E8F62; --accent-light:#BEE9CB;
-  --accent-ink:#101312;
-  --grad:linear-gradient(180deg,#96DCA8,#4E8F62);
-  --success:#79C98E; --danger:#FF7A8A;
+  --accent:#D0E865; --accent-glow:#E2F291; --accent-deep:#A6BF41; --accent-light:#EDF7BD;
+  --accent-ink:#12150A;
+  --grad:linear-gradient(180deg,#E2F291,#A6BF41);
+  --success:#D0E865; --danger:#FF7A8A;
   --r-xs:8px; --r-sm:10px; --r-md:16px; --r-lg:22px; --r-pill:999px;
   --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
   --sans:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
@@ -38,23 +38,23 @@
 /* ТЁМНАЯ – графит с холодным зелёным подтоном */
 :root[data-theme="dark"]{
   --bg:#131514; --bg-deep:#0D0F0E; --surface:#191C1B; --surface-2:#212524; --surface-3:#2A2E2C;
-  --line:rgba(180,214,190,.10); --line-2:rgba(180,214,190,.18); --line-accent:rgba(121,201,142,.32);
+  --line:rgba(180,214,190,.10); --line-2:rgba(180,214,190,.18); --line-accent:rgba(208,232,101,.32);
   --text:#F0F2F1; --text-2:#C4CAC7; --text-muted:#939B98; --text-dim:#7E8582; --white:#fff;
-  --accent-text:#79C98E;
-  --glow:radial-gradient(58% 52% at 74% 6%, rgba(121,201,142,.10), transparent 72%);
+  --accent-text:#D0E865;
+  --glow:radial-gradient(58% 52% at 74% 6%, rgba(208,232,101,.10), transparent 72%);
   --card-shadow:0 1px 0 rgba(255,255,255,.04) inset, 0 12px 40px -20px rgba(0,0,0,.6);
-  --btn-shadow:0 6px 20px -8px rgba(121,201,142,.7);
+  --btn-shadow:0 6px 20px -8px rgba(208,232,101,.7);
   --accent-txt:#B9C1BE; --sage:#9DB2A3;
 }
 /* СВЕТЛАЯ – молочно-белый */
 :root[data-theme="light"]{
   --bg:#FBFBFB; --bg-deep:#F1F3F2; --surface:#FFFFFF; --surface-2:#F4F6F5; --surface-3:#EBEEEC;
-  --line:#E6E9E8; --line-2:#DBDFDD; --line-accent:rgba(78,143,98,.35);
+  --line:#E6E9E8; --line-2:#DBDFDD; --line-accent:rgba(139,166,44,.35);
   --text:#161918; --text-2:#3A3F3D; --text-muted:#636A67; --text-dim:#616865; --white:#161918;
-  --accent-text:#3E7F55;
-  --glow:radial-gradient(58% 52% at 74% 6%, rgba(121,201,142,.08), transparent 72%);
+  --accent-text:#6E8A1F;
+  --glow:radial-gradient(58% 52% at 74% 6%, rgba(208,232,101,.08), transparent 72%);
   --card-shadow:0 1px 2px rgba(20,25,22,.04), 0 14px 40px -24px rgba(30,50,38,.18);
-  --btn-shadow:0 6px 20px -10px rgba(78,143,98,.5);
+  --btn-shadow:0 6px 20px -10px rgba(139,166,44,.5);
   --accent-txt:#48504C; --sage:#566A5D;
   /* на молочном фоне розовый #FF7A8A давал 2,5:1 – ошибку формы было почти не видно */
   --danger:#C62B3E;
@@ -67,7 +67,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:17
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 a{color:inherit;text-decoration:none}
 svg{display:block}
-::selection{background:rgba(121,201,142,.28)}
+::selection{background:rgba(208,232,101,.28)}
 
 /* ---------- шапка ---------- */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;height:66px;display:flex;align-items:center;
@@ -199,7 +199,7 @@ h3{font-size:21px;font-weight:620;letter-spacing:-.01em;line-height:1.25}
 .ccard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;display:flex;flex-direction:column;gap:14px;height:auto}
 .cc-top{display:flex;align-items:center;justify-content:space-between}
 .cc-tag{font-family:var(--mono);font-size:11px;letter-spacing:.045em;color:var(--accent-text);
-  border:1px solid rgba(121,201,142,.3);padding:5px 11px;border-radius:var(--r-pill)}
+  border:1px solid rgba(208,232,101,.3);padding:5px 11px;border-radius:var(--r-pill)}
 .cc-ind{font-family:var(--mono);font-size:11px;color:var(--text-dim)}
 /* высота заголовка держит карточки в одну линию.
    flex тут применять нельзя: он разбивает строку заголовка на отдельные блоки */
@@ -306,7 +306,7 @@ h3{font-size:21px;font-weight:620;letter-spacing:-.01em;line-height:1.25}
   transition:color .16s ease,border-color .16s ease,background-color .16s ease}
 .tfx-mode:hover{color:var(--text-2);border-color:var(--line-2)}
 .tfx-mode[aria-pressed="true"]{color:var(--text);border-color:var(--line-accent);background:var(--surface-2)}
-.tfx-mode:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(121,201,142,.35)}
+.tfx-mode:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(208,232,101,.35)}
 .tfx-count{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--text-dim);margin-top:18px;
   padding-top:16px;border-top:1px solid var(--line)}
 .tfx-count b{font-weight:500;font-size:16px;color:var(--text);letter-spacing:-.02em}
@@ -452,7 +452,7 @@ h3{font-size:21px;font-weight:620;letter-spacing:-.01em;line-height:1.25}
 .svc>.s3{grid-column:span 3}
 .svc>.s4{grid-column:span 4}
 .svc>.s6{grid-column:span 6}
-.svc .accent{background:linear-gradient(160deg,rgba(121,201,142,.10),transparent 62%);border-color:var(--line-accent)}
+.svc .accent{background:linear-gradient(160deg,rgba(208,232,101,.10),transparent 62%);border-color:var(--line-accent)}
 @media(max-width:1080px){.svc{grid-template-columns:repeat(2,1fr)}.svc>*{grid-column:span 1!important}
   .svc>.s6{grid-column:1/-1!important}}
 @media(max-width:560px){.svc{grid-template-columns:1fr}
@@ -707,9 +707,9 @@ footer .fmeta a:hover{color:var(--text)}
 }
 
 /* ---------- полоса-мысль ---------- */
-.manifest{border-left:2px solid var(--accent,#79C98E);padding:10px 0 10px 26px;max-width:900px}
+.manifest{border-left:2px solid var(--accent,#D0E865);padding:10px 0 10px 26px;max-width:900px}
 .manifest p{font-size:clamp(21px,2.7vw,29px);font-weight:500;letter-spacing:-.015em;line-height:1.32}
-.manifest b{color:var(--accent-txt,#96DCA8);font-weight:600}
+.manifest b{color:var(--accent-txt,#E2F291);font-weight:600}
 
 /* форма: дыхание и чекбокс */
 #leadForm .lf-row{gap:26px}
@@ -727,8 +727,8 @@ footer .fmeta a:hover{color:var(--text)}
 /* согласие обязательно, поэтому отметка круглая: круг читается как обязательный выбор */
 #leadForm .lf-check input[type=checkbox]{appearance:none;-webkit-appearance:none;flex:none;width:22px;height:22px;border-radius:50%;
   border:1.5px solid var(--line-2);background:transparent;cursor:pointer;position:relative;margin:1px 0 0;transition:.16s}
-#leadForm .lf-check input[type=checkbox]:hover{border-color:var(--accent);background:rgba(121,201,142,.07)}
-#leadForm .lf-check input[type=checkbox]:checked{border-color:var(--accent);background:rgba(121,201,142,.14)}
+#leadForm .lf-check input[type=checkbox]:hover{border-color:var(--accent);background:rgba(208,232,101,.07)}
+#leadForm .lf-check input[type=checkbox]:checked{border-color:var(--accent);background:rgba(208,232,101,.14)}
 #leadForm .lf-check input[type=checkbox]:checked::after{content:"";position:absolute;left:50%;top:48%;width:5px;height:9.5px;
   border:solid var(--accent);border-width:0 2px 2px 0;transform:translate(-50%,-58%) rotate(45deg)}
 #leadForm .lf-check input[type=checkbox]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
@@ -972,13 +972,13 @@ b .nb,h1 .nb,h2 .nb,h3 .nb,h4 .nb,p .nb,summary .nb,.ans .nb,.rm-d .nb,.rd .nb{
 .sl-day b{display:block;font-size:17px;font-weight:600;color:var(--text)}
 .sl-day span{font-family:var(--mono);font-size:10.5px;color:var(--text-dim)}
 .sl-day:hover{border-color:var(--text-dim)}
-.sl-day.on{border-color:var(--accent);background:rgba(121,201,142,.1)}
+.sl-day.on{border-color:var(--accent);background:rgba(208,232,101,.1)}
 .sl-day.on b{color:var(--accent-text,var(--accent))}
 .sl-slots{display:flex;flex-wrap:wrap;gap:8px}
 .sl-t{min-height:44px;padding:10px 16px;border:1px solid var(--line-2);border-radius:var(--r-pill);
   background:transparent;color:var(--text-2);font-family:var(--mono);font-size:13px;cursor:pointer;transition:.16s}
 .sl-t:hover{border-color:var(--text-dim)}
-.sl-t.on{border-color:var(--accent);background:var(--accent);color:var(--accent-ink,#101312)}
+.sl-t.on{border-color:var(--accent);background:var(--accent);color:var(--accent-ink,#12150A)}
 .sl-note{margin-top:12px;font-size:13px;color:var(--text-dim);line-height:1.5}
 
 /* ядро студии: партнёры и подключаемые специалисты */
@@ -995,7 +995,7 @@ b .nb,h1 .nb,h2 .nb,h3 .nb,h4 .nb,p .nb,summary .nb,.ans .nb,.rm-d .nb,.rd .nb{
   transform:translate(-50%,-50%) rotate(calc(var(--a)*1deg)) translate(min(300px,40vw)) rotate(calc(var(--a)*-1deg));
   background:var(--bg);border:1px solid var(--line-2);border-radius:var(--r-pill);padding:11px 15px;min-height:44px;
   color:var(--text-dim);font-family:var(--mono);font-size:11.5px;cursor:pointer;transition:.18s;white-space:nowrap;z-index:2}
-.tp-s:hover,.tp-s.on{border-color:var(--accent);color:var(--accent-text,var(--accent));background:rgba(121,201,142,.1)}
+.tp-s:hover,.tp-s.on{border-color:var(--accent);color:var(--accent-text,var(--accent));background:rgba(208,232,101,.1)}
 .tp-links{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
 .tp-links line{stroke:var(--line-2);stroke-width:1}
 .tp-hint{margin-top:20px;text-align:center;font-size:13.5px;color:var(--text-muted);min-height:44px;line-height:1.5;
@@ -1096,7 +1096,7 @@ b .nb,h1 .nb,h2 .nb,h3 .nb,h4 .nb,p .nb,summary .nb,.ans .nb,.rm-d .nb,.rd .nb{
 /* разбор кейса открывается поверх страницы, карточки в ленте остаются одинаковой высоты */
 .cs-modal{position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;padding:20px}
 .cs-modal[hidden]{display:none}
-.cs-back{position:absolute;inset:0;background:rgba(8,12,10,.62);backdrop-filter:blur(3px)}
+.cs-back{position:absolute;inset:0;background:rgba(8,12,10,.16);backdrop-filter:blur(7px)}
 .cs-win{position:relative;width:min(680px,100%);max-height:min(86vh,900px);overflow:auto;
   background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
   padding:clamp(26px,4vw,40px);box-shadow:0 24px 70px rgba(0,0,0,.28)}
@@ -1760,6 +1760,12 @@ footer .f-legal a::after{content:"";position:absolute;left:0;right:0;top:50%;
 .lf-check{align-items:flex-start!important}
 .lf-check input{width:20px!important;height:20px!important;margin-top:2px!important;align-self:flex-start!important}
 .lf-check span{padding-top:1px}
+
+/* на широком экране три цифры, на телефоне две: цена уходит в блок услуг */
+@media(max-width:760px){.hero-meta .m-price{display:none}}
+@media(min-width:981px){.hero-meta{grid-template-columns:repeat(4,1fr)}}
+/* кнопки первого экрана выровнены по правому краю вместе с меню */
+.nav .wrap>.tgl:first-of-type{margin-left:auto}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
@@ -1830,6 +1836,7 @@ function LEAD_API(url, opts){
       <h1 class="reveal d1">Соединяем AI, процессы и&nbsp;людей в&nbsp;устойчивую рабочую систему</h1>
       
       <div class="hero-meta reveal d4">
+          <div class="m m-price"><b><span class="nb">19 900 ₽</span></b><span>чекап бизнеса за&nbsp;две недели</span></div>
                 <div class="m"><b><span class="nb">3-5 недель</span></b><span>до&nbsp;готового продукта</span></div>
         <div class="m"><b><span class="nb">60 дней</span></b><span>на&nbsp;связи после завершения</span></div>
         <div class="m m-cta"><a class="btn pri lg" href="#lead">Обсудить задачу</a></div>
@@ -2491,13 +2498,13 @@ function LEAD_API(url, opts){
 (function () {
   var DPR = Math.min(devicePixelRatio || 1, 2);
   /* палитра следует за темой страницы: на светлом узлы тёмные, на тёмном светлые */
-  var WH = '232,238,236', GR = '128,140,136', PH = '121,201,142', A = 1, LIGHT = false;
+  var WH = '232,238,236', GR = '128,140,136', PH = '208,232,101', A = 1, LIGHT = false;
   function applyTheme() {
     var light = document.documentElement.getAttribute('data-theme') === 'light';
     LIGHT = light;
     WH = light ? '18,22,20' : '232,238,236';
     GR = light ? '38,46,43' : '128,140,136';
-    PH = light ? '40,124,68' : '121,201,142';
+    PH = light ? '112,140,32' : '208,232,101';
     A = light ? 2.6 : 1.25;
   }
   applyTheme();
@@ -3308,11 +3315,11 @@ function LEAD_API(url, opts){
 (function(){
   var c=document.querySelector('.chk-fx'); if(!c) return;
   var DPR=Math.min(devicePixelRatio||1,2), ctx=c.getContext('2d'), W=0,H=0,t=0;
-  var WH='232,238,236', GR='128,140,136', PH='121,201,142', WARN='121,201,142';
+  var WH='232,238,236', GR='128,140,136', PH='208,232,101', WARN='208,232,101';
   /* узкие места помечаем тем же зелёным, только ярче: оранжевый выбивался из стиля */
   function theme(){var l=document.documentElement.getAttribute('data-theme')==='light';
     WH=l?'26,30,28':'232,238,236'; GR=l?'96,106,102':'128,140,136';
-    PH=l?'46,124,74':'121,201,142'; WARN=l?'32,104,58':'168,232,186';}
+    PH=l?'118,146,34':'208,232,101'; WARN=l?'96,122,26':'168,232,186';}
   theme(); new MutationObserver(theme).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 
   /* участки идут двумя рядами, маршрут между ними читается как схема линий */
@@ -3406,9 +3413,9 @@ function LEAD_API(url, opts){
   var c=document.getElementById('tsyn'); if(!c) return;
   var DPR=Math.min(devicePixelRatio||1,2), ctx=c.getContext('2d'), W=0,H=0,t=0,S=1,NAR=false;
   var TOUCH=matchMedia('(hover: none)').matches;
-  var WH='232,238,236', GR='128,140,136', PH='121,201,142';
+  var WH='232,238,236', GR='128,140,136', PH='208,232,101';
   function theme(){var l=document.documentElement.getAttribute('data-theme')==='light';
-    WH=l?'26,30,28':'232,238,236'; GR=l?'40,48,45':'128,140,136'; PH=l?'46,124,74':'121,201,142';}
+    WH=l?'26,30,28':'232,238,236'; GR=l?'40,48,45':'128,140,136'; PH=l?'118,146,34':'208,232,101';}
   theme(); new MutationObserver(theme).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 
   var BIZ=['заявки','продажи','закупки','документы','клиенты','знания'];
