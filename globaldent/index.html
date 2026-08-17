@@ -1255,6 +1255,23 @@ footer .f-tg:hover,footer .f-legal a:hover{border-bottom-color:var(--accent)}
 
 .metric-more .mm-r{display:none!important}
 .metric.metric-more{align-self:center;gap:0}
+
+/* согласие ближе к предыдущему блоку и на пару пикселей выше */
+.lf-check{margin-top:-6px!important;padding-top:0!important}
+.lf-check input{margin-top:0!important}
+.lf-check span{padding-top:0}
+.mform .lf-check{margin-top:-8px!important}
+
+/* обложка: анимация и текст центрируются друг относительно друга */
+.cover .cover-grid{align-items:center}
+.cover-stats{align-self:center}
+/* схема и подпись стоят выше, вплотную к заголовку блока */
+.fig-side.big{align-items:start}
+.fig-side.big .figbox{margin-top:0}
+.fig-side.big .fig-txt{padding-top:0;margin-top:0}
+#spread .sec-head,#teams .sec-head{margin-bottom:22px}
+/* блок итоговых цифр закрывается такой же линией, как открывается */
+#metrics .bignum{border-bottom:1px solid var(--line-2)!important;padding-bottom:6px}
 </style>
 <style media="print">
 @page{size:A4 portrait;margin:15mm 13mm 17mm}
@@ -1442,7 +1459,8 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
     st.rebuild = build;
     build(); watch(c, build);
     var t = 0;
-    (function frame() { requestAnimationFrame(frame); if (!vis(c)) { t++; return; } draw(st, t); t++; })();
+    var seen = false;
+  (function frame() { requestAnimationFrame(frame); if (!vis(c)) { if (seen) t++; return; } seen = true; draw(st, t); t++; })();
     return st;
   }
 
@@ -2123,7 +2141,7 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
       var ans = A[idx];
       var ar = rows(ctx, ans.t, bw - 26);
       var attach = narrow ? 20 : 22;
-      var ah = ar.length * lh + 17 + attach;
+      var ah = ar.length * lh + 15 + attach;
       var ax = W - pad - bw, ay = H - pad - ah - (narrow ? 10 : 12);
       if (ra > 0) {
         ctx.textAlign = 'left'; ctx.fillStyle = 'rgba(' + PH + ',' + (.7 * ra) + ')';
@@ -2132,7 +2150,7 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
         ctx.font = fs + 'px "JetBrains Mono", ui-monospace, monospace';
         ctx.fillStyle = 'rgba(' + WH + ',' + (.92 * ra) + ')';
         ar.forEach(function (line, j) { ctx.fillText(line, ax + 13, ay + 13 + j * lh + 3); });
-        var fy = ay + ar.length * lh + 12;
+        var fy = ay + ar.length * lh + 8;
         if (ra > .55) {
           var la = (ra - .55) / .45;
           if (ans.f) {

@@ -1778,6 +1778,20 @@ footer .f-legal a::after{content:"";position:absolute;left:0;right:0;top:50%;
 .legal div{line-height:1.45}
 .f-nav a,.f-links a{margin-bottom:8px}
 .f-col .f-k,.f-title,.legal b{color:var(--text)}
+
+/* согласие ближе к предыдущему блоку и на пару пикселей выше */
+.lf-check{margin-top:-6px!important;padding-top:0!important}
+.lf-check input{margin-top:0!important}
+.lf-check span{padding-top:0}
+.mform .lf-check{margin-top:-8px!important}
+
+/* кейсы: карточки одной высоты, анимация тянется до кнопки, «Подробнее» на одной линии */
+.crail{align-items:stretch}
+.ccard{display:flex;flex-direction:column}
+.ccard .cc-fig{flex:1 1 auto;display:flex;align-items:stretch;margin-bottom:16px}
+.ccard .cc-fig canvas{width:100%;height:100%;min-height:150px}
+.ccard .morelink,.ccard .cs-open{margin-top:0}
+.ccard .cc-task{min-height:0}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
@@ -2537,14 +2551,15 @@ function LEAD_API(url, opts){
      а рисует один устоявшийся кадр, когда попадает в экран, и замирает */
   var CALM = window.matchMedia ? matchMedia('(prefers-reduced-motion:reduce)').matches : false;
   function loop(c, draw, ratio) {
-    var st = {}, calmDone = false;
+    var st = {}, calmDone = false, seen = false;
     function build() { var f = fit(c, ratio); st.ctx = f[0]; st.W = f[1]; st.H = f[2]; calmDone = false; if (st.onbuild) st.onbuild(); }
     st.rebuild = build;
     build(); addEventListener('resize', build);
     var t = 0;
     (function frame() {
       requestAnimationFrame(frame);
-      if (!vis(c)) { if (!CALM) t++; return; }
+      if (!vis(c)) { if (!CALM && seen) t++; return; }
+      seen = true;
       if (CALM) { if (calmDone) return; draw(st, 600); calmDone = true; return; }
       draw(st, t); t++;
     })();
