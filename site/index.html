@@ -2537,6 +2537,68 @@ footer .f-k{font-family:var(--mono)!important;font-size:11.5px!important}
   .hero .eyebrow{margin-bottom:14px!important}
   .lc-mgr-t b{font-size:16px}
 }
+
+
+/* ==========================================================
+   ПРИЁМКА ГЛАВНОЙ – правки по отчётам
+   ========================================================== */
+
+/* 1. Карточки кейсов 03-06 кликаются целиком.
+   Оверлей несёт двойной класс cc-hit cs-open, и правила для кнопки
+   «Подробнее» (align-self:flex-start, margin-top:auto) отменяли растяжку
+   от inset:0 и схлопывали высоту в ноль. Возвращаем растяжку. */
+.ccard .cc-hit,.ccard button.cc-hit,.ccard a.cc-hit{
+  position:absolute!important;inset:0!important;
+  align-self:stretch!important;justify-self:stretch!important;
+  margin:0!important;padding:0!important;width:auto!important;height:auto!important;
+  z-index:1;border-radius:inherit;background:transparent;border:0;cursor:pointer}
+
+/* 2. Первый экран: чип встаёт над кикером и заголовком */
+@media(min-width:981px){
+  /* обложка: чип встаёт над кикером, порядок строк в левой колонке.
+     Цифры остаются справа внизу – подъём в верхнюю треть кадра пробовали
+     дважды, оба раза цифры ложились на самую яркую часть графики
+     и подпись переставала читаться. Читаемость важнее симметрии с
+     внутренними страницами, где графика в этом месте почти пустая */
+  .hero-grid>div{grid-template-rows:auto auto auto!important;align-items:end}
+  .hero-grid .hero-chip{grid-column:1;grid-row:1;align-self:end;justify-self:start}
+  .hero-grid .eyebrow{grid-column:1;grid-row:2;align-self:end}
+  .hero-grid h1{grid-column:1;grid-row:3;align-self:end}
+  .hero-meta{grid-column:2!important;grid-row:1/4!important;align-self:end!important}
+}
+/* на телефоне цифры остаются под заголовком: выше кадра они ложатся
+   на самую яркую часть графики и хвост «₽» уходит за правый край */
+
+/* 3. Цена «19 900 ₽» видна и на телефоне – это флагманская цифра страницы */
+@media(max-width:760px){.hero-meta .m-price{display:flex!important}}
+
+/* 4. Чип на первом экране – как на остальных семи страницах */
+.hero .hero-chip{display:inline-flex;align-items:center;gap:8px;width:fit-content;
+  font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.02em;
+  padding:6px 14px;border-radius:16px;background:transparent;
+  color:var(--accent);border:1px solid var(--line-accent);
+  margin:0 0 16px;font-feature-settings:"case" 1,"liga" 0}
+@media(min-width:761px){.hero .hero-chip{font-size:12px}}
+
+/* 5. Подвал: пункты разделов ровно в две колонки, как на чекапе и безопасности */
+footer .f-nav,footer .f-nav2{display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:6px 18px!important;max-width:280px;align-content:start}
+footer .f-nav .f-k,footer .f-nav2 .f-k{grid-column:1/-1}
+footer .f-nav a,footer .f-nav2 a{white-space:nowrap}
+
+/* 6. Telegram в подвале подчёркнут – сброс footer a затирал бордюр */
+footer .f-tg,footer a.f-tg{border-bottom:1px solid var(--line-2)!important;
+  padding-bottom:2px!important;text-decoration:none!important}
+footer .f-tg:hover,footer a.f-tg:hover{border-bottom-color:var(--accent)!important}
+
+/* 7. h3 одного веса и одного межстрочного во всех разделах */
+h3,.step-t,.rm-t,.ccard h3,.svc h3,.faq h3{font-weight:600!important;line-height:1.30!important}
+
+/* 8. Подпись под кнопкой формы: перенос по фразе, а не жёстким br */
+.lf-after br{display:none}
+.lf-after{text-wrap:pretty}
+
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
@@ -2608,11 +2670,12 @@ function LEAD_API(url, opts){
 <header class="hero"><canvas id="synFx" data-fx="converge"></canvas><div class="wrap">
   <div class="hero-grid">
     <div>
+      <div class="hero-chip reveal">Synapt</div>
       <div class="eyebrow reveal">Студия AI и&nbsp;IT-разработки для&nbsp;бизнеса</div>
       <h1 class="reveal d1">Соединяем AI, процессы и&nbsp;людей в&nbsp;устойчивую рабочую систему</h1>
       
       <div class="hero-meta reveal d4">
-          <div class="m m-price"><b><span class="nb">19 900<span class="tail">&nbsp;₽</span></span></b><span>чекап бизнеса за&nbsp;две недели</span></div>
+          <div class="m m-price"><b><span class="nb">19 900<span class="tail">&nbsp;руб.</span></span></b><span>чекап бизнеса за&nbsp;две недели</span></div>
                 <div class="m"><b><span class="nb">3-5<span class="tail">&nbsp;недель</span></span></b><span>до&nbsp;готового продукта</span></div>
         <div class="m"><b><span class="nb">60<span class="tail">&nbsp;дней</span></span></b><span>на&nbsp;связи после завершения</span></div>
         <div class="m m-cta"><a class="btn pri lg" href="#lead">Обсудить задачу</a></div>
@@ -2665,7 +2728,7 @@ function LEAD_API(url, opts){
         <div class="chk reveal">
           <div class="chk-box"><canvas class="chk-fx" aria-hidden="true"></canvas></div>
           <div class="chk-side">
-            <div class="chk-price">19&nbsp;900&nbsp;₽</div>
+            <div class="chk-price">19&nbsp;900&nbsp;руб.</div>
             <div class="chk-note">две недели, сумма фиксированная</div>
             <a class="btn ghost" href="/checkup/">Подробнее</a>
           </div>
@@ -3069,7 +3132,7 @@ function LEAD_API(url, opts){
         <span>Согласен на&nbsp;обработку персональных данных и&nbsp;принимаю <br class="br-web"><a href="/privacy" target="_blank">политику обработки персональных данных</a></span></label>
       <div class="lf-err" id="lfErr" role="alert">Не&nbsp;хватает вашего имени, контактов и&nbsp;согласия на&nbsp;обработку персональных данных</div>
       <button class="btn pri lg" type="submit">Оставить заявку</button>
-      <p class="lf-after">Подтвердим встречу в&nbsp;ответном сообщении<br>в&nbsp;течение <span class="nb">1</span> рабочего дня</p>
+      <p class="lf-after">Подтвердим встречу в&nbsp;ответном сообщении <span class="nb">в&nbsp;течение 1&nbsp;рабочего дня</span></p>
     </form>
     <div class="lf-done" id="lfDone">
       <b>Заявка принята</b>

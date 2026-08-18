@@ -9,13 +9,13 @@
 <meta property="og:locale" content="ru_RU">
 <meta property="og:site_name" content="Synapt">
 <meta property="og:title" content="За&nbsp;две недели видно, где теряете деньги и&nbsp;что&nbsp;делать первым">
-<meta property="og:description" content="AI-чекап бизнеса за&nbsp;две недели: три Zoom, карта всех процессов компании с&nbsp;узкими местами, приоритеты, план с&nbsp;вилкой бюджета и&nbsp;собранный агент на&nbsp;ваших материалах. 19 900 ₽">
+<meta property="og:description" content="AI-чекап бизнеса за&nbsp;две недели: три Zoom, карта всех процессов компании с&nbsp;узкими местами, приоритеты, план с&nbsp;вилкой бюджета и&nbsp;собранный агент на&nbsp;ваших материалах. 19 900 руб.">
 <meta property="og:url" content="/checkup/">
 <meta property="og:image" content="https://synapt.tech/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="AI-чекап бизнеса за&nbsp;две недели: три Zoom, карта всех процессов компании с&nbsp;узкими местами, приоритеты, план с&nbsp;вилкой бюджета и&nbsp;собранный агент на&nbsp;ваших материалах. 19&nbsp;900 ₽">
+<meta name="description" content="AI-чекап бизнеса за&nbsp;две недели: три Zoom, карта всех процессов компании с&nbsp;узкими местами, приоритеты, план с&nbsp;вилкой бюджета и&nbsp;собранный агент на&nbsp;ваших материалах. 19&nbsp;900 руб.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -1658,6 +1658,87 @@ footer .f-nav a,footer .f-nav2 a{font-size:14.5px!important;line-height:1.45!imp
   .hero h1{margin-bottom:10px}
   .nk,.nxt .nk{font-size:11.5px!important}
 }
+/* ============================================================
+   ПРИЁМКА: правки страницы «чекап»
+   ============================================================ */
+
+/* 1. цифры метрик не рассыпаются по буквам.
+   Скрипт набора оборачивает каждый знак в .tch, а правило
+   .hs b .tch{display:inline-block} делало из каждой буквы отдельное
+   слово, и word-spacing:-.2em превращался в зазор между всеми знаками.
+   Возвращаем символам строчный поток и снимаем word-spacing там,
+   где текст уже разложен на span. */
+.hs b .tch,.ph-num b .tch,.metric b .tch,.plan .sum .tch{
+  display:inline!important}
+/* правило .hero-stats .hs b span{margin-left:.28em} писалось для хвоста
+   единицы измерения, но задевало каждый символьный span набора и давало
+   10,6px между всеми знаками. Символам возвращаем нулевые поля,
+   отступ остаётся только у настоящего хвоста .m-t */
+.hero-stats .hs b span.tch,.hs b span.tch,.ph-num b span.tch,
+.hero-stats .hs b .m-t span.tch,.hs b .m-t span.tch,.ph-num b .m-t span.tch{
+  margin:0!important;padding:0!important;display:inline!important}
+.hero-stats .hs b>.m-t,.hs b>.m-t,.ph-num b>.m-t{margin-left:.16em!important}
+/* символы уже строчные, поэтому отрицательный word-spacing снова
+   действует только на настоящий пробел разряда «19 900», а не на стыки
+   между буквами. Возвращаем его, иначе моноширинный пробел разрывает число */
+.hs b,.ph-num b,.metric b,.plan .sum{word-spacing:-.28em!important}
+/* пробел в разряде остаётся узким, но задаётся самим символом,
+   а не отрицательным word-spacing на всём блоке */
+.hs b,.ph-num b{letter-spacing:-.03em}
+
+/* 2. бургер живёт только на узком экране: на 1440 в шапке
+   остаются тема и Telegram, как на остальных страницах */
+@media screen and (min-width:981px){
+  .nav .burger,.nav #burger,#burger,.burger{display:none!important}
+}
+
+/* 3. графика первого экрана затухает книзу, а не обрывается в край */
+#chkFx{
+  -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 46%,rgba(0,0,0,.5) 72%,transparent 96%);
+  mask-image:linear-gradient(to bottom,#000 0,#000 46%,rgba(0,0,0,.5) 72%,transparent 96%)}
+/* на телефоне холст выше вьюпорта, поэтому затухание начинается раньше:
+   иначе низ анимации срезается краем экрана на полной яркости */
+@media(max-width:900px){
+  #chkFx{
+    -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 34%,rgba(0,0,0,.45) 60%,transparent 86%);
+    mask-image:linear-gradient(to bottom,#000 0,#000 34%,rgba(0,0,0,.45) 60%,transparent 86%)}
+}
+
+/* 4. подпись под кнопкой ломается по смыслу: первая строка целиком
+   «Подтвердим встречу в ответном сообщении» */
+.lf-after .nb{white-space:nowrap}
+@media(max-width:760px){
+  .lf-after{text-wrap:balance}
+}
+
+/* 5. шкала заголовков и кикеров как на остальных семи страницах */
+.hero h1,h1{line-height:1.04}
+h2,.sec-head h2,.lead-copy h2,.h2{line-height:1.14}
+@media screen and (min-width:761px){
+  h2,.sec-head h2,.lead-copy h2{line-height:1.14}
+}
+.eyebrow{line-height:1.4}
+/* кикер на широком экране: интерлиньяж 1.4, как на остальных страницах
+   (было 1.5 – строка кикера стояла на 19,5px против 18,2px у соседей) */
+@media screen and (min-width:761px){
+  .eyebrow,.sec-head .eyebrow,.lead-copy .eyebrow,#lead .eyebrow,
+  #related .eyebrow,#entry>.wrap>.eyebrow,.rsec-head .eyebrow{line-height:1.4}
+}
+.hero .lead,.lead{line-height:1.6}
+
+
+/* ---------- финальный контроль: хвост метрики на мобильной ----------
+   .42em и цвет --text-muted расходились с шестью другими страницами,
+   где хвост = .5em и #939B98. Правило-эталон жило в @media(min-width),
+   поэтому на 428 не применялось. */
+@media screen and (max-width:760px){
+  .m-t,.hs b .m-t,.ph-num b .m-t,
+  .hs b .tail,.ph-num b .tail,.metric b .tail,.tail{
+    font-size:.5em!important;color:#939B98!important}
+  :root[data-theme="light"] .m-t,:root[data-theme="light"] .hs b .m-t,
+  :root[data-theme="light"] .ph-num b .m-t,:root[data-theme="light"] .tail{
+    color:var(--text-muted)!important}
+}
 </style>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23131514'/%3E%3Ccircle cx='32' cy='32' r='13' fill='%23D0E865'/%3E%3C/svg%3E">
 <meta name="theme-color" content="#0E1211">
@@ -1684,7 +1765,7 @@ footer .f-nav a,footer .f-nav2 a{font-size:14.5px!important;line-height:1.45!imp
 <header class="hero rh-hero"><canvas id="chkFx" aria-hidden="true"></canvas><div class="wrap hero-in">
   <div class="hero-stats reveal d2">
     <div class="hs"><b>14<span class="m-t tail">дней</span></b><span>от&nbsp;Zoom до&nbsp;карты процессов и&nbsp;первого агента</span></div>
-    <div class="hs"><b>19&nbsp;900<span class="m-t tail">₽</span></b><span>чекап целиком, сумма фиксированная</span></div>
+    <div class="hs"><b>19&nbsp;900<span class="m-t tail">руб.</span></b><span>чекап целиком, сумма фиксированная</span></div>
     
     
   </div><div class="hero-txt">
@@ -1717,7 +1798,7 @@ footer .f-nav a,footer .f-nav2 a{font-size:14.5px!important;line-height:1.45!imp
 
 <section id="entry" class="rh-think"><div class="wrap">
   <div class="eyebrow reveal"><span class="n">02</span> Цена и&nbsp;ценность</div>
-  <div class="ph-num reveal d1"><b>19&nbsp;900<span class="m-t tail">₽</span></b><small>за&nbsp;чекап целиком</small></div>
+  <div class="ph-num reveal d1"><b>19&nbsp;900<span class="m-t tail">руб.</span></b><small>за&nbsp;чекап целиком</small></div>
   <div class="price-hero reveal d1">
     <p class="ph-txt">Первый шаг стоит в&nbsp;несколько раз меньше месячной зарплаты одного менеджера, но&nbsp;уже через две недели вы&nbsp;получаете карту процессов, одну автоматизацию и&nbsp;чёткий план дальнейшей AI-интеграции</p>
   </div>
@@ -1778,7 +1859,7 @@ footer .f-nav a,footer .f-nav2 a{font-size:14.5px!important;line-height:1.45!imp
     </details>
     <details>
       <summary>Что&nbsp;будет с&nbsp;командой после интеграции AI? <span class="pl">+</span></summary>
-      <div class="ans">До&nbsp;старта вместе с&nbsp;вами разбираем роли: что&nbsp;забирает агент, что&nbsp;остаётся за&nbsp;человеком и&nbsp;как&nbsp;меняется его&nbsp;рабочий день. Сокращения мы&nbsp;не&nbsp;предлагаем и&nbsp;не&nbsp;планируем, это&nbsp;решение собственника. Наша задача снять с&nbsp;людей повторяющиеся процессы, а&nbsp;не&nbsp;отнять у&nbsp;них работу</div>
+      <div class="ans">До&nbsp;старта вместе с&nbsp;вами разбираем роли: что&nbsp;забирает агент, что&nbsp;остаётся за&nbsp;человеком и&nbsp;как&nbsp;меняется его&nbsp;рабочий день. Сокращения мы&nbsp;не&nbsp;предлагаем и&nbsp;не&nbsp;планируем, это&nbsp;решение собственника. Наша задача&nbsp;– снять с&nbsp;людей повторяющуюся рутину, а&nbsp;не&nbsp;отнять у&nbsp;них работу</div>
     </details>
     <details><summary>Мы&nbsp;уже внедряли, эффекта не&nbsp;было? <span class="pl">+</span></summary><div class="ans">Так бывает, когда инструмент дают людям без&nbsp;разбора процесса: инструкция есть, привычки нет. Мы&nbsp;начинаем с&nbsp;процессов и&nbsp;задач конкретных людей, а&nbsp;инструмент подбираем под&nbsp;них</div></details>
     <details><summary>У&nbsp;нас нет данных: CRM ведётся не&nbsp;полностью, цифр нет? <span class="pl">+</span></summary><div class="ans">Чекап рассчитан и&nbsp;на&nbsp;такую ситуацию: работаем с&nbsp;тем, что&nbsp;есть&nbsp;– переписки в&nbsp;мессенджерах, почта, документы, записи звонков. Отдельно порекомендуем, что&nbsp;может закрыться изменением регламента и&nbsp;какие данные стоит начать собирать</div></details>
@@ -1811,7 +1892,7 @@ footer .f-nav a,footer .f-nav2 a{font-size:14.5px!important;line-height:1.45!imp
           <span>Согласен на&nbsp;обработку персональных данных и&nbsp;принимаю <a href="/privacy" target="_blank" rel="noopener">политику обработки персональных данных</a></span></label>
         <div class="lf-err" id="lfErr" role="alert">Не&nbsp;хватает вашего имени, контактов и&nbsp;согласия на&nbsp;обработку персональных данных</div>
         <button class="btn pri lg" type="submit">Оставить заявку</button>
-        <p class="lf-after">Подтвердим встречу в&nbsp;ответном сообщении <span class="nb">в&nbsp;течение 1&nbsp;рабочего дня</span></p>
+        <p class="lf-after"><span class="nb">Подтвердим встречу в&nbsp;ответном сообщении</span> <span class="nb">в&nbsp;течение 1&nbsp;рабочего дня</span></p>
       </form>
       <div class="lf-done" id="lfDone">
         <b>Заявка принята</b>
@@ -1875,17 +1956,17 @@ footer .f-nav a,footer .f-nav2 a{font-size:14.5px!important;line-height:1.45!imp
    ложится ровно на кнопку отправки и заявку с телефона отправить нечем */
 (function(){
   var fab=document.querySelector('.fab'),lead=document.getElementById('lead'),
-      foot=document.querySelector('footer'),hero=document.querySelector('.hero.rh-hero');
+      foot=document.querySelector('footer');
   if(!fab||!lead||!('IntersectionObserver' in window))return;
   var hit={};
-  var key=function(el){return el===lead?'lead':el===foot?'foot':'hero'};
+  var key=function(el){return el===lead?'lead':'foot'};
   var io=new IntersectionObserver(function(en){
     en.forEach(function(e){ hit[key(e.target)]=e.isIntersecting });
-    var off=!!(hit.lead||hit.foot||hit.hero);
+    var off=!!(hit.lead||hit.foot);
     fab.classList.toggle('is-off',off);
     fab.setAttribute('aria-hidden',off?'true':'false');
   },{rootMargin:'0px 0px -20% 0px'});
-  io.observe(lead); if(foot) io.observe(foot); if(hero) io.observe(hero);
+  io.observe(lead); if(foot) io.observe(foot);
 })();
 </script>
 <script>

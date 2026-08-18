@@ -201,21 +201,13 @@ h3{font-size:19px;font-weight:600;letter-spacing:-.015em}
 .cv.light{background:#F4F6F5}
 .cv.light .big,.cv.light .num{color:#0E1211}
 .cv.light .txt{color:#4A534F}
-.cv.light .mk{color:#6E8A1F}
 .cv.light .logo{color:#5A6360}
 .cv.light .sign{color:#6E7975}
 .cv.light .calc>div{border-color:#DDE2E0}
 .cv.light .calc .v{color:#0E1211}
 .cv.light .calc .c{color:#6E7975}
 .cv.light .chip{border-color:#D5DBD8;color:#5A6360}
-.cv.accent{background:#D0E865}
-.cv.accent .big,.cv.accent .num{color:#0B1A10}
-.cv.accent .txt{color:#12331F}
-.cv.accent .mk{color:#0E2A18}
-.cv.accent .logo{color:#12331F}
-.cv.accent .calc>div{border-color:rgba(14,42,24,.25)}
-.cv.accent .calc .v{color:#0B1A10}
-.cv.accent .calc .c{color:#1B4028}
+/* .cv.accent удалён: 0 применений в разметке, остаток старой зелёной палитры */
 .bg4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 @media(max-width:900px){.bg4{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:460px){.bg4{grid-template-columns:1fr}}
@@ -441,6 +433,15 @@ footer .wrap>*:last-child{margin-bottom:0!important}
  .cv.post.tight .big.h2{font-size:21px!important}
  .cv.post.tight .txt{font-size:13px!important;line-height:1.4}
 }
+
+/* === правки приёмки: брендбук === */
+/* .pal span задавал height:26px и рамку ВСЕМ span, включая подпись .cn:
+   вторая строка «молоко, светлый кадр» и «дым, вторичный текст» вылезала
+   за плашку на 1440. Образец — только прямой span без класса. */
+.pal>div>span:not([class]){height:26px;border-radius:8px;border:1px solid var(--line2);display:block;flex:none}
+.pal>div>.cn{height:auto;min-height:0;border:0;border-radius:0;display:block;
+ line-height:1.35;overflow-wrap:break-word}
+.pal>div{align-content:start}
 </style><link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-512.png" sizes="512x512" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -477,17 +478,17 @@ footer .wrap>*:last-child{margin-bottom:0!important}
       <p style="margin-top:8px">Посты, холст 1080 на&nbsp;1350: заголовок 96, 84 или&nbsp;70 пунктов, основной текст 48, цифра 78-108, подпись под&nbsp;метрикой 26-28, служебная метка 24</p>
       <p style="margin-top:8px">Основной текст внутри одной серии всегда одного размера: разные кегли в&nbsp;соседних кадрах читаются как&nbsp;ошибка вёрстки</p></div>
 <div class="rule w2"><div class="k">логотип в&nbsp;кадре</div>
-      <p>Три варианта подписи: знак со&nbsp;словом synapt, только слово мелким моно и&nbsp;кадр совсем без подписи, когда работает одна типографика. Внутри одной серии держим один вариант, смешивать нельзя</p>
-      <p style="margin-top:8px">Знак ставим в&nbsp;нижний угол, не&nbsp;крупнее строки текста рядом, и&nbsp;выравниваем по&nbsp;центру этой строки</p>
+      <p>Три варианта подписи: знак со&nbsp;словом synapt, только слово мелким моно и&nbsp;кадр совсем без&nbsp;подписи, когда работает одна типографика. Внутри одной серии держим один вариант, смешивать нельзя</p>
+      <p style="margin-top:8px">Знак ставим в&nbsp;нижний угол и&nbsp;выравниваем по&nbsp;центру строки рядом. Высота знака примерно вдвое больше строки подписи: в&nbsp;сторис 30, в&nbsp;постах 38 пунктов холста</p>
       <div class="lgv"><span class="logo"><svg viewBox="0 0 839 360" fill="currentColor"><use href="#lg"/></svg></span><span class="logo word">synapt</span><span class="none">без подписи</span></div></div>
 <div class="rule w2"><div class="k">переносы и&nbsp;цифры</div>
-      <p>Предлоги, союзы и&nbsp;короткие связки не&nbsp;оставляем в&nbsp;конце строки: переносим их&nbsp;вместе со&nbsp;словом, к&nbsp;которому они относятся. Число с&nbsp;единицей измерения не&nbsp;разрываем: «30 дней», «19 900 ₽»</p>
+      <p>Предлоги, союзы и&nbsp;короткие связки не&nbsp;оставляем в&nbsp;конце строки: переносим их&nbsp;вместе со&nbsp;словом, к&nbsp;которому они относятся. Число с&nbsp;единицей измерения не&nbsp;разрываем: «30 дней», «19 900 руб.»</p>
       <p style="margin-top:8px">Метрика никогда не&nbsp;ломается посередине: «1 500+» и&nbsp;«26 из&nbsp;27» стоят в&nbsp;одной строке целиком. Не&nbsp;помещается – уменьшаем кегль цифры на&nbsp;ступень или&nbsp;укорачиваем подпись, но&nbsp;не&nbsp;переносим</p>
-      <p style="margin-top:8px">Главное в&nbsp;метрике – само число: хвост вроде «из&nbsp;27», «ч» или&nbsp;«тыс. ₽» ставим мельче и&nbsp;в&nbsp;той&nbsp;же&nbsp;строке</p></div>
+      <p style="margin-top:8px">Главное в&nbsp;метрике – само число: хвост вроде «из&nbsp;27», «ч» или&nbsp;«тыс. руб.» ставим мельче и&nbsp;в&nbsp;той&nbsp;же&nbsp;строке</p></div>
 <div class="rule"><div class="k">поля</div>
       <p>Отступ от&nbsp;края кадра не&nbsp;меньше восьми процентов ширины, в&nbsp;сторис верх и&nbsp;низ держим свободными под&nbsp;интерфейс приложения</p></div>
 <div class="rule"><div class="k">чего не&nbsp;делаем</div>
-      <p>Без градиента во&nbsp;весь кадр, без стокового фото, без курсива и&nbsp;длинного тире, без точек в&nbsp;конце строк</p></div>
+      <p>Без градиента во&nbsp;весь кадр, без&nbsp;стокового фото, без&nbsp;курсива и&nbsp;длинного тире, без точек в&nbsp;конце строк</p></div>
 <div class="rule"><div class="k">фото человека</div>
       <p>Одно фото блоком в&nbsp;верхней части кадра, цитата под&nbsp;ним, имя и&nbsp;роль мелким моно. Кружков-аватарок и&nbsp;второго снимка в&nbsp;одном кадре не&nbsp;ставим</p></div>
 <div class="rule"><div class="k">прописные и&nbsp;строчные</div>
@@ -514,7 +515,7 @@ footer .wrap>*:last-child{margin-bottom:0!important}
 
 <section>
   <h2>Анимация: как&nbsp;оживляем кадры</h2>
-  <p class="sub">Движение должно нести смысл, а&nbsp;не&nbsp;быть просто визуальным приёмом: через него передаём идеи внедрения, технологий, интеграций, синергии и&nbsp;эволюции с&nbsp;AI</p>
+  <p class="sub">Движение должно нести смысл, а&nbsp;не&nbsp;быть просто визуальным приёмом: через него показываем, как&nbsp;связи протягиваются, узлы загораются и&nbsp;цифра набегает до&nbsp;результата</p>
   <div class="rules seq">
     <div class="rule"><div class="sq">01</div><div class="k">набор текста</div>
       <p>Заголовок печатается посимвольно за&nbsp;0,8 секунды. Вёрстка при&nbsp;этом не&nbsp;двигается: символы стоят на&nbsp;местах и&nbsp;только проявляются</p></div>
@@ -572,7 +573,7 @@ footer .wrap>*:last-child{margin-bottom:0!important}
       <div class="cap">
         <div class="n">02 цитата</div>
         <h3>Реплика с&nbsp;встречи</h3>
-        <p>Живая фраза клиента без причёсывания. Кавычка акцентом, подпись мелким моно. Подпись словом synapt вместо знака</p>
+        <p>Живая фраза клиента без&nbsp;причёсывания. Кавычка акцентом, подпись мелким моно. Подпись словом synapt вместо знака</p>
 </div>
 </div>
 
@@ -593,7 +594,7 @@ footer .wrap>*:last-child{margin-bottom:0!important}
       <div class="cap">
         <div class="n">03 сравнение</div>
         <h3>До&nbsp;и&nbsp;после одной задачи</h3>
-        <p>Две карточки друг под другом, нижняя с&nbsp;акцентной рамкой. Внизу название процесса</p>
+        <p>Две карточки друг под&nbsp;другом, нижняя с&nbsp;акцентной рамкой. Внизу название процесса</p>
 </div>
 </div>
 
@@ -917,7 +918,7 @@ footer .wrap>*:last-child{margin-bottom:0!important}
           <div class="spacer"></div>
           <div class="calc">
             <div><div class="v">30<span class="pre"> дней</span></div><div class="c">один специалист</div></div>
-            <div><div class="v"><span class="pre">от</span> 80<span class="pre"> тыс. ₽</span></div><div class="c">в&nbsp;месяц</div></div>
+            <div><div class="v"><span class="pre">от</span> 80<span class="pre"> тыс. руб.</span></div><div class="c">в&nbsp;месяц</div></div>
           </div>
           <div class="row" style="margin-top:12px"><span class="logo"><svg viewBox="0 0 839 360" fill="currentColor"><use href="#lg"/></svg></span><span class="sp"></span><span class="pgn">1 / 5</span></div>
         </div>
@@ -925,7 +926,7 @@ footer .wrap>*:last-child{margin-bottom:0!important}
       <div class="cap">
         <div class="n">06 услуга</div>
         <h3>Продукт с&nbsp;условиями</h3>
-        <p>Название, одна строка сути, две цифры условий. Валюту пишем знаком ₽</p>
+        <p>Название, одна строка сути, две цифры условий. Валюту пишем словом: «тыс. руб.», знак ₽ не&nbsp;ставим</p>
       </div>
       <div class="copy">
         <div class="k">пример текста под&nbsp;пост</div>
@@ -1068,7 +1069,7 @@ footer .wrap>*:last-child{margin-bottom:0!important}
       <div class="cap">
         <div class="n">12 люди</div>
         <h3>Фото команды или&nbsp;процесса</h3>
-        <p>Кадр сверху, текст снизу, фото своё и&nbsp;живое, без постановки</p>
+        <p>Кадр сверху, текст снизу, фото своё и&nbsp;живое, без&nbsp;постановки</p>
       </div>
       <div class="copy">
         <div class="k">пример текста под&nbsp;пост</div>
