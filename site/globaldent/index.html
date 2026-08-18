@@ -2178,6 +2178,40 @@ html body .fab.is-cover:not(#_):not(#_){opacity:0!important;transform:translateY
 /* манифест-заявление раздела (первый .stmt) одного кегля на всех кейсах и услугах: 24/620 как на INNORTO */
 @media(min-width:761px){html body .stmt:not(.stmt-card):not(.tm-card) b:not(#_):not(#_),html body #ctx .stmt b:not(#_):not(#_),html body #what .stmt b:not(#_):not(#_),html body #idea .stmt b:not(#_):not(#_){font-size:24px!important;font-weight:620!important;line-height:1.35!important}}
 </style>
+
+<style id="fix-4">
+/* G1. курсор системного размера: стрелка 12x19, лайм с тёмной обводкой */
+html:root body:not(#_):not(#_),html:root body:not(#_):not(#_) *,html:root[data-theme="light"] body:not(#_):not(#_),html:root[data-theme="light"] body:not(#_):not(#_) *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='19' viewBox='0 0 12 19'%3E%3Cpath d='M1 1L1 15.2L4.6 11.9L7 17.3L9.3 16.3L6.9 10.9L11.4 10.9Z' fill='%23D0E865' stroke='%230E1211' stroke-width='1' stroke-linejoin='round'/%3E%3C/svg%3E") 1 1, auto!important}
+html:root body:not(#_):not(#_) a,html:root body:not(#_):not(#_) a *,html:root body:not(#_):not(#_) button,html:root body:not(#_):not(#_) button *,html:root body:not(#_):not(#_) [role=button],html:root body:not(#_):not(#_) label,html:root body:not(#_):not(#_) summary,html:root body:not(#_):not(#_) .btn,html:root body:not(#_):not(#_) .rel-card,html:root body:not(#_):not(#_) .rel-card *,html:root body:not(#_):not(#_) .tgl,html:root body:not(#_):not(#_) .nav-burger,html:root body:not(#_):not(#_) .sl-day,html:root body:not(#_):not(#_) .sl-slot,html:root body:not(#_):not(#_) .slots button,html:root body:not(#_):not(#_) .metric-more,html:root body:not(#_):not(#_) .nxt a,html:root body:not(#_):not(#_) .fab-b,html:root body:not(#_):not(#_) .tp-s,html:root body:not(#_):not(#_) .cnav button,html:root body:not(#_):not(#_) .faq summary,html:root body:not(#_):not(#_) .acc-h,html:root body:not(#_):not(#_) .cs-link,html:root body:not(#_):not(#_) .art,html:root body:not(#_):not(#_) input[type=checkbox],html:root body:not(#_):not(#_) input[type=radio],html:root body:not(#_):not(#_) select{cursor:pointer!important}
+html:root body:not(#_):not(#_) input:not([type=checkbox]):not([type=radio]),html:root body:not(#_):not(#_) textarea,html:root body:not(#_):not(#_) [contenteditable]{cursor:text!important}
+/* G2. h1 обложки легче */
+html body .cover h1:not(#_):not(#_):not(#_),html body h1:not(#_):not(#_):not(#_),html body .cover h1.reveal:not(#_):not(#_):not(#_){font-size:76px!important;font-weight:500!important;letter-spacing:-.028em!important;line-height:1.02!important}
+html body .faq summary,html body details summary,html body .faq-q,html body .acc-h{font-weight:500!important}
+/* G3. основные кнопки: один лайм, hover чуть светлее */
+html:root,html:root[data-theme="light"],html:root[data-theme="dark"]{--accent:#D0E865!important;--accent-glow:#D0E865!important;--btn-shadow:none!important}
+html body .btn.pri,html body .btn.pri.lg,html body .mform button[type=submit],html body .nav .btn.pri,html body header .btn.pri,html body .fab .btn.pri,html body .cover .btn.pri{background:#D0E865!important;color:var(--accent-ink,#0E1211)!important;box-shadow:none!important;transform:none!important;filter:none!important;opacity:1!important}
+html body .btn.pri:hover,html body .btn.pri.lg:hover,html body .mform button[type=submit]:hover,html body .nav .btn.pri:hover,html body header .btn.pri:hover,html body .fab .btn.pri:hover,html body .cover .btn.pri:hover{background:#D0E865!important;filter:brightness(1.06)!important;box-shadow:none!important;transform:none!important}
+html body .btn.pri:active,html body .mform button[type=submit]:active{filter:brightness(.98)!important;transform:none!important;box-shadow:none!important}
+/* второстепенные: рамка светлеет, текст основной, никакого лайма */
+html body .btn.ghost:hover,html body .btn.sq:hover,html body .tgl:hover,html body .nav-tg:hover,html body .metric-more:hover,html body .metric-more:hover .mm-t,html body .faq summary:hover,html body .h1-link:hover,html body .cnav button:hover,html body .tp-s:hover{border-color:rgba(255,255,255,.45)!important;color:var(--text)!important;background:var(--surface)!important;box-shadow:none!important;filter:none!important;transform:none!important}
+html body .metric-more:hover .mm-r{background:transparent!important;border-color:rgba(255,255,255,.45)!important;color:var(--text)!important}
+html body .btn.sq:hover svg,html body .btn.ghost:hover svg,html body .metric-more:hover svg{color:var(--text)!important;stroke:currentColor}
+html:root[data-theme="light"] body .btn.ghost:hover,html:root[data-theme="light"] body .btn.sq:hover,html:root[data-theme="light"] body .tgl:hover,html:root[data-theme="light"] body .nav-tg:hover,html:root[data-theme="light"] body .metric-more:hover,html:root[data-theme="light"] body .metric-more:hover .mm-t,html:root[data-theme="light"] body .metric-more:hover .mm-r,html:root[data-theme="light"] body .faq summary:hover,html:root[data-theme="light"] body .h1-link:hover,html:root[data-theme="light"] body .cnav button:hover,html:root[data-theme="light"] body .tp-s:hover{border-color:rgba(25,26,29,.45)!important;color:var(--text)!important}
+/* текстовые «Подробнее» в карточках: светлее, основным цветом */
+html body .morelink:hover,html body .case-split .morelink:hover,html body .cs-link:hover .cs-b,html body .rel-card:hover .rel-t,html body .art:hover .art-i{color:var(--text)!important;border-bottom-color:var(--text)!important}
+/* G4. кикер «Другие услуги и кейсы студии» как остальные кикеры */
+html body #related .eyebrow,html body .rel-head .eyebrow,html body #related .rel-head-t .eyebrow{color:var(--text-muted)!important;font-family:var(--mono)!important}
+html body #related .eyebrow .n,html body .rel-head .eyebrow .n{color:var(--text-dim)!important}
+html body .eyebrow:not(.cover *),html body section .eyebrow,html body .sec-head .eyebrow{color:var(--text-muted)!important}
+html body .eyebrow .n{color:var(--text-dim)!important}
+/* G5. манифест раздела: один кегль, первое предложение серым */
+html body .stmt:not(#_):not(#_):not(#_) p,html body .stmt:not(#_):not(#_):not(#_){font-size:22px!important;font-weight:450!important;line-height:1.45!important;letter-spacing:-.01em!important;color:var(--text)!important;text-transform:none!important}
+html body .stmt:not(#_):not(#_):not(#_) p b,html body .stmt:not(#_):not(#_):not(#_) b,html body .stmt:not(#_):not(#_):not(#_) p strong{font-size:inherit!important;font-weight:450!important;line-height:inherit!important;letter-spacing:inherit!important;color:var(--text-muted)!important;display:inline!important}
+@media(max-width:760px){
+  html body .cover h1:not(#_):not(#_):not(#_),html body h1:not(#_):not(#_):not(#_),html body .cover h1.reveal:not(#_):not(#_):not(#_){font-size:48px!important;font-weight:500!important;letter-spacing:-.028em!important}
+  html body .stmt:not(#_):not(#_):not(#_) p,html body .stmt:not(#_):not(#_):not(#_){font-size:18px!important;line-height:1.45!important}
+}
+</style>
 </head>
 <body>
 <nav class="nav"><div class="wrap">

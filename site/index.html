@@ -2756,6 +2756,42 @@ html body footer .f-legal p:nth-of-type(5){line-height:1.35!important;margin-bot
 html body .fab.is-cover{opacity:0!important;transform:translateY(16px)!important;visibility:hidden!important;pointer-events:none!important;transition:opacity .25s,transform .25s,visibility .25s}
 @media(max-width:760px){html body .hero{padding-bottom:0!important}html body .hero .hero-meta,html body .hero .hero-grid{margin-bottom:30px!important}}
 </style>
+<style id="fix-4">
+/* четвёртая волна 18.08: системный курсор, легче h1 и вопросы FAQ, hover кнопок, шаг 3 иконка + чип в строку */
+/* G1. курсор системного размера: лаймовая стрелка 12×19 с тёмной обводкой */
+html body,html body *{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='19' viewBox='0 0 12 19'%3E%3Cpath d='M1 1v14.2l3.5-3.3 2.6 5.9 2.4-1-2.6-5.8h4.6z' fill='%23D0E865' stroke='%230E1211' stroke-width='1' stroke-linejoin='round'/%3E%3C/svg%3E") 1 1, auto!important}
+html body a,html body button,html body [role=button],html body label,html body summary,html body .btn,html body .rel-card,html body .tgl,
+html body .nav-tg,html body .nav-burger,html body .sl-day,html body .sl-slot,html body .slots button,html body .tp-s,html body .cnav button,
+html body .cc-hit,html body .fab-b,html body .faq summary,html body .acc-h,html body .cs-x,html body .tfx-mode,html body .morelink,html body a *,html body button *,html body .btn *,html body summary *{cursor:pointer!important}
+html body input:not([type=checkbox]):not([type=radio]):not([type=submit]):not([type=button]),html body textarea,html body [contenteditable]{cursor:text!important}
+html body input[type=checkbox],html body input[type=radio],html body input[type=submit],html body input[type=button]{cursor:pointer!important}
+html body button:disabled,html body .btn[aria-disabled="true"]{cursor:not-allowed!important}
+/* G2. h1 обложки: вес 500 (кегль главной 68 остаётся); вопросы FAQ вес 500 */
+html body .hero h1,html body h1{font-weight:500!important;letter-spacing:-.028em!important}
+html body .faq summary{font-weight:500!important}
+/* G3. основные лаймовые: один цвет, при наведении чуть светлее, без тени и подъёма */
+html body .btn.pri,html body .nav .nav-act .btn.pri,html body .nav-sheet .btn.pri,html body .hero .btn.pri,html body #leadForm .btn.pri,html body .fab .btn.pri{
+  background:var(--accent)!important;color:var(--accent-ink)!important;box-shadow:none!important;opacity:1;filter:none;transform:none!important;
+  transition:filter .16s ease,opacity .25s var(--ease),visibility .25s!important}
+html body .nav:not(.solid) .nav-act>.btn.pri{opacity:0}
+html body .btn.pri:hover,html body .btn.pri:focus-visible{background:var(--accent)!important;filter:brightness(1.06)!important;box-shadow:none!important;transform:none!important}
+html body .btn.pri:active{filter:brightness(.96)!important;transform:none!important}
+/* второстепенные: рамка светлеет, текст основной, никакого лайма */
+html body .btn.ghost:hover,html body .tgl:hover,html body .nav-tg:hover,html body .nav-burger:hover,html body .cnav button:hover,html body .cs-x:hover,
+html body .faq summary:hover .pl,html body .faq summary .pl:hover,html body .chk-side .btn.ghost:hover{
+  border-color:rgba(255,255,255,.45)!important;color:var(--text)!important;background:var(--surface)!important;filter:none!important;transform:none!important}
+html body .tgl:hover,html body .nav-tg:hover,html body .nav-burger:hover,html body .cs-x:hover,html body .faq summary:hover .pl{background:transparent!important}
+html[data-theme="light"] body .btn.ghost:hover,html[data-theme="light"] body .tgl:hover,html[data-theme="light"] body .nav-tg:hover,html[data-theme="light"] body .nav-burger:hover,
+html[data-theme="light"] body .cnav button:hover,html[data-theme="light"] body .cs-x:hover,html[data-theme="light"] body .faq summary:hover .pl,html[data-theme="light"] body .chk-side .btn.ghost:hover{
+  border-color:rgba(25,26,29,.45)!important;color:var(--text)!important}
+html body .faq summary:hover{color:var(--text)!important}
+/* текстовые «Подробнее» в карточках: при наведении светлее, основным цветом текста */
+html body .morelink:hover,html body button.morelink:hover{color:var(--text)!important;border-bottom-color:var(--text)!important}
+/* шаг 3: иконка слева, чип с номером и словом справа в одну строку */
+html body .mods .card .mod-head{display:flex!important;flex-direction:row!important;align-items:center!important;gap:10px!important;margin:0 0 16px!important;width:100%!important}
+html body .mods .card .mod-head .ic{margin:0!important;flex:none!important}
+html body .mods .card .mod-head .mod-chip{margin:0!important;flex:none!important}
+</style>
 </head>
 <body>
 <script>
@@ -2930,48 +2966,42 @@ function LEAD_API(url, opts){
 
         <div class="svc mods">
           <div class="card s3 reveal">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-            <span class="mod-chip"><span class="mc-n">01</span>продажи</span>
+            <div class="mod-head"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><span class="mod-chip"><span class="mc-n">01</span>продажи</span></div>
             <h3>Работа с&nbsp;клиентом</h3>
             <p>Заявки приходят в&nbsp;мессенджеры и&nbsp;теряются между менеджерами. Система отвечает клиенту за&nbsp;секунды, выясняет потребность и&nbsp;доводит до&nbsp;заявки, а&nbsp;после разбирает диалоги и&nbsp;показывает зоны роста</p>
             <a class="btn ghost sm" href="#lead">Обсудить задачу</a>
           </div>
 
           <div class="card s3 reveal">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V9M10 20V4M16 20v-7M22 20H2"/></svg></div>
-            <span class="mod-chip"><span class="mc-n">02</span>управление</span>
+            <div class="mod-head"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V9M10 20V4M16 20v-7M22 20H2"/></svg></div><span class="mod-chip"><span class="mc-n">02</span>управление</span></div>
             <h3>AI-дашборд для&nbsp;собственника</h3>
             <p>Цифры находятся в&nbsp;разных отчётах и&nbsp;приходят поздно. Система разбирает воронку, найм, маржу и&nbsp;другие процессы, присылает регулярный разбор и&nbsp;на&nbsp;каждый вывод даёт рекомендации и&nbsp;ссылки на&nbsp;источники данных</p>
             <a class="btn ghost sm" href="#lead">Обсудить задачу</a>
           </div>
 
           <div class="card s3 reveal">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg></div>
-            <span class="mod-chip"><span class="mc-n">03</span>команда</span>
+            <div class="mod-head"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v14H4z"/><path d="M8 9h8M8 13h5"/></svg></div><span class="mod-chip"><span class="mc-n">03</span>команда</span></div>
             <h3>Знания и&nbsp;адаптация</h3>
             <p>Новичок долго адаптируется, а&nbsp;у&nbsp;команды регулярно возникают разные вопросы. Агент отвечает по&nbsp;внутренним документам и&nbsp;истории решений, анбордит новых специалистов и&nbsp;помогает с&nbsp;принятием решений опытным</p>
             <a class="btn ghost sm" href="#lead">Обсудить задачу</a>
           </div>
 
           <div class="card s3 reveal">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-5 4z"/><path d="M8 8h6M8 11h4"/><circle cx="19" cy="17.5" r="2.4"/><path d="M15.4 22c.5-1.6 1.9-2.6 3.6-2.6s3.1 1 3.6 2.6"/></svg></div>
-            <span class="mod-chip"><span class="mc-n">04</span>экспертиза</span>
+            <div class="mod-head"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9l-5 4z"/><path d="M8 8h6M8 11h4"/><circle cx="19" cy="17.5" r="2.4"/><path d="M15.4 22c.5-1.6 1.9-2.6 3.6-2.6s3.1 1 3.6 2.6"/></svg></div><span class="mod-chip"><span class="mc-n">04</span>экспертиза</span></div>
             <h3>AI-эксперт</h3>
             <p>Спрос на&nbsp;вашего ключевого специалиста выше, чем его&nbsp;временные ресурсы. Цифровая копия эксперта отвечает клиентам по&nbsp;авторским материалам и&nbsp;методологиям, а&nbsp;сложные случаи передаёт человеку</p>
             <a class="btn ghost sm" href="#lead">Обсудить задачу</a>
           </div>
 
           <div class="card s3 reveal">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
-            <span class="mod-chip"><span class="mc-n">05</span>операции</span>
+            <div class="mod-head"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div><span class="mod-chip"><span class="mc-n">05</span>операции</span></div>
             <h3>Интеграции и&nbsp;автоматизация</h3>
             <p>Данные лежат в&nbsp;разных системах, и&nbsp;люди переносят их&nbsp;вручную. Связываем CRM, 1С, таблицы и&nbsp;мессенджеры так, чтобы цифры работали между собой и&nbsp;действительно помогали в&nbsp;росте показателей</p>
             <a class="btn ghost sm" href="#lead">Обсудить задачу</a>
           </div>
 
           <div class="card s3 reveal">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7.5 3.6v5.2c0 4.1-3.1 7.6-7.5 8.6-4.4-1-7.5-4.5-7.5-8.6V6.6z"/><path d="M9.1 12.1l2 2 3.7-4"/></svg></div>
-            <span class="mod-chip"><span class="mc-n">06</span>основа всех блоков</span>
+            <div class="mod-head"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7.5 3.6v5.2c0 4.1-3.1 7.6-7.5 8.6-4.4-1-7.5-4.5-7.5-8.6V6.6z"/><path d="M9.1 12.1l2 2 3.7-4"/></svg></div><span class="mod-chip"><span class="mc-n">06</span>основа всех блоков</span></div>
             <h3>Безопасный слой</h3>
             <p>В&nbsp;работу попадают персональные данные и&nbsp;коммерческая тайна. Обезличивание перед отправкой в&nbsp;модель, ролевой доступ и&nbsp;журнал обращений. Настраивается один раз и&nbsp;встраивается в&nbsp;основу всей системы</p>
             <a class="btn ghost sm" href="/safe/">Подробнее</a>
