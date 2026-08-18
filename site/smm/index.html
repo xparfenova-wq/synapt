@@ -185,6 +185,10 @@ td .m{font-family:var(--mono);font-size:11px;color:var(--accent);white-space:now
 .dl{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:var(--ink);border-radius:12px;
  padding:11px 18px;font-size:14px;font-weight:600;text-decoration:none;letter-spacing:-.01em;margin-top:18px}
 .dl:hover{filter:brightness(1.05)}
+.dls{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.dl.ghost{background:transparent;color:var(--text);border:1px solid var(--line2)}
+.dl.ghost:hover{border-color:var(--accent);filter:none}
+.dl.ghost .sz{color:var(--dim);opacity:1}
 .dl .sz{font-family:var(--mono);font-size:11px;font-weight:400;opacity:.7}
 @media(max-width:760px){.gal.p7{grid-template-columns:repeat(4,minmax(0,1fr))}.gal.st5{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:460px){.gal.p7,.gal.st5{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -811,9 +815,9 @@ footer.end p{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spac
 
 <section id="highlights">
   <h2>Хайлайты со&nbsp;сторис</h2>
-  <p class="sub">Пять актуальных по&nbsp;пять сторис. Обложки: графит #151A18, слово строчными, JetBrains Mono 24&nbsp;пт по&nbsp;центру, без иконок. Один вариант подписи на&nbsp;всю серию: знак Synapt мелко в&nbsp;нижнем левом углу и&nbsp;synapt.tech моно справа на&nbsp;каждом кадре</p>
+  <p class="sub">Пять актуальных по&nbsp;пять сторис. Обложки: графит #151A18, слово строчными, JetBrains Mono 24&nbsp;пт по&nbsp;центру, без иконок. Знак Synapt и&nbsp;подпись synapt.tech ставим только на&nbsp;последнем кадре серии, остальные кадры без подписи: серия читается как&nbsp;один сюжет и&nbsp;закрывается знаком. Обложки хайлайтов без логотипа</p>
 
-  <div class="galh"><span class="n">готовые файлы</span><span class="c">1080×1920 PNG, обложки и&nbsp;три хайлайта по&nbsp;пять сторис, клик открывает файл</span></div>
+  <div class="galh"><span class="n">готовые файлы</span><span class="c">1080×1920 PNG, обложки и&nbsp;пять хайлайтов по&nbsp;пять сторис, клик открывает файл. SVG-версии для&nbsp;Figma лежат в&nbsp;assets/svg</span></div>
   <div class="galh" style="margin-top:14px"><span class="n">обложки хайлайтов</span><span class="c">cover-01 … cover-05, графит, слово по&nbsp;центру</span></div>
   <div class="gal covers"><a href="assets/cover-01.png" target="_blank" rel="noopener"><span class="ring"><img src="assets/cover-01.png" alt="о студии" loading="lazy"></span><span class="cp">о студии</span></a><a href="assets/cover-02.png" target="_blank" rel="noopener"><span class="ring"><img src="assets/cover-02.png" alt="три шага" loading="lazy"></span><span class="cp">три шага</span></a><a href="assets/cover-03.png" target="_blank" rel="noopener"><span class="ring"><img src="assets/cover-03.png" alt="кейсы" loading="lazy"></span><span class="cp">кейсы</span></a><a href="assets/cover-04.png" target="_blank" rel="noopener"><span class="ring"><img src="assets/cover-04.png" alt="система" loading="lazy"></span><span class="cp">система</span></a><a href="assets/cover-05.png" target="_blank" rel="noopener"><span class="ring"><img src="assets/cover-05.png" alt="вопросы" loading="lazy"></span><span class="cp">вопросы</span></a></div>
   <div class="galh"><span class="n">хайлайт 1, о&nbsp;студии</span><span class="c">story-01-studio-1 … 5</span></div>
@@ -822,7 +826,11 @@ footer.end p{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spac
   <div class="gal st5"><a href="assets/story-02-steps-1.png" target="_blank" rel="noopener"><img src="assets/story-02-steps-1.png" alt="как&nbsp;устроено" loading="lazy"><div class="cp">как&nbsp;устроено</div></a><a href="assets/story-02-steps-2.png" target="_blank" rel="noopener"><img src="assets/story-02-steps-2.png" alt="шаг 1 из&nbsp;3" loading="lazy"><div class="cp">шаг 1 из&nbsp;3</div></a><a href="assets/story-02-steps-3.png" target="_blank" rel="noopener"><img src="assets/story-02-steps-3.png" alt="шаг 2 из&nbsp;3" loading="lazy"><div class="cp">шаг 2 из&nbsp;3</div></a><a href="assets/story-02-steps-4.png" target="_blank" rel="noopener"><img src="assets/story-02-steps-4.png" alt="шаг 3 из&nbsp;3" loading="lazy"><div class="cp">шаг 3 из&nbsp;3</div></a><a href="assets/story-02-steps-5.png" target="_blank" rel="noopener"><img src="assets/story-02-steps-5.png" alt="следующий шаг" loading="lazy"><div class="cp">следующий шаг</div></a></div>
   <div class="galh"><span class="n">хайлайт 3, кейсы</span><span class="c">story-03-cases-1 … 5</span></div>
   <div class="gal st5"><a href="assets/story-03-cases-1.png" target="_blank" rel="noopener"><img src="assets/story-03-cases-1.png" alt="INNORTO" loading="lazy"><div class="cp">INNORTO</div></a><a href="assets/story-03-cases-2.png" target="_blank" rel="noopener"><img src="assets/story-03-cases-2.png" alt="GlobalDent" loading="lazy"><div class="cp">GlobalDent</div></a><a href="assets/story-03-cases-3.png" target="_blank" rel="noopener"><img src="assets/story-03-cases-3.png" alt="отдел продаж" loading="lazy"><div class="cp">отдел продаж</div></a><a href="assets/story-03-cases-4.png" target="_blank" rel="noopener"><img src="assets/story-03-cases-4.png" alt="FoodTech" loading="lazy"><div class="cp">FoodTech</div></a><a href="assets/story-03-cases-5.png" target="_blank" rel="noopener"><img src="assets/story-03-cases-5.png" alt="инженерное бюро" loading="lazy"><div class="cp">инженерное бюро</div></a></div>
-  <div><a class="dl" href="assets/synapt-smm.zip" download>Скачать все PNG одним архивом <span class="sz">zip, 41 файл</span></a></div>
+  <div class="galh"><span class="n">хайлайт 4, система</span><span class="c">story-04-system-1 … 5, тексты с&nbsp;главной synapt.tech</span></div>
+  <div class="gal st5"><a href="assets/story-04-system-1.png" target="_blank" rel="noopener"><img src="assets/story-04-system-1.png" alt="система" loading="lazy"><div class="cp">система</div></a><a href="assets/story-04-system-2.png" target="_blank" rel="noopener"><img src="assets/story-04-system-2.png" alt="как&nbsp;работаем" loading="lazy"><div class="cp">как&nbsp;работаем</div></a><a href="assets/story-04-system-3.png" target="_blank" rel="noopener"><img src="assets/story-04-system-3.png" alt="подход" loading="lazy"><div class="cp">подход</div></a><a href="assets/story-04-system-4.png" target="_blank" rel="noopener"><img src="assets/story-04-system-4.png" alt="передача" loading="lazy"><div class="cp">передача</div></a><a href="assets/story-04-system-5.png" target="_blank" rel="noopener"><img src="assets/story-04-system-5.png" alt="безопасность" loading="lazy"><div class="cp">безопасность</div></a></div>
+  <div class="galh"><span class="n">хайлайт 5, вопросы</span><span class="c">story-05-faq-1 … 5, FAQ главной и&nbsp;synapt.tech/checkup</span></div>
+  <div class="gal st5"><a href="assets/story-05-faq-1.png" target="_blank" rel="noopener"><img src="assets/story-05-faq-1.png" alt="с&nbsp;чего начинается" loading="lazy"><div class="cp">с&nbsp;чего начинается</div></a><a href="assets/story-05-faq-2.png" target="_blank" rel="noopener"><img src="assets/story-05-faq-2.png" alt="команда после AI" loading="lazy"><div class="cp">команда после AI</div></a><a href="assets/story-05-faq-3.png" target="_blank" rel="noopener"><img src="assets/story-05-faq-3.png" alt="уже внедряли" loading="lazy"><div class="cp">уже внедряли</div></a><a href="assets/story-05-faq-4.png" target="_blank" rel="noopener"><img src="assets/story-05-faq-4.png" alt="после запуска" loading="lazy"><div class="cp">после запуска</div></a><a href="assets/story-05-faq-5.png" target="_blank" rel="noopener"><img src="assets/story-05-faq-5.png" alt="следующий шаг" loading="lazy"><div class="cp">следующий шаг</div></a></div>
+  <div class="dls"><a class="dl" href="assets/synapt-smm.zip" download>Скачать всё одним архивом <span class="sz">zip, 51 PNG + 51 SVG + README</span></a><a class="dl ghost" href="assets/synapt-smm-svg.zip" download>SVG для&nbsp;Figma <span class="sz">zip, 51 файл + README, текст остаётся текстом</span></a></div>
 
 
   <div class="rules two" style="gap:16px">
@@ -849,7 +857,7 @@ footer.end p{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spac
         <div class="s"><div class="mk">команда</div>
           <div class="ttl">Кто работает над проектом</div>
           <div class="tx">Антон Орешкин – стратегический партнёр. Виктор Калугин – технический партнёр. Никита – project manager</div>
-          <div class="fr">схема 08 схема. Три блока друг под другом на&nbsp;графите, активный без подсветки, все равнозначны. Имя Manrope 50&nbsp;пт, роль JetBrains Mono 28&nbsp;пт строчными. Знак Synapt в&nbsp;нижнем углу, выравнен по&nbsp;центру строки роли</div></div>
+          <div class="fr">схема 08 схема. Три блока друг под другом на&nbsp;графите, активный без подсветки, все равнозначны. Имя Manrope 50&nbsp;пт, роль JetBrains Mono 28&nbsp;пт строчными. Кадр без подписи</div></div>
         <div class="s"><div class="mk">следующий шаг</div>
           <div class="ttl">30&nbsp;минут в&nbsp;Zoom с&nbsp;партнёрами студии</div>
           <div class="tx">Вы&nbsp;рассказываете про бизнес, мы&nbsp;задаём вопросы и&nbsp;совместно определяем цели. После присылаем запись разговора и&nbsp;разбор: что&nbsp;увидели и&nbsp;с&nbsp;чего рекомендуем начать. Оставить заявку</div>
@@ -921,29 +929,29 @@ footer.end p{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spac
       <div class="head">
         <span class="cover">система</span>
         <div><h3>Хайлайт 4</h3>
-        <div class="why">Показывает, что&nbsp;мы&nbsp;продаём связный контур, а&nbsp;не&nbsp;набор ботов. Работает на&nbsp;этапе выбора подрядчика, когда сравнивают с&nbsp;фрилансером за&nbsp;выходные</div></div>
+        <div class="why">Показывает, что&nbsp;мы&nbsp;продаём связный контур, а&nbsp;не&nbsp;набор ботов. Работает на&nbsp;этапе выбора подрядчика, когда сравнивают с&nbsp;фрилансером за&nbsp;выходные. Тексты дословно с&nbsp;главной synapt.tech: hero, «Как работаем», «Подход»</div></div>
       </div>
       <div class="st">
-        <div class="s"><div class="mk">как&nbsp;устроено</div>
-          <div class="ttl">AI-система из&nbsp;шести модулей</div>
-          <div class="tx">Собирается из&nbsp;блоков под то, что&nbsp;показала карта процессов, каждое следующее внедрение встраивается дешевле и&nbsp;быстрее</div>
-          <div class="fr">схема 04 тезис. Оникс, фоном сеть, шесть узлов, три подсвечены лаймом. Заголовок 86&nbsp;пт, текст 50&nbsp;пт. Кадр без подписи</div></div>
-        <div class="s"><div class="mk">модуль</div>
-          <div class="ttl">01 Работа с&nbsp;клиентом, 02 AI-дашборд</div>
-          <div class="tx">Заявки приходят в&nbsp;мессенджеры и&nbsp;теряются между менеджерами, система отвечает клиенту за&nbsp;секунды. Цифры лежат в&nbsp;разных отчётах и&nbsp;приходят поздно, система разбирает воронку, найм, маржу</div>
-          <div class="fr">две карточки на&nbsp;графите друг под другом. Номер и&nbsp;название Manrope 50&nbsp;пт, описание 50&nbsp;пт тем же&nbsp;кеглем – в&nbsp;одной серии основной текст одного размера. Номера моно лаймом</div></div>
-        <div class="s"><div class="mk">модуль</div>
-          <div class="ttl">03 Знания и&nbsp;адаптация, 04 AI-эксперт</div>
-          <div class="tx">Новичок долго адаптируется, а&nbsp;у&nbsp;команды регулярно возникают разные вопросы, агент отвечает по&nbsp;внутренним документам. Спрос на&nbsp;вашего ключевого специалиста выше, чем его&nbsp;временные ресурсы, цифровая копия эксперта отвечает клиентам</div>
-          <div class="fr">две карточки, вёрстка идентична сторис 2</div></div>
-        <div class="s"><div class="mk">модуль</div>
-          <div class="ttl">05 Интеграции и&nbsp;автоматизация</div>
-          <div class="tx">Данные лежат в&nbsp;разных системах, и&nbsp;люди переносят их&nbsp;вручную. Связываем CRM, 1С, таблицы и&nbsp;мессенджеры</div>
-          <div class="fr">одна карточка на&nbsp;весь кадр, заголовок 72&nbsp;пт. Под ним схема из&nbsp;четырёх узлов, связи протягиваются лаймом</div></div>
-        <div class="s"><div class="mk">модуль</div>
-          <div class="ttl">06 Безопасный слой</div>
-          <div class="tx">Обезличивание перед отправкой в&nbsp;модель, ролевой доступ и&nbsp;журнал обращений. Это основа всех блоков, а&nbsp;не&nbsp;опция сверху</div>
-          <div class="fr">схема 04 тезис, заголовок 86&nbsp;пт. Кадр целиком на&nbsp;графите, лайм только в&nbsp;подчёркивании слова основа. Знак Synapt в&nbsp;нижнем углу закрывает серию</div></div>
+        <div class="s"><div class="mk">система</div>
+          <div class="ttl">Соединяем AI, процессы и&nbsp;людей в&nbsp;устойчивую рабочую систему</div>
+          <div class="tx">3-5 недель до&nbsp;готового продукта. 60&nbsp;дней на&nbsp;связи после завершения</div>
+          <div class="fr">схема 05 метрики. Оникс, фоном сеть. Заголовок 86&nbsp;пт, цифры JetBrains Mono 110&nbsp;пт, подписи 44&nbsp;пт. Кадр без подписи</div></div>
+        <div class="s"><div class="mk">как&nbsp;работаем</div>
+          <div class="ttl">Декомпозируем проект на&nbsp;этапы и&nbsp;каждый завершаем конкретным результатом</div>
+          <div class="tx">01 Разбор и&nbsp;план внедрения: карта конкретного процесса и&nbsp;смета. 02 Разработка решения: работающий продукт. 03 Внедрение и&nbsp;обучение: обученная команда и&nbsp;регламент. 04 Передача и&nbsp;поддержка: всё, что&nbsp;нужно для&nbsp;работы</div>
+          <div class="fr">схема 07 список. Номера моно лаймом, название этапа 50&nbsp;пт, результат этапа 44&nbsp;пт приглушённым</div></div>
+        <div class="s"><div class="mk">подход</div>
+          <div class="ttl">Шесть принципов, по&nbsp;которым работаем над каждым проектом</div>
+          <div class="tx">Сначала проводим анализ, только потом определяем стоимость и&nbsp;критерии. Работаем быстро и&nbsp;итеративно. Система остаётся у&nbsp;вас целиком. Данные не&nbsp;покидают ваш контур. 60&nbsp;дней на&nbsp;связи после сдачи. Берёмся только за&nbsp;то, что&nbsp;умеем</div>
+          <div class="fr">схема 07 список, шесть пунктов 50&nbsp;пт, заголовок 72&nbsp;пт</div></div>
+        <div class="s"><div class="mk">передача</div>
+          <div class="ttl">Система остаётся у&nbsp;вас целиком</div>
+          <div class="tx">Передаём вам всю систему: код, доступы, промпты, базу знаний и&nbsp;документацию. Продолжить работу можно с&nbsp;нами или&nbsp;с&nbsp;другой командой</div>
+          <div class="fr">схема 04 тезис на&nbsp;графите #151A18, заголовок 86&nbsp;пт, текст 50&nbsp;пт</div></div>
+        <div class="s"><div class="mk">безопасность</div>
+          <div class="ttl">Данные не&nbsp;покидают ваш контур</div>
+          <div class="tx">Фиксируем, какие поля уходят в&nbsp;модель. Обезличивание, ролевой доступ и&nbsp;логирование настраиваем мы, ваш юрист получает описание контура</div>
+          <div class="fr">схема 04 тезис, оникс, фоном сеть. Знак Synapt и&nbsp;synapt.tech в&nbsp;нижней строке закрывают серию</div></div>
       </div>
     </div>
 
@@ -951,29 +959,29 @@ footer.end p{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spac
       <div class="head">
         <span class="cover">вопросы</span>
         <div><h3>Хайлайт 5</h3>
-        <div class="why">Снимает четыре возражения, которые повторяются на&nbsp;каждом первом созвоне. Экономит время на&nbsp;встрече и&nbsp;добивает сомневающихся, которые не&nbsp;решаются написать</div></div>
+        <div class="why">Снимает четыре возражения, которые повторяются на&nbsp;каждом первом созвоне. Экономит время на&nbsp;встрече и&nbsp;добивает сомневающихся, которые не&nbsp;решаются написать. Вопрос и&nbsp;ответ дословно из&nbsp;FAQ главной и&nbsp;synapt.tech/checkup, по&nbsp;одному на&nbsp;кадр</div></div>
       </div>
       <div class="st">
         <div class="s"><div class="mk">частый вопрос</div>
-          <div class="ttl">С&nbsp;чего начинается проект</div>
-          <div class="tx">С&nbsp;короткой встречи на&nbsp;30&nbsp;минут. Готовить документы и&nbsp;техническое задание заранее не&nbsp;нужно, разберём процессы на&nbsp;созвоне</div>
-          <div class="fr">схема 04 тезис на&nbsp;молоке #F4F6F5, текст #0E1211 – светлый кадр отделяет FAQ от&nbsp;остальных серий. Вопрос 86&nbsp;пт, ответ 50&nbsp;пт. Кадр без подписи</div></div>
+          <div class="ttl">С&nbsp;чего начинается проект?</div>
+          <div class="tx">С&nbsp;короткой встречи на&nbsp;30&nbsp;минут. Разбираем задачу, текущие процессы, данные и&nbsp;то, какого результата вы&nbsp;ждёте. На&nbsp;ней же&nbsp;обсуждаем решение, и&nbsp;после отправляем план работ</div>
+          <div class="fr">схема 04 тезис. Оникс, вопрос 86&nbsp;пт, ответ 50&nbsp;пт. Кадр без подписи</div></div>
         <div class="s"><div class="mk">частый вопрос</div>
-          <div class="ttl">Сотрудники не&nbsp;примут</div>
-          <div class="tx">Десант – это специалист, который месяц работает рядом с&nbsp;вашими людьми, а&nbsp;не&nbsp;вебинар. В&nbsp;INNORTO после месяца с&nbsp;AI работают 26&nbsp;из&nbsp;27&nbsp;сотрудников</div>
-          <div class="fr">молочный кадр, вёрстка как&nbsp;в&nbsp;сторис 1. 26&nbsp;из&nbsp;27 моно лаймом в&nbsp;одной строке целиком</div></div>
+          <div class="ttl">Что&nbsp;будет с&nbsp;командой после интеграции AI?</div>
+          <div class="tx">До&nbsp;старта вместе с&nbsp;вами разбираем роли: что&nbsp;забирает агент, что&nbsp;остаётся за&nbsp;человеком и&nbsp;как меняется его&nbsp;рабочий день. Сокращения мы&nbsp;не&nbsp;предлагаем и&nbsp;не&nbsp;планируем, это решение собственника. Наша задача – снять с&nbsp;людей повторяющуюся рутину, а&nbsp;не&nbsp;отнять у&nbsp;них работу</div>
+          <div class="fr">схема 04 тезис, вопрос 72&nbsp;пт из-за длины ответа, ответ 50&nbsp;пт</div></div>
         <div class="s"><div class="mk">частый вопрос</div>
-          <div class="ttl">А&nbsp;если у&nbsp;нас есть свои разработчики</div>
-          <div class="tx">Одного агента ваш разработчик соберёт за&nbsp;выходные. Платят не&nbsp;за&nbsp;это, а&nbsp;за&nbsp;то, чтобы решение продолжало работать через полгода</div>
-          <div class="fr">молочный кадр, заголовок в&nbsp;три строки 72&nbsp;пт, ответ 50&nbsp;пт</div></div>
+          <div class="ttl">Мы&nbsp;уже внедряли, эффекта не&nbsp;было?</div>
+          <div class="tx">Так бывает, когда инструмент дают людям без разбора процесса: инструкция есть, привычки нет. Мы&nbsp;начинаем с&nbsp;процессов и&nbsp;задач конкретных людей, а&nbsp;инструмент подбираем под них</div>
+          <div class="fr">схема 04 тезис, вопрос 86&nbsp;пт, ответ 50&nbsp;пт. Источник synapt.tech/checkup</div></div>
         <div class="s"><div class="mk">частый вопрос</div>
-          <div class="ttl">Данные не&nbsp;утекут</div>
-          <div class="tx">Данные остаются в&nbsp;вашем контуре. Обезличивание перед отправкой в&nbsp;модель, ролевой доступ и&nbsp;журнал обращений – безопасный слой лежит в&nbsp;основе всех блоков</div>
-          <div class="fr">молочный кадр, вёрстка как&nbsp;в&nbsp;сторис 1</div></div>
-        <div class="s"><div class="mk">частый вопрос</div>
-          <div class="ttl">Что&nbsp;остаётся у&nbsp;нас после проекта</div>
-          <div class="tx">Система целиком: код, доступы, промпты, база знаний и&nbsp;документация. Плюс 60&nbsp;дней на&nbsp;связи после сдачи</div>
-          <div class="fr">молочный кадр. Знак Synapt в&nbsp;нижнем углу тёмным, закрывает серию</div></div>
+          <div class="ttl">Что&nbsp;происходит после запуска?</div>
+          <div class="tx">60&nbsp;дней поддержки: остаёмся на&nbsp;связи и&nbsp;обкатываем систему на&nbsp;реальных процессах, донастраиваем под то, как&nbsp;работает команда. Дальше продлеваем договор или&nbsp;полностью передаём систему вашей команде. Код, документация и&nbsp;методология в&nbsp;любом случае остаются у&nbsp;вас</div>
+          <div class="fr">схема 04 тезис, вопрос 72&nbsp;пт, ответ 50&nbsp;пт</div></div>
+        <div class="s"><div class="mk">следующий шаг</div>
+          <div class="ttl">30&nbsp;минут в&nbsp;Zoom с&nbsp;партнёрами студии</div>
+          <div class="tx">Вы&nbsp;рассказываете про бизнес, мы&nbsp;задаём вопросы и&nbsp;совместно определяем цели. После присылаем запись разговора и&nbsp;разбор: что&nbsp;увидели и&nbsp;с&nbsp;чего рекомендуем начать. Оставить заявку</div>
+          <div class="fr">схема 06 приглашение. Кнопка лаймом, фоном сеть. Знак Synapt и&nbsp;synapt.tech в&nbsp;нижней строке закрывают серию</div></div>
       </div>
     </div>
 
@@ -1008,11 +1016,11 @@ footer.end p{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spac
   <div class="gal p7"><a href="assets/post2-01.png" target="_blank" rel="noopener"><img src="assets/post2-01.png" alt="кейс INNORTO" loading="lazy"><div class="cp">кейс INNORTO</div></a><a href="assets/post2-02.png" target="_blank" rel="noopener"><img src="assets/post2-02.png" alt="запрос" loading="lazy"><div class="cp">запрос</div></a><a href="assets/post2-03.png" target="_blank" rel="noopener"><img src="assets/post2-03.png" alt="было" loading="lazy"><div class="cp">было</div></a><a href="assets/post2-04.png" target="_blank" rel="noopener"><img src="assets/post2-04.png" alt="стало" loading="lazy"><div class="cp">стало</div></a><a href="assets/post2-05.png" target="_blank" rel="noopener"><img src="assets/post2-05.png" alt="итог" loading="lazy"><div class="cp">итог</div></a><a href="assets/post2-06.png" target="_blank" rel="noopener"><img src="assets/post2-06.png" alt="эффект" loading="lazy"><div class="cp">эффект</div></a><a href="assets/post2-07.png" target="_blank" rel="noopener"><img src="assets/post2-07.png" alt="следующий шаг" loading="lazy"><div class="cp">следующий шаг</div></a></div>
   <div class="galh"><span class="n">пост 3, AI-чекап бизнеса</span><span class="c">post3-01 … 07, тексты с&nbsp;synapt.tech/checkup</span></div>
   <div class="gal p7"><a href="assets/post3-01.png" target="_blank" rel="noopener"><img src="assets/post3-01.png" alt="AI-чекап" loading="lazy"><div class="cp">AI-чекап</div></a><a href="assets/post3-02.png" target="_blank" rel="noopener"><img src="assets/post3-02.png" alt="когда нужен" loading="lazy"><div class="cp">когда нужен</div></a><a href="assets/post3-03.png" target="_blank" rel="noopener"><img src="assets/post3-03.png" alt="как&nbsp;проходит" loading="lazy"><div class="cp">как&nbsp;проходит</div></a><a href="assets/post3-04.png" target="_blank" rel="noopener"><img src="assets/post3-04.png" alt="маршрут" loading="lazy"><div class="cp">маршрут</div></a><a href="assets/post3-05.png" target="_blank" rel="noopener"><img src="assets/post3-05.png" alt="результат" loading="lazy"><div class="cp">результат</div></a><a href="assets/post3-06.png" target="_blank" rel="noopener"><img src="assets/post3-06.png" alt="цена" loading="lazy"><div class="cp">цена</div></a><a href="assets/post3-07.png" target="_blank" rel="noopener"><img src="assets/post3-07.png" alt="следующий шаг" loading="lazy"><div class="cp">следующий шаг</div></a></div>
-  <div><a class="dl" href="assets/synapt-smm.zip" download>Скачать все PNG одним архивом <span class="sz">zip, 41 файл</span></a></div>
+  <div class="dls"><a class="dl" href="assets/synapt-smm.zip" download>Скачать всё одним архивом <span class="sz">zip, 51 PNG + 51 SVG + README</span></a><a class="dl ghost" href="assets/synapt-smm-svg.zip" download>SVG для&nbsp;Figma <span class="sz">zip, 51 файл + README, текст остаётся текстом</span></a></div>
 
   <div class="note">
     <div class="k">откуда тексты</div>
-    <p>Слайды собраны из&nbsp;готовых формулировок synapt.tech: заголовки разделов, лиды, метрики с&nbsp;подписями, пункты «что&nbsp;входит», цитаты болей с&nbsp;чекапа. Свои слова только в&nbsp;коротких метках-связках. Кегли: посты не&nbsp;меньше 36&nbsp;пт, сторис не&nbsp;меньше 44&nbsp;пт, знак Synapt в&nbsp;нижнем углу каждого кадра</p>
+    <p>Слайды собраны из&nbsp;готовых формулировок synapt.tech: заголовки разделов, лиды, метрики с&nbsp;подписями, пункты «что&nbsp;входит», цитаты болей с&nbsp;чекапа. Свои слова только в&nbsp;коротких метках-связках. Кегли: посты не&nbsp;меньше 36&nbsp;пт, сторис не&nbsp;меньше 44&nbsp;пт. Логотип: в&nbsp;сторис знак и&nbsp;synapt.tech только на&nbsp;последнем кадре серии, в&nbsp;каруселях только пост 1 несёт знак сбоку на&nbsp;всех слайдах, посты 2 и&nbsp;3 без подписи, обложки хайлайтов без знака</p>
   </div>
 
   <div class="hh"><span class="n">общие правила кадра</span><h3>Что&nbsp;держим во&nbsp;всех макетах</h3></div>

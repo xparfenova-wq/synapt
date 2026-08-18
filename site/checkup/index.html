@@ -1839,6 +1839,55 @@ html body .hero.rh-hero .hero-in{height:calc(100vh - 240px)!important;min-height
 @media(max-width:760px){html body .cover.r-cover{padding-top:96px!important;padding-bottom:96px!important;min-height:100vh!important;height:auto!important}html body .hero.rh-hero{padding-top:96px!important;padding-bottom:62px!important;min-height:100vh!important;height:auto!important}}
 @media(min-width:901px){html body footer .f-main{grid-template-columns:250px 290px minmax(0,1fr)!important;gap:32px!important;column-gap:32px!important;justify-content:start!important}}
 </style>
+<style id="fix-night">
+/* правки ночи 18.08 (вторая волна): цифры обложки, чекбокс, подвал, светлая тема, курсор, наведение в 01 */
+/* --- A. цифры обложки --- */
+@media(min-width:981px){
+  html body .hero.rh-hero .hero-stats .hs b{font-size:96px!important;line-height:1!important;letter-spacing:-.03em!important;white-space:nowrap!important;text-align:right!important}
+  html body .hero.rh-hero .hero-stats .hs b .tail,html body .hero.rh-hero .hero-stats .hs b>.m-t{font-size:36px!important;margin-left:.14em!important}
+  html body .hero.rh-hero .hero-stats{gap:30px!important;justify-items:end!important}
+  html body .hero.rh-hero .hero-stats .hs>span{margin-top:8px!important;text-align:right!important;margin-left:auto!important;max-width:28ch!important}
+}
+@media(max-width:760px){
+  html body .hero.rh-hero .hero-stats .hs b{font-size:56px!important;line-height:1!important;letter-spacing:-.03em!important;white-space:nowrap!important}
+  html body .hero.rh-hero .hero-stats .hs b .tail,html body .hero.rh-hero .hero-stats .hs b>.m-t{font-size:26px!important;margin-left:.14em!important}
+}
+/* --- B. чекбокс по центру всех строк подписи --- */
+html body #lead .lf-check{display:flex!important;align-items:center!important;gap:12px!important;--cb-top:auto}
+html body #lead .lf-check input[type=checkbox]{margin:0!important;align-self:center!important;flex:none!important;position:relative!important;top:auto!important;transform:none!important}
+html body #lead .lf-check>span{padding-top:0!important;line-height:1.5!important}
+/* --- C. подвал --- */
+html body footer .f-copy,html body footer .f-bottom{margin-top:56px!important;padding-top:14px!important;border-top:1px solid var(--line)!important}
+html body footer .f-legal-c{gap:0!important}
+html body footer .f-legal-c p,html body footer .f-legal p{margin:0!important;line-height:1.35!important}
+html body footer .f-legal-c a,html body footer .f-legal>a{line-height:1.35!important;margin-top:0!important}
+@media(min-width:901px){
+  html body footer .f-nav.f-nav2,html body footer .f-nav2{display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;gap:6px!important;max-width:none!important}
+  html body footer .f-nav.f-nav2 .f-k,html body footer .f-nav2 .f-k{grid-column:auto!important;flex:none!important;margin:0 0 4px!important}
+  html body footer .f-nav.f-nav2 a{display:block!important;flex:none!important}
+  html body footer .f-legal-cols{grid-template-columns:max-content max-content!important;gap:0 24px!important}
+}
+/* --- E. светлая тема без тёмно-зелёного текста --- */
+html[data-theme="light"] body{--accent-txt:#191A1D;--accent-text:#191A1D}
+html[data-theme="light"] body .lc-mgr-t b .lc-name,html[data-theme="light"] body .lc-mgr-t b a,html[data-theme="light"] body #lead .lc-mgr-t b a{color:#191A1D!important;background:var(--accent)!important;padding:1px 6px!important;border-radius:6px!important;border-bottom:0!important;text-decoration:none!important;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+html[data-theme="light"] body .lc-mgr-t b a:hover{background:var(--accent-glow)!important;color:#191A1D!important}
+html[data-theme="light"] body .stmt b,html[data-theme="light"] body .morelink,html[data-theme="light"] body .req{color:#191A1D!important}
+/* --- 01 «Когда нужен чекап»: при наведении номер лаймовый, больше ничего не двигается --- */
+html body #why .rule .rn{transition:color .25s ease,background-color .25s ease!important;padding:1px 6px 1px 6px!important;margin-left:-6px!important;border-radius:6px!important;background:transparent!important;width:fit-content!important;justify-self:start!important;box-sizing:border-box}
+html body #why .rule:hover .rn{color:var(--accent)!important}
+html[data-theme="light"] body #why .rule:hover .rn{color:#191A1D!important;background:var(--accent)!important}
+html[data-theme="light"] body .rule:hover .rn{color:#191A1D!important}
+/* --- F. курсор-нейрон --- */
+html body{cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><circle cx='14' cy='14' r='11' fill='none' stroke='%23D0E865' stroke-opacity='.55'/><circle cx='14' cy='14' r='3' fill='%23D0E865'/><path d='M14 3v4M14 21v4M3 14h4M21 14h4' stroke='%23D0E865' stroke-opacity='.7' stroke-linecap='round'/></svg>") 14 14,auto!important}
+html body a,html body button,html body [role=button],html body label,html body summary,html body .btn,html body .rel-card,html body .tgl,html body .nxt a,html body .fab-b,html body input[type=checkbox],html body .sl-day,html body .sl-slot,html body .burger{cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><circle cx='14' cy='14' r='11' fill='none' stroke='%23D0E865' stroke-opacity='.9'/><circle cx='14' cy='14' r='4' fill='%23D0E865'/><path d='M14 2.5v4.5M14 21v4.5M2.5 14h4.5M21 14h4.5' stroke='%23D0E865' stroke-opacity='.9' stroke-linecap='round'/></svg>") 14 14,pointer!important}
+html[data-theme="light"] body{cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><circle cx='14' cy='14' r='11' fill='none' stroke='%23A6BF41' stroke-opacity='.85'/><circle cx='14' cy='14' r='3' fill='%23191A1D'/><path d='M14 3v4M14 21v4M3 14h4M21 14h4' stroke='%23191A1D' stroke-opacity='.7' stroke-linecap='round'/></svg>") 14 14,auto!important}
+html[data-theme="light"] body a,html[data-theme="light"] body button,html[data-theme="light"] body [role=button],html[data-theme="light"] body label,html[data-theme="light"] body summary,html[data-theme="light"] body .btn,html[data-theme="light"] body .rel-card,html[data-theme="light"] body .tgl,html[data-theme="light"] body .nxt a,html[data-theme="light"] body .fab-b,html[data-theme="light"] body input[type=checkbox],html[data-theme="light"] body .sl-day,html[data-theme="light"] body .sl-slot,html[data-theme="light"] body .burger{cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><circle cx='14' cy='14' r='11' fill='none' stroke='%23A6BF41'/><circle cx='14' cy='14' r='4' fill='%23191A1D'/><path d='M14 2.5v4.5M14 21v4.5M2.5 14h4.5M21 14h4.5' stroke='%23191A1D' stroke-opacity='.85' stroke-linecap='round'/></svg>") 14 14,pointer!important}
+html body input:not([type=checkbox]):not([type=radio]):not([type=submit]):not([type=button]),html body textarea{cursor:text!important}
+/* --- обложка: холст схемы --- */
+html body #chkFx{opacity:.78!important}
+@media(max-width:760px){html body #chkFx{opacity:.62!important}}
+@media(prefers-reduced-motion:reduce){html body #chkFx{opacity:.5!important}}
+</style>
 </head>
 <body>
 <nav class="nav"><div class="wrap">
@@ -2361,10 +2410,12 @@ html body .hero.rh-hero .hero-in{height:calc(100vh - 240px)!important;min-height
 </script>
 
 <script>
-/* обложка: абстрактная схема процессов.
-   0-2,5с – чертёж тонкими серыми линиями; пауза; заливка лаймом от центра
-   по связям, узлы загораются по мере достижения; два-три узла остаются
-   серыми с обводкой – это узкие места. цикл 10 секунд */
+/* обложка: схема процессов компании.
+   0-3с – серый чертёж прорисовывается от центра наружу (узлы-отделы крупные,
+   узлы-процессы мелкие вокруг них, связи лёгкими дугами); пауза; лаймовая волна
+   идёт по связям от центра с мягким свечением и искрами на узлах; узкие места
+   до которых волна не доходит, остаются серыми и тускло пульсируют; к концу
+   цикла всё плавно гаснет и чертёж начинается заново. цикл 11 секунд */
 (function(){
   var c=document.getElementById('chkFx'); if(!c) return;
   var ctx=c.getContext('2d'), DPR=Math.min(devicePixelRatio||1,2), W=0,H=0;
@@ -2372,119 +2423,214 @@ html body .hero.rh-hero .hero-in{height:calc(100vh - 240px)!important;min-height
   function theme(){var l=document.documentElement.getAttribute('data-theme')==='light';
     GR=l?'92,102,98':'128,140,136'; PH=l?'118,146,34':'208,232,101'}
   theme(); new MutationObserver(theme).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+  var reduced=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
 
-  /* узлы в долях холста: схема одинаковая на любой ширине */
-  var NODES=[
-    {x:.50,y:.50,r:5.4},
-    {x:.34,y:.34,r:4.2},{x:.66,y:.33,r:4.2},{x:.68,y:.68,r:4.2},{x:.32,y:.67,r:4.2},
-    {x:.19,y:.20,r:3.4},{x:.50,y:.16,r:3.4},{x:.82,y:.19,r:3.4},
-    {x:.88,y:.48,r:3.4},{x:.83,y:.82,r:3.4},{x:.50,y:.87,r:3.4},
-    {x:.17,y:.81,r:3.4},{x:.12,y:.50,r:3.4},
-    {x:.28,y:.05,r:2.6},{x:.72,y:.05,r:2.6},{x:.96,y:.30,r:2.6},
-    {x:.96,y:.70,r:2.6},{x:.68,y:.96,r:2.6},{x:.30,y:.96,r:2.6},{x:.04,y:.66,r:2.6}
-  ];
-  /* связи: от центра наружу, плюс поперечные хорды */
-  var EDGES=[[0,1],[0,2],[0,3],[0,4],
-    [1,5],[1,6],[2,6],[2,7],[2,8],[3,8],[3,9],[3,10],[4,10],[4,11],[4,12],[1,12],
-    [5,13],[6,14],[7,15],[8,16],[9,17],[10,18],[11,19],
-    [5,6],[6,7],[8,9],[11,12],[12,5],[9,10]];
-  /* узкие места: до них заливка не доходит */
-  var STUCK={7:1,11:1,16:1};
+  /* детерминированный генератор: схема одинаковая при каждой загрузке */
+  var seed=7; function rnd(){seed=(seed*16807)%2147483647; return (seed-1)/2147483646}
 
-  var CYCLE=10000, DRAW=2500, HOLD=1000, FILL=5000; /* остальное – затухание */
-  var t0=performance.now();
+  /* --- граф: центр → отделы (lvl1) → процессы (lvl2) → мелкие шаги (lvl3) --- */
+  var NODES=[], EDGES=[];
+  function add(x,y,r,lvl,parent){var i=NODES.length; NODES.push({x:x,y:y,r:r,lvl:lvl,ph:rnd()*6.283,parent:parent}); if(parent!=null) EDGES.push([parent,i,'tree']); return i}
+  function far(x,y,min){for(var i=0;i<NODES.length;i++){var dx=NODES[i].x-x,dy=NODES[i].y-y; if(dx*dx+dy*dy<min*min) return false} return true}
+  var hub=add(.5,.47,6.2,0,null);
+  var DEPT=7, depts=[];
+  for(var d=0;d<DEPT;d++){
+    var a=-1.25+d*(6.283/DEPT)+(rnd()-.5)*.35, R=.27+(rnd()-.5)*.06;
+    depts.push(add(.5+Math.cos(a)*R*1.08,.47+Math.sin(a)*R*.98,4.6,1,hub));
+  }
+  var procs=[];
+  depts.forEach(function(di,k){
+    var D=NODES[di], base=Math.atan2(D.y-.47,D.x-.5), n=3+Math.floor(rnd()*3), tries=0;
+    for(var j=0;j<n;j++){
+      var a=base+(j-(n-1)/2)*(1.05+rnd()*.25)+(rnd()-.5)*.3, r=.115+rnd()*.06;
+      var x=D.x+Math.cos(a)*r*1.06, y=D.y+Math.sin(a)*r*.98;
+      if(x<.03||x>.97||y<.03||y>.97||!far(x,y,.055)){ if(tries++<10){j--} continue }
+      procs.push(add(x,y,2.9,2,di));
+    }
+  });
+  procs.forEach(function(pi){
+    if(rnd()<.78){
+      var P=NODES[pi], D=NODES[P.parent], base=Math.atan2(P.y-D.y,P.x-D.x), n=1+(rnd()<.55?1:0);
+      for(var j=0;j<n;j++){
+        var a=base+(j-(n-1)/2)*.9+(rnd()-.5)*.5, r=.06+rnd()*.03;
+        var x=P.x+Math.cos(a)*r*1.06, y=P.y+Math.sin(a)*r*.98;
+        if(x<.02||x>.98||y<.02||y>.98||!far(x,y,.04)) continue;
+        add(x,y,1.8,3,pi);
+      }
+    }
+  });
+  /* поперечные связи: кольцо отделов и мосты между соседними кластерами процессов */
+  for(var d=0;d<DEPT;d++){ if(rnd()<.8) EDGES.push([depts[d],depts[(d+1)%DEPT],'x']) }
+  var bridges=0;
+  for(var i=0;i<procs.length&&bridges<7;i++){
+    var A=NODES[procs[i]], best=-1, bd=1;
+    for(var j=0;j<procs.length;j++){ if(i===j) continue; var B=NODES[procs[j]]; if(A.parent===B.parent) continue;
+      var dd=Math.hypot(A.x-B.x,A.y-B.y); if(dd<bd){bd=dd;best=procs[j]} }
+    if(best>=0&&bd<.16&&rnd()<.55){ EDGES.push([procs[i],best,'x']); bridges++ }
+  }
+  EDGES.forEach(function(e){e.bend=(rnd()<.5?-1:1)*(.05+rnd()*.07)});
+  /* узкие места: 5 процессов из разных отделов, до них волна не доходит */
+  var STUCK={}, used={};
+  for(var i=0;i<procs.length&&Object.keys(STUCK).length<5;i++){ var p=NODES[procs[i]]; if(used[p.parent]) continue; if(rnd()<.5){ STUCK[procs[i]]=1; used[p.parent]=1 } }
 
+  /* --- расстояние от центра по графу с учётом длины связей: волна идёт равномерно --- */
+  function ulen(a,b){var A=NODES[a],B=NODES[b]; return Math.hypot((A.x-B.x)*1.6,(A.y-B.y))}
+  var dist=NODES.map(function(){return Infinity}); dist[hub]=0;
+  var adj=NODES.map(function(){return []});
+  EDGES.forEach(function(e,i){adj[e[0]].push([e[1],i]); adj[e[1]].push([e[0],i])});
+  (function(){var done={}; for(;;){var u=-1,bd=Infinity; for(var i=0;i<NODES.length;i++){ if(!done[i]&&dist[i]<bd){bd=dist[i];u=i} } if(u<0) break; done[u]=1;
+    adj[u].forEach(function(p){var v=p[0]; if(STUCK[v]) return; var nd=dist[u]+ulen(u,v); if(nd<dist[v]) dist[v]=nd}) }})();
+  var maxD=0; dist.forEach(function(v){if(isFinite(v)&&v>maxD)maxD=v});
+  /* порядок прорисовки чертежа: тоже от центра наружу, узкие места – по родителю */
+  var order=[]; NODES.forEach(function(n,i){order[i]=isFinite(dist[i])?dist[i]:(order[n.parent]||0)+.08});
+  var eOrder=EDGES.map(function(e){return Math.min(order[e[0]],order[e[1]])});
+  var maxO=Math.max.apply(null,order);
+
+  /* --- геометрия --- */
   function build(){var r=c.getBoundingClientRect(); W=r.width; H=r.height;
     if(!W||!H) return; c.width=W*DPR; c.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0)}
   build(); addEventListener('resize',build);
-
-  /* координаты: схема вписана в квадрат, чтобы не растягивалась на широком экране */
-  function pt(n){
-    /* на широком экране схема сдвинута левее, чтобы не лезть под колонку цифр */
-    var side=Math.min(W,H)*(W<981?.92:.78), cx=W*(W<981?.5:.46), cy=H*.5;
-    return [cx+(n.x-.5)*side, cy+(n.y-.5)*side];
+  var mob=false;
+  function pt(n,t){
+    mob=W<761;
+    var x,y;
+    if(mob){ x=W*(.04+n.x*.92); y=H*(.06+n.y*.56) }
+    else { x=W*(.03+n.x*.94); y=H*(.06+n.y*.90) }
+    /* едва заметное дыхание узлов */
+    var k=n.lvl?1:0; x+=Math.sin(t*.00045+n.ph)*1.6*k; y+=Math.cos(t*.0004+n.ph*1.3)*1.6*k;
+    return [x,y];
   }
-  /* дистанция узла от центра по графу – определяет очередь загорания */
-  var depth=(function(){
-    var d=new Array(NODES.length).fill(Infinity), q=[0]; d[0]=0;
-    while(q.length){var i=q.shift();
-      EDGES.forEach(function(e){
-        var a=e[0],b=e[1];
-        if(a===i&&d[b]>d[i]+1&&!STUCK[b]){d[b]=d[i]+1;q.push(b)}
-        if(b===i&&d[a]>d[i]+1&&!STUCK[a]){d[a]=d[i]+1;q.push(a)}
-      });
-    }
-    return d;
-  })();
-  var maxD=Math.max.apply(null,depth.filter(function(v){return isFinite(v)}));
-
+  /* контрольная точка дуги: смещение поперёк связи, знак детерминирован */
+  function ctrl(A,B,e){var mx=(A[0]+B[0])/2,my=(A[1]+B[1])/2,dx=B[0]-A[0],dy=B[1]-A[1],L=Math.hypot(dx,dy)||1;
+    var s=e.bend;
+    return [mx-dy/L*L*s, my+dx/L*L*s]}
+  /* частичная дуга от A до параметра t (де Кастельжо) */
+  function arc(A,C,B,t0,t1){
+    function q(t){var u=1-t; return [u*u*A[0]+2*u*t*C[0]+t*t*B[0], u*u*A[1]+2*u*t*C[1]+t*t*B[1]]}
+    var P0=q(t0),P1=q(t1);
+    var C1=[(1-t1)*((1-t0)*A[0]+t0*C[0])+t1*((1-t0)*C[0]+t0*B[0]), (1-t1)*((1-t0)*A[1]+t0*C[1])+t1*((1-t0)*C[1]+t0*B[1])];
+    ctx.moveTo(P0[0],P0[1]); ctx.quadraticCurveTo(C1[0],C1[1],P1[0],P1[1]); return P1;
+  }
   function ease(x){return x<0?0:x>1?1:x*x*(3-2*x)}
+  function clamp(x){return x<0?0:x>1?1:x}
 
+  var CYCLE=11000, DRAW=3000, HOLD=800, FILL=4600, STAY=1500; /* остальное 1100 – затухание */
+  var t0=performance.now();
+
+  function render(now){
+    var ph=reduced?DRAW+HOLD+FILL+300:((now-t0)%CYCLE);
+    ctx.clearRect(0,0,W,H);
+    var drawP=ease(ph/DRAW);
+    var fillP=ph<DRAW+HOLD?0:ease((ph-DRAW-HOLD)/FILL);
+    var endT=DRAW+HOLD+FILL+STAY;
+    var fade=ph>endT?ease((ph-endT)/(CYCLE-endT)):0;   /* общее затухание в конце цикла */
+    var G=1-fade;
+    var reach=fillP*(maxD+.001);
+    var P=NODES.map(function(n){return pt(n,now)});
+    ctx.lineCap='round'; ctx.lineJoin='round';
+
+    /* 1. серый чертёж: связи проявляются от центра наружу */
+    EDGES.forEach(function(e,i){
+      var A=P[e[0]],B=P[e[1]],C=ctrl(A,B,e);
+      var k=clamp((drawP*(maxO+.25)-eOrder[i])/ .28);
+      if(k<=0) return;
+      ctx.beginPath(); arc(A,C,B,0,k);
+      ctx.strokeStyle='rgba('+GR+','+(.40*G)+')'; ctx.lineWidth=e[2]==='x'?.8:1; ctx.stroke();
+    });
+
+    /* 2. лаймовая волна по связям: свечение + ядро + голова волны */
+    var heads=[];
+    EDGES.forEach(function(e){
+      if(STUCK[e[0]]||STUCK[e[1]]) return;
+      var dA=dist[e[0]],dB=dist[e[1]]; if(!isFinite(dA)||!isFinite(dB)) return;
+      var near=dA<=dB?e[0]:e[1], farN=dA<=dB?e[1]:e[0];
+      var span=Math.max(dist[farN]-dist[near],1e-4);
+      var g=clamp((reach-dist[near])/span);
+      if(g<=0) return;
+      var A=P[near],B=P[farN],C=ctrl(A,B,e); if(near!==e[0]) C=ctrl(P[e[0]],P[e[1]],e);
+      var al=G*(fillP<1?1:1);
+      ctx.beginPath(); var tip=arc(A,C,B,0,g);
+      ctx.strokeStyle='rgba('+PH+','+(.10*al)+')'; ctx.lineWidth=7; ctx.stroke();
+      ctx.beginPath(); arc(A,C,B,0,g);
+      ctx.strokeStyle='rgba('+PH+','+(.68*al)+')'; ctx.lineWidth=1.4; ctx.stroke();
+      if(g<1&&fillP<1) heads.push(tip);
+    });
+    heads.forEach(function(h){
+      var rg=ctx.createRadialGradient(h[0],h[1],0,h[0],h[1],16);
+      rg.addColorStop(0,'rgba('+PH+','+(.55*G)+')'); rg.addColorStop(.35,'rgba('+PH+','+(.18*G)+')'); rg.addColorStop(1,'rgba('+PH+',0)');
+      ctx.fillStyle=rg; ctx.beginPath(); ctx.arc(h[0],h[1],16,0,7); ctx.fill();
+    });
+
+    /* 3. узлы: серые в чертеже, лаймовые с искрой при приходе волны,
+          узкие места серые с обводкой и тусклой пульсацией после прихода волны к соседям */
+    NODES.forEach(function(n,i){
+      var Q=P[i];
+      var appear=ease((drawP*(maxO+.25)-order[i])/.3);
+      if(appear<=0) return;
+      var stuck=!!STUCK[i];
+      if(stuck){
+        var nb=dist[n.parent]; var awake=isFinite(nb)?clamp((reach-nb)/(maxD*.08)):0;
+        var pulse=awake*(.5+.5*Math.sin(now*.0035+n.ph));
+        var rr=n.r*1.35*appear+pulse*1.2;
+        if(awake>0){var rg2=ctx.createRadialGradient(Q[0],Q[1],0,Q[0],Q[1],rr*4);
+          rg2.addColorStop(0,'rgba('+GR+','+(.16*pulse*G)+')'); rg2.addColorStop(1,'rgba('+GR+',0)');
+          ctx.fillStyle=rg2; ctx.beginPath(); ctx.arc(Q[0],Q[1],rr*4,0,7); ctx.fill()}
+        ctx.beginPath(); ctx.arc(Q[0],Q[1],rr,0,7);
+        ctx.fillStyle='rgba('+GR+','+((.10+.10*pulse)*G)+')'; ctx.fill();
+        ctx.strokeStyle='rgba('+GR+','+((.55+.3*pulse)*G)+')'; ctx.lineWidth=1.2; ctx.stroke();
+        return;
+      }
+      var lit=isFinite(dist[i])&&reach>=dist[i]-1e-6&&fillP>0;
+      var age=lit?clamp((reach-dist[i])/(maxD*.10)):0;   /* 0 – только что зажёгся, 1 – давно */
+      var spark=lit?(1-age):0;
+      if(lit){
+        /* мягкий ореол */
+        var gr=n.r*(3.2+1.6*spark);
+        var rg=ctx.createRadialGradient(Q[0],Q[1],0,Q[0],Q[1],gr);
+        rg.addColorStop(0,'rgba('+PH+','+((.28+.35*spark)*G)+')'); rg.addColorStop(1,'rgba('+PH+',0)');
+        ctx.fillStyle=rg; ctx.beginPath(); ctx.arc(Q[0],Q[1],gr,0,7); ctx.fill();
+        /* искра: расходящееся кольцо */
+        if(spark>0){var sr=n.r+(1-spark)*n.r*5; ctx.beginPath(); ctx.arc(Q[0],Q[1],sr,0,7);
+          ctx.strokeStyle='rgba('+PH+','+(spark*spark*.8*G)+')'; ctx.lineWidth=1; ctx.stroke()}
+        ctx.beginPath(); ctx.arc(Q[0],Q[1],n.r*(1+.35*spark),0,7);
+        ctx.fillStyle='rgba('+PH+','+((.72+.28*spark)*G)+')'; ctx.fill();
+        if(n.lvl<=1){ctx.beginPath(); ctx.arc(Q[0],Q[1],n.r*.42,0,7); ctx.fillStyle='rgba(255,255,255,'+(.55*G)+')'; ctx.fill()}
+      } else {
+        ctx.beginPath(); ctx.arc(Q[0],Q[1],n.r*appear,0,7);
+        ctx.fillStyle='rgba('+GR+','+((n.lvl<=1?.62:.5)*G)+')'; ctx.fill();
+        if(n.lvl<=1){ctx.beginPath(); ctx.arc(Q[0],Q[1],n.r*appear*1.9,0,7); ctx.strokeStyle='rgba('+GR+','+(.22*G)+')'; ctx.lineWidth=.8; ctx.stroke()}
+      }
+    });
+
+    /* 4. маска: затухание к левому нижнему углу, где заголовок и лид, и слабее под цифрами справа */
+    ctx.globalCompositeOperation='destination-out';
+    var m1;
+    if(mob){ m1=ctx.createLinearGradient(0,H*.42,0,H*.66); m1.addColorStop(0,'rgba(0,0,0,0)'); m1.addColorStop(1,'rgba(0,0,0,1)');
+      ctx.fillStyle=m1; ctx.fillRect(0,0,W,H);
+      var mm=ctx.createRadialGradient(W*.8,H*.24,0,W*.8,H*.24,W*.6);
+      mm.addColorStop(0,'rgba(0,0,0,.82)'); mm.addColorStop(.6,'rgba(0,0,0,.45)'); mm.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=mm; ctx.fillRect(0,0,W,H); }
+    else {
+      m1=ctx.createRadialGradient(W*.20,H*.82,0,W*.20,H*.82,W*.56);
+      m1.addColorStop(0,'rgba(0,0,0,1)'); m1.addColorStop(.48,'rgba(0,0,0,.93)'); m1.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=m1; ctx.fillRect(0,0,W,H);
+      var m2=ctx.createRadialGradient(W*.9,H*.32,0,W*.9,H*.32,W*.3);
+      m2.addColorStop(0,'rgba(0,0,0,.8)'); m2.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=m2; ctx.fillRect(0,0,W,H);
+    }
+    /* мягкие края холста */
+    var m3=ctx.createLinearGradient(0,0,0,H); m3.addColorStop(0,'rgba(0,0,0,.55)'); m3.addColorStop(.12,'rgba(0,0,0,0)'); m3.addColorStop(.9,'rgba(0,0,0,0)'); m3.addColorStop(1,'rgba(0,0,0,.6)');
+    ctx.fillStyle=m3; ctx.fillRect(0,0,W,H);
+    ctx.globalCompositeOperation='source-over';
+  }
+
+  if(reduced){ build(); if(W&&H) render(performance.now()); addEventListener('resize',function(){build(); render(performance.now())}); return }
   (function frame(now){
     requestAnimationFrame(frame);
     if(!W||!H){build(); return}
     if(c.getBoundingClientRect().bottom<-600) return;
-    var ph=((now||performance.now())-t0)%CYCLE;
-    ctx.clearRect(0,0,W,H);
-
-    /* 1. чертёж: связи проявляются по очереди */
-    var drawP=ease(ph/DRAW);
-    var fillP=ph<DRAW+HOLD?0:ease((ph-DRAW-HOLD)/FILL);
-    /* к концу цикла лайм плавно гаснет обратно в серое */
-    var fade=ph>DRAW+HOLD+FILL?ease((ph-DRAW-HOLD-FILL)/(CYCLE-DRAW-HOLD-FILL)):0;
-    var live=fillP*(1-fade);
-
-    ctx.lineCap='round';
-    EDGES.forEach(function(e,i){
-      var A=pt(NODES[e[0]]), B=pt(NODES[e[1]]);
-      var seg=i/EDGES.length, k=(drawP-seg*.55)/.45;
-      k=k<0?0:k>1?1:k;
-      if(k<=0) return;
-      ctx.beginPath(); ctx.moveTo(A[0],A[1]);
-      ctx.lineTo(A[0]+(B[0]-A[0])*k, A[1]+(B[1]-A[1])*k);
-      ctx.strokeStyle='rgba('+GR+',.42)'; ctx.lineWidth=1; ctx.stroke();
-
-      /* 3. лаймовая заливка идёт от центра по глубине графа */
-      var dA=depth[e[0]], dB=depth[e[1]];
-      if(STUCK[e[0]]||STUCK[e[1]]) return;
-      var near=Math.min(dA,dB), far=Math.max(dA,dB);
-      if(!isFinite(far)) return;
-      var reach=live*(maxD+1);
-      var g=(reach-near)/1;
-      g=g<0?0:g>1?1:g;
-      if(g<=0) return;
-      var from=near===dA?A:B, to=near===dA?B:A;
-      ctx.beginPath(); ctx.moveTo(from[0],from[1]);
-      ctx.lineTo(from[0]+(to[0]-from[0])*g, from[1]+(to[1]-from[1])*g);
-      ctx.strokeStyle='rgba('+PH+',.62)'; ctx.lineWidth=1.5; ctx.stroke();
-    });
-
-    /* 2/4. узлы: серые в чертеже, лаймовые по мере достижения,
-       узкие места остаются серыми с тонкой обводкой */
-    NODES.forEach(function(n,i){
-      var P=pt(n);
-      var appear=ease((drawP-(i/NODES.length)*.5)/.5);
-      if(appear<=0) return;
-      var stuck=!!STUCK[i];
-      var lit=!stuck&&isFinite(depth[i])&&live*(maxD+1)>=depth[i]+.9;
-      var glow=lit?ease((live*(maxD+1)-depth[i]-.9)/.6):0;
-
-      if(lit&&glow>0){
-        var rg=ctx.createRadialGradient(P[0],P[1],0,P[0],P[1],n.r*4.5);
-        rg.addColorStop(0,'rgba('+PH+','+(.34*glow)+')');
-        rg.addColorStop(1,'rgba('+PH+',0)');
-        ctx.fillStyle=rg; ctx.beginPath(); ctx.arc(P[0],P[1],n.r*4.5,0,7); ctx.fill();
-      }
-      ctx.beginPath(); ctx.arc(P[0],P[1],n.r*appear,0,7);
-      if(stuck){
-        ctx.fillStyle='rgba('+GR+',.10)'; ctx.fill();
-        ctx.strokeStyle='rgba('+GR+',.72)'; ctx.lineWidth=1.2; ctx.stroke();
-      } else {
-        ctx.fillStyle=lit?'rgba('+PH+','+(.5+.5*glow)+')':'rgba('+GR+',.55)';
-        ctx.fill();
-      }
-    });
-  })();
+    render(now||performance.now());
+  })(performance.now());
 })();
 </script>
 </body>

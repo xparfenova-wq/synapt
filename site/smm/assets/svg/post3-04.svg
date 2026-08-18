@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+<rect x="0" y="0" width="1080" height="1350" rx="0" fill="#0E1211"/>
+<text x="90" y="121" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="2.16" fill="#D0E865">как проходит</text>
+<text x="871.19" y="121" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="2.16" fill="#6E7975">4 / 7</text>
+<text x="90" y="369.13" font-family="Manrope" font-size="70" font-weight="600" letter-spacing="-2.1" fill="#FFFFFF">Маршрут чекапа</text>
+<text x="90" y="470.13" font-family="JetBrains Mono" font-size="36" font-weight="500" letter-spacing="0.72" fill="#D0E865">Zoom 1</text>
+<text x="316" y="470.13" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">Знакомство и постановка</text>
+<text x="316" y="532.52" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">целей</text>
+<text x="90" y="638.91" font-family="JetBrains Mono" font-size="36" font-weight="500" letter-spacing="0.72" fill="#D0E865">неделя 1</text>
+<text x="316" y="638.91" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">Смотрим, как устроена</text>
+<text x="316" y="701.3" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">работа</text>
+<text x="90" y="807.69" font-family="JetBrains Mono" font-size="36" font-weight="500" letter-spacing="0.72" fill="#D0E865">Zoom 2</text>
+<text x="316" y="807.69" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">Делимся инсайтами</text>
+<text x="90" y="914.08" font-family="JetBrains Mono" font-size="36" font-weight="500" letter-spacing="0.72" fill="#D0E865">неделя 2</text>
+<text x="316" y="914.08" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">Собираем агента</text>
+<text x="90" y="1020.47" font-family="JetBrains Mono" font-size="36" font-weight="500" letter-spacing="0.72" fill="#D0E865">Zoom 3</text>
+<text x="316" y="1020.47" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">Отдаём результат</text>
+</svg>

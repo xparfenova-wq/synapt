@@ -2211,6 +2211,80 @@ html body .hero.rh-hero{padding-top:132px!important;padding-bottom:108px!importa
 @media(max-width:760px){html body .cover.r-cover,html body .hero.rh-hero{padding-top:96px!important;padding-bottom:96px!important;min-height:100vh!important;height:auto!important}}
 @media(min-width:901px){html body footer .f-main{grid-template-columns:250px 290px minmax(0,1fr)!important;gap:32px!important;column-gap:32px!important;justify-content:start!important}}
 </style>
+<style id="fix-night">
+/* правки ночи 18.08 (вторая волна): цифры обложки, охват в две колонки, эффект, форма, чекбокс, подвал, светлая тема, курсор */
+/* A. цифры на обложке крупнее: 96/36 на вебе, 56/26 на телефоне; h1 96 и лид 18 без изменений */
+@media(min-width:981px){
+  html body .cover .cover-grid.stats .cover-stats .cs .cs-n,html body .cover-stats:has(.cs:only-child) .cs .cs-n{font-size:96px!important;line-height:1!important}
+  html body .cover .cover-grid.stats .cover-stats .cs .cs-n .cs-of{font-size:36px!important;margin-left:.14em!important}
+  html body .cover h1,html body .cover h1.reveal{font-size:96px!important;line-height:1.02!important;letter-spacing:-.03em!important;margin-top:0!important;margin-bottom:10px!important}
+  html body .cover .lead,html body .cover p.lead{font-size:18px!important}
+  html body .cover .cover-kick{margin:0 0 18px!important}
+}
+@media(max-width:980px){
+  html body .cover .cover-grid.stats .cover-stats .cs .cs-n,html body .cover-stats:has(.cs:only-child) .cs .cs-n{font-size:56px!important;line-height:1!important}
+  html body .cover .cover-grid.stats .cover-stats .cs .cs-n .cs-of{font-size:26px!important;margin-left:.14em!important}
+  html body .cover h1,html body .cover h1.reveal{font-size:56px!important;line-height:1.02!important;margin-top:0!important;margin-bottom:10px!important}
+  html body .cover .lead,html body .cover p.lead{font-size:15px!important}
+}
+/* 2. раздел 03 Охват: слева кикер, заголовок и текст, справа канвас, верх канваса = верх кикера */
+@media(min-width:861px){
+  html body #spread>.wrap{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;grid-template-rows:max-content minmax(0,1fr)!important;column-gap:clamp(28px,3.4vw,52px)!important;row-gap:0!important;align-items:start!important}
+  html body #spread>.wrap>.sec-head{grid-column:1!important;grid-row:1!important;margin:0 0 22px!important;max-width:none!important}
+  html body #spread .fig-side{display:contents!important}
+  html body #spread .fig-side .fig-txt{grid-column:1!important;grid-row:2!important;order:0!important;padding-top:0!important;margin-top:0!important}
+  html body #spread .fig-side .figbox{grid-column:2!important;grid-row:1/3!important;order:0!important;margin-top:0!important;align-self:start!important;width:100%!important}
+  html body #spread .fig-side .figbox canvas{display:block!important;width:100%!important}
+}
+/* 3. раздел 04 Эффект: отступ до цифр 60, тонкие линии между цифрами, hover без перекраски, текст в серой карточке */
+html body #metrics .sec-head{margin-bottom:60px!important}
+html body #metrics .sec-head h2{margin-bottom:0!important}
+html body #metrics .bignum.split{gap:0 24px!important}
+html body #metrics .bignum.split .bn{position:relative!important}
+html body #metrics .bignum.split .bn+.bn::before{content:''!important;display:block!important;position:absolute!important;left:-12px!important;top:0!important;bottom:0!important;width:1px!important;background:var(--line-2)!important;opacity:1!important;pointer-events:none!important}
+html body #metrics .bignum.split .bn+.bn::after{display:none!important}
+html body #metrics .bignum.split .bn b{transition:text-shadow .3s ease!important}
+html body #metrics .bignum.split .bn:hover b{color:var(--text)!important;text-shadow:0 0 24px rgba(208,232,101,.35)!important}
+html body #metrics .bignum.split .bn:hover b .tail{color:var(--text-muted)!important}
+html body #metrics .bignum.split .bn:hover b::after{opacity:1!important}
+html body #metrics .stmt{border:1px solid var(--line)!important;border-left:1px solid var(--line)!important;background:var(--surface)!important;border-radius:22px!important;padding:28px 32px!important;max-width:820px!important;box-sizing:border-box!important}
+html body #metrics .stmt p b{color:var(--text)!important}
+@media(max-width:720px){
+  html body #metrics .bignum.split{gap:28px 16px!important}
+  html body #metrics .bignum.split .bn+.bn::before{display:none!important}
+  html body #metrics .sec-head{margin-bottom:44px!important}
+  html body #metrics .stmt{padding:22px 20px!important;border-radius:18px!important}
+}
+/* 4. форма: «Когда вам удобно» до слотов 14, остальной ритм из блока вечера */
+html body .mform .slots .sl-h,html body .mform #slots .sl-h{display:block!important;margin:0 0 14px!important}
+html body .mform .slots .sl-days{margin-top:0!important}
+/* B. чекбокс по вертикальному центру всей подписи */
+html body .mform .lf-check,html body .mform>.lf-check{display:flex!important;align-items:center!important;gap:12px!important}
+html body .mform .lf-check input,html body .mform .lf-check input[type=checkbox]{align-self:center!important;margin:0!important;transform:none!important;flex:0 0 auto!important}
+html body .mform .lf-check span{padding-top:0!important;line-height:1.5!important}
+/* C. подвал: до линии копирайта 56, реквизиты плотнее, ссылки одной колонкой */
+html body footer .f-bottom,html body footer .f-copy{margin-top:56px!important}
+html body footer .f-legal p,html body footer .f-legal-c p,html body footer .f-legal a,html body footer .f-legal-c a{margin:0!important;line-height:1.35!important}
+html body footer .f-legal-c{gap:0!important;display:flex!important;flex-direction:column!important}
+html body footer .f-legal-c a{margin-top:0!important}
+html body footer .f-nav,html body footer .f-nav2,html body footer .f-nav.f-nav2{display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;gap:6px!important;column-gap:0!important;row-gap:6px!important;grid-template-columns:none!important;max-width:none!important}
+html body footer .f-nav .f-k,html body footer .f-nav2 .f-k{flex:none!important;width:auto!important;margin:0 0 8px!important}
+html body footer .f-nav a,html body footer .f-nav2 a{margin:0!important;min-height:0!important;line-height:1.45!important;width:fit-content!important}
+@media(max-width:760px){html body footer .f-legal-cols{display:block!important}}
+/* E. светлая тема: без тёмно-зелёного текста, имя и ник на лаймовой плашке */
+html:root[data-theme="light"]{--accent-txt:#191A1D!important;--accent-deep:#191A1D!important}
+html:root[data-theme="light"] body .mgr-name,html:root[data-theme="light"] body .lc-mgr-t b .mgr-name,
+html:root[data-theme="light"] body .lc-mgr-t b a,html:root[data-theme="light"] body .lc-mgr-t b a:link,html:root[data-theme="light"] body .lc-mgr-t b a:visited{color:#191A1D!important;background:var(--accent)!important;padding:1px 6px!important;border-radius:6px!important;border-bottom:0!important;text-decoration:none!important;box-decoration-break:clone!important;-webkit-box-decoration-break:clone!important}
+html:root[data-theme="light"] body .lc-mgr-t b a:hover{background:var(--accent-glow)!important;color:#191A1D!important}
+html:root[data-theme="light"] body .mf-fail a{color:#191A1D!important}
+/* F. курсор-нейрон */
+html body{cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><circle cx='14' cy='14' r='11' fill='none' stroke='%23D0E865' stroke-opacity='.55'/><circle cx='14' cy='14' r='3' fill='%23D0E865'/><path d='M14 3v4M14 21v4M3 14h4M21 14h4' stroke='%23D0E865' stroke-opacity='.7' stroke-linecap='round'/></svg>") 14 14,auto!important}
+html body a,html body button,html body [role=button],html body label,html body summary,html body .btn,html body .rel-card,html body .tgl,html body .nav-burger,html body .sl-day,html body .sl-slot,html body .sl-days button,html body .sl-slots button{cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><circle cx='14' cy='14' r='11' fill='none' stroke='%23D0E865' stroke-opacity='.85'/><circle cx='14' cy='14' r='4' fill='%23D0E865'/><path d='M14 3v4M14 21v4M3 14h4M21 14h4' stroke='%23D0E865' stroke-opacity='.85' stroke-linecap='round'/></svg>") 14 14,pointer!important}
+html:root[data-theme="light"] body{cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><circle cx='14' cy='14' r='11' fill='none' stroke='%23A9C23F' stroke-opacity='.8'/><circle cx='14' cy='14' r='3' fill='%23191A1D'/><path d='M14 3v4M14 21v4M3 14h4M21 14h4' stroke='%23191A1D' stroke-opacity='.6' stroke-linecap='round'/></svg>") 14 14,auto!important}
+html:root[data-theme="light"] body a,html:root[data-theme="light"] body button,html:root[data-theme="light"] body [role=button],html:root[data-theme="light"] body label,html:root[data-theme="light"] body summary,html:root[data-theme="light"] body .btn,html:root[data-theme="light"] body .rel-card,html:root[data-theme="light"] body .tgl,html:root[data-theme="light"] body .nav-burger,html:root[data-theme="light"] body .sl-day,html:root[data-theme="light"] body .sl-slot,html:root[data-theme="light"] body .sl-days button,html:root[data-theme="light"] body .sl-slots button{cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><circle cx='14' cy='14' r='11' fill='none' stroke='%23A9C23F'/><circle cx='14' cy='14' r='4' fill='%23191A1D'/><path d='M14 3v4M14 21v4M3 14h4M21 14h4' stroke='%23191A1D' stroke-opacity='.75' stroke-linecap='round'/></svg>") 14 14,pointer!important}
+html body input[type=text],html body input[type=email],html body input[type=tel],html body input:not([type]),html body textarea{cursor:text!important}
+</style>
+
 </head>
 <body>
 <nav class="nav"><div class="wrap">

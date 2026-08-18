@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+<rect x="0" y="0" width="1080" height="1920" rx="0" fill="#0E1211"/>
+<text x="90" y="288" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="2.64" fill="#D0E865">как устроено</text>
+<text x="90" y="639.63" font-family="Manrope" font-size="72" font-weight="600" letter-spacing="-2.16" fill="#FFFFFF">Сначала формируем карту</text>
+<text x="90" y="718.81" font-family="Manrope" font-size="72" font-weight="600" letter-spacing="-2.16" fill="#FFFFFF">процессов бизнеса, затем</text>
+<text x="90" y="798" font-family="Manrope" font-size="72" font-weight="600" letter-spacing="-2.16" fill="#FFFFFF">строим систему под неё</text>
+<text x="90" y="901.19" font-family="JetBrains Mono" font-size="44" font-weight="500" letter-spacing="0.88" fill="#D0E865">01</text>
+<text x="212" y="901.19" font-family="Manrope" font-size="50" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">AI-чекап бизнеса</text>
+<text x="212" y="969.19" font-family="Manrope" font-size="44" font-weight="400" fill="#9AA5A1">две недели, сумма фиксированная</text>
+<text x="90" y="1081.58" font-family="JetBrains Mono" font-size="44" font-weight="500" letter-spacing="0.88" fill="#D0E865">02</text>
+<text x="212" y="1081.58" font-family="Manrope" font-size="50" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">AI-десант и обучение команды</text>
+<text x="212" y="1149.58" font-family="Manrope" font-size="44" font-weight="400" fill="#9AA5A1">месяц работы внутри компании</text>
+<text x="90" y="1261.97" font-family="JetBrains Mono" font-size="44" font-weight="500" letter-spacing="0.88" fill="#D0E865">03</text>
+<text x="212" y="1261.97" font-family="Manrope" font-size="50" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">AI-система</text>
+<text x="212" y="1329.97" font-family="Manrope" font-size="44" font-weight="400" fill="#9AA5A1">разрабатывается из блоков</text>
+</svg>

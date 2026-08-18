@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+<rect x="0" y="0" width="1080" height="1350" rx="0" fill="#0E1211"/>
+<text x="90" y="121" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="2.16" fill="#D0E865">четыре отдела, стало</text>
+<text x="871.19" y="121" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="2.16" fill="#6E7975">4 / 7</text>
+<text x="90" y="287.7" font-family="Manrope" font-size="70" font-weight="600" letter-spacing="-2.1" fill="#FFFFFF">Стало</text>
+<rect x="90" y="339.7" width="900" height="193.59" rx="28" fill="#D0E865" fill-opacity="0.07"/>
+<rect x="91" y="340.7" width="898" height="191.59" rx="27" fill="none" stroke="#D0E865" stroke-opacity="0.6" stroke-width="2"/>
+<text x="132" y="421.7" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="2.16" fill="#D0E865">закупки</text>
+<text x="356" y="421.7" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">2 минуты, AI готовит</text>
+<text x="356" y="486.5" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">черновик</text>
+<rect x="90" y="555.3" width="900" height="128.8" rx="28" fill="#D0E865" fill-opacity="0.07"/>
+<rect x="91" y="556.3" width="898" height="126.8" rx="27" fill="none" stroke="#D0E865" stroke-opacity="0.6" stroke-width="2"/>
+<text x="132" y="637.3" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="2.16" fill="#D0E865">поиск</text>
+<text x="356" y="637.3" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">10 минут на ту же задачу</text>
+<rect x="90" y="706.09" width="900" height="193.59" rx="28" fill="#D0E865" fill-opacity="0.07"/>
+<rect x="91" y="707.09" width="898" height="191.59" rx="27" fill="none" stroke="#D0E865" stroke-opacity="0.6" stroke-width="2"/>
+<text x="132" y="788.09" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="2.16" fill="#D0E865">сервис</text>
+<text x="356" y="788.09" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">ответ за секунды,</text>
+<text x="356" y="852.89" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">человек проверяет</text>
+<rect x="90" y="921.69" width="900" height="193.59" rx="28" fill="#D0E865" fill-opacity="0.07"/>
+<rect x="91" y="922.69" width="898" height="191.59" rx="27" fill="none" stroke="#D0E865" stroke-opacity="0.6" stroke-width="2"/>
+<text x="132" y="1003.69" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="2.16" fill="#D0E865">отзывы</text>
+<text x="356" y="1003.69" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">20-30 отзывов в час,</text>
+<text x="356" y="1068.48" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">ответы готовит AI</text>
+</svg>

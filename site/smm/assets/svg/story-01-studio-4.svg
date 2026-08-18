@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+<rect x="0" y="0" width="1080" height="1920" rx="0" fill="#151A18"/>
+<text x="90" y="288" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="2.64" fill="#D0E865">команда</text>
+<text x="90" y="572.92" font-family="Manrope" font-size="72" font-weight="600" letter-spacing="-2.16" fill="#FFFFFF">Кто ведёт проект</text>
+<rect x="90" y="625.11" width="900" height="266.78" rx="28" fill="#151A18"/>
+<rect x="91" y="626.11" width="898" height="264.78" rx="27" fill="none" stroke="#232A28" stroke-width="2"/>
+<text x="132" y="712.11" font-family="Manrope" font-size="50" font-weight="600" letter-spacing="-0.5" fill="#FFFFFF">Виктор Калугин</text>
+<text x="132" y="780.11" font-family="JetBrains Mono" font-size="44" font-weight="400" fill="#9AA5A1">технический партнёр,</text>
+<text x="132" y="839.5" font-family="JetBrains Mono" font-size="44" font-weight="400" fill="#9AA5A1">архитектура системы</text>
+<rect x="90" y="913.89" width="900" height="266.78" rx="28" fill="#151A18"/>
+<rect x="91" y="914.89" width="898" height="264.78" rx="27" fill="none" stroke="#232A28" stroke-width="2"/>
+<text x="132" y="1000.89" font-family="Manrope" font-size="50" font-weight="600" letter-spacing="-0.5" fill="#FFFFFF">Антон Орешкин</text>
+<text x="132" y="1068.89" font-family="JetBrains Mono" font-size="44" font-weight="400" fill="#9AA5A1">стратегический партнёр,</text>
+<text x="132" y="1128.28" font-family="JetBrains Mono" font-size="44" font-weight="400" fill="#9AA5A1">продукт и развитие</text>
+<rect x="90" y="1202.67" width="900" height="207.39" rx="28" fill="#151A18"/>
+<rect x="91" y="1203.67" width="898" height="205.39" rx="27" fill="none" stroke="#232A28" stroke-width="2"/>
+<text x="132" y="1289.67" font-family="Manrope" font-size="50" font-weight="600" letter-spacing="-0.5" fill="#FFFFFF">Никита</text>
+<text x="132" y="1357.67" font-family="JetBrains Mono" font-size="44" font-weight="400" fill="#9AA5A1">project manager студии</text>
+</svg>

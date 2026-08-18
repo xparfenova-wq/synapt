@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+<rect x="0" y="0" width="1080" height="1920" rx="0" fill="#0E1211"/>
+<text x="90" y="288" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="2.64" fill="#D0E865">как работаем</text>
+<text x="90" y="480.14" font-family="Manrope" font-size="72" font-weight="600" letter-spacing="-2.16" fill="#FFFFFF">Декомпозируем проект</text>
+<text x="90" y="559.33" font-family="Manrope" font-size="72" font-weight="600" letter-spacing="-2.16" fill="#FFFFFF">на этапы и каждый</text>
+<text x="90" y="638.52" font-family="Manrope" font-size="72" font-weight="600" letter-spacing="-2.16" fill="#FFFFFF">завершаем конкретным</text>
+<text x="90" y="717.7" font-family="Manrope" font-size="72" font-weight="600" letter-spacing="-2.16" fill="#FFFFFF">результатом</text>
+<text x="90" y="820.89" font-family="JetBrains Mono" font-size="44" font-weight="500" letter-spacing="0.88" fill="#D0E865">01</text>
+<text x="212" y="820.89" font-family="Manrope" font-size="50" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">Разбор и план внедрения</text>
+<text x="212" y="888.89" font-family="Manrope" font-size="44" font-weight="400" fill="#9AA5A1">Карта конкретного процесса</text>
+<text x="212" y="948.28" font-family="Manrope" font-size="44" font-weight="400" fill="#9AA5A1">и смета</text>
+<text x="90" y="1060.67" font-family="JetBrains Mono" font-size="44" font-weight="500" letter-spacing="0.88" fill="#D0E865">02</text>
+<text x="212" y="1060.67" font-family="Manrope" font-size="50" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">Разработка решения</text>
+<text x="212" y="1128.67" font-family="Manrope" font-size="44" font-weight="400" fill="#9AA5A1">Работающий продукт</text>
+<text x="90" y="1241.06" font-family="JetBrains Mono" font-size="44" font-weight="500" letter-spacing="0.88" fill="#D0E865">03</text>
+<text x="212" y="1241.06" font-family="Manrope" font-size="50" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">Внедрение и обучение</text>
+<text x="212" y="1309.06" font-family="Manrope" font-size="44" font-weight="400" fill="#9AA5A1">Обученная команда и регламент</text>
+<text x="90" y="1421.45" font-family="JetBrains Mono" font-size="44" font-weight="500" letter-spacing="0.88" fill="#D0E865">04</text>
+<text x="212" y="1421.45" font-family="Manrope" font-size="50" font-weight="500" letter-spacing="-0.5" fill="#FFFFFF">Передача и поддержка</text>
+<text x="212" y="1489.45" font-family="Manrope" font-size="44" font-weight="400" fill="#9AA5A1">Всё, что нужно для работы</text>
+</svg>

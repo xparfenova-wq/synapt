@@ -2656,6 +2656,59 @@ html body #leadForm .lf-after{margin-top:14px!important}
 html body .btn.pri{background:var(--accent)!important;color:var(--accent-ink)!important;box-shadow:var(--btn-shadow)!important}
 html body .btn.pri:hover{background:var(--accent-glow)!important;box-shadow:var(--btn-shadow)!important}
 </style>
+<style id="fix-night">
+/* правки ночи 18.08 (вторая волна): обложка, этапы, форма, подвал, светлая тема, курсор */
+/* 1. подпись под «19 900 ₽» в одну строку */
+@media(min-width:761px){
+  html body .hero-meta .m>span{max-width:none!important;width:auto!important;white-space:nowrap!important}
+}
+@media(max-width:760px){
+  html body .hero-meta .m>span{max-width:none!important;width:auto!important}
+}
+/* 2. этапы: правый столбец теми же кеглями, что левый; линия между всеми строками */
+html body #how .rm-out b{font-size:var(--fs-h3)!important;font-weight:600!important;line-height:1.3!important;
+  letter-spacing:-.015em!important;color:var(--text)!important;margin-bottom:6px!important;text-wrap:balance}
+html body #how .rm-out>span:last-child{font-size:var(--fs-body)!important;font-weight:450!important;line-height:1.6!important;
+  color:var(--text-muted)!important;max-width:46ch}
+html body #how .rmap-row,html body #how .rmap-head+.rmap-row{border-bottom:1px solid var(--line)!important}
+@media(min-width:861px){ html body #how .rm-out{justify-content:flex-start!important;padding-top:52px!important} }
+/* 3. чекбокс согласия по центру всех строк подписи */
+html body #leadForm .lf-check{align-items:center!important}
+html body #leadForm .lf-check::before{top:50%!important;transform:translateY(-50%)!important}
+html body #leadForm .lf-check:has(input:checked)::after{top:50%!important;transform:translateY(-62%) rotate(43deg)!important}
+html body #leadForm .lf-check input[type=checkbox]{top:50%!important;transform:translateY(-50%)!important}
+/* 4. подвал: воздух перед линией копирайта, реквизиты плотнее, разделы одной колонкой */
+html body footer .f-bottom{margin-top:56px!important;padding-top:14px!important}
+html body footer .f-legal p{line-height:1.35!important;margin:0!important;padding:0!important}
+html body footer .f-legal a[href*="privacy"]{line-height:1.35!important;margin-top:0!important;display:inline-block}
+html body footer .f-legal .f-k{margin-bottom:8px!important}
+@media(min-width:861px){
+  html body footer .f-legal{row-gap:0!important;column-gap:32px!important;align-content:start!important}
+  html body footer .f-nav,html body footer .f-nav2{display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;
+    gap:6px!important;max-width:none!important;width:auto!important;align-items:flex-start}
+  html body footer .f-nav .f-k,html body footer .f-nav2 .f-k{margin-bottom:2px!important}
+  html body footer .f-nav a,html body footer .f-nav2 a{white-space:nowrap}
+  html body footer .f-main{grid-template-columns:360px 200px minmax(0,1fr)!important;gap:32px!important}
+}
+@media(max-width:860px){
+  html body footer .f-legal{gap:0!important}
+}
+/* 5. светлая тема: без тёмно-зелёного текста, имя и ник на лаймовой плашке */
+html[data-theme="light"] body{--accent-txt:#191A1D;--accent-text:#191A1D}
+html[data-theme="light"] body .lc-name,html[data-theme="light"] body .lc-mgr-t b a,html[data-theme="light"] body .mf-fail a[href*="Anti4ay"]{
+  color:#191A1D!important;background:var(--accent)!important;padding:1px 6px!important;border-radius:6px!important;
+  border-bottom:0!important;text-decoration:none!important}
+html[data-theme="light"] body .lc-mgr-t b a:hover{background:var(--accent-glow,#E2F291)!important;color:#191A1D!important}
+html[data-theme="light"] body .rmap-row:hover .rm-mark,html[data-theme="light"] body .rule:hover .rn,html[data-theme="light"] body .faq summary:hover,
+html[data-theme="light"] body .faq details[open] summary .pl,html[data-theme="light"] body .cc-tag,html[data-theme="light"] body .pc-link,
+html[data-theme="light"] body .sl-day.on b,html[data-theme="light"] body .cnav button:hover{color:#191A1D!important}
+/* 6. курсор-нейрон */
+html body{cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><circle cx='14' cy='14' r='11' fill='none' stroke='%23D0E865' stroke-opacity='.55'/><circle cx='14' cy='14' r='3' fill='%23D0E865'/><path d='M14 3v4M14 21v4M3 14h4M21 14h4' stroke='%23D0E865' stroke-opacity='.7' stroke-linecap='round'/></svg>") 14 14, auto!important}
+html body a,html body button,html body [role=button],html body label,html body summary,html body .btn,html body .rel-card,html body .tgl,html body .sl-day,html body .sl-slot,html body .nav-burger,html body .tp-s,html body .cnav button{cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><circle cx='14' cy='14' r='11' fill='none' stroke='%23D0E865' stroke-opacity='.85'/><circle cx='14' cy='14' r='4' fill='%23D0E865'/><path d='M14 3v4M14 21v4M3 14h4M21 14h4' stroke='%23D0E865' stroke-opacity='.9' stroke-linecap='round'/></svg>") 14 14, pointer!important}
+html[data-theme="light"] body{cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><circle cx='14' cy='14' r='11' fill='none' stroke='%23B8CF4A' stroke-opacity='.85'/><circle cx='14' cy='14' r='3' fill='%23191A1D'/><path d='M14 3v4M14 21v4M3 14h4M21 14h4' stroke='%23191A1D' stroke-opacity='.7' stroke-linecap='round'/></svg>") 14 14, auto!important}
+html[data-theme="light"] body a,html[data-theme="light"] body button,html[data-theme="light"] body [role=button],html[data-theme="light"] body label,html[data-theme="light"] body summary,html[data-theme="light"] body .btn,html[data-theme="light"] body .rel-card,html[data-theme="light"] body .tgl,html[data-theme="light"] body .sl-day,html[data-theme="light"] body .sl-slot,html[data-theme="light"] body .nav-burger,html[data-theme="light"] body .tp-s,html[data-theme="light"] body .cnav button{cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><circle cx='14' cy='14' r='11' fill='none' stroke='%23A9C230' stroke-opacity='1'/><circle cx='14' cy='14' r='4' fill='%23191A1D'/><path d='M14 3v4M14 21v4M3 14h4M21 14h4' stroke='%23191A1D' stroke-opacity='.9' stroke-linecap='round'/></svg>") 14 14, pointer!important}
+html body input[type=text],html body input[type=email],html body input[type=tel],html body textarea{cursor:text!important}
+</style>
 </head>
 <body>
 <script>
@@ -3164,7 +3217,7 @@ function LEAD_API(url, opts){
         <div class="lf"><label for="lfContact">Телефон, почта или&nbsp;Telegram <span class="req" title="обязательное поле">*</span></label><input id="lfContact" name="contact" type="text" autocomplete="off" required></div>
       </div>
       <div class="lf"><label for="lfCompany">Компания и&nbsp;сфера деятельности</label><input id="lfCompany" name="company" type="text" autocomplete="organization"></div>
-      <div class="lf"><label for="lfTask">Коротко о&nbsp;контексте: какой сейчас уровень использования AI в&nbsp;команде и&nbsp;к&nbsp;какому результату хотите прийти</label><textarea id="lfTask" name="task" rows="2"></textarea></div>
+      <div class="lf"><label for="lfTask">Коротко о&nbsp;запросе</label><textarea id="lfTask" name="task" rows="2"></textarea></div>
     <div class="slots" id="slots">
       <div class="sl-h">Когда вам удобно</div>
       <div class="sl-days" id="slDays"></div>

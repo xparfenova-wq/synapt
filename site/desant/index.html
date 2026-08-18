@@ -2259,6 +2259,62 @@ html body .hero.rh-hero{padding-top:132px!important;padding-bottom:108px!importa
 @media(max-width:760px){html body .cover.r-cover,html body .hero.rh-hero{padding-top:96px!important;padding-bottom:96px!important;min-height:100vh!important;height:auto!important}}
 @media(min-width:901px){html body footer .f-main{grid-template-columns:250px 290px minmax(0,1fr)!important;gap:32px!important;column-gap:32px!important;justify-content:start!important}}
 </style>
+<style id="fix-night">
+/* правки ночи 18.08 (вторая волна): цифры обложки, чекбокс, подвал, светлая тема, курсор, пульс контура */
+/* A. цифры на обложке: 96/36 на вебе, 56/26 на телефоне */
+@media(min-width:981px){
+html body .cover .cover-stats .cs .cs-n,html body .cover-stats:has(.cs:only-child) .cs .cs-n{font-size:96px!important;line-height:1!important}
+html body .cover .cover-stats .cs .cs-n .cs-u,html body .cover .cover-stats .cs .cs-n .cs-of,html body .cover .cover-stats .cs .cs-n .cs-pre{font-size:36px!important}
+}
+@media(max-width:980px){
+html body .cover .cover-stats .cs .cs-n,html body .cover-stats:has(.cs:only-child) .cs .cs-n{font-size:56px!important;line-height:1!important}
+html body .cover .cover-stats .cs .cs-n .cs-u,html body .cover .cover-stats .cs .cs-n .cs-of,html body .cover .cover-stats .cs .cs-n .cs-pre{font-size:26px!important}
+}
+/* B. чекбокс по вертикальному центру всей подписи */
+html body .mform .lf-check,html body .mform>.lf-check{align-items:center!important}
+html body .mform .lf-check input[type=checkbox]{align-self:center!important;margin:0!important}
+html body .mform .lf-check span{line-height:1.5!important;padding:0!important}
+/* C. подвал: ссылки одной колонкой, реквизиты плотнее, до линии 56px */
+html body footer .f-nav,html body footer .f-nav2,html body footer .f-nav.f-nav2{display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;gap:6px!important;grid-template-columns:none!important;max-width:none!important;align-items:flex-start!important}
+html body footer .f-nav .f-k,html body footer .f-nav2 .f-k{width:auto!important;flex:none!important;margin-bottom:4px!important}
+html body footer .f-nav a,html body footer .f-nav2 a{display:block!important;width:auto!important;white-space:nowrap!important;margin:0!important;line-height:1.45!important}
+html body footer .f-legal p{margin:0!important;line-height:1.35!important}
+html body footer .f-legal{row-gap:0!important;gap:0!important}
+html body footer .f-legal .f-k{margin-bottom:8px!important}
+html body footer .f-legal a[href="/privacy"],html body footer .f-legal a[href$="/privacy"]{margin-top:2px!important;line-height:1.35!important}
+html body footer .f-bottom,html body footer .f-copy{margin-top:56px!important;padding-top:14px!important}
+@media(min-width:861px){
+html body footer .f-legal{display:grid!important;grid-template-columns:auto auto!important;column-gap:28px!important;row-gap:0!important}
+html body footer .f-legal p:nth-of-type(4),html body footer .f-legal p:nth-of-type(5),html body footer .f-legal a[href="/privacy"]{grid-column:2!important}
+html body footer .f-legal p:nth-of-type(1),html body footer .f-legal p:nth-of-type(4){grid-row:2!important}
+html body footer .f-legal p:nth-of-type(2),html body footer .f-legal p:nth-of-type(5){grid-row:3!important}
+html body footer .f-legal p:nth-of-type(3),html body footer .f-legal a[href="/privacy"]{grid-row:4!important}
+}
+@media(min-width:901px){html body footer .f-main{grid-template-columns:250px 220px minmax(0,1fr)!important;column-gap:32px!important}}
+@media(min-width:861px) and (max-width:900px){html body footer .f-main{grid-template-columns:minmax(0,.75fr) minmax(0,.7fr) minmax(0,1.9fr)!important}}
+@media(max-width:860px){html body footer .f-legal{display:flex!important;flex-direction:column!important;gap:0!important}}
+/* E. светлая тема: без тёмно-зелёного текста, имя и ник на лаймовой плашке */
+html[data-theme="light"]{--accent-txt:#191A1D!important}
+html:root[data-theme="light"][data-theme] body .mgr-name,html:root[data-theme="light"][data-theme] body .lc-mgr-t b a,html:root[data-theme="light"][data-theme] body .lc-mgr-t b a:hover,html:root[data-theme="light"][data-theme] body .lc-mgr-t a[href*="Anti4ay"],html:root[data-theme="light"][data-theme] body .mf-fail a[href*="Anti4ay"]{color:#191A1D!important;background:var(--accent)!important;padding:1px 6px!important;border-radius:6px!important;border-bottom:0!important;text-decoration:none!important;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+html:root[data-theme="light"][data-theme] body .lc-mgr-t b a:hover,html:root[data-theme="light"][data-theme] body .mf-fail a[href*="Anti4ay"]:hover{background:var(--accent-glow)!important}
+html:root[data-theme="light"][data-theme] body .sh-c.now .sh-k,html:root[data-theme="light"][data-theme] body .rel-card:hover .rel-t,html:root[data-theme="light"][data-theme] body #safe .ct-row:hover .ct-k,html:root[data-theme="light"][data-theme] body #safe .ct-row:hover .ct-i,html:root[data-theme="light"][data-theme] body footer .f-legal a:hover,html:root[data-theme="light"][data-theme] body footer a[href="/privacy"]:hover,html:root[data-theme="light"][data-theme] body .lf-check a:hover,html:root[data-theme="light"][data-theme] body .compare .crow:not(.head):hover .task,html:root[data-theme="light"][data-theme] body .vrow.hot .k,html:root[data-theme="light"][data-theme] body .lc-mgr-t b a:hover{color:#191A1D!important}
+html:root[data-theme="light"][data-theme] body .sh-c.now .sh-k{color:#191A1D!important}
+/* F. курсор-нейрон */
+html body{cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><circle cx='14' cy='14' r='11' fill='none' stroke='%23D0E865' stroke-opacity='.55'/><circle cx='14' cy='14' r='3' fill='%23D0E865'/><path d='M14 3v4M14 21v4M3 14h4M21 14h4' stroke='%23D0E865' stroke-opacity='.7' stroke-linecap='round'/></svg>") 14 14, auto!important}
+html body a,html body button,html body [role=button],html body label,html body summary,html body .btn,html body .rel-card,html body .tgl,html body .metric-more,html body .sl-day,html body .sl-slot,html body .sl-days button,html body .sl-slots button{cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><circle cx='14' cy='14' r='11' fill='none' stroke='%23D0E865' stroke-opacity='.9'/><circle cx='14' cy='14' r='4' fill='%23D0E865'/><path d='M14 3v4M14 21v4M3 14h4M21 14h4' stroke='%23D0E865' stroke-opacity='.9' stroke-linecap='round'/></svg>") 14 14, pointer!important}
+html[data-theme="light"] body{cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><circle cx='14' cy='14' r='11' fill='none' stroke='%23A6BF41' stroke-opacity='.8'/><circle cx='14' cy='14' r='3' fill='%23191A1D'/><path d='M14 3v4M14 21v4M3 14h4M21 14h4' stroke='%23191A1D' stroke-opacity='.7' stroke-linecap='round'/></svg>") 14 14, auto!important}
+html:root[data-theme="light"][data-theme] body a,html:root[data-theme="light"][data-theme] body button,html:root[data-theme="light"][data-theme] body [role=button],html:root[data-theme="light"][data-theme] body label,html:root[data-theme="light"][data-theme] body summary,html:root[data-theme="light"][data-theme] body .btn,html:root[data-theme="light"][data-theme] body .rel-card,html:root[data-theme="light"][data-theme] body .tgl,html:root[data-theme="light"][data-theme] body .metric-more,html:root[data-theme="light"][data-theme] body .sl-day,html:root[data-theme="light"][data-theme] body .sl-slot,html:root[data-theme="light"][data-theme] body .sl-days button,html:root[data-theme="light"][data-theme] body .sl-slots button{cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><circle cx='14' cy='14' r='11' fill='none' stroke='%23A6BF41' stroke-opacity='1'/><circle cx='14' cy='14' r='4' fill='%23191A1D'/><path d='M14 3v4M14 21v4M3 14h4M21 14h4' stroke='%23191A1D' stroke-opacity='.9' stroke-linecap='round'/></svg>") 14 14, pointer!important}
+html body input[type=text],html body input[type=email],html body input[type=tel],html body input:not([type=checkbox]):not([type=radio]):not([type=submit]):not([type=button]),html body textarea{cursor:text!important}
+/* 2. блок контура: рамка медленно пульсирует свечением, при наведении чуть заметнее, без движения */
+@keyframes ctPulse{0%,100%{opacity:.45}50%{opacity:1}}
+html body #safe .ct-frame{position:relative!important;transition:border-color .3s ease!important}
+html body #safe .ct-frame::after{content:"";position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;box-shadow:0 0 0 1px rgba(208,232,101,.38),0 0 26px rgba(208,232,101,.14);opacity:.45;animation:ctPulse 3.2s ease-in-out infinite;transition:opacity .3s ease,box-shadow .3s ease}
+html body #safe .ct-frame:hover::after{animation-play-state:paused;opacity:1;box-shadow:0 0 0 1px rgba(208,232,101,.55),0 0 0 6px rgba(208,232,101,.18),0 0 30px rgba(208,232,101,.16)}
+html:root[data-theme="light"][data-theme] body #safe .ct-frame::after{box-shadow:0 0 0 1px rgba(139,166,44,.42),0 0 26px rgba(139,166,44,.14)}
+html:root[data-theme="light"][data-theme] body #safe .ct-frame:hover::after{box-shadow:0 0 0 1px rgba(139,166,44,.6),0 0 0 6px rgba(139,166,44,.16),0 0 30px rgba(139,166,44,.14)}
+@media(prefers-reduced-motion:reduce){html body #safe .ct-frame::after{animation:none!important;opacity:.7}}
+</style>
+
 </head>
 <body>
 <nav class="nav"><div class="wrap">
