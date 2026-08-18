@@ -1860,6 +1860,74 @@ footer .f-k{font-family:var(--mono)!important;font-size:11.5px!important}
 @media(max-width:760px){
   .lf-after,.mform .lf-after,.mform p.lf-after{font-size:13px!important}
 }
+
+/* ============================================================
+   INNORTO – единая шкала широкого экрана (1440)
+   Телефон (<=760) не затрагивается: весь блок под min-width:761px
+   ============================================================ */
+@media screen and (min-width:761px){
+
+  /* ---------- 1. кегли ---------- */
+  :root{
+    --s-h2:40px; --s-h3:22px; --s-kick:13px; --s-lead:18px;
+    --s-body:16px; --s-cap:13.5px; --s-mono:11.5px;
+  }
+  h1,.cover h1{font-size:clamp(52px,5.9vw,68px)!important;line-height:1.03!important;letter-spacing:-.03em!important}
+  h2,.sec-head h2,.rel-head h2,.lead-copy h2{font-size:clamp(32px,3.2vw,40px)!important;line-height:1.12!important}
+  h3,.card h3,.arte h3,.contour h3,.step h3,.rel-card .rel-t,.rel-grid.split .rel-t,
+  .sh-top h3,.case-split h3,.icol .k,.wcard h3{font-size:22px!important;line-height:1.3!important}
+  .eyebrow,.cover .eyebrow,.cover .cover-kick .eyebrow,.rel-head .eyebrow,#cta .eyebrow,.sec-head .eyebrow{
+    font-family:var(--mono)!important;font-size:13px!important;letter-spacing:.5px!important;line-height:1.4!important}
+  .lead,.cover .lead,.lead-copy .lead,.stmt p,.dom-txt{font-size:18px!important}
+  body{font-size:16px!important}
+  .fig-txt,.fig-side .fig-txt,.fig-side.big .fig-txt,.sh-c p,.tg-after span,
+  .price-line .desc,.ba li,.ba li span,.mgr-web,.crow,.days p,.zoom-list p{font-size:16px!important}
+  .cs-c,.cover-stats .cs-c,.bn .cap,.metric .cap,.lf-after,.mform .lf-after,
+  footer .f-legal p,footer .f-legal a,.f-note,.lc-mgr .mgr-web{font-size:13.5px!important}
+  .f-k,footer .f-k,.rel-k,.lab,.ba .lab,.sl-h,.slots .sl-h,.mform label,.lf label,.pc-k{font-size:11.5px!important}
+
+  /* ---------- 2. метрики: цифра 54, хвост 27 серым ---------- */
+  .cs-n,.cover-stats .cs-n,.cover .cover-stats .cs-n,.cover-stats:has(.cs:only-child) .cs-n,
+  .bn b,.bignum .bn b,.bignum.split .bn b,.bignum.split .bn:first-child b,.metric b{
+    font-size:54px!important;line-height:1!important;letter-spacing:-.03em!important}
+  .cs-n .cs-of,.cs-n .cs-u,.cs-n .cs-pre,.cs-n .tail,
+  .cover-stats .cs-n .cs-of,.cover-stats .cs-n .cs-u,.cover-stats .cs-n .cs-pre,
+  .bn b .tail,.bignum.split .bn b .tail,.metric b .tail{
+    font-size:27px!important;color:rgb(147,155,152)!important;font-weight:500!important;letter-spacing:0!important}
+  .bn{gap:6px!important}
+  .bn .cap,.metric .cap{margin-top:0!important}
+  .cover-stats .cs-c{margin-top:6px!important}
+
+  /* ---------- 3. отступы ---------- */
+  .eyebrow,.sec-head .eyebrow,.rel-head .eyebrow,#cta .lead-copy>.eyebrow,
+  section>.wrap>.eyebrow{margin-top:0!important;margin-bottom:18px!important}
+  .sec-head h2,.rel-head h2,.lead-copy h2,#cta .lead-copy>h2{margin-top:0!important;margin-bottom:10px!important}
+  .sec-head h2:last-child,.rel-head h2:last-child{margin-bottom:0!important}
+  .cover h1{margin-bottom:10px!important}
+  .cover .lead{margin-bottom:32px!important}
+  .sec-head,.rel-head,body>section>.wrap>.sec-head,body>section>.wrap>.rsec-head{margin-bottom:26px!important}
+  #cta .lead-copy>.lead{margin:0 0 26px!important}
+  body>section[id]{padding-top:120px!important;padding-bottom:120px!important}
+  /* чип и кикер обложки стоят на одной оси, шаг до заголовка даёт сама строка */
+  .cover .cover-kick{margin:0 0 18px!important;align-items:center!important}
+  .cover .cover-kick .eyebrow,.cover .cover-kick .chip{margin:0!important}
+
+  /* ---------- 4. блок итоговых цифр: лишние полоски убраны ---------- */
+  .bignum,.bignum.split{border-top:0!important;border-bottom:0!important;padding-bottom:0!important}
+  .bignum.split .bn,.bignum.split .bn:nth-child(1),
+  .bignum.split .bn:nth-child(2),.bignum.split .bn:nth-child(3){
+    border-top:0!important;border-left:0!important}
+  #culture{border-top:0!important}
+
+  /* ---------- 5. подвал: разделы сеткой в две колонки ---------- */
+  footer .f-nav,footer .f-nav2{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    row-gap:6px!important;column-gap:18px!important;gap:6px 18px!important;align-content:start}
+  footer .f-nav .f-k,footer .f-nav2 .f-k{grid-column:1/-1!important;width:auto!important;
+    flex:none!important;margin:0 0 8px!important}
+  footer .f-nav a,footer .f-nav2 a{font-size:14.5px!important;line-height:1.45!important;
+    width:fit-content;margin:0!important;padding:0!important;min-height:0!important}
+}
+
 </style>
 <style media="print">
 @page{size:A4 portrait;margin:15mm 13mm 17mm}

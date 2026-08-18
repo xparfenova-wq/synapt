@@ -1699,14 +1699,14 @@ footer{padding-bottom:14px!important}
 
 /* 1. шкала кеглей: широкий экран */
 :root{
-  --fs-h1:clamp(46px,5.9vw,70px);
-  --fs-h2:36px;
-  --fs-h3:21px;
-  --fs-h4:21px;
-  --fs-lead:17px;
-  --fs-body:15.5px;
+  --fs-h1:clamp(46px,5.9vw,68px);
+  --fs-h2:40px;
+  --fs-h3:22px;
+  --fs-h4:22px;
+  --fs-lead:18px;
+  --fs-body:16px;
   --fs-cap:13.5px;
-  --fs-kick:15px;
+  --fs-kick:13px;
   --fs-mono:11.5px;
   --fs-num:clamp(38px,4.4vw,54px);
   --sec-pad:120px;
@@ -1961,6 +1961,28 @@ footer .f-k{font-family:var(--mono)!important;font-size:11.5px!important}
   footer .f-k{font-size:11px!important}
   .sl-h,.slots .sl-h{font-size:11px!important}
 }
+
+/* ==========================================================
+   21. СВЕРКА ПО ЕДИНОЙ ШКАЛЕ: широкий экран
+   телефон живёт шкалой блока 2 и в эту сверку не входит
+   ========================================================== */
+@media(min-width:761px){
+  /* кикер раздела: моноширинный 13px, трекинг .5px */
+  .eyebrow,.cover .eyebrow,#lead .eyebrow,#cta .eyebrow,#case>.wrap>.eyebrow{
+    font-family:var(--mono)!important;font-size:var(--fs-kick)!important;
+    font-weight:500!important;letter-spacing:.5px!important;line-height:1.4!important}
+  /* ссылка на политику в одном кегле с реквизитами */
+  footer .f-legal a{font-size:13.5px!important}
+}
+
+/* подпись раздела в подвале белая, как на остальных страницах */
+footer .f-k{color:var(--text)!important;font-weight:500!important}
+
+/* подвал: шаг между пунктами 6px по вертикали и 18px по горизонтали */
+footer .f-nav,footer .f-nav2,footer .f-nav.f-nav2{gap:6px 18px!important}
+footer .f-nav a,footer .f-nav2 a{margin:0!important;line-height:1.45}
+footer .f-legal{gap:6px!important}
+footer .f-legal p{margin:0!important}
 </style>
 <style media="print">
 @page{size:A4 portrait;margin:15mm 13mm 17mm}

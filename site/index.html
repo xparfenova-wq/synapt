@@ -2464,6 +2464,71 @@ footer .f-k{font-family:var(--mono)!important;font-size:11.5px!important}
   footer .f-k{font-size:11px!important}
   .sl-h,.slots .sl-h{font-size:11px!important}
 }
+
+/* ==========================================================
+   ШКАЛА ШИРОКОГО ЭКРАНА – один набор кеглей и отступов
+   всё, что ниже, живёт только от 761px: телефон уже выверен
+   и остаётся ровно таким, каким был
+   ========================================================== */
+@media(min-width:761px){
+  :root{
+    --fs-h1:clamp(46px,5.9vw,68px);
+    --fs-h2:40px;
+    --fs-h3:22px;
+    --fs-h4:22px;
+    --fs-lead:18px;
+    --fs-body:16px;
+    --fs-cap:13.5px;
+    --fs-kick:13px;
+    --fs-mono:11.5px;
+    --fs-metric:54px;
+    --sp-kick-h:18px;
+    --sp-h-sub:10px;
+    --sp-sub-cont:26px;
+    --sp-sec:120px;
+    --sp-mcap:6px;
+  }
+  /* кикер раздела: моноширинный 13px, разрядка ровно полпикселя */
+  .eyebrow,.hero .eyebrow,.nowband .nb-k,.kick-to{
+    font-family:var(--mono)!important;font-size:var(--fs-kick)!important;
+    letter-spacing:.5px!important;margin-bottom:var(--sp-kick-h)!important}
+  /* кикер → заголовок 18, заголовок → лид 10 во всех разделах, не только в первом */
+  .sec-head .eyebrow,.rsec-head .eyebrow,.lead-copy .eyebrow,.nowband .nb-k,
+  .hero .eyebrow,#now .eyebrow,#services .eyebrow,#cases .eyebrow,#how .eyebrow,
+  #idea .eyebrow,#rules .eyebrow,#faq .eyebrow,#lead .eyebrow{
+    margin-bottom:var(--sp-kick-h)!important}
+  .sec-head h2,.rsec-head h2,.lead-copy h2,.nowband h2{
+    margin-top:0!important;margin-bottom:var(--sp-h-sub)!important}
+  .sec-head>h2:last-child,.rsec-head>h2:last-child,.lead-copy>h2:last-child{margin-bottom:0!important}
+
+  /* метрика обложки: цифра 54, хвост ровно половина от неё и серым */
+  .hero-meta .m b,.now-f b{font-size:var(--fs-metric)!important;line-height:1!important}
+  .hero-meta .m b .tail,.now-f b .tail,.cc-res b .tail,.tail{
+    font-size:.5em!important;color:var(--text-muted)!important;letter-spacing:0!important}
+  /* метрика → подпись 6 */
+  .hero-meta .m{gap:var(--sp-mcap)!important}
+  .hero-meta .m>span{margin-top:0!important}
+
+  /* подвал: подпись раздела моноширинная, пункты шагом 6 по вертикали и 18 по горизонтали */
+  footer .f-k{font-family:var(--mono)!important;font-size:var(--fs-mono)!important;
+    font-weight:500!important;letter-spacing:.05em!important}
+  footer .f-nav,footer .f-nav2{gap:6px 18px!important}
+
+  /* реквизиты: межстрочный 19,6 и шаг строк 23,6 */
+  footer .f-legal{gap:4px!important}
+  footer .f-legal p{line-height:19.6px!important;margin:0!important}
+
+  /* поля формы той же высоты, что на внутренних страницах: 43 и 56 */
+  #leadForm input:not([type=checkbox]),#leadForm textarea,
+  .leadbox input:not([type=checkbox]),.leadbox textarea{padding:9px 2px 11px!important}
+  #leadForm textarea{min-height:56px!important}
+
+  /* согласие: бокс 20, просвет до текста 12, центр бокса по центру первой строки */
+  #leadForm .lf-check,.leadbox .lf-check,.mform .lf-check{
+    padding-left:32px!important;gap:12px!important}
+  #leadForm .lf-check::before,.lf-check::before{
+    top:calc((var(--fs-cap)*1.5 - 20px)/2)!important}
+}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
