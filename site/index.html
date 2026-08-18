@@ -2901,8 +2901,51 @@ html body form .lf-err:not(#_):not(#_):not(#_):not(#_):not(#_){color:var(--text)
 html body form.err .mf-err:not(#_):not(#_):not(#_):not(#_):not(#_),
 html body form .lf-err.show:not(#_):not(#_):not(#_):not(#_):not(#_){display:block!important}
 </style>
+<style id="fix-m">
+/* Мобильная приёмка 19.08, главная. Всё только для телефона (≤760), веб не трогаем */
+@media(max-width:760px){
+  /* 1. поля 20px по всей странице: шапка, обложка, разделы, подвал */
+  html:not(#_):not(#_){--gutter:20px}
+  html body .wrap:not(#_):not(#_):not(#_),
+  html body .nav .wrap:not(#_):not(#_):not(#_),
+  html body .hero .wrap:not(#_):not(#_):not(#_),
+  html body #now .wrap:not(#_):not(#_):not(#_),
+  html body footer .wrap:not(#_):not(#_):not(#_){padding-left:20px!important;padding-right:20px!important}
+  html body .nav-sheet a:not(#_):not(#_):not(#_){padding-left:20px!important;padding-right:20px!important}
+  html body .ns-in:not(#_):not(#_):not(#_),html body .ns-act:not(#_):not(#_):not(#_){padding-left:20px!important;padding-right:20px!important}
+
+  /* 2. первый экран: кикер → h1 18, h1 48/500, h1 → метрики 26, метрики 48/24 по правому краю, низ 48 от низа экрана */
+  html body .hero .eyebrow:not(#_):not(#_):not(#_){margin-bottom:18px!important}
+  html body .hero h1:not(#_):not(#_):not(#_){font-size:48px!important;line-height:1.04!important;font-weight:500!important;letter-spacing:-.025em!important;margin:0!important;max-width:none!important}
+  html body .hero .hero-meta:not(#_):not(#_):not(#_){margin-top:26px!important;margin-bottom:0!important;gap:20px!important;width:100%!important;max-width:none!important;justify-items:end!important}
+  html body .hero .hero-grid:not(#_):not(#_):not(#_){margin-bottom:48px!important}
+  html body .hero-meta .m:not(#_):not(#_):not(#_){gap:6px!important;align-items:flex-end!important;text-align:right!important}
+  html body .hero-meta .m b:not(#_):not(#_):not(#_){font-size:48px!important;line-height:1!important;letter-spacing:-.02em!important}
+  html body .hero-meta .m b .tail:not(#_):not(#_):not(#_){font-size:24px!important;letter-spacing:0!important}
+  html body .hero-meta .m>span:not(#_):not(#_):not(#_){font-size:13px!important;line-height:1.45!important;margin:0!important;max-width:24ch!important;text-align:right!important}
+  html body .hero-meta .m-cta:not(#_):not(#_):not(#_){display:none!important}
+
+  /* 3. лиды разделов 17, как на остальных страницах */
+  html body .lead:not(#_):not(#_):not(#_),html body .sec-head>p:not(#_):not(#_):not(#_){font-size:17px!important;line-height:1.5!important}
+
+  /* 4. поп-ап кейса: окно листается само, фон не тянется (iOS) */
+  html body .cs-win:not(#_):not(#_):not(#_){overscroll-behavior:contain!important;-webkit-overflow-scrolling:touch}
+  html.cs-lock body:not(#_):not(#_):not(#_){touch-action:none}
+  html.cs-lock body .cs-win:not(#_):not(#_):not(#_){touch-action:pan-y}
+}
+</style>
 </head>
 <body>
+<script id="fix-lead-js">(function(){
+/* заявки с сайта: приёмник ждёт source:"synapt" и contact; остальные поля складываем в comment */
+var F=window.fetch; if(!F||F.__synapt) return;
+function dom(){ var f=document.querySelector('form'); if(!f) return {}; var r={}; var ins=[].slice.call(f.querySelectorAll('input,textarea')); ins.forEach(function(i){ var lab=(i.closest('.lf,.fld,label')||{}).textContent||''; lab=lab.replace(/\s+/g,' ').trim(); var v=(i.value||'').trim(); if(!v) return; if(i.tagName==='TEXTAREA') r.task=v; else if(/Компания|сфера/i.test(lab)) r.company=v; }); var on=[].slice.call(f.querySelectorAll('.sl-day.on,.sl-t.on,.sl-slot.on,[aria-pressed="true"]')).map(function(e){return e.textContent.replace(/\s+/g,' ').trim()}); if(on.length) r.slot=on.join(' · '); return r; }
+function build(o){ try{ if(o.source) return o; var d=dom(); o=Object.assign({},d,o); if(!o.company&&d.company) o.company=d.company; if(!o.task&&d.task) o.task=d.task; if(!o.slot&&d.slot) o.slot=d.slot; var parts=[]; var page=o.page||document.title; if(page) parts.push('Страница: '+page);
+  if(o.company) parts.push('Компания: '+o.company); var ctx=o.task||o.note||o.message||o.about||o.request||''; if(ctx) parts.push('Контекст: '+ctx);
+  if(o.slot||o.when||o.day) parts.push('Слот: '+(o.slot||o.when||o.day)); if(o.comment) parts.push(o.comment);
+  return {source:'synapt',name:o.name||'',contact:o.contact||o.phone||o.email||o.tg||'',stage:'',task:'',budget:'',comment:parts.join('\n').slice(0,1000),page:page}; }catch(e){ return o; } }
+window.fetch=function(url,opts){ try{ if(typeof url==='string'&&url.indexOf('/api/lead')>-1&&opts&&opts.body&&typeof opts.body==='string'){ var o=JSON.parse(opts.body); var b=build(o); opts=Object.assign({},opts,{body:JSON.stringify(b),headers:Object.assign({},opts.headers||{},{'Content-Type':'application/json'})}); } }catch(e){} return F.call(this,url,opts); };
+window.fetch.__synapt=true; })();</script>
 <script>
 /* заявка уходит на сервер основного сайта: на зеркале GitHub Pages своего бэкенда нет.
    с чужого домена браузер сначала спрашивает разрешение, и если сервер его не дал,
