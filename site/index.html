@@ -1907,6 +1907,36 @@ footer .f-nav{gap:5px}
     mask-image:linear-gradient(180deg,#000 0%,#000 38%,rgba(0,0,0,.5) 66%,rgba(0,0,0,.18) 86%,rgba(0,0,0,0) 100%)!important;
     opacity:.95!important}
 }
+
+/* перед первым этапом линии нет */
+.rmap-row:first-of-type,.rmap-head + .rmap-row{border-top:0!important}
+.rmap-head{border-bottom:0}
+/* «Почему мы»: основной текст белым */
+#idea p,#idea .lead,#idea li,.idea p{color:var(--text)!important}
+/* блок консультации: заголовок и подзаголовок ближе */
+.lead-copy h2{margin-bottom:12px!important}
+.lead-copy .lead{margin-top:0!important}
+/* согласие: в вебе по центру, на телефоне по верхней линии */
+.lf-check{align-items:center!important}
+@media(max-width:760px){.lf-check{align-items:flex-start!important}.lf-check input{margin-top:2px!important}}
+/* подвал: ровный шаг между пунктами и больше воздуха между колонками */
+footer .f-nav{display:flex;flex-direction:column;gap:10px}
+footer .f-nav a{margin-bottom:0}
+footer .legal{column-gap:36px}
+footer .f-cols,footer .wrap>div{column-gap:clamp(28px,4vw,64px)}
+
+/* липкая полоса шага: та же полупрозрачная подложка, что у шапки, и стабильный скролл */
+@media(max-width:860px){
+  .step-rail-in{background:color-mix(in srgb,var(--bg) 72%,transparent)!important;
+    -webkit-backdrop-filter:saturate(150%) blur(18px);backdrop-filter:saturate(150%) blur(18px);
+    border-bottom:1px solid var(--line);
+    transform:translateZ(0);will-change:transform;contain:paint}
+  .step-rail{contain:layout}
+  .step{contain:layout paint}
+}
+/* тряска: убираем плавную прокрутку и мягкую привязку, которая дёргает липкий блок */
+html{scroll-behavior:auto}
+@media(max-width:860px){body{overflow-anchor:none}}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
@@ -3100,14 +3130,14 @@ function LEAD_API(url, opts){
         ctx.strokeStyle = 'rgba(' + PH + ',' + (.2 + ra * .3) + ')'; ctx.lineWidth = 1; ctx.stroke();
         /* готовый файл, который агент прикладывает к ответу */
         if (ra > .4) {
-          var fa = Math.min(1, (ra - .4) / .35), fw = 17, fh = 13, fx = ax + bw - fw, fy = ay - fh - 7;
+          var fa = Math.min(1, (ra - .4) / .35), fw = 14, fh = 17, fx = ax + bw - fw, fy = ay - fh - 7;
           ctx.beginPath();
           if (ctx.roundRect) ctx.roundRect(fx, fy, fw, fh, 3); else ctx.rect(fx, fy, fw, fh);
           ctx.fillStyle = 'rgba(' + PH + ',' + (.1 * fa) + ')'; ctx.fill();
           ctx.strokeStyle = 'rgba(' + PH + ',' + (.55 * fa) + ')'; ctx.lineWidth = 1; ctx.stroke();
           ctx.beginPath(); ctx.moveTo(fx + fw - 7, fy); ctx.lineTo(fx + fw, fy + 7); ctx.lineTo(fx + fw - 7, fy + 7); ctx.closePath();
           ctx.fillStyle = 'rgba(' + PH + ',' + (.42 * fa) + ')'; ctx.fill();
-          lines(ctx, fx + 4, fy + 7, fw - 8, 2, fa, true, true);
+          lines(ctx, fx + 3.5, fy + 9, fw - 7, 2, fa, true, true);
         }
         /* ответ со ссылкой на источник */
         bubble(ctx, ax, ay, bw, 20, true, ra, true);

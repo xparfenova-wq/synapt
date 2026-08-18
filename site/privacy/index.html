@@ -9,8 +9,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--graphite:#1E1D1B;--surface:#282623;--gold:#C7A46A;--gold-deep:#A8874C;
- --text:#ECEBE8;--text-2:#C3C1BC;--text-muted:#9A978F;--line:rgba(255,255,255,.08);
+:root{--graphite:#0E1211;--surface:#151A18;--gold:#D0E865;--gold-deep:#A6BF41;
+ --text:#E8EEEC;--text-2:#C4CAC7;--text-muted:#9AA5A1;--line:rgba(255,255,255,.08);
  --sans:Manrope,system-ui,-apple-system,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--sans);background:var(--graphite);color:var(--text-2);font-size:15.5px;line-height:1.68;
@@ -39,10 +39,21 @@ hr{border:0;border-top:1px solid var(--line);margin:34px 0}
   .req a{display:inline-flex;align-items:center;min-height:40px}
   h2{margin-top:32px}
 }
+
+/* кнопка возврата: без капслока, стрелка крупнее, ближе к заголовку */
+.back{text-transform:none!important;letter-spacing:0!important;font-size:15px;display:inline-flex;
+  align-items:center;gap:10px;color:var(--text-muted);text-decoration:none;margin-bottom:18px}
+.back:hover{color:var(--accent)}
+.back .ar{display:inline-block;font-size:20px;line-height:1;transform:translateY(-1px)}
+/* реквизиты обычным цветом */
+.acc,.hl,strong.acc{color:inherit!important}
+/* интервалы: подпись редакции ближе к заголовку раздела */
+.doc-date,.date,.edition{margin-top:10px!important;margin-bottom:26px!important;color:var(--text-dim)}
+h1{margin-top:6px}
 </style>
 </head>
 <body><div class="wrap">
-<a class="back" href="/">&#8249;&nbsp; На&nbsp;главную</a>
+<a class="back" href="/"><span class="ar">&#8592;</span>На&nbsp;главную</a>
 <h1>Политика в&nbsp;отношении обработки персональных данных</h1>
 <div class="upd">Редакция от&nbsp;3 августа 2026 года</div>
 
