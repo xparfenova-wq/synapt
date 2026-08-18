@@ -1433,6 +1433,17 @@ footer .f-nav{gap:5px}
 .metric b,.bn b{white-space:nowrap}
 .metric b{font-size:clamp(26px,2.6vw,34px)}
 .metric b .tail,.bn b .tail{white-space:nowrap;display:inline}
+
+
+.cost-top{align-items:start!important}
+.cost-head{align-self:start!important}
+.price-line{align-self:start!important}
+/* верх цифры совпадает с верхом заголовка: снимаем надстрочный запас крупного кегля */
+.price-line .big{line-height:.82;margin-top:.08em}
+
+/* верх цены совпадает с верхом заголовка раздела */
+.price-line{padding-top:34px!important}
+@media(max-width:900px){.price-line{padding-top:0!important}}
 </style>
 <style media="print">
 @page{size:A4 portrait;margin:15mm 13mm 17mm}
