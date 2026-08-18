@@ -2003,6 +2003,26 @@ form .btn.pri{margin-top:22px!important}
 .leadbox .lf-check{margin-top:20px!important;margin-bottom:0!important}
 .leadbox form .btn.pri{margin-top:22px!important}
 .leadbox .lf-after{margin-top:14px!important}
+
+/* подвал: интервалы вдвое плотнее, реквизиты без подчёркиваний, страница заканчивается сразу за копирайтом */
+footer .f-nav{gap:6px 18px!important}
+footer .f-nav a{margin-bottom:0!important;line-height:1.45}
+footer .legal{column-gap:18px!important;row-gap:4px!important}
+footer .legal div,footer .f-legal p{margin-bottom:0!important;line-height:1.45}
+footer .f-legal p,footer .legal p{margin:0 0 4px!important}
+footer .f-legal p,footer .legal div,footer .f-legal a:not(.pol),footer .legal a:not(.pol){
+  text-decoration:none!important;border-bottom:0!important}
+footer .f-bottom,footer .f-copy{margin-top:18px!important;padding-top:14px!important;padding-bottom:0!important}
+footer{padding-bottom:14px!important}
+footer .wrap>*:last-child{margin-bottom:0!important}
+
+/* ссылка на политику остаётся подчёркнутой, реквизиты нет */
+footer a[href*="privacy"]{text-decoration:none!important;border-bottom:1px solid var(--line-accent)!important;padding-bottom:1px}
+footer a[href*="privacy"]:hover{border-bottom-color:var(--accent)!important}
+/* блок консультации: кикер и заголовок как в соседних разделах, подзаголовок ближе */
+#lead .eyebrow,#cta .eyebrow{margin-bottom:18px!important}
+#lead .lead-copy h2,#cta .cta-copy h2{margin-top:0!important;margin-bottom:10px!important}
+#lead .lead-copy .lead,#cta .cta-copy .lead{margin-top:0!important}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
