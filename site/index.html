@@ -2628,6 +2628,34 @@ footer .f-tg{line-height:1.5!important}
 #related .rel-card,#related .nxt a{padding:18px 20px 20px!important;gap:8px!important;min-height:0!important}
 
 </style>
+<style id="fix-evening">
+/* правки вечера 18.08: этапы, форма, подвал, кнопки */
+@media(min-width:861px){
+  html body #how .rmap{border-top:0!important}
+  html body #how .rmap-head{border-bottom:1px solid var(--line-2)!important}
+}
+/* форма заявки: единый ритм */
+html body #leadForm .lf label{margin-bottom:8px!important}
+html body #leadForm .lf{margin-bottom:26px!important}
+html body #leadForm .lf textarea{display:block}
+html body #leadForm .slots{margin-top:26px!important}
+html body #leadForm .slots .sl-h{margin-bottom:12px!important}
+html body #leadForm .lf-check{margin-top:22px!important;margin-bottom:0!important}
+html body #leadForm .lf-check .br-web{display:inline!important}
+html body #leadForm .btn.pri{width:100%!important;justify-content:center;margin-top:22px!important}
+html body #leadForm .lf-after{margin-top:14px!important}
+@media(min-width:981px){ html body #lead .lc-mgr.lc-after{margin-top:28px!important} }
+/* подвал: разделы ближе к бренду, формальности в два столбца */
+@media(min-width:861px){
+  html body footer .f-main{grid-template-columns:360px 220px minmax(0,1fr)!important;gap:32px!important}
+  html body footer .f-legal{display:grid!important;grid-template-columns:auto auto!important;justify-content:space-between!important;grid-template-rows:auto auto auto auto!important;grid-auto-flow:column!important;column-gap:28px!important;row-gap:9px!important;align-content:start}
+  html body footer .f-legal .f-k{grid-column:1/-1!important;grid-row:1!important}
+  html body footer .f-legal a{margin-top:0!important;align-self:start!important}
+}
+/* один лайм на всех кнопках */
+html body .btn.pri{background:var(--accent)!important;color:var(--accent-ink)!important;box-shadow:var(--btn-shadow)!important}
+html body .btn.pri:hover{background:var(--accent-glow)!important;box-shadow:var(--btn-shadow)!important}
+</style>
 </head>
 <body>
 <script>
@@ -2687,7 +2715,6 @@ function LEAD_API(url, opts){
 <header class="hero"><canvas id="synFx" data-fx="converge"></canvas><div class="wrap">
   <div class="hero-grid">
     <div>
-      <div class="hero-chip reveal">Synapt</div>
       <div class="eyebrow reveal">Студия AI и&nbsp;IT-разработки для&nbsp;бизнеса</div>
       <h1 class="reveal d1">Соединяем AI, процессы и&nbsp;людей в&nbsp;устойчивую рабочую систему</h1>
       
@@ -3137,7 +3164,7 @@ function LEAD_API(url, opts){
         <div class="lf"><label for="lfContact">Телефон, почта или&nbsp;Telegram <span class="req" title="обязательное поле">*</span></label><input id="lfContact" name="contact" type="text" autocomplete="off" required></div>
       </div>
       <div class="lf"><label for="lfCompany">Компания и&nbsp;сфера деятельности</label><input id="lfCompany" name="company" type="text" autocomplete="organization"></div>
-      <div class="lf"><label for="lfTask">Коротко о&nbsp;запросе</label><textarea id="lfTask" name="task" rows="2"></textarea></div>
+      <div class="lf"><label for="lfTask">Коротко о&nbsp;контексте: какой сейчас уровень использования AI в&nbsp;команде и&nbsp;к&nbsp;какому результату хотите прийти</label><textarea id="lfTask" name="task" rows="2"></textarea></div>
     <div class="slots" id="slots">
       <div class="sl-h">Когда вам удобно</div>
       <div class="sl-days" id="slDays"></div>
@@ -4272,9 +4299,9 @@ function LEAD_API(url, opts){
   var c=document.getElementById('tsyn'); if(!c) return;
   var DPR=Math.min(devicePixelRatio||1,2), ctx=c.getContext('2d'), W=0,H=0,t=0,S=1,NAR=false;
   var TOUCH=matchMedia('(hover: none)').matches;
-  var WH='232,238,236', GR='128,140,136', PH='208,232,101';
+  var WH='232,238,236', GR='128,140,136', PH='208,232,101', TX='240,242,241';
   function theme(){var l=document.documentElement.getAttribute('data-theme')==='light';
-    WH=l?'26,30,28':'232,238,236'; GR=l?'40,48,45':'128,140,136'; PH=l?'118,146,34':'208,232,101';}
+    WH=l?'26,30,28':'232,238,236'; GR=l?'40,48,45':'128,140,136'; PH=l?'118,146,34':'208,232,101'; TX=l?'22,25,24':'240,242,241';}
   theme(); new MutationObserver(theme).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 
   var BIZ=['заявки','продажи','закупки','документы','клиенты','знания'];
@@ -4420,7 +4447,8 @@ function LEAD_API(url, opts){
     var lh=size*1.5;
     /* у верхнего партнёра роль стоит над именем, у нижнего под ним */
     /* у партнёров роль всегда идёт строкой ниже имени */
-    var y = (p.kind==='core' || p.lab==='down') ? p.y+36 : (p.lab==='up' ? p.y-31-(lines.length-1)*lh : p.y+34);
+    /* у верхнего партнёра роль стоит над именем, у нижнего и у остальных под ним */
+    var y = p.lab==='up' ? p.y-31-(lines.length-1)*lh : ((p.kind==='core' || p.lab==='down') ? p.y+36 : p.y+34);
     ctx.fillStyle='rgba('+WH+','+(.95*alpha)+')';
     ctx.textAlign = p.lab ? 'center' : (p.kind!=='biz'&&p.side!=='l' ? 'left' : 'right');
     var x = p.lab ? p.x : (ctx.textAlign==='left' ? p.x+11 : p.x-11);
@@ -4624,7 +4652,7 @@ function LEAD_API(url, opts){
       ctx.fillStyle='rgba('+(on?PH:(p.kind==='biz'?GR:WH))+','+(p.kind==='biz'?.62:.82)+')'; ctx.fill();
       var size=(p.kind==='core'?12.5:11)*S;
       ctx.font=(p.kind==='core'?'500 ':'400 ')+size+'px "JetBrains Mono", ui-monospace, monospace';
-      ctx.fillStyle='rgba('+(on?PH:(p.kind==='core'?WH:GR))+','+(on?1:(p.kind==='core'?.92:.8))+')';
+      ctx.fillStyle='rgba('+(on?PH:TX)+','+(on?1:.92)+')';
       if(p.lab==='top'){ ctx.textAlign='center'; ctx.fillText(p.n,p.x,p.y-11) }
       else if(p.lab){ ctx.textAlign='center'; ctx.fillText(p.n,p.x,p.y+(p.lab==='up'?-13:19)) }
       else { var right=p.kind!=='biz'&&p.side!=='l';

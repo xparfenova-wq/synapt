@@ -1759,6 +1759,86 @@ footer .f-tg{line-height:1.5!important}
 #related .rel-card,#related .nxt a{padding:18px 20px 20px!important;gap:8px!important;min-height:0!important}
 
 </style>
+<style id="fix-evening">
+/* правки вечера 18.08: обложка, форма, смежные услуги, подвал, кнопки */
+/* --- обложка, веб --- */
+@media(min-width:981px){
+  html body .hero.rh-hero .wrap.hero-in{max-width:1400px!important;padding-left:var(--gutter)!important;padding-right:var(--gutter)!important;box-sizing:border-box}
+  html body .hero.rh-hero .hero-in{grid-template-columns:minmax(0,1.32fr) minmax(300px,.68fr)!important}
+  html body .hero.rh-hero h1{font-size:96px!important;line-height:1.02!important;letter-spacing:-.03em!important;margin-bottom:10px!important}
+  html body .hero.rh-hero .hero-kick{margin-bottom:18px!important}
+  html body .hero.rh-hero .lead{font-size:18px!important;margin-bottom:0!important}
+  html body .hero.rh-hero .hero-stats{text-align:right!important;justify-items:end!important}
+  html body .hero.rh-hero .hero-stats .hs{text-align:right!important}
+  html body .hero.rh-hero .hero-stats .hs b{font-size:68px!important;line-height:1!important;letter-spacing:-.03em!important;text-align:right!important}
+  html body .hero.rh-hero .hero-stats .hs b .tail,html body .hero.rh-hero .hero-stats .hs b>.m-t{font-size:30px!important;margin-left:.14em!important}
+  html body .hero.rh-hero .hero-stats .hs>span{font-size:13.5px!important;margin-left:auto!important;margin-right:0!important;text-align:right!important;max-width:26ch!important}
+}
+/* --- обложка, телефон --- */
+@media(max-width:760px){
+  html body .hero.rh-hero h1{font-size:56px!important;line-height:1.02!important;letter-spacing:-.03em!important;margin-bottom:10px!important}
+  html body .hero.rh-hero .hero-kick{margin-bottom:18px!important}
+  html body .hero.rh-hero .lead{font-size:15px!important;margin-bottom:0!important}
+  html body .hero.rh-hero .hero-stats{text-align:right!important;padding-right:0!important}
+  html body .hero.rh-hero .hero-stats .hs b{font-size:44px!important;line-height:1!important;letter-spacing:-.03em!important;white-space:nowrap}
+  html body .hero.rh-hero .hero-stats .hs b .tail,html body .hero.rh-hero .hero-stats .hs b>.m-t{font-size:22px!important;margin-left:.14em!important}
+  html body .hero.rh-hero .hero-stats .hs>span{margin-left:auto!important;margin-right:0!important;text-align:right!important}
+}
+/* --- форма заявки --- */
+html body #lead .leadbox button[type=submit],html body #lead .leadbox .btn.lg{display:flex!important;width:100%!important;box-sizing:border-box!important;margin-top:22px!important}
+html body #lead .lf-grid{gap:26px 20px!important}
+html body #lead .lf label{margin-bottom:8px!important;display:block!important}
+html body #lead .lf input,html body #lead .lf textarea{margin-top:0!important}
+html body #lead .slots{margin-top:26px!important}
+html body #lead .slots .sl-h{margin-bottom:12px!important}
+html body #lead .sl-days{margin-bottom:0!important;padding-bottom:0!important}
+html body #lead .lf-check{margin-top:22px!important;align-items:flex-start!important;--cb-top:-1px}
+html body #lead .lf-check>span{display:block!important;line-height:1.5!important;padding-top:0!important}
+html body #lead .lf-check>span br{display:inline!important}
+html body #lead .lf-err{margin-top:14px!important}
+html body #lead .lf-after{margin-top:14px!important;margin-bottom:0!important}
+/* блок про Никиту сразу под лидом */
+@media(min-width:981px){
+  html body #lead .lead-grid{grid-template-rows:auto 1fr!important;align-items:start!important;row-gap:0!important}
+  html body #lead .lead-grid>.lead-copy{grid-column:1!important;grid-row:1!important}
+  html body #lead .lead-grid>.leadbox{grid-column:2!important;grid-row:1/span 2!important}
+  html body #lead .lead-grid>.lc-mgr,html body #lead .lc-mgr.lc-after{grid-column:1!important;grid-row:2!important;align-self:start!important;margin-top:28px!important;padding-top:0!important;border-top:0!important}
+}
+/* --- другие услуги и кейсы --- */
+html body #related>.wrap>.eyebrow{margin-bottom:22px!important;font-family:var(--mono)!important;font-size:13px!important;letter-spacing:.5px!important;display:flex!important}
+html body #related .rel-head,html body #related .sec-head,html body #related h2{display:none!important}
+@media(min-width:761px){html body #related .nxt{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:14px!important}}
+@media(max-width:760px){html body #related .nxt{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important}
+  html body #related .nxt a:last-child:nth-child(odd){grid-column:1/-1}}
+html body #related .nxt a{padding:18px 20px 20px!important;gap:8px!important;min-height:0!important;height:auto!important;justify-content:flex-start!important}
+/* --- подвал, веб --- */
+@media(min-width:901px){
+  html body footer .f-main{display:grid!important;grid-template-columns:minmax(0,1.15fr) minmax(0,.95fr) minmax(0,2fr)!important;gap:28px!important;align-items:start!important}
+  html body footer .f-nav2{display:grid!important;grid-template-columns:auto auto!important;justify-content:start!important;gap:6px 20px!important}
+  html body footer .f-nav2 .f-k{grid-column:1/-1!important}
+  html body footer .f-legal{display:flex!important;flex-direction:column!important;gap:9px!important}
+  html body footer .f-legal-cols{display:grid!important;grid-template-columns:max-content max-content!important;justify-content:start!important;gap:0 24px!important;align-items:start!important}
+  html body footer .f-legal-c p,html body footer .f-legal-c a{white-space:nowrap!important}
+  html body footer .f-legal-c{display:flex!important;flex-direction:column!important;gap:4px!important}
+}
+@media(max-width:900px){html body footer .f-legal-cols{display:flex!important;flex-direction:column!important;gap:4px!important}
+  html body footer .f-legal-c{display:flex!important;flex-direction:column!important;gap:4px!important}}
+html body footer .f-legal-c p{margin:0!important}
+html body footer .f-legal-c a{margin-top:0!important;width:fit-content}
+/* --- кнопки, один лаймовый --- */
+html body .btn.pri,html body a.btn.pri,html body button.btn.pri{background:var(--accent)!important;color:var(--accent-ink)!important;box-shadow:var(--btn-shadow)!important}
+html body .btn.pri:hover,html body a.btn.pri:hover,html body button.btn.pri:hover{background:var(--accent-glow)!important;box-shadow:var(--btn-shadow)!important}
+html body .btn.pri:active{box-shadow:none!important}
+</style>
+
+<style id="unify-evening">
+/* сведение после правок вечера 18.08: одна высота обложки и один подвал на внутренних страницах */
+@media(min-width:761px){html body .cover.r-cover{padding-top:132px!important;padding-bottom:76px!important;min-height:100vh!important;height:auto!important}
+html body .hero.rh-hero{padding-top:132px!important;padding-bottom:108px!important;min-height:100vh!important;height:auto!important}
+html body .hero.rh-hero .hero-in{height:calc(100vh - 240px)!important;min-height:0!important}}
+@media(max-width:760px){html body .cover.r-cover{padding-top:96px!important;padding-bottom:96px!important;min-height:100vh!important;height:auto!important}html body .hero.rh-hero{padding-top:96px!important;padding-bottom:62px!important;min-height:100vh!important;height:auto!important}}
+@media(min-width:901px){html body footer .f-main{grid-template-columns:250px 290px minmax(0,1fr)!important;gap:32px!important;column-gap:32px!important;justify-content:start!important}}
+</style>
 </head>
 <body>
 <nav class="nav"><div class="wrap">
@@ -1896,7 +1976,7 @@ footer .f-tg{line-height:1.5!important}
           <div class="lf"><label for="lfName">Как&nbsp;вас зовут <span class="req" title="обязательное поле">*</span></label><input id="lfName" name="name" type="text" autocomplete="name" required></div>
           <div class="lf"><label for="lfContact">Телефон, почта или&nbsp;Telegram <span class="req" title="обязательное поле">*</span></label><input id="lfContact" name="contact" type="text" autocomplete="off" required></div>
           <div class="lf lf-wide"><label for="lfCompany">Компания и&nbsp;сфера деятельности</label><input id="lfCompany" name="company" type="text" autocomplete="organization"></div>
-          <div class="lf lf-wide"><label for="lfTask">Коротко о&nbsp;контексте: чем занимается компания и&nbsp;что&nbsp;хотите изменить</label><textarea id="lfTask" name="task" rows="2"></textarea></div>
+          <div class="lf lf-wide"><label for="lfTask">Коротко о&nbsp;контексте: какой сейчас уровень использования AI в&nbsp;команде и&nbsp;к&nbsp;какому результату хотите прийти</label><textarea id="lfTask" name="task" rows="2"></textarea></div>
         </div>
         <div class="slots" id="slots">
           <div class="sl-h">Когда вам удобно</div>
@@ -1906,7 +1986,7 @@ footer .f-tg{line-height:1.5!important}
           <div class="sl-note" id="slNote"></div>
         </div>
         <label class="lf-check"><input type="checkbox" id="lfAgree" required>
-          <span>Согласен на&nbsp;обработку персональных данных и&nbsp;принимаю <a href="/privacy" target="_blank" rel="noopener">политику обработки персональных данных</a></span></label>
+          <span>Согласен на&nbsp;обработку персональных данных и&nbsp;принимаю<br><a href="/privacy" target="_blank" rel="noopener">политику обработки персональных данных</a></span></label>
         <div class="lf-err" id="lfErr" role="alert">Не&nbsp;хватает вашего имени, контактов и&nbsp;согласия на&nbsp;обработку персональных данных</div>
         <button class="btn pri lg" type="submit">Оставить заявку</button>
         <p class="lf-after"><span class="nb">Подтвердим встречу в&nbsp;ответном сообщении</span> <span class="nb">в&nbsp;течение 1&nbsp;рабочего дня</span></p>
@@ -1928,10 +2008,7 @@ footer .f-tg{line-height:1.5!important}
   </section>
 
 <section id="related" class="rh-pre"><div class="wrap">
-  <div class="sec-head reveal">
-    <div class="eyebrow"><span class="n">07</span> Ещё у&nbsp;студии</div>
-    <h2>Другие услуги и&nbsp;кейсы студии</h2>
-  </div>
+  <div class="eyebrow reveal"><span class="n">07</span> Другие услуги и&nbsp;кейсы студии</div>
   <div class="nxt reveal">
     <a href="/innorto/"><span class="nk">кейс</span><span class="nt">INNORTO</span></a>
     <a href="/globaldent/"><span class="nk">кейс</span><span class="nt">GlobalDent</span></a>
@@ -1951,12 +2028,18 @@ footer .f-tg{line-height:1.5!important}
     <nav class="f-nav f-nav2"><span class="f-k">Разделы</span><a href="#why">Для&nbsp;чего</a><a href="#entry">Цена и&nbsp;ценность</a><a href="#days">Как&nbsp;проходит</a><a href="#result">Результат</a><a href="#faq">FAQ</a><a href="#lead">Оставить заявку</a></nav>
     <div class="f-legal">
       <span class="f-k">Формальности</span>
-      <p>ИП Орешкин Антон Вадимович</p>
-      <p>ИНН 100123323420</p>
-      <p>ОГРНИП 324100000000411</p>
-      <p>185014, Республика Карелия, Петрозаводск</p>
-      <p>переулок Попова, дом&nbsp;6, квартира&nbsp;42</p>
-      <a href="/privacy">Политика обработки персональных данных</a>
+      <div class="f-legal-cols">
+        <div class="f-legal-c">
+          <p>ИП Орешкин Антон Вадимович</p>
+          <p>ИНН 100123323420</p>
+          <p>ОГРНИП 324100000000411</p>
+        </div>
+        <div class="f-legal-c">
+          <p>185014, Республика Карелия, Петрозаводск</p>
+          <p>переулок Попова, дом&nbsp;6, квартира&nbsp;42</p>
+          <a href="/privacy">Политика обработки персональных данных</a>
+        </div>
+      </div>
     </div>
   </div>
   <p class="f-copy">© 2026 Synapt</p>
