@@ -2799,6 +2799,49 @@ html body a:not(#_):not(#_):not(#_),html body button:not(#_):not(#_):not(#_),htm
 html body a *:not(#_):not(#_):not(#_),html body button *:not(#_):not(#_):not(#_),html body [role=button] *:not(#_):not(#_):not(#_),html body label *:not(#_):not(#_):not(#_),html body summary *:not(#_):not(#_):not(#_),html body .btn *:not(#_):not(#_):not(#_),html body .rel-card *:not(#_):not(#_):not(#_),html body .nxt a *:not(#_):not(#_):not(#_),html body .faq summary *:not(#_):not(#_):not(#_),html body .acc-h *:not(#_):not(#_):not(#_),html body .lf-check *:not(#_):not(#_):not(#_){cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='24' viewBox='0 0 20 24'%3E%3Cpath d='M6.6 1.6c0-.9.7-1.6 1.6-1.6s1.6.7 1.6 1.6v8.2h.5V8.4c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4v1.9h.5V9.1c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4v1.7h.5v-.6c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4v6.1c0 3.9-2.7 6.7-6.6 6.7h-1.5c-2.3 0-4.1-1-5.3-2.7L2.1 15.6c-.6-.8-.4-1.9.4-2.4.8-.5 1.8-.3 2.4.5l1.7 2.2z' fill='%23D0E865' stroke='%230E1211' stroke-width='1' stroke-linejoin='round'/%3E%3C/svg%3E") 7 1, pointer!important}
 html body input[type=text]:not(#_):not(#_):not(#_),html body input[type=email]:not(#_):not(#_):not(#_),html body input[type=tel]:not(#_):not(#_):not(#_),html body textarea:not(#_):not(#_):not(#_){cursor:text!important}
 </style>
+<style id="fix-5">
+/* ===== fix-5 (18.08, пятая волна), главная ===== */
+/* H1. якоря из меню: шапка 66 + 14px воздуха над кикером; точную поправку на внутренний отступ раздела ставит скрипт fix-5-anchors */
+html:not(#_):not(#_):not(#_){scroll-padding-top:80px!important}
+@media(min-width:1041px){html body #cases .sec-head:not(#_):not(#_):not(#_){top:80px!important}}
+/* H2. курсор-рука меньше: 14×17, не крупнее стрелки */
+html body a:not(#_):not(#_):not(#_):not(#_),html body button:not(#_):not(#_):not(#_):not(#_),html body [role=button]:not(#_):not(#_):not(#_):not(#_),html body label:not(#_):not(#_):not(#_):not(#_),html body summary:not(#_):not(#_):not(#_):not(#_),html body .btn:not(#_):not(#_):not(#_):not(#_),html body .rel-card:not(#_):not(#_):not(#_):not(#_),html body .tgl:not(#_):not(#_):not(#_):not(#_),html body .nav-burger:not(#_):not(#_):not(#_):not(#_),html body .burger:not(#_):not(#_):not(#_):not(#_),html body .sl-day:not(#_):not(#_):not(#_):not(#_),html body .sl-slot:not(#_):not(#_):not(#_):not(#_),html body .slots button:not(#_):not(#_):not(#_):not(#_),html body .metric-more:not(#_):not(#_):not(#_):not(#_),html body .nxt a:not(#_):not(#_):not(#_):not(#_),html body .fab-b:not(#_):not(#_):not(#_):not(#_),html body .fab-tg:not(#_):not(#_):not(#_):not(#_),html body .fab-lead:not(#_):not(#_):not(#_):not(#_),html body .tp-s:not(#_):not(#_):not(#_):not(#_),html body .cnav button:not(#_):not(#_):not(#_):not(#_),html body .faq summary:not(#_):not(#_):not(#_):not(#_),html body .acc-h:not(#_):not(#_):not(#_):not(#_),html body .morelink:not(#_):not(#_):not(#_):not(#_),html body .cs-link:not(#_):not(#_):not(#_):not(#_),html body .cs-x:not(#_):not(#_):not(#_):not(#_),html body .ns-tgl:not(#_):not(#_):not(#_):not(#_),html body .ns-tg:not(#_):not(#_):not(#_):not(#_),html body .nav-tg:not(#_):not(#_):not(#_):not(#_),html body input[type=checkbox]:not(#_):not(#_):not(#_):not(#_),html body input[type=radio]:not(#_):not(#_):not(#_):not(#_),html body .lf-check:not(#_):not(#_):not(#_):not(#_),html body .mod-chip:not(#_):not(#_):not(#_):not(#_),html body .ccard:not(#_):not(#_):not(#_):not(#_),html body .card a:not(#_):not(#_):not(#_):not(#_),html body .tag:not(#_):not(#_):not(#_):not(#_){cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='17' viewBox='0 0 20 24'%3E%3Cpath d='M6.6 1.6c0-.9.7-1.6 1.6-1.6s1.6.7 1.6 1.6v8.2h.5V8.4c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4v1.9h.5V9.1c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4v1.7h.5v-.6c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4v6.1c0 3.9-2.7 6.7-6.6 6.7h-1.5c-2.3 0-4.1-1-5.3-2.7L2.1 15.6c-.6-.8-.4-1.9.4-2.4.8-.5 1.8-.3 2.4.5l1.7 2.2z' fill='%23D0E865' stroke='%230E1211' stroke-width='1' stroke-linejoin='round'/%3E%3C/svg%3E") 5 1, pointer!important}
+html body a *:not(#_):not(#_):not(#_):not(#_),html body button *:not(#_):not(#_):not(#_):not(#_),html body [role=button] *:not(#_):not(#_):not(#_):not(#_),html body label *:not(#_):not(#_):not(#_):not(#_),html body summary *:not(#_):not(#_):not(#_):not(#_),html body .btn *:not(#_):not(#_):not(#_):not(#_),html body .rel-card *:not(#_):not(#_):not(#_):not(#_),html body .nxt a *:not(#_):not(#_):not(#_):not(#_),html body .faq summary *:not(#_):not(#_):not(#_):not(#_),html body .acc-h *:not(#_):not(#_):not(#_):not(#_),html body .lf-check *:not(#_):not(#_):not(#_):not(#_){cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='17' viewBox='0 0 20 24'%3E%3Cpath d='M6.6 1.6c0-.9.7-1.6 1.6-1.6s1.6.7 1.6 1.6v8.2h.5V8.4c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4v1.9h.5V9.1c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4v1.7h.5v-.6c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4v6.1c0 3.9-2.7 6.7-6.6 6.7h-1.5c-2.3 0-4.1-1-5.3-2.7L2.1 15.6c-.6-.8-.4-1.9.4-2.4.8-.5 1.8-.3 2.4.5l1.7 2.2z' fill='%23D0E865' stroke='%230E1211' stroke-width='1' stroke-linejoin='round'/%3E%3C/svg%3E") 5 1, pointer!important}
+html body input[type=text]:not(#_):not(#_):not(#_):not(#_),html body input[type=email]:not(#_):not(#_):not(#_):not(#_),html body input[type=tel]:not(#_):not(#_):not(#_):not(#_),html body textarea:not(#_):not(#_):not(#_):not(#_){cursor:text!important}
+/* H3. основные кнопки при наведении темнее, без тени и движения */
+html body .btn.pri:hover:not(#_):not(#_):not(#_),html body .btn.pri.lg:hover:not(#_):not(#_):not(#_),html body .nav .btn.pri:hover:not(#_):not(#_):not(#_),html body #leadForm .btn.pri:hover:not(#_):not(#_):not(#_),html body .fab-lead:hover:not(#_):not(#_):not(#_),html body .fab-b.fab-lead:hover:not(#_):not(#_):not(#_),html body .fab .btn.pri:hover:not(#_):not(#_):not(#_){background:var(--accent)!important;filter:brightness(.88)!important;box-shadow:none!important;transform:none!important}
+html body .btn.pri:active:not(#_):not(#_):not(#_),html body .fab-lead:active:not(#_):not(#_):not(#_){filter:brightness(.82)!important;transform:none!important}
+/* H4. чип-строка над заголовком обложки в полтора раза крупнее (13 → 19.5, телефон 15), отступ до h1 прежний */
+html body .hero .eyebrow:not(#_):not(#_):not(#_){font-size:19.5px!important;line-height:1.3!important}
+@media(max-width:760px){html body .hero .eyebrow:not(#_):not(#_):not(#_){font-size:15px!important}}
+/* H7. форма: звёздочка лаймовая, без подсказки и cursor:help; поле при наведении светлее на шаг */
+html body .lf label .req:not(#_):not(#_):not(#_),html body .req:not(#_):not(#_):not(#_),html[data-theme="light"] body .req:not(#_):not(#_):not(#_){color:var(--accent)!important;cursor:inherit!important;background:none!important;padding:0!important}
+html body .lf input:not(#_):not(#_):not(#_),html body .lf textarea:not(#_):not(#_):not(#_){transition:border-color .18s ease!important}
+html body .lf input:hover:not(:focus):not(#_):not(#_):not(#_),html body .lf textarea:hover:not(:focus):not(#_):not(#_):not(#_){border-bottom-color:var(--text-dim)!important}
+html body .lf input:focus:not(#_):not(#_):not(#_),html body .lf textarea:focus:not(#_):not(#_):not(#_){border-bottom-color:var(--accent)!important}
+/* H8. логотип при наведении: лаймовым становится знак, слово Synapt остаётся цветом текста */
+html body .brand:hover .lg-mark:not(#_):not(#_):not(#_),html body .brand:hover svg .lg-mark:not(#_):not(#_):not(#_){fill:currentColor!important}
+html body .brand svg>g>path:not(.lg-mark):not(#_):not(#_):not(#_),html body .brand svg>path:not(.lg-mark):not(#_):not(#_):not(#_){transition:fill .18s ease}
+html body .brand:hover svg>g>path:not(.lg-mark):not(#_):not(#_):not(#_),html body .brand:hover svg>path:not(.lg-mark):not(#_):not(#_):not(#_){fill:var(--accent)!important}
+/* 1. поп-ап кейса: фон не сдвигается. Причина прыжка: body.cs-lock{overflow:hidden} делал body отдельным скролл-контейнером,
+   и липкий заголовок раздела «Кейсы» (position:sticky) слетал на своё место в потоке. Блокировку прокрутки держит html.cs-lock,
+   body остаётся clip/visible; ширина полосы прокрутки (если она классическая) компенсируется отступом --sbw */
+html body.cs-lock:not(#_):not(#_):not(#_){overflow-x:clip!important;overflow-y:visible!important;padding-right:var(--sbw,0px)!important}
+html.cs-lock body .nav:not(#_):not(#_):not(#_){padding-right:var(--sbw,0px)!important}
+html.cs-lock body .fab:not(#_):not(#_):not(#_){margin-right:var(--sbw,0px)!important}
+html.cs-lock body .cs-modal:not(#_):not(#_):not(#_){padding-right:calc(20px + var(--sbw,0px))!important}
+/* 2. пока поп-ап открыт, страница и шапка под тем же размытием, что у шапки, плюс лёгкое затемнение; модалка поверх шапки */
+html body .cs-modal:not(#_):not(#_):not(#_){z-index:400!important}
+html body .cs-modal .cs-back:not(#_):not(#_):not(#_){background:rgba(0,0,0,.36)!important;-webkit-backdrop-filter:saturate(150%) blur(18px)!important;backdrop-filter:saturate(150%) blur(18px)!important}
+html[data-theme="light"] body .cs-modal .cs-back:not(#_):not(#_):not(#_){background:rgba(25,26,29,.28)!important}
+/* 3. этапы: результат этапа по вертикальному центру строки */
+@media(min-width:861px){html body #how .rm-out:not(#_):not(#_):not(#_){justify-content:center!important;padding-top:26px!important;padding-bottom:26px!important;align-self:stretch!important}}
+/* 4. принципы: номер, заголовок и описание по вертикальному центру строки */
+html body #rules .pr-row:not(#_):not(#_):not(#_){align-items:center!important}
+html body #rules .pr-row .pr-n:not(#_):not(#_):not(#_){padding-top:0!important;align-self:center!important}
+html body #rules .pr-row .pr-main:not(#_):not(#_):not(#_),html body #rules .pr-row .pr-d:not(#_):not(#_):not(#_){align-self:center!important}
+@media(max-width:820px){html body #rules .pr-row .pr-d:not(#_):not(#_):not(#_){align-self:start!important}}
+</style>
 </head>
 <body>
 <script>
@@ -3201,7 +3244,7 @@ function LEAD_API(url, opts){
     <div class="pr-row reveal">
       <div class="pr-n">01</div>
       <div class="pr-main"><span class="pr-k">с&nbsp;чего начинаем</span><h4>Сначала проводим анализ, только потом определяем стоимость и&nbsp;критерии</h4></div>
-      <p class="pr-d">Первый Zoom&nbsp;– знакомство с&nbsp;запросом и&nbsp;контекстом. Затем внутренний анализ, форматы сотрудничества на&nbsp;выбор и&nbsp;чёткие критерии приёмки в&nbsp;договоре</p>
+      <p class="pr-d">Первый Zoom&nbsp;– погружение в&nbsp;запрос и&nbsp;контекст. Затем внутренний анализ, форматы сотрудничества на&nbsp;выбор и&nbsp;чёткие критерии приёмки в&nbsp;договоре</p>
     </div>
     <div class="pr-row reveal">
       <div class="pr-n">02</div>
@@ -3297,8 +3340,8 @@ function LEAD_API(url, opts){
     <!-- заявки: endpoint подключает разработчик, сейчас форма показывает подтверждение -->
     <form id="leadForm" novalidate>
       <div class="lf-row">
-        <div class="lf"><label for="lfName">Как&nbsp;вас зовут <span class="req" title="обязательное поле">*</span></label><input id="lfName" name="name" type="text" autocomplete="name" required></div>
-        <div class="lf"><label for="lfContact">Телефон, почта или&nbsp;Telegram <span class="req" title="обязательное поле">*</span></label><input id="lfContact" name="contact" type="text" autocomplete="off" required></div>
+        <div class="lf"><label for="lfName">Как&nbsp;вас зовут <span class="req">*</span></label><input id="lfName" name="name" type="text" autocomplete="name" required></div>
+        <div class="lf"><label for="lfContact">Телефон, почта или&nbsp;Telegram <span class="req">*</span></label><input id="lfContact" name="contact" type="text" autocomplete="off" required></div>
       </div>
       <div class="lf"><label for="lfCompany">Компания и&nbsp;сфера деятельности</label><input id="lfCompany" name="company" type="text" autocomplete="organization"></div>
       <div class="lf"><label for="lfTask">Коротко о&nbsp;запросе</label><textarea id="lfTask" name="task" rows="2"></textarea></div>
@@ -4886,6 +4929,7 @@ function LEAD_API(url, opts){
     tag.textContent=(card.querySelector('.cc-tag')||{}).textContent||'';
     cli.textContent=(card.querySelector('.cc-client')||{}).textContent||'';
     box.innerHTML=src?src.innerHTML:'';
+    document.documentElement.style.setProperty('--sbw',(window.innerWidth-document.documentElement.clientWidth)+'px');
     modal.hidden=false; document.body.classList.add('cs-lock');
     document.documentElement.classList.add('cs-lock');
     last=btn; modal.querySelector('.cs-x').focus();
@@ -5000,5 +5044,30 @@ function LEAD_API(url, opts){
 })();
 </script>
 <script id="fab-cover">(function(){var f=document.querySelector('.fab'),c=document.querySelector('.cover, .hero');if(!f||!c||!('IntersectionObserver' in window))return;new IntersectionObserver(function(en){en.forEach(function(e){f.classList.toggle('is-cover',e.isIntersecting&&e.intersectionRatio>0.12)})},{threshold:[0,0.12,0.3]}).observe(c)})();</script>
+<script id="fix-5-anchors">
+/* якоря из меню: раздел открывается так, что над его кикером остаётся 14px под шапкой.
+   scroll-padding-top даёт высоту шапки + 14, а внутренний отступ раздела до кикера
+   компенсируется отрицательным scroll-margin-top, посчитанным по факту */
+(function(){
+  var nav=document.querySelector('.nav');
+  function upd(){
+    var nh=nav?nav.getBoundingClientRect().height:66;
+    document.documentElement.style.setProperty('scroll-padding-top',(nh+14)+'px','important');
+    [].forEach.call(document.querySelectorAll('section[id]'),function(sec){
+      var first=sec.querySelector('.eyebrow, .sec-head, .nb-k, h2, h1');
+      if(!first){ sec.style.removeProperty('scroll-margin-top'); return }
+      /* считаем по offsetTop, а не по getBoundingClientRect: у ещё не проявленных
+         блоков стоит transform от fade-reveal, и он сбивал бы замер */
+      function top(el){var y=0;while(el){y+=el.offsetTop;el=el.offsetParent}return y}
+      var d=top(first)-top(sec);
+      sec.style.setProperty('scroll-margin-top',(-Math.round(d))+'px','important');
+    });
+  }
+  upd();
+  addEventListener('load',upd);
+  var rt; addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(upd,150)});
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(upd);
+})();
+</script>
 </body>
 </html>
