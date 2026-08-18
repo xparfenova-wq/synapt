@@ -2327,6 +2327,12 @@ html body form.err .mf-err:not(#_):not(#_):not(#_):not(#_):not(#_),
 html body form .lf-err.show:not(#_):not(#_):not(#_):not(#_):not(#_){display:block!important}
 </style>
 <style id="fix-8b">html body form .mf-err:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body form .lf-err:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){margin-top:-12px!important}html body form .mf-err:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_)+*{margin-top:-8px!important}</style>
+
+<style id="fix-9">
+/* заголовок обложки на внутренних страницах ровно как на главной: 68 / 500 (телефон 48) */
+html body .cover h1:not(#_):not(#_):not(#_):not(#_):not(#_),html body .hero h1:not(#_):not(#_):not(#_):not(#_):not(#_){font-size:68px!important;font-weight:500!important;letter-spacing:-.028em!important;line-height:1.06!important}
+@media(max-width:760px){html body .cover h1:not(#_):not(#_):not(#_):not(#_):not(#_),html body .hero h1:not(#_):not(#_):not(#_):not(#_):not(#_){font-size:48px!important;font-weight:500!important}}
+</style>
 </head>
 <body>
 <nav class="nav"><div class="wrap">
