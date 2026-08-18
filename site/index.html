@@ -1893,6 +1893,20 @@ footer .f-nav{gap:5px}
 .cost-top{align-items:start!important}
 .price-line{padding-top:34px}
 @media(max-width:900px){.price-line{padding-top:0}}
+
+/* первый экран: никаких плашек и градиентных шторок.
+   Анимация сама гаснет книзу, поэтому цифры читаются, а край не обрезан */
+.hero::after{background:none!important}
+#synFx{
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 42%,rgba(0,0,0,.55) 72%,rgba(0,0,0,.22) 88%,rgba(0,0,0,0) 100%)!important;
+  mask-image:linear-gradient(180deg,#000 0%,#000 42%,rgba(0,0,0,.55) 72%,rgba(0,0,0,.22) 88%,rgba(0,0,0,0) 100%)!important;
+  opacity:.95!important}
+@media(max-width:760px){
+  #synFx{
+    -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 38%,rgba(0,0,0,.5) 66%,rgba(0,0,0,.18) 86%,rgba(0,0,0,0) 100%)!important;
+    mask-image:linear-gradient(180deg,#000 0%,#000 38%,rgba(0,0,0,.5) 66%,rgba(0,0,0,.18) 86%,rgba(0,0,0,0) 100%)!important;
+    opacity:.95!important}
+}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
@@ -1990,7 +2004,7 @@ function LEAD_API(url, opts){
 </div>
     <div class="now-figs">
       <div class="now-f"><b><span class="nb">26</span><span class="tail"> из&nbsp;27</span></b><span>сотрудников INNORTO работают с&nbsp;AI каждый день, потому что&nbsp;через него быстрее</span><a class="src" href="/innorto/">наш кейс, месяц AI-десанта</a></div>
-      <div class="now-f"><b><span class="nb">2 минуты</span></b><span>уходит у&nbsp;агента на&nbsp;стратегический аудит для&nbsp;собственника клиники на&nbsp;основе <span class="nb">17 разделов</span> методологии клуба и&nbsp;<span class="nb">1 500+</span> пар вопрос-ответ</span><a class="src" href="/globaldent/">наш кейс, агент Global Dent Club</a></div>
+      <div class="now-f"><b><span class="nb">2</span><span class="tail"> минуты</span></b><span>уходит у&nbsp;агента на&nbsp;стратегический аудит для&nbsp;собственника клиники на&nbsp;основе <span class="nb">17 разделов</span> методологии клуба и&nbsp;<span class="nb">1 500+</span> пар вопрос-ответ</span><a class="src" href="/globaldent/">наш кейс, агент Global Dent Club</a></div>
     </div>
   </div>
 </div></section>
