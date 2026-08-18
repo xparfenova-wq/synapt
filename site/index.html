@@ -2889,6 +2889,18 @@ html[data-theme="light"] body .sl-day:hover:not(.on):not(#_):not(#_):not(#_),htm
 /* пункты верхнего меню при наведении просто белые, без плашки (все страницы) */
 html body .nav-links a:hover:not(#_):not(#_):not(#_),html body .nav a:hover:not(#_):not(#_):not(#_),html body .nav-sheet a:hover:not(#_):not(#_):not(#_){background:transparent!important;color:var(--text)!important}
 </style>
+<style id="fix-8">
+/* 18.08 вечер, п.8: подпись чекбокса в две строки на вебе (перенос перед «и принимаю»), сообщение о недостающем полными словами по центру */
+html body .lf-check:not(#_):not(#_):not(#_):not(#_):not(#_) .br-web{display:none!important}
+@media(min-width:761px){
+  html body .lf-check:not(#_):not(#_):not(#_):not(#_):not(#_) .br-web{display:inline!important}
+  html body .lf-check:not(#_):not(#_):not(#_):not(#_):not(#_)>span{white-space:nowrap}
+}
+html body form .mf-err:not(#_):not(#_):not(#_):not(#_):not(#_),
+html body form .lf-err:not(#_):not(#_):not(#_):not(#_):not(#_){color:var(--text)!important;font-size:13.5px!important;line-height:1.5!important;text-align:center!important;margin:14px auto 0!important;max-width:100%!important;white-space:normal!important}
+html body form.err .mf-err:not(#_):not(#_):not(#_):not(#_):not(#_),
+html body form .lf-err.show:not(#_):not(#_):not(#_):not(#_):not(#_){display:block!important}
+</style>
 </head>
 <body>
 <script>
@@ -3400,9 +3412,9 @@ function LEAD_API(url, opts){
       <div class="sl-note" id="slNote"></div>
     </div>
       <label class="lf-check"><input type="checkbox" id="lfAgree" required>
-        <span>Даю согласие на&nbsp;обработку персональных данных и&nbsp;принимаю <br class="br-web"><a href="/privacy" target="_blank">политику обработки персональных данных</a></span></label>
+        <span>Даю согласие на&nbsp;обработку персональных данных <br class="br-web">и&nbsp;принимаю <a href="/privacy" target="_blank">политику обработки персональных данных</a></span></label>
       <button class="btn pri lg" type="submit">Оставить заявку</button>
-      <div class="lf-err" id="lfErr" role="alert">Не&nbsp;хватает: имени, контакта, согласия</div>
+      <div class="lf-err" id="lfErr" role="alert">Не&nbsp;хватает вашего имени, телефона, почты или&nbsp;Telegram и&nbsp;согласия на&nbsp;обработку персональных данных и&nbsp;принятия политики обработки персональных данных</div>
       <p class="lf-after">Подтвердим встречу в&nbsp;ответном сообщении <span class="nb">в&nbsp;течение 1&nbsp;рабочего дня</span></p>
     </form>
     <div class="lf-done" id="lfDone">
@@ -3548,16 +3560,16 @@ function LEAD_API(url, opts){
   /* сообщение называет ровно те поля, которых не хватает, а не все сразу */
   var NB=' ';
   function missText(list){
-    var t=list.length===2?list[0]+' и'+NB+list[1]:list.join(', ');
-    return 'Не'+NB+'хватает: '+t;
+    var t=list.length===1?list[0]:list.length===2?list[0]+' и'+NB+list[1]:list[0]+', '+list[1]+' и'+NB+list[2];
+    return 'Не'+NB+'хватает '+t;
   }
   f.addEventListener('submit',function(e){
     e.preventDefault();
     var miss=[];
     var first=null;
-    if(!name.value.trim()){name.classList.add('err');name.setAttribute('aria-invalid','true');miss.push('имени');first=first||name}
-    if(!contact.value.trim()){contact.classList.add('err');contact.setAttribute('aria-invalid','true');miss.push('контакта');first=first||contact}
-    if(!agree.checked){miss.push('согласия');var lb=agree.closest('label');if(lb)lb.classList.add('err');first=first||agree}
+    if(!name.value.trim()){name.classList.add('err');name.setAttribute('aria-invalid','true');miss.push('вашего имени');first=first||name}
+    if(!contact.value.trim()){contact.classList.add('err');contact.setAttribute('aria-invalid','true');miss.push('телефона, почты или\u00A0Telegram');first=first||contact}
+    if(!agree.checked){miss.push('согласия на\u00A0обработку персональных данных и\u00A0принятия политики обработки персональных данных');var lb=agree.closest('label');if(lb)lb.classList.add('err');first=first||agree}
     /* курсор сам встаёт в первое незаполненное поле, иначе на мобильном
        сообщение об ошибке остаётся за экраном */
     if(miss.length){err.textContent=missText(miss);err.classList.add('show');if(first)first.focus();return}

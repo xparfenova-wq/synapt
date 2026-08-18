@@ -2110,6 +2110,18 @@ html body .nav-links a:hover:not(#_):not(#_):not(#_),html body .nav-links a:focu
 /* пункты верхнего меню при наведении просто белые, без плашки (все страницы) */
 html body .nav-links a:hover:not(#_):not(#_):not(#_),html body .nav a:hover:not(#_):not(#_):not(#_),html body .nav-sheet a:hover:not(#_):not(#_):not(#_){background:transparent!important;color:var(--text)!important}
 </style>
+<style id="fix-8">
+/* 18.08 вечер, п.8: подпись чекбокса в две строки на вебе (перенос перед «и принимаю»), сообщение о недостающем полными словами по центру */
+html body .lf-check:not(#_):not(#_):not(#_):not(#_):not(#_) .br-web{display:none!important}
+@media(min-width:761px){
+  html body .lf-check:not(#_):not(#_):not(#_):not(#_):not(#_) .br-web{display:inline!important}
+  html body .lf-check:not(#_):not(#_):not(#_):not(#_):not(#_)>span{white-space:nowrap}
+}
+html body form .mf-err:not(#_):not(#_):not(#_):not(#_):not(#_),
+html body form .lf-err:not(#_):not(#_):not(#_):not(#_):not(#_){color:var(--text)!important;font-size:13.5px!important;line-height:1.5!important;text-align:center!important;margin:14px auto 0!important;max-width:100%!important;white-space:normal!important}
+html body form.err .mf-err:not(#_):not(#_):not(#_):not(#_):not(#_),
+html body form .lf-err.show:not(#_):not(#_):not(#_):not(#_):not(#_){display:block!important}
+</style>
 </head>
 <body>
 <nav class="nav"><div class="wrap">
@@ -2258,9 +2270,9 @@ html body .nav-links a:hover:not(#_):not(#_):not(#_),html body .nav a:hover:not(
           <div class="sl-note" id="slNote"></div>
         </div>
         <label class="lf-check"><input type="checkbox" id="lfAgree" required>
-          <span>Даю согласие на&nbsp;обработку персональных данных и&nbsp;принимаю<br><a href="/privacy" target="_blank" rel="noopener">политику обработки персональных данных</a></span></label>
+          <span>Даю согласие на&nbsp;обработку персональных данных <br class="br-web">и&nbsp;принимаю <a href="/privacy" target="_blank" rel="noopener">политику обработки персональных данных</a></span></label>
         <button class="btn pri lg" type="submit">Оставить заявку</button>
-        <div class="lf-err" id="lfErr" role="alert" aria-live="polite">Не&nbsp;хватает: имени, контакта и&nbsp;согласия</div>
+        <div class="lf-err" id="lfErr" role="alert" aria-live="polite">Не&nbsp;хватает вашего имени, телефона, почты или&nbsp;Telegram и&nbsp;согласия на&nbsp;обработку персональных данных и&nbsp;принятия политики обработки персональных данных</div>
         <p class="lf-after"><span class="nb">Подтвердим встречу в&nbsp;ответном сообщении</span> <span class="nb">в&nbsp;течение 1&nbsp;рабочего дня</span></p>
       </form>
       <div class="lf-done" id="lfDone">
@@ -2876,13 +2888,13 @@ html body .nav-links a:hover:not(#_):not(#_):not(#_),html body .nav a:hover:not(
   document.addEventListener('submit',function(e){
     if(e.target!==f) return;
     var miss=[];
-    if(!name.value.trim()){ name.classList.add('err'); miss.push('имени') }
-    if(!contact.value.trim()){ contact.classList.add('err'); miss.push('контакта') }
-    if(!agree.checked){ if(chk) chk.classList.add('err'); miss.push('согласия') }
+    if(!name.value.trim()){ name.classList.add('err'); miss.push('вашего имени') }
+    if(!contact.value.trim()){ contact.classList.add('err'); miss.push('телефона, почты или\u00A0Telegram') }
+    if(!agree.checked){ if(chk) chk.classList.add('err'); miss.push('согласия на\u00A0обработку персональных данных и\u00A0принятия политики обработки персональных данных') }
     if(!miss.length) return;
     e.preventDefault(); e.stopPropagation();
-    var txt=miss.length===1?miss[0]:miss.slice(0,-1).join(', ')+' и '+miss[miss.length-1];
-    err.textContent='Не хватает: '+txt;
+    var txt=miss.length===1?miss[0]:miss.length===2?miss[0]+' и\u00A0'+miss[1]:miss[0]+', '+miss[1]+' и\u00A0'+miss[2];
+    err.textContent='Не\u00A0хватает '+txt;
     err.classList.add('show');
   },true);
 })();
