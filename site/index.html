@@ -1955,6 +1955,24 @@ html{scroll-behavior:auto}
 body.menu-open .nav{background:var(--bg)!important;z-index:200}
 .nav-sheet{padding-top:66px}
 @media(max-width:860px){.nav-sheet .ns-in{padding-top:8px}}
+
+/* в карточках кейсов метрика набрана ровно: один цвет, один кегль */
+.ccard .cc-res b .tail{font-size:inherit!important;color:inherit!important}
+/* на телефоне метрики крупнее, подпись ближе */
+@media(max-width:760px){
+  .cc-res b{font-size:26px!important;margin-bottom:2px!important}
+  .cc-res>div>span{font-size:12.5px;line-height:1.4}
+  .now-f b{font-size:34px!important}
+  .now-f>span{margin-top:5px!important}
+  .hero-meta .m b{font-size:26px!important}
+  .hero-meta .m>span{margin-top:2px!important}
+}
+/* подвал на телефоне: разделы в два столбца, интервалы средние */
+@media(max-width:760px){
+  footer .f-nav{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 22px}
+  footer .f-nav .f-k{grid-column:1/-1;margin-bottom:2px}
+  footer .legal{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:22px;row-gap:8px}
+}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
@@ -2227,9 +2245,9 @@ function LEAD_API(url, opts){
 
     <article class="ccard">
       <a class="cc-hit" href="/innorto/" aria-label="открыть кейс"></a><div class="cc-top"><span class="cc-tag">AI-десант</span><span class="cc-ind">01</span></div>
-      <h3>Заявка в&nbsp;закупках оформляется за&nbsp;<span class="nb">2</span><span class="tail"> минуты</span>, раньше уходило 10</h3>
+      <h3>Заявка в&nbsp;закупках оформляется за&nbsp;<span class="nb">2 минуты</span>, раньше уходило 10</h3>
       <div class="cc-client">INNORTO, оптовые закупки</div>
-      <div class="cc-res"><div><b><span class="nb">26</span><span class="tail"> из&nbsp;27</span></b><span>сотрудников работают с&nbsp;AI каждый день</span></div><div><b>1 месяц</b><span>десанта внутри команды на&nbsp;конкретных задачах</span></div></div>
+      <div class="cc-res"><div><b><span class="nb">26 из&nbsp;27</span></b><span>сотрудников работают с&nbsp;AI каждый день</span></div><div><b>1 месяц</b><span>десанта внутри команды на&nbsp;конкретных задачах</span></div></div>
       <p class="cc-task">Нейросетями в&nbsp;компании пользовались два энтузиаста, задачей было распространить навыки на&nbsp;всех</p>
       <div class="cc-fig"><canvas class="fx-halftone" data-maxh="126"></canvas></div>
       <a class="morelink" href="/innorto/">Подробнее</a>
