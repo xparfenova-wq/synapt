@@ -2523,11 +2523,6 @@ html body .cover h1:not(#_):not(#_):not(#_):not(#_):not(#_),html body .hero h1:n
    INNORTO – мобильная приёмка 19.08 (только телефон ≤760)
    ============================================================ */
 @media (max-width:760px){
-  /* 1. шапка: переключатель темы стоит рядом с бургером, в шторке не дублируется */
-  html body .nav .nav-act>.tgl:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){display:flex!important;width:44px!important;height:44px!important;
-    min-width:44px!important;min-height:44px!important;padding:0!important}
-  html body .nav .nav-act>.tgl:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_) svg{width:18px!important;height:18px!important}
-  html body .nav-sheet .ns-act .tgl:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){display:none!important}
   /* шторка: пункты на одной левой линии с логотипом (20px) */
   html body .nav-sheet:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){padding-left:20px!important;padding-right:20px!important}
   /* 2. охват: подпись под холстом тем же кеглем, что лиды на телефоне */
@@ -2539,6 +2534,7 @@ html body .cover h1:not(#_):not(#_):not(#_):not(#_):not(#_),html body .hero h1:n
   html body .mform .sl-h:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .slots .sl-h:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){margin-bottom:12px!important}
 }
 </style>
+<style id="fix-m3">@media(max-width:760px){html body .nav .nav-act>.tgl:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){display:none!important}html body .nav-sheet .ns-act .tgl:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){display:inline-flex!important}}</style>
 </head>
 <body>
 <script id="fix-lead-js">(function(){
