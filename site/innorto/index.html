@@ -1840,6 +1840,26 @@ footer .f-tg:hover,footer a.f-tg[href*="Anti4ay"]:hover{color:var(--accent-txt)!
 .cover-stats:has(.cs:only-child) .cs-n{font-size:clamp(38px,4.4vw,54px)!important;line-height:1}
 .cs-n .cs-u,.cs-n .cs-of,.cs-n .cs-pre,.cs-n .tail,
 .cover-stats .cs-n .cs-u,.cover-stats .cs-n .cs-of,.cover-stats .cs-n .cs-pre{font-size:.46em!important;color:var(--text-muted)!important}
+
+/* ===== СВЕРКА СЕМИ СТРАНИЦ – подвал и моно-метки, едино везде ===== */
+footer .f-legal{display:flex!important;flex-direction:column!important;gap:6px!important}
+footer .f-legal p{margin:0!important;font-size:13.5px!important;line-height:1.5!important}
+footer .f-nav,footer .f-nav2{gap:6px 18px!important}
+footer .f-nav a,footer .f-nav2 a{font-size:14.5px!important}
+footer .f-note{font-size:13.5px!important}
+footer .f-tg{font-size:14px!important}
+footer .f-k{font-family:var(--mono)!important;font-size:11.5px!important}
+.sl-h,.slots .sl-h{font-size:11.5px!important}
+@media(max-width:760px){
+  footer .f-legal p{font-size:13px!important}
+  footer .f-note{font-size:13px!important}
+  footer .f-k{font-size:11px!important}
+  .sl-h,.slots .sl-h{font-size:11px!important}
+}
+
+@media(max-width:760px){
+  .lf-after{font-size:13px!important}
+}
 </style>
 <style media="print">
 @page{size:A4 portrait;margin:15mm 13mm 17mm}

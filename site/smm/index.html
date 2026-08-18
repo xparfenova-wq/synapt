@@ -1,0 +1,1166 @@
+<!doctype html>
+<html lang="ru" data-theme="dark"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<title>Synapt – контент-стратегия соцсетей</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0E1211;--surface:#151A18;--surface2:#1B221F;--line:#212826;--line2:#2C3532;
+ --text:#E8EEEC;--text2:#C4CAC7;--muted:#9AA5A1;--dim:#6E7975;--accent:#D0E865;--ink:#0E1211;
+ --sans:"Manrope",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;--gutter:24px;--r:16px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.5;
+ -webkit-font-smoothing:antialiased;padding-bottom:70px;overflow-x:hidden}
+.wrap{max-width:1280px;margin:0 auto;padding:0 var(--gutter)}
+
+header.top{padding:60px 0 28px}
+.kick{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--dim);margin-bottom:14px}
+h1{font-size:clamp(30px,3.6vw,46px);font-weight:600;letter-spacing:-.03em;line-height:1.06}
+.lead{color:var(--muted);margin-top:14px;max-width:70ch;font-size:16.5px}
+.brandline{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.brandline .logo svg{height:26px;width:auto;display:block;color:var(--text2)}
+.brandline .word{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--dim)}
+
+nav.jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+nav.jump a{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--text2);
+ border:1px solid var(--line2);border-radius:999px;padding:7px 12px;text-decoration:none;transition:.16s}
+nav.jump a:hover{border-color:var(--accent);color:var(--accent)}
+
+section{margin-top:52px;border-top:1px solid var(--line);padding-top:26px;scroll-margin-top:20px}
+h2{font-size:clamp(22px,2.4vw,30px);font-weight:600;letter-spacing:-.025em;margin-bottom:8px}
+.sub{color:var(--muted);max-width:78ch;margin-bottom:22px;font-size:15.5px}
+h3{font-size:19px;font-weight:600;letter-spacing:-.015em}
+h4{font-size:16px;font-weight:600;letter-spacing:-.01em;margin-bottom:10px}
+.hh{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:34px 0 14px}
+.hh .n{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--accent)}
+
+.rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;align-items:stretch}
+.rules.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.rules.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.rules .w2{grid-column:span 2}
+.rules .w3{grid-column:span 3}
+.rules .w4{grid-column:span 4}
+.rule{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+.rule .k{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--dim);margin-bottom:7px}
+.rule .k.on{color:var(--accent)}
+.rule h3{margin-bottom:8px}
+.rule p{font-size:14.5px;color:var(--text2);line-height:1.55}
+.rule p + p{margin-top:8px}
+.rule .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--dim);
+ display:block;margin-bottom:3px}
+.rule.on{border-color:rgba(208,232,101,.45)}
+
+.big-num{font-family:var(--mono);font-size:34px;font-weight:500;letter-spacing:-.03em;color:#fff;line-height:1;
+ white-space:nowrap}
+.big-num .pre{font-size:.5em;color:var(--muted);letter-spacing:0}
+
+ul.li{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:4px}
+ul.li li{position:relative;padding-left:16px;font-size:14.5px;color:var(--text2);line-height:1.5}
+ul.li li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;
+ background:var(--line2)}
+ul.li.on li::before{background:var(--accent)}
+
+ol.steps{list-style:none;counter-reset:s;display:grid;gap:12px;grid-template-columns:repeat(3,minmax(0,1fr))}
+ol.steps li{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+ padding:16px 18px;font-size:14.5px;color:var(--text2);line-height:1.55}
+ol.steps li::before{content:"0" counter(s);display:block;font-family:var(--mono);font-size:11px;
+ letter-spacing:.08em;color:var(--accent);margin-bottom:8px}
+
+table.plan{table-layout:fixed;min-width:1020px}
+table.plan th:nth-child(1),table.plan td:nth-child(1){width:7%}
+table.plan th:nth-child(2),table.plan td:nth-child(2){width:8%}
+table.plan th:nth-child(3),table.plan td:nth-child(3){width:5%}
+table.plan th:nth-child(4),table.plan td:nth-child(4){width:13%}
+table.plan th:nth-child(5),table.plan td:nth-child(5){width:6%}
+table.plan th:nth-child(6),table.plan td:nth-child(6){width:16%}
+table.plan th:nth-child(7),table.plan td:nth-child(7){width:29%}
+table.plan th:nth-child(8),table.plan td:nth-child(8){width:16%}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);
+ -webkit-overflow-scrolling:touch;margin-top:6px}
+table{width:100%;border-collapse:collapse;min-width:760px}
+table.narrow{min-width:560px}
+th{font-family:var(--mono);font-size:10.5px;font-weight:400;letter-spacing:.06em;color:var(--dim);
+ text-align:left;padding:13px 14px;border-bottom:1px solid var(--line2);white-space:nowrap;vertical-align:bottom}
+td{font-size:13.5px;color:var(--text2);line-height:1.5;padding:13px 14px;border-bottom:1px solid var(--line);
+ vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.d{font-family:var(--mono);font-size:11.5px;color:var(--muted);white-space:nowrap}
+td.hi{color:var(--text);font-weight:500}
+td .m{font-family:var(--mono);font-size:11px;color:var(--accent);white-space:nowrap}
+.tnote{font-size:13px;color:var(--dim);margin-top:10px}
+
+.chip{display:inline-flex;align-items:center;padding:4px 9px;border-radius:999px;border:1px solid var(--line2);
+ font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--text2);white-space:nowrap}
+.chip.on{border-color:rgba(208,232,101,.5);color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+
+.quote{background:var(--surface);border:1px solid rgba(208,232,101,.4);border-radius:var(--r);
+ padding:24px 26px;margin-top:14px}
+.quote p{font-size:clamp(17px,2vw,22px);font-weight:500;letter-spacing:-.02em;line-height:1.35;color:#fff}
+.quote .after{margin-top:12px;font-size:14.5px;color:var(--muted);font-weight:400;letter-spacing:0}
+
+.ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.ba .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+.ba .card.after{border-color:rgba(208,232,101,.45);background:rgba(208,232,101,.05)}
+.ba .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--dim);margin-bottom:7px}
+.ba .card.after .k{color:var(--accent)}
+.ba p{font-size:14.5px;color:var(--text2);line-height:1.55}
+.ba .card.after p{color:var(--text)}
+.pairs{display:flex;flex-direction:column;gap:12px}
+.pairs .no{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--dim);margin-bottom:2px}
+
+.seg{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px}
+.seg .top{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:flex-start}
+.seg .top>div:first-child{flex:1 1 420px;min-width:0}
+.seg .top>.chip{flex:0 0 auto;margin-left:auto;white-space:normal;text-align:right}
+.seg .role{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--accent)}
+.seg .type{font-size:14px;color:var(--muted);margin-top:6px}
+.jobs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
+.jobs .j{border:1px solid var(--line2);border-radius:12px;padding:13px 14px}
+.jobs .j .k{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--dim);margin-bottom:6px}
+.jobs .j p{font-size:13.5px;color:var(--text2);line-height:1.5}
+.seg .strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+.seg .strip .j{border:1px solid var(--line2);border-radius:12px;padding:13px 14px}
+.seg .ans{margin-top:12px;border:1px solid rgba(208,232,101,.4);background:rgba(208,232,101,.05);
+ border-radius:12px;padding:13px 15px}
+.seg .ans .k{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--accent);margin-bottom:6px}
+.seg .ans p{font-size:14px;color:var(--text);line-height:1.55}
+.seg .enter{margin-top:12px;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+
+.hl{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px}
+.hl .cover{display:inline-flex;align-items:center;justify-content:center;background:#151A18;
+ border:1px solid var(--line2);border-radius:50%;width:64px;height:64px;font-family:var(--mono);
+ font-size:10px;color:var(--text2);letter-spacing:.02em;text-align:center;line-height:1.2}
+.hl .head{display:flex;gap:16px;align-items:center}
+.hl .why{font-size:14px;color:var(--muted);margin-top:12px;line-height:1.55}
+.st{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:16px}
+.st .s{border:1px solid var(--line2);border-radius:12px;padding:13px 14px;background:#121716}
+.st .s .mk{font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;color:var(--accent);margin-bottom:7px}
+.st .s .ttl{font-size:14px;font-weight:600;letter-spacing:-.01em;color:var(--text);line-height:1.3}
+.st .s .tx{font-size:12.5px;color:var(--text2);line-height:1.5;margin-top:6px}
+.st .s .fr{font-family:var(--mono);font-size:10.5px;color:var(--dim);line-height:1.5;margin-top:9px;
+ padding-top:9px;border-top:1px solid var(--line)}
+
+.code{background:#0B0E0D;border:1px solid var(--line2);border-radius:12px;padding:13px 15px;margin-top:10px;
+ font-family:var(--mono);font-size:12.5px;color:var(--text);line-height:1.65;white-space:pre-wrap;
+ word-break:break-word;overflow-wrap:anywhere}
+.cnt{font-family:var(--mono);font-size:10.5px;color:var(--dim);margin-top:8px}
+.pal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px}
+.pal>div{display:flex;flex-direction:column;gap:5px}
+.pal span{height:26px;border-radius:8px;border:1px solid var(--line2);display:block}
+.pal b{font-family:var(--mono);font-size:9px;font-weight:500;color:var(--text2)}
+.pal .cn{font-family:var(--mono);font-size:8.5px;color:var(--dim)}
+
+.note{border:1px dashed var(--line2);border-radius:var(--r);padding:15px 18px;margin-top:16px}
+.note .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--accent);margin-bottom:6px}
+.note p{font-size:14px;color:var(--muted);line-height:1.55}
+
+.stop{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.stop .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px}
+.stop .card.hard{border-color:rgba(208,232,101,.35)}
+
+footer.end{margin-top:56px;border-top:1px solid var(--line);padding-top:22px;
+ display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+footer.end .logo svg{height:22px;width:auto;display:block;color:var(--dim)}
+footer.end p{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:.03em}
+
+@media(max-width:1080px){
+ .rules{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .rules.three{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .rules .w3,.rules .w4{grid-column:span 2}
+ .jobs{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .st{grid-template-columns:repeat(2,minmax(0,1fr))}
+ ol.steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .pal{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:760px){
+ .wrap{padding:0 18px}
+ header.top{padding:34px 0 18px}
+ h1{font-size:29px}
+ .lead{font-size:15.5px}
+ section{margin-top:38px;padding-top:22px}
+ h2{font-size:21px}
+ .sub{font-size:14.5px;margin-bottom:18px}
+ .hh{margin:26px 0 12px}
+ .rule{padding:14px 15px}
+ .seg{padding:16px 17px}
+ .hl{padding:16px 17px}
+ table{min-width:680px}
+ .ba{grid-template-columns:1fr}
+ .stop{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+ .rules,.rules.three,.rules.two{grid-template-columns:1fr}
+ .rules .w2,.rules .w3,.rules .w4{grid-column:auto}
+ .jobs,.seg .strip{grid-template-columns:1fr}
+ .st{grid-template-columns:1fr}
+ ol.steps{grid-template-columns:1fr}
+ .pal{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .big-num{font-size:28px}
+}
+
+@media(max-width:760px){
+ .tw{overflow-x:visible;background:transparent;border:0;border-radius:0}
+ table.resp,table.plan{min-width:0;display:block;width:100%;table-layout:auto}
+ table.plan th,table.plan td{width:auto!important}
+ table.resp thead{display:none}
+ table.resp tbody,table.resp tr,table.resp td{display:block;width:100%}
+ table.resp tr{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:14px 15px;margin-bottom:12px}
+ table.resp tr:last-child{margin-bottom:0}
+ table.resp td{border:0;padding:6px 0;font-size:13.5px}
+ table.resp td:empty{display:none}
+ table.resp td::before{content:attr(data-label);display:block;font-family:var(--mono);font-size:9.5px;
+  letter-spacing:.07em;color:var(--dim);margin-bottom:3px}
+ table.resp td.d{white-space:normal;display:inline-block;width:auto;vertical-align:top;margin-right:18px}
+ table.resp td.hi{margin-top:10px;padding-top:12px;border-top:1px solid var(--line)}
+ table.resp td.hi{font-size:15px;font-weight:600;letter-spacing:-.01em;color:var(--text)}
+}
+@media print{
+ body{background:#fff}
+ nav.jump{display:none}
+ section{break-inside:avoid}
+}
+</style>
+<meta name="theme-color" content="#0E1211">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="lg" viewBox="0 0 839 360"><g transform="translate(-30,0)"><path d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/></g><path d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></symbol></svg>
+<div class="wrap">
+
+<header class="top">
+  <div class="brandline">
+    <span class="logo"><svg viewBox="0 0 839 360" fill="currentColor"><use href="#lg"/></svg></span>
+    <span class="word">контент-стратегия</span>
+  </div>
+  <div class="kick">Instagram и&nbsp;Telegram, сентябрь – ноябрь 2026</div>
+  <h1>Контент-стратегия Synapt</h1>
+  <p class="lead">Источник правды по&nbsp;смыслам и&nbsp;формулировкам – synapt.tech, по&nbsp;визуалу – synapt.tech/content. Сетка контент-плана: 31 августа – 27 сентября</p>
+  <nav class="jump">
+    <a href="#zachem">зачем нам соцсети</a>
+    <a href="#yadro">ценностное ядро</a>
+    <a href="#audience">аудитория</a>
+    <a href="#tov">tone of voice</a>
+    <a href="#pillars">столпы</a>
+    <a href="#rubrics">рубрики</a>
+    <a href="#plan">контент-план</a>
+    <a href="#highlights">хайлайты</a>
+    <a href="#posts">три поста</a>
+    <a href="#bio">био и&nbsp;аватар</a>
+    <a href="#stop">что&nbsp;не&nbsp;публикуем</a>
+    <a href="#metrics">метрики</a>
+  </nav>
+</header>
+
+<section id="zachem">
+  <h2>Зачем нам соцсети</h2>
+  <p class="sub">Вход в&nbsp;Synapt стоит 19&nbsp;900 ₽, следующий шаг – от&nbsp;80&nbsp;тыс.&nbsp;₽, дальше 200–800&nbsp;тыс.&nbsp;₽ и&nbsp;разработка по&nbsp;спецификации. На&nbsp;такие деньги никто не&nbsp;покупает по&nbsp;красивой картинке. Покупатель проверяет три вещи: вы&nbsp;существуете, у&nbsp;вас есть живые люди с&nbsp;фамилиями, вы&nbsp;уже делали похожее и&nbsp;не&nbsp;развалились</p>
+
+  <div class="quote">
+    <p>Соцсети Synapt – не&nbsp;канал охвата, а&nbsp;канал доказательств</p>
+    <p class="after">Охват здесь вторичен, первичны кейс с&nbsp;цифрой, эксперт с&nbsp;именем и&nbsp;внешнее подтверждение</p>
+  </div>
+
+  <div class="hh"><span class="n">01</span><h3>Три задачи на&nbsp;квартал</h3></div>
+  <div class="rules three">
+    <div class="rule on"><div class="k on">задача 1</div>
+      <h3>Проверяемость</h3>
+      <p>Лид приходит с&nbsp;сайта, из&nbsp;выступления, по&nbsp;рекомендации – и&nbsp;идёт смотреть соцсети. Пустой или&nbsp;мёртвый аккаунт убивает сделку на&nbsp;200–800&nbsp;тыс.&nbsp;₽ ещё до&nbsp;первого созвона</p>
+      <p>Это защитная задача, и&nbsp;она первая по&nbsp;срочности</p></div>
+    <div class="rule"><div class="k">задача 2</div>
+      <h3>Ментальная доступность</h3>
+      <p>В&nbsp;любой момент примерно 5% компаний из&nbsp;нашей аудитории реально ищут подрядчика, 95% не&nbsp;ищут. Контент, который меряют только заявками, оптимизируется под 5% и&nbsp;режет спрос следующего полугодия</p>
+      <p>Нам нужно, чтобы через четыре месяца, когда у&nbsp;собственника наконец дойдут руки, он&nbsp;вспомнил Synapt первым</p></div>
+    <div class="rule"><div class="k">задача 3</div>
+      <h3>Активация</h3>
+      <p>Заявка на&nbsp;бесплатный Zoom 30&nbsp;минут и&nbsp;дальше на&nbsp;AI-чекап за&nbsp;19&nbsp;900 ₽. Чекап – идеальный первый шаг: фиксированная сумма, две недели, понятный результат</p>
+      <p>Вся конверсионная механика ведёт туда, а&nbsp;не&nbsp;сразу на&nbsp;десант</p></div>
+  </div>
+
+  <div class="rules two" style="margin-top:14px">
+    <div class="rule"><div class="k">пропорция усилий</div>
+      <p>Примерно 50 на&nbsp;50 между брендовым и&nbsp;активационным контентом. Ориентир для&nbsp;B2B – 46/54, мы&nbsp;стартуем с&nbsp;нуля по&nbsp;узнаваемости, поэтому бренд подтянут чуть выше</p></div>
+    <div class="rule"><div class="k">лестница продукта</div>
+      <p>AI-чекап 19&nbsp;900 ₽ и&nbsp;две недели, AI-десант от&nbsp;80&nbsp;тыс.&nbsp;₽ и&nbsp;месяц внутри команды, AI-система 200–800&nbsp;тыс.&nbsp;₽ из&nbsp;шести модулей, дальше разработка по&nbsp;спецификации</p></div>
+  </div>
+
+  <div class="hh"><span class="n">02</span><h3>Связь с&nbsp;воронкой</h3></div>
+  <div class="tw">
+    <table class="resp">
+      <thead><tr><th>этап</th><th>что&nbsp;делает контент</th><th>метрика этапа</th></tr></thead>
+      <tbody>
+        <tr><td class="hi" data-label="этап">Не&nbsp;в&nbsp;рынке, не&nbsp;знает нас</td><td data-label="что&nbsp;делает контент">Ориентир по&nbsp;рынку, разборы инструментов, вау-демо</td><td class="d" data-label="метрика этапа">охват, досмотр, подписка</td></tr>
+        <tr><td class="hi" data-label="этап">Понял, что&nbsp;теряет деньги</td><td data-label="что&nbsp;делает контент">Кейсы с&nbsp;цифрой, разбор процесса, ошибки внедрений</td><td class="d" data-label="метрика этапа">сохранения, переходы в&nbsp;профиль</td></tr>
+        <tr><td class="hi" data-label="этап">Выбирает подрядчика</td><td data-label="что&nbsp;делает контент">Метод, люди студии, безопасность, что&nbsp;остаётся у&nbsp;заказчика</td><td class="d" data-label="метрика этапа">переходы по&nbsp;закрепу, диалоги</td></tr>
+        <tr><td class="hi" data-label="этап">Готов говорить</td><td data-label="что&nbsp;делает контент">Приглашение на&nbsp;Zoom 30&nbsp;минут, чекап за&nbsp;19&nbsp;900 ₽</td><td class="d" data-label="метрика этапа">заявки</td></tr>
+        <tr><td class="hi" data-label="этап">Купил чекап</td><td data-label="что&nbsp;делает контент">Кейс из&nbsp;своего же&nbsp;внедрения, возврат на&nbsp;десант</td><td class="d" data-label="метрика этапа">доля чекапов, перешедших дальше</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="hh"><span class="n">03</span><h3>Риск площадок, без которого план не&nbsp;защищается</h3></div>
+  <div class="rules two">
+    <div class="rule"><div class="k">Telegram</div>
+      <p>В&nbsp;России замедляют с&nbsp;10 февраля 2026. Дневной охват по&nbsp;стране упал почти вдвое за&nbsp;январь – май, у&nbsp;крупных брендовых каналов – на&nbsp;23,5% за&nbsp;первый квартал и&nbsp;до&nbsp;50–60% после апреля при том, что&nbsp;подписчики почти не&nbsp;уходят</p></div>
+    <div class="rule"><div class="k">Instagram</div>
+      <p>Реклама в&nbsp;России запрещена с&nbsp;1 сентября 2025, включая интеграции и&nbsp;бартер, то&nbsp;есть платного разгона там не&nbsp;будет в&nbsp;принципе</p></div>
+  </div>
+  <div class="rules two" style="margin-top:14px">
+    <div class="rule on"><div class="k on">решение 1</div>
+      <p>Instagram растим только органикой. Никаких закупов, интеграций и&nbsp;бартера – это прямое нарушение закона, а&nbsp;не&nbsp;вопрос бюджета</p></div>
+    <div class="rule on"><div class="k on">решение 2</div>
+      <p>Telegram переупаковываем под экспертизу и&nbsp;продажу, а&nbsp;не&nbsp;под охват. Параллельно с&nbsp;первого месяца дублируем ключевые материалы в&nbsp;Max и&nbsp;VK и&nbsp;собираем контакты в&nbsp;собственную базу через чекап и&nbsp;Zoom. Ставка на&nbsp;один канал сейчас – это минус половина охвата за&nbsp;квартал без единой ошибки в&nbsp;контенте</p></div>
+  </div>
+</section>
+
+<section id="yadro">
+  <h2>Ценностное ядро</h2>
+  <p class="sub">Смыслы, из&nbsp;которых собирается любой наш текст. Новых значений не&nbsp;изобретаем: формулировки берём с&nbsp;synapt.tech</p>
+
+  <div class="rules three">
+    <div class="rule"><div class="k">кто мы</div>
+      <h3>Студия AI и&nbsp;IT-разработки для&nbsp;бизнеса</h3>
+      <p>Соединяем AI, процессы и&nbsp;людей в&nbsp;устойчивую рабочую систему</p></div>
+    <div class="rule w2"><div class="k">для&nbsp;чего</div>
+      <p>Одни компании покупают подписки и&nbsp;раздают инструменты сотрудникам – работа при этом остаётся прежней. Другие перестраивают сам процесс: кто принимает заявку, откуда берутся знания, как&nbsp;работа идёт дальше</p>
+      <p>У&nbsp;вторых появляется общий контур, куда каждое следующее внедрение встраивается дешевле и&nbsp;быстрее. Мы&nbsp;делаем второе</p></div>
+  </div>
+
+  <div class="hh"><span class="n">01</span><h3>Во&nbsp;что&nbsp;верим</h3></div>
+  <ol class="steps">
+    <li>Заходим через карту процессов, а&nbsp;не&nbsp;через инструмент. Сначала показываем, где компания теряет и&nbsp;недополучает деньги</li>
+    <li>Идём тремя шагами: AI-чекап за&nbsp;19&nbsp;900 ₽ и&nbsp;две недели, AI-десант на&nbsp;месяц внутри команды, потом AI-система из&nbsp;шести модулей под то, что&nbsp;показала карта</li>
+    <li>Навык остаётся в&nbsp;команде. Десант – это специалист, который месяц работает рядом с&nbsp;вашими людьми, а&nbsp;не&nbsp;вебинар</li>
+    <li>Система целиком остаётся у&nbsp;заказчика: код, доступы, промпты, база знаний, документация</li>
+    <li>Безопасный слой – основа всех блоков, а&nbsp;не&nbsp;опция сверху</li>
+    <li>3–5&nbsp;недель до&nbsp;готового продукта, 60&nbsp;дней на&nbsp;связи после сдачи</li>
+  </ol>
+
+  <div class="hh"><span class="n">02</span><h3>Чем отличаемся</h3></div>
+  <div class="rules">
+    <div class="rule"><div class="k">цена и&nbsp;срок</div>
+      <p>Фиксированная цена входа и&nbsp;фиксированный срок там, где рынок продаёт неопределённый пилот</p></div>
+    <div class="rule"><div class="k">формат обучения</div>
+      <p>Месяц внутри команды вместо обучения по&nbsp;записи</p></div>
+    <div class="rule"><div class="k">передача</div>
+      <p>Передача системы целиком вместо привязки к&nbsp;подрядчику</p></div>
+    <div class="rule"><div class="k">архитектура</div>
+      <p>Шесть модулей как&nbsp;связный контур, а&nbsp;не&nbsp;набор разрозненных ботов</p></div>
+  </div>
+
+  <div class="hh"><span class="n">03</span><h3>Имя</h3></div>
+  <div class="rules two">
+    <div class="rule w2"><div class="k">откуда Synapt</div>
+      <p>Синапс – место, где сигнал переходит от&nbsp;одного нейрона к&nbsp;следующему. Из&nbsp;таких точек собрана любая нейросеть. Мы&nbsp;работаем ровно в&nbsp;этих точках: там, где задача переходит от&nbsp;человека к&nbsp;человеку и&nbsp;где обычно теряется</p></div>
+  </div>
+
+  <div class="hh"><span class="n">04</span><h3>Главная мысль, которую доносим зрителю</h3></div>
+  <div class="quote">
+    <p>AI приносит деньги не&nbsp;там, где купили подписку, а&nbsp;там, где переделали процесс. Мы&nbsp;показываем, где именно, и&nbsp;остаёмся рядом, пока команда не&nbsp;начнёт делать это сама</p>
+    <p class="after">Всё остальное – иллюстрации к&nbsp;этой фразе. Если публикация её&nbsp;не&nbsp;подтверждает, публикация не&nbsp;наша</p>
+  </div>
+</section>
+
+<section id="audience">
+  <h2>Аудитория</h2>
+  <p class="sub">Четыре сегмента и&nbsp;один вспомогательный. Внутри каждого разложено по&nbsp;AJTBD: Big Job – зачем человеку это на&nbsp;уровне жизни и&nbsp;бизнеса, Core Job – какую работу он&nbsp;нанимает нас выполнить, критерии успеха – по&nbsp;чему он&nbsp;поймёт, что&nbsp;работа сделана</p>
+
+  <div class="rules two" style="gap:16px">
+    <div class="seg w2">
+      <div class="top">
+        <div>
+          <div class="role">сегмент А, экономический покупатель</div>
+          <h3 style="margin-top:6px">Собственник компании 30–200&nbsp;человек</h3>
+          <div class="type">Тип: INNORTO. Оптовая торговля, производство, дистрибуция, сервис. Часто выпускник сильного вуза, читает про AI, но&nbsp;внутри компании нейросетями пользуются два энтузиаста</div>
+        </div>
+        <span class="chip on">вход: AI-чекап 19&nbsp;900 ₽</span>
+      </div>
+      <div class="jobs">
+        <div class="j"><div class="k">big job</div><p>Вырасти, не&nbsp;наращивая ФОТ пропорционально, и&nbsp;не&nbsp;остаться позади конкурентов, которые уже что-то&nbsp;внедрили</p></div>
+        <div class="j"><div class="k">core job</div><p>Понять, где именно моя компания теряет деньги на&nbsp;рутине, и&nbsp;запустить внедрение, которое не&nbsp;заглохнет через месяц после красивой презентации</p></div>
+        <div class="j"><div class="k">small jobs</div><p>Выбрать, с&nbsp;чего начать. Объяснить команде, зачем это. Проверить, что&nbsp;подрядчик не&nbsp;исчезнет. Посчитать, окупилось ли</p></div>
+      </div>
+      <div class="strip">
+        <div class="j"><div class="k">критерии успеха</div><p>Через месяц команда пользуется сама, без напоминаний. Освободившиеся часы посчитаны. Понятно, что&nbsp;делать дальше</p></div>
+        <div class="j"><div class="k">боли</div><p>Пробовали ChatGPT, восторг прошёл за&nbsp;две недели, работа осталась прежней. Никто внутри не&nbsp;отвечает за&nbsp;внедрение. Непонятно, с&nbsp;чего начинать, поэтому не&nbsp;начинают вообще</p></div>
+      </div>
+      <div class="strip">
+        <div class="j"><div class="k">возражения</div><p>У&nbsp;нас специфика, готовые решения не&nbsp;подойдут. Сотрудники не&nbsp;примут и&nbsp;саботируют. Данные утекут. Не&nbsp;вижу, как&nbsp;это окупится</p></div>
+        <div class="j"><div class="k">роль в&nbsp;закупке</div><p>Решает сам, платит сам, редко советуется с&nbsp;IT до&nbsp;первого результата</p></div>
+      </div>
+      <div class="ans"><div class="k">чем отвечаем</div>
+        <p>INNORTO – 26&nbsp;из&nbsp;27&nbsp;сотрудников работают с&nbsp;AI каждый день, 25–35&nbsp;часов рутины в&nbsp;неделю освободилось, поиск фабрики-поставщика с&nbsp;3&nbsp;часов до&nbsp;10&nbsp;минут, заявка в&nbsp;закупках с&nbsp;10&nbsp;минут до&nbsp;2. Старт – два энтузиаста, финиш – четыре отдела</p></div>
+    </div>
+
+    <div class="seg w2">
+      <div class="top">
+        <div>
+          <div class="role">сегмент Б, пользователь-чемпион</div>
+          <h3 style="margin-top:6px">Коммерческий директор и&nbsp;руководитель отдела продаж</h3>
+          <div class="type">Тип: оптовая компания под NDA. Отдел продаж 5–30&nbsp;человек, CRM есть, порядка в&nbsp;ней нет</div>
+        </div>
+        <span class="chip on">вход: чекап или&nbsp;AI-продавец 400–800&nbsp;тыс.&nbsp;₽</span>
+      </div>
+      <div class="jobs">
+        <div class="j"><div class="k">big job</div><p>Сделать план продаж, не&nbsp;нанимая ещё пятерых менеджеров</p></div>
+        <div class="j"><div class="k">core job</div><p>Увидеть, что&nbsp;реально происходит в&nbsp;разговорах с&nbsp;клиентами, и&nbsp;научить всю команду повторять то, что&nbsp;работает у&nbsp;лучших</p></div>
+        <div class="j"><div class="k">small jobs</div><p>Разбирать звонки без бесконечного прослушивания. Быстро вводить новичков. Не&nbsp;терять заявки ночью и&nbsp;в&nbsp;выходные</p></div>
+      </div>
+      <div class="strip">
+        <div class="j"><div class="k">критерии успеха</div><p>В&nbsp;разборе 100% разговоров, а&nbsp;не&nbsp;выборка. Конверсия в&nbsp;сделку выросла, и&nbsp;видно, за&nbsp;счёт чего. Новичок выходит на&nbsp;план быстрее</p></div>
+        <div class="j"><div class="k">боли</div><p>Руководитель слушал 5 разговоров из&nbsp;300 в&nbsp;месяц и&nbsp;принимал решения по&nbsp;ощущениям. Ночные заявки остывают до&nbsp;утра. Каждый менеджер продаёт по-своему</p></div>
+      </div>
+      <div class="strip">
+        <div class="j"><div class="k">возражения</div><p>Менеджеры воспримут это как&nbsp;слежку. Бот отпугнёт клиента. Не&nbsp;встанет на&nbsp;нашу CRM</p></div>
+        <div class="j"><div class="k">роль в&nbsp;закупке</div><p>Не&nbsp;всегда держит бюджет, но&nbsp;приносит идею собственнику и&nbsp;защищает её</p></div>
+      </div>
+      <div class="ans"><div class="k">чем отвечаем</div>
+        <p>100% звонков и&nbsp;переписок в&nbsp;разборе, +20% конверсии в&nbsp;сделку. AI-продавец в&nbsp;переписке – первый ответ за&nbsp;20&nbsp;сек. круглосуточно, дальше диалог уходит менеджеру с&nbsp;контекстом, плюс отчёт по&nbsp;конверсии. 2–3&nbsp;недели до&nbsp;работающего продукта</p></div>
+    </div>
+
+    <div class="seg w2">
+      <div class="top">
+        <div>
+          <div class="role">сегмент В, покупатель и&nbsp;носитель экспертизы</div>
+          <h3 style="margin-top:6px">Владелец экспертного бизнеса, клуба, сообщества, консалтинга</h3>
+          <div class="type">Тип: GlobalDent, консалтинговая компания под NDA. Много накопленной методологии, всё держится на&nbsp;основателе и&nbsp;паре экспертов</div>
+        </div>
+        <span class="chip on">вход: чекап, дальше модуль знаний и&nbsp;AI-эксперт</span>
+      </div>
+      <div class="jobs">
+        <div class="j"><div class="k">big job</div><p>Масштабировать экспертизу, не&nbsp;продавая своё личное время</p></div>
+        <div class="j"><div class="k">core job</div><p>Сделать так, чтобы накопленные знания отвечали клиенту сами, круглосуточно и&nbsp;в&nbsp;моём тоне, без потери качества</p></div>
+        <div class="j"><div class="k">small jobs</div><p>Держать клуб живым без администратора. Отдавать материалы и&nbsp;доступы автоматически. Отвечать участникам ночью и&nbsp;в&nbsp;выходные</p></div>
+      </div>
+      <div class="strip">
+        <div class="j"><div class="k">критерии успеха</div><p>Участник получает ответ 24/7. Качество ответа не&nbsp;стыдно показать. Методика не&nbsp;разъезжается</p></div>
+        <div class="j"><div class="k">боли</div><p>800&nbsp;страниц методики лежат в&nbsp;PDF, ими никто не&nbsp;пользуется. Эксперты тратят сотни часов на&nbsp;повторяющиеся вопросы. Основатель – узкое горло</p></div>
+      </div>
+      <div class="strip">
+        <div class="j"><div class="k">возражения</div><p>Агент выдаст чушь и&nbsp;подставит бренд. Методика утечёт. Клиенты хотят живого человека</p></div>
+        <div class="j"><div class="k">роль в&nbsp;закупке</div><p>Экономический покупатель и&nbsp;одновременно главный носитель экспертизы, то&nbsp;есть самый придирчивый</p></div>
+      </div>
+      <div class="ans"><div class="k">чем отвечаем</div>
+        <p>GlobalDent – 1&nbsp;500+ пар вопрос-ответ, 17 разделов методологии, клуб работает без администратора, стратегический аудит для&nbsp;собственника клиники за&nbsp;2&nbsp;минуты, пять сценариев, три канала входа. AI-консультант – 300+ часов работы экспертов экономится каждый месяц, 800+ страниц методики внутри</p></div>
+    </div>
+
+    <div class="seg w2">
+      <div class="top">
+        <div>
+          <div class="role">сегмент Г, технический привратник</div>
+          <h3 style="margin-top:6px">Технический руководитель, IT-директор, служба безопасности</h3>
+          <div class="type">Тип: инженерное бюро, компании с&nbsp;легаси и&nbsp;требованиями по&nbsp;персональным данным</div>
+        </div>
+        <span class="chip on">вход: безопасный слой, разработка по&nbsp;спецификации</span>
+      </div>
+      <div class="jobs">
+        <div class="j"><div class="k">big job</div><p>Провести компанию через волну AI, ничего не&nbsp;сломав и&nbsp;не&nbsp;подставившись лично</p></div>
+        <div class="j"><div class="k">core job</div><p>Внедрить AI так, чтобы это прошло юриста и&nbsp;СБ, и&nbsp;чтобы старая система продолжала считать ровно так же, как&nbsp;считала</p></div>
+        <div class="j"><div class="k">small jobs</div><p>Объяснить юристу, куда уходят данные. Показать журнал доступа. Убедиться, что&nbsp;расчёты сходятся</p></div>
+      </div>
+      <div class="strip">
+        <div class="j"><div class="k">критерии успеха</div><p>Контур описан на&nbsp;языке, понятном юристу. Доступ разложен по&nbsp;ролям. Расхождений с&nbsp;прежней системой нет ни&nbsp;в&nbsp;одном сценарии</p></div>
+        <div class="j"><div class="k">боли</div><p>Документации на&nbsp;исходную логику не&nbsp;сохранилось. Данные нельзя отправлять наружу. Никто не&nbsp;отвечает за&nbsp;то, что&nbsp;нагаллюцинирует модель</p></div>
+      </div>
+      <div class="strip">
+        <div class="j"><div class="k">возражения</div><p>Данные уйдут в&nbsp;чужую модель. Модель придумает ответ. Мы&nbsp;сядем на&nbsp;подрядчика навсегда</p></div>
+        <div class="j"><div class="k">роль в&nbsp;закупке</div><p>Сам не&nbsp;покупает, но&nbsp;может остановить сделку одним письмом</p></div>
+      </div>
+      <div class="ans"><div class="k">чем отвечаем</div>
+        <p>Безопасный слой от&nbsp;200&nbsp;тыс.&nbsp;₽ за&nbsp;ядро контура – описание для&nbsp;юриста и&nbsp;СБ, журнал доступа по&nbsp;ролям, обезличивание, код и&nbsp;документация, 60&nbsp;дней поддержки внутри. Инженерное бюро – 100% совпадение расчётов со&nbsp;старой системой, 30+ лет логики сохранено, формулы 1992 года остались в&nbsp;основании, код разбирали построчно</p></div>
+    </div>
+  </div>
+
+  <div class="rules two" style="margin-top:14px">
+    <div class="rule"><div class="k">вспомогательный сегмент</div>
+      <h3>Руководитель обучения и&nbsp;HR</h3>
+      <p>Не&nbsp;покупает систему, но&nbsp;покупает курс Automy AI на&nbsp;шесть недель и&nbsp;приводит собственника. Работа, которую нанимает: сделать так, чтобы команда перестала бояться и&nbsp;начала пользоваться, с&nbsp;базой знаний компании и&nbsp;своими агентами под задачу</p>
+      <p>Это мост между контентом Synapt и&nbsp;курсом – и&nbsp;единственный сегмент, где уместны обучающие гайды</p></div>
+    <div class="rule on"><div class="k on">как&nbsp;это ложится на&nbsp;контент</div>
+      <p>Один сегмент – одна серия. Не&nbsp;смешиваем в&nbsp;одном посте собственника и&nbsp;IT-директора: у&nbsp;них разные критерии успеха и&nbsp;противоположные страхи</p></div>
+  </div>
+</section>
+
+<section id="tov">
+  <h2>Tone of voice</h2>
+  <p class="sub">Мы&nbsp;разговариваем с&nbsp;собственником, а&nbsp;не&nbsp;выступаем перед аудиторией</p>
+
+  <div class="rules two">
+    <div class="rule"><div class="k on">как&nbsp;говорим</div>
+      <ul class="li on">
+        <li>От&nbsp;факта. Сначала цифра или&nbsp;действие, потом объяснение</li>
+        <li>Механику объясняем, а&nbsp;не&nbsp;прячем. Читатель должен понять, за&nbsp;счёт чего получилось</li>
+        <li>Называем ограничения. Что&nbsp;не&nbsp;входит, где не&nbsp;сработает, сколько времени нужно от&nbsp;клиента</li>
+        <li>Люди с&nbsp;именами и&nbsp;должностями. Виктор Калугин, технический партнёр – это доказательство, безымянные наши специалисты – нет</li>
+        <li>Короткая фраза. Смысл в&nbsp;первые три секунды видео и&nbsp;в&nbsp;первую строку поста</li>
+        <li>AI только латиницей. Суммы знаком: 19&nbsp;900 ₽, от&nbsp;80&nbsp;тыс.&nbsp;₽</li>
+        <li>Тепло и&nbsp;на&nbsp;равных</li>
+      </ul></div>
+    <div class="rule"><div class="k">как&nbsp;не&nbsp;говорим</div>
+      <ul class="li">
+        <li>Без в&nbsp;современном мире, инновационных решений, синергии и&nbsp;цифровой трансформации</li>
+        <li>Без страшилок про замену людей и&nbsp;про то, что&nbsp;вы&nbsp;уже опоздали</li>
+        <li>Без обещаний, которых нет на&nbsp;сайте. Новые смыслы не&nbsp;изобретаем</li>
+        <li>Без канцелярита и&nbsp;пассива: осуществляется внедрение, реализован функционал</li>
+        <li>Без заборов из&nbsp;эмодзи и&nbsp;капслока</li>
+        <li>Без слова ИИ</li>
+        <li>Без цифр, которые нельзя показать источником</li>
+      </ul></div>
+  </div>
+
+  <div class="hh"><span class="n">до&nbsp;и&nbsp;после</span><h3>Семь пар для&nbsp;сверки</h3></div>
+  <div class="pairs">
+    <div>
+      <div class="no">01</div>
+      <div class="ba">
+        <div class="card"><div class="k">до</div><p>В&nbsp;современном мире внедрение искусственного интеллекта становится необходимостью для&nbsp;любого бизнеса</p></div>
+        <div class="card after"><div class="k">после</div><p>У&nbsp;INNORTO поиск фабрики-поставщика занимал 3&nbsp;часа. Стал занимать 10&nbsp;минут. Ничего дополнительно не&nbsp;покупали – переделали сам процесс поиска</p></div>
+      </div>
+    </div>
+    <div>
+      <div class="no">02</div>
+      <div class="ba">
+        <div class="card"><div class="k">до</div><p>Мы&nbsp;предлагаем инновационные решения на&nbsp;базе ИИ под ключ</p></div>
+        <div class="card after"><div class="k">после</div><p>Собираем AI-систему из&nbsp;шести модулей и&nbsp;отдаём вам целиком: код, доступы, промпты, базу знаний и&nbsp;документацию</p></div>
+      </div>
+    </div>
+    <div>
+      <div class="no">03</div>
+      <div class="ba">
+        <div class="card"><div class="k">до</div><p>Наш AI-ассистент значительно повышает эффективность отдела продаж</p></div>
+        <div class="card after"><div class="k">после</div><p>Руководитель слушал 5 разговоров из&nbsp;300 в&nbsp;месяц. Теперь в&nbsp;разборе 100%, конверсия в&nbsp;сделку выросла на&nbsp;20%</p></div>
+      </div>
+    </div>
+    <div>
+      <div class="no">04</div>
+      <div class="ba">
+        <div class="card"><div class="k">до</div><p>Синергия ИИ и&nbsp;человеческого капитала позволяет раскрыть потенциал команды</p></div>
+        <div class="card after"><div class="k">после</div><p>В&nbsp;INNORTO нейросетями пользовались два энтузиаста. Через 30&nbsp;дней с&nbsp;AI работали 26&nbsp;человек из&nbsp;27</p></div>
+      </div>
+    </div>
+    <div>
+      <div class="no">05</div>
+      <div class="ba">
+        <div class="card"><div class="k">до</div><p>Оставьте заявку, и&nbsp;наши специалисты свяжутся с&nbsp;вами для&nbsp;обсуждения деталей сотрудничества</p></div>
+        <div class="card after"><div class="k">после</div><p>Напишите – созвонимся на&nbsp;30&nbsp;минут, посмотрим ваши процессы. После созвона пришлём запись и&nbsp;разбор</p></div>
+      </div>
+    </div>
+    <div>
+      <div class="no">06</div>
+      <div class="ba">
+        <div class="card"><div class="k">до</div><p>ТОП-5 нейросетей для&nbsp;бизнеса в&nbsp;2026!!! Забирай подборку</p></div>
+        <div class="card after"><div class="k">после</div><p>Пять инструментов, которые мы&nbsp;реально ставим клиентам, и&nbsp;какую работу закрывает каждый</p></div>
+      </div>
+    </div>
+    <div>
+      <div class="no">07</div>
+      <div class="ba">
+        <div class="card"><div class="k">до</div><p>Безопасность данных – наш приоритет</p></div>
+        <div class="card after"><div class="k">после</div><p>Описываем контур так, чтобы это прочитали ваш юрист и&nbsp;СБ: журнал доступа по&nbsp;ролям, обезличивание, код и&nbsp;документация у&nbsp;вас. От&nbsp;200&nbsp;тыс.&nbsp;₽ за&nbsp;ядро, 60&nbsp;дней поддержки внутри</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pillars">
+  <h2>Контентные столпы</h2>
+  <p class="sub">Пять столпов. Доля – от&nbsp;общего объёма публикаций за&nbsp;месяц</p>
+
+  <div class="rules two">
+    <div class="rule on">
+      <div class="k on">столп 1</div>
+      <div class="big-num">35<span class="pre">%</span></div>
+      <h3 style="margin-top:12px">Доказательства</h3>
+      <p>Кейсы и&nbsp;цифры: было, стало, за&nbsp;счёт чего. Каждая единица опирается на&nbsp;банк фактов с&nbsp;сайта</p>
+      <p><span class="lbl">задача воронки</span>Рассмотрение и&nbsp;активация. Это то, что&nbsp;человек ищет, когда уже понял проблему и&nbsp;выбирает, кому платить. Основной драйвер заявок</p>
+      <p><span class="lbl">почему столько</span>Для&nbsp;сегмента с&nbsp;чеком от&nbsp;80&nbsp;тыс.&nbsp;₽ конкретный кейс с&nbsp;цифрой – главный аргумент. Заказчик проверяет, делали ли&nbsp;вы&nbsp;похожее</p>
+    </div>
+    <div class="rule">
+      <div class="k">столп 2</div>
+      <div class="big-num">20<span class="pre">%</span></div>
+      <h3 style="margin-top:12px">Метод</h3>
+      <p>Как&nbsp;устроен чекап, что&nbsp;происходит внутри десанта, из&nbsp;чего собраны шесть модулей, четыре этапа работы, что&nbsp;нужно от&nbsp;клиента</p>
+      <p><span class="lbl">задача воронки</span>Переход от&nbsp;осознания проблемы к&nbsp;рассмотрению. Продаёт не&nbsp;результат, а&nbsp;предсказуемость: человек видит процесс и&nbsp;понимает, что&nbsp;не&nbsp;покупает кота в&nbsp;мешке</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <div class="k">обрыв исходника</div>
+    <p>Исходный текст стратегии обрывается на&nbsp;разборе второго столпа: описания столпов 3–5 и&nbsp;их&nbsp;долей в&nbsp;него не&nbsp;доехали. Оставшиеся 45% объёма распределяем по&nbsp;рубрикам Р5 люди и&nbsp;передача, Р6 безопасность, Р7 активация – в&nbsp;следующей итерации дописываем формулировки и&nbsp;фиксируем доли</p>
+  </div>
+</section>
+
+<section id="rubrics">
+  <h2>Рубрики</h2>
+  <p class="sub">Семь рубрик, из&nbsp;которых собирается сетка. Этапы воронки в&nbsp;таблицах: НР не&nbsp;в&nbsp;рынке, ТД понял, что&nbsp;теряет деньги, ВП выбирает подрядчика, ГГ готов говорить</p>
+
+  <div class="rules">
+    <div class="rule"><div class="k on">Р1</div>
+      <h3>Разрыв</h3>
+      <p>Показывает, почему подписка не&nbsp;меняет работу</p>
+      <div class="chips"><span class="chip">сегмент А</span><span class="chip">верх воронки</span></div></div>
+    <div class="rule"><div class="k on">Р2</div>
+      <h3>Карта процессов</h3>
+      <p>Где именно утекают часы и&nbsp;деньги</p>
+      <div class="chips"><span class="chip">А</span><span class="chip">Б</span></div></div>
+    <div class="rule"><div class="k on">Р3</div>
+      <h3>Кейс с&nbsp;цифрой</h3>
+      <p>Доказательство: было, стало, сколько</p>
+      <div class="chips"><span class="chip">А</span><span class="chip">Б</span><span class="chip">В</span></div></div>
+    <div class="rule"><div class="k on">Р4</div>
+      <h3>Метод</h3>
+      <p>Как&nbsp;устроены чекап, десант, шесть модулей</p>
+      <div class="chips"><span class="chip">А</span><span class="chip">все, кто выбирает подрядчика</span></div></div>
+    <div class="rule"><div class="k on">Р5</div>
+      <h3>Люди и&nbsp;передача</h3>
+      <p>Кто делает, что&nbsp;остаётся у&nbsp;заказчика</p>
+      <div class="chips"><span class="chip">А</span><span class="chip">Г</span></div></div>
+    <div class="rule"><div class="k on">Р6</div>
+      <h3>Безопасность</h3>
+      <p>Ответ юристу и&nbsp;СБ</p>
+      <div class="chips"><span class="chip">Г</span></div></div>
+    <div class="rule"><div class="k on">Р7</div>
+      <h3>Активация</h3>
+      <p>Zoom 30&nbsp;минут и&nbsp;чекап за&nbsp;19&nbsp;900 ₽</p>
+      <div class="chips"><span class="chip on">все, низ воронки</span></div></div>
+    <div class="rule"><div class="k">правило</div>
+      <h3>Одна рубрика – один сегмент</h3>
+      <p>В&nbsp;одной публикации не&nbsp;смешиваем собственника и&nbsp;технического привратника: у&nbsp;них противоположные страхи</p></div>
+  </div>
+</section>
+
+<section id="plan">
+  <h2>Контент-план на&nbsp;месяц</h2>
+  <p class="sub">Горизонт сетки: 31 августа – 27 сентября. Три поста в&nbsp;Telegram, две публикации в&nbsp;ленте Instagram и&nbsp;три сюжета сторис в&nbsp;неделю</p>
+
+  <div class="hh"><span class="n">неделя 1</span><h3>31 августа – 6 сентября. Где теряются деньги</h3></div>
+  <div class="tw">
+    <table class="resp plan">
+      <thead><tr><th>день</th><th>площадка</th><th>рубрика</th><th>формат</th><th>этап</th><th>рабочий заголовок</th><th>о&nbsp;чём и&nbsp;какой факт внутри</th><th>призыв</th></tr></thead>
+      <tbody>
+        <tr><td class="d" data-label="день">пн 31.08</td><td class="d" data-label="площадка">Telegram</td><td class="d" data-label="рубрика"><span class="m">Р1</span></td><td class="d" data-label="формат">лонг-пост</td><td class="d" data-label="этап">НР</td><td class="hi" data-label="рабочий заголовок">Инструменты раздали, работа осталась прежней</td><td data-label="о&nbsp;чём и&nbsp;какой факт внутри">Разрыв между подпиской и&nbsp;переделанным процессом. Факт: в&nbsp;INNORTO на&nbsp;старте AI пользовались два энтузиаста, через месяц 26&nbsp;из&nbsp;27&nbsp;сотрудников каждый день, четыре отдела перешли на&nbsp;новые инструменты</td><td data-label="призыв">Подписаться, ответить в&nbsp;комментариях: с&nbsp;чего начинали вы</td></tr>
+        <tr><td class="d" data-label="день">вт 01.09</td><td class="d" data-label="площадка">Instagram</td><td class="d" data-label="рубрика"><span class="m">Р2</span></td><td class="d" data-label="формат">карусель, 7&nbsp;слайдов</td><td class="d" data-label="этап">НР → ТД</td><td class="hi" data-label="рабочий заголовок">Пять мест, где у&nbsp;компании утекает неделя</td><td data-label="о&nbsp;чём и&nbsp;какой факт внутри">Пять процессов с&nbsp;цифрами: поиск фабрики 3&nbsp;часа и&nbsp;10&nbsp;минут, заявка в&nbsp;закупках 10 и&nbsp;2&nbsp;минуты, отзывы 20–30 в&nbsp;час, разбор звонков 5&nbsp;из&nbsp;300 и&nbsp;100%, отчёт полчаса и&nbsp;авто-свод</td><td data-label="призыв">Сохранить и&nbsp;пройтись по&nbsp;своему отделу</td></tr>
+        <tr><td class="d" data-label="день">ср 02.09</td><td class="d" data-label="площадка">Telegram</td><td class="d" data-label="рубрика"><span class="m">Р4</span></td><td class="d" data-label="формат">пост-объяснялка</td><td class="d" data-label="этап">ТД → ВП</td><td class="hi" data-label="рабочий заголовок">19&nbsp;900 ₽, две недели, и&nbsp;вы&nbsp;знаете, где теряете деньги</td><td data-label="о&nbsp;чём и&nbsp;какой факт внутри">Разбор AI-чекапа: 14&nbsp;дней, три Zoom, до&nbsp;6&nbsp;часов времени команды, доступ к&nbsp;рабочим инструментам, один-два человека для&nbsp;вопросов. На&nbsp;выходе карта процессов, порядок внедрения по&nbsp;приоритетам, план с&nbsp;вилкой бюджета и&nbsp;один собранный агент</td><td data-label="призыв">Бесплатный Zoom 30&nbsp;минут, запись и&nbsp;разбор присылаем после</td></tr>
+        <tr><td class="d" data-label="день">чт 03.09</td><td class="d" data-label="площадка">Instagram</td><td class="d" data-label="рубрика"><span class="m">Р3</span></td><td class="d" data-label="формат">reels 9:16, 45&nbsp;сек.</td><td class="d" data-label="этап">НР</td><td class="hi" data-label="рабочий заголовок">Было три часа, стало десять минут</td><td data-label="о&nbsp;чём и&nbsp;какой факт внутри">Скринкаст поиска фабрики-поставщика в&nbsp;INNORTO. Факт: 3&nbsp;часа ручного обхода каталогов против 10&nbsp;минут с&nbsp;помощником</td><td data-label="призыв">Смотреть закреп профиля, писать в&nbsp;директ</td></tr>
+        <tr><td class="d" data-label="день">пт 04.09</td><td class="d" data-label="площадка">Telegram</td><td class="d" data-label="рубрика"><span class="m">Р5</span></td><td class="d" data-label="формат">пост с&nbsp;фото команды</td><td class="d" data-label="этап">ВП</td><td class="hi" data-label="рабочий заголовок">Как&nbsp;устроена работа: четыре этапа и&nbsp;60&nbsp;дней после сдачи</td><td data-label="о&nbsp;чём и&nbsp;какой факт внутри">Кто делает проекты, четыре этапа (разбор и&nbsp;план, разработка, внедрение и&nbsp;обучение, передача и&nbsp;поддержка), 3–5&nbsp;недель до&nbsp;готового продукта, ответ по&nbsp;заявке за&nbsp;один рабочий день</td><td data-label="призыв">Закреп с&nbsp;чекапом, вопросы в&nbsp;комментарии</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="hh"><span class="n">неделя 2</span><h3>7–13 сентября. Кейсы с&nbsp;цифрой</h3></div>
+  <div class="tw">
+    <table class="resp plan">
+      <thead><tr><th>день</th><th>площадка</th><th>рубрика</th><th>формат</th><th>этап</th><th>рабочий заголовок</th><th>о&nbsp;чём и&nbsp;какой факт внутри</th><th>призыв</th></tr></thead>
+      <tbody>
+        <tr><td class="d" data-label="день">пн 07.09</td><td class="d" data-label="площадка">Telegram</td><td class="d" data-label="рубрика"><span class="m">Р3</span></td><td class="d" data-label="формат">кейс-разбор</td><td class="d" data-label="этап">ТД</td><td class="hi" data-label="рабочий заголовок">Месяц внутри команды: что&nbsp;успевает AI-десант</td><td data-label="о&nbsp;чём и&nbsp;какой факт внутри">Полный разбор INNORTO: 30&nbsp;дней специалист рядом с&nbsp;людьми, 25–35&nbsp;часов рутины в&nbsp;неделю освободилось, четыре отдела, 26&nbsp;из&nbsp;27 работают ежедневно. Отдельно про то, что&nbsp;навык остался в&nbsp;команде, а&nbsp;не&nbsp;в&nbsp;записи вебинара</td><td data-label="призыв">Написать, если у&nbsp;вас тоже два энтузиаста и&nbsp;остальные не&nbsp;подключились</td></tr>
+        <tr><td class="d" data-label="день">вт 08.09</td><td class="d" data-label="площадка">Instagram</td><td class="d" data-label="рубрика"><span class="m">Р3</span></td><td class="d" data-label="формат">карусель до&nbsp;и&nbsp;после, 6&nbsp;слайдов</td><td class="d" data-label="этап">ТД</td><td class="hi" data-label="рабочий заголовок">Пять процессов INNORTO: было и&nbsp;стало</td><td data-label="о&nbsp;чём и&nbsp;какой факт внутри">Те же&nbsp;цифры в&nbsp;визуальной паре, шестой слайд про старт с&nbsp;двух энтузиастов</td><td data-label="призыв">Сохранить, отправить своему операционному директору</td></tr>
+        <tr><td class="d" data-label="день">ср 09.09</td><td class="d" data-label="площадка">Telegram</td><td class="d" data-label="рубрика"><span class="m">Р3</span></td><td class="d" data-label="формат">кейс, сегмент Б</td><td class="d" data-label="этап">ТД</td><td class="hi" data-label="рабочий заголовок">Пять разговоров из&nbsp;трёхсот и&nbsp;решения по&nbsp;ощущениям</td><td data-label="о&nbsp;чём и&nbsp;какой факт внутри">Оптовая компания под NDA: руководитель слушал 5 звонков из&nbsp;300 в&nbsp;месяц. Стало 100% звонков и&nbsp;переписок в&nbsp;разборе, конверсия в&nbsp;сделку выросла на&nbsp;20%</td><td data-label="призыв">Написать, если ваш РОП тоже слушает выборочно</td></tr>
+        <tr><td class="d" data-label="день">чт 10.09</td><td class="d" data-label="площадка">Instagram</td><td class="d" data-label="рубрика"><span class="m">Р3</span></td><td class="d" data-label="формат">reels 9:16, 40&nbsp;сек.</td><td class="d" data-label="этап">ТД → ГГ</td><td class="hi" data-label="рабочий заголовок">Двадцать секунд ночью</td><td data-label="о&nbsp;чём и&nbsp;какой факт внутри">AI-продавец в&nbsp;переписке: первый ответ клиенту за&nbsp;20&nbsp;сек. круглосуточно, дальше диалог уходит менеджеру с&nbsp;контекстом, плюс отчёт по&nbsp;конверсии. 2–3&nbsp;недели до&nbsp;работающего продукта, 400–800&nbsp;тыс.&nbsp;₽</td><td data-label="призыв">Директ, если заявки остывают до&nbsp;утра</td></tr>
+        <tr><td class="d" data-label="день">пт 11.09</td><td class="d" data-label="площадка">Telegram</td><td class="d" data-label="рубрика"><span class="m">Р1</span></td><td class="d" data-label="формат">разбор ошибок</td><td class="d" data-label="этап">ВП</td><td class="hi" data-label="рабочий заголовок">Три причины, по&nbsp;которым внедрение глохнет через месяц</td><td data-label="о&nbsp;чём и&nbsp;какой факт внутри">Никто внутри не&nbsp;отвечает за&nbsp;внедрение, обучение прошло без переделки процесса, подрядчик ушёл вместе с&nbsp;системой. Факты-ответы: специалист месяц внутри команды, система целиком остаётся у&nbsp;заказчика, 60&nbsp;дней на&nbsp;связи</td><td data-label="призыв">Чекап как&nbsp;первый шаг, ссылка в&nbsp;закрепе</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="hh"><span class="n">неделя 3</span><h3>14–20 сентября. Знания и&nbsp;экспертиза</h3></div>
+  <div class="tw">
+    <table class="resp plan">
+      <thead><tr><th>день</th><th>площадка</th><th>рубрика</th><th>формат</th><th>этап</th><th>рабочий заголовок</th><th>о&nbsp;чём и&nbsp;какой факт внутри</th><th>призыв</th></tr></thead>
+      <tbody>
+        <tr><td class="d" data-label="день">пн 14.09</td><td class="d" data-label="площадка">Telegram</td><td class="d" data-label="рубрика"><span class="m">Р3</span></td><td class="d" data-label="формат">кейс, сегмент В</td><td class="d" data-label="этап">ТД</td><td class="hi" data-label="рабочий заголовок">Клуб, который работает без администратора</td><td data-label="о&nbsp;чём и&nbsp;какой факт внутри">GlobalDent: 1&nbsp;500+ пар вопрос-ответ, 17 разделов методологии, доступ, оплата, материалы и&nbsp;ответы выдаются автоматически, участник получает ответ 24/7, три канала входа без повторной авторизации</td><td data-label="призыв">Zoom 30&nbsp;минут, если экспертиза держится на&nbsp;вас и&nbsp;двух людях</td></tr>
+        <tr><td class="d" data-label="день">вт 15.09</td><td class="d" data-label="площадка">Instagram</td><td class="d" data-label="рубрика"><span class="m">Р2</span></td><td class="d" data-label="формат">карусель, 6&nbsp;слайдов</td><td class="d" data-label="этап">НР → ТД</td><td class="hi" data-label="рабочий заголовок">Восемьсот страниц методики лежат в&nbsp;PDF, и&nbsp;ими никто не&nbsp;пользуется</td><td data-label="о&nbsp;чём и&nbsp;какой факт внутри">Как&nbsp;накопленные знания превращаются в&nbsp;отвечающую систему. Факт: AI-консультант в&nbsp;консалтинговой компании экономит 300+ часов работы экспертов каждый месяц, внутри 800+ страниц методики, живёт прямо в&nbsp;Telegram</td><td data-label="призыв">Сохранить, показать тому, кто отвечает на&nbsp;одни и&nbsp;те же&nbsp;вопросы</td></tr>
+        <tr><td class="d" data-label="день">ср 16.09</td><td class="d" data-label="площадка">Telegram</td><td class="d" data-label="рубрика"><span class="m">Р4</span></td><td class="d" data-label="формат">работа с&nbsp;возражением</td><td class="d" data-label="этап">ВП</td><td class="hi" data-label="рабочий заголовок">Агент выдаст чушь и&nbsp;подставит бренд</td><td data-label="о&nbsp;чём и&nbsp;какой факт внутри">Как&nbsp;мы&nbsp;это закрываем: ответы строятся на&nbsp;базе знаний компании, а&nbsp;не&nbsp;на&nbsp;свободной генерации, сценарии ограничены, качество проверяется на&nbsp;реальных вопросах. Опорный факт: в&nbsp;инженерном бюро расчёты совпали со&nbsp;старой системой на&nbsp;100%, расхождений нет ни&nbsp;в&nbsp;одном сценарии</td><td data-label="призыв">Задать своё возражение в&nbsp;комментариях, разберём в&nbsp;следующем посте</td></tr>
+        <tr><td class="d" data-label="день">чт 17.09</td><td class="d" data-label="площадка">Instagram</td><td class="d" data-label="рубрика"><span class="m">Р3</span></td><td class="d" data-label="формат">reels 9:16, 50&nbsp;сек.</td><td class="d" data-label="этап">ТД</td><td class="hi" data-label="рабочий заголовок">Стратегический аудит клиники за&nbsp;две минуты</td><td data-label="о&nbsp;чём и&nbsp;какой факт внутри">Демо агента GlobalDent: пять сценариев (репутация, P&amp;L, подсказка по&nbsp;сделке, имплантологическая сила, экспресс-разбор), результат за&nbsp;2&nbsp;минуты</td><td data-label="призыв">Директ за&nbsp;разбором своего сценария</td></tr>
+        <tr><td class="d" data-label="день">пт 18.09</td><td class="d" data-label="площадка">Telegram</td><td class="d" data-label="рубрика"><span class="m">Р4</span></td><td class="d" data-label="формат">разбор инструмента</td><td class="d" data-label="этап">ТД → ВП</td><td class="hi" data-label="рабочий заголовок">Почему база знаний важнее модели</td><td data-label="о&nbsp;чём и&nbsp;какой факт внутри">Модель одна и&nbsp;та же&nbsp;у&nbsp;всех, разница в&nbsp;том, на&nbsp;чём она отвечает. Форматы внутри: PDF, DOCX, XLSX. Факт: FoodTech-сервис оцифровал 1&nbsp;200+ карт меню поставщиков и&nbsp;обрабатывает 30 тысяч сообщений в&nbsp;месяц с&nbsp;поиском по&nbsp;реальным остаткам</td><td data-label="призыв">Чекап показывает, какие знания у&nbsp;вас уже есть и&nbsp;что&nbsp;с&nbsp;ними делать</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="hh"><span class="n">неделя 4</span><h3>21–27 сентября. Безопасность, передача, приглашение</h3></div>
+  <div class="tw">
+    <table class="resp plan">
+      <thead><tr><th>день</th><th>площадка</th><th>рубрика</th><th>формат</th><th>этап</th><th>рабочий заголовок</th><th>о&nbsp;чём и&nbsp;какой факт внутри</th><th>призыв</th></tr></thead>
+      <tbody>
+        <tr><td class="d" data-label="день">пн 21.09</td><td class="d" data-label="площадка">Telegram</td><td class="d" data-label="рубрика"><span class="m">Р6</span></td><td class="d" data-label="формат">пост для&nbsp;технического привратника</td><td class="d" data-label="этап">ВП</td><td class="hi" data-label="рабочий заголовок">Что&nbsp;показать юристу и&nbsp;службе безопасности</td><td data-label="о&nbsp;чём и&nbsp;какой факт внутри">Безопасный слой от&nbsp;200&nbsp;тыс.&nbsp;₽ за&nbsp;ядро контура: описание контура на&nbsp;языке юриста, журнал доступа по&nbsp;ролям, обезличивание, код и&nbsp;документация, 60&nbsp;дней поддержки входят. Безопасный слой – основа всех блоков, а&nbsp;не&nbsp;опция сверху</td><td data-label="призыв">Переслать этот пост своему IT-директору</td></tr>
+        <tr><td class="d" data-label="день">вт 22.09</td><td class="d" data-label="площадка">Instagram</td><td class="d" data-label="рубрика"><span class="m">Р5</span></td><td class="d" data-label="формат">карусель, 5&nbsp;слайдов</td><td class="d" data-label="этап">ВП</td><td class="hi" data-label="рабочий заголовок">Что&nbsp;остаётся у&nbsp;вас после проекта</td><td data-label="о&nbsp;чём и&nbsp;какой факт внутри">Код, доступы, промпты, база знаний, документация. Плюс регламенты и&nbsp;посчитанные сэкономленные часы после десанта</td><td data-label="призыв">Сохранить, спросить у&nbsp;текущего подрядчика то&nbsp;же&nbsp;самое</td></tr>
+        <tr><td class="d" data-label="день">ср 23.09</td><td class="d" data-label="площадка">Telegram</td><td class="d" data-label="рубрика"><span class="m">Р3</span></td><td class="d" data-label="формат">кейс, сегмент Г</td><td class="d" data-label="этап">ВП</td><td class="hi" data-label="рабочий заголовок">Тридцать лет логики и&nbsp;формулы 1992 года</td><td data-label="о&nbsp;чём и&nbsp;какой факт внутри">Инженерное бюро: документации на&nbsp;исходную логику не&nbsp;сохранилось, код разбирали построчно, 30+ лет накопленной логики сохранено, 100% совпадение расчётов со&nbsp;старой системой</td><td data-label="призыв">Комментарий: у&nbsp;кого лежит система, которую страшно трогать</td></tr>
+        <tr><td class="d" data-label="день">чт 24.09</td><td class="d" data-label="площадка">Instagram</td><td class="d" data-label="рубрика"><span class="m">Р4</span></td><td class="d" data-label="формат">reels 9:16, 60&nbsp;сек.</td><td class="d" data-label="этап">НР → ТД</td><td class="hi" data-label="рабочий заголовок">Шесть модулей за&nbsp;одну минуту</td><td data-label="о&nbsp;чём и&nbsp;какой факт внутри">Продажи, управление и&nbsp;AI-дашборд для&nbsp;собственника, команда и&nbsp;адаптация, экспертиза, операции и&nbsp;интеграции, безопасный слой в&nbsp;основании. Каждое следующее внедрение встраивается дешевле и&nbsp;быстрее</td><td data-label="призыв">Директ: с&nbsp;какого модуля начать именно вам</td></tr>
+        <tr><td class="d" data-label="день">пт 25.09</td><td class="d" data-label="площадка">Telegram</td><td class="d" data-label="рубрика"><span class="m">Р7</span></td><td class="d" data-label="формат">активационный пост</td><td class="d" data-label="этап">ГГ</td><td class="hi" data-label="рабочий заголовок">Первый шаг стоит 19&nbsp;900 ₽ и&nbsp;занимает две недели</td><td data-label="о&nbsp;чём и&nbsp;какой факт внутри">Собираем месяц в&nbsp;одну точку входа: что&nbsp;делаем на&nbsp;трёх Zoom, что&nbsp;нужно от&nbsp;вас (до&nbsp;6&nbsp;часов, доступ к&nbsp;инструментам, один-два человека), что&nbsp;получаете на&nbsp;руки. Ответ по&nbsp;заявке в&nbsp;течение одного рабочего дня</td><td data-label="призыв">Заявка на&nbsp;бесплатный Zoom 30&nbsp;минут, ссылка в&nbsp;закрепе</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="hh"><span class="n">сторис</span><h3>Двенадцать сюжетов на&nbsp;месяц</h3></div>
+  <p class="sub">Три сюжета в&nbsp;неделю, дублируются в&nbsp;Instagram и&nbsp;Telegram Stories, ключевые – в&nbsp;Max и&nbsp;VK</p>
+  <div class="tw">
+    <table class="resp">
+      <thead><tr><th>№</th><th>неделя</th><th>рубрика</th><th>сюжет</th><th>механика</th><th>цель</th></tr></thead>
+      <tbody>
+        <tr><td class="d" data-label="№">1</td><td class="d" data-label="неделя">1</td><td class="d" data-label="рубрика">опрос</td><td class="hi" data-label="сюжет">Сколько человек в&nbsp;вашей компании работает с&nbsp;AI каждый день</td><td data-label="механика">Стикер-опрос: никто, один-два, примерно половина, почти все. Через сутки закрываем фактом 26&nbsp;из&nbsp;27 в&nbsp;INNORTO</td><td class="d" data-label="цель">вовлечение, вход в&nbsp;тему</td></tr>
+        <tr><td class="d" data-label="№">2</td><td class="d" data-label="неделя">1</td><td class="d" data-label="рубрика">цифра дня</td><td class="hi" data-label="сюжет">Три часа и&nbsp;десять минут</td><td data-label="механика">Крупная цифра на&nbsp;молочном фоне, свайп на&nbsp;карусель понедельника</td><td class="d" data-label="цель">досмотр, переход в&nbsp;ленту</td></tr>
+        <tr><td class="d" data-label="№">3</td><td class="d" data-label="неделя">1</td><td class="d" data-label="рубрика">кухня</td><td class="hi" data-label="сюжет">Как&nbsp;проходит бесплатный Zoom на&nbsp;30&nbsp;минут</td><td data-label="механика">Три кадра: что&nbsp;спрашиваем, что&nbsp;показываем, что&nbsp;присылаем после (запись и&nbsp;разбор)</td><td class="d" data-label="цель">снятие страха перед первым шагом</td></tr>
+        <tr><td class="d" data-label="№">4</td><td class="d" data-label="неделя">2</td><td class="d" data-label="рубрика">демо-экран</td><td class="hi" data-label="сюжет">Заявка в&nbsp;закупках собирается за&nbsp;две минуты</td><td data-label="механика">Скринкаст 15&nbsp;сек., таймер в&nbsp;углу</td><td class="d" data-label="цель">доказательство</td></tr>
+        <tr><td class="d" data-label="№">5</td><td class="d" data-label="неделя">2</td><td class="d" data-label="рубрика">вопрос-ответ</td><td class="hi" data-label="сюжет">У&nbsp;нас специфика, готовые решения не&nbsp;подойдут</td><td data-label="механика">Ответ голосом: поэтому и&nbsp;заходим через карту процессов, а&nbsp;не&nbsp;через инструмент</td><td class="d" data-label="цель">возражение сегмента А</td></tr>
+        <tr><td class="d" data-label="№">6</td><td class="d" data-label="неделя">2</td><td class="d" data-label="рубрика">до&nbsp;и&nbsp;после</td><td class="hi" data-label="сюжет">Пять разговоров из&nbsp;трёхсот против 100% в&nbsp;разборе</td><td data-label="механика">Две плашки, стикер со&nbsp;ссылкой на&nbsp;пост среды</td><td class="d" data-label="цель">переход в&nbsp;ленту</td></tr>
+        <tr><td class="d" data-label="№">7</td><td class="d" data-label="неделя">3</td><td class="d" data-label="рубрика">кухня</td><td class="hi" data-label="сюжет">Как&nbsp;выглядит карта процессов</td><td data-label="механика">Размытый фрагмент реальной карты, подпись про приоритеты и&nbsp;вилку бюджета</td><td class="d" data-label="цель">проверяемость</td></tr>
+        <tr><td class="d" data-label="№">8</td><td class="d" data-label="неделя">3</td><td class="d" data-label="рубрика">цифра дня</td><td class="hi" data-label="сюжет">Триста часов экспертов в&nbsp;месяц</td><td data-label="механика">Карточка и&nbsp;одна строка про 800+ страниц методики</td><td class="d" data-label="цель">сегмент В</td></tr>
+        <tr><td class="d" data-label="№">9</td><td class="d" data-label="неделя">3</td><td class="d" data-label="рубрика">опрос</td><td class="hi" data-label="сюжет">Что&nbsp;вас останавливает</td><td data-label="механика">Варианты: цена, данные, команда не&nbsp;примет, не&nbsp;вижу окупаемости. Ответы разбираем в&nbsp;постах следующей недели</td><td class="d" data-label="цель">сбор возражений под контент</td></tr>
+        <tr><td class="d" data-label="№">10</td><td class="d" data-label="неделя">4</td><td class="d" data-label="рубрика">вопрос-ответ</td><td class="hi" data-label="сюжет">Куда уходят наши данные</td><td data-label="механика">Ответ через безопасный слой: обезличивание, журнал доступа по&nbsp;ролям, описание контура для&nbsp;юриста</td><td class="d" data-label="цель">сегмент Г</td></tr>
+        <tr><td class="d" data-label="№">11</td><td class="d" data-label="неделя">4</td><td class="d" data-label="рубрика">люди студии</td><td class="hi" data-label="сюжет">Кто поедет к&nbsp;вам на&nbsp;десант</td><td data-label="механика">Лицо, имя, одна фраза о&nbsp;том, чем занимался последний месяц</td><td class="d" data-label="цель">доверие</td></tr>
+        <tr><td class="d" data-label="№">12</td><td class="d" data-label="неделя">4</td><td class="d" data-label="рубрика">активация</td><td class="hi" data-label="сюжет">Что&nbsp;входит в&nbsp;чекап за&nbsp;19&nbsp;900 ₽</td><td data-label="механика">Четыре плашки и&nbsp;стикер-ссылка на&nbsp;заявку, закрепить в&nbsp;актуальное</td><td class="d" data-label="цель">заявки</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="tnote">Два актуальных хайлайта, которые собираем к&nbsp;6 сентября и&nbsp;дальше только дополняем: Кейсы и&nbsp;Чекап</p>
+
+  <div class="hh"><span class="n">ритм</span><h3>Сколько публикуем и&nbsp;почему именно так</h3></div>
+  <div class="tw">
+    <table class="resp narrow">
+      <thead><tr><th>единица</th><th>сколько в&nbsp;неделю</th><th>сколько в&nbsp;месяц</th></tr></thead>
+      <tbody>
+        <tr><td class="hi" data-label="единица">Telegram, посты</td><td data-label="сколько в&nbsp;неделю">3 (пн, ср, пт)</td><td class="d" data-label="сколько в&nbsp;месяц">12–13</td></tr>
+        <tr><td class="hi" data-label="единица">Instagram, лента</td><td data-label="сколько в&nbsp;неделю">2 (вт карусель, чт reels)</td><td class="d" data-label="сколько в&nbsp;месяц">8–9</td></tr>
+        <tr><td class="hi" data-label="единица">Сторис, сюжеты</td><td data-label="сколько в&nbsp;неделю">3 (вт, чт, пт), обе площадки</td><td class="d" data-label="сколько в&nbsp;месяц">12</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="rules three" style="margin-top:14px">
+    <div class="rule"><div class="k">01</div>
+      <p>Три поста в&nbsp;Telegram – потолок, а&nbsp;не&nbsp;минимум. При замедлении канала охват падает, а&nbsp;ERR держится только на&nbsp;плотных постах с&nbsp;цифрой. Четвёртый пост в&nbsp;неделю разбавляет ленту и&nbsp;роняет ERR ниже целевых 25%, а&nbsp;число постов у&nbsp;нас в&nbsp;антиметриках</p></div>
+    <div class="rule"><div class="k">02</div>
+      <p>Меньше двух постов в&nbsp;неделю канал читать нельзя. Задача номер один – проверяемость: лид с&nbsp;сайта или&nbsp;с&nbsp;выступления заходит и&nbsp;должен увидеть живую работу за&nbsp;последние дни. Пауза больше пяти дней ломает именно её</p></div>
+    <div class="rule"><div class="k">03</div>
+      <p>В&nbsp;Instagram ровно два формата, потому что&nbsp;закупа не&nbsp;будет. Реклама там запрещена с&nbsp;1 сентября 2025, значит охват тянет только reels, а&nbsp;сохранения (цель ≥&nbsp;3% охвата) – только карусели. Третий пост в&nbsp;неделю не&nbsp;добавляет ни&nbsp;того, ни&nbsp;другого, зато съедает продакшен</p></div>
+    <div class="rule"><div class="k">04</div>
+      <p>Три сюжета сторис – минимум, при котором аккаунт не&nbsp;выглядит спящим. Больше пяти в&nbsp;неделю уходит в&nbsp;фон и&nbsp;не&nbsp;двигает North Star (2–3 квалифицированные заявки в&nbsp;неделю)</p></div>
+    <div class="rule"><div class="k">05</div>
+      <p>Пропорция. За&nbsp;месяц 12 публикаций брендовых (Р1–Р3, Р5) и&nbsp;8 активационных или&nbsp;снимающих возражения (Р4, Р6, Р7) плюс сторис-активация. Это те же&nbsp;примерно 50 на&nbsp;50, что&nbsp;заложено в&nbsp;стратегии</p></div>
+    <div class="rule"><div class="k">06</div>
+      <p>Нагрузка на&nbsp;команду: один съёмочный день в&nbsp;месяц, два часа монтажа в&nbsp;неделю, один час в&nbsp;понедельник на&nbsp;снятие метрик</p></div>
+  </div>
+
+  <div class="hh"><span class="n">продакшен</span><h3>Один кейс – семь единиц контента</h3></div>
+  <p class="sub">Правило продакшена: не&nbsp;запускаем сбор материала, который не&nbsp;разложится минимум на&nbsp;четыре единицы</p>
+  <div class="rules two">
+    <div class="rule"><div class="k on">актив-пакет на&nbsp;один кейс, 2–3&nbsp;часа работы</div>
+      <ul class="li on">
+        <li>интервью с&nbsp;клиентом или&nbsp;нашим специалистом на&nbsp;40&nbsp;минут, аудио</li>
+        <li>три цифры до&nbsp;и&nbsp;после, подтверждённые клиентом</li>
+        <li>один скринкаст рабочего экрана на&nbsp;60&nbsp;сек. без монтажа</li>
+        <li>два скрина интерфейса, пригодные для&nbsp;публикации</li>
+        <li>одна прямая цитата клиента</li>
+        <li>одно фото команды или&nbsp;специалиста на&nbsp;проекте</li>
+      </ul></div>
+    <div class="rule"><div class="k">как&nbsp;это выглядит на&nbsp;сентябре</div>
+      <p>Пакет INNORTO кормит всю вторую неделю целиком плюс три поста первой, пакет GlobalDent – третью, пакет инженерного бюро и&nbsp;безопасного слоя – четвёртую. То&nbsp;есть три съёмочных захода закрывают месяц</p>
+      <p><span class="lbl">переиспользуем без съёмок</span>Ответы из&nbsp;сторис-опроса №&nbsp;9 становятся темами постов следующего месяца, комментарии под постом среды 16.09 – готовый список возражений на&nbsp;октябрь</p></div>
+  </div>
+  <div class="tw" style="margin-top:14px">
+    <table class="resp narrow">
+      <thead><tr><th>единица</th><th>источник из&nbsp;пакета</th><th>где живёт</th></tr></thead>
+      <tbody>
+        <tr><td class="hi" data-label="единица">1. Лонг-пост разбор</td><td data-label="источник из&nbsp;пакета">интервью, все три цифры, цитата</td><td class="d" data-label="где живёт">Telegram, понедельник</td></tr>
+        <tr><td class="hi" data-label="единица">2. Карусель до&nbsp;и&nbsp;после</td><td data-label="источник из&nbsp;пакета">три цифры, два скрина</td><td class="d" data-label="где живёт">Instagram, вторник</td></tr>
+        <tr><td class="hi" data-label="единица">3. Reels 40–50&nbsp;сек.</td><td data-label="источник из&nbsp;пакета">первые 20&nbsp;сек. скринкаста, одна цифра на&nbsp;экране</td><td class="d" data-label="где живёт">Instagram, четверг</td></tr>
+        <tr><td class="hi" data-label="единица">4. Сторис-опрос</td><td data-label="источник из&nbsp;пакета">вопрос, ответ на&nbsp;который и&nbsp;есть главная цифра</td><td class="d" data-label="где живёт">вторник</td></tr>
+        <tr><td class="hi" data-label="единица">5. Сторис-цифра дня</td><td data-label="источник из&nbsp;пакета">одна цифра крупно, свайп на&nbsp;пост</td><td class="d" data-label="где живёт">четверг</td></tr>
+        <tr><td class="hi" data-label="единица">6. Сторис-демо</td><td data-label="источник из&nbsp;пакета">15&nbsp;сек. скринкаста</td><td class="d" data-label="где живёт">пятница</td></tr>
+        <tr><td class="hi" data-label="единица">7. Слайд в&nbsp;закреп, в&nbsp;КП и&nbsp;абзац на&nbsp;synapt.tech/content</td><td data-label="источник из&nbsp;пакета">цифры и&nbsp;цитата</td><td class="d" data-label="где живёт">вечно</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="hh"><span class="n">первая неделя</span><h3>Готовый текст поста</h3></div>
+  <div class="rules two">
+    <div class="rule w2"><div class="k">понедельник 31.08, Telegram, лонг-пост</div>
+      <h3>Инструменты раздали, работа осталась прежней</h3>
+      <div class="code">Инструменты раздали, работа осталась прежней
+
+Самая частая история, которую мы&nbsp;слышим на&nbsp;первом Zoom.</div>
+      <p style="margin-top:10px">Дальше текст в&nbsp;исходнике обрывается на&nbsp;фразе про купленную подписку. Дописываем по&nbsp;банку фактов INNORTO: два энтузиаста на&nbsp;старте, 26&nbsp;из&nbsp;27 через месяц, четыре отдела, 25–35&nbsp;часов рутины в&nbsp;неделю</p></div>
+  </div>
+</section>
+
+<section id="highlights">
+  <h2>Хайлайты со&nbsp;сторис</h2>
+  <p class="sub">Пять актуальных по&nbsp;пять сторис. Обложки: графит #151A18, слово строчными, JetBrains Mono 24&nbsp;пт по&nbsp;центру, без иконок. Один вариант подписи на&nbsp;всю серию, кадры внутри идут без знака, знак ставим только на&nbsp;финальной сторис каждой серии</p>
+
+  <div class="rules two" style="gap:16px">
+
+    <div class="hl w2">
+      <div class="head">
+        <span class="cover">о&nbsp;студии</span>
+        <div><h3>Хайлайт 1</h3>
+        <div class="why">Первый клик после захода в&nbsp;профиль. Отвечает на&nbsp;вопрос кто это вообще и&nbsp;показывает живых людей с&nbsp;фамилиями – это защитная задача, без неё сделка на&nbsp;200–800&nbsp;тыс.&nbsp;₽ умирает до&nbsp;созвона</div></div>
+      </div>
+      <div class="st">
+        <div class="s"><div class="mk">студия</div>
+          <div class="ttl">Студия AI и&nbsp;IT-разработки для&nbsp;бизнеса</div>
+          <div class="tx">Соединяем AI, процессы и&nbsp;людей в&nbsp;устойчивую рабочую систему</div>
+          <div class="fr">схема 04 тезис. Оникс #0E1211, только типографика. Заголовок Manrope 86&nbsp;пт в&nbsp;три строки по&nbsp;центру, текст 50&nbsp;пт под ним, метка JetBrains Mono 24&nbsp;пт внизу справа. Кадр без подписи</div></div>
+        <div class="s"><div class="mk">имя</div>
+          <div class="ttl">Почему Synapt</div>
+          <div class="tx">Синапс – место, где сигнал переходит от&nbsp;одного нейрона к&nbsp;следующему, и&nbsp;из&nbsp;таких точек собрана любая нейросеть. Для&nbsp;того же&nbsp;работает наша команда: приходим в&nbsp;компанию и&nbsp;соединяем её&nbsp;процессы и&nbsp;людей с&nbsp;новыми технологиями</div>
+          <div class="fr">схема 10 длинный текст. Оникс, фоном редкая сеть с&nbsp;двумя активными узлами #D0E865. Заголовок 72&nbsp;пт, текст 50&nbsp;пт, четыре строки максимум. Кадр без подписи</div></div>
+        <div class="s"><div class="mk">говорит партнёр</div>
+          <div class="ttl">Цитата вместо заголовка</div>
+          <div class="tx">Автоматизация начинается не&nbsp;с&nbsp;модели, а&nbsp;с&nbsp;вопроса, какую работу человек делает руками. Антон Орешкин, стратегический партнёр</div>
+          <div class="fr">схема 12 фото. Одно фото блоком в&nbsp;верхней части кадра, цитата под ним Manrope 72&nbsp;пт, имя и&nbsp;роль JetBrains Mono 28&nbsp;пт строчными. Кавычка лаймом. Второго снимка и&nbsp;кружков-аватарок не&nbsp;ставим</div></div>
+        <div class="s"><div class="mk">команда</div>
+          <div class="ttl">Кто работает над проектом</div>
+          <div class="tx">Антон Орешкин – стратегический партнёр. Виктор Калугин – технический партнёр. Никита – project manager</div>
+          <div class="fr">схема 08 схема. Три блока друг под другом на&nbsp;графите, активный без подсветки, все равнозначны. Имя Manrope 50&nbsp;пт, роль JetBrains Mono 28&nbsp;пт строчными. Знак Synapt в&nbsp;нижнем углу, выравнен по&nbsp;центру строки роли</div></div>
+        <div class="s"><div class="mk">следующий шаг</div>
+          <div class="ttl">30&nbsp;минут в&nbsp;Zoom</div>
+          <div class="tx">Разберём процессы и&nbsp;покажем, где нейросети дадут эффект быстрее всего. Оставить заявку</div>
+          <div class="fr">схема 06 приглашение. Оникс, кнопка плашкой #D0E865, текст на&nbsp;кнопке #0E1211 Manrope 50&nbsp;пт. Заголовок 86&nbsp;пт. Стикер-ссылка ровно поверх плашки кнопки, не&nbsp;рядом</div></div>
+      </div>
+    </div>
+
+    <div class="hl w2">
+      <div class="head">
+        <span class="cover">три шага</span>
+        <div><h3>Хайлайт 2</h3>
+        <div class="why">Прайс и&nbsp;продуктовая лестница в&nbsp;одном месте. Снимает вопрос сколько стоит до&nbsp;переписки и&nbsp;ведёт на&nbsp;чекап как&nbsp;на&nbsp;первый шаг</div></div>
+      </div>
+      <div class="st">
+        <div class="s"><div class="mk">как&nbsp;устроено</div>
+          <div class="ttl">Три шага, по&nbsp;которым заходим</div>
+          <div class="tx">01 AI-чекап бизнеса – две недели. 02 AI-десант – месяц внутри команды. 03 AI-система – под то, что&nbsp;показала карта</div>
+          <div class="fr">схема 08 схема. Три блока, первый подсвечен лаймовой рамкой. Номера JetBrains Mono лаймом, строки Manrope 50&nbsp;пт. Больше трёх шагов в&nbsp;кадр не&nbsp;ставим. Кадр без подписи</div></div>
+        <div class="s"><div class="mk">услуга</div>
+          <div class="ttl">AI-чекап бизнеса</div>
+          <div class="tx">Две недели, после которых отдаём карту всех процессов компании с&nbsp;узкими местами, приоритеты по&nbsp;эффекту и&nbsp;план внедрения с&nbsp;вилкой бюджета. 19&nbsp;900 ₽ фиксированно, 14&nbsp;дней срок</div>
+          <div class="fr">схема-услуга. Название 86&nbsp;пт, строка сути 50&nbsp;пт, внизу две метрики JetBrains Mono 95&nbsp;пт с&nbsp;хвостами ₽ и&nbsp;дней мельче в&nbsp;той же&nbsp;строке. 19&nbsp;900 ₽ не&nbsp;разрывается ни&nbsp;при каких условиях. Кадр без подписи</div></div>
+        <div class="s"><div class="mk">услуга</div>
+          <div class="ttl">AI-десант и&nbsp;обучение</div>
+          <div class="tx">Месяц работы внутри компании: специалист студии встраивает нейросети в&nbsp;повседневные задачи каждого отдела. 30&nbsp;дней один специалист, от&nbsp;80&nbsp;тыс.&nbsp;₽ в&nbsp;месяц</div>
+          <div class="fr">та же&nbsp;схема-услуга, что&nbsp;и&nbsp;в&nbsp;сторис 2, кегли не&nbsp;меняем – основной текст внутри серии всегда одного размера. Цифра 95&nbsp;пт, подпись под цифрой 28&nbsp;пт строчными. Кадр без подписи</div></div>
+        <div class="s"><div class="mk">услуга</div>
+          <div class="ttl">AI-система</div>
+          <div class="tx">Собирается из&nbsp;шести модулей под то, что&nbsp;показала карта процессов. 3–5&nbsp;недель до&nbsp;готового продукта, 60&nbsp;дней на&nbsp;связи после сдачи</div>
+          <div class="fr">та же&nbsp;схема-услуга. Цифры 3–5 и&nbsp;60 моно 95&nbsp;пт, хвосты недель и&nbsp;дней мельче в&nbsp;той же&nbsp;строке. Кадр без подписи</div></div>
+        <div class="s"><div class="mk">следующий шаг</div>
+          <div class="ttl">Начать проще всего с&nbsp;чекапа</div>
+          <div class="tx">Фиксированная сумма, фиксированный срок и&nbsp;понятный результат на&nbsp;выходе. Оставить заявку</div>
+          <div class="fr">схема 06 приглашение. Кнопка лаймом, текст на&nbsp;ней тёмный. Знак Synapt в&nbsp;нижнем углу закрывает серию</div></div>
+      </div>
+    </div>
+
+    <div class="hl w2">
+      <div class="head">
+        <span class="cover">кейсы</span>
+        <div><h3>Хайлайт 3</h3>
+        <div class="why">Главное доказательство. Лид, который выбирает подрядчика, идёт сюда первым делом и&nbsp;ищет цифру, а&nbsp;не&nbsp;описание</div></div>
+      </div>
+      <div class="st">
+        <div class="s"><div class="mk">кейс</div>
+          <div class="ttl">INNORTO: месяц внутри команды</div>
+          <div class="tx">Нейросетями пользовались два человека, задача была распространить навык на&nbsp;всю компанию: закупки, бухгалтерия, сервис и&nbsp;координаторы. 26&nbsp;из&nbsp;27 работают с&nbsp;AI, 25–35&nbsp;ч рутины в&nbsp;неделю</div>
+          <div class="fr">схема 05 кейс. Заголовок 72&nbsp;пт сверху, две метрики внизу моно 108&nbsp;пт, чип с&nbsp;названием клиента вверху справа. 26&nbsp;из&nbsp;27 стоит в&nbsp;одной строке целиком. Больше двух метрик не&nbsp;ставим</div></div>
+        <div class="s"><div class="mk">кейс</div>
+          <div class="ttl">GlobalDent: разбор приходит в&nbsp;чат за&nbsp;минуты</div>
+          <div class="tx">1&nbsp;500+ пар вопрос-ответ в&nbsp;базе, 24/7 ответ участнику клуба</div>
+          <div class="fr">схема 05 кейс. Метрики моно 108&nbsp;пт, 1&nbsp;500+ не&nbsp;ломается посередине. Чип клиента вверху справа</div></div>
+        <div class="s"><div class="mk">до&nbsp;и&nbsp;после</div>
+          <div class="ttl">Отдел продаж</div>
+          <div class="tx">До – руководитель слушал 5 разговоров из&nbsp;300. После – разбираются все 300 каждый день, конверсия в&nbsp;сделку выросла на&nbsp;20%</div>
+          <div class="fr">схема 03 сравнение. Две карточки друг под другом, нижняя с&nbsp;лаймовой рамкой. Название процесса внизу JetBrains Mono 24&nbsp;пт строчными</div></div>
+        <div class="s"><div class="mk">кейс</div>
+          <div class="ttl">Подбор блюд для&nbsp;FoodTech</div>
+          <div class="tx">1&nbsp;200+ карт меню оцифровано, 30 тысяч сообщений ежемесячно</div>
+          <div class="fr">схема 05 кейс. Кегли те же, что&nbsp;в&nbsp;сторис 1 и&nbsp;2, серия держит одну шкалу</div></div>
+        <div class="s"><div class="mk">кейс</div>
+          <div class="ttl">Инженерное бюро: расчёты 1992 года переехали в&nbsp;браузер</div>
+          <div class="tx">100% совпадение расчётов, 30+ лет логики сохранено</div>
+          <div class="fr">схема 05 кейс, заголовок в&nbsp;три строки 72&nbsp;пт. Знак Synapt в&nbsp;нижнем углу закрывает серию</div></div>
+      </div>
+    </div>
+
+    <div class="hl w2">
+      <div class="head">
+        <span class="cover">система</span>
+        <div><h3>Хайлайт 4</h3>
+        <div class="why">Показывает, что&nbsp;мы&nbsp;продаём связный контур, а&nbsp;не&nbsp;набор ботов. Работает на&nbsp;этапе выбора подрядчика, когда сравнивают с&nbsp;фрилансером за&nbsp;выходные</div></div>
+      </div>
+      <div class="st">
+        <div class="s"><div class="mk">как&nbsp;устроено</div>
+          <div class="ttl">AI-система из&nbsp;шести модулей</div>
+          <div class="tx">Собирается из&nbsp;блоков под то, что&nbsp;показала карта процессов, каждое следующее внедрение встраивается дешевле и&nbsp;быстрее</div>
+          <div class="fr">схема 04 тезис. Оникс, фоном сеть, шесть узлов, три подсвечены лаймом. Заголовок 86&nbsp;пт, текст 50&nbsp;пт. Кадр без подписи</div></div>
+        <div class="s"><div class="mk">модуль</div>
+          <div class="ttl">01 Работа с&nbsp;клиентом, 02 AI-дашборд</div>
+          <div class="tx">Заявки приходят в&nbsp;мессенджеры и&nbsp;теряются между менеджерами, система отвечает клиенту за&nbsp;секунды. Цифры лежат в&nbsp;разных отчётах и&nbsp;приходят поздно, система разбирает воронку, найм, маржу</div>
+          <div class="fr">две карточки на&nbsp;графите друг под другом. Номер и&nbsp;название Manrope 50&nbsp;пт, описание 50&nbsp;пт тем же&nbsp;кеглем – в&nbsp;одной серии основной текст одного размера. Номера моно лаймом</div></div>
+        <div class="s"><div class="mk">модуль</div>
+          <div class="ttl">03 Знания и&nbsp;адаптация, 04 AI-эксперт</div>
+          <div class="tx">Новичок долго адаптируется, а&nbsp;у&nbsp;команды регулярно возникают разные вопросы, агент отвечает по&nbsp;внутренним документам. Спрос на&nbsp;вашего ключевого специалиста выше, чем его&nbsp;временные ресурсы, цифровая копия эксперта отвечает клиентам</div>
+          <div class="fr">две карточки, вёрстка идентична сторис 2</div></div>
+        <div class="s"><div class="mk">модуль</div>
+          <div class="ttl">05 Интеграции и&nbsp;автоматизация</div>
+          <div class="tx">Данные лежат в&nbsp;разных системах, и&nbsp;люди переносят их&nbsp;вручную. Связываем CRM, 1С, таблицы и&nbsp;мессенджеры</div>
+          <div class="fr">одна карточка на&nbsp;весь кадр, заголовок 72&nbsp;пт. Под ним схема из&nbsp;четырёх узлов, связи протягиваются лаймом</div></div>
+        <div class="s"><div class="mk">модуль</div>
+          <div class="ttl">06 Безопасный слой</div>
+          <div class="tx">Обезличивание перед отправкой в&nbsp;модель, ролевой доступ и&nbsp;журнал обращений. Это основа всех блоков, а&nbsp;не&nbsp;опция сверху</div>
+          <div class="fr">схема 04 тезис, заголовок 86&nbsp;пт. Кадр целиком на&nbsp;графите, лайм только в&nbsp;подчёркивании слова основа. Знак Synapt в&nbsp;нижнем углу закрывает серию</div></div>
+      </div>
+    </div>
+
+    <div class="hl w2">
+      <div class="head">
+        <span class="cover">вопросы</span>
+        <div><h3>Хайлайт 5</h3>
+        <div class="why">Снимает четыре возражения, которые повторяются на&nbsp;каждом первом созвоне. Экономит время на&nbsp;встрече и&nbsp;добивает сомневающихся, которые не&nbsp;решаются написать</div></div>
+      </div>
+      <div class="st">
+        <div class="s"><div class="mk">частый вопрос</div>
+          <div class="ttl">С&nbsp;чего начинается проект</div>
+          <div class="tx">С&nbsp;короткой встречи на&nbsp;30&nbsp;минут. Готовить документы и&nbsp;техническое задание заранее не&nbsp;нужно, разберём процессы на&nbsp;созвоне</div>
+          <div class="fr">схема 04 тезис на&nbsp;молоке #F4F6F5, текст #0E1211 – светлый кадр отделяет FAQ от&nbsp;остальных серий. Вопрос 86&nbsp;пт, ответ 50&nbsp;пт. Кадр без подписи</div></div>
+        <div class="s"><div class="mk">частый вопрос</div>
+          <div class="ttl">Сотрудники не&nbsp;примут</div>
+          <div class="tx">Десант – это специалист, который месяц работает рядом с&nbsp;вашими людьми, а&nbsp;не&nbsp;вебинар. В&nbsp;INNORTO после месяца с&nbsp;AI работают 26&nbsp;из&nbsp;27&nbsp;сотрудников</div>
+          <div class="fr">молочный кадр, вёрстка как&nbsp;в&nbsp;сторис 1. 26&nbsp;из&nbsp;27 моно лаймом в&nbsp;одной строке целиком</div></div>
+        <div class="s"><div class="mk">частый вопрос</div>
+          <div class="ttl">А&nbsp;если у&nbsp;нас есть свои разработчики</div>
+          <div class="tx">Одного агента ваш разработчик соберёт за&nbsp;выходные. Платят не&nbsp;за&nbsp;это, а&nbsp;за&nbsp;то, чтобы решение продолжало работать через полгода</div>
+          <div class="fr">молочный кадр, заголовок в&nbsp;три строки 72&nbsp;пт, ответ 50&nbsp;пт</div></div>
+        <div class="s"><div class="mk">частый вопрос</div>
+          <div class="ttl">Данные не&nbsp;утекут</div>
+          <div class="tx">Данные остаются в&nbsp;вашем контуре. Обезличивание перед отправкой в&nbsp;модель, ролевой доступ и&nbsp;журнал обращений – безопасный слой лежит в&nbsp;основе всех блоков</div>
+          <div class="fr">молочный кадр, вёрстка как&nbsp;в&nbsp;сторис 1</div></div>
+        <div class="s"><div class="mk">частый вопрос</div>
+          <div class="ttl">Что&nbsp;остаётся у&nbsp;нас после проекта</div>
+          <div class="tx">Система целиком: код, доступы, промпты, база знаний и&nbsp;документация. Плюс 60&nbsp;дней на&nbsp;связи после сдачи</div>
+          <div class="fr">молочный кадр. Знак Synapt в&nbsp;нижнем углу тёмным, закрывает серию</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="posts">
+  <h2>Три поста-карусели</h2>
+  <p class="sub">Холст 1080×1350. Шкала постов: заголовок 96, 84 или&nbsp;70&nbsp;пт, основной текст 48&nbsp;пт, цифра 78–108&nbsp;пт, подпись под метрикой 26–28&nbsp;пт, служебная метка 24&nbsp;пт. Индикатор слайдов 1 / 7 – JetBrains Mono 24&nbsp;пт строчными в&nbsp;правом верхнем углу, на&nbsp;всех слайдах одинаково</p>
+
+  <div class="rules two">
+    <div class="rule w2"><div class="k on">пост 1</div>
+      <h3>Про нас, команду и&nbsp;миссию</h3>
+      <p><span class="lbl">слайд 1, обложка</span>Метка: студия. Текст: Студия AI и&nbsp;IT-разработки для&nbsp;бизнеса. Подзаголовок: Соединяем AI, процессы и&nbsp;людей в&nbsp;устойчивую рабочую систему</p>
+      <p><span class="lbl">вёрстка</span>Схема 02 тезис. Оникс, только типографика. Заголовок Manrope 96&nbsp;пт в&nbsp;три строки</p>
+    </div>
+    <div class="rule"><div class="k">пост 2</div>
+      <h3>Не&nbsp;доехал в&nbsp;исходнике</h3>
+      <p>Собираем из&nbsp;банка фактов и&nbsp;рубрики Р3: кейс с&nbsp;цифрой, было и&nbsp;стало, за&nbsp;счёт чего</p></div>
+    <div class="rule"><div class="k">пост 3</div>
+      <h3>Не&nbsp;доехал в&nbsp;исходнике</h3>
+      <p>Собираем из&nbsp;рубрики Р4: как&nbsp;устроен чекап, что&nbsp;нужно от&nbsp;клиента, что&nbsp;получаете на&nbsp;руки</p></div>
+  </div>
+
+  <div class="note">
+    <div class="k">обрыв исходника</div>
+    <p>Материал по&nbsp;постам обрывается на&nbsp;первом слайде первой карусели. Все остальные слайды и&nbsp;два поста дописываем в&nbsp;следующей итерации, шкала кеглей и&nbsp;вёрстка уже зафиксированы выше</p>
+  </div>
+
+  <div class="hh"><span class="n">общие правила кадра</span><h3>Что&nbsp;держим во&nbsp;всех макетах</h3></div>
+  <div class="rules">
+    <div class="rule"><div class="k">поля</div>
+      <p>Отступ от&nbsp;края кадра не&nbsp;меньше 8% ширины, в&nbsp;сторис верх и&nbsp;низ держим свободными под интерфейс</p></div>
+    <div class="rule"><div class="k">две шкалы</div>
+      <p>У&nbsp;сторис и&nbsp;постов две отдельные шкалы кеглей, внутри одного кадра их&nbsp;не&nbsp;смешиваем</p></div>
+    <div class="rule"><div class="k">один размер в&nbsp;серии</div>
+      <p>Основной текст внутри одной серии всегда одного кегля: разные размеры в&nbsp;соседних кадрах читаются как&nbsp;ошибка вёрстки</p></div>
+    <div class="rule"><div class="k">метрики не&nbsp;ломаем</div>
+      <p>26&nbsp;из&nbsp;27, 1&nbsp;500+ и&nbsp;19&nbsp;900 ₽ стоят в&nbsp;одной строке целиком. Не&nbsp;помещается – уменьшаем кегль цифры на&nbsp;ступень, но&nbsp;не&nbsp;переносим</p></div>
+  </div>
+</section>
+
+<section id="bio">
+  <h2>Био и&nbsp;аватар</h2>
+  <p class="sub">Готовый текст под копипаст. Лимиты Instagram: имя 30 знаков, био 150 с&nbsp;учётом переносов строк</p>
+
+  <div class="hh"><span class="n">био</span><h3>Пять вариантов</h3></div>
+  <div class="rules two">
+    <div class="rule on"><div class="k on">вариант 1, рекомендуемый</div>
+      <h3>Прямой вход через чекап</h3>
+      <div class="code">Synapt – AI и&nbsp;IT для&nbsp;бизнеса</div>
+      <div class="cnt">имя профиля, 28 знаков</div>
+      <div class="code">Соединяем AI, процессы и&nbsp;людей в&nbsp;рабочую систему
+Разбираем, где компания теряет часы и&nbsp;деньги
+AI-чекап 19&nbsp;900 ₽, две недели</div>
+      <div class="cnt">био, 123 знака, из&nbsp;них 121 текст и&nbsp;2 переноса</div>
+      <p style="margin-top:10px"><span class="lbl">сильная сторона</span>Вход по&nbsp;фиксированной цене виден сразу, лид не&nbsp;гадает, сколько стоит первый шаг</p></div>
+
+    <div class="rule"><div class="k">вариант 2</div>
+      <h3>Разрабатываем и&nbsp;автоматизируем</h3>
+      <div class="code">Synapt AI и&nbsp;IT-разработка</div>
+      <div class="cnt">имя профиля, 25 знаков</div>
+      <div class="code">Разрабатываем и&nbsp;автоматизируем: AI встраиваем в&nbsp;процесс, а&nbsp;не&nbsp;в&nbsp;подписку
+Первый шаг – чекап за&nbsp;две недели
+Пишите в&nbsp;Telegram</div>
+      <div class="cnt">био, 123 знака</div>
+      <p style="margin-top:10px"><span class="lbl">сильная сторона</span>Закрывает главное возражение рынка одной строкой – мы&nbsp;не&nbsp;продаём подписки</p></div>
+
+    <div class="rule"><div class="k">вариант 3</div>
+      <h3>Инструменты и&nbsp;рост</h3>
+      <div class="code">Synapt AI-студия</div>
+      <div class="cnt">имя профиля, 16 знаков</div>
+      <div class="code">Студия AI и&nbsp;IT-разработки
+Даём команде инструменты и&nbsp;ускоряем рост
+Система остаётся у&nbsp;вас целиком
+Вход – чекап 19&nbsp;900 ₽</div>
+      <div class="cnt">био, 119 знаков</div>
+      <p style="margin-top:10px"><span class="lbl">сильная сторона</span>Строка про передачу системы работает на&nbsp;этапе выбора подрядчика, когда сравнивают с&nbsp;агентствами</p></div>
+
+    <div class="rule"><div class="k">вариант 4</div>
+      <h3>Эволюция с&nbsp;AI, миссия впереди</h3>
+      <div class="code">Synapt AI для&nbsp;бизнеса</div>
+      <div class="cnt">имя профиля, 21 знак</div>
+      <div class="code">Помогаем бизнесу эволюционировать с&nbsp;AI
+Чекап, десант на&nbsp;месяц, система из&nbsp;шести модулей
+Первый разговор – 30&nbsp;минут в&nbsp;Zoom</div>
+      <div class="cnt">био, 121 знак</div>
+      <p style="margin-top:10px"><span class="lbl">сильная сторона</span>Вся продуктовая лестница в&nbsp;одной строке, призыв не&nbsp;давит деньгами</p></div>
+
+    <div class="rule w2"><div class="k">вариант 5</div>
+      <h3>Главная мысль студии</h3>
+      <div class="code">Synapt AI-система бизнеса</div>
+      <div class="cnt">имя профиля, 25 знаков</div>
+      <div class="code">AI приносит деньги там, где переделали процесс
+Показываем, где именно, и&nbsp;остаёмся рядом, пока команда не&nbsp;пойдёт сама
+Чекап 19&nbsp;900 ₽</div>
+      <div class="cnt">био, 131 знак</div>
+      <p style="margin-top:10px"><span class="lbl">сильная сторона</span>Единственный вариант, который сам по&nbsp;себе является позицией, а&nbsp;не&nbsp;описанием. Работает, когда трафик идёт с&nbsp;выступлений и&nbsp;рекомендаций</p></div>
+  </div>
+
+  <div class="rules two" style="margin-top:14px">
+    <div class="rule on"><div class="k on">что&nbsp;рекомендую взять</div>
+      <p>Вариант 1 как&nbsp;основной – он&nbsp;закрывает задачу проверяемости и&nbsp;сразу называет цену входа. Вариант 5 – если в&nbsp;ближайший месяц будут выступления и&nbsp;много холодных заходов по&nbsp;имени</p></div>
+    <div class="rule"><div class="k">ссылка в&nbsp;шапке</div>
+      <p>synapt.tech, подпись кнопки – Обсудить задачу. Кнопка контакта – Telegram, не&nbsp;почта: у&nbsp;B2B на&nbsp;200–800&nbsp;тыс.&nbsp;₽ первый шаг всегда переписка</p></div>
+  </div>
+
+  <div class="hh"><span class="n">аватар</span><h3>Три варианта и&nbsp;решение</h3></div>
+  <p class="sub">Аватар в&nbsp;ленте живёт размером 32×32&nbsp;px, в&nbsp;шапке профиля – 90×90&nbsp;px, в&nbsp;сторис-кольце – 64×64&nbsp;px. Всё, что&nbsp;тоньше 3&nbsp;px в&nbsp;исходнике 1080×1080, на&nbsp;32&nbsp;px исчезает физически</p>
+  <div class="rules three">
+    <div class="rule on"><div class="k on">вариант А, берём</div>
+      <h3>Знак на&nbsp;лайме</h3>
+      <p>Плашка #D0E865 во&nbsp;весь круг, знак Synapt внутри цветом #0E1211. Знак занимает 58–62% диаметра, поле по&nbsp;кругу одинаковое</p>
+      <p><span class="lbl">почему работает</span>Лайм – единственный цвет фирстиля, который не&nbsp;встречается в&nbsp;ленте у&nbsp;конкурентов. На&nbsp;32&nbsp;px читается пятно, а&nbsp;не&nbsp;форма: подписчик узнаёт аккаунт по&nbsp;цвету раньше, чем по&nbsp;знаку. Контраст тёмного знака на&nbsp;лайме – около 12:1, это максимум из&nbsp;трёх вариантов</p>
+      <p><span class="lbl">риск</span>Лайм по&nbsp;правилу занимает не&nbsp;больше 10% кадра, а&nbsp;в&nbsp;аватаре он&nbsp;берёт 100%. Формально это не&nbsp;нарушение – аватар не&nbsp;кадр контента, но&nbsp;в&nbsp;сетке профиля рядом с&nbsp;тёмными обложками пятно будет самым громким элементом. Проверить на&nbsp;реальной сетке из&nbsp;9 постов до&nbsp;финала</p></div>
+    <div class="rule"><div class="k">вариант Б</div>
+      <h3>Знак на&nbsp;графите</h3>
+      <p>Фон #151A18, знак цветом #E8EEEC, одна связь узла подсвечена #D0E865. Знак 55–60% диаметра</p>
+      <p><span class="lbl">почему работает</span>Совпадает с&nbsp;обложками контента, профиль читается как&nbsp;единая тёмная плитка. Самый честный по&nbsp;фирстилю вариант, лайм остаётся акцентом</p>
+      <p><span class="lbl">риск</span>На&nbsp;32&nbsp;px тёмный круг на&nbsp;белом фоне ленты сливается в&nbsp;серую точку, лаймовая подсветка одной связи пропадает первой – её&nbsp;толщина в&nbsp;пересчёте на&nbsp;32&nbsp;px даёт меньше 1&nbsp;px. Работает в&nbsp;шапке профиля, теряется в&nbsp;ленте</p></div>
+    <div class="rule"><div class="k">вариант В</div>
+      <h3>Знак на&nbsp;молоке</h3>
+      <p>Фон #F4F6F5, знак #0E1211. Знак 55–60% диаметра</p>
+      <p><span class="lbl">почему работает</span>Максимальная разборчивость формы на&nbsp;любом размере, знак не&nbsp;спорит с&nbsp;интерфейсом. Хорошо смотрится в&nbsp;поиске и&nbsp;в&nbsp;списке диалогов Telegram, если аватар пойдёт туда же</p>
+      <p><span class="lbl">риск</span>На&nbsp;белом фоне ленты Instagram круг с&nbsp;молочным фоном теряет границу и&nbsp;выглядит как&nbsp;аватар без аватара. Нужна тонкая обводка #E8EEEC, а&nbsp;это уже деталь, которая на&nbsp;32&nbsp;px не&nbsp;видна</p></div>
+  </div>
+  <div class="rules two" style="margin-top:14px">
+    <div class="rule on"><div class="k on">решение</div>
+      <p>Берём вариант А – знак на&nbsp;лайме. На&nbsp;дистанции 32&nbsp;px выигрывает цветовое пятно, а&nbsp;не&nbsp;рисунок: у&nbsp;Synapt нет узнаваемости, и&nbsp;первый год аккаунт узнают по&nbsp;цвету</p>
+      <p>Вариант Б&nbsp;держим как&nbsp;аватар для&nbsp;Telegram-канала, где фон интерфейса тёмный и&nbsp;графит там как&nbsp;раз читается. Вариант В – для&nbsp;документов и&nbsp;презентаций, где аватар печатается</p></div>
+    <div class="rule"><div class="k">технически</div>
+      <p>Экспорт 1080×1080 PNG, знак центрируем по&nbsp;оптическому центру, а&nbsp;не&nbsp;по&nbsp;геометрическому, минимальная толщина линии в&nbsp;знаке – 24&nbsp;px в&nbsp;исходнике, иначе на&nbsp;32&nbsp;px её&nbsp;не&nbsp;будет. Проверяем на&nbsp;трёх размерах до&nbsp;заливки</p>
+      <div class="pal">
+        <div><span style="background:#0E1211"></span><b>#0E1211</b><span class="cn">оникс</span></div>
+        <div><span style="background:#151A18"></span><b>#151A18</b><span class="cn">графит</span></div>
+        <div><span style="background:#F4F6F5"></span><b>#F4F6F5</b><span class="cn">молоко</span></div>
+        <div><span style="background:#E8EEEC"></span><b>#E8EEEC</b><span class="cn">иней</span></div>
+        <div><span style="background:#9AA5A1"></span><b>#9AA5A1</b><span class="cn">дым</span></div>
+        <div><span style="background:#D0E865"></span><b>#D0E865</b><span class="cn">лайм</span></div>
+      </div></div>
+  </div>
+</section>
+
+<section id="stop">
+  <h2>Что&nbsp;не&nbsp;публикуем</h2>
+  <p class="sub">Список запретов короткий и&nbsp;жёсткий. Если публикация попадает хотя бы&nbsp;в&nbsp;один пункт – она не&nbsp;выходит</p>
+
+  <div class="stop">
+    <div class="card hard">
+      <div class="k" style="font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--accent);margin-bottom:8px">запрещено по&nbsp;закону</div>
+      <ul class="li on">
+        <li>Реклама в&nbsp;Instagram в&nbsp;любом виде: закуп, интеграция, бартер. Запрет действует с&nbsp;1 сентября 2025, это не&nbsp;вопрос бюджета</li>
+        <li>Любые цифры и&nbsp;логотипы клиентов, которых нет в&nbsp;согласованном банке фактов или&nbsp;которые закрыты NDA</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="k" style="font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--dim);margin-bottom:8px">запрещено по&nbsp;смыслу</div>
+      <ul class="li">
+        <li>Обещания, которых нет на&nbsp;synapt.tech. Новые смыслы не&nbsp;изобретаем</li>
+        <li>Публикация, которая не&nbsp;подтверждает главную мысль про переделанный процесс</li>
+        <li>Один пост на&nbsp;два сегмента сразу: собственник и&nbsp;IT-директор в&nbsp;одном тексте не&nbsp;живут</li>
+        <li>Цифра без источника, который можно показать</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="k" style="font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--dim);margin-bottom:8px">запрещено по&nbsp;языку</div>
+      <ul class="li">
+        <li>В&nbsp;современном мире, инновационные решения, синергия, цифровая трансформация</li>
+        <li>Слово ИИ в&nbsp;любом падеже, только AI латиницей</li>
+        <li>Канцелярит и&nbsp;пассив: осуществляется внедрение, реализован функционал</li>
+        <li>Заборы из&nbsp;эмодзи, капслок, три восклицательных знака</li>
+        <li>Безымянные наши специалисты вместо имени и&nbsp;должности</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="k" style="font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--dim);margin-bottom:8px">запрещено по&nbsp;тону</div>
+      <ul class="li">
+        <li>Страшилки про замену людей и&nbsp;про то, что&nbsp;вы&nbsp;уже опоздали</li>
+        <li>Подборки ТОП-5 нейросетей ради охвата, без ответа на&nbsp;вопрос, какую работу закрывает каждая</li>
+        <li>Выступление перед аудиторией вместо разговора с&nbsp;собственником</li>
+        <li>Стоковое фото, градиент во&nbsp;весь кадр, курсив, точки в&nbsp;конце заголовков</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="metrics">
+  <h2>Метрики</h2>
+  <p class="sub">Базовые значения по&nbsp;обоим каналам снимаем до&nbsp;25 августа: подписчики, охваты, ERR, источники заявок. Цели ниже – коридор, после снятия базы фиксируем точные цифры и&nbsp;больше не&nbsp;меняем</p>
+
+  <div class="quote">
+    <p>North Star контента – число квалифицированных заявок на&nbsp;чекап или&nbsp;Zoom, пришедших из&nbsp;соцсетей, за&nbsp;неделю</p>
+    <p class="after">Смотрим каждый понедельник. Цель к&nbsp;концу квартала – 2–3 в&nbsp;неделю</p>
+  </div>
+
+  <div class="hh"><span class="n">цели квартала</span><h3>Три уровня, значение к&nbsp;30 ноября</h3></div>
+  <div class="tw">
+    <table class="resp narrow">
+      <thead><tr><th>уровень</th><th>цель</th><th>метрика</th><th>значение к&nbsp;30.11</th></tr></thead>
+      <tbody>
+        <tr><td class="d" data-label="уровень">Бизнес</td><td class="hi" data-label="цель">Загрузить студию проектами Synapt, а&nbsp;не&nbsp;только проектами Вити</td><td data-label="метрика">оплаченные чекапы из&nbsp;соцсетей</td><td data-label="значение к&nbsp;30.11"><span class="m">10–12</span></td></tr>
+        <tr><td class="d" data-label="уровень"></td><td data-label="цель"></td><td data-label="метрика">конверсия чекап → десант или&nbsp;система</td><td data-label="значение к&nbsp;30.11"><span class="m">3–4</span></td></tr>
+        <tr><td class="d" data-label="уровень">Маркетинг</td><td class="hi" data-label="цель">Собрать проверяемое присутствие</td><td data-label="метрика">квалифицированные заявки из&nbsp;соцсетей</td><td data-label="значение к&nbsp;30.11"><span class="m">25–30</span></td></tr>
+        <tr><td class="d" data-label="уровень"></td><td data-label="цель"></td><td data-label="метрика">доля лидов, назвавших соцсети точкой касания</td><td data-label="значение к&nbsp;30.11"><span class="m">≥&nbsp;30%</span></td></tr>
+        <tr><td class="d" data-label="уровень">Контент</td><td class="hi" data-label="цель">Аудитория качеством, а&nbsp;не&nbsp;счётчиком</td><td data-label="метрика">Telegram ERR на&nbsp;пост</td><td data-label="значение к&nbsp;30.11"><span class="m">≥&nbsp;25%</span></td></tr>
+        <tr><td class="d" data-label="уровень"></td><td data-label="цель"></td><td data-label="метрика">Instagram сохранения на&nbsp;карусель</td><td data-label="значение к&nbsp;30.11"><span class="m">≥&nbsp;3% охвата</span></td></tr>
+        <tr><td class="d" data-label="уровень"></td><td data-label="цель"></td><td data-label="метрика">доля публикаций с&nbsp;проверяемой цифрой</td><td data-label="значение к&nbsp;30.11"><span class="m">≥&nbsp;60%</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="rules two" style="margin-top:14px">
+    <div class="rule"><div class="k">антиметрики</div>
+      <p>Мы&nbsp;сознательно не&nbsp;оптимизируем число подписчиков, лайки, число постов в&nbsp;неделю и&nbsp;охват сам по&nbsp;себе</p>
+      <p>Если выбор между постом с&nbsp;цифрой и&nbsp;постом с&nbsp;охватом – берём цифру</p></div>
+    <div class="rule"><div class="k">ритм замера</div>
+      <p>Час в&nbsp;понедельник на&nbsp;снятие метрик: North Star за&nbsp;неделю, ERR по&nbsp;каждому посту, сохранения по&nbsp;каруселям, источники заявок из&nbsp;первого касания</p>
+      <p>База снята до&nbsp;25 августа, после этого коридор целей не&nbsp;двигаем до&nbsp;30 ноября</p></div>
+  </div>
+</section>
+
+<footer class="end">
+  <span class="logo"><svg viewBox="0 0 839 360" fill="currentColor"><use href="#lg"/></svg></span>
+  <p>смыслы, synapt.tech, визуал, synapt.tech/content</p>
+</footer>
+
+</div>
+</body></html>
