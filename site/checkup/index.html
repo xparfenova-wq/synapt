@@ -2098,6 +2098,13 @@ html body footer .f-brand .f-tg.f-cta:not(#_):not(#_):not(#_) { margin-top:16px!
 html body footer .f-nav.f-nav2:not(#_):not(#_):not(#_) { display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;gap:6px!important;max-width:none!important }
 html body footer .f-nav.f-nav2 a:not(#_):not(#_):not(#_) { display:block!important;flex:none!important }
 </style>
+
+<style id="fix-6b">
+/* «Как проходит»: без линии перед первым шагом; ссылки меню при наведении просто белые, без плашки */
+html body #days .rules:not(#_):not(#_){border-top:0!important}
+html body #days .rules .rule:first-child:not(#_):not(#_){border-top:0!important}
+html body .nav-links a:hover:not(#_):not(#_):not(#_),html body .nav-links a:focus-visible:not(#_):not(#_):not(#_){background:transparent!important;color:var(--text)!important}
+</style>
 </head>
 <body>
 <nav class="nav"><div class="wrap">
