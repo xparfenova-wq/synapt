@@ -402,14 +402,45 @@ footer .wrap>*:last-child{margin-bottom:0!important}
  .cv.post.tight .txt{font-size:13px!important;line-height:1.45}
 }
 
-/* посты: основной текст и заголовки крупнее */
-.cv.post .txt{font-size:16.5px!important;line-height:1.5}
+/* посты: основной текст, заголовки, метки и цифры крупнее */
+.cv.post .txt{font-size:17px!important;line-height:1.5}
 .cv.post .big.h1{font-size:33px!important}
-.cv.post .big.h2{font-size:28px!important}
-.cv.post .big.h3{font-size:24px!important}
-.cv.post .calc .v{font-size:26px!important}
-.cv.post .mk{font-size:11.5px!important}
-.cv.post .calc .c,.cv.post .sign{font-size:12px!important}
+.cv.post .big.h2{font-size:29px!important}
+.cv.post .big.h3{font-size:25px!important}
+.cv.post .calc .v{font-size:27.5px!important}
+.cv.post .calc .pre{font-size:15px!important}
+.cv.post .mk{font-size:12px!important}
+.cv.post .calc .c{font-size:12.5px!important}
+.cv.post .sign,.cv.post .pad .sign{font-size:12.5px!important}
+.cv.post .pgn{font-size:12px!important}
+.cv.post .chip{font-size:12px!important}
+.cv.post .list .it{font-size:14.5px!important}
+.cv.post .list .it b{font-size:12px!important}
+.cv.post .ba .v{font-size:15.5px!important}
+.cv.post .ba .k{font-size:12px!important}
+.cv.post .shot .msg{font-size:11.5px!important}
+/* точечно: в узкой карточке кегли возвращаются на ступень ниже, кадр не переполняется */
+@container (max-width:330px){
+ .cv.post .txt{font-size:15px!important;line-height:1.45}
+ .cv.post .big.h1{font-size:30px!important}
+ .cv.post .big.h2{font-size:26px!important}
+ .cv.post .big.h3{font-size:23px!important}
+ .cv.post .calc .v{font-size:24px!important}
+ .cv.post .calc .pre{font-size:13px!important}
+ .cv.post .calc .c{font-size:11.5px!important}
+ .cv.post .mk{font-size:11px!important}
+ .cv.post .list .it{font-size:13px!important}
+ .cv.post .ba .v{font-size:14px!important}
+}
+/* самый плотный макет: длинный разбор поджимается раньше остальных */
+@container (max-width:380px){
+ .cv.post.tight .big.h2{font-size:25px!important}
+ .cv.post.tight .txt{font-size:15px!important;line-height:1.45}
+}
+@container (max-width:344px){
+ .cv.post.tight .big.h2{font-size:21px!important}
+ .cv.post.tight .txt{font-size:13px!important;line-height:1.4}
+}
 </style><link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-512.png" sizes="512x512" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">

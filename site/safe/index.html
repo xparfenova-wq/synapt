@@ -1831,6 +1831,129 @@ footer .f-k{font-family:var(--mono)!important;font-size:11.5px!important}
   footer .f-k{font-size:11px!important}
   .sl-h,.slots .sl-h{font-size:11px!important}
 }
+
+/* ==========================================================
+   22. ЕДИНАЯ ШКАЛА SYNAPT – сверка широкого экрана
+   кегли, отступы, метрики, цена и подвал приводятся к общей
+   системе материалов. Блок стоит последним в экранном стиле
+   и перебивает всё выше, ничего не удаляя.
+   Телефон живёт шкалой блока 2 и в эту сверку не входит
+   ========================================================== */
+
+/* 22.1 шкала кеглей */
+:root{
+  --fs-h1:clamp(46px,5.9vw,68px);
+  --fs-h2:40px;
+  --fs-h3:22px;
+  --fs-lead:18px;
+  --fs-body:16px;
+  --fs-cap:13.5px;
+  --fs-kick:13px;
+  --fs-mono:11.5px;
+  --fs-num:clamp(38px,4.4vw,54px);
+  --sec-pad:120px;
+}
+@media(max-width:760px){
+  :root{
+    --fs-h1:clamp(38px,11.2vw,48px);
+    --fs-h2:28px;
+    --fs-h3:19px;
+    --fs-lead:15px;
+    --fs-body:15px;
+    --fs-cap:13px;
+    --fs-kick:13.5px;
+    --fs-mono:11px;
+    --sec-pad:72px;
+  }
+}
+
+/* 22.2 заголовки */
+h1,.cover h1,.r-cover h1{font-size:var(--fs-h1)!important}
+h2,.sec-head h2,.rel-head h2,.lead-copy h2,.cta-copy h2,.cost-top .cost-head h2{
+  font-size:var(--fs-h2)!important}
+h3,.mstep h3,.bento .b h3,.case h3,.sh-top h3,.card h3,.arte h3,.contour h3,.step h3,
+.rel-card .rel-t,.case-split h3{font-size:var(--fs-h3)!important}
+
+/* 22.3 кикер раздела: моноширинный, трекинг .5px на широком экране */
+.eyebrow,.cover .eyebrow,.sec-head .eyebrow,.rel-head .eyebrow,.cost-head .eyebrow,
+.lead-copy .eyebrow,#lead .eyebrow,#cta .eyebrow{
+  font-family:var(--mono)!important;font-size:var(--fs-kick)!important;
+  font-weight:500!important;line-height:1.4!important}
+@media(min-width:761px){
+  .eyebrow,.cover .eyebrow,.sec-head .eyebrow,.rel-head .eyebrow,.cost-head .eyebrow,
+  .lead-copy .eyebrow,#lead .eyebrow,#cta .eyebrow{letter-spacing:.5px!important}
+}
+
+/* 22.4 лид и основной текст */
+.lead,.cover .lead,.sec-head .lead,.lead-copy .lead,.cta-copy .lead,
+.cost-top .cost-head .lead{font-size:var(--fs-lead)!important}
+body{font-size:var(--fs-body)!important}
+.mstep p,.ct-row p,.sh-c p,.icol li,.icol li span,.art p,.fig-txt,.fig-side .fig-txt,
+.price-line .desc,.vrow p,.cta p,.upsell p,.vcard p,.crow .task,.crow .was,.crow .now,
+.lc-mgr-t>span,.lc-mgr-t b,.tg-after span,.bento .b p,.ba li,.stmt+p,
+.mform input:not([type=checkbox]),.mform textarea{font-size:var(--fs-body)!important}
+
+/* 22.5 подписи */
+.bn .cap,.metric span,.cover-stats .cs-c,.cs-c,.lf-check span,.lf-after,.f-note,.figcap,
+.sl-note,.mf-err,.mf-ok,.mf-fail,footer .f-legal p,footer .f-legal a,footer .f-bottom{
+  font-size:var(--fs-cap)!important}
+
+/* 22.6 моно-метки */
+.mstep .num,.mstep .wk,.icol .ix,.icol .k,.incl .k,.vrow .k,.v-body .k,.price-line .start,
+.start,.sh-i,.sh-k,.f-k,footer .f-k,.sl-h,.slots .sl-h,.pc-k,
+.lf label,.mform .lf label,.lf label .req{font-size:var(--fs-mono)!important}
+
+/* 22.7 кикер карточек в блоке «Другие услуги»: на ступень мельче моно-метки */
+@media(min-width:761px){
+  .rel-k,.rel-card .rel-k{font-size:10.5px!important}
+}
+
+/* 22.8 метрики: крупная цифра, хвост вдвое мельче и серым */
+.cs-n,.cover-stats .cs-n,.cover .cover-stats .cs-n,.cover-stats:has(.cs:only-child) .cs-n,
+.metric b,.bn b{font-size:var(--fs-num)!important;line-height:1!important;color:var(--text)}
+.cs-n .cs-u,.cs-n .cs-of,.cs-n .cs-pre,.cs-n .tail,
+.cover-stats .cs-n .cs-u,.cover-stats .cs-n .cs-of,.cover-stats .cs-n .cs-pre,
+.metric b .u,.metric b small,.metric b .tail,.bn b .tail,
+.price-line .big .pre,.price-line .big small,.cost-top .price-line .big small{
+  font-size:.5em!important;color:var(--text-muted)!important;font-weight:500!important}
+.cs-c,.cover-stats .cs-c,.cover .cover-stats .cs-c,.bn .cap,.metric span{margin-top:6px!important}
+
+/* 22.9 отступы шапки раздела: кикер 18, заголовок 10, содержимое 26 */
+.eyebrow,.cover .cover-kick{margin-top:0!important;margin-bottom:18px!important}
+h2,.sec-head h2,.rel-head h2,.lead-copy h2,.cta-copy h2,.cost-top .cost-head h2,
+.cover h1,.r-cover h1{margin-top:0!important;margin-bottom:10px!important}
+.lead,.sec-head .lead,.lead-copy .lead,.cta-copy .lead,.cost-top .cost-head .lead{
+  margin-top:0!important}
+.sec-head,.rsec-head,.rel-head,.cost-top{margin-bottom:26px!important}
+
+/* 22.10 ритм разделов */
+body>section[id],body>section[id]:first-of-type,body>section[id]:last-of-type{
+  padding-top:var(--sec-pad)!important;padding-bottom:var(--sec-pad)!important}
+
+/* 22.11 условия: верхняя линия цены совпадает с верхней линией заголовка.
+   слева над заголовком стоит кикер, поэтому правую колонку опускаем на его
+   высоту с отступом и доводим по надстрочным запасам обоих кеглей */
+@media(min-width:761px){
+  .cost-top .price-line .big,.cost-top .price-line .big[class]{
+    line-height:1!important;
+    margin-top:calc(var(--fs-kick) * 1.4 + 18px + .215 * var(--fs-h2) - .118em)!important}
+}
+
+/* 22.12 подвал: разделы в две колонки, шаг 6px по вертикали и 18px по горизонтали */
+footer .f-nav,footer .f-nav2,footer .f-nav.f-nav2{
+  display:grid!important;grid-template-columns:repeat(2,max-content)!important;
+  gap:6px 18px!important;align-content:start!important;align-items:baseline!important}
+footer .f-nav .f-k,footer .f-nav2 .f-k,footer .f-nav.f-nav2 .f-k{
+  grid-column:1/-1!important;width:auto!important;margin:0 0 4px!important}
+footer .f-nav a,footer .f-nav2 a,footer .f-nav.f-nav2 a{
+  display:block!important;width:auto!important;min-height:0!important;
+  margin:0!important;line-height:1.45;white-space:nowrap}
+
+/* ===== ФИНАЛЬНАЯ СВЕРКА ШКАЛЫ – широкий экран ===== */
+@media screen and (min-width:761px){
+  .rel-k,.rel-card .rel-k,.rel-grid .rel-k,.rel-grid.split .rel-k{font-size:11.5px!important}
+  .stmt p,.dom-txt{font-size:24px!important;line-height:1.35!important}
+}
 </style>
 <style media="print">
 @page{size:A4 portrait;margin:15mm 13mm 17mm}

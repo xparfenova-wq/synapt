@@ -1555,6 +1555,109 @@ footer .f-k{font-family:var(--mono)!important;font-size:11.5px!important}
 /* подпись метрики обложки чекапа: не шире двух строк, единица измерения не ломается */
 .hero-stats .hs>span{max-width:20ch!important;margin-left:auto!important;display:block!important}
 .hero-stats .hs b .m-t,.hero-stats .hs b span{display:inline!important;max-width:none!important;margin-left:.28em!important}
+
+/* ==========================================================
+   ЕДИНАЯ ШКАЛА – ШИРОКИЙ ЭКРАН
+   всё, что зависит от кегля, лежит внутри min-width:761px,
+   поэтому телефонная шкала выше остаётся главной
+   ========================================================== */
+@media(min-width:761px){
+  h1,.hero h1{font-size:68px!important;line-height:1.06;letter-spacing:-.03em}
+  h2,.sec-head h2,.lead-copy h2{font-size:40px!important;line-height:1.12;letter-spacing:-.025em}
+  h3,.card h3,.case h3,.rule .rt,.nxt .nt,.faq summary,#why .rule .rt{
+    font-size:22px!important;line-height:1.3;letter-spacing:-.015em}
+  /* кикер раздела: моноширинный, 13px, разрядка .5px */
+  .eyebrow,.sec-head .eyebrow,.lead-copy .eyebrow,#lead .eyebrow,#related .eyebrow,#entry>.wrap>.eyebrow{
+    font-family:var(--mono)!important;font-size:13px!important;letter-spacing:.5px!important;
+    line-height:1.5;font-feature-settings:"case" 1,"liga" 0}
+  /* чип обложки обычным шрифтом, как на остальных страницах */
+  .hero-chip,.cover-kick .chip,.chip{font-family:var(--sans)!important;font-size:12.5px!important;
+    letter-spacing:0!important}
+  .lead,.sec-head .lead,.hero .lead,.lead-copy .lead{font-size:18px!important;line-height:1.6}
+  .rule .rd,.card p,.case p,.faq .ans,.ph-txt,.lc-mgr-t span,.note,.plan li,.lf-done,.nav-sheet a,
+  .lc-mgr-t b,.lc-mgr-t b a{font-size:16px!important;line-height:1.6}
+  /* подписи 13,5 – кроме пунктов подвала, они идут по 14,5 */
+  .hs>span,.ph-num small,.metric>span,.dom-cap,.fx-cap,.f-note,.f-legal p,.f-copy,.f-legal a,
+  .sl-note,.lf-check>span,.lf-err,.lf-hint,.lf-after,.rule .rk,.lc-list li{
+    font-size:13.5px!important;line-height:1.5}
+  /* моно-метки 11,5 */
+  .tag,.plan .pn,.case .who,.rule .rn,.lc-list .lk,.sl-h,.slots .sl-h,
+  .lf label,.f-l,.fld label,.lf label .req,footer .f-k{font-size:11.5px!important}
+  /* кикер карточек в блоке смежных услуг */
+  .nxt .nk{font-family:var(--mono)!important;font-size:10.5px!important;letter-spacing:.11em!important}
+
+  /* метрика 54, хвост 27 серым */
+  .hero.rh-hero .hero-stats .hs b,.hs b,.ph-num b{font-size:54px!important;line-height:1;letter-spacing:-.03em}
+  .hs b .tail,.ph-num b .tail,.metric b .tail,.tail{font-size:27px!important;color:#939B98!important;
+    font-weight:500;margin-left:.28em!important;letter-spacing:0!important;display:inline!important;
+    line-height:inherit!important;vertical-align:baseline;white-space:nowrap}
+  :root[data-theme="light"] .hs b .tail,:root[data-theme="light"] .ph-num b .tail,
+  :root[data-theme="light"] .tail{color:var(--text-muted)!important}
+
+  /* отступы шкалы */
+  .sec-head .eyebrow,.lead-copy .eyebrow,#lead .eyebrow,#entry>.wrap>.eyebrow,.rsec-head .eyebrow{
+    margin-bottom:18px!important}
+  .sec-head h2,.lead-copy h2{margin:0!important}
+  .sec-head .lead,.lead-copy .lead{margin:10px 0 0!important}
+  .sec-head,body>section>.wrap>.sec-head,body>section>.wrap>.rsec-head{margin-bottom:26px!important}
+  .hs>span,.ph-num small,.metric>span{margin-top:6px!important}
+  body>section[id]{padding-top:120px!important;padding-bottom:120px!important}
+}
+.tail{display:inline;white-space:nowrap}
+
+/* ================= смежные услуги: две колонки ================= */
+.nxt{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important;
+  background:transparent!important;border:0!important;border-radius:0!important;overflow:visible!important}
+.nxt a{background:var(--surface);border:1px solid rgba(180,214,190,.1)!important;border-radius:16px!important;
+  min-height:0}
+.nxt a:hover{background:var(--surface-2);border-color:rgba(180,214,190,.22)!important}
+
+/* ================= согласие: круг 20px, нажатие 44px ================= */
+.lf-check{position:relative!important;display:flex!important;align-items:flex-start!important;
+  gap:12px!important;padding:0!important;margin:18px 0 0!important;min-height:0!important;cursor:pointer}
+.lf-check::before,.lf-check::after{display:none!important}
+.lf-check input[type=checkbox]{position:relative!important;left:auto!important;top:auto!important;
+  transform:none!important;flex:none;appearance:none;-webkit-appearance:none;
+  width:20px!important;height:20px!important;margin:1px 0 0!important;opacity:1!important;z-index:2;
+  border:1.5px solid var(--line-2)!important;border-radius:50%;background:transparent;
+  cursor:pointer;transition:.16s}
+/* кликабельная область остаётся 44px, круг при этом 20px */
+.lf-check input[type=checkbox]::before{content:"";position:absolute;left:50%;top:50%;width:44px;height:44px;
+  transform:translate(-50%,-50%);border-radius:50%}
+.lf-check input[type=checkbox]:hover{border-color:var(--accent)!important}
+.lf-check input[type=checkbox]:checked{background:var(--accent)!important;border-color:var(--accent)!important}
+.lf-check input[type=checkbox]:checked::after{content:"";position:absolute;left:6px;top:2.5px;
+  width:5px;height:10px;border:2px solid var(--accent-ink,#12150A);border-top:0;border-left:0;
+  transform:rotate(43deg)}
+.lf-check input[type=checkbox]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.lf-check>span{padding-top:0!important;color:var(--text-muted)}
+
+/* ================= подпись под кнопкой формы ================= */
+.lf-after{margin:14px 0 0!important;font-size:13.5px;line-height:1.5;color:var(--text-dim);text-align:center}
+@media(max-width:760px){
+  .lf-after{max-width:30ch;margin-left:auto!important;margin-right:auto!important;font-size:13px}
+}
+
+/* ================= подвал: разделы сеткой в две колонки ================= */
+footer .f-nav,footer .f-nav2,footer .f-nav.f-nav2{display:grid!important;
+  grid-template-columns:repeat(2,max-content)!important;gap:6px 18px!important;
+  align-content:start;max-width:none!important;line-height:1.45!important}
+footer .f-nav .f-k,footer .f-nav2 .f-k{grid-column:1/-1;margin:0 0 4px!important;line-height:1.4!important}
+footer .f-nav a,footer .f-nav2 a{font-size:14.5px!important;line-height:1.45!important;
+  min-height:0!important;display:block!important;margin:0!important;padding:0!important}
+
+/* ================= форма на телефоне: поля и слоты как на других страницах ================= */
+@media(max-width:600px){
+  :root{--gutter:20px}
+  .leadbox{padding:18px 16px!important}
+  .sl-day{min-width:66px!important;min-height:56px!important;padding:8px 10px!important}
+}
+
+/* ===== ФИНАЛЬНАЯ СВЕРКА ШКАЛЫ – широкий экран ===== */
+@media screen and (min-width:761px){
+  .hero h1{margin-bottom:10px}
+  .nk,.nxt .nk{font-size:11.5px!important}
+}
 </style>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23131514'/%3E%3Ccircle cx='32' cy='32' r='13' fill='%23D0E865'/%3E%3C/svg%3E">
 <meta name="theme-color" content="#0E1211">
@@ -1580,8 +1683,8 @@ footer .f-k{font-family:var(--mono)!important;font-size:11.5px!important}
 
 <header class="hero rh-hero"><canvas id="chkFx" aria-hidden="true"></canvas><div class="wrap hero-in">
   <div class="hero-stats reveal d2">
-    <div class="hs"><b>14<span class="m-t">дней</span></b><span>от&nbsp;Zoom до&nbsp;карты процессов и&nbsp;первого агента</span></div>
-    <div class="hs"><b>19&nbsp;900<span class="m-t">₽</span></b><span>чекап целиком, сумма фиксированная</span></div>
+    <div class="hs"><b>14<span class="m-t tail">дней</span></b><span>от&nbsp;Zoom до&nbsp;карты процессов и&nbsp;первого агента</span></div>
+    <div class="hs"><b>19&nbsp;900<span class="m-t tail">₽</span></b><span>чекап целиком, сумма фиксированная</span></div>
     
     
   </div><div class="hero-txt">
@@ -1614,7 +1717,7 @@ footer .f-k{font-family:var(--mono)!important;font-size:11.5px!important}
 
 <section id="entry" class="rh-think"><div class="wrap">
   <div class="eyebrow reveal"><span class="n">02</span> Цена и&nbsp;ценность</div>
-  <div class="ph-num reveal d1"><b>19&nbsp;900<span class="m-t">₽</span></b><small>за&nbsp;чекап целиком</small></div>
+  <div class="ph-num reveal d1"><b>19&nbsp;900<span class="m-t tail">₽</span></b><small>за&nbsp;чекап целиком</small></div>
   <div class="price-hero reveal d1">
     <p class="ph-txt">Первый шаг стоит в&nbsp;несколько раз меньше месячной зарплаты одного менеджера, но&nbsp;уже через две недели вы&nbsp;получаете карту процессов, одну автоматизацию и&nbsp;чёткий план дальнейшей AI-интеграции</p>
   </div>
@@ -1708,6 +1811,7 @@ footer .f-k{font-family:var(--mono)!important;font-size:11.5px!important}
           <span>Согласен на&nbsp;обработку персональных данных и&nbsp;принимаю <a href="/privacy" target="_blank" rel="noopener">политику обработки персональных данных</a></span></label>
         <div class="lf-err" id="lfErr" role="alert">Не&nbsp;хватает вашего имени, контактов и&nbsp;согласия на&nbsp;обработку персональных данных</div>
         <button class="btn pri lg" type="submit">Оставить заявку</button>
+        <p class="lf-after">Подтвердим встречу в&nbsp;ответном сообщении <span class="nb">в&nbsp;течение 1&nbsp;рабочего дня</span></p>
       </form>
       <div class="lf-done" id="lfDone">
         <b>Заявка принята</b>
@@ -1751,7 +1855,8 @@ footer .f-k{font-family:var(--mono)!important;font-size:11.5px!important}
       <p>ИП Орешкин Антон Вадимович</p>
       <p>ИНН 100123323420</p>
       <p>ОГРНИП 324100000000411</p>
-      <p>185014, Республика Карелия, Петрозаводск, переулок Попова, дом&nbsp;6, квартира&nbsp;42</p>
+      <p>185014, Республика Карелия, Петрозаводск</p>
+      <p>переулок Попова, дом&nbsp;6, квартира&nbsp;42</p>
       <a href="/privacy">Политика обработки персональных данных</a>
     </div>
   </div>
@@ -2039,7 +2144,7 @@ footer .f-k{font-family:var(--mono)!important;font-size:11.5px!important}
   var WD=['вс','пн','вт','ср','чт','пт','сб'];
   var HOURS=['10:00','11:00','12:00','14:00','15:00','16:00','17:00'];
   var list=[], d=new Date(); d.setHours(0,0,0,0);
-  while(list.length<6){ d.setDate(d.getDate()+1); if(d.getDay()!==0&&d.getDay()!==6) list.push(new Date(d)) }
+  while(list.length<10){ d.setDate(d.getDate()+1); if(d.getDay()!==0&&d.getDay()!==6) list.push(new Date(d)) }
   var sel={day:null,time:null};
   function label(x){ return '<b>'+x.getDate()+'</b><span>'+WD[x.getDay()]+', '+MN[x.getMonth()].slice(0,3)+'</span>' }
   list.forEach(function(x){
