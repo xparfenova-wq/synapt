@@ -344,6 +344,58 @@ footer .wrap>*:last-child{margin-bottom:0!important}
 /* при наведении на логотип знак становится лаймовым, слово остаётся белым */
 .brand:hover .lg-mark,.brand:hover svg .lg-mark{fill:var(--accent)!important;transition:fill .18s ease}
 .brand svg .lg-mark{transition:fill .18s ease}
+
+/* --- укрупнение: логотип, основной текст сторис, служебные метки --- */
+/* логотип в кадре вдвое крупнее базовых 15/19px */
+.cv.story .logo svg{height:30px!important}
+.cv.post .logo svg{height:38px!important}
+.cv.story .logo.word{font-size:19px!important;letter-spacing:.12em!important}
+.cv.post .logo.word{font-size:23px!important;letter-spacing:.12em!important}
+.lgv .logo svg{height:30px!important}
+.lg-mark svg{height:28px!important}
+.lg-word{font-size:22px!important}
+/* сторис: основной текст 13px, заголовки на ступень выше */
+.cv.story .txt{font-size:13px!important;line-height:1.48}
+.cv.story .big.h1{font-size:27px!important}
+.cv.story .big.h2{font-size:22px!important}
+.cv.story .big.h3{font-size:18px!important}
+/* служебные моно-метки и подписи под цифрами */
+.cv .mk,.cv.story .mk,.cv.post .mk{font-size:10.5px!important}
+.cv.story .calc .c,.cv.post .calc .c{font-size:11px!important}
+.cv .list .it b{font-size:10.5px!important}
+.cv .ba .k{font-size:10.5px!important}
+.cv .steps .st b{font-size:10.5px!important}
+.cv .chip{font-size:10.5px!important}
+.cv .pgn{font-size:10.5px!important}
+/* точечно: сторис с тремя шагами - самый плотный кадр, поджимаем интервалы */
+.cv.story .steps{gap:6px;margin-top:10px}
+.cv.story .steps .st{padding:8px 10px}
+.cv.story .steps + .logo,.cv.story .steps ~ .logo{margin-top:10px}
+/* описания под макетами читаются на телефоне */
+.tpl .cap .n{font-size:10.5px}
+.tpl .cap h3{font-size:16px}
+.tpl .cap p{font-size:14px}
+@media(max-width:760px){
+ .tpl .cap .n{font-size:10.5px}
+ .tpl .cap h3{font-size:16px}
+ .tpl .cap p{font-size:14px}
+}
+/* точечно: длинная метка в узком кадре сторис держится одной строкой */
+.cv .chip.sm{font-size:9.5px!important;padding:4px 8px}
+/* точечно: два самых плотных кадра поджимаются, когда карточка становится узкой */
+.tpl{container-type:inline-size}
+@container (max-width:238px){
+ .cv.story.tight .big.h2{font-size:19px!important}
+ .cv.story.tight .steps{gap:5px;margin-top:10px}
+ .cv.story.tight .steps .st{font-size:11px!important;padding:7px 9px;line-height:1.35}
+ .cv.story.tight .steps .st b{font-size:9.5px!important;margin-bottom:3px}
+ .cv.story .chip.sm{font-size:9px!important;padding:4px 7px}
+ .cv.story .row{gap:6px}
+}
+@container (max-width:344px){
+ .cv.post.tight .big.h2{font-size:21px!important}
+ .cv.post.tight .txt{font-size:13px!important;line-height:1.45}
+}
 </style><link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-512.png" sizes="512x512" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -582,7 +634,7 @@ footer .wrap>*:last-child{margin-bottom:0!important}
 </div>
 
 <div class="tpl">
-      <div class="cv story">
+      <div class="cv story tight">
         <div class="pad">
           <div class="mk">как&nbsp;устроено</div>
           <div class="big h2" style="margin-top:8px">Путь одного вопроса внутри системы</div>
@@ -634,7 +686,7 @@ footer .wrap>*:last-child{margin-bottom:0!important}
             <div><div class="v">25-35<span class="pre"> ч</span></div><div class="c">рутины в&nbsp;неделю</div></div>
           </div>
           <div class="spacer"></div>
-          <div class="row"><span class="chip">ссылка на&nbsp;кейс</span><span class="spacer"></span><div class="logo"><svg viewBox="0 0 839 360" fill="currentColor"><use href="#lg"/></svg></div></div>
+          <div class="row"><span class="chip sm">ссылка на&nbsp;кейс</span><span class="spacer"></span><div class="logo"><svg viewBox="0 0 839 360" fill="currentColor"><use href="#lg"/></svg></div></div>
         </div>
       </div>
       <div class="cap">
@@ -859,7 +911,7 @@ footer .wrap>*:last-child{margin-bottom:0!important}
 </div>
 
 <div class="tpl">
-      <div class="cv post">
+      <div class="cv post tight">
         <div class="pad">
           <div class="mk">разбор</div>
           <div class="big h2" style="margin-top:10px">Что&nbsp;происходит за&nbsp;две недели чекапа</div>

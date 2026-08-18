@@ -1555,6 +1555,8 @@ body>section[id],body>section[id]:first-of-type,body>section[id]:last-of-type{
 .mform>*:first-child{margin-top:0}
 .mform .lf-row{display:grid;gap:18px!important}
 .mform .lf{margin:0!important;gap:8px}
+.mform>.lf,.mform>.lf-row,.mform>.slots,.mform>.lf-check,
+.mform>button,.mform>.lf-after,.mform>.mf-err{margin-top:18px!important}
 .mform>.lf,.mform>.lf-row{margin-top:18px!important}
 .mform .slots{margin-top:18px!important;padding-top:0!important;border-top:0!important}
 .mform .slots .sl-h{margin:0 0 14px!important}
@@ -1623,6 +1625,196 @@ footer a[href="/privacy"]:hover,footer a[href$="/privacy"]:hover{
 /* при наведении на логотип знак становится лаймовым, слово остаётся белым */
 .brand:hover .lg-mark,.brand:hover svg .lg-mark{fill:var(--accent)!important;transition:fill .18s ease}
 .brand svg .lg-mark{transition:fill .18s ease}
+
+/* =========================================================================
+   ЕДИНАЯ ШКАЛА SYNAPT – финальная сверка страницы
+   кегли, отступы, метрики, акценты, форма и подвал.
+   блок стоит последним в экранном стиле и перебивает всё, что выше
+   ========================================================================= */
+
+/* --- 1. кегли, широкий экран --- */
+h1,.cover h1,.r-cover h1{font-size:clamp(46px,5.9vw,70px)!important;line-height:1.04!important;
+  letter-spacing:-.03em}
+h2,.sec-head h2,.rel-head h2,.lead-copy h2,.cta-copy h2,.cost-top .cost-head h2{
+  font-size:36px!important;line-height:1.12!important;letter-spacing:-.025em}
+h3,.mstep h3,.bento .b h3,.case h3,.sh-top h3,.card h3,.arte h3,.contour h3,.step h3,
+.rel-card .rel-t,.case-split h3{font-size:21px!important;line-height:1.3!important;letter-spacing:-.015em}
+.eyebrow,.cover .eyebrow,.sec-head .eyebrow,.rel-head .eyebrow,.cost-head .eyebrow,
+.lead-copy .eyebrow{font-size:15px!important;line-height:1.4!important;letter-spacing:.02em!important}
+.lead,.cover .lead,.sec-head .lead,.lead-copy .lead,.cta-copy .lead,
+.cost-top .cost-head .lead{font-size:17px!important;line-height:1.6!important}
+body{font-size:15.5px!important}
+.stmt p{font-size:clamp(20px,2.2vw,28px)!important;line-height:1.42!important}
+.mstep p,.ct-row p,.sh-c p,.icol li,.art p,.fig-txt,.fig-side .fig-txt,.price-line .desc,
+.vrow p,.cta p,.upsell p,.vcard p,.crow .task,.crow .was,.crow .now,.lc-mgr-t>span,
+.lc-mgr-t b,.tg-after span,.bento .b p,.ba li{font-size:15.5px!important;line-height:1.6!important}
+.bn .cap,.metric span,.cover-stats .cs-c,.cs-c,.lf-check span,.lf-after,.f-note,.figcap,
+.sl-note,.mf-err,.mf-ok,.mf-fail,footer .f-legal p,footer .f-legal a,footer .f-bottom{
+  font-size:13.5px!important;line-height:1.5!important}
+/* моно-метки одного кегля */
+.mstep .num,.mstep .wk,.icol .ix,.icol .k,.incl .k,.vrow .k,.v-body .k,.price-line .start,
+.start,.sh-i,.sh-k,.rel-k,.f-k,footer .f-k,.sl-h,.slots .sl-h,.pc-k,
+.lf label,.mform .lf label,.lf label .req{font-size:11.5px!important;letter-spacing:.05em!important;
+  line-height:1.5!important}
+footer .f-nav a,footer .f-nav2 a{font-size:14.5px!important;line-height:1.45!important}
+
+/* --- 2. кегли, телефон --- */
+@media(max-width:760px){
+  h1,.cover h1,.r-cover h1{font-size:clamp(38px,11.2vw,48px)!important;line-height:1.03!important}
+  h2,.sec-head h2,.rel-head h2,.lead-copy h2,.cta-copy h2,.cost-top .cost-head h2{
+    font-size:28px!important;line-height:1.14!important}
+  h3,.mstep h3,.bento .b h3,.case h3,.sh-top h3,.card h3,.arte h3,.contour h3,.step h3,
+  .rel-card .rel-t,.case-split h3{font-size:19px!important}
+  .eyebrow,.cover .eyebrow,.sec-head .eyebrow,.rel-head .eyebrow,.cost-head .eyebrow,
+  .lead-copy .eyebrow{font-size:13.5px!important}
+  .lead,.cover .lead,.sec-head .lead,.lead-copy .lead,.cta-copy .lead,
+  .cost-top .cost-head .lead{font-size:15px!important}
+  body{font-size:15px!important}
+  .stmt p{font-size:20px!important;line-height:1.45!important}
+  .mstep p,.ct-row p,.sh-c p,.icol li,.art p,.fig-txt,.fig-side .fig-txt,.price-line .desc,
+  .vrow p,.cta p,.upsell p,.vcard p,.crow .task,.crow .was,.crow .now,.lc-mgr-t>span,
+  .lc-mgr-t b,.tg-after span,.bento .b p,.ba li{font-size:15px!important}
+  .bn .cap,.metric span,.cover-stats .cs-c,.cs-c,.lf-check span,.lf-after,.f-note,.figcap,
+  .sl-note,.mf-err,.mf-ok,.mf-fail,footer .f-legal p,footer .f-legal a,footer .f-bottom{
+    font-size:13px!important}
+  .mstep .num,.mstep .wk,.icol .ix,.icol .k,.incl .k,.vrow .k,.v-body .k,.price-line .start,
+  .start,.sh-i,.sh-k,.rel-k,.f-k,footer .f-k,.sl-h,.slots .sl-h,.pc-k,
+  .lf label,.mform .lf label,.lf label .req{font-size:11px!important}
+}
+
+/* --- 3. отступы обложки: кикер → заголовок 18, заголовок → подзаголовок 10 --- */
+.cover .cover-kick{margin:0 0 18px!important;padding:0!important}
+.cover .cover-kick .chip,.cover .chip{margin:0!important}
+.cover h1,.r-cover h1,.cover-grid h1{margin-top:0!important;margin-bottom:10px!important}
+.cover .lead,.r-cover .lead{margin-top:0!important}
+.cover .cover-grid>div:not(.cover-stats){padding-top:0!important}
+.cover .cover-grid>div:not(.cover-stats)>*:first-child{margin-top:0!important}
+
+/* --- 4. отступы разделов: кикер 18, заголовок 10, содержимое 26 --- */
+.eyebrow{margin:0 0 18px!important}
+.sec-head h2,.rel-head h2,.lead-copy h2,.cta-copy h2,.cost-top .cost-head h2{
+  margin-top:0!important;margin-bottom:10px!important}
+.sec-head .lead,.lead-copy .lead,.cta-copy .lead,.cost-top .cost-head .lead{margin-top:0!important}
+.sec-head,.rsec-head,.rel-head{margin-bottom:26px!important}
+.cost-top{margin-bottom:26px!important}
+.month,.arte,.vs,.vs-line,.ba,.shift,.bento,.incl,.bignum.split,.rel-grid,.rel-grid.split{gap:14px!important}
+.mstep h3,.bento .b h3,.case h3,.art h3,.card h3,.case-split h3{margin-bottom:8px!important}
+body>section[id],body>section[id]:first-of-type,body>section[id]:last-of-type{
+  padding-top:120px!important;padding-bottom:120px!important}
+@media(max-width:760px){
+  body>section[id],body>section[id]:first-of-type,body>section[id]:last-of-type{
+    padding-top:72px!important;padding-bottom:72px!important}
+}
+
+/* --- 5. метрики: крупная цифра, хвост серым и мельче, подпись через 6 --- */
+.cs-n,.cover-stats .cs-n,.cover-stats:has(.cs:only-child) .cs-n{
+  font-size:clamp(46px,5vw,64px)!important;line-height:1!important;white-space:nowrap}
+@media(max-width:760px){
+  .cs-n,.cover-stats .cs-n,.cover-stats:has(.cs:only-child) .cs-n{font-size:44px!important}
+}
+.cs-n .cs-u,.cs-n .cs-pre,.cs-n .cs-of,.cs-n .tail,
+.metric b .u,.metric b small,.metric b .tail,.bn b .tail,
+.price-line .big .pre,.price-line .big small,.cost-top .price-line .big small{
+  font-size:.46em!important;color:var(--text-muted)!important;font-weight:500}
+.cover .cover-stats .cs{gap:0!important}
+.cs-c,.cover-stats .cs-c,.cover .cover-stats .cs-c{margin-top:6px!important}
+.bn .cap,.metric span{margin-top:6px!important}
+/* хвост метрики обложки: тот же коэффициент, что у остальных материалов */
+.cover-stats .cs-n .cs-u,.cover-stats .cs-n .cs-pre,.cover-stats .cs-n .cs-of{font-size:.46em!important}
+/* подпись под цифрой: не шире 22ch и прижата вправо */
+.cover-stats .cs-c,.cover .cover-stats .cs-c{max-width:22ch!important;width:auto!important;
+  margin-left:auto!important;margin-right:0!important;padding-right:0!important;
+  text-align:right!important;text-wrap:balance}
+/* две метрики стоят колонкой: цифре хватает ширины, линия-разделитель не нужна */
+@media(min-width:981px){
+  .cover-grid.stats .cover-stats,.cover .cover-stats{display:flex!important;
+    flex-direction:column!important;align-items:flex-end!important;gap:26px!important;
+    align-self:start!important}
+  .cover-stats::before{display:none!important}
+  .cover-stats .cs{text-align:right!important;width:100%}
+}
+
+/* --- 6. условия: цена справа на одной верхней линии с заголовком --- */
+.cost-top{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;
+  align-items:start!important;column-gap:clamp(24px,4vw,64px)!important;row-gap:18px!important}
+.cost-top .cost-head{grid-column:1;grid-row:1;padding-top:0!important;margin-bottom:0!important}
+.cost-top .price-line{display:contents!important}
+.cost-top .price-line .big{grid-column:2;grid-row:1;justify-self:end;align-self:start;
+  display:inline-flex!important;align-items:baseline;gap:.14em;white-space:nowrap;
+  justify-content:flex-end;text-align:right;
+  font-size:clamp(46px,5.4vw,68px)!important;line-height:1!important;letter-spacing:-.035em;
+  /* над заголовком стоит кикер: 15px × 1.4 плюс его отступ 18px */
+  margin:calc(15px * 1.4 + 18px) 0 0!important}
+.cost-top .price-line .big small,.cost-top .price-line .big .pre{display:inline!important;margin:0!important}
+.cost-top .pl-side{grid-column:1/-1;grid-row:2;justify-self:stretch;text-align:left;
+  display:flex;flex-direction:column;gap:10px;width:100%;margin-top:26px!important}
+@media(max-width:760px){
+  .cost-top{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)!important;column-gap:18px!important}
+  .cost-top .cost-head{min-width:0;width:auto!important}
+  .cost-top .price-line .big{font-size:36px!important;margin:calc(13.5px * 1.4 + 18px) 0 0!important}
+  .cost-top .pl-side{margin-top:22px!important}
+}
+
+/* --- 7. что входит и какой результат: заголовок белым, номера лаймовым --- */
+.incl .icol .k,.icol .k{color:var(--text)!important;font-weight:600!important;margin-bottom:14px!important}
+.incl .icol .ix,.icol .ix,.incl li:hover .ix{color:var(--accent)!important;font-weight:600!important}
+:root[data-theme="light"] .incl .icol .ix,
+:root[data-theme="light"] .icol .ix,
+:root[data-theme="light"] .incl li:hover .ix{color:var(--accent-deep)!important}
+.icol li{color:var(--text-2)}
+
+/* --- 8. форма: шаг 18, подпись через 6, согласие 18 / 22 / 14 --- */
+.mform{display:flex!important;flex-direction:column!important;gap:18px!important;row-gap:18px!important}
+.mform>*{margin:0!important}
+.mform .lf-row,.lf-row{display:grid!important;grid-template-columns:1fr 1fr;gap:18px!important;margin:0!important}
+@media(max-width:700px){.mform .lf-row,.lf-row{grid-template-columns:1fr!important;gap:18px!important}}
+.mform .lf,.mform .lf.lf-task{display:flex!important;flex-direction:column!important;gap:6px!important;margin:0!important}
+.mform .lf label{margin:0!important}
+.mform .slots{display:flex!important;flex-direction:column!important;gap:14px!important;
+  margin:0!important;padding:0!important;border:0!important;border-top:0!important}
+.mform .slots .sl-h{margin:0 0 -4px!important}
+.mform .sl-note:empty,.mform .sl-slots:empty{display:none!important}
+.mform .lf-check{display:flex!important;align-items:flex-start!important;gap:12px!important;
+  margin:0!important;padding:0!important;min-height:0!important}
+.mform .lf-check input[type=checkbox]{width:20px!important;height:20px!important;flex:none!important;
+  align-self:flex-start!important;margin:0!important}
+.mform .lf-check span{padding-top:0!important}
+.mform .btn.pri.lg,.mform button[type=submit]{margin-top:4px!important}
+.mform .lf-after{margin-top:-4px!important;margin-bottom:0!important;color:var(--text-dim)!important}
+
+/* --- 9. ник Никиты лаймовым везде --- */
+.mgr-name,.lc-mgr-t b a,.lc-mgr-t b a:hover,.mf-fail a{color:var(--accent)!important}
+.lc-mgr-t b a{border-bottom-color:var(--line-accent)!important}
+:root[data-theme="light"] .mgr-name,:root[data-theme="light"] .lc-mgr-t b a,
+:root[data-theme="light"] .mf-fail a{color:var(--accent-deep)!important}
+
+/* --- 10. подвал: 6px по вертикали, 18px по горизонтали --- */
+footer .f-nav2,footer .f-nav{display:flex!important;flex-direction:row!important;flex-wrap:wrap;
+  align-items:baseline;gap:6px 18px!important}
+footer .f-nav2 .f-k,footer .f-nav .f-k{flex:0 0 100%;width:100%;margin:0 0 6px!important}
+footer .f-nav2 a,footer .f-nav a{display:inline-block!important;width:auto!important;
+  min-height:0!important;margin:0!important;line-height:1.45}
+footer .f-legal{display:flex;flex-direction:column;gap:6px!important}
+footer .f-legal p{margin:0!important;line-height:1.45}
+
+/* --- 11. другие услуги: отдельные карточки, общей плашки нет --- */
+.rel-grid,.rel-grid.split{background:transparent!important;border:0!important;
+  border-radius:0!important;overflow:visible!important}
+.rel-grid.split .rel-card{background:var(--surface)!important;border:1px solid var(--line)!important;
+  border-radius:16px!important;margin:0!important}
+
+/* при наведении на логотип знак становится лаймовым, слово остаётся белым */
+.brand:hover .lg-mark,.brand:hover svg .lg-mark{fill:var(--accent)!important;transition:fill .18s ease}
+.brand svg .lg-mark{transition:fill .18s ease}
+
+
+
+/* единая шкала метрик обложки: 38px телефон / 54px широкий,
+   как на synapt-site и чекапе; хвост .46em серым */
+.cs-n,.cover-stats .cs-n,.cover .cover-stats .cs-n,
+.cover-stats:has(.cs:only-child) .cs-n{font-size:clamp(38px,4.4vw,54px)!important;line-height:1}
+.cs-n .cs-u,.cs-n .cs-of,.cs-n .cs-pre,.cs-n .tail,
+.cover-stats .cs-n .cs-u,.cover-stats .cs-n .cs-of,.cover-stats .cs-n .cs-pre{font-size:.46em!important;color:var(--text-muted)!important}
 </style>
 <style media="print">
 @page{size:A4 portrait;margin:15mm 13mm 17mm}
@@ -1713,6 +1905,7 @@ footer{margin-top:26px;padding:24px 0 0;break-inside:avoid;page-break-inside:avo
 .pc-i span{font-size:12.5px;color:var(--text-dim);line-height:1.4}
 .pc-i a{font-family:var(--mono);font-size:13px;color:var(--text-2);line-height:1.45;
   border-bottom:1px solid var(--line-accent);width:fit-content;font-feature-settings:"liga" 0}
+
 </style>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-512.png" sizes="512x512" type="image/png">

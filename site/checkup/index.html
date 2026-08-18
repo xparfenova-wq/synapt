@@ -1344,6 +1344,193 @@ footer .wrap>*:last-child{margin-bottom:0!important}
 /* при наведении на логотип знак становится лаймовым, слово остаётся белым */
 .brand:hover .lg-mark,.brand:hover svg .lg-mark{fill:var(--accent)!important;transition:fill .18s ease}
 .brand svg .lg-mark{transition:fill .18s ease}
+
+
+/* ================= правки чекапа: обложка, подвал, единая шкала =================
+   блок стоит последним в стилях и перебивает всё, что объявлено выше */
+
+/* --- 1. обложка на телефоне: чип, заголовок и лид в левом низу,
+   метрики в правом верхнем углу с отступом бургера --- */
+@media(max-width:900px){
+  .hero.rh-hero{
+    padding-top:66px!important;padding-bottom:0!important;
+    min-height:100svh;box-sizing:border-box;display:flex;align-items:stretch}
+  .hero.rh-hero .hero-in{
+    display:flex!important;flex-direction:column!important;
+    width:100%;min-height:0!important;gap:0!important;
+    padding-top:11px!important;padding-bottom:34px!important}
+  /* метрики: верх колонки, правый край ровно по бургеру */
+  .hero.rh-hero .hero-stats{
+    order:-1!important;margin:0!important;padding:0!important;
+    display:grid!important;grid-template-columns:minmax(0,1fr)!important;
+    gap:16px!important;text-align:right;width:100%}
+  .hero.rh-hero .hero-stats .hs b{font-size:var(--fz-metric)!important;white-space:nowrap}
+  .hero.rh-hero .hero-stats .hs>span{margin-left:auto;max-width:22ch}
+  /* текст прижат к низу первого экрана */
+  .hero.rh-hero .hero-txt{
+    order:1!important;flex:1 1 auto;display:flex;flex-direction:column;justify-content:flex-end;
+    min-height:0}
+  .hero.rh-hero .hero-bottom{margin-top:auto!important;padding-top:24px!important}
+  .hero.rh-hero .hero-kick{margin-bottom:0!important}
+  .hero.rh-hero .hero-chip{display:inline-block}
+  .hero.rh-hero h1{margin:18px 0 0!important}
+  .hero.rh-hero .lead{margin:10px 0 0!important}
+}
+/* очень низкие экраны: лид не выталкивает заголовок за край */
+@media(max-width:900px) and (max-height:740px){
+  .hero.rh-hero .hero-stats{gap:12px!important}
+  .hero.rh-hero .hero-stats .hs b{font-size:30px!important}
+  .hero.rh-hero .hero-bottom{padding-top:16px!important}
+}
+
+/* --- 2. графика обложки фоном --- */
+#chkFx{opacity:.35!important}
+@media(max-width:900px){#chkFx{opacity:.35!important}}
+
+/* --- 3. Telegram менеджера: подчёркивание по базовой линии --- */
+footer .f-tg{
+  display:inline!important;align-items:baseline!important;
+  border-bottom:0!important;text-decoration:underline!important;
+  text-decoration-thickness:1px!important;text-underline-offset:3px!important;
+  text-decoration-color:var(--line-accent)!important;line-height:1.45!important}
+footer .f-tg:hover{text-decoration-color:var(--accent)!important;color:var(--text)!important}
+
+/* --- 4. подвал: разделы 6px по вертикали и 18px по горизонтали --- */
+footer .f-nav,footer .f-nav2{
+  display:flex!important;flex-direction:row!important;flex-wrap:wrap!important;
+  align-content:flex-start!important;justify-content:flex-start!important;
+  gap:6px 18px!important;max-width:300px!important}
+footer .f-nav .f-k,footer .f-nav2 .f-k{flex:0 0 100%!important;margin:0 0 4px!important}
+footer .f-nav a,footer .f-nav2 a{
+  display:inline!important;margin:0!important;padding:0!important;
+  line-height:1.45!important;flex:0 0 auto!important}
+/* реквизиты: тот же шрифт, кегль и межстрочный, что на остальных страницах */
+footer .f-legal p,footer .f-legal a,footer .f-note,footer .f-copy{
+  font-family:var(--sans)!important;font-size:13.5px!important;line-height:19.6px!important}
+footer .f-legal{gap:0!important}
+footer .f-legal p{margin:0 0 4px!important}
+
+/* --- 5-7. блок условий и менеджер --- */
+/* цена справа на одной верхней линии с заголовком раздела */
+@media(min-width:901px){
+  #entry>.wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,.5fr);
+    column-gap:clamp(28px,4vw,60px);align-items:start}
+  #entry>.wrap>.eyebrow{grid-column:1;grid-row:1}
+  #entry>.wrap>.price-hero{grid-column:1;grid-row:2;display:block}
+  #entry>.wrap>.ph-num{grid-column:2;grid-row:1/span 2;text-align:right;justify-self:end;
+    order:0;margin:0}
+  #entry .ph-txt{max-width:56ch;margin:0}
+}
+/* телефон: кикер, цена, объяснение */
+@media(max-width:900px){
+  #entry>.wrap{display:flex;flex-direction:column}
+  #entry>.wrap>.eyebrow{order:1}
+  #entry>.wrap>.ph-num{order:2;text-align:left;margin:0 0 26px}
+  #entry>.wrap>.price-hero{order:3;display:block}
+  #entry .ph-txt{margin:0}
+}
+#entry .ph-num b{line-height:1!important}
+/* имя и ник менеджера лаймовые */
+.lc-mgr-t b .lc-name,.lc-mgr-t b a,#lead .lc-mgr-t b a{color:var(--accent)!important}
+.lc-mgr-t b a{border-bottom:1px solid var(--line-accent)!important}
+.lc-mgr-t b a:hover{border-bottom-color:var(--accent)!important}
+
+/* ================= единая шкала кеглей и отступов ================= */
+:root{
+  --fz-h1:clamp(46px,5.9vw,70px);
+  --fz-h2:36px;
+  --fz-h3:21px;
+  --fz-kick:15px;
+  --fz-lead:17px;
+  --fz-body:15.5px;
+  --fz-cap:13.5px;
+  --fz-mono:11.5px;
+  --fz-metric:clamp(38px,4.4vw,54px);
+}
+@media(max-width:760px){
+  :root{
+    --fz-h1:clamp(38px,11.2vw,48px);
+    --fz-h2:28px;
+    --fz-h3:19px;
+    --fz-kick:13.5px;
+    --fz-lead:15px;
+    --fz-body:15px;
+    --fz-cap:13px;
+    --fz-mono:11px;
+  }
+}
+h1,.hero h1{font-size:var(--fz-h1)!important;line-height:1.06;letter-spacing:-.03em}
+h2,.sec-head h2,.lead-copy h2{font-size:var(--fz-h2)!important;line-height:1.12;letter-spacing:-.025em}
+h3,.card h3,.case h3,.rule .rt,.nxt .nt,.faq summary,#why .rule .rt,.lc-mgr-t b{
+  font-size:var(--fz-h3)!important;line-height:1.3;letter-spacing:-.015em}
+.lc-mgr-t b{font-size:15.5px!important}
+/* кикер раздела и чип обложки */
+.eyebrow,.hero-chip,.chip,.f-k{font-size:var(--fz-kick)!important}
+/* моно-метки: ярлыки карточек, номера строк, подписи полей */
+.tag,.nxt .nk,.plan .pn,.case .who,.rule .rn,.lc-list .lk,.sl-h,
+.lf label,.f-l,.fld label,.lf label .req{font-size:var(--fz-mono)!important}
+.lead,.sec-head .lead,.hero .lead,.lead-copy .lead{font-size:var(--fz-lead)!important;line-height:1.55}
+.rule .rd,.card p,.case p,.faq .ans,.ph-txt,.lc-mgr-t span,.note,.plan li,.lf-done,.nav-sheet a{
+  font-size:var(--fz-body)!important;line-height:1.6}
+.hs>span,.ph-num small,.metric>span,.dom-cap,.fx-cap,.f-note,.f-legal p,.f-copy,.f-nav a,.f-legal a,
+.sl-note,.lf-check>span,.lf-err,.lf-hint,.lf-after,.rule .rk,.lc-list li,.f-tg{
+  font-size:var(--fz-cap)!important;line-height:1.5}
+/* моно-метки: подписи полей и служебные ярлыки */
+.lf label,.f-l,.fld label,.lf label .req{font-size:var(--fz-mono)!important}
+
+/* --- отступы единой шкалы --- */
+/* кикер → заголовок 18 */
+.sec-head .eyebrow,.lead-copy .eyebrow,#lead .eyebrow,#entry>.wrap>.eyebrow,.rsec-head .eyebrow{
+  margin-bottom:18px!important}
+/* заголовок → подзаголовок 10 */
+.sec-head h2,.lead-copy h2,#lead .lead-copy h2{margin:0!important}
+.sec-head .lead,.lead-copy .lead,#lead .lead-copy .lead{margin:10px 0 0!important}
+/* подзаголовок → содержимое 26 */
+.sec-head,body>section>.wrap>.sec-head,body>section>.wrap>.rsec-head{margin-bottom:26px!important}
+/* карточки внутри блока 14 */
+.nxt{gap:14px!important}
+.bento{gap:14px!important}
+/* метрика → её подпись 6 */
+.hs>span,.ph-num small,.metric>span{margin-top:6px!important}
+/* между разделами 120 / 72 */
+:root{--sec-pad:120px}
+@media(max-width:760px){:root{--sec-pad:72px}}
+body>section[id],body>section[id]:first-of-type,body>section[id]:last-of-type{
+  padding-top:var(--sec-pad)!important;padding-bottom:var(--sec-pad)!important}
+footer{padding-top:var(--sec-pad)!important}
+@media(min-width:901px){
+  .hero.rh-hero{padding-top:calc(66px + var(--sec-pad))!important;padding-bottom:var(--sec-pad)!important}
+}
+/* поле формы → следующее поле 18 */
+.lf-grid{gap:18px 20px!important}
+@media(max-width:720px){.lf-grid{gap:18px!important}}
+
+
+/* цифра метрики остаётся обычным блоком: флекс разбивал её на символы,
+   потому что скрипт проявления оборачивает каждый знак в свой span */
+.hs b,.ph-num b{display:block!important}
+.hs b .tch,.ph-num b .tch{display:inline-block}
+.m-t,.hs b .m-t,.ph-num b .m-t{display:inline!important;font-size:.42em!important;
+  margin-left:.16em!important;letter-spacing:0!important;line-height:inherit!important;
+  vertical-align:baseline;position:static!important}
+
+
+/* подвал: шаг пунктов ровно 6px по вертикали.
+   строка ссылки 1.45 давала +19px к каждому ряду, поэтому строка сжата до 1 */
+footer .f-nav,footer .f-nav2{row-gap:6px!important;column-gap:18px!important;line-height:1!important}
+footer .f-nav a,footer .f-nav2 a{line-height:1!important;padding:0!important;margin:0!important}
+footer .f-nav .f-k,footer .f-nav2 .f-k{line-height:1.4!important;margin:0 0 4px!important}
+/* чип обложки обычным шрифтом, как на остальных страницах */
+.hero-chip,.cover-kick .chip,.chip{font-family:var(--sans)!important;letter-spacing:0!important}
+
+/* имя менеджера наследует кегль строки, а не размер обычного текста */
+.lc-mgr-t b .lc-name{font-size:inherit!important;line-height:inherit!important}
+/* смежные материалы: две колонки на телефоне, как на остальных страницах */
+@media(max-width:760px){
+  .nxt{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important}
+  .nxt a{padding:16px 16px!important}
+}
+
 </style>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23131514'/%3E%3Ccircle cx='32' cy='32' r='13' fill='%23D0E865'/%3E%3C/svg%3E">
 <meta name="theme-color" content="#0E1211">
@@ -1403,8 +1590,8 @@ footer .wrap>*:last-child{margin-bottom:0!important}
 
 <section id="entry" class="rh-think"><div class="wrap">
   <div class="eyebrow reveal"><span class="n">02</span> Цена и&nbsp;ценность</div>
+  <div class="ph-num reveal d1"><b>19&nbsp;900<span class="m-t">₽</span></b><small>за&nbsp;чекап целиком</small></div>
   <div class="price-hero reveal d1">
-    <div class="ph-num"><b>19&nbsp;900<span class="m-t">₽</span></b><small>за&nbsp;чекап целиком</small></div>
     <p class="ph-txt">Первый шаг стоит в&nbsp;несколько раз меньше месячной зарплаты одного менеджера, но&nbsp;уже через две недели вы&nbsp;получаете карту процессов, одну автоматизацию и&nbsp;чёткий план дальнейшей AI-интеграции</p>
   </div>
 </div></section>
@@ -1538,7 +1725,8 @@ footer .wrap>*:last-child{margin-bottom:0!important}
     <div class="f-legal">
       <span class="f-k">Формальности</span>
       <p>ИП Орешкин Антон Вадимович</p>
-      <p>ИНН 100123323420, ОГРНИП 324100000000411</p>
+      <p>ИНН 100123323420</p>
+      <p>ОГРНИП 324100000000411</p>
       <p>185014, Республика Карелия, Петрозаводск, переулок Попова, дом&nbsp;6, квартира&nbsp;42</p>
       <a href="/privacy">Политика обработки персональных данных</a>
     </div>
@@ -1558,16 +1746,17 @@ footer .wrap>*:last-child{margin-bottom:0!important}
    ложится ровно на кнопку отправки и заявку с телефона отправить нечем */
 (function(){
   var fab=document.querySelector('.fab'),lead=document.getElementById('lead'),
-      foot=document.querySelector('footer');
+      foot=document.querySelector('footer'),hero=document.querySelector('.hero.rh-hero');
   if(!fab||!lead||!('IntersectionObserver' in window))return;
   var hit={};
+  var key=function(el){return el===lead?'lead':el===foot?'foot':'hero'};
   var io=new IntersectionObserver(function(en){
-    en.forEach(function(e){ hit[e.target===lead?'lead':'foot']=e.isIntersecting });
-    var off=!!(hit.lead||hit.foot);
+    en.forEach(function(e){ hit[key(e.target)]=e.isIntersecting });
+    var off=!!(hit.lead||hit.foot||hit.hero);
     fab.classList.toggle('is-off',off);
     fab.setAttribute('aria-hidden',off?'true':'false');
   },{rootMargin:'0px 0px -20% 0px'});
-  io.observe(lead); if(foot) io.observe(foot);
+  io.observe(lead); if(foot) io.observe(foot); if(hero) io.observe(hero);
 })();
 </script>
 <script>
@@ -1861,78 +2050,129 @@ footer .wrap>*:last-child{margin-bottom:0!important}
 </script>
 
 <script>
-/* обложка чекапа: дорожки процессов, по ним идёт разбор и находит узкие места */
+/* обложка: абстрактная схема процессов.
+   0-2,5с – чертёж тонкими серыми линиями; пауза; заливка лаймом от центра
+   по связям, узлы загораются по мере достижения; два-три узла остаются
+   серыми с обводкой – это узкие места. цикл 10 секунд */
 (function(){
   var c=document.getElementById('chkFx'); if(!c) return;
-  var ctx=c.getContext('2d'), DPR=Math.min(devicePixelRatio||1,2), W=0,H=0,t=0;
-  var LANES=[{n:'заявки',stuck:.62},{n:'продажи',stuck:.38},{n:'закупки',stuck:.74},
-             {n:'документы',stuck:.5},{n:'поддержка',stuck:.28}];
-  var GR='128,140,136', PH='208,232,101', WH='232,238,236';
+  var ctx=c.getContext('2d'), DPR=Math.min(devicePixelRatio||1,2), W=0,H=0;
+  var GR='128,140,136', PH='208,232,101';
   function theme(){var l=document.documentElement.getAttribute('data-theme')==='light';
-    GR=l?'40,48,45':'128,140,136'; PH=l?'118,146,34':'208,232,101'; WH=l?'26,30,28':'232,238,236'}
+    GR=l?'92,102,98':'128,140,136'; PH=l?'118,146,34':'208,232,101'}
   theme(); new MutationObserver(theme).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+
+  /* узлы в долях холста: схема одинаковая на любой ширине */
+  var NODES=[
+    {x:.50,y:.50,r:5.4},
+    {x:.34,y:.34,r:4.2},{x:.66,y:.33,r:4.2},{x:.68,y:.68,r:4.2},{x:.32,y:.67,r:4.2},
+    {x:.19,y:.20,r:3.4},{x:.50,y:.16,r:3.4},{x:.82,y:.19,r:3.4},
+    {x:.88,y:.48,r:3.4},{x:.83,y:.82,r:3.4},{x:.50,y:.87,r:3.4},
+    {x:.17,y:.81,r:3.4},{x:.12,y:.50,r:3.4},
+    {x:.28,y:.05,r:2.6},{x:.72,y:.05,r:2.6},{x:.96,y:.30,r:2.6},
+    {x:.96,y:.70,r:2.6},{x:.68,y:.96,r:2.6},{x:.30,y:.96,r:2.6},{x:.04,y:.66,r:2.6}
+  ];
+  /* связи: от центра наружу, плюс поперечные хорды */
+  var EDGES=[[0,1],[0,2],[0,3],[0,4],
+    [1,5],[1,6],[2,6],[2,7],[2,8],[3,8],[3,9],[3,10],[4,10],[4,11],[4,12],[1,12],
+    [5,13],[6,14],[7,15],[8,16],[9,17],[10,18],[11,19],
+    [5,6],[6,7],[8,9],[11,12],[12,5],[9,10]];
+  /* узкие места: до них заливка не доходит */
+  var STUCK={7:1,11:1,16:1};
+
+  var CYCLE=10000, DRAW=2500, HOLD=1000, FILL=5000; /* остальное – затухание */
+  var t0=performance.now();
+
   function build(){var r=c.getBoundingClientRect(); W=r.width; H=r.height;
     if(!W||!H) return; c.width=W*DPR; c.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0)}
   build(); addEventListener('resize',build);
-  (function frame(){
+
+  /* координаты: схема вписана в квадрат, чтобы не растягивалась на широком экране */
+  function pt(n){
+    /* на широком экране схема сдвинута левее, чтобы не лезть под колонку цифр */
+    var side=Math.min(W,H)*(W<981?.92:.78), cx=W*(W<981?.5:.46), cy=H*.5;
+    return [cx+(n.x-.5)*side, cy+(n.y-.5)*side];
+  }
+  /* дистанция узла от центра по графу – определяет очередь загорания */
+  var depth=(function(){
+    var d=new Array(NODES.length).fill(Infinity), q=[0]; d[0]=0;
+    while(q.length){var i=q.shift();
+      EDGES.forEach(function(e){
+        var a=e[0],b=e[1];
+        if(a===i&&d[b]>d[i]+1&&!STUCK[b]){d[b]=d[i]+1;q.push(b)}
+        if(b===i&&d[a]>d[i]+1&&!STUCK[a]){d[a]=d[i]+1;q.push(a)}
+      });
+    }
+    return d;
+  })();
+  var maxD=Math.max.apply(null,depth.filter(function(v){return isFinite(v)}));
+
+  function ease(x){return x<0?0:x>1?1:x*x*(3-2*x)}
+
+  (function frame(now){
     requestAnimationFrame(frame);
     if(!W||!H){build(); return}
-    if(c.getBoundingClientRect().bottom<-900){t++; return}
+    if(c.getBoundingClientRect().bottom<-600) return;
+    var ph=((now||performance.now())-t0)%CYCLE;
     ctx.clearRect(0,0,W,H);
-    var narrow=W<981;
-    var x0=narrow?76:W*.15, x1=narrow?W-22:W*.60;
-    var gap=narrow?21:30;
-    /* дорожки идут выше заголовка: на телефоне в середине обложки,
-       на широком экране в свободной правой части под цифрами */
-    var st=document.querySelector('.hero-stats');
-    var sb=st?st.getBoundingClientRect().bottom-c.getBoundingClientRect().top:0;
-    var top=narrow?Math.max(sb+42,H*.36):Math.max(150,H*.30);
-    var scan=((t*.0016)%1.3);
-    LANES.forEach(function(l,i){
-      var y=top+i*gap;
-      ctx.beginPath(); ctx.moveTo(x0,y); ctx.lineTo(x1,y);
-      ctx.strokeStyle='rgba('+GR+',.34)'; ctx.lineWidth=1.2; ctx.stroke();
-      /* подпись дорожки мелким моно */
-      ctx.font='9px "JetBrains Mono", ui-monospace, monospace';
-      ctx.textBaseline='middle'; ctx.textAlign='right';
-      ctx.fillStyle='rgba('+GR+','+(found?.85:.5)+')';
-      ctx.fillText(l.n, x0-10, y);
-      /* узкое место на дорожке */
-      var sx=x0+(x1-x0)*l.stuck;
-      var found=scan>l.stuck;
-      if(found){
-        var pulse=.5+.5*Math.sin(t*.05+i);
-        var g=ctx.createRadialGradient(sx,y,0,sx,y,16+pulse*8);
-        g.addColorStop(0,'rgba('+PH+','+(.42+pulse*.24)+')'); g.addColorStop(1,'rgba('+PH+',0)');
-        ctx.fillStyle=g; ctx.beginPath(); ctx.arc(sx,y,16+pulse*8,0,7); ctx.fill();
-      }
-      ctx.beginPath(); ctx.arc(sx,y,found?4.2:2.8,0,7);
-      ctx.fillStyle=found?'rgba('+PH+',1)':'rgba('+GR+',.62)'; ctx.fill();
-      /* поток по дорожке */
-      var px=x0+((t*1.1+i*90)%(x1-x0));
-      ctx.beginPath(); ctx.arc(px,y,2.2,0,7);
-      ctx.fillStyle='rgba('+WH+',.6)'; ctx.fill();
-      ctx.beginPath(); ctx.moveTo(px-16,y); ctx.lineTo(px,y);
-      ctx.strokeStyle='rgba('+WH+',.18)'; ctx.lineWidth=1.2; ctx.stroke();
+
+    /* 1. чертёж: связи проявляются по очереди */
+    var drawP=ease(ph/DRAW);
+    var fillP=ph<DRAW+HOLD?0:ease((ph-DRAW-HOLD)/FILL);
+    /* к концу цикла лайм плавно гаснет обратно в серое */
+    var fade=ph>DRAW+HOLD+FILL?ease((ph-DRAW-HOLD-FILL)/(CYCLE-DRAW-HOLD-FILL)):0;
+    var live=fillP*(1-fade);
+
+    ctx.lineCap='round';
+    EDGES.forEach(function(e,i){
+      var A=pt(NODES[e[0]]), B=pt(NODES[e[1]]);
+      var seg=i/EDGES.length, k=(drawP-seg*.55)/.45;
+      k=k<0?0:k>1?1:k;
+      if(k<=0) return;
+      ctx.beginPath(); ctx.moveTo(A[0],A[1]);
+      ctx.lineTo(A[0]+(B[0]-A[0])*k, A[1]+(B[1]-A[1])*k);
+      ctx.strokeStyle='rgba('+GR+',.42)'; ctx.lineWidth=1; ctx.stroke();
+
+      /* 3. лаймовая заливка идёт от центра по глубине графа */
+      var dA=depth[e[0]], dB=depth[e[1]];
+      if(STUCK[e[0]]||STUCK[e[1]]) return;
+      var near=Math.min(dA,dB), far=Math.max(dA,dB);
+      if(!isFinite(far)) return;
+      var reach=live*(maxD+1);
+      var g=(reach-near)/1;
+      g=g<0?0:g>1?1:g;
+      if(g<=0) return;
+      var from=near===dA?A:B, to=near===dA?B:A;
+      ctx.beginPath(); ctx.moveTo(from[0],from[1]);
+      ctx.lineTo(from[0]+(to[0]-from[0])*g, from[1]+(to[1]-from[1])*g);
+      ctx.strokeStyle='rgba('+PH+',.62)'; ctx.lineWidth=1.5; ctx.stroke();
     });
-    /* линия разбора идёт слева направо и подсвечивает найденное */
-    if(scan<=1){
-      var lx=x0+(x1-x0)*scan;
-      ctx.beginPath(); ctx.moveTo(lx,top-26); ctx.lineTo(lx,top+(LANES.length-1)*gap+26);
-      ctx.strokeStyle='rgba('+PH+',.7)'; ctx.lineWidth=1.6; ctx.stroke();
-    }
-    /* места текста и цифр стираются с холста, линии по ним не идут */
-    (function(){
-      var cr=c.getBoundingClientRect();
-      ['.hero .hero-kick','.hero h1','.hero .lead','.hero .hero-stats'].forEach(function(sel){
-        [].forEach.call(document.querySelectorAll(sel),function(el){
-          var r=el.getBoundingClientRect();
-          if(!r.width||!r.height) return;
-          ctx.clearRect(r.left-cr.left-10, r.top-cr.top-8, r.width+20, r.height+16);
-        });
-      });
-    })();
-    t++;
+
+    /* 2/4. узлы: серые в чертеже, лаймовые по мере достижения,
+       узкие места остаются серыми с тонкой обводкой */
+    NODES.forEach(function(n,i){
+      var P=pt(n);
+      var appear=ease((drawP-(i/NODES.length)*.5)/.5);
+      if(appear<=0) return;
+      var stuck=!!STUCK[i];
+      var lit=!stuck&&isFinite(depth[i])&&live*(maxD+1)>=depth[i]+.9;
+      var glow=lit?ease((live*(maxD+1)-depth[i]-.9)/.6):0;
+
+      if(lit&&glow>0){
+        var rg=ctx.createRadialGradient(P[0],P[1],0,P[0],P[1],n.r*4.5);
+        rg.addColorStop(0,'rgba('+PH+','+(.34*glow)+')');
+        rg.addColorStop(1,'rgba('+PH+',0)');
+        ctx.fillStyle=rg; ctx.beginPath(); ctx.arc(P[0],P[1],n.r*4.5,0,7); ctx.fill();
+      }
+      ctx.beginPath(); ctx.arc(P[0],P[1],n.r*appear,0,7);
+      if(stuck){
+        ctx.fillStyle='rgba('+GR+',.10)'; ctx.fill();
+        ctx.strokeStyle='rgba('+GR+',.72)'; ctx.lineWidth=1.2; ctx.stroke();
+      } else {
+        ctx.fillStyle=lit?'rgba('+PH+','+(.5+.5*glow)+')':'rgba('+GR+',.55)';
+        ctx.fill();
+      }
+    });
   })();
 })();
 </script>

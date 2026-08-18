@@ -2226,6 +2226,228 @@ footer .f-bottom{margin-top:18px!important;padding-top:14px!important;padding-bo
 /* при наведении на логотип знак становится лаймовым, слово остаётся белым */
 .brand:hover .lg-mark,.brand:hover svg .lg-mark{fill:var(--accent)!important;transition:fill .18s ease}
 .brand svg .lg-mark{transition:fill .18s ease}
+
+/* ==========================================================
+   ЕДИНАЯ ШКАЛА
+   один набор кеглей и отступов на всю страницу и на все страницы студии.
+   Блок стоит последним и перебивает всё, что выше по файлу
+   ========================================================== */
+
+/* --- шкала: широкий экран --- */
+:root{
+  --fs-h1:clamp(46px,5.9vw,70px);
+  --fs-h2:36px;
+  --fs-h3:21px;
+  --fs-h4:21px;
+  --fs-lead:17px;
+  --fs-body:15.5px;
+  --fs-cap:13.5px;
+  --fs-kick:15px;
+  --fs-mono:11.5px;
+  --fs-metric:38px;
+  --sp-kick-h:18px;
+  --sp-h-sub:10px;
+  --sp-sub-cont:26px;
+  --sp-card:14px;
+  --sp-sec:120px;
+  --sp-mcap:6px;
+  --sp-field:18px;
+}
+/* --- шкала: телефон --- */
+@media(max-width:760px){
+  :root{
+    --fs-h1:clamp(38px,11.2vw,48px);
+    --fs-h2:28px;
+    --fs-h3:19px;
+    --fs-h4:19px;
+    --fs-lead:15px;
+    --fs-body:15px;
+    --fs-cap:13px;
+    --fs-kick:13.5px;
+    --fs-mono:11px;
+    --sp-sec:72px;
+  }
+}
+body{font-size:var(--fs-body)!important}
+
+/* --- заголовки --- */
+h1,.hero h1,.cover h1{font-size:var(--fs-h1)!important;line-height:1.06;letter-spacing:-.03em}
+h2,.sec-head h2,.rsec-head h2,.lead-copy h2,.nowband h2{font-size:var(--fs-h2)!important;
+  line-height:1.14;letter-spacing:-.025em}
+h3,.ccard h3,.svc h3,.card h3,.wcard h3,.prlist h3,.faq h3,.mods .card h3,
+#services .step-body .card h3,.rel-card .rel-t,.arte h3,.contour h3,
+.rm-t,.pr-main h4,.faq summary,.cs-head h3,.rule .rt,.sh-t,.lf-done b,
+.step-t,.step-h,.svc-extra h3,.off-card h3,.idea h3,.nxt h3{
+  font-size:var(--fs-h3)!important;line-height:1.28}
+
+/* --- лид --- */
+.lead,.sec-head .lead,.lead-copy .lead,#idea .lead,.hero .lead{
+  font-size:var(--fs-lead)!important;line-height:1.6}
+
+/* --- кикер раздела --- */
+.eyebrow,.hero .eyebrow,.nowband .nb-k,.kick-to{font-family:var(--mono)!important;
+  font-size:var(--fs-kick)!important;font-weight:500!important;letter-spacing:.04em!important;
+  line-height:1.4!important;text-transform:none!important;margin-bottom:var(--sp-kick-h)!important}
+
+/* --- основной текст --- */
+.card p,.ccard .cc-task,.step-d,.pr-d,.faq .ans,#now .nowband p,.nowband p,
+#idea p,#idea .ip,.rm-d,.rm-speed p,.ba-was,.ba-now,.rule .rd,.sh-d,
+.lf-done,.lc-mgr-t span,.f-note,.nav-sheet a{font-size:var(--fs-body)!important;line-height:1.6}
+
+/* --- подписи --- */
+.hero-meta .m>span,.now-f>span,.cc-res>div>span,.lf-after,.chk-note,.ls-note,
+.morelink,.lf-err,.rm-out>span:last-child,.sl-note{font-size:var(--fs-cap)!important}
+
+/* --- моноширинные служебные метки --- */
+.step-w,.rm-w,.rm-ol,.rmap-head span,.step-link span:last-child,.now-f .src,
+.ba-c,.ba-head,.rm-speed .rs-k,.slots .sl-h,.sl-h,
+#leadForm .lf label,.leadbox .lf label,.lf label,footer .f-k{
+  font-family:var(--mono)!important;font-size:var(--fs-mono)!important;
+  font-weight:500!important;letter-spacing:.05em!important}
+
+/* --- вертикальный ритм --- */
+/* между разделами: широкий 120px, телефон 72px */
+body>section[id],body>section[id]:first-of-type,body>section[id]:last-of-type{
+  padding-top:var(--sp-sec)!important;padding-bottom:var(--sp-sec)!important}
+/* кикер → заголовок 18px */
+#lead .eyebrow,#cta .eyebrow,#idea .eyebrow,.nowband .nb-k{margin-bottom:var(--sp-kick-h)!important}
+/* заголовок → подзаголовок 10px */
+.sec-head h2,.rsec-head h2,.lead-copy h2,.nowband h2,
+#lead .lead-copy h2,#cta .cta-copy h2{margin-top:0!important;margin-bottom:var(--sp-h-sub)!important}
+.sec-head>h2:last-child,.rsec-head>h2:last-child{margin-bottom:0!important}
+/* подзаголовок → содержимое 26px */
+.sec-head .lead,.sec-head>p,.lead-copy .lead{margin-top:0!important;margin-bottom:0!important}
+.sec-head,.rsec-head,body>section>.wrap>.sec-head,#related .sec-head,.rel-head,
+#now .sec-head,#services .sec-head,#cases .sec-head,#how .sec-head,
+#idea .sec-head,#rules .sec-head,#faq .sec-head,#lead .sec-head{margin-bottom:var(--sp-sub-cont)!important}
+@media(max-width:980px){
+  #lead .lead-copy>.eyebrow,#cta .cta-copy>.eyebrow{margin-bottom:var(--sp-kick-h)!important}
+  #lead .lead-copy>h2,#cta .cta-copy>h2{margin-bottom:var(--sp-h-sub)!important}
+  #lead .lead-copy>.lead,#cta .cta-copy>.lead{margin-bottom:var(--sp-sub-cont)!important}
+}
+/* между карточками внутри блока 14px */
+.svc,.crail,#cases .crail,.mods .svc,.wbento,.lsteps,.rel-grid,.nxt-grid{gap:var(--sp-card)!important}
+.svc-extra{margin-top:var(--sp-card)!important}
+
+/* --- метрики: цифра и её подпись 6px --- */
+.hero-meta .m b,.now-f b{font-size:var(--fs-metric)!important;line-height:1}
+.hero-meta .m{gap:var(--sp-mcap)!important}
+.hero-meta .m>span,.cc-res>div>span{margin-top:0!important;line-height:1.45}
+.now-f>span{margin-top:var(--sp-mcap)!important;line-height:1.45}
+.cc-res b{margin-bottom:var(--sp-mcap)!important}
+/* подпись метрики обложки: узкая колонка около 22ch, прижата вправо вместе с цифрой */
+.hero-meta .m>span{max-width:22ch!important}
+@media(max-width:900px){
+  .hero-meta{justify-items:end!important}
+  .hero-meta .m{align-items:flex-end!important;text-align:right!important}
+  .hero-meta .m b{text-align:right!important}
+  .hero-meta .m>span{width:20ch!important;max-width:20ch!important;text-align:right!important}
+}
+
+/* --- блок «Почему сейчас»: цифры-кейсы внутри той же плашки --- */
+@media(max-width:900px){
+  #now .nowband{display:block!important}
+  /* цифры остаются внутри плашки: их отделяет только линия, не вторая рамка */
+  #now .now-figs{border-left:0!important;border-top:1px solid var(--line)!important;
+    padding-left:0!important;padding-top:24px!important;margin-top:24px!important;gap:22px!important}
+}
+
+/* --- форма заявки --- */
+/* поля одной сеткой: два столбца в вебе, один на телефоне, шаг между полями 18px */
+#leadForm .lf-row,.leadbox .lf-row,.mform .lf-row{display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;column-gap:22px!important;row-gap:0!important}
+@media(max-width:760px){#leadForm .lf-row,.leadbox .lf-row,.mform .lf-row{
+  grid-template-columns:1fr!important;column-gap:0!important}}
+/* подпись и линия ввода живут одним блоком, поэтому на соседа подпись не наезжает */
+#leadForm .lf,.leadbox .lf,.mform .lf{margin-bottom:var(--sp-field)!important;min-width:0}
+#leadForm .lf label,.leadbox .lf label,.lf label{display:block!important;
+  color:var(--text-muted)!important;margin-bottom:6px!important}
+#leadForm input:not([type=checkbox]),#leadForm textarea{padding:10px 2px 12px!important}
+#leadForm textarea{min-height:56px}
+#leadForm .slots,.leadbox .slots,.slots{margin-top:var(--sp-field)!important}
+/* слоты → согласие 18px, согласие → кнопка 22px, кнопка → подпись 14px */
+#leadForm .lf-check,.leadbox .lf-check,.mform .lf-check{position:relative;display:flex!important;
+  align-items:flex-start!important;gap:0!important;padding:0 0 0 32px!important;
+  margin:var(--sp-field) 0 0!important;min-height:0!important;cursor:pointer}
+#leadForm .btn.pri,.leadbox form .btn.pri,form .btn.pri{margin-top:22px!important}
+.lf-after,.leadbox .lf-after{margin-top:14px!important;margin-bottom:0!important}
+/* круг согласия стоит по первой строке подписи, а не по центру блока;
+   поле ввода прячется под кругом и держит зону нажатия 44px */
+#leadForm .lf-check::before,.lf-check::before{content:""!important;position:absolute!important;
+  left:0!important;top:0!important;transform:none!important;width:20px!important;height:20px!important;
+  border-radius:50%;border:1.5px solid var(--line-2);background:transparent;
+  transition:.16s;pointer-events:none}
+#leadForm .lf-check:has(input:checked)::before,.lf-check:has(input:checked)::before{
+  background:var(--accent);border-color:var(--accent)}
+#leadForm .lf-check:has(input:checked)::after,.lf-check:has(input:checked)::after{
+  content:""!important;position:absolute!important;left:6.5px!important;top:3.5px!important;
+  width:5.5px!important;height:9.5px!important;border:2px solid var(--accent-ink);
+  border-top:0;border-left:0;transform:rotate(43deg);pointer-events:none}
+#leadForm .lf-check input[type=checkbox],.lf-check input[type=checkbox]{
+  position:absolute!important;left:-12px!important;top:-12px!important;transform:none!important;
+  width:44px!important;height:44px!important;margin:0!important;opacity:0;border:0;background:none;
+  z-index:2;cursor:pointer;appearance:none;-webkit-appearance:none}
+#leadForm .lf-check input[type=checkbox]::before,.lf-check input[type=checkbox]::before,
+#leadForm .lf-check input[type=checkbox]:checked::after,.lf-check input[type=checkbox]:checked::after{content:none!important}
+#leadForm .lf-check>span,.leadbox .lf-check>span,.lf-check>span{padding-top:0!important;
+  font-size:var(--fs-cap)!important;line-height:1.5!important;color:var(--text-muted);
+  display:block;flex:1 1 auto;min-width:0}
+#leadForm .lf-check>span a,.lf-check>span a{position:relative;z-index:3}
+
+/* --- шапка: кнопка темы и кнопка Telegram одного размера --- */
+.nav .nav-act .tgl,.nav .nav-act .nav-tg,.nav .nav-act .nav-burger{
+  width:44px!important;height:44px!important;flex:none!important;padding:0!important;
+  align-items:center;justify-content:center}
+.nav .nav-act .tgl,.nav .nav-act .nav-tg{display:inline-flex}
+.nav .nav-act .tgl svg,.nav .nav-act .nav-tg svg,.nav .nav-act .nav-burger svg{
+  width:19px!important;height:19px!important}
+@media(max-width:1100px){.nav .nav-act>.tgl,.nav .nav-act>.nav-tg{display:none!important}}
+
+/* --- меню на телефоне: во весь экран, фон позади размыт --- */
+@media(max-width:1100px){
+  .nav-sheet{position:fixed!important;inset:0!important;width:100%!important;
+    height:100dvh!important;max-height:none!important;padding:0!important;
+    overflow-y:auto!important;-webkit-overflow-scrolling:touch;border-bottom:0!important;
+    background:color-mix(in srgb,var(--bg) 70%,transparent)!important;
+    -webkit-backdrop-filter:saturate(140%) blur(24px)!important;
+    backdrop-filter:saturate(140%) blur(24px)!important}
+  .nav-sheet .ns-in{min-height:100dvh;display:flex;flex-direction:column;
+    padding-top:calc(var(--nav-h,66px) + 18px)!important;padding-bottom:32px!important}
+  .nav>.wrap{position:relative;z-index:300}
+  .ns-act .tgl,.ns-act .nav-tg{width:52px!important;height:52px!important;flex:none;padding:0}
+  .ns-act .tgl svg,.ns-act .nav-tg svg{width:21px!important;height:21px!important;transform:none!important}
+}
+
+/* --- менеджер студии: имя и ник лаймовые --- */
+.lc-name,.lc-mgr-t b a,.mf-fail a[href*="Anti4ay"]{color:var(--accent)!important}
+.lc-mgr-t b a{border-bottom-color:var(--line-accent)!important}
+.lc-mgr-t b a:hover{border-bottom-color:var(--accent)!important}
+
+/* --- подвал --- */
+/* пункты разделов идут потоком: 6px по вертикали, ровно 18px по горизонтали */
+footer .f-nav,footer .f-nav2{display:flex!important;flex-direction:row!important;
+  flex-wrap:wrap!important;align-content:flex-start;justify-content:flex-start;
+  gap:6px 18px!important;width:auto!important;max-width:280px}
+footer .f-nav .f-k,footer .f-nav2 .f-k{flex:0 0 100%;margin-bottom:2px}
+footer .f-nav a,footer .f-nav2 a{display:block!important;min-height:0!important;
+  margin:0!important;padding-inline:0!important;line-height:1.45!important;
+  font-size:14.5px!important;white-space:nowrap}
+footer .f-k{color:var(--text)!important}
+/* реквизиты тем же шрифтом и межстрочным, что на других страницах студии */
+footer .f-legal{display:flex;flex-direction:column;gap:0!important}
+footer .f-legal p{font-family:var(--sans)!important;font-size:13.5px!important;
+  line-height:1.45!important;margin:0 0 4px!important;color:var(--text-muted)}
+footer .f-legal a{margin-top:10px!important;font-size:13.5px!important;line-height:1.45!important}
+footer .f-bottom{font-size:13.5px}
+
+/* --- первый экран: цифра и её подпись стоят на одной правой линии ---
+   подпись около 22ch, поэтому длинная уходит во вторую строку
+   и остаётся прижатой вправо вместе с цифрой */
+.hero-meta .m{align-items:flex-end!important;text-align:right!important}
+.hero-meta .m b{text-align:right!important;align-self:flex-end!important}
+.hero-meta .m>span{max-width:22ch!important;text-align:right!important;
+  align-self:flex-end!important;margin-left:auto!important;margin-right:0!important}
+
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
@@ -2321,7 +2543,6 @@ function LEAD_API(url, opts){
       <p>Разрыв между этими двумя группами растёт каждый квартал, и&nbsp;мы&nbsp;помогаем начать с&nbsp;одного участка сейчас, чтобы не&nbsp;догонять через год</p>
     </div>
   
-</div>
     <div class="now-figs">
       <div class="now-f"><b><span class="nb">26</span><span class="tail"> из&nbsp;27</span></b><span>сотрудников INNORTO работают с&nbsp;AI каждый день, потому что&nbsp;через него быстрее</span><a class="src" href="/innorto/">наш кейс, месяц AI-десанта</a></div>
       <div class="now-f"><b><span class="nb">2</span><span class="tail"> минуты</span></b><span>уходит у&nbsp;агента на&nbsp;стратегический аудит для&nbsp;собственника клиники на&nbsp;основе <span class="nb">17 разделов</span> методологии клуба и&nbsp;<span class="nb">1 500+</span> пар вопрос-ответ</span><a class="src" href="/globaldent/">наш кейс, агент Global Dent Club</a></div>
