@@ -2047,6 +2047,57 @@ html body .brand svg .lg-mark:not(#_):not(#_):not(#_),html body .brand svg .lg-s
 html body .brand:hover svg .lg-mark:not(#_):not(#_):not(#_){fill:currentColor!important}
 html body .brand:hover svg .lg-sign:not(#_):not(#_):not(#_){fill:var(--accent)!important}
 </style>
+
+<style id="fix-6">
+/* ===== fix-6 (ночь на 19.08): чекап ===== */
+/* кнопка в шапке видна с самого начала, на телефоне живёт в шторке */
+html body .nav .btn.nav-cta:not(#_):not(#_):not(#_) { opacity:1!important;visibility:visible!important;display:inline-flex!important }
+@media(max-width:760px){
+  html body .nav .btn.nav-cta:not(#_):not(#_):not(#_) { display:none!important }
+}
+/* J2 чип обложки: 15px, 6×12; телефон 14 */
+html body .hero .hero-chip:not(#_):not(#_):not(#_) { font-size:15px!important;line-height:1.15!important;height:auto!important;padding:6px 12px!important;border-radius:16px!important }
+html body .hero.rh-hero .hero-kick:not(#_):not(#_):not(#_) { display:flex!important;align-items:center!important;margin-bottom:18px!important }
+@media(max-width:760px){
+  html body .hero .hero-chip:not(#_):not(#_):not(#_) { font-size:14px!important;padding:6px 12px!important }
+}
+/* J1 поля: фокус без лайма, той же светлой линией, что при наведении */
+html body .lf input:hover:not(#_):not(#_):not(#_),html body .lf textarea:hover:not(#_):not(#_):not(#_),
+html body .lf input:focus:not(#_):not(#_):not(#_),html body .lf textarea:focus:not(#_):not(#_):not(#_),
+html body .lf input:focus-visible:not(#_):not(#_):not(#_),html body .lf textarea:focus-visible:not(#_):not(#_):not(#_) {
+  border-color:var(--text-dim)!important;border-bottom-color:var(--text-dim)!important;outline:none!important;box-shadow:none!important;background:transparent!important }
+/* J5 незаполненные поля: светлая линия, не лаймовая и не красная */
+html body .lf input.err:not(#_):not(#_):not(#_),html body .lf textarea.err:not(#_):not(#_):not(#_) { border-bottom-color:var(--text)!important }
+html body #lead .lf-check.err:not(#_):not(#_):not(#_) input[type=checkbox] { border-color:var(--text)!important }
+/* J4 чекбокс: галочка на :checked всегда, ровно по центру круга (svg фоном) */
+html body #lead .lf-check:not(#_):not(#_):not(#_) input[type=checkbox] { width:20px!important;height:20px!important;border-radius:50%!important;
+  border:1.5px solid var(--line-2)!important;background-color:transparent!important;background-image:none!important;box-sizing:border-box!important;
+  appearance:none!important;-webkit-appearance:none!important;flex:none!important;margin:0!important;position:relative!important;opacity:1!important }
+html body #lead .lf-check:not(#_):not(#_):not(#_) input[type=checkbox]:hover { border-color:var(--text-dim)!important }
+html body #lead .lf-check:not(#_):not(#_):not(#_) input[type=checkbox]:checked { background-color:var(--accent)!important;border-color:var(--accent)!important;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.6 10.4l2.9 2.9 6-6.2' fill='none' stroke='%2312150A' stroke-width='2.1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")!important;
+  background-repeat:no-repeat!important;background-position:center!important;background-size:20px 20px!important }
+html body #lead .lf-check:not(#_):not(#_):not(#_) input[type=checkbox]::after { display:none!important;content:none!important }
+html body #lead .lf-check:not(#_):not(#_):not(#_)::before,html body #lead .lf-check:not(#_):not(#_):not(#_)::after { display:none!important;content:none!important }
+html body #lead .lf-check:not(#_):not(#_):not(#_) input[type=checkbox]:focus-visible { outline:2px solid var(--text-dim)!important;outline-offset:3px!important }
+/* J5 сообщение под кнопкой: тем же стилем, что подпись под кнопкой, цвет текста */
+html body #lead .lf-err:not(#_):not(#_):not(#_) { display:none;margin:14px auto 0!important;font-size:13px!important;line-height:1.5!important;
+  color:var(--text)!important;text-align:center!important;max-width:34ch }
+html body #lead .lf-err.show:not(#_):not(#_):not(#_) { display:block!important }
+html body #lead .lf-err.show:not(#_):not(#_):not(#_) + .lf-after { margin-top:8px!important }
+/* J6 слоты: при наведении светлая рамка и текст, без лайма; выбранный как был */
+html body #lead .sl-day:hover:not(.on):not(#_):not(#_):not(#_),html body #lead .sl-t:hover:not(.on):not(#_):not(#_):not(#_) {
+  border-color:rgba(255,255,255,.45)!important;color:var(--text)!important;background:transparent!important;box-shadow:none!important;filter:none!important }
+html body #lead .sl-day:hover:not(.on):not(#_):not(#_):not(#_) b,html body #lead .sl-day:hover:not(.on):not(#_):not(#_):not(#_) span { color:var(--text)!important }
+html:root[data-theme="light"] body #lead .sl-day:hover:not(.on):not(#_):not(#_):not(#_),html:root[data-theme="light"] body #lead .sl-t:hover:not(.on):not(#_):not(#_):not(#_) { border-color:rgba(25,26,29,.45)!important }
+html body #lead .sl-day:focus-visible:not(#_):not(#_):not(#_),html body #lead .sl-t:focus-visible:not(#_):not(#_):not(#_) { outline:2px solid var(--text-dim)!important;outline-offset:2px!important }
+/* J3 подвал: две ссылки бренда друг под другом, одним стилем */
+html body footer .f-brand .f-tg:not(#_):not(#_):not(#_) { display:table!important;margin-top:8px!important }
+html body footer .f-brand .f-tg.f-cta:not(#_):not(#_):not(#_) { margin-top:16px!important }
+/* J3 в «Разделах» пять ссылок: одна колонка на всех ширинах */
+html body footer .f-nav.f-nav2:not(#_):not(#_):not(#_) { display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;gap:6px!important;max-width:none!important }
+html body footer .f-nav.f-nav2 a:not(#_):not(#_):not(#_) { display:block!important;flex:none!important }
+</style>
 </head>
 <body>
 <nav class="nav"><div class="wrap">
@@ -2060,10 +2111,10 @@ html body .brand:hover svg .lg-sign:not(#_):not(#_):not(#_){fill:var(--accent)!i
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 4.3 3.3 11.4c-.9.35-.88 1.63.02 1.96l4.5 1.63 1.72 5.2c.24.72 1.16.92 1.68.37l2.5-2.63 4.55 3.34c.62.46 1.5.12 1.66-.63l3.03-14.4c.17-.8-.62-1.47-1.36-1.19zM8.9 14.1l9.1-5.6-7.2 6.6-.35 2.9-1.55-3.9z"/></svg>
   </a>
   <button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="navSheet"><span class="bl"></span></button>
-  <a class="btn pri nav-cta" href="#lead">Оставить заявку</a>
+  <a class="btn pri nav-cta" href="#lead">Записаться на&nbsp;чекап</a>
 </div>
 </nav>
-<div class="nav-sheet" id="navSheet"><div class="ns-in"><a href="#why">Для&nbsp;чего</a><a href="#entry">Цена</a><a href="#days">Как&nbsp;проходит</a><a href="#result">Результат</a><a href="#faq">FAQ</a><a class="btn pri" href="#lead">Оставить заявку</a><div class="ns-actions"><button class="tgl ns-tgl" id="themeTgl2" type="button" aria-label="Сменить тему"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4L17 7M7 17l-1.6 1.6"/></svg></button><a class="tgl nav-tg ns-tg" href="https://t.me/Anti4ay" target="_blank" rel="noopener" aria-label="Написать в&nbsp;Telegram" title="Написать в&nbsp;Telegram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 4.3 3.3 11.4c-.9.35-.88 1.63.02 1.96l4.5 1.63 1.72 5.2c.24.72 1.16.92 1.68.37l2.5-2.63 4.55 3.34c.62.46 1.5.12 1.66-.63l3.03-14.4c.17-.8-.62-1.47-1.36-1.19zM8.9 14.1l9.1-5.6-7.2 6.6-.35 2.9-1.55-3.9z"/></svg></a></div></div></div>
+<div class="nav-sheet" id="navSheet"><div class="ns-in"><a href="#why">Для&nbsp;чего</a><a href="#entry">Цена</a><a href="#days">Как&nbsp;проходит</a><a href="#result">Результат</a><a href="#faq">FAQ</a><a class="btn pri" href="#lead">Записаться на&nbsp;чекап</a><div class="ns-actions"><button class="tgl ns-tgl" id="themeTgl2" type="button" aria-label="Сменить тему"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4L17 7M7 17l-1.6 1.6"/></svg></button><a class="tgl nav-tg ns-tg" href="https://t.me/Anti4ay" target="_blank" rel="noopener" aria-label="Написать в&nbsp;Telegram" title="Написать в&nbsp;Telegram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 4.3 3.3 11.4c-.9.35-.88 1.63.02 1.96l4.5 1.63 1.72 5.2c.24.72 1.16.92 1.68.37l2.5-2.63 4.55 3.34c.62.46 1.5.12 1.66-.63l3.03-14.4c.17-.8-.62-1.47-1.36-1.19zM8.9 14.1l9.1-5.6-7.2 6.6-.35 2.9-1.55-3.9z"/></svg></a></div></div></div>
 
 <span id="top"></span>
 
@@ -2176,7 +2227,7 @@ html body .brand:hover svg .lg-sign:not(#_):not(#_):not(#_){fill:var(--accent)!i
   <div class="lead-grid">
     <div class="lead-copy reveal">
       <div class="eyebrow"><span class="n">06</span> Следующий шаг</div>
-      <h2><span class="nb">30 минут</span> в&nbsp;Zoom с&nbsp;партнёрами студии</h2>
+      <h2><span class="nb">30 минут</span> в&nbsp;Zoom</h2>
   <p class="lead">Вы&nbsp;рассказываете про&nbsp;бизнес, мы&nbsp;задаём вопросы и&nbsp;совместно определяем цели. После присылаем запись разговора и&nbsp;разбор: что&nbsp;увидели и&nbsp;с&nbsp;чего рекомендуем начать</p>
     </div>
     <div class="leadbox reveal d1">
@@ -2195,9 +2246,9 @@ html body .brand:hover svg .lg-sign:not(#_):not(#_):not(#_){fill:var(--accent)!i
           <div class="sl-note" id="slNote"></div>
         </div>
         <label class="lf-check"><input type="checkbox" id="lfAgree" required>
-          <span>Согласен на&nbsp;обработку персональных данных и&nbsp;принимаю<br><a href="/privacy" target="_blank" rel="noopener">политику обработки персональных данных</a></span></label>
-        <div class="lf-err" id="lfErr" role="alert">Не&nbsp;хватает вашего имени, контактов и&nbsp;согласия на&nbsp;обработку персональных данных</div>
+          <span>Даю согласие на&nbsp;обработку персональных данных и&nbsp;принимаю<br><a href="/privacy" target="_blank" rel="noopener">политику обработки персональных данных</a></span></label>
         <button class="btn pri lg" type="submit">Оставить заявку</button>
+        <div class="lf-err" id="lfErr" role="alert" aria-live="polite">Не&nbsp;хватает: имени, контакта и&nbsp;согласия</div>
         <p class="lf-after"><span class="nb">Подтвердим встречу в&nbsp;ответном сообщении</span> <span class="nb">в&nbsp;течение 1&nbsp;рабочего дня</span></p>
       </form>
       <div class="lf-done" id="lfDone">
@@ -2232,9 +2283,10 @@ html body .brand:hover svg .lg-sign:not(#_):not(#_):not(#_){fill:var(--accent)!i
     <div class="f-brand">
       <a class="brand" href="/" aria-label="synapt"><svg viewBox="0 0 839 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-30,0)"><path class="lg-mark" d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path class="lg-mark" d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path class="lg-mark" d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path class="lg-mark" d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path class="lg-mark" d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path class="lg-mark" d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/></g><path class="lg-sign" d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></svg></a>
       <p class="f-note">Студия AI и&nbsp;IT-разработки для&nbsp;бизнеса</p>
+      <a class="f-tg f-cta" href="#lead">Записаться на&nbsp;чекап</a>
       <a class="f-tg" href="https://t.me/Anti4ay" target="_blank" rel="noopener">Telegram менеджера</a>
     </div>
-    <nav class="f-nav f-nav2"><span class="f-k">Разделы</span><a href="#why">Для&nbsp;чего</a><a href="#entry">Цена и&nbsp;ценность</a><a href="#days">Как&nbsp;проходит</a><a href="#result">Результат</a><a href="#faq">FAQ</a><a href="#lead">Оставить заявку</a></nav>
+    <nav class="f-nav f-nav2"><span class="f-k">Разделы</span><a href="#why">Для&nbsp;чего</a><a href="#entry">Цена и&nbsp;ценность</a><a href="#days">Как&nbsp;проходит</a><a href="#result">Результат</a><a href="#faq">FAQ</a></nav>
     <div class="f-legal">
       <span class="f-k">Формальности</span>
       <div class="f-legal-cols">
@@ -2797,5 +2849,31 @@ html body .brand:hover svg .lg-sign:not(#_):not(#_):not(#_){fill:var(--accent)!i
 })();
 </script>
 <script id="fab-cover">(function(){var f=document.querySelector('.fab'),c=document.querySelector('.cover, .hero');if(!f||!c||!('IntersectionObserver' in window))return;new IntersectionObserver(function(en){en.forEach(function(e){f.classList.toggle('is-cover',e.isIntersecting&&e.intersectionRatio>0.12)})},{threshold:[0,0.12,0.3]}).observe(c)})();</script>
+
+<script id="fix-6-js">
+/* J5 валидация: перечисляем, чего именно не хватает */
+(function(){
+  var f=document.getElementById('leadForm'); if(!f) return;
+  var err=document.getElementById('lfErr'), name=document.getElementById('lfName'),
+      contact=document.getElementById('lfContact'), agree=document.getElementById('lfAgree'),
+      chk=agree&&agree.closest('.lf-check');
+  function clean(){ [name,contact].forEach(function(x){ if(x) x.classList.remove('err') });
+    if(chk) chk.classList.remove('err'); if(err) err.classList.remove('show') }
+  [name,contact].forEach(function(x){ if(x) x.addEventListener('input',clean) });
+  if(agree) agree.addEventListener('change',clean);
+  document.addEventListener('submit',function(e){
+    if(e.target!==f) return;
+    var miss=[];
+    if(!name.value.trim()){ name.classList.add('err'); miss.push('имени') }
+    if(!contact.value.trim()){ contact.classList.add('err'); miss.push('контакта') }
+    if(!agree.checked){ if(chk) chk.classList.add('err'); miss.push('согласия') }
+    if(!miss.length) return;
+    e.preventDefault(); e.stopPropagation();
+    var txt=miss.length===1?miss[0]:miss.slice(0,-1).join(', ')+' и '+miss[miss.length-1];
+    err.textContent='Не хватает: '+txt;
+    err.classList.add('show');
+  },true);
+})();
+</script>
 </body>
 </html>
