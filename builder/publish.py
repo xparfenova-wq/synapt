@@ -5,6 +5,10 @@
 Потом:   git add -A && git commit -m "правка страницы" && git push
 Сервер подхватит изменения в течение двух минут.
 """
+import sys as _sys
+if '--force' not in _sys.argv:
+    print('СТОП: генератор отстал от живых страниц в site/ (правки 16–18.08 сделаны напрямую). Запуск перезапишет их. Если точно нужно: python3 builder/publish.py --force')
+    raise SystemExit(1)
 import pathlib, re, shutil, subprocess, sys
 
 HERE = pathlib.Path(__file__).parent
