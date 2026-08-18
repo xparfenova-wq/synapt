@@ -1469,6 +1469,12 @@ footer a[href*="privacy"]:hover{border-bottom-color:var(--accent)!important}
 footer .f-legal a[href*="privacy"],footer .legal a[href*="privacy"],footer a.pol{
   border-bottom:1px solid var(--line-accent)!important;text-decoration:none!important;padding-bottom:1px}
 footer .f-legal a[href*="privacy"]:hover,footer .legal a[href*="privacy"]:hover{border-bottom-color:var(--accent)!important}
+
+/* ссылка на политику в подвале: подчёркивание линией */
+footer a[href="/synapt/privacy/"],footer a[href$="/privacy"]{
+  border-bottom:1px solid var(--line-accent)!important;text-decoration:none!important;
+  padding-bottom:1px;display:inline-block;margin-top:6px}
+footer a[href="/synapt/privacy/"]:hover,footer a[href$="/privacy"]:hover{border-bottom-color:var(--accent)!important;color:var(--text)!important}
 </style>
 <style media="print">
 @page{size:A4 portrait;margin:15mm 13mm 17mm}
