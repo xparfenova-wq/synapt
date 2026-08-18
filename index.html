@@ -1937,6 +1937,24 @@ footer .f-cols,footer .wrap>div{column-gap:clamp(28px,4vw,64px)}
 /* тряска: убираем плавную прокрутку и мягкую привязку, которая дёргает липкий блок */
 html{scroll-behavior:auto}
 @media(max-width:860px){body{overflow-anchor:none}}
+
+/* под цифрами первого экрана нет никакой подложки */
+.hero-meta::after,.hero-meta::before{content:none!important;background:none!important;display:none!important}
+
+/* меню открывается поверх всего содержимого */
+.nav-sheet{z-index:199!important}
+.nav{z-index:200}
+/* самолётик в кнопке стоит по центру */
+.nav-tg svg,.tg-btn svg,.fab-tg svg{transform:translateY(-1px)}
+/* пункты меню и кнопки на тех же полях, что логотип */
+.nav .wrap{padding-left:var(--gutter);padding-right:var(--gutter)}
+.nav .brand{margin-left:0}
+.nav .nav-act{margin-right:0;gap:10px}
+
+/* при открытом меню шапка с логотипом и крестиком остаётся видимой */
+body.menu-open .nav{background:var(--bg)!important;z-index:200}
+.nav-sheet{padding-top:66px}
+@media(max-width:860px){.nav-sheet .ns-in{padding-top:8px}}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
