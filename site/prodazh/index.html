@@ -2283,6 +2283,11 @@ html body .mform .sl-day:focus-visible:not(#_):not(#_):not(#_):not(#_),html body
 html:root[data-theme="light"] body .mform .sl-day:focus-visible:not(#_):not(#_):not(#_):not(#_),html:root[data-theme="light"] body .mform .sl-t:focus-visible:not(#_):not(#_):not(#_):not(#_){border-color:rgba(25,26,29,.45)!important}
 
 </style>
+
+<style id="fix-7">
+/* пункты верхнего меню при наведении просто белые, без плашки (все страницы) */
+html body .nav-links a:hover:not(#_):not(#_):not(#_),html body .nav a:hover:not(#_):not(#_):not(#_),html body .nav-sheet a:hover:not(#_):not(#_):not(#_){background:transparent!important;color:var(--text)!important}
+</style>
 </head>
 <body>
 <nav class="nav"><div class="wrap">
@@ -3621,5 +3626,15 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
   },true);
 })();
 </script>
+<script id="fix-7-anchors">(function(){
+/* короткие разделы при переходе из меню встают по центру экрана, длинные – кикером под шапку (14px) */
+function nav(){var n=document.querySelector('.nav,header.nav,nav');return n?n.getBoundingClientRect().height:66}
+function apply(){var vh=window.innerHeight,nh=nav();document.querySelectorAll('section[id]').forEach(function(s){
+  var h=s.offsetHeight; var free=vh-nh; if(h<=free){ var m=Math.round((free-h)/2-14); s.style.setProperty('scroll-margin-top',m+'px','important'); s.setAttribute('data-anchor','center'); }
+  else if(s.getAttribute('data-anchor')==='center'){ s.style.removeProperty('scroll-margin-top'); s.removeAttribute('data-anchor'); }
+});}
+window.addEventListener('load',function(){setTimeout(apply,50);setTimeout(apply,800)});window.addEventListener('resize',apply);
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a){setTimeout(apply,0)}},true);
+})();</script>
 </body>
 </html>
