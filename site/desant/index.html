@@ -2576,6 +2576,24 @@ html body form .lf-err.show:not(#_):not(#_):not(#_):not(#_):not(#_){display:bloc
 html body .cover h1:not(#_):not(#_):not(#_):not(#_):not(#_),html body .hero h1:not(#_):not(#_):not(#_):not(#_):not(#_){font-size:102px!important;font-weight:500!important;letter-spacing:-.028em!important;line-height:1.02!important}
 @media(max-width:760px){html body .cover h1:not(#_):not(#_):not(#_):not(#_):not(#_),html body .hero h1:not(#_):not(#_):not(#_):not(#_):not(#_){font-size:60px!important;font-weight:500!important}}
 </style>
+
+<style id="fix-m">
+/* мобильная приёмка 19.08: только телефон */
+@media (max-width:760px){
+  /* обложка: анимация тише и гаснет к низу, где h1 и лид */
+  html body header.cover canvas#synFx:not(#_):not(#_){opacity:.5!important;-webkit-mask-image:linear-gradient(180deg,#000 0,#000 38%,rgba(0,0,0,.4) 68%,transparent 96%)!important;mask-image:linear-gradient(180deg,#000 0,#000 38%,rgba(0,0,0,.4) 68%,transparent 96%)!important}
+  /* шторка: кегль ссылок как на других страницах */
+  html body .nav-sheet>a:not(.btn):not(#_):not(#_){font-size:15px!important}
+  /* 05 кейс INNORTO: цифры в две колонки, «Подробнее» четвёртой ячейкой обычной высоты */
+  html body #case .case-split .metrics.quad:not(#_):not(#_){grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:20px 14px!important;grid-auto-rows:auto!important;align-items:stretch!important}
+  html body #case .case-split .metric b:not(#_):not(#_){font-size:34px!important;white-space:nowrap!important}
+  html body #case .case-split .metric b .tail:not(#_):not(#_){font-size:17px!important}
+  html body #case .case-split .metric>span:not(#_):not(#_){max-width:none!important;width:auto!important}
+  html body #case .case-split .metric.metric-more:not(#_):not(#_){min-height:52px!important;height:auto!important;align-self:stretch!important;padding:0 14px!important}
+  /* 07 условия: заголовок во всю ширину, не переносится по одному слову */
+  html body #cost .cost-head h2:not(#_):not(#_){max-width:none!important;width:auto!important}
+}
+</style>
 </head>
 <body>
 <script id="fix-lead-js">(function(){

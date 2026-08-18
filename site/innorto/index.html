@@ -2517,6 +2517,28 @@ html body form .lf-err.show:not(#_):not(#_):not(#_):not(#_):not(#_){display:bloc
 html body .cover h1:not(#_):not(#_):not(#_):not(#_):not(#_),html body .hero h1:not(#_):not(#_):not(#_):not(#_):not(#_){font-size:102px!important;font-weight:500!important;letter-spacing:-.028em!important;line-height:1.02!important}
 @media(max-width:760px){html body .cover h1:not(#_):not(#_):not(#_):not(#_):not(#_),html body .hero h1:not(#_):not(#_):not(#_):not(#_):not(#_){font-size:60px!important;font-weight:500!important}}
 </style>
+
+<style id="fix-m">
+/* ============================================================
+   INNORTO – мобильная приёмка 19.08 (только телефон ≤760)
+   ============================================================ */
+@media (max-width:760px){
+  /* 1. шапка: переключатель темы стоит рядом с бургером, в шторке не дублируется */
+  html body .nav .nav-act>.tgl:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){display:flex!important;width:44px!important;height:44px!important;
+    min-width:44px!important;min-height:44px!important;padding:0!important}
+  html body .nav .nav-act>.tgl:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_) svg{width:18px!important;height:18px!important}
+  html body .nav-sheet .ns-act .tgl:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){display:none!important}
+  /* шторка: пункты на одной левой линии с логотипом (20px) */
+  html body .nav-sheet:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){padding-left:20px!important;padding-right:20px!important}
+  /* 2. охват: подпись под холстом тем же кеглем, что лиды на телефоне */
+  html body #spread .fig-txt:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body #spread .fig-txt p:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){
+    font-size:17px!important;line-height:1.55!important;font-weight:450!important}
+  /* 3. эффект: манифест команды 18 */
+  html body #metrics .stmt p:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){font-size:18px!important;line-height:1.45!important;font-weight:450!important}
+  /* 4. форма: «Когда вам удобно» → слоты 12 */
+  html body .mform .sl-h:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .slots .sl-h:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){margin-bottom:12px!important}
+}
+</style>
 </head>
 <body>
 <script id="fix-lead-js">(function(){
@@ -3614,7 +3636,7 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
       ctx.clearRect(0, 0, W, H);
       var cycle = 520, day = Math.floor(((t % cycle) / cycle) * (DAYS + 4));
       var padX = 16, padTop = 34, padBot = 18;
-      var cols = Math.max(4, Math.min(9, Math.round(Math.sqrt(PEOPLE * (W / Math.max(1, H))))));
+      var narrowM = innerWidth <= 760; var cols = narrowM ? 7 : Math.max(4, Math.min(9, Math.round(Math.sqrt(PEOPLE * (W / Math.max(1, H))))));
       var rows = Math.ceil(PEOPLE / cols);
       /* шаг одинаковый по вертикали и горизонтали: сетка не растягивается */
       var step = Math.min((W - padX * 2) / cols, (H - padTop - padBot) / rows);
@@ -3622,7 +3644,8 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
       var x0 = (W - gw) / 2 + step / 2, y0 = padTop + (H - padTop - padBot - gh) / 2 + step / 2;
       var lit = 0;
       for (i = 0; i < PEOPLE; i++) {
-        var cx = x0 + (i % cols) * step, cy = y0 + Math.floor(i / cols) * step;
+        var rowI = Math.floor(i / cols), remM = PEOPLE - rowI * cols; var offM = (narrowM && remM < cols) ? (cols - remM) * step / 2 : 0;
+        var cx = x0 + (i % cols) * step + offM, cy = y0 + rowI * step;
         var on = day >= joinDay(i) && i < FINAL + 1;
         if (on) lit++;
         var r = Math.min(6, step * .2);
@@ -3636,11 +3659,11 @@ var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isInter
         ctx.fill();
       }
       ctx.textAlign = 'left'; ctx.fillStyle = 'rgba(' + GR + ',.8)';
-      cap(ctx, 'день ' + Math.max(1, Math.min(DAYS, day)) + ' из ' + DAYS, padX, 16, W * .42, 10.5);
+      cap(ctx, 'день ' + Math.max(1, Math.min(DAYS, day)) + ' из ' + DAYS, padX, 16, W * .42, narrowM ? 12 : 10.5);
       ctx.textAlign = 'right'; ctx.fillStyle = 'rgba(' + PH + ',.9)';
-      cap(ctx, lit + ' из ' + PEOPLE + ' работают с AI', W - padX, 16, W * .52, 10.5);
+      cap(ctx, lit + ' из ' + PEOPLE + ' работают с AI', W - padX, 16, W * .52, narrowM ? 12 : 10.5);
       ctx.textAlign = 'left';
-    }, function () { return innerWidth < 700 ? 1.15 : 1.6; });
+    }, function () { return innerWidth <= 760 ? 1.4 : 1.6; });
   });
 
   [].forEach.call(document.querySelectorAll('canvas.fx-mesh'), function (c) {

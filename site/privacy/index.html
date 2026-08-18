@@ -105,6 +105,14 @@ html body{padding-top:104px!important}
   html body .pnav .back:not(#_):not(#_):not(#_){padding:0!important;margin:0!important}
 }
 </style>
+
+<style id="fix-m">
+/* мобильная приёмка 19.08: поля страницы 20px, как гаттер логотипа на остальных страницах; веб не трогаем */
+@media(max-width:760px){
+  html body:not(#_):not(#_){padding-left:20px!important;padding-right:20px!important}
+  html body .pnav-in:not(#_):not(#_){padding:0 20px!important}
+}
+</style>
 </head>
 <body><header class="pnav" id="pnav"><div class="pnav-in"><a class="back" href="/"><span class="ar">&#8592;</span>На&nbsp;главную</a></div></header>
 <div class="wrap">

@@ -2333,6 +2333,33 @@ html body form .lf-err.show:not(#_):not(#_):not(#_):not(#_):not(#_){display:bloc
 html body .cover h1:not(#_):not(#_):not(#_):not(#_):not(#_),html body .hero h1:not(#_):not(#_):not(#_):not(#_):not(#_){font-size:102px!important;font-weight:500!important;letter-spacing:-.028em!important;line-height:1.02!important}
 @media(max-width:760px){html body .cover h1:not(#_):not(#_):not(#_):not(#_):not(#_),html body .hero h1:not(#_):not(#_):not(#_):not(#_):not(#_){font-size:60px!important;font-weight:500!important}}
 </style>
+
+<style id="fix-m">
+/* ============================================================
+   GlobalDent – мобильная приёмка 19.08 (только телефон ≤760)
+   ============================================================ */
+@media (max-width:760px){
+  /* 1. шапка: переключатель темы стоит рядом с бургером, в шторке не дублируется */
+  html body .nav .nav-act>.tgl:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){display:flex!important;width:44px!important;height:44px!important;
+    min-width:44px!important;min-height:44px!important;padding:0!important}
+  html body .nav .nav-act>.tgl:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_) svg{width:18px!important;height:18px!important}
+  html body .nav-sheet .ns-act .tgl:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){display:none!important}
+  /* шторка: пункты на одной левой линии с логотипом (20px) */
+  html body .nav-sheet:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){padding-left:20px!important;padding-right:20px!important}
+  /* 2. обложка: моно-метка серая, как на остальных страницах (в светлой теме была тёмно-зелёной) */
+  html body .cover .eyebrow:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .cover .cover-kick .eyebrow:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){color:var(--text-muted)!important}
+  /* 3. устройство: подпись под схемой 17, вес 500 сохранён */
+  html body #arch .fig-txt:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body #arch .fig-txt p:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){font-size:17px!important;line-height:1.55!important}
+  /* 4. форма: подпись чекбокса течёт без принудительного переноса, подпись под кнопкой на 14 */
+  html body .lf-check .br-web:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform .lf-check span br:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){display:none!important}
+  html body .mform .lf-after:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){margin-top:-12px!important}
+  html body .mform .lf-check:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform .lf-check span:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){letter-spacing:0!important}
+  /* 5. кикер блока «Другие услуги» тем же кеглем, что остальные кикеры */
+  html body #related .eyebrow:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){font-size:13.5px!important;line-height:1.4!important}
+}
+</style>
+<style id="fix-m2">html body .cover .eyebrow:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .cover-kick .eyebrow:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){color:var(--text-muted)!important}</style>
+<style id="fix-cap">@media(min-width:761px){html body form .lf-after:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){margin-top:-12px!important}}</style>
 </head>
 <body>
 <script id="fix-lead-js">(function(){

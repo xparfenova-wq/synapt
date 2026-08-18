@@ -2128,6 +2128,21 @@ html body form .lf-err.show:not(#_):not(#_):not(#_):not(#_):not(#_){display:bloc
 html body .cover h1:not(#_):not(#_):not(#_):not(#_):not(#_),html body .hero h1:not(#_):not(#_):not(#_):not(#_):not(#_){font-size:102px!important;font-weight:500!important;letter-spacing:-.028em!important;line-height:1.02!important}
 @media(max-width:760px){html body .cover h1:not(#_):not(#_):not(#_):not(#_):not(#_),html body .hero h1:not(#_):not(#_):not(#_):not(#_):not(#_){font-size:60px!important;font-weight:500!important}}
 </style>
+
+<style id="fix-m">
+/* мобильная приёмка 19.08: только телефон */
+@media (max-width:760px){
+  /* обложка: анимация не спорит с текстом – канвас тише и гаснет к низу, где h1 и лид */
+  html body header.hero canvas#chkFx:not(#_):not(#_){opacity:.5!important;-webkit-mask-image:linear-gradient(180deg,#000 0,#000 38%,rgba(0,0,0,.4) 68%,transparent 96%)!important;mask-image:linear-gradient(180deg,#000 0,#000 38%,rgba(0,0,0,.4) 68%,transparent 96%)!important}
+  /* шторка меню: как на главной – ссылки, ниже ряд тема + Telegram + кнопка */
+  html body .nav-sheet .ns-in:not(#_):not(#_){display:grid!important;grid-template-columns:52px 52px minmax(0,1fr)!important;column-gap:12px!important;align-items:center!important}
+  html body .nav-sheet .ns-in>a:not(.btn):not(#_):not(#_){grid-column:1/-1!important;font-size:15px!important}
+  html body .nav-sheet .ns-in .ns-actions:not(#_):not(#_){display:contents!important}
+  html body .nav-sheet .ns-in .ns-tgl:not(#_):not(#_){order:1!important;grid-column:1!important;width:52px!important;height:52px!important;margin-top:18px!important}
+  html body .nav-sheet .ns-in .ns-tg:not(#_):not(#_){order:2!important;grid-column:2!important;width:52px!important;height:52px!important;margin-top:18px!important}
+  html body .nav-sheet .ns-in .btn.pri:not(#_):not(#_){order:3!important;grid-column:3!important;width:100%!important;min-height:52px!important;margin-top:18px!important;justify-content:center!important}
+}
+</style>
 </head>
 <body>
 <script id="fix-lead-js">(function(){
