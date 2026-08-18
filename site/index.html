@@ -2842,6 +2842,12 @@ html body #rules .pr-row .pr-n:not(#_):not(#_):not(#_){padding-top:0!important;a
 html body #rules .pr-row .pr-main:not(#_):not(#_):not(#_),html body #rules .pr-row .pr-d:not(#_):not(#_):not(#_){align-self:center!important}
 @media(max-width:820px){html body #rules .pr-row .pr-d:not(#_):not(#_):not(#_){align-self:start!important}}
 </style>
+
+<style id="fix-5b">
+/* кикер над заголовком главной остаётся мелким моно-кикером, это не чип */
+html body .hero .eyebrow:not(#_):not(#_):not(#_):not(#_){font-size:13px!important;line-height:1.4!important;padding:0!important}
+@media(max-width:760px){html body .hero .eyebrow:not(#_):not(#_):not(#_):not(#_){font-size:13.5px!important}}
+</style>
 </head>
 <body>
 <script>
