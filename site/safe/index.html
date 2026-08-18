@@ -1405,6 +1405,34 @@ footer .f-nav{gap:5px}
 .cost-top{align-items:start!important}
 .price-line{padding-top:34px}
 @media(max-width:900px){.price-line{padding-top:0}}
+
+/* единая система метрик: ключевая цифра крупная, хвост серым и мельче */
+.metric b .u,.metric b small,.cs-n .cs-of,.cs-n .cs-u,.cs-n .cs-pre,.price-line .big .pre,.price-line .big small,
+.metric b .tail,.bn b .tail{font-size:.5em!important;color:var(--text-muted)!important;font-weight:500}
+/* кнопка кейса: тот же размер, что соседний блок метрики, подпись строго по центру */
+.case-split .metrics.quad{align-items:stretch}
+.metric.metric-more{display:flex!important;align-items:stretch!important;height:100%}
+.metric-more .mm-t{display:flex!important;align-items:center!important;justify-content:center!important;
+  width:100%;height:100%;min-height:0;margin:0;border:1px solid var(--line-2);border-radius:var(--r-md);
+  color:var(--text)!important;text-decoration:underline;text-underline-offset:4px;font-size:16px}
+/* кейс: подпись, лид и цифры ближе к заголовку */
+.case-split h3,.case-split .case-t{margin-bottom:6px!important}
+.case-split .case-sub,.case-split .cs-client,.case-split .client{margin-bottom:14px!important}
+.case-split p{margin-bottom:16px!important}
+.case-split .metrics.quad{margin-top:12px!important;gap:16px clamp(16px,2vw,26px)!important}
+/* стоимость: заголовок и цена на одной верхней линии */
+.cost-top{align-items:start!important}
+.cost-head{padding-top:0!important}
+.price-line{padding-top:0!important;margin-top:0!important}
+.price-line .big{line-height:1}
+
+/* пробел перед хвостом метрики */
+.metric b .tail,.bn b .tail{margin-left:.28em}
+
+/* метрика и её хвост стоят в одной строке */
+.metric b,.bn b{white-space:nowrap}
+.metric b{font-size:clamp(26px,2.6vw,34px)}
+.metric b .tail,.bn b .tail{white-space:nowrap;display:inline}
 </style>
 <style media="print">
 @page{size:A4 portrait;margin:15mm 13mm 17mm}

@@ -1973,6 +1973,28 @@ body.menu-open .nav{background:var(--bg)!important;z-index:200}
   footer .f-nav .f-k{grid-column:1/-1;margin-bottom:2px}
   footer .legal{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:22px;row-gap:8px}
 }
+
+/* на телефоне полоса шага не липнет: прокрутка идёт ровно */
+@media(max-width:860px){
+  .step-rail-in{position:static!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+    background:transparent!important;border-bottom:1px solid var(--line);margin-bottom:18px}
+  body{overflow-anchor:auto}
+}
+/* блок «Почему сейчас»: цифры-кейсы внутри рамки, как весь блок */
+@media(max-width:900px){
+  #now .nowband{display:block}
+  #now .now-figs{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:22px;margin-top:26px}
+  #now .wrap{padding-left:var(--gutter);padding-right:var(--gutter)}
+}
+/* форма: заголовок и подзаголовок ближе, поля с одинаковым шагом */
+.lead-copy h2{margin-bottom:10px!important}
+.lf-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 22px}
+@media(max-width:760px){.lf-row{grid-template-columns:1fr;gap:0}}
+.lf{margin-bottom:18px!important}
+.slots{margin-top:18px!important}
+.lf-check{margin-top:18px!important}
+form .btn.pri{margin-top:22px!important}
+.lf-after{margin-top:14px!important}
 </style>
 <script>
 /* тема выбирается до первой отрисовки, иначе светлый посетитель видит вспышку тёмного */
@@ -2505,7 +2527,7 @@ function LEAD_API(url, opts){
         <span>Согласен на&nbsp;обработку персональных данных и&nbsp;принимаю <br class="br-web"><a href="/synapt/privacy/" target="_blank">политику обработки персональных данных</a></span></label>
       <div class="lf-err" id="lfErr" role="alert">Не&nbsp;хватает вашего имени, контактов и&nbsp;согласия на&nbsp;обработку персональных данных</div>
       <button class="btn pri lg" type="submit">Оставить заявку</button>
-      <p class="lf-after">Подтвердим встречу в&nbsp;ответном сообщении в&nbsp;течение <span class="nb">1</span>&nbsp;рабочего дня</p>
+      <p class="lf-after">Подтвердим встречу в&nbsp;ответном сообщении<br>в&nbsp;течение <span class="nb">1</span> рабочего дня</p>
     </form>
     <div class="lf-done" id="lfDone">
       <b>Заявка принята</b>
