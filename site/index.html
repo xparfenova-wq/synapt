@@ -2937,6 +2937,80 @@ html body form .lf-err.show:not(#_):not(#_):not(#_):not(#_):not(#_){display:bloc
   html.cs-lock body .cs-win:not(#_):not(#_):not(#_){touch-action:pan-y}
 }
 </style>
+<style id="fix-m2">
+/* Мобильные правки 19.08 (аудио), главная. Всё только для телефона (≤760), веб не трогаем */
+@media(max-width:760px){
+  /* K1. первый экран по реальной высоте телефона: метрики вверх под шапку, кикер и h1 вниз, 10px от низа видимого экрана */
+  html body .hero:not(#_):not(#_):not(#_):not(#_){display:flex!important;flex-direction:column!important;justify-content:flex-start!important;align-items:stretch!important;
+    height:auto!important;min-height:calc(100vh - 90px)!important;min-height:100svh!important;
+    padding-top:84px!important;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px))!important;box-sizing:border-box!important}
+  html body .hero>.wrap:not(#_):not(#_):not(#_):not(#_){flex:1 1 auto!important;display:flex!important;flex-direction:column!important;width:100%!important;min-height:0!important}
+  html body .hero .hero-grid:not(#_):not(#_):not(#_):not(#_){flex:1 1 auto!important;display:flex!important;flex-direction:column!important;gap:0!important;margin:0!important;min-height:0!important}
+  html body .hero .hero-grid>div:not(#_):not(#_):not(#_):not(#_){flex:1 1 auto!important;display:flex!important;flex-direction:column!important;align-items:stretch!important;min-height:0!important}
+  /* порядок: метрики → (воздух) → кикер → h1 */
+  html body .hero .hero-meta:not(#_):not(#_):not(#_):not(#_){order:0!important;margin:0 0 auto!important;padding:0!important;border:0!important;width:100%!important;max-width:none!important;
+    display:grid!important;grid-template-columns:minmax(0,1fr)!important;justify-items:end!important;gap:20px!important;align-self:stretch!important}
+  html body .hero .hero-grid .eyebrow:not(#_):not(#_):not(#_):not(#_){order:1!important;margin:56px 0 18px!important}
+  html body .hero .hero-grid h1:not(#_):not(#_):not(#_):not(#_){order:2!important;margin:0!important;padding:0!important}
+  html body .hero .hero-meta .m:not(#_):not(#_):not(#_):not(#_){display:flex!important;flex-direction:column!important;align-items:flex-end!important;text-align:right!important;gap:6px!important;margin:0!important;padding:0!important}
+  html body .hero .hero-meta .m-price:not(#_):not(#_):not(#_):not(#_){display:flex!important}
+  html body .hero .hero-meta .m-cta:not(#_):not(#_):not(#_):not(#_){display:none!important}
+  html body .hero .hero-cta:not(#_):not(#_):not(#_):not(#_){display:none!important}
+  /* совсем низкие экраны: h1 42, чтобы шесть строк и метрики влезли */
+  @media(max-height:700px){
+    html body .hero .hero-grid h1:not(#_):not(#_):not(#_):not(#_){font-size:42px!important}
+    html body .hero .hero-grid .eyebrow:not(#_):not(#_):not(#_):not(#_){margin-top:32px!important}
+    html body .hero .hero-meta:not(#_):not(#_):not(#_):not(#_){gap:12px!important}
+    html body .hero .hero-meta .m b:not(#_):not(#_):not(#_):not(#_){font-size:40px!important}
+    html body .hero .hero-meta .m b .tail:not(#_):not(#_):not(#_):not(#_){font-size:20px!important}
+  }
+
+  /* K2. плавающие кнопки: Telegram и почта одного размера, иконки 20, радиус один */
+  html body .fab .fab-b:not(#_):not(#_):not(#_):not(#_){width:52px!important;height:52px!important;min-width:52px!important;min-height:52px!important;padding:0!important;
+    box-sizing:border-box!important;justify-content:center!important;border-radius:16px!important;gap:0!important}
+  html body .fab .fab-b svg:not(#_):not(#_):not(#_):not(#_){width:20px!important;height:20px!important;flex:none!important}
+  html body .fab .fab-b span:not(#_):not(#_):not(#_):not(#_){display:none!important}
+
+  /* K3. шторка меню: пункты и иконки по левому краю логотипа (20), кнопка правым краем по крестику */
+  html body .nav-sheet .ns-in:not(#_):not(#_):not(#_):not(#_){padding-left:20px!important;padding-right:20px!important}
+  html body .nav-sheet .ns-in>a:not(#_):not(#_):not(#_):not(#_){padding-left:0!important;padding-right:0!important}
+  html body .nav-sheet .ns-act:not(#_):not(#_):not(#_):not(#_){padding-left:0!important;padding-right:0!important;margin-left:0!important;margin-right:0!important;width:100%!important}
+  html body .nav-sheet .ns-act .btn:not(#_):not(#_):not(#_):not(#_){flex:1 1 auto!important;margin:0!important}
+  /* открытие без вспышки: блюр не анимируем, шторка проявляется через opacity */
+  html body .nav:not(#_):not(#_):not(#_):not(#_){transition:background .3s var(--ease),border-color .3s var(--ease)!important}
+  html body.menu-open .nav:not(#_):not(#_):not(#_):not(#_),html body.menu-closing .nav:not(#_):not(#_):not(#_):not(#_){backdrop-filter:none!important;-webkit-backdrop-filter:none!important;transition:none!important}
+  html body .nav-sheet:not(#_):not(#_):not(#_):not(#_){display:block!important;opacity:0;visibility:hidden;pointer-events:none;
+    background:color-mix(in srgb,var(--bg) 94%,transparent)!important;
+    backdrop-filter:saturate(140%) blur(20px)!important;-webkit-backdrop-filter:saturate(140%) blur(20px)!important;
+    transition:opacity .22s var(--ease),visibility .22s!important}
+  html body .nav-sheet.open:not(#_):not(#_):not(#_):not(#_){opacity:1;visibility:visible;pointer-events:auto}
+
+  /* K4. экран «Заявка отправлена»: подзаголовок → кнопки 18, между кнопками 15 */
+  html body .lf-done .lf-acts:not(#_):not(#_):not(#_):not(#_){margin-top:18px!important;gap:15px!important}
+  html body .lf-done .lf-acts .btn:not(#_):not(#_):not(#_):not(#_){margin:0!important}
+
+  /* K5. подвал, «Формальности»: все строки шагом 4, адрес две строки без зазора */
+  html body footer .f-legal:not(#_):not(#_):not(#_):not(#_){display:flex!important;flex-direction:column!important;gap:0!important;align-items:flex-start!important}
+  html body footer .f-legal p:not(#_):not(#_):not(#_):not(#_){line-height:1.35!important;margin:0 0 4px!important;padding:0!important}
+  html body footer .f-legal p:nth-of-type(4):not(#_):not(#_):not(#_):not(#_){margin-bottom:0!important}
+  html body footer .f-legal p:nth-of-type(5):not(#_):not(#_):not(#_):not(#_){margin-top:0!important;margin-bottom:4px!important}
+  html body footer .f-legal a[href*="privacy"]:not(#_):not(#_):not(#_):not(#_){line-height:1.35!important;margin-top:0!important}
+
+  /* K8. «03 Как работаем»: без верхней линии перед первым этапом, линии между этапами остаются */
+  html body #how .rmap:not(#_):not(#_):not(#_):not(#_){border-top:0!important}
+  html body #how .rmap-row:first-of-type:not(#_):not(#_):not(#_):not(#_){border-top:0!important}
+
+  /* K9. лента кейсов: стрелка вперёд в начале, стрелка назад в конце, между ними обе тусклые */
+  html body #cases .crail-hint:not(#_):not(#_):not(#_):not(#_){display:flex!important;justify-content:space-between!important;opacity:1!important}
+  html body #cases .crail-hint .ch-ico:not(#_):not(#_):not(#_):not(#_){transition:opacity .3s var(--ease)}
+  html body #cases .crail-hint .ch-back svg:not(#_):not(#_):not(#_):not(#_){transform:scaleX(-1)}
+  html body #cases .crail-hint .ch-back:not(#_):not(#_):not(#_):not(#_){animation-name:chSwipeBack}
+  html body #cases .crail-hint[data-pos="start"] .ch-back:not(#_):not(#_):not(#_):not(#_){opacity:0!important;animation:none!important}
+  html body #cases .crail-hint[data-pos="end"] .ch-fwd:not(#_):not(#_):not(#_):not(#_){opacity:0!important;animation:none!important}
+  html body #cases .crail-hint[data-pos="mid"] .ch-ico:not(#_):not(#_):not(#_):not(#_){opacity:.3!important;animation:none!important}
+}
+@keyframes chSwipeBack{0%{transform:translateX(0);opacity:.35}50%{transform:translateX(-9px);opacity:1}100%{transform:translateX(0);opacity:.35}}
+</style>
 </head>
 <body>
 <script id="fix-lead-js">(function(){
@@ -5184,6 +5258,43 @@ function apply(){var vh=window.innerHeight,nh=nav();document.querySelectorAll('s
 });}
 window.addEventListener('load',function(){setTimeout(apply,50);setTimeout(apply,800)});window.addEventListener('resize',apply);
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a){setTimeout(apply,0)}},true);
+})();</script>
+<script id="fix-m2-js">(function(){
+/* мобильные правки 19.08: шторка меню и лента кейсов, только на телефоне */
+var mq=window.matchMedia('(max-width:760px)');
+/* K3. тап по свободной нижней половине шторки закрывает меню; на время закрытия шапка без блюра, чтобы шторка не схлопывалась */
+var sheet=document.getElementById('navSheet'), burger=document.getElementById('burger');
+if(sheet&&burger){
+  sheet.addEventListener('click',function(e){
+    if(!mq.matches||!sheet.classList.contains('open')) return;
+    if(e.target.closest('a,button,input,label')) return;
+    if(e.clientY>window.innerHeight/2) burger.click();
+  });
+  new MutationObserver(function(){
+    if(!sheet.classList.contains('open')){
+      document.body.classList.add('menu-closing');
+      setTimeout(function(){document.body.classList.remove('menu-closing')},280);
+    }
+  }).observe(sheet,{attributes:true,attributeFilter:['class']});
+}
+/* K9. подсказка листания: вперёд в начале, назад в конце, между – обе тусклые */
+var rail=document.getElementById('crail'), hint=document.querySelector('#cases .crail-hint');
+if(rail&&hint){
+  var fwd=hint.querySelector('.ch-ico');
+  if(fwd&&!hint.querySelector('.ch-back')){
+    fwd.classList.add('ch-fwd');
+    var back=fwd.cloneNode(true); back.classList.remove('ch-fwd'); back.classList.add('ch-back');
+    hint.insertBefore(back,fwd);
+  }
+  function pos(){
+    var max=rail.scrollWidth-rail.clientWidth, x=rail.scrollLeft;
+    var p= max<=8?'start': x<=8?'start': x>=max-8?'end':'mid';
+    if(hint.getAttribute('data-pos')!==p) hint.setAttribute('data-pos',p);
+    hint.classList.remove('done');
+  }
+  rail.addEventListener('scroll',pos,{passive:true});
+  addEventListener('resize',pos); addEventListener('load',pos); pos();
+}
 })();</script>
 </body>
 </html>

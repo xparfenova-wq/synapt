@@ -2594,6 +2594,39 @@ html body .cover h1:not(#_):not(#_):not(#_):not(#_):not(#_),html body .hero h1:n
   html body #cost .cost-head h2:not(#_):not(#_){max-width:none!important;width:auto!important}
 }
 </style>
+<style id="fix-m2">
+/* мобильные правки 19.08 (аудио Ксюши), только телефон: K1 обложка по svh, K2 FAB, K3 шторка, K5 реквизиты, K6 сетка, K7 чип */
+@media (max-width:760px){
+  /* K1. обложка = видимая высота экрана (svh), низ лида 10px от низа видимого экрана + safe-area */
+  html body header.cover:not(#_):not(#_):not(#_):not(#_){height:auto!important;min-height:calc(100vh - 90px)!important;min-height:100svh!important;box-sizing:border-box!important;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px))!important}
+  /* K2. плавающие кнопки: Telegram и заявка одного размера, иконки 20px, радиус 16 */
+  html body .fab .fab-b:not(#_):not(#_):not(#_):not(#_){width:52px!important;height:52px!important;min-width:52px!important;min-height:52px!important;padding:0!important;border-radius:16px!important;box-sizing:border-box!important}
+  html body .fab .fab-b svg:not(#_):not(#_):not(#_):not(#_){width:20px!important;height:20px!important}
+  /* K3. шторка меню: поля 20px как у логотипа и крестика; открытие через opacity, blur не анимируем */
+  html body .nav-sheet:not(#_):not(#_):not(#_):not(#_){padding-left:20px!important;padding-right:20px!important;display:flex!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important;transition:opacity .22s ease,visibility 0s linear .22s!important}
+  html body .nav-sheet.open:not(#_):not(#_):not(#_):not(#_){opacity:1!important;visibility:visible!important;pointer-events:auto!important;transition:opacity .22s ease,visibility 0s!important}
+  html body .nav:not(#_):not(#_):not(#_):not(#_){transition:background .2s ease,border-color .2s ease!important}
+  /* K5. подвал «Формальности»: все строки line-height 1.35, шаг 4px, адрес две строки без зазора */
+  html body footer .f-legal:not(#_):not(#_):not(#_):not(#_){gap:0!important;row-gap:0!important}
+  html body footer .f-legal .f-legal-cols:not(#_):not(#_):not(#_):not(#_),html body footer .f-legal .f-legal-c:not(#_):not(#_):not(#_):not(#_),html body footer .f-legal .f-addr:not(#_):not(#_):not(#_):not(#_){display:block!important;gap:0!important;row-gap:0!important;margin:0!important}
+  html body footer .f-legal .f-k:not(#_):not(#_):not(#_):not(#_){margin:0 0 10px!important}
+  html body footer .f-legal p:not(#_):not(#_):not(#_):not(#_){margin:0 0 4px!important;line-height:1.35!important}
+  html body footer .f-legal a:not(#_):not(#_):not(#_):not(#_){margin:0!important;line-height:1.35!important;display:block!important;width:fit-content!important}
+  html body footer .f-legal .f-addr p:first-child:not(#_):not(#_):not(#_):not(#_){margin-bottom:0!important}
+  /* K6. «Другие услуги и кейсы»: 2 колонки, gap 14 по обеим осям, карточки ряда одной высоты, пятая во всю ширину */
+  html body .rel-grid:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){display:grid!important;grid-template-columns:1fr 1fr!important;gap:14px!important;row-gap:14px!important;column-gap:14px!important;align-items:stretch!important}
+  html body .rel-grid .rel-card:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){margin:0!important;align-self:stretch!important;height:auto!important;min-height:0!important}
+  html body .rel-grid .rel-card:nth-child(5):not(#_):not(#_):not(#_):not(#_){grid-column:1/-1!important}
+  /* K7. чип обложки: везде 14px / 5px 11px */
+  html body header .chip:not(#_):not(#_):not(#_):not(#_){font-size:14px!important;line-height:1.2!important;padding:5px 11px!important;border-radius:16px!important}
+}
+</style>
+
+<style id="fix-sent">
+/* после отправки заявки поля формы скрываются, остаётся только «Спасибо» */
+html body .mform.sent .lf:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent .lf-row:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent .lf-check:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent .slots:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent .sl-h:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent button[type=submit]:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent .lf-after:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent .mf-err:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){display:none!important}
+html body .mform.sent .mf-ok:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){display:block!important}
+</style>
 </head>
 <body>
 <script id="fix-lead-js">(function(){
@@ -3988,5 +4021,18 @@ function apply(){var vh=window.innerHeight,nh=nav();document.querySelectorAll('s
 window.addEventListener('load',function(){setTimeout(apply,50);setTimeout(apply,800)});window.addEventListener('resize',apply);
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a){setTimeout(apply,0)}},true);
 })();</script>
+<script id="fix-m2-js">
+/* K3. тап по свободной нижней половине шторки закрывает меню */
+(function(){
+  var sh=document.querySelector('.nav-sheet');if(!sh)return;
+  var brg=document.getElementById('burger')||document.getElementById('brg');
+  sh.addEventListener('click',function(e){
+    if(innerWidth>760)return;
+    if(!sh.classList.contains('open'))return;
+    if(e.target.closest&&e.target.closest('a,button,input,label'))return;
+    if(e.clientY>innerHeight/2&&brg)brg.click();
+  });
+})();
+</script>
 </body>
 </html>

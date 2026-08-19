@@ -2552,6 +2552,51 @@ html body .cover h1:not(#_):not(#_):not(#_):not(#_):not(#_),html body .hero h1:n
 }
 </style>
 <style id="fix-cap">@media(min-width:761px){html body form .lf-after:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){margin-top:14px!important}}</style>
+<style id="fix-m2">
+/* ============================================================
+   мобильные правки Ксюши 19.08, вторая волна (SPEC-MOB2), только телефон ≤760
+   ============================================================ */
+@media (max-width:760px){
+  /* K1. обложка: реальная высота экрана (svh), метрики под шапкой (84), лид 10px от низа видимого экрана */
+  html body .cover.r-cover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body header.cover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){min-height:calc(100vh - 90px)!important;min-height:100svh!important;height:auto!important;max-height:none!important;display:flex!important;flex-direction:column!important;padding-top:84px!important;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px))!important;box-sizing:border-box!important}
+  html body .cover.r-cover>.wrap:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .cover>.wrap:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){display:flex!important;flex-direction:column!important;flex:1 1 auto!important;width:100%!important;min-height:0!important}
+  html body .cover .cover-grid:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .cover .cover-grid.stats:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){display:flex!important;flex-direction:column!important;flex:1 1 auto!important;gap:0!important;margin:0!important;padding:0!important;min-height:0!important;grid-template-rows:none!important}
+  html body .cover .cover-grid .cover-stats:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .cover .cover-stats:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){order:-1!important;margin:0!important;align-self:flex-end!important;flex:0 0 auto!important}
+  html body .cover .cover-grid>div:not(.cover-stats):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){order:1!important;margin-top:auto!important;padding-top:24px!important;padding-bottom:0!important;margin-bottom:0!important;flex:0 0 auto!important;display:block!important}
+  html body .cover .lead:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .cover p.lead:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .r-cover .lead:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){margin-bottom:0!important;padding-bottom:0!important}
+  html body .cover h1:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){margin-bottom:10px!important}
+  /* K2. плавающие кнопки одного размера: 52×52, иконка 20, радиус 16 */
+  html body .fab .fab-b:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .fab .fab-tg:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .fab .fab-lead:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){width:52px!important;height:52px!important;min-width:52px!important;min-height:52px!important;padding:0!important;border-radius:16px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important}
+  html body .fab .fab-b svg:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .fab .fab-tg svg:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .fab .fab-lead svg:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){width:20px!important;height:20px!important;flex:0 0 20px!important}
+  html body .fab .fab-lead span:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){display:none!important}
+  /* K3. шторка: пункты и иконки по левому краю логотипа (20), кнопка правым краем по крестику (20 от края);
+     открытие плавное: display не переключаем, анимируем только opacity, backdrop-filter не анимируем */
+  html body .nav-sheet:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){padding-left:20px!important;padding-right:20px!important;display:flex!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important;transition:opacity .22s ease,visibility 0s linear .22s!important;will-change:opacity}
+  html body .nav-sheet.open:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){opacity:1!important;visibility:visible!important;pointer-events:auto!important;transition:opacity .22s ease,visibility 0s!important}
+  html body .nav-sheet>a:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){padding-left:0!important;margin-left:0!important}
+  html body .nav-sheet .ns-act:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){display:flex!important;align-items:center!important;justify-content:flex-start!important;padding-left:0!important;padding-right:0!important;margin-left:0!important;margin-right:0!important;width:100%!important;box-sizing:border-box!important}
+  html body .nav-sheet .ns-act .btn.pri:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){flex:1 1 auto!important;margin-right:0!important;padding-left:18px!important;padding-right:18px!important;justify-content:center!important;text-align:center!important}
+  html body .nav:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){transition:background .3s ease,border-color .3s ease!important}
+  /* K5. подвал «Формальности»: все строки шагом 4px, line-height 1.35, адрес двумя строками без зазора */
+  html body footer .f-legal p:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body footer .f-legal a:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body footer .f-legal-col p:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body footer .f-legal-col a:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){margin:0 0 4px!important;line-height:1.35!important;padding-bottom:0!important}
+  html body footer .f-legal-col:nth-child(2) p:nth-child(1):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body footer .f-legal>p:nth-of-type(4):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){margin-bottom:0!important}
+  html body footer .f-legal-col:last-child a:last-child:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body footer .f-legal a:last-child:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){margin-bottom:0!important;padding-bottom:2px!important;display:block!important;width:fit-content!important;margin-top:0!important}
+  html body footer .f-legal-col:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body footer .f-legal-cols:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body footer .f-legal:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){row-gap:0!important;gap:0!important}
+  html body footer .f-legal-col:not(:last-child):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){margin-bottom:4px!important}
+  /* K6. «Другие услуги и кейсы»: 2 колонки, gap 14 в обе стороны, карточки ряда одной высоты, без лишних отступов */
+  html body #related .rel-grid:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body #related .rel-grid.split:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px 14px!important;row-gap:14px!important;column-gap:14px!important;align-items:stretch!important}
+  html body #related .rel-card:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){align-self:stretch!important;margin:0!important;height:auto!important;min-height:0!important}
+  html body #related .rel-card:last-child:nth-child(odd):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){grid-column:1/-1!important}
+  /* K7. чип обложки: 14px, padding 5px 11px */
+  html body .cover .cover-kick .chip:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .cover .chip:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){font-size:14px!important;line-height:1.2!important;padding:5px 11px!important;letter-spacing:.01em!important}
+}
+</style>
+
+<style id="fix-sent">
+/* после отправки заявки поля формы скрываются, остаётся только «Спасибо» */
+html body .mform.sent .lf:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent .lf-row:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent .lf-check:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent .slots:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent .sl-h:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent button[type=submit]:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent .lf-after:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent .mf-err:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){display:none!important}
+html body .mform.sent .mf-ok:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){display:block!important}
+</style>
 </head>
 <body>
 <script id="fix-lead-js">(function(){
@@ -3900,6 +3945,15 @@ function apply(){var vh=window.innerHeight,nh=nav();document.querySelectorAll('s
 });}
 window.addEventListener('load',function(){setTimeout(apply,50);setTimeout(apply,800)});window.addEventListener('resize',apply);
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a){setTimeout(apply,0)}},true);
+})();</script>
+<script id="fix-m2-js">(function(){
+/* K3. тап по свободной нижней половине шторки закрывает меню */
+var sh=document.getElementById('sheet'),g=document.getElementById('brg'); if(!sh||!g) return;
+sh.addEventListener('click',function(e){
+  if(!sh.classList.contains('open')) return;
+  if(e.target.closest('a,button,input,label')) return;
+  if(e.clientY>innerHeight/2){ g.click(); }
+});
 })();</script>
 </body>
 </html>
