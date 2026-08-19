@@ -2571,6 +2571,8 @@ html body .mform.sent .mf-ok:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not
 
 
 
+
+
 <style id="fix-10">
 /* 19.08, fix-10: лайм только в заливке кнопок, чипах и анимациях; обводки и подчёркивания при наведении белые (в светлой теме чернильные) */
 
@@ -2594,15 +2596,11 @@ html body .lf-check a:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
 html body .agree a:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){color:var(--text)!important;border-bottom-color:var(--text)!important;text-decoration-color:var(--text)!important;background:transparent!important;filter:none!important}
 /* имя и ник менеджера: в покое лаймовые, при наведении приглушённые серые */
 html body .lc-mgr-t b a:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
-html body .lc-mgr-t b:hover .lc-name:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
-html body .lc-mgr-t b:hover .mgr-name:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
 html body .lc-name:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
 html body .mgr-name:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
 html body .mf-fail a[href*="Anti4ay"]:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){color:var(--text-muted)!important;border-bottom-color:var(--text-muted)!important;text-decoration-color:var(--text-muted)!important;filter:none!important}
 /* светлая тема: имя и ник на лаймовой плашке, текст чернильный, при наведении плашка чуть тускнеет */
 html[data-theme="light"] body .lc-mgr-t b a:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
-html[data-theme="light"] body .lc-mgr-t b:hover .lc-name:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
-html[data-theme="light"] body .lc-mgr-t b:hover .mgr-name:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
 html[data-theme="light"] body .lc-name:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
 html[data-theme="light"] body .mgr-name:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
 html[data-theme="light"] body .mf-fail a[href*="Anti4ay"]:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){color:#191A1D!important;border-bottom-color:#191A1D!important;filter:brightness(.92)!important}
@@ -2613,8 +2611,7 @@ html body .nav .nav-act .btn.pri:hover:not(#_):not(#_):not(#_):not(#_):not(#_):n
 html body .nav-cta:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
 html body .nav-sheet .btn.pri:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
 html body .btn.pri:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
-html body .btn.pri:focus-visible:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){background:var(--accent)!important;color:var(--accent-ink,#12150A)!important;filter:brightness(.88)!important;box-shadow:none!important;transform:none!important;opacity:1!important}
-html body .nav:not(.solid) .nav-act>.btn.pri:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){opacity:0!important}
+html body .btn.pri:focus-visible:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){background:var(--accent)!important;color:var(--accent-ink,#12150A)!important;filter:brightness(.88)!important;box-shadow:none!important;transform:none!important}
 
 /* 4. галочка согласия строго по центру кружка: один svg 20px на всех страницах, центр кружка и центр знака совпадают */
 html body .lf-check:has(input:checked):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_)::after{
