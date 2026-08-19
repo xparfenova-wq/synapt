@@ -1,13 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
 <rect x="0" y="0" width="1080" height="1350" rx="0" fill="#0E1211"/>
-<text x="90" y="121" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="2.16" fill="#D0E865">как проходит</text>
+<text x="90" y="121" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="2.16" fill="#D0E865">принципы 3 и 4 из 6</text>
 <text x="871.19" y="121" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="2.16" fill="#6E7975">3 / 7</text>
-<text x="90" y="412.31" font-family="Manrope" font-size="84" font-weight="600" letter-spacing="-2.52" fill="#FFFFFF">Три Zoom</text>
-<text x="90" y="500.5" font-family="Manrope" font-size="84" font-weight="600" letter-spacing="-2.52" fill="#FFFFFF">за две недели, между</text>
-<text x="90" y="588.69" font-family="Manrope" font-size="84" font-weight="600" letter-spacing="-2.52" fill="#FFFFFF">ними разбираем</text>
-<text x="90" y="676.88" font-family="Manrope" font-size="84" font-weight="600" letter-spacing="-2.52" fill="#FFFFFF">работу</text>
-<text x="90" y="781.06" font-family="Manrope" font-size="48" font-weight="400" letter-spacing="-0.24" fill="#C4CAC7">От вас нужны до 6 часов, доступ</text>
-<text x="90" y="849.22" font-family="Manrope" font-size="48" font-weight="400" letter-spacing="-0.24" fill="#C4CAC7">к рабочим инструментам и один-два</text>
-<text x="90" y="917.38" font-family="Manrope" font-size="48" font-weight="400" letter-spacing="-0.24" fill="#C4CAC7">человека, к которым можно обратиться</text>
-<text x="90" y="985.53" font-family="Manrope" font-size="48" font-weight="400" letter-spacing="-0.24" fill="#C4CAC7">с вопросами</text>
+<text x="90" y="417.23" font-family="JetBrains Mono" font-size="36" font-weight="500" letter-spacing="0.72" fill="#D0E865">03</text>
+<text x="196" y="417.23" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">Система остаётся у вас целиком</text>
+<text x="196" y="475.63" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">Передаём вам всю систему: код, доступы,</text>
+<text x="196" y="524.22" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">промпты, базу знаний и документацию.</text>
+<text x="196" y="572.81" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">Продолжить работу можно с нами</text>
+<text x="196" y="621.41" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">или с другой командой</text>
+<text x="90" y="754" font-family="JetBrains Mono" font-size="36" font-weight="500" letter-spacing="0.72" fill="#D0E865">04</text>
+<text x="196" y="754" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">Данные не покидают ваш контур</text>
+<text x="196" y="812.39" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">Фиксируем, какие поля уходят в модель.</text>
+<text x="196" y="860.98" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">Обезличивание, ролевой доступ</text>
+<text x="196" y="909.58" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">и логирование настраиваем мы, ваш юрист</text>
+<text x="196" y="958.17" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">получает описание контура</text>
 </svg>

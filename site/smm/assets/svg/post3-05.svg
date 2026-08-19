@@ -1,22 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
 <rect x="0" y="0" width="1080" height="1350" rx="0" fill="#0E1211"/>
-<text x="90" y="121" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="2.16" fill="#D0E865">результат</text>
+<text x="90" y="121" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="2.16" fill="#D0E865">как работаем</text>
 <text x="871.19" y="121" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="2.16" fill="#6E7975">5 / 7</text>
-<text x="90" y="260.14" font-family="Manrope" font-size="70" font-weight="600" letter-spacing="-2.1" fill="#FFFFFF">Четыре артефакта,</text>
-<text x="90" y="337.14" font-family="Manrope" font-size="70" font-weight="600" letter-spacing="-2.1" fill="#FFFFFF">которые остаются у вас</text>
-<text x="90" y="438.14" font-family="JetBrains Mono" font-size="36" font-weight="500" letter-spacing="0.72" fill="#D0E865">01</text>
-<text x="196" y="438.14" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">Карта всех процессов компании</text>
-<text x="196" y="496.53" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">как сейчас устроена работа, где теряются</text>
-<text x="196" y="545.13" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">заявки, часы и деньги</text>
-<text x="90" y="649.72" font-family="JetBrains Mono" font-size="36" font-weight="500" letter-spacing="0.72" fill="#D0E865">02</text>
-<text x="196" y="649.72" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">Порядок внедрения</text>
-<text x="196" y="708.11" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">что даёт эффект первым, что можно отложить</text>
-<text x="196" y="756.7" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">и почему</text>
-<text x="90" y="861.3" font-family="JetBrains Mono" font-size="36" font-weight="500" letter-spacing="0.72" fill="#D0E865">03</text>
-<text x="196" y="861.3" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">План с вилкой бюджета</text>
-<text x="196" y="919.69" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">сколько будет стоить внедрение по каждому</text>
-<text x="196" y="968.28" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">направлению</text>
-<text x="90" y="1072.88" font-family="JetBrains Mono" font-size="36" font-weight="500" letter-spacing="0.72" fill="#D0E865">04</text>
-<text x="196" y="1072.88" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">Собранный агент</text>
-<text x="196" y="1131.27" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">готовый агент под один конкретный процесс</text>
+<text x="90" y="256.03" font-family="Manrope" font-size="70" font-weight="600" letter-spacing="-2.1" fill="#FFFFFF">Декомпозируем проект</text>
+<text x="90" y="333.03" font-family="Manrope" font-size="70" font-weight="600" letter-spacing="-2.1" fill="#FFFFFF">на этапы и каждый</text>
+<text x="90" y="410.03" font-family="Manrope" font-size="70" font-weight="600" letter-spacing="-2.1" fill="#FFFFFF">завершаем конкретным</text>
+<text x="90" y="487.03" font-family="Manrope" font-size="70" font-weight="600" letter-spacing="-2.1" fill="#FFFFFF">результатом</text>
+<text x="90" y="588.03" font-family="JetBrains Mono" font-size="36" font-weight="500" letter-spacing="0.72" fill="#D0E865">01</text>
+<text x="196" y="588.03" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">Разбор и план внедрения</text>
+<text x="196" y="646.42" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">Карта конкретного процесса и смета</text>
+<text x="90" y="751.02" font-family="JetBrains Mono" font-size="36" font-weight="500" letter-spacing="0.72" fill="#D0E865">02</text>
+<text x="196" y="751.02" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">Разработка решения</text>
+<text x="196" y="809.41" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">Работающий продукт</text>
+<text x="90" y="914" font-family="JetBrains Mono" font-size="36" font-weight="500" letter-spacing="0.72" fill="#D0E865">03</text>
+<text x="196" y="914" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">Внедрение и обучение</text>
+<text x="196" y="972.39" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">Обученная команда и регламент</text>
+<text x="90" y="1076.98" font-family="JetBrains Mono" font-size="36" font-weight="500" letter-spacing="0.72" fill="#D0E865">04</text>
+<text x="196" y="1076.98" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">Передача и поддержка</text>
+<text x="196" y="1135.38" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">Всё, что нужно для работы</text>
 </svg>

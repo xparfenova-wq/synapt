@@ -1,12 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
 <rect x="0" y="0" width="1080" height="1350" rx="0" fill="#0E1211"/>
-<text x="90" y="121" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="2.16" fill="#D0E865">итог</text>
+<text x="90" y="121" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="2.16" fill="#D0E865">модули системы</text>
 <text x="871.19" y="121" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="2.16" fill="#6E7975">5 / 7</text>
-<text x="90" y="411.61" font-family="Manrope" font-size="70" font-weight="600" letter-spacing="-2.1" fill="#FFFFFF">Цифры за месяц работы</text>
-<text x="90" y="535.61" font-family="JetBrains Mono" font-size="84" font-weight="500" letter-spacing="-2.52" fill="#FFFFFF">25-35 ч</text>
-<text x="90" y="598.61" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="0.36" fill="#9AA5A1">рутины в неделю освободилось у команды</text>
-<text x="90" y="726.2" font-family="JetBrains Mono" font-size="84" font-weight="500" letter-spacing="-2.52" fill="#FFFFFF">30 дней</text>
-<text x="90" y="789.2" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="0.36" fill="#9AA5A1">специалист Synapt работал внутри команды</text>
-<text x="90" y="916.8" font-family="JetBrains Mono" font-size="84" font-weight="500" letter-spacing="-2.52" fill="#FFFFFF">4 отдела</text>
-<text x="90" y="979.8" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="0.36" fill="#9AA5A1">перешли на новые инструменты</text>
+<text x="90" y="254.63" font-family="Manrope" font-size="70" font-weight="600" letter-spacing="-2.1" fill="#FFFFFF">Система разрабатывается</text>
+<text x="90" y="331.63" font-family="Manrope" font-size="70" font-weight="600" letter-spacing="-2.1" fill="#FFFFFF">из блоков</text>
+<text x="90" y="432.63" font-family="JetBrains Mono" font-size="36" font-weight="500" letter-spacing="0.72" fill="#D0E865">продажи</text>
+<text x="416" y="432.63" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">Работа с клиентом</text>
+<text x="90" y="539.02" font-family="JetBrains Mono" font-size="36" font-weight="500" letter-spacing="0.72" fill="#D0E865">управление</text>
+<text x="416" y="539.02" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">AI-дашборд</text>
+<text x="416" y="601.41" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">для собственника</text>
+<text x="90" y="707.8" font-family="JetBrains Mono" font-size="36" font-weight="500" letter-spacing="0.72" fill="#D0E865">команда</text>
+<text x="416" y="707.8" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">Знания и адаптация</text>
+<text x="90" y="814.19" font-family="JetBrains Mono" font-size="36" font-weight="500" letter-spacing="0.72" fill="#D0E865">экспертиза</text>
+<text x="416" y="814.19" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">AI-эксперт</text>
+<text x="90" y="920.58" font-family="JetBrains Mono" font-size="36" font-weight="500" letter-spacing="0.72" fill="#D0E865">операции</text>
+<text x="416" y="920.58" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">Интеграции</text>
+<text x="416" y="982.97" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">и автоматизация</text>
+<text x="90" y="1089.36" font-family="JetBrains Mono" font-size="36" font-weight="500" letter-spacing="0.72" fill="#D0E865">основа всех</text>
+<text x="90" y="1137.36" font-family="JetBrains Mono" font-size="36" font-weight="500" letter-spacing="0.72" fill="#D0E865">блоков</text>
+<text x="416" y="1089.36" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">Безопасный слой</text>
 </svg>
