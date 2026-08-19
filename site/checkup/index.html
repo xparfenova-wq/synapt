@@ -34,7 +34,7 @@ document.documentElement.setAttribute('data-theme',s)})();</script>
   --ease:cubic-bezier(.22,.7,.3,1);
   --dur-fast:.16s; --dur:.2s; --dur-theme:.35s; --dur-reveal:.7s;
   --bg-deep:#0D0F0E; --bg:#131514; --surface:#191C1B; --surface-2:#212524; --surface-3:#2A2E2C;
-  --text:#F0F2F1; --text-2:#C4CAC7; --text-muted:#939B98; --text-dim:#7C8480;
+  --text:#F0F2F1; --text-2:#C4CAC7; --text-muted:#A8B0AC; --text-dim:#929A96;
   --line:rgba(226,242,145,.10); --line-2:rgba(226,242,145,.18); --line-accent:rgba(208,232,101,.32);
   --glow:radial-gradient(58% 52% at 74% 6%,rgba(208,232,101,.10),transparent 72%);
   --card-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 12px 40px -20px rgba(0,0,0,.6);
@@ -42,7 +42,7 @@ document.documentElement.setAttribute('data-theme',s)})();</script>
 }
 :root[data-theme="light"]{
   --bg-deep:#EDF1EE; --bg:#FBFBFB; --surface:#FFFFFF; --surface-2:#F4F6F5; --surface-3:#EBEEEC;
-  --text:#161918; --text-2:#3A3F3D; --text-muted:#69706D; --text-dim:#767D7A; --danger:#B4232F;
+  --text:#161918; --text-2:#3A3F3D; --text-muted:#525956; --text-dim:#626966; --danger:#B4232F;
   --accent-txt:#4C534F; --accent-text:#6E8A1F; --sage:#6E7A45;
   --line:#E6E9E8; --line-2:#DBDFDD; --line-accent:rgba(139,166,44,.35);
   --glow:radial-gradient(58% 52% at 74% 6%,rgba(208,232,101,.08),transparent 72%);
@@ -53,7 +53,7 @@ document.documentElement.setAttribute('data-theme',s)})();</script>
 /* ===== база ===== */
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:88px}
-body{font-family:var(--sans);font-size:16px;font-weight:450;line-height:1.6;
+body{font-family:var(--sans);font-size:17px;font-weight:450;line-height:1.6;
  background:var(--bg);color:var(--text);font-feature-settings:"tnum" 1;
  -webkit-font-smoothing:antialiased;overflow-x:hidden;
  transition:background var(--dur-theme) ease,color var(--dur-theme) ease}
@@ -622,7 +622,7 @@ footer{padding:64px 0 40px;border-top:1px solid var(--line);margin-top:20px}
 footer .wrap{display:block}
 .f-main{display:grid;grid-template-columns:1.4fr .8fr 1.1fr 1.3fr;gap:clamp(24px,3vw,48px);align-items:start}
   .f-main{grid-template-columns:1fr;row-gap:28px}
-.f-main{grid-template-columns:250px 290px 520px}
+.f-main{grid-template-columns:1.3fr 1.2fr 1.2fr}
 .f-brand .brand svg{height:26px}
 .f-note{margin-top:14px;font-size:13.5px;color:var(--text-dim);line-height:1.5;max-width:26ch}
 .f-tg{display:inline-block;margin-top:16px;font-size:14px;color:var(--text-2);
@@ -716,7 +716,7 @@ h2,.sec-head h2{font-size:var(--fs-h2);letter-spacing:-.025em;line-height:1.14}
 
 /* ================= сверка со стандартом сайта ================= */
 /* подвал: три колонки на десктопе, две на планшете, одна на телефоне */
-.f-main{grid-template-columns:250px 290px 520px}
+.f-main{grid-template-columns:1.3fr 1.2fr 1.2fr}
 @media(max-width:900px){.f-main{grid-template-columns:1fr 1fr;row-gap:30px}}
 @media(max-width:560px){.f-main{grid-template-columns:1fr;row-gap:28px}}
 footer .wrap{overflow-wrap:break-word}
@@ -1168,7 +1168,7 @@ footer a[href="/privacy"]:hover,footer a[href$="/privacy"]:hover{border-bottom-c
 h1,.hero h1,.cover h1{font-size:var(--fz-h1)!important;letter-spacing:-.03em;line-height:1.06;max-width:20ch}
 h2,.sec-head h2,.lead-copy h2{font-size:var(--fz-h2)!important;letter-spacing:-.025em;line-height:1.12}
 h3,.card h3,.case h3,.rule .rt,.nxt .nt,.faq summary,#why .rule .rt{
-  font-size:var(--fz-h3)!important;font-weight:560;letter-spacing:-.015em;line-height:1.3}
+  font-size:var(--fz-h3)!important;font-weight:600;letter-spacing:-.015em;line-height:1.3}
 .lead,.sec-head .lead,.hero .lead,.lead-copy .lead{
   font-size:var(--fz-lead)!important;line-height:1.55;color:var(--text-2)}
 .rule .rd,.card p,.case p,.faq .ans,.ph-txt,.lc-mgr-t span,.note,.plan li,.lf-done,.nav-sheet a{
@@ -1323,7 +1323,7 @@ html.sheet-lock,html.sheet-lock body{overflow:hidden!important}
 
 /* ================= подвал ================= */
 footer{padding:var(--sec-pad) 0 14px!important;margin-top:0}
-footer .f-main{row-gap:32px;column-gap:32px}
+footer .f-main{row-gap:28px}
 footer .f-nav,footer .f-nav2{display:flex!important;flex-direction:row!important;flex-wrap:wrap;
   align-content:start;gap:6px 18px!important;max-width:300px}
 footer .f-nav2 .f-k,footer .f-nav .f-k{flex:0 0 100%;margin-bottom:4px}
@@ -1437,12 +1437,12 @@ footer .f-legal p{margin:0 0 4px!important}
 
 /* ================= единая шкала кеглей и отступов ================= */
 :root{
-  --fz-h1:clamp(46px,5.9vw,68px);
-  --fz-h2:40px;
-  --fz-h3:22px;
-  --fz-kick:13px;
-  --fz-lead:20px;
-  --fz-body:16px;
+  --fz-h1:clamp(46px,5.9vw,70px);
+  --fz-h2:36px;
+  --fz-h3:21px;
+  --fz-kick:15px;
+  --fz-lead:17px;
+  --fz-body:15.5px;
   --fz-cap:13.5px;
   --fz-mono:11.5px;
   --fz-metric:clamp(38px,4.4vw,54px);
@@ -1453,7 +1453,7 @@ footer .f-legal p{margin:0 0 4px!important}
     --fz-h2:28px;
     --fz-h3:19px;
     --fz-kick:13.5px;
-    --fz-lead:17px;
+    --fz-lead:15px;
     --fz-body:15px;
     --fz-cap:13px;
     --fz-mono:11px;
@@ -1462,7 +1462,7 @@ footer .f-legal p{margin:0 0 4px!important}
 h1,.hero h1{font-size:var(--fz-h1)!important;line-height:1.06;letter-spacing:-.03em}
 h2,.sec-head h2,.lead-copy h2{font-size:var(--fz-h2)!important;line-height:1.12;letter-spacing:-.025em}
 h3,.card h3,.case h3,.rule .rt,.nxt .nt,.faq summary,#why .rule .rt,.lc-mgr-t b{
-  font-size:var(--fz-h3)!important;font-weight:560!important;line-height:1.3;letter-spacing:-.015em}
+  font-size:var(--fz-h3)!important;line-height:1.3;letter-spacing:-.015em}
 .lc-mgr-t b{font-size:15.5px!important}
 /* кикер раздела и чип обложки */
 .eyebrow,.hero-chip,.chip,.f-k{font-size:var(--fz-kick)!important}
@@ -1497,7 +1497,7 @@ h3,.card h3,.case h3,.rule .rt,.nxt .nt,.faq summary,#why .rule .rt,.lc-mgr-t b{
 @media(max-width:760px){:root{--sec-pad:72px}}
 body>section[id],body>section[id]:first-of-type,body>section[id]:last-of-type{
   padding-top:var(--sec-pad)!important;padding-bottom:var(--sec-pad)!important}
-footer{padding-top:64px!important}
+footer{padding-top:var(--sec-pad)!important}
 @media(min-width:901px){
   .hero.rh-hero{padding-top:calc(66px + var(--sec-pad))!important;padding-bottom:var(--sec-pad)!important}
 }
@@ -1519,7 +1519,7 @@ footer{padding-top:64px!important}
    строка ссылки 1.45 давала +19px к каждому ряду, поэтому строка сжата до 1 */
 footer .f-nav,footer .f-nav2{row-gap:6px!important;column-gap:18px!important;line-height:1!important}
 footer .f-nav a,footer .f-nav2 a{line-height:1!important;padding:0!important;margin:0!important}
-footer .f-nav .f-k,footer .f-nav2 .f-k{line-height:1.6!important;margin:0 0 4px!important}
+footer .f-nav .f-k,footer .f-nav2 .f-k{line-height:1.4!important;margin:0 0 4px!important}
 /* чип обложки обычным шрифтом, как на остальных страницах */
 .hero-chip,.cover-kick .chip,.chip{font-family:var(--sans)!important;letter-spacing:0!important}
 
@@ -1562,18 +1562,24 @@ footer .f-k{font-family:var(--mono)!important;font-size:11.5px!important}
    поэтому телефонная шкала выше остаётся главной
    ========================================================== */
 @media(min-width:761px){
-  h1,.hero h1{font-size:72px!important;line-height:1;letter-spacing:-.03em}
-  h2,.sec-head h2,.lead-copy h2{font-size:40px!important;line-height:1.14;letter-spacing:-.025em}
+  h1,.hero h1{font-size:68px!important;line-height:1.06;letter-spacing:-.03em}
+  h2,.sec-head h2,.lead-copy h2{font-size:40px!important;line-height:1.12;letter-spacing:-.025em}
   h3,.card h3,.case h3,.rule .rt,.nxt .nt,.faq summary,#why .rule .rt{
-    font-size:22px!important;font-weight:560!important;line-height:1.3;letter-spacing:-.015em}
-  .lead,.sec-head .lead,.hero .lead,.lead-copy .lead{font-size:20px!important;line-height:1.5}
+    font-size:22px!important;line-height:1.3;letter-spacing:-.015em}
+  /* кикер раздела: моноширинный, 13px, разрядка .5px */
+  .eyebrow,.sec-head .eyebrow,.lead-copy .eyebrow,#lead .eyebrow,#related .eyebrow,#entry>.wrap>.eyebrow{
+    font-family:var(--mono)!important;font-size:13px!important;letter-spacing:.5px!important;
+    line-height:1.5;font-feature-settings:"case" 1,"liga" 0}
+  /* чип обложки обычным шрифтом, как на остальных страницах */
+  .hero-chip,.cover-kick .chip,.chip{font-family:var(--sans)!important;font-size:12.5px!important;
+    letter-spacing:0!important}
+  .lead,.sec-head .lead,.hero .lead,.lead-copy .lead{font-size:18px!important;line-height:1.6}
   .rule .rd,.card p,.case p,.faq .ans,.ph-txt,.lc-mgr-t span,.note,.plan li,.lf-done,.nav-sheet a,
   .lc-mgr-t b,.lc-mgr-t b a{font-size:16px!important;line-height:1.6}
-  /* подписи 13,5 – пункты подвала идут по 14, реквизиты по 13 */
-  .hs>span,.ph-num small,.metric>span,.dom-cap,.fx-cap,.f-note,.f-copy,
+  /* подписи 13,5 – кроме пунктов подвала, они идут по 14,5 */
+  .hs>span,.ph-num small,.metric>span,.dom-cap,.fx-cap,.f-note,.f-legal p,.f-copy,.f-legal a,
   .sl-note,.lf-check>span,.lf-err,.lf-hint,.lf-after,.rule .rk,.lc-list li{
     font-size:13.5px!important;line-height:1.5}
-  .f-legal p,.f-legal a{font-size:13.5px!important;line-height:1.5}
   /* моно-метки 11,5 */
   .tag,.plan .pn,.case .who,.rule .rn,.lc-list .lk,.sl-h,.slots .sl-h,
   .lf label,.f-l,.fld label,.lf label .req,footer .f-k{font-size:11.5px!important}
@@ -1636,7 +1642,7 @@ footer .f-k{font-family:var(--mono)!important;font-size:11.5px!important}
 footer .f-nav,footer .f-nav2,footer .f-nav.f-nav2{display:grid!important;
   grid-template-columns:repeat(2,max-content)!important;gap:6px 18px!important;
   align-content:start;max-width:none!important;line-height:1.45!important}
-footer .f-nav .f-k,footer .f-nav2 .f-k{grid-column:1/-1;margin:0 0 4px!important;line-height:1.6!important}
+footer .f-nav .f-k,footer .f-nav2 .f-k{grid-column:1/-1;margin:0 0 4px!important;line-height:1.4!important}
 footer .f-nav a,footer .f-nav2 a{font-size:14.5px!important;line-height:1.45!important;
   min-height:0!important;display:block!important;margin:0!important;padding:0!important}
 
@@ -1718,7 +1724,7 @@ h2,.sec-head h2,.lead-copy h2,.h2{line-height:1.14}
   .eyebrow,.sec-head .eyebrow,.lead-copy .eyebrow,#lead .eyebrow,
   #related .eyebrow,#entry>.wrap>.eyebrow,.rsec-head .eyebrow{line-height:1.4}
 }
-.hero .lead,.lead{line-height:1.5}
+.hero .lead,.lead{line-height:1.6}
 
 
 /* ---------- финальный контроль: хвост метрики на мобильной ----------
@@ -1733,58 +1739,451 @@ h2,.sec-head h2,.lead-copy h2,.h2{line-height:1.14}
   :root[data-theme="light"] .ph-num b .m-t,:root[data-theme="light"] .tail{
     color:var(--text-muted)!important}
 }
-
-/* ============================================================
-   ЕДИНАЯ ИЕРАРХИЯ: сверка с шестью остальными страницами.
-   Правила стоят последними и действуют на обеих ширинах,
-   поэтому телефон и десктоп получают один контракт
-   ============================================================ */
-
-/* кикер обложки: гротеск 15px без разрядки, как на остальных страницах.
-   Раньше моно-правило выше держало кикер на всех ширинах, а поправка
-   жила только в min-width:761px, и на 428 кикер оставался моноширинным */
-.cover .eyebrow,.hero .eyebrow,.sec-head .eyebrow,.lead-copy .eyebrow,
-#lead .eyebrow,#related .eyebrow,#entry>.wrap>.eyebrow,.eyebrow{
-  font-family:var(--sans)!important;font-size:var(--fz-kick)!important;font-weight:500!important;
-  letter-spacing:0!important;line-height:1.4!important;
-  font-feature-settings:normal!important;color:var(--text-muted)!important}
-.eyebrow .n{color:var(--text-dim)!important}
-
-/* чип обложки: гротеск 12,5px на обеих ширинах */
-.hero-chip,.cover-kick .chip,.chip{font-family:var(--sans)!important;font-size:12.5px!important;
-  font-weight:500!important;letter-spacing:0!important}
-
-/* подвал: на телефоне пункты и реквизиты на полкегля крупнее, как в эталоне */
-@media screen and (max-width:760px){
-  footer .f-nav a,footer .f-nav2 a{font-size:14.5px!important}
-  footer .f-legal p,footer .f-legal a{font-size:13.5px!important}
-  footer .f-main{gap:26px!important}
-}
-
-/* выравнивание по портфелю: насыщенность h2 как на остальных страницах */
-html body h2:not(#_):not(#_),html body .sec-head h2:not(#_):not(#_),html body .lead-copy h2:not(#_):not(#_){font-weight:560!important}
-
-/* реквизиты в подвале: тот же ритм строк, что на остальных страницах */
-html body footer .f-legal p:not(#_):not(#_):not(#_),html body footer .f-legal a:not(#_):not(#_):not(#_){line-height:1.5!important;margin:0!important}
-@media(max-width:760px){html body footer .f-legal p:not(#_):not(#_):not(#_),html body footer .f-legal a:not(#_):not(#_):not(#_){line-height:1.35!important;margin:0 0 6px!important}}
-
-/* копирайт на телефоне как на остальных страницах */
-@media(max-width:760px){html body footer .f-copy:not(#_):not(#_),html body footer .f-bottom:not(#_):not(#_),html body footer .f-bottom span:not(#_):not(#_){font-size:13px!important;line-height:1.5!important}}
-
-/* копирайт: тот же ритм строк, что на остальных страницах */
-html body footer .f-copy:not(#_):not(#_):not(#_),html body footer .f-bottom:not(#_):not(#_):not(#_){line-height:1.5!important}
-
-/* насыщенность h1 как на главной и остальных страницах */
-html body .hero h1,html body h1{font-weight:500!important;letter-spacing:-.028em!important}
-/* реквизиты на телефоне как на остальных страницах */
-@media(max-width:760px){html body footer .f-legal p:not(#_):not(#_):not(#_):not(#_),html body footer .f-legal a:not(#_):not(#_):not(#_):not(#_){font-size:13px!important;line-height:1.35!important}}
 </style>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23131514'/%3E%3Ccircle cx='32' cy='32' r='13' fill='%23D0E865'/%3E%3C/svg%3E">
 <meta name="theme-color" content="#0E1211">
+
+<style id="hier-fix">
+/* иерархия 18.08, вечер: единый копирайт, единый блок «Другие услуги и кейсы» */
+footer .f-bottom,footer .f-bottom span,footer .f-copy,footer p.f-copy{font-size:13.5px!important;line-height:1.5!important}
+footer .f-note,footer a[href*="privacy"]{font-size:13.5px!important;line-height:1.5!important}
+footer .f-tg{line-height:1.5!important}
+@media(max-width:760px){footer .f-note,footer a[href*="privacy"],footer .f-bottom,footer .f-bottom span,footer .f-copy,footer p.f-copy{font-size:13px!important;line-height:1.5!important}}
+#related .rel-head,#related .sec-head{margin-bottom:26px!important}
+#related .rel-head .eyebrow,#related .sec-head .eyebrow{margin-bottom:18px!important}
+#related .rel-head h2,#related .sec-head h2{margin:0!important}
+#related .rel-k,#related .nk,#related .nxt .nk{font-size:10.5px!important;letter-spacing:.11em!important}
+@media(min-width:761px){#related .rel-grid,#related .rel-grid.split,#related .nxt{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(168px,1fr))!important;gap:14px!important}}
+@media(max-width:760px){#related .rel-grid,#related .rel-grid.split,#related .nxt{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important}
+  #related .rel-card:last-child:nth-child(odd),#related .nxt a:last-child:nth-child(odd){grid-column:1/-1}}
+#related .rel-card,#related .nxt a{padding:18px 20px 20px!important;gap:8px!important;min-height:0!important}
+
+</style>
+<style id="fix-evening">
+/* правки вечера 18.08: обложка, форма, смежные услуги, подвал, кнопки */
+/* --- обложка, веб --- */
+@media(min-width:981px){
+  html body .hero.rh-hero .wrap.hero-in{max-width:1400px!important;padding-left:var(--gutter)!important;padding-right:var(--gutter)!important;box-sizing:border-box}
+  html body .hero.rh-hero .hero-in{grid-template-columns:minmax(0,1.32fr) minmax(300px,.68fr)!important}
+  html body .hero.rh-hero h1{font-size:96px!important;line-height:1.02!important;letter-spacing:-.03em!important;margin-bottom:10px!important}
+  html body .hero.rh-hero .hero-kick{margin-bottom:18px!important}
+  html body .hero.rh-hero .lead{font-size:18px!important;margin-bottom:0!important}
+  html body .hero.rh-hero .hero-stats{text-align:right!important;justify-items:end!important}
+  html body .hero.rh-hero .hero-stats .hs{text-align:right!important}
+  html body .hero.rh-hero .hero-stats .hs b{font-size:68px!important;line-height:1!important;letter-spacing:-.03em!important;text-align:right!important}
+  html body .hero.rh-hero .hero-stats .hs b .tail,html body .hero.rh-hero .hero-stats .hs b>.m-t{font-size:30px!important;margin-left:.14em!important}
+  html body .hero.rh-hero .hero-stats .hs>span{font-size:13.5px!important;margin-left:auto!important;margin-right:0!important;text-align:right!important;max-width:26ch!important}
+}
+/* --- обложка, телефон --- */
+@media(max-width:760px){
+  html body .hero.rh-hero h1{font-size:56px!important;line-height:1.02!important;letter-spacing:-.03em!important;margin-bottom:10px!important}
+  html body .hero.rh-hero .hero-kick{margin-bottom:18px!important}
+  html body .hero.rh-hero .lead{font-size:15px!important;margin-bottom:0!important}
+  html body .hero.rh-hero .hero-stats{text-align:right!important;padding-right:0!important}
+  html body .hero.rh-hero .hero-stats .hs b{font-size:44px!important;line-height:1!important;letter-spacing:-.03em!important;white-space:nowrap}
+  html body .hero.rh-hero .hero-stats .hs b .tail,html body .hero.rh-hero .hero-stats .hs b>.m-t{font-size:22px!important;margin-left:.14em!important}
+  html body .hero.rh-hero .hero-stats .hs>span{margin-left:auto!important;margin-right:0!important;text-align:right!important}
+}
+/* --- форма заявки --- */
+html body #lead .leadbox button[type=submit],html body #lead .leadbox .btn.lg{display:flex!important;width:100%!important;box-sizing:border-box!important;margin-top:22px!important}
+html body #lead .lf-grid{gap:26px 20px!important}
+html body #lead .lf label{margin-bottom:8px!important;display:block!important}
+html body #lead .lf input,html body #lead .lf textarea{margin-top:0!important}
+html body #lead .slots{margin-top:26px!important}
+html body #lead .slots .sl-h{margin-bottom:12px!important}
+html body #lead .sl-days{margin-bottom:0!important;padding-bottom:0!important}
+html body #lead .lf-check{margin-top:22px!important;align-items:flex-start!important;--cb-top:-1px}
+html body #lead .lf-check>span{display:block!important;line-height:1.5!important;padding-top:0!important}
+html body #lead .lf-check>span br{display:inline!important}
+html body #lead .lf-err{margin-top:14px!important}
+html body #lead .lf-after{margin-top:14px!important;margin-bottom:0!important}
+/* блок про Никиту сразу под лидом */
+@media(min-width:981px){
+  html body #lead .lead-grid{grid-template-rows:auto 1fr!important;align-items:start!important;row-gap:0!important}
+  html body #lead .lead-grid>.lead-copy{grid-column:1!important;grid-row:1!important}
+  html body #lead .lead-grid>.leadbox{grid-column:2!important;grid-row:1/span 2!important}
+  html body #lead .lead-grid>.lc-mgr,html body #lead .lc-mgr.lc-after{grid-column:1!important;grid-row:2!important;align-self:start!important;margin-top:28px!important;padding-top:0!important;border-top:0!important}
+}
+/* --- другие услуги и кейсы --- */
+html body #related>.wrap>.eyebrow{margin-bottom:22px!important;font-family:var(--mono)!important;font-size:13px!important;letter-spacing:.5px!important;display:flex!important}
+html body #related .rel-head,html body #related .sec-head,html body #related h2{display:none!important}
+@media(min-width:761px){html body #related .nxt{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:14px!important}}
+@media(max-width:760px){html body #related .nxt{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important}
+  html body #related .nxt a:last-child:nth-child(odd){grid-column:1/-1}}
+html body #related .nxt a{padding:18px 20px 20px!important;gap:8px!important;min-height:0!important;height:auto!important;justify-content:flex-start!important}
+/* --- подвал, веб --- */
+@media(min-width:901px){
+  html body footer .f-main{display:grid!important;grid-template-columns:minmax(0,1.15fr) minmax(0,.95fr) minmax(0,2fr)!important;gap:28px!important;align-items:start!important}
+  html body footer .f-nav2{display:grid!important;grid-template-columns:auto auto!important;justify-content:start!important;gap:6px 20px!important}
+  html body footer .f-nav2 .f-k{grid-column:1/-1!important}
+  html body footer .f-legal{display:flex!important;flex-direction:column!important;gap:9px!important}
+  html body footer .f-legal-cols{display:grid!important;grid-template-columns:max-content max-content!important;justify-content:start!important;gap:0 24px!important;align-items:start!important}
+  html body footer .f-legal-c p,html body footer .f-legal-c a{white-space:nowrap!important}
+  html body footer .f-legal-c{display:flex!important;flex-direction:column!important;gap:4px!important}
+}
+@media(max-width:900px){html body footer .f-legal-cols{display:flex!important;flex-direction:column!important;gap:4px!important}
+  html body footer .f-legal-c{display:flex!important;flex-direction:column!important;gap:4px!important}}
+html body footer .f-legal-c p{margin:0!important}
+html body footer .f-legal-c a{margin-top:0!important;width:fit-content}
+/* --- кнопки, один лаймовый --- */
+html body .btn.pri,html body a.btn.pri,html body button.btn.pri{background:var(--accent)!important;color:var(--accent-ink)!important;box-shadow:var(--btn-shadow)!important}
+html body .btn.pri:hover,html body a.btn.pri:hover,html body button.btn.pri:hover{background:var(--accent-glow)!important;box-shadow:var(--btn-shadow)!important}
+html body .btn.pri:active{box-shadow:none!important}
+</style>
+
+<style id="unify-evening">
+/* сведение после правок вечера 18.08: одна высота обложки и один подвал на внутренних страницах */
+@media(min-width:761px){html body .cover.r-cover{padding-top:132px!important;padding-bottom:76px!important;min-height:100vh!important;height:auto!important}
+html body .hero.rh-hero{padding-top:132px!important;padding-bottom:108px!important;min-height:100vh!important;height:auto!important}
+html body .hero.rh-hero .hero-in{height:calc(100vh - 240px)!important;min-height:0!important}}
+@media(max-width:760px){html body .cover.r-cover{padding-top:96px!important;padding-bottom:96px!important;min-height:100vh!important;height:auto!important}html body .hero.rh-hero{padding-top:96px!important;padding-bottom:62px!important;min-height:100vh!important;height:auto!important}}
+@media(min-width:901px){html body footer .f-main{grid-template-columns:250px 290px minmax(0,1fr)!important;gap:32px!important;column-gap:32px!important;justify-content:start!important}}
+</style>
+<style id="fix-night">
+/* правки ночи 18.08 (вторая волна): цифры обложки, чекбокс, подвал, светлая тема, курсор, наведение в 01 */
+/* --- A. цифры обложки --- */
+@media(min-width:981px){
+  html body .hero.rh-hero .hero-stats .hs b{font-size:96px!important;line-height:1!important;letter-spacing:-.03em!important;white-space:nowrap!important;text-align:right!important}
+  html body .hero.rh-hero .hero-stats .hs b .tail,html body .hero.rh-hero .hero-stats .hs b>.m-t{font-size:36px!important;margin-left:.14em!important}
+  html body .hero.rh-hero .hero-stats{gap:30px!important;justify-items:end!important}
+  html body .hero.rh-hero .hero-stats .hs>span{margin-top:8px!important;text-align:right!important;margin-left:auto!important;max-width:28ch!important}
+}
+@media(max-width:760px){
+  html body .hero.rh-hero .hero-stats .hs b{font-size:56px!important;line-height:1!important;letter-spacing:-.03em!important;white-space:nowrap!important}
+  html body .hero.rh-hero .hero-stats .hs b .tail,html body .hero.rh-hero .hero-stats .hs b>.m-t{font-size:26px!important;margin-left:.14em!important}
+}
+/* --- B. чекбокс по центру всех строк подписи --- */
+html body #lead .lf-check{display:flex!important;align-items:center!important;gap:12px!important;--cb-top:auto}
+html body #lead .lf-check input[type=checkbox]{margin:0!important;align-self:center!important;flex:none!important;position:relative!important;top:auto!important;transform:none!important}
+html body #lead .lf-check>span{padding-top:0!important;line-height:1.5!important}
+/* --- C. подвал --- */
+html body footer .f-copy,html body footer .f-bottom{margin-top:56px!important;padding-top:14px!important;border-top:1px solid var(--line)!important}
+html body footer .f-legal-c{gap:0!important}
+html body footer .f-legal-c p,html body footer .f-legal p{margin:0!important;line-height:1.35!important}
+html body footer .f-legal-c a,html body footer .f-legal>a{line-height:1.35!important;margin-top:0!important}
+@media(min-width:901px){
+  html body footer .f-nav.f-nav2,html body footer .f-nav2{display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;gap:6px!important;max-width:none!important}
+  html body footer .f-nav.f-nav2 .f-k,html body footer .f-nav2 .f-k{grid-column:auto!important;flex:none!important;margin:0 0 4px!important}
+  html body footer .f-nav.f-nav2 a{display:block!important;flex:none!important}
+  html body footer .f-legal-cols{grid-template-columns:max-content max-content!important;gap:0 24px!important}
+}
+/* --- E. светлая тема без тёмно-зелёного текста --- */
+html[data-theme="light"] body{--accent-txt:#191A1D;--accent-text:#191A1D}
+html[data-theme="light"] body .lc-mgr-t b .lc-name,html[data-theme="light"] body .lc-mgr-t b a,html[data-theme="light"] body #lead .lc-mgr-t b a{color:#191A1D!important;background:var(--accent)!important;padding:1px 6px!important;border-radius:6px!important;border-bottom:0!important;text-decoration:none!important;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+html[data-theme="light"] body .lc-mgr-t b a:hover{background:var(--accent-glow)!important;color:#191A1D!important}
+html[data-theme="light"] body .stmt b,html[data-theme="light"] body .morelink,html[data-theme="light"] body .req{color:#191A1D!important}
+/* --- 01 «Когда нужен чекап»: при наведении номер лаймовый, больше ничего не двигается --- */
+html body #why .rule .rn{transition:color .25s ease,background-color .25s ease!important;padding:1px 6px 1px 6px!important;margin-left:-6px!important;border-radius:6px!important;background:transparent!important;width:fit-content!important;justify-self:start!important;box-sizing:border-box}
+html body #why .rule:hover .rn{color:var(--accent)!important}
+html[data-theme="light"] body #why .rule:hover .rn{color:#191A1D!important;background:var(--accent)!important}
+html[data-theme="light"] body .rule:hover .rn{color:#191A1D!important}
+/* --- F. курсор-нейрон --- */
+html body{cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><circle cx='14' cy='14' r='11' fill='none' stroke='%23D0E865' stroke-opacity='.55'/><circle cx='14' cy='14' r='3' fill='%23D0E865'/><path d='M14 3v4M14 21v4M3 14h4M21 14h4' stroke='%23D0E865' stroke-opacity='.7' stroke-linecap='round'/></svg>") 14 14,auto!important}
+html body a,html body button,html body [role=button],html body label,html body summary,html body .btn,html body .rel-card,html body .tgl,html body .nxt a,html body .fab-b,html body input[type=checkbox],html body .sl-day,html body .sl-slot,html body .burger{cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><circle cx='14' cy='14' r='11' fill='none' stroke='%23D0E865' stroke-opacity='.9'/><circle cx='14' cy='14' r='4' fill='%23D0E865'/><path d='M14 2.5v4.5M14 21v4.5M2.5 14h4.5M21 14h4.5' stroke='%23D0E865' stroke-opacity='.9' stroke-linecap='round'/></svg>") 14 14,pointer!important}
+html[data-theme="light"] body{cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><circle cx='14' cy='14' r='11' fill='none' stroke='%23A6BF41' stroke-opacity='.85'/><circle cx='14' cy='14' r='3' fill='%23191A1D'/><path d='M14 3v4M14 21v4M3 14h4M21 14h4' stroke='%23191A1D' stroke-opacity='.7' stroke-linecap='round'/></svg>") 14 14,auto!important}
+html[data-theme="light"] body a,html[data-theme="light"] body button,html[data-theme="light"] body [role=button],html[data-theme="light"] body label,html[data-theme="light"] body summary,html[data-theme="light"] body .btn,html[data-theme="light"] body .rel-card,html[data-theme="light"] body .tgl,html[data-theme="light"] body .nxt a,html[data-theme="light"] body .fab-b,html[data-theme="light"] body input[type=checkbox],html[data-theme="light"] body .sl-day,html[data-theme="light"] body .sl-slot,html[data-theme="light"] body .burger{cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><circle cx='14' cy='14' r='11' fill='none' stroke='%23A6BF41'/><circle cx='14' cy='14' r='4' fill='%23191A1D'/><path d='M14 2.5v4.5M14 21v4.5M2.5 14h4.5M21 14h4.5' stroke='%23191A1D' stroke-opacity='.85' stroke-linecap='round'/></svg>") 14 14,pointer!important}
+html body input:not([type=checkbox]):not([type=radio]):not([type=submit]):not([type=button]),html body textarea{cursor:text!important}
+/* --- обложка: холст схемы --- */
+html body #chkFx{opacity:.78!important}
+@media(max-width:760px){html body #chkFx{opacity:.62!important}}
+@media(prefers-reduced-motion:reduce){html body #chkFx{opacity:.5!important}}
+</style>
+
+
+
+<style id="fix-late">
+/* третья волна 18.08: обложка легче, кегли, без свечения, курсор-стрелка, подвал, разделы 01 и 02 */
+/* --- A. обложка, веб --- */
+@media(min-width:981px){
+  html body .hero.rh-hero{padding-top:96px!important;padding-bottom:54px!important;min-height:100vh!important}
+  html body .hero.rh-hero .hero-in{height:calc(100vh - 150px)!important;min-height:0!important}
+  html body .hero.rh-hero .hero-stats{margin-top:0!important;padding-top:0!important;gap:22px!important;display:grid!important;grid-template-columns:minmax(0,1fr)!important;justify-items:end!important}
+  html body .hero.rh-hero .hero-stats .hs b{font-size:84px!important;line-height:1!important;letter-spacing:-.03em!important;white-space:nowrap!important}
+  html body .hero.rh-hero .hero-stats .hs b .tail,html body .hero.rh-hero .hero-stats .hs b>.m-t{font-size:32px!important;margin-left:.14em!important}
+  html body .hero.rh-hero h1{font-size:84px!important;font-weight:540!important;letter-spacing:-.028em!important;line-height:1.02!important;margin:18px 0 0!important}
+  html body .hero.rh-hero .lead{font-size:20px!important;font-weight:450!important;line-height:1.5!important;margin:10px 0 0!important}
+}
+@media(min-width:761px) and (max-width:980px){
+  html body .hero.rh-hero{padding-top:96px!important;padding-bottom:54px!important}
+  html body .hero.rh-hero h1{font-weight:540!important;letter-spacing:-.028em!important}
+}
+/* --- A. обложка, телефон --- */
+@media(max-width:760px){
+  html body .hero.rh-hero{padding-top:84px!important;padding-bottom:48px!important;min-height:100vh!important}
+  html body .hero.rh-hero .hero-in{padding-top:0!important;padding-bottom:0!important}
+  html body .hero.rh-hero .hero-stats{margin-top:0!important;padding-top:0!important;gap:18px!important}
+  html body .hero.rh-hero .hero-stats .hs b{font-size:48px!important;line-height:1!important;letter-spacing:-.03em!important;white-space:nowrap!important}
+  html body .hero.rh-hero .hero-stats .hs b .tail,html body .hero.rh-hero .hero-stats .hs b>.m-t{font-size:22px!important;margin-left:.14em!important}
+  html body .hero.rh-hero h1{font-size:52px!important;font-weight:540!important;letter-spacing:-.028em!important;line-height:1.02!important;margin:18px 0 0!important}
+  html body .hero.rh-hero .lead{font-size:17px!important;font-weight:450!important;line-height:1.5!important;margin:10px 0 0!important}
+}
+/* --- B. кегли текста --- */
+html body h2,html body .sec-head h2,html body .lead-copy h2,html body #entry h2{font-size:40px!important;font-weight:560!important;letter-spacing:-.02em!important;line-height:1.1!important}
+@media(max-width:760px){html body h2,html body .sec-head h2,html body .lead-copy h2,html body #entry h2{font-size:clamp(26px,7.4vw,32px)!important}}
+html body .sec-head .lead,html body .lead-copy .lead,html body #lead .lead,html body .hero .lead,html body #entry .ph-txt{font-size:20px!important;font-weight:450!important;line-height:1.5!important}
+@media(max-width:760px){html body .sec-head .lead,html body .lead-copy .lead,html body #lead .lead,html body #entry .ph-txt{font-size:17px!important}}
+html body h3,html body .card h3{font-weight:560!important}
+/* --- C. лайм только заливкой, без свечения --- */
+html body{--btn-shadow:none}
+html body .btn.pri,html body a.btn.pri,html body button.btn.pri,html body .nav .btn.pri{background:var(--accent)!important;color:var(--accent-ink)!important;box-shadow:none!important;transform:none!important;filter:none}
+html body .btn.pri:hover,html body a.btn.pri:hover,html body button.btn.pri:hover,html body .nav .btn.pri:hover{background:var(--accent)!important;box-shadow:none!important;transform:none!important;filter:brightness(.96)}
+html body .btn.pri:active{box-shadow:none!important;transform:none!important;filter:brightness(.92)}
+html body .btn.ghost:hover,html body a.btn.ghost:hover{border-color:var(--accent)!important;background:var(--surface)!important;box-shadow:none!important;transform:none!important}
+html body .fab-lead,html body .fab-b{box-shadow:0 10px 30px rgba(0,0,0,.22)!important}
+html[data-theme="light"] body .lc-mgr-t b a:hover{background:var(--accent)!important;filter:brightness(.96)}
+/* курсор: лаймовая стрелка вместо нейрона */
+html body,html body *{cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='26' viewBox='0 0 20 26'><path d='M2.5 2.5v19l5.1-4.7 3.4 7.6 3.1-1.4-3.4-7.5h6.9z' fill='%23D0E865' stroke='%230E1211' stroke-width='1' stroke-linejoin='round'/></svg>") 2 2,auto!important}
+html:root[data-theme="light"] body,html:root[data-theme="light"] body *{cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='26' viewBox='0 0 20 26'><path d='M2.5 2.5v19l5.1-4.7 3.4 7.6 3.1-1.4-3.4-7.5h6.9z' fill='%23D0E865' stroke='%230E1211' stroke-width='1' stroke-linejoin='round'/></svg>") 2 2,auto!important}
+html body a,html body button,html body [role=button],html body label,html body summary,html body .btn,html body .rel-card,html body .tgl,html body .burger,html body .nav-burger,html body .sl-day,html body .sl-slot,html body .slots button,html body .nxt a,html body .fab-b,html body input[type=checkbox],html body .faq summary,html body a *,html body button *,html body .btn *,html body summary *,html body .nxt a *,
+html:root[data-theme="light"] body a,html:root[data-theme="light"] body button,html:root[data-theme="light"] body [role=button],html:root[data-theme="light"] body label,html:root[data-theme="light"] body summary,html:root[data-theme="light"] body .btn,html:root[data-theme="light"] body .tgl,html:root[data-theme="light"] body .burger,html:root[data-theme="light"] body .sl-day,html:root[data-theme="light"] body .sl-slot,html:root[data-theme="light"] body .nxt a,html:root[data-theme="light"] body .fab-b,html:root[data-theme="light"] body input[type=checkbox],html:root[data-theme="light"] body a *,html:root[data-theme="light"] body button *,html:root[data-theme="light"] body .btn *,html:root[data-theme="light"] body summary *,html:root[data-theme="light"] body .nxt a *{cursor:pointer!important}
+html body input:not([type=checkbox]):not([type=radio]):not([type=submit]):not([type=button]),html body textarea,html body [contenteditable],
+html:root[data-theme="light"] body input:not([type=checkbox]):not([type=radio]):not([type=submit]):not([type=button]),html:root[data-theme="light"] body textarea{cursor:text!important}
+/* --- D. подвал: тесно только две строки адреса --- */
+@media(max-width:900px){html body footer .f-legal-cols{gap:6px!important}}
+html body footer .f-legal-c{gap:0!important}
+html body footer .f-legal-c p{margin:0 0 6px!important;line-height:1.5!important}
+html body footer .f-legal-c p:last-child{margin-bottom:0!important}
+html body footer .f-legal-c a{line-height:1.5!important;margin-top:0!important}
+html body footer .f-legal-c:nth-child(2) p:first-child{line-height:1.35!important;margin-bottom:0!important}
+html body footer .f-legal-c:nth-child(2) p:nth-child(2){line-height:1.35!important;margin-bottom:6px!important}
+/* --- 01 «Когда нужен чекап»: строка выровнена по вертикальному центру --- */
+@media(min-width:761px){html body #why .rule{align-items:center!important}
+  html body #why .rule .rn{align-self:center!important}}
+/* --- 02 «Ценность / Цена»: заголовок под кикером, цифра 68/30 --- */
+@media(min-width:761px){
+  html body #entry>.wrap{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(240px,.5fr)!important;align-items:start!important}
+  html body #entry>.wrap>.eyebrow{grid-column:1!important;grid-row:1!important;margin-bottom:18px!important}
+  html body #entry>.wrap>h2{grid-column:1!important;grid-row:2!important;margin:0 0 18px!important;max-width:24ch}
+  html body #entry>.wrap>.price-hero{grid-column:1!important;grid-row:3!important;display:block!important}
+  html body #entry>.wrap>.ph-num{grid-column:2!important;grid-row:1/span 3!important;text-align:right!important;justify-self:end!important;margin:0!important;align-self:start!important}
+}
+@media(max-width:760px){
+  html body #entry>.wrap{display:flex!important;flex-direction:column!important}
+  html body #entry>.wrap>.eyebrow{order:1!important;margin-bottom:18px!important}
+  html body #entry>.wrap>h2{order:2!important;margin:0 0 22px!important}
+  html body #entry>.wrap>.ph-num{order:3!important;text-align:left!important;margin:0 0 22px!important}
+  html body #entry>.wrap>.price-hero{order:4!important;display:block!important}
+}
+html body #entry .ph-num b{font-size:68px!important;line-height:1!important;letter-spacing:-.03em!important;white-space:nowrap!important}
+html body #entry .ph-num b .tail,html body #entry .ph-num b>.m-t{font-size:30px!important;margin-left:.14em!important}
+@media(max-width:760px){html body #entry .ph-num b{font-size:48px!important}html body #entry .ph-num b .tail,html body #entry .ph-num b>.m-t{font-size:22px!important}}
+</style>
+
+<style id="unify-late">
+/* сведение третьей волны: одна мобильная шкала на внутренних страницах */
+@media(max-width:760px){
+html body h2:not(#_):not(#_),html body .sec-head h2:not(#_):not(#_),html body .rel-head h2:not(#_):not(#_),html body .cost-head h2:not(#_):not(#_){font-size:28px!important;font-weight:560!important;letter-spacing:-.02em!important;line-height:1.14!important}
+html body .cover .lead:not(#_):not(#_),html body .hero .lead:not(#_):not(#_),html body .cover p.lead:not(#_):not(#_),html body .hero p.lead:not(#_):not(#_){font-size:17px!important;line-height:1.5!important}
+html body .sec-head .lead:not(#_):not(#_),html body .sec-head p:not(#_):not(#_),html body section .lead:not(#_):not(#_),html body .lead-copy .lead:not(#_):not(#_),html body .hero-sub:not(#_):not(#_){font-size:17px!important;line-height:1.5!important}
+html body .fig-txt:not(#_):not(#_),html body .fig-txt p:not(#_):not(#_),html body .stmt p:not(#_):not(#_){font-size:16px!important}
+}
+html body .fab.is-cover:not(#_):not(#_){opacity:0!important;transform:translateY(16px)!important;visibility:hidden!important;pointer-events:none!important;transition:opacity .25s,transform .25s,visibility .25s}
+</style>
+
+<style id="fix-4">
+/* четвёртая волна 18.08: системный курсор, легче h1 и вопросы FAQ, наведение кнопок, кикер 07, набор текста обложки */
+/* --- набор текста обложки: без fade, символы стоят на местах, проявляются посимвольно --- */
+html body .hero .reveal:not(#_):not(#_){opacity:1!important;transform:none!important;transition:none!important;animation:none!important}
+html body .hero .tch:not(#_):not(#_){opacity:0!important;transition:none!important}
+html body .hero .tch.on:not(#_):not(#_){opacity:1!important}
+@media(prefers-reduced-motion:reduce){html body .hero .tch:not(#_):not(#_){opacity:1!important}}
+/* --- G1. курсор системного размера: стрелка 12x19, лайм с тёмной обводкой; ссылки и кнопки – системный pointer, поля – text --- */
+html body:not(#_):not(#_){cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='19' viewBox='0 0 12 19'><path d='M1 1v14.6l3.6-3.2 2.4 5.8 2.5-1-2.4-5.7h4.5z' fill='%23D0E865' stroke='%230E1211' stroke-width='1' stroke-linejoin='round'/></svg>") 1 1,auto!important}
+html body *:not(#_):not(#_){cursor:inherit!important}
+html body a:not(#_):not(#_),html body button:not(#_):not(#_),html body [role=button]:not(#_):not(#_),html body label:not(#_):not(#_),html body summary:not(#_):not(#_),html body .btn:not(#_):not(#_),html body .rel-card:not(#_):not(#_),html body .tgl:not(#_):not(#_),html body .burger:not(#_):not(#_),html body .nav-burger:not(#_):not(#_),html body .sl-day:not(#_):not(#_),html body .sl-slot:not(#_):not(#_),html body .slots button:not(#_):not(#_),html body .nxt a:not(#_):not(#_),html body .fab-b:not(#_):not(#_),html body input[type=checkbox]:not(#_):not(#_),html body select:not(#_):not(#_),html body .faq summary:not(#_):not(#_){cursor:pointer!important}
+html body input:not([type=checkbox]):not([type=radio]):not([type=submit]):not([type=button]):not(#_):not(#_),html body textarea:not(#_):not(#_),html body [contenteditable]:not(#_):not(#_){cursor:text!important}
+/* --- G2. заголовок обложки и вопросы FAQ легче --- */
+@media(min-width:761px){html body .hero.rh-hero h1:not(#_):not(#_){font-size:76px!important;font-weight:500!important;letter-spacing:-.028em!important}}
+@media(max-width:760px){html body .hero.rh-hero h1:not(#_):not(#_){font-size:48px!important;font-weight:500!important;letter-spacing:-.028em!important}}
+html body .faq summary:not(#_):not(#_){font-weight:500!important}
+/* --- G3. кнопки и наведение --- */
+html body .btn.pri:not(#_):not(#_),html body a.btn.pri:not(#_):not(#_),html body button.btn.pri:not(#_):not(#_),html body .fab-lead:not(#_):not(#_){background:#D0E865!important;color:var(--accent-ink)!important;box-shadow:none!important;transform:none!important;filter:none!important;transition:filter .18s ease!important}
+html body .btn.pri:hover:not(#_):not(#_),html body a.btn.pri:hover:not(#_):not(#_),html body button.btn.pri:hover:not(#_):not(#_),html body .fab-lead:hover:not(#_):not(#_){background:#D0E865!important;filter:brightness(1.06)!important;box-shadow:none!important;transform:none!important}
+html body .btn.pri:active:not(#_):not(#_),html body .fab-lead:active:not(#_):not(#_){filter:brightness(.97)!important;box-shadow:none!important;transform:none!important}
+html body .btn.ghost:hover:not(#_):not(#_),html body a.btn.ghost:hover:not(#_):not(#_),html body .tgl:hover:not(#_):not(#_),html body .burger:hover:not(#_):not(#_),html body .nav-tg:hover:not(#_):not(#_),html body .ns-tgl:hover:not(#_):not(#_),html body .ns-tg:hover:not(#_):not(#_),html body .fab-tg:hover:not(#_):not(#_),html body .metric-more:hover:not(#_):not(#_),html body .faq summary:hover .pl:not(#_):not(#_){border-color:rgba(255,255,255,.45)!important;color:var(--text)!important;background:transparent!important;box-shadow:none!important;transform:none!important}
+html body .btn.ghost:hover:not(#_):not(#_),html body a.btn.ghost:hover:not(#_):not(#_){background:var(--surface)!important}
+html:root[data-theme="light"] body .btn.ghost:hover:not(#_):not(#_),html:root[data-theme="light"] body a.btn.ghost:hover:not(#_):not(#_),html:root[data-theme="light"] body .tgl:hover:not(#_):not(#_),html:root[data-theme="light"] body .burger:hover:not(#_):not(#_),html:root[data-theme="light"] body .nav-tg:hover:not(#_):not(#_),html:root[data-theme="light"] body .ns-tgl:hover:not(#_):not(#_),html:root[data-theme="light"] body .ns-tg:hover:not(#_):not(#_),html:root[data-theme="light"] body .fab-tg:hover:not(#_):not(#_),html:root[data-theme="light"] body .metric-more:hover:not(#_):not(#_),html:root[data-theme="light"] body .faq summary:hover .pl:not(#_):not(#_){border-color:rgba(25,26,29,.45)!important;color:var(--text)!important}
+html body .faq summary:hover:not(#_):not(#_){color:var(--text)!important}
+html body .faq details[open] summary .pl:not(#_):not(#_){color:var(--text)!important}
+html body .nxt a:hover .nt:not(#_):not(#_),html body .nxt a:hover .nk:not(#_):not(#_){color:var(--text)!important}
+html body .morelink:hover:not(#_):not(#_),html body .card a.more:hover:not(#_):not(#_){color:var(--text)!important;border-color:var(--text)!important;text-decoration-color:var(--text)!important}
+/* --- G4. кикер 07 «Другие услуги и кейсы студии» как остальные кикеры --- */
+html body #related>.wrap>.eyebrow:not(#_):not(#_),html:root[data-theme="light"] body #related>.wrap>.eyebrow:not(#_):not(#_){color:var(--text-muted)!important;font-family:var(--mono)!important;font-size:13px!important;font-weight:500!important;letter-spacing:.5px!important}
+html body #related>.wrap>.eyebrow .n:not(#_):not(#_),html:root[data-theme="light"] body #related>.wrap>.eyebrow .n:not(#_):not(#_){color:var(--text-dim)!important}
+</style>
+
+<style id="cursor-hand">
+/* лаймовая рука-указатель на всём кликабельном, в пару к лаймовой стрелке */
+html body a:not(#_):not(#_):not(#_),html body button:not(#_):not(#_):not(#_),html body [role=button]:not(#_):not(#_):not(#_),html body label:not(#_):not(#_):not(#_),html body summary:not(#_):not(#_):not(#_),html body .btn:not(#_):not(#_):not(#_),html body .rel-card:not(#_):not(#_):not(#_),html body .tgl:not(#_):not(#_):not(#_),html body .nav-burger:not(#_):not(#_):not(#_),html body .burger:not(#_):not(#_):not(#_),html body .sl-day:not(#_):not(#_):not(#_),html body .sl-slot:not(#_):not(#_):not(#_),html body .slots button:not(#_):not(#_):not(#_),html body .metric-more:not(#_):not(#_):not(#_),html body .nxt a:not(#_):not(#_):not(#_),html body .fab-b:not(#_):not(#_):not(#_),html body .fab-tg:not(#_):not(#_):not(#_),html body .fab-lead:not(#_):not(#_):not(#_),html body .tp-s:not(#_):not(#_):not(#_),html body .cnav button:not(#_):not(#_):not(#_),html body .faq summary:not(#_):not(#_):not(#_),html body .acc-h:not(#_):not(#_):not(#_),html body .morelink:not(#_):not(#_):not(#_),html body .cs-link:not(#_):not(#_):not(#_),html body .cs-x:not(#_):not(#_):not(#_),html body .ns-tgl:not(#_):not(#_):not(#_),html body .ns-tg:not(#_):not(#_):not(#_),html body .nav-tg:not(#_):not(#_):not(#_),html body input[type=checkbox]:not(#_):not(#_):not(#_),html body input[type=radio]:not(#_):not(#_):not(#_),html body .lf-check:not(#_):not(#_):not(#_),html body .mod-chip:not(#_):not(#_):not(#_),html body .ccard:not(#_):not(#_):not(#_),html body .card a:not(#_):not(#_):not(#_),html body .tag:not(#_):not(#_):not(#_){cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='24' viewBox='0 0 20 24'%3E%3Cpath d='M6.6 1.6c0-.9.7-1.6 1.6-1.6s1.6.7 1.6 1.6v8.2h.5V8.4c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4v1.9h.5V9.1c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4v1.7h.5v-.6c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4v6.1c0 3.9-2.7 6.7-6.6 6.7h-1.5c-2.3 0-4.1-1-5.3-2.7L2.1 15.6c-.6-.8-.4-1.9.4-2.4.8-.5 1.8-.3 2.4.5l1.7 2.2z' fill='%23D0E865' stroke='%230E1211' stroke-width='1' stroke-linejoin='round'/%3E%3C/svg%3E") 7 1, pointer!important}
+html body a *:not(#_):not(#_):not(#_),html body button *:not(#_):not(#_):not(#_),html body [role=button] *:not(#_):not(#_):not(#_),html body label *:not(#_):not(#_):not(#_),html body summary *:not(#_):not(#_):not(#_),html body .btn *:not(#_):not(#_):not(#_),html body .rel-card *:not(#_):not(#_):not(#_),html body .nxt a *:not(#_):not(#_):not(#_),html body .faq summary *:not(#_):not(#_):not(#_),html body .acc-h *:not(#_):not(#_):not(#_),html body .lf-check *:not(#_):not(#_):not(#_){cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='24' viewBox='0 0 20 24'%3E%3Cpath d='M6.6 1.6c0-.9.7-1.6 1.6-1.6s1.6.7 1.6 1.6v8.2h.5V8.4c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4v1.9h.5V9.1c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4v1.7h.5v-.6c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4v6.1c0 3.9-2.7 6.7-6.6 6.7h-1.5c-2.3 0-4.1-1-5.3-2.7L2.1 15.6c-.6-.8-.4-1.9.4-2.4.8-.5 1.8-.3 2.4.5l1.7 2.2z' fill='%23D0E865' stroke='%230E1211' stroke-width='1' stroke-linejoin='round'/%3E%3C/svg%3E") 7 1, pointer!important}
+html body input[type=text]:not(#_):not(#_):not(#_),html body input[type=email]:not(#_):not(#_):not(#_),html body input[type=tel]:not(#_):not(#_):not(#_),html body textarea:not(#_):not(#_):not(#_){cursor:text!important}
+</style>
+<style id="fix-5">
+/* пятая волна 18.08: якоря из меню, рука-курсор меньше, hover кнопок темнее, чип обложки крупнее, звёздочки и поля формы, знак логотипа */
+/* --- H1. якоря: шапка 66px, между низом шапки и кикером раздела ≈14px --- */
+html:not(#_):not(#_):not(#_){scroll-padding-top:0!important}
+@media(min-width:761px){html body section[id]:not(#_):not(#_):not(#_){scroll-margin-top:-40px!important}}
+@media(min-width:761px){html body section#lead:not(#_):not(#_):not(#_){scroll-margin-top:-44px!important}}
+@media(max-width:760px){html body section[id]:not(#_):not(#_):not(#_){scroll-margin-top:8px!important}}
+@media(max-width:760px){html body section#lead:not(#_):not(#_):not(#_){scroll-margin-top:4px!important}}
+/* H2. та же рука, но 14×17, не крупнее стрелки */
+html body a:not(#_):not(#_):not(#_),html body button:not(#_):not(#_):not(#_),html body [role=button]:not(#_):not(#_):not(#_),html body label:not(#_):not(#_):not(#_),html body summary:not(#_):not(#_):not(#_),html body .btn:not(#_):not(#_):not(#_),html body .rel-card:not(#_):not(#_):not(#_),html body .tgl:not(#_):not(#_):not(#_),html body .nav-burger:not(#_):not(#_):not(#_),html body .burger:not(#_):not(#_):not(#_),html body .sl-day:not(#_):not(#_):not(#_),html body .sl-slot:not(#_):not(#_):not(#_),html body .slots button:not(#_):not(#_):not(#_),html body .metric-more:not(#_):not(#_):not(#_),html body .nxt a:not(#_):not(#_):not(#_),html body .fab-b:not(#_):not(#_):not(#_),html body .fab-tg:not(#_):not(#_):not(#_),html body .fab-lead:not(#_):not(#_):not(#_),html body .tp-s:not(#_):not(#_):not(#_),html body .cnav button:not(#_):not(#_):not(#_),html body .faq summary:not(#_):not(#_):not(#_),html body .acc-h:not(#_):not(#_):not(#_),html body .morelink:not(#_):not(#_):not(#_),html body .cs-link:not(#_):not(#_):not(#_),html body .cs-x:not(#_):not(#_):not(#_),html body .ns-tgl:not(#_):not(#_):not(#_),html body .ns-tg:not(#_):not(#_):not(#_),html body .nav-tg:not(#_):not(#_):not(#_),html body input[type=checkbox]:not(#_):not(#_):not(#_),html body input[type=radio]:not(#_):not(#_):not(#_),html body .lf-check:not(#_):not(#_):not(#_),html body .mod-chip:not(#_):not(#_):not(#_),html body .ccard:not(#_):not(#_):not(#_),html body .card a:not(#_):not(#_):not(#_),html body .tag:not(#_):not(#_):not(#_){cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='17' viewBox='0 0 20 24'%3E%3Cpath d='M6.6 1.6c0-.9.7-1.6 1.6-1.6s1.6.7 1.6 1.6v8.2h.5V8.4c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4v1.9h.5V9.1c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4v1.7h.5v-.6c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4v6.1c0 3.9-2.7 6.7-6.6 6.7h-1.5c-2.3 0-4.1-1-5.3-2.7L2.1 15.6c-.6-.8-.4-1.9.4-2.4.8-.5 1.8-.3 2.4.5l1.7 2.2z' fill='%23D0E865' stroke='%230E1211' stroke-width='1' stroke-linejoin='round'/%3E%3C/svg%3E") 5 1, pointer!important}
+html body a *:not(#_):not(#_):not(#_),html body button *:not(#_):not(#_):not(#_),html body [role=button] *:not(#_):not(#_):not(#_),html body label *:not(#_):not(#_):not(#_),html body summary *:not(#_):not(#_):not(#_),html body .btn *:not(#_):not(#_):not(#_),html body .rel-card *:not(#_):not(#_):not(#_),html body .nxt a *:not(#_):not(#_):not(#_),html body .faq summary *:not(#_):not(#_):not(#_),html body .acc-h *:not(#_):not(#_):not(#_),html body .lf-check *:not(#_):not(#_):not(#_){cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='17' viewBox='0 0 20 24'%3E%3Cpath d='M6.6 1.6c0-.9.7-1.6 1.6-1.6s1.6.7 1.6 1.6v8.2h.5V8.4c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4v1.9h.5V9.1c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4v1.7h.5v-.6c0-.8.6-1.4 1.4-1.4s1.4.6 1.4 1.4v6.1c0 3.9-2.7 6.7-6.6 6.7h-1.5c-2.3 0-4.1-1-5.3-2.7L2.1 15.6c-.6-.8-.4-1.9.4-2.4.8-.5 1.8-.3 2.4.5l1.7 2.2z' fill='%23D0E865' stroke='%230E1211' stroke-width='1' stroke-linejoin='round'/%3E%3C/svg%3E") 5 1, pointer!important}
+html body input[type=text]:not(#_):not(#_):not(#_),html body input[type=email]:not(#_):not(#_):not(#_),html body input[type=tel]:not(#_):not(#_):not(#_),html body textarea:not(#_):not(#_):not(#_){cursor:text!important}
+/* --- H3. основные кнопки при наведении темнее, без тени и движения --- */
+html body .btn.pri:not(#_):not(#_):not(#_),html body a.btn.pri:not(#_):not(#_):not(#_),html body button.btn.pri:not(#_):not(#_):not(#_),html body .fab-lead:not(#_):not(#_):not(#_){box-shadow:none!important;transform:none!important;transition:filter .18s ease!important}
+html body .btn.pri:hover:not(#_):not(#_):not(#_),html body a.btn.pri:hover:not(#_):not(#_):not(#_),html body button.btn.pri:hover:not(#_):not(#_):not(#_),html body .fab-lead:hover:not(#_):not(#_):not(#_){background:var(--accent)!important;filter:brightness(.88)!important;box-shadow:none!important;transform:none!important}
+html body .btn.pri:active:not(#_):not(#_):not(#_),html body .fab-lead:active:not(#_):not(#_):not(#_){filter:brightness(.82)!important;box-shadow:none!important;transform:none!important}
+/* --- H4. чип «Услуга» на обложке в полтора раза --- */
+@media(min-width:761px){html body .hero .hero-chip:not(#_):not(#_):not(#_){font-size:19px!important;line-height:1.15!important;height:auto!important;padding:8px 14px!important;border-radius:16px!important}}
+@media(max-width:760px){html body .hero .hero-chip:not(#_):not(#_):not(#_){font-size:15px!important;line-height:1.15!important;height:auto!important;padding:6px 11px!important;border-radius:16px!important}}
+html body .hero.rh-hero .hero-kick:not(#_):not(#_):not(#_){margin-bottom:18px!important}
+/* --- H7. звёздочка лаймовая, без подсказки и cursor:help; поле при наведении светлее --- */
+html body .req:not(#_):not(#_):not(#_),html:root[data-theme="light"] body .req:not(#_):not(#_):not(#_),html body .lf label .req:not(#_):not(#_):not(#_){color:var(--accent)!important;cursor:default!important}
+html body .lf label:not(#_):not(#_):not(#_){cursor:default!important}
+html body .lf input:hover:not(:focus):not(#_):not(#_):not(#_),html body .lf textarea:hover:not(:focus):not(#_):not(#_):not(#_){border-bottom-color:var(--text-dim)!important}
+/* --- H8. при наведении на логотип лаймовым становится знак, слово остаётся цветом текста --- */
+html body .brand svg .lg-mark:not(#_):not(#_):not(#_),html body .brand svg .lg-sign:not(#_):not(#_):not(#_){transition:fill .18s ease!important}
+html body .brand:hover svg .lg-mark:not(#_):not(#_):not(#_){fill:currentColor!important}
+html body .brand:hover svg .lg-sign:not(#_):not(#_):not(#_){fill:var(--accent)!important}
+</style>
+
+<style id="fix-6">
+/* ===== fix-6 (ночь на 19.08): чекап ===== */
+/* кнопка в шапке видна с самого начала, на телефоне живёт в шторке */
+html body .nav .btn.nav-cta:not(#_):not(#_):not(#_) { opacity:1!important;visibility:visible!important;display:inline-flex!important }
+@media(max-width:760px){
+  html body .nav .btn.nav-cta:not(#_):not(#_):not(#_) { display:none!important }
+}
+/* J2 чип обложки: 15px, 6×12; телефон 14 */
+html body .hero .hero-chip:not(#_):not(#_):not(#_) { font-size:15px!important;line-height:1.15!important;height:auto!important;padding:6px 12px!important;border-radius:16px!important }
+html body .hero.rh-hero .hero-kick:not(#_):not(#_):not(#_) { display:flex!important;align-items:center!important;margin-bottom:18px!important }
+@media(max-width:760px){
+  html body .hero .hero-chip:not(#_):not(#_):not(#_) { font-size:14px!important;padding:6px 12px!important }
+}
+/* J1 поля: фокус без лайма, той же светлой линией, что при наведении */
+html body .lf input:hover:not(#_):not(#_):not(#_),html body .lf textarea:hover:not(#_):not(#_):not(#_),
+html body .lf input:focus:not(#_):not(#_):not(#_),html body .lf textarea:focus:not(#_):not(#_):not(#_),
+html body .lf input:focus-visible:not(#_):not(#_):not(#_),html body .lf textarea:focus-visible:not(#_):not(#_):not(#_) {
+  border-color:var(--text-dim)!important;border-bottom-color:var(--text-dim)!important;outline:none!important;box-shadow:none!important;background:transparent!important }
+/* J5 незаполненные поля: светлая линия, не лаймовая и не красная */
+html body .lf input.err:not(#_):not(#_):not(#_),html body .lf textarea.err:not(#_):not(#_):not(#_) { border-bottom-color:var(--text)!important }
+html body #lead .lf-check.err:not(#_):not(#_):not(#_) input[type=checkbox] { border-color:var(--text)!important }
+/* J4 чекбокс: галочка на :checked всегда, ровно по центру круга (svg фоном) */
+html body #lead .lf-check:not(#_):not(#_):not(#_) input[type=checkbox] { width:20px!important;height:20px!important;border-radius:50%!important;
+  border:1.5px solid var(--line-2)!important;background-color:transparent!important;background-image:none!important;box-sizing:border-box!important;
+  appearance:none!important;-webkit-appearance:none!important;flex:none!important;margin:0!important;position:relative!important;opacity:1!important }
+html body #lead .lf-check:not(#_):not(#_):not(#_) input[type=checkbox]:hover { border-color:var(--text-dim)!important }
+html body #lead .lf-check:not(#_):not(#_):not(#_) input[type=checkbox]:checked { background-color:var(--accent)!important;border-color:var(--accent)!important;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.6 10.4l2.9 2.9 6-6.2' fill='none' stroke='%2312150A' stroke-width='2.1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")!important;
+  background-repeat:no-repeat!important;background-position:center!important;background-size:20px 20px!important }
+html body #lead .lf-check:not(#_):not(#_):not(#_) input[type=checkbox]::after { display:none!important;content:none!important }
+html body #lead .lf-check:not(#_):not(#_):not(#_)::before,html body #lead .lf-check:not(#_):not(#_):not(#_)::after { display:none!important;content:none!important }
+html body #lead .lf-check:not(#_):not(#_):not(#_) input[type=checkbox]:focus-visible { outline:2px solid var(--text-dim)!important;outline-offset:3px!important }
+/* J5 сообщение под кнопкой: тем же стилем, что подпись под кнопкой, цвет текста */
+html body #lead .lf-err:not(#_):not(#_):not(#_) { display:none;margin:14px auto 0!important;font-size:13px!important;line-height:1.5!important;
+  color:var(--text)!important;text-align:center!important;max-width:34ch }
+html body #lead .lf-err.show:not(#_):not(#_):not(#_) { display:block!important }
+html body #lead .lf-err.show:not(#_):not(#_):not(#_) + .lf-after { margin-top:8px!important }
+/* J6 слоты: при наведении светлая рамка и текст, без лайма; выбранный как был */
+html body #lead .sl-day:hover:not(.on):not(#_):not(#_):not(#_),html body #lead .sl-t:hover:not(.on):not(#_):not(#_):not(#_) {
+  border-color:rgba(255,255,255,.45)!important;color:var(--text)!important;background:transparent!important;box-shadow:none!important;filter:none!important }
+html body #lead .sl-day:hover:not(.on):not(#_):not(#_):not(#_) b,html body #lead .sl-day:hover:not(.on):not(#_):not(#_):not(#_) span { color:var(--text)!important }
+html:root[data-theme="light"] body #lead .sl-day:hover:not(.on):not(#_):not(#_):not(#_),html:root[data-theme="light"] body #lead .sl-t:hover:not(.on):not(#_):not(#_):not(#_) { border-color:rgba(25,26,29,.45)!important }
+html body #lead .sl-day:focus-visible:not(#_):not(#_):not(#_),html body #lead .sl-t:focus-visible:not(#_):not(#_):not(#_) { outline:2px solid var(--text-dim)!important;outline-offset:2px!important }
+/* J3 подвал: две ссылки бренда друг под другом, одним стилем */
+html body footer .f-brand .f-tg:not(#_):not(#_):not(#_) { display:table!important;margin-top:8px!important }
+html body footer .f-brand .f-tg.f-cta:not(#_):not(#_):not(#_) { margin-top:16px!important }
+/* J3 в «Разделах» пять ссылок: одна колонка на всех ширинах */
+html body footer .f-nav.f-nav2:not(#_):not(#_):not(#_) { display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;gap:6px!important;max-width:none!important }
+html body footer .f-nav.f-nav2 a:not(#_):not(#_):not(#_) { display:block!important;flex:none!important }
+</style>
+
+<style id="fix-6b">
+/* «Как проходит»: без линии перед первым шагом; ссылки меню при наведении просто белые, без плашки */
+html body #days .rules:not(#_):not(#_){border-top:0!important}
+html body #days .rules .rule:first-child:not(#_):not(#_){border-top:0!important}
+html body .nav-links a:hover:not(#_):not(#_):not(#_),html body .nav-links a:focus-visible:not(#_):not(#_):not(#_){background:transparent!important;color:var(--text)!important}
+</style>
+
+<style id="fix-7">
+/* пункты верхнего меню при наведении просто белые, без плашки (все страницы) */
+html body .nav-links a:hover:not(#_):not(#_):not(#_),html body .nav a:hover:not(#_):not(#_):not(#_),html body .nav-sheet a:hover:not(#_):not(#_):not(#_){background:transparent!important;color:var(--text)!important}
+</style>
+<style id="fix-8">
+/* 18.08 вечер, п.8: подпись чекбокса в две строки на вебе (перенос перед «и принимаю»), сообщение о недостающем полными словами по центру */
+html body .lf-check:not(#_):not(#_):not(#_):not(#_):not(#_) .br-web{display:none!important}
+@media(min-width:761px){
+  html body .lf-check:not(#_):not(#_):not(#_):not(#_):not(#_) .br-web{display:inline!important}
+  html body .lf-check:not(#_):not(#_):not(#_):not(#_):not(#_)>span{white-space:nowrap}
+}
+html body form .mf-err:not(#_):not(#_):not(#_):not(#_):not(#_),
+html body form .lf-err:not(#_):not(#_):not(#_):not(#_):not(#_){color:var(--text)!important;font-size:13.5px!important;line-height:1.5!important;text-align:center!important;margin:14px auto 0!important;max-width:100%!important;white-space:normal!important}
+html body form.err .mf-err:not(#_):not(#_):not(#_):not(#_):not(#_),
+html body form .lf-err.show:not(#_):not(#_):not(#_):not(#_):not(#_){display:block!important}
+</style>
+
+<style id="fix-9">
+/* заголовок обложки на внутренних страницах ровно как на главной: 68 / 500 (телефон 48) */
+html body .cover h1:not(#_):not(#_):not(#_):not(#_):not(#_),html body .hero h1:not(#_):not(#_):not(#_):not(#_):not(#_){font-size:102px!important;font-weight:500!important;letter-spacing:-.028em!important;line-height:1.02!important}
+@media(max-width:760px){html body .cover h1:not(#_):not(#_):not(#_):not(#_):not(#_),html body .hero h1:not(#_):not(#_):not(#_):not(#_):not(#_){font-size:60px!important;font-weight:500!important}}
+</style>
+
+<style id="fix-m">
+/* мобильная приёмка 19.08: только телефон */
+@media (max-width:760px){
+  /* обложка: анимация не спорит с текстом – канвас тише и гаснет к низу, где h1 и лид */
+  html body header.hero canvas#chkFx:not(#_):not(#_){opacity:.5!important;-webkit-mask-image:linear-gradient(180deg,#000 0,#000 38%,rgba(0,0,0,.4) 68%,transparent 96%)!important;mask-image:linear-gradient(180deg,#000 0,#000 38%,rgba(0,0,0,.4) 68%,transparent 96%)!important}
+  /* шторка меню: как на главной – ссылки, ниже ряд тема + Telegram + кнопка */
+  html body .nav-sheet .ns-in:not(#_):not(#_){display:grid!important;grid-template-columns:52px 52px minmax(0,1fr)!important;column-gap:12px!important;align-items:center!important}
+  html body .nav-sheet .ns-in>a:not(.btn):not(#_):not(#_){grid-column:1/-1!important;font-size:15px!important}
+  html body .nav-sheet .ns-in .ns-actions:not(#_):not(#_){display:contents!important}
+  html body .nav-sheet .ns-in .ns-tgl:not(#_):not(#_){order:1!important;grid-column:1!important;width:52px!important;height:52px!important;margin-top:18px!important}
+  html body .nav-sheet .ns-in .ns-tg:not(#_):not(#_){order:2!important;grid-column:2!important;width:52px!important;height:52px!important;margin-top:18px!important}
+  html body .nav-sheet .ns-in .btn.pri:not(#_):not(#_){order:3!important;grid-column:3!important;width:100%!important;min-height:52px!important;margin-top:18px!important;justify-content:center!important}
+}
+</style>
+<style id="fix-m2">
+/* мобильные правки 19.08 (аудио Ксюши), только телефон: K1 обложка по svh, K2 FAB, K3 шторка, K5 реквизиты, K6 сетка, K7 чип */
+@media (max-width:760px){
+  /* K1. обложка = видимая высота экрана (svh), низ лида 10px от низа видимого экрана + safe-area */
+  html body header.hero:not(#_):not(#_):not(#_):not(#_){height:auto!important;min-height:calc(100vh - 90px)!important;min-height:100svh!important;box-sizing:border-box!important;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px))!important}
+  /* K2. плавающие кнопки: Telegram и заявка одного размера, иконки 20px, радиус 16 */
+  html body .fab .fab-b:not(#_):not(#_):not(#_):not(#_){width:52px!important;height:52px!important;min-width:52px!important;min-height:52px!important;padding:0!important;border-radius:16px!important;box-sizing:border-box!important}
+  html body .fab .fab-b svg:not(#_):not(#_):not(#_):not(#_){width:20px!important;height:20px!important}
+  /* K3. шторка меню: поля 20px как у логотипа и крестика; открытие через opacity, blur не анимируем */
+  html body .nav-sheet:not(#_):not(#_):not(#_):not(#_){padding-left:20px!important;padding-right:20px!important;display:block!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important;transition:opacity .22s ease,visibility 0s linear .22s!important}
+  html body .nav-sheet.open:not(#_):not(#_):not(#_):not(#_){opacity:1!important;visibility:visible!important;pointer-events:auto!important;transition:opacity .22s ease,visibility 0s!important}
+  html body .nav:not(#_):not(#_):not(#_):not(#_){transition:background .2s ease,border-color .2s ease!important}
+  /* K5. подвал «Формальности»: все строки line-height 1.35, шаг 4px, адрес две строки без зазора */
+  html body footer .f-legal:not(#_):not(#_):not(#_):not(#_){gap:0!important;row-gap:0!important}
+  html body footer .f-legal .f-legal-cols:not(#_):not(#_):not(#_):not(#_),html body footer .f-legal .f-legal-c:not(#_):not(#_):not(#_):not(#_),html body footer .f-legal .f-addr:not(#_):not(#_):not(#_):not(#_){display:block!important;gap:0!important;row-gap:0!important;margin:0!important}
+  html body footer .f-legal .f-k:not(#_):not(#_):not(#_):not(#_){margin:0 0 10px!important}
+  html body footer .f-legal p:not(#_):not(#_):not(#_):not(#_){margin:0 0 4px!important;line-height:1.35!important}
+  html body footer .f-legal a:not(#_):not(#_):not(#_):not(#_){margin:0!important;line-height:1.35!important;display:block!important;width:fit-content!important}
+  html body footer .f-legal .f-legal-c:last-child p:first-child:not(#_):not(#_):not(#_):not(#_){margin-bottom:0!important}
+  /* K6. «Другие услуги и кейсы»: 2 колонки, gap 14 по обеим осям, карточки ряда одной высоты, пятая во всю ширину */
+  html body .nxt:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){display:grid!important;grid-template-columns:1fr 1fr!important;gap:14px!important;row-gap:14px!important;column-gap:14px!important;align-items:stretch!important}
+  html body .nxt>a:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){margin:0!important;align-self:stretch!important;height:auto!important;min-height:0!important}
+  html body .nxt>a:nth-child(5):not(#_):not(#_):not(#_):not(#_){grid-column:1/-1!important}
+  /* K7. чип обложки: везде 14px / 5px 11px */
+  html body header .hero-chip:not(#_):not(#_):not(#_):not(#_){font-size:14px!important;line-height:1.2!important;padding:5px 11px!important;border-radius:16px!important}
+}
+</style>
 </head>
 <body>
+<script id="fix-lead-js">(function(){
+/* заявки с сайта: приёмник ждёт source:"synapt" и contact; остальные поля складываем в comment */
+var F=window.fetch; if(!F||F.__synapt) return;
+function dom(){ var f=document.querySelector('form'); if(!f) return {}; var r={}; var ins=[].slice.call(f.querySelectorAll('input,textarea')); ins.forEach(function(i){ var lab=(i.closest('.lf,.fld,label')||{}).textContent||''; lab=lab.replace(/\s+/g,' ').trim(); var v=(i.value||'').trim(); if(!v) return; if(i.tagName==='TEXTAREA') r.task=v; else if(/Компания|сфера/i.test(lab)) r.company=v; }); var on=[].slice.call(f.querySelectorAll('.sl-day.on,.sl-t.on,.sl-slot.on,[aria-pressed="true"]')).map(function(e){return e.textContent.replace(/\s+/g,' ').trim()}); if(on.length) r.slot=on.join(' · '); return r; }
+function build(o){ try{ if(o.source) return o; var d=dom(); o=Object.assign({},d,o); if(!o.company&&d.company) o.company=d.company; if(!o.task&&d.task) o.task=d.task; if(!o.slot&&d.slot) o.slot=d.slot; var parts=[]; var page=o.page||document.title; if(page) parts.push('Страница: '+page);
+  if(o.company) parts.push('Компания: '+o.company); var ctx=o.task||o.note||o.message||o.about||o.request||''; if(ctx) parts.push('Контекст: '+ctx);
+  if(o.slot||o.when||o.day) parts.push('Слот: '+(o.slot||o.when||o.day)); if(o.comment) parts.push(o.comment);
+  return {source:'synapt',name:o.name||'',contact:o.contact||o.phone||o.email||o.tg||'',stage:'',task:'',budget:'',comment:parts.join('\n').slice(0,1000),page:page}; }catch(e){ return o; } }
+window.fetch=function(url,opts){ try{ if(typeof url==='string'&&url.indexOf('/api/lead')>-1&&opts&&opts.body&&typeof opts.body==='string'){ var o=JSON.parse(opts.body); var b=build(o); opts=Object.assign({},opts,{body:JSON.stringify(b),headers:Object.assign({},opts.headers||{},{'Content-Type':'application/json'})}); } }catch(e){} return F.call(this,url,opts); };
+window.fetch.__synapt=true; })();</script>
 <nav class="nav"><div class="wrap">
-  <a class="brand" href="/"><svg viewBox="0 0 839 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-30,0)"><path class="lg-mark" d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path class="lg-mark" d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path class="lg-mark" d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path class="lg-mark" d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path class="lg-mark" d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path class="lg-mark" d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/></g><path d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></svg></a>
+  <a class="brand" href="/"><svg viewBox="0 0 839 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-30,0)"><path class="lg-mark" d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path class="lg-mark" d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path class="lg-mark" d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path class="lg-mark" d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path class="lg-mark" d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path class="lg-mark" d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/></g><path class="lg-sign" d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></svg></a>
   <div class="nav-links"><a href="#why">Для&nbsp;чего</a><a href="#entry">Цена</a><a href="#days">Как&nbsp;проходит</a><a href="#result">Результат</a><a href="#faq">FAQ</a></div>
   <button class="tgl" id="themeTgl" type="button" aria-label="Сменить тему">
     <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
@@ -1794,10 +2193,10 @@ html body .hero h1,html body h1{font-weight:500!important;letter-spacing:-.028em
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 4.3 3.3 11.4c-.9.35-.88 1.63.02 1.96l4.5 1.63 1.72 5.2c.24.72 1.16.92 1.68.37l2.5-2.63 4.55 3.34c.62.46 1.5.12 1.66-.63l3.03-14.4c.17-.8-.62-1.47-1.36-1.19zM8.9 14.1l9.1-5.6-7.2 6.6-.35 2.9-1.55-3.9z"/></svg>
   </a>
   <button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="navSheet"><span class="bl"></span></button>
-  <a class="btn pri nav-cta" href="#lead">Оставить заявку</a>
+  <a class="btn pri nav-cta" href="#lead">Записаться на&nbsp;чекап</a>
 </div>
 </nav>
-<div class="nav-sheet" id="navSheet"><div class="ns-in"><a href="#why">Для&nbsp;чего</a><a href="#entry">Цена</a><a href="#days">Как&nbsp;проходит</a><a href="#result">Результат</a><a href="#faq">FAQ</a><a class="btn pri" href="#lead">Оставить заявку</a><div class="ns-actions"><button class="tgl ns-tgl" id="themeTgl2" type="button" aria-label="Сменить тему"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4L17 7M7 17l-1.6 1.6"/></svg></button><a class="tgl nav-tg ns-tg" href="https://t.me/Anti4ay" target="_blank" rel="noopener" aria-label="Написать в&nbsp;Telegram" title="Написать в&nbsp;Telegram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 4.3 3.3 11.4c-.9.35-.88 1.63.02 1.96l4.5 1.63 1.72 5.2c.24.72 1.16.92 1.68.37l2.5-2.63 4.55 3.34c.62.46 1.5.12 1.66-.63l3.03-14.4c.17-.8-.62-1.47-1.36-1.19zM8.9 14.1l9.1-5.6-7.2 6.6-.35 2.9-1.55-3.9z"/></svg></a></div></div></div>
+<div class="nav-sheet" id="navSheet"><div class="ns-in"><a href="#why">Для&nbsp;чего</a><a href="#entry">Цена</a><a href="#days">Как&nbsp;проходит</a><a href="#result">Результат</a><a href="#faq">FAQ</a><a class="btn pri" href="#lead">Записаться на&nbsp;чекап</a><div class="ns-actions"><button class="tgl ns-tgl" id="themeTgl2" type="button" aria-label="Сменить тему"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4L17 7M7 17l-1.6 1.6"/></svg></button><a class="tgl nav-tg ns-tg" href="https://t.me/Anti4ay" target="_blank" rel="noopener" aria-label="Написать в&nbsp;Telegram" title="Написать в&nbsp;Telegram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 4.3 3.3 11.4c-.9.35-.88 1.63.02 1.96l4.5 1.63 1.72 5.2c.24.72 1.16.92 1.68.37l2.5-2.63 4.55 3.34c.62.46 1.5.12 1.66-.63l3.03-14.4c.17-.8-.62-1.47-1.36-1.19zM8.9 14.1l9.1-5.6-7.2 6.6-.35 2.9-1.55-3.9z"/></svg></a></div></div></div>
 
 <span id="top"></span>
 
@@ -1836,7 +2235,8 @@ html body .hero h1,html body h1{font-weight:500!important;letter-spacing:-.028em
 </div></section>
 
 <section id="entry" class="rh-think"><div class="wrap">
-  <div class="eyebrow reveal"><span class="n">02</span> Цена и&nbsp;ценность</div>
+  <div class="eyebrow reveal"><span class="n">02</span> Ценность</div>
+  <h2 class="reveal d1">Цена</h2>
   <div class="ph-num reveal d1"><b>19&nbsp;900<span class="m-t tail">₽</span></b><small>за&nbsp;чекап целиком</small></div>
   <div class="price-hero reveal d1">
     <p class="ph-txt">Первый шаг стоит в&nbsp;несколько раз меньше месячной зарплаты одного менеджера, но&nbsp;уже через две недели вы&nbsp;получаете карту процессов, одну автоматизацию и&nbsp;чёткий план дальнейшей AI-интеграции</p>
@@ -1891,17 +2291,17 @@ html body .hero h1,html body h1{font-weight:500!important;letter-spacing:-.028em
   <div class="faq reveal">
     <details open><summary>Что&nbsp;если после чекапа мы&nbsp;не&nbsp;пойдём в&nbsp;разработку? <span class="pl">+</span></summary><div class="ans">Чекап даёт честную оценку текущих процессов и&nbsp;потенциал эффекта от&nbsp;AI. Через две недели у&nbsp;вас уже есть агент, который ускоряет работу, карта процессов и&nbsp;план. Масштабировать автоматизацию дальше&nbsp;– свободный выбор компании</div></details>
     <details><summary>Как&nbsp;быть с&nbsp;конфиденциальными данными? <span class="pl">+</span></summary><div class="ans">Разбор контура данных идёт первым делом, ещё до&nbsp;разговора про&nbsp;разработку. Списком фиксируем, какие поля уходят в&nbsp;модель и&nbsp;какие остаются внутри. Подписываем соглашение о&nbsp;неразглашении до&nbsp;старта, работаем на&nbsp;обезличенных выгрузках, для&nbsp;чувствительных данных разворачиваем агента в&nbsp;вашем контуре по&nbsp;152-ФЗ</div></details>
-    <details><summary>Что&nbsp;если не&nbsp;хватит двух недель? <span class="pl">+</span></summary><div class="ans">Срок фиксированный, состав пакета рассчитан под него, и&nbsp;мы&nbsp;гарантируем, что&nbsp;выполним весь заявленный объём. До&nbsp;старта отдельно обсуждаем и&nbsp;фиксируем контекст вашей компании, чтобы рамка чекапа была реалистичной</div></details>
+    <details><summary>А&nbsp;может ли&nbsp;не&nbsp;хватить двух недель? <span class="pl">+</span></summary><div class="ans">Срок фиксированный, состав пакета рассчитан под него, и&nbsp;мы&nbsp;гарантируем, что&nbsp;выполним весь заявленный объём. До&nbsp;старта отдельно обсуждаем и&nbsp;фиксируем контекст вашей компании, чтобы рамка чекапа была реалистичной</div></details>
     <details>
-      <summary>Что&nbsp;если у&nbsp;нас есть свои разработчики? <span class="pl">+</span></summary>
+      <summary>Будет ли&nbsp;полезно, если есть свои разработчики? <span class="pl">+</span></summary>
       <div class="ans">Одного агента ваш разработчик соберёт за&nbsp;выходные, это&nbsp;правда. Но&nbsp;решение начинает работать и&nbsp;приносить деньги, когда за&nbsp;ним стоит пять вещей:<ul class="ans-list"><li>Спрос: продукт закрывает работу, которая людям действительно нужна, а&nbsp;не&nbsp;остаётся экспериментом ради эксперимента&nbsp;– проверяем это&nbsp;до&nbsp;сборки</li><li>Адаптация: учим команду работать с&nbsp;новым инструментом, чтобы через месяц всё не&nbsp;откатилось назад</li><li>Сценарии: закладываем запас на&nbsp;будущее и&nbsp;держим систему живой, когда меняются модель, интерфейс, прайсы поставщиков и&nbsp;условия рынка</li><li>Цепочки: ведём длинные маршруты, где агент ходит по&nbsp;нескольким системам, и&nbsp;отвечаем за&nbsp;то, чтобы ошибка в&nbsp;середине не&nbsp;стоила дорого</li><li>Обвязка: собираем вокруг агента журнал действий, подтверждения и&nbsp;контроль качества ответов</li></ul>Всё это&nbsp;закрываем сами, вашей команде остаётся работа, ради которой её&nbsp;нанимали</div>
     </details>
     <details>
       <summary>Что&nbsp;будет с&nbsp;командой после интеграции AI? <span class="pl">+</span></summary>
       <div class="ans">До&nbsp;старта вместе с&nbsp;вами разбираем роли: что&nbsp;забирает агент, что&nbsp;остаётся за&nbsp;человеком и&nbsp;как&nbsp;меняется его&nbsp;рабочий день. Сокращения мы&nbsp;не&nbsp;предлагаем и&nbsp;не&nbsp;планируем, это&nbsp;решение собственника. Наша задача&nbsp;– снять с&nbsp;людей повторяющуюся рутину, а&nbsp;не&nbsp;отнять у&nbsp;них работу</div>
     </details>
-    <details><summary>Мы&nbsp;уже внедряли, эффекта не&nbsp;было? <span class="pl">+</span></summary><div class="ans">Так бывает, когда инструмент дают людям без&nbsp;разбора процесса: инструкция есть, привычки нет. Мы&nbsp;начинаем с&nbsp;процессов и&nbsp;задач конкретных людей, а&nbsp;инструмент подбираем под&nbsp;них</div></details>
-    <details><summary>У&nbsp;нас нет данных: CRM ведётся не&nbsp;полностью, цифр нет? <span class="pl">+</span></summary><div class="ans">Чекап рассчитан и&nbsp;на&nbsp;такую ситуацию: работаем с&nbsp;тем, что&nbsp;есть&nbsp;– переписки в&nbsp;мессенджерах, почта, документы, записи звонков. Отдельно порекомендуем, что&nbsp;может закрыться изменением регламента и&nbsp;какие данные стоит начать собирать</div></details>
+    <details><summary>Мы&nbsp;уже внедряли, но&nbsp;эффекта не&nbsp;было <span class="pl">+</span></summary><div class="ans">Так бывает, когда инструмент дают людям без&nbsp;разбора процесса: инструкция есть, привычки нет. Мы&nbsp;начинаем с&nbsp;процессов и&nbsp;задач конкретных людей, а&nbsp;инструмент подбираем под&nbsp;них</div></details>
+    <details><summary>Что&nbsp;если у&nbsp;нас нет данных? <span class="pl">+</span></summary><div class="ans">Чекап рассчитан и&nbsp;на&nbsp;такую ситуацию: работаем с&nbsp;тем, что&nbsp;есть&nbsp;– переписки в&nbsp;мессенджерах, почта, документы, записи звонков. Отдельно порекомендуем, что&nbsp;может закрыться изменением регламента и&nbsp;какие данные стоит начать собирать</div></details>
   </div>
 </div></section>
 
@@ -1909,16 +2309,16 @@ html body .hero h1,html body h1{font-weight:500!important;letter-spacing:-.028em
   <div class="lead-grid">
     <div class="lead-copy reveal">
       <div class="eyebrow"><span class="n">06</span> Следующий шаг</div>
-      <h2><span class="nb">30 минут</span> в&nbsp;Zoom с&nbsp;партнёрами студии</h2>
+      <h2><span class="nb">30 минут</span> в&nbsp;Zoom</h2>
   <p class="lead">Вы&nbsp;рассказываете про&nbsp;бизнес, мы&nbsp;задаём вопросы и&nbsp;совместно определяем цели. После присылаем запись разговора и&nbsp;разбор: что&nbsp;увидели и&nbsp;с&nbsp;чего рекомендуем начать</p>
     </div>
     <div class="leadbox reveal d1">
       <form id="leadForm" novalidate>
         <div class="lf-grid">
-          <div class="lf"><label for="lfName">Как&nbsp;вас зовут <span class="req" title="обязательное поле">*</span></label><input id="lfName" name="name" type="text" autocomplete="name" required></div>
-          <div class="lf"><label for="lfContact">Телефон, почта или&nbsp;Telegram <span class="req" title="обязательное поле">*</span></label><input id="lfContact" name="contact" type="text" autocomplete="off" required></div>
+          <div class="lf"><label for="lfName">Как&nbsp;вас зовут <span class="req">*</span></label><input id="lfName" name="name" type="text" autocomplete="name" required></div>
+          <div class="lf"><label for="lfContact">Телефон, почта или&nbsp;Telegram <span class="req">*</span></label><input id="lfContact" name="contact" type="text" autocomplete="off" required></div>
           <div class="lf lf-wide"><label for="lfCompany">Компания и&nbsp;сфера деятельности</label><input id="lfCompany" name="company" type="text" autocomplete="organization"></div>
-          <div class="lf lf-wide"><label for="lfTask">Коротко о&nbsp;контексте: чем занимается компания и&nbsp;что&nbsp;хотите изменить</label><textarea id="lfTask" name="task" rows="2"></textarea></div>
+          <div class="lf lf-wide"><label for="lfTask">Коротко о&nbsp;контексте: какой сейчас уровень использования AI в&nbsp;команде и&nbsp;к&nbsp;какому результату хотите прийти</label><textarea id="lfTask" name="task" rows="2"></textarea></div>
         </div>
         <div class="slots" id="slots">
           <div class="sl-h">Когда вам удобно</div>
@@ -1928,9 +2328,9 @@ html body .hero h1,html body h1{font-weight:500!important;letter-spacing:-.028em
           <div class="sl-note" id="slNote"></div>
         </div>
         <label class="lf-check"><input type="checkbox" id="lfAgree" required>
-          <span>Согласен на&nbsp;обработку персональных данных и&nbsp;принимаю <a href="/privacy" target="_blank" rel="noopener">политику обработки персональных данных</a></span></label>
-        <div class="lf-err" id="lfErr" role="alert">Не&nbsp;хватает вашего имени, контактов и&nbsp;согласия на&nbsp;обработку персональных данных</div>
+          <span>Даю согласие на&nbsp;обработку персональных данных <br class="br-web">и&nbsp;принимаю <a href="/privacy" target="_blank" rel="noopener">политику обработки персональных данных</a></span></label>
         <button class="btn pri lg" type="submit">Оставить заявку</button>
+        <div class="lf-err" id="lfErr" role="alert" aria-live="polite">Не&nbsp;хватает вашего имени, телефона, почты или&nbsp;Telegram и&nbsp;согласия на&nbsp;обработку персональных данных и&nbsp;принятия политики обработки персональных данных</div>
         <p class="lf-after"><span class="nb">Подтвердим встречу в&nbsp;ответном сообщении</span> <span class="nb">в&nbsp;течение 1&nbsp;рабочего дня</span></p>
       </form>
       <div class="lf-done" id="lfDone">
@@ -1950,9 +2350,7 @@ html body .hero h1,html body h1{font-weight:500!important;letter-spacing:-.028em
   </section>
 
 <section id="related" class="rh-pre"><div class="wrap">
-  <div class="sec-head reveal">
-    <div class="eyebrow"><span class="n">07</span> Другие услуги и&nbsp;кейсы студии</div>
-  </div>
+  <div class="eyebrow reveal"><span class="n">07</span> Другие услуги и&nbsp;кейсы студии</div>
   <div class="nxt reveal">
     <a href="/innorto/"><span class="nk">кейс</span><span class="nt">INNORTO</span></a>
     <a href="/globaldent/"><span class="nk">кейс</span><span class="nt">GlobalDent</span></a>
@@ -1965,19 +2363,26 @@ html body .hero h1,html body h1{font-weight:500!important;letter-spacing:-.028em
 <footer><div class="wrap">
   <div class="f-main">
     <div class="f-brand">
-      <a class="brand" href="/" aria-label="synapt"><svg viewBox="0 0 839 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-30,0)"><path class="lg-mark" d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path class="lg-mark" d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path class="lg-mark" d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path class="lg-mark" d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path class="lg-mark" d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path class="lg-mark" d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/></g><path d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></svg></a>
+      <a class="brand" href="/" aria-label="synapt"><svg viewBox="0 0 839 360" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-30,0)"><path class="lg-mark" d="M416.193 232.251C403.922 232.402 389.832 229.229 379.378 222.582L386.65 207.775C392.71 211.099 404.225 215.178 416.193 215.481C426.344 215.632 437.403 212.912 439.524 204.301C440.585 199.013 438.312 194.48 433.767 192.063C425.435 187.379 414.527 185.869 405.134 183.149C390.438 178.768 378.166 170.609 379.378 153.386C380.893 130.27 402.255 124.529 421.95 124.68C433.161 124.831 443.615 126.796 453.917 130.875L447.857 146.738C439.827 143.717 429.828 141.753 420.89 141.753C412.557 141.602 399.074 142.961 398.316 154.141C398.013 161.847 404.225 164.717 410.285 166.681C422.556 170.156 434.07 171.063 445.281 177.559C456.341 184.056 460.583 194.934 457.856 207.322C453.766 226.661 433.313 232.1 416.193 232.251Z"/><path class="lg-mark" d="M476.072 257.33L475.617 242.071C484.556 242.675 490.767 241.618 494.555 232.402L496.221 228.02L460.316 151.573H480.314L505.312 206.567L527.431 151.573H547.126L511.372 237.388C504.706 253.402 492.282 258.539 476.072 257.33Z"/><path class="lg-mark" d="M552.394 231.344V151.573H566.484L568.453 157.616C577.24 153.537 586.936 151.271 595.724 151.422C612.843 151.573 627.236 160.487 627.236 183.602V231.344H609.359V183.602C609.359 171.365 602.693 166.983 593.754 166.832C585.573 166.681 576.028 169.854 570.12 174.689V231.344H552.394Z"/><path class="lg-mark" d="M699.051 210.495V171.516C694.354 166.681 685.113 164.566 677.992 164.868C665.721 165.17 655.57 173.48 655.57 190.854C655.57 208.531 665.721 216.689 677.992 217.143C685.113 217.294 694.354 215.027 699.051 210.495ZM637.844 190.854C637.844 166.681 654.51 150.062 678.447 150.062C685.719 150.062 694.203 151.724 700.566 155.803L702.081 150.666H716.777V231.344H702.081L700.566 226.056C694.203 230.287 685.719 231.949 678.447 231.949C654.51 231.949 637.844 215.178 637.844 190.854Z"/><path class="lg-mark" d="M767.811 216.689C782.81 216.689 791.143 206.114 791.143 191.459C791.143 174.537 781.901 166.983 770.387 166.379C762.812 165.926 754.025 167.588 748.116 173.631V210.797C752.51 215.027 760.539 216.689 767.811 216.689ZM730.39 257.33V151.573H744.329L746.45 156.861C753.873 152.933 761.297 150.818 769.932 150.818C794.173 150.818 809.02 167.286 809.02 191.459C809.02 215.783 791.597 232.1 767.811 232.1C760.994 232.1 754.328 230.589 748.116 227.567V257.33H730.39Z"/><path class="lg-mark" d="M852.032 232.251C837.942 232.402 825.519 223.941 825.519 205.358V165.624H812.793V151.573H825.519V138.731L843.396 133.745V151.573H860.819V165.624H843.396V205.358C843.396 214.423 847.941 216.84 853.85 216.991C857.183 217.143 860.97 216.538 864.607 215.33L869 229.229C863.243 231.344 857.637 232.251 852.032 232.251Z"/></g><path class="lg-sign" d="M159.195 0C171.173 0 181.31 7.88936 184.654 18.7451C184.861 19.4161 184.908 20.1234 184.851 20.8231C184.713 22.5205 184.642 24.2362 184.642 25.9672C184.642 28.5667 184.802 31.1306 185.112 33.6486C187.506 53.1417 198.885 69.8519 214.978 79.5476C215.737 80.0051 216.509 80.4455 217.289 80.8709C224.71 85.592 229.619 93.8647 229.619 103.279C229.619 111.25 226.1 118.397 220.517 123.269C220.133 123.604 219.697 123.871 219.237 124.09C216.415 125.431 213.707 126.973 211.137 128.703C197.248 138.051 187.307 152.808 184.361 169.958C183.768 173.416 183.459 176.969 183.459 180.59C183.459 183.918 183.72 187.188 184.223 190.38C186.834 206.945 195.96 221.343 208.889 230.892C212.572 233.613 216.567 235.941 220.808 237.814C228.573 241.244 237.163 243.148 246.19 243.148C255.217 243.148 263.807 241.244 271.571 237.814C275.309 236.163 278.854 234.158 282.164 231.844C282.713 231.46 283.316 231.153 283.966 230.988C286.076 230.451 288.29 230.164 290.575 230.164C305.283 230.164 317.206 242.054 317.206 256.721C317.206 271.389 305.283 283.279 290.575 283.279C289.033 283.279 287.524 283.148 286.058 282.898C285.232 282.758 284.465 282.394 283.783 281.908C279.702 279.002 275.256 276.569 270.525 274.695C263.358 271.855 255.544 270.295 247.373 270.295C237.26 270.295 227.695 272.684 219.226 276.931C216.488 278.304 213.866 279.87 211.377 281.612C196.983 291.686 187.018 307.649 185.013 326.007C184.768 328.256 184.642 330.541 184.642 332.852C184.642 334.869 184.739 336.864 184.927 338.833C184.993 339.532 184.956 340.239 184.758 340.913C181.523 351.944 171.299 360 159.195 360C144.487 360 132.564 348.11 132.564 333.443C132.564 326.274 135.408 319.772 140.041 314.99C140.506 314.511 141.068 314.141 141.672 313.855C145.364 312.109 148.859 310.015 152.111 307.614C165.04 298.064 174.165 283.666 176.777 267.101C177.28 263.91 177.541 260.64 177.541 257.311C177.541 253.69 177.232 250.137 176.638 246.679C173.508 228.455 162.48 212.934 147.205 203.731C146.398 203.245 145.579 202.777 144.75 202.327C135.849 197.497 125.645 194.754 114.81 194.754C105.616 194.754 96.8757 196.73 88.9992 200.28C85.7632 201.739 82.6721 203.462 79.7569 205.424C65.0769 215.305 54.8087 231.228 52.5479 249.63C52.2386 252.148 52.0786 252.942 52.0786 255.541C52.0786 257.632 52.9736 261.276 52.3826 263.512C49.3746 274.891 38.9818 283.279 26.6311 283.279C11.9232 283.279 0 271.389 0 256.721C0 249.645 2.77124 243.219 7.29812 238.456C10.0606 235.549 17.1676 233.615 21.4887 230.322C34.7668 220.202 43.882 204.903 45.7895 187.436C46.0352 185.186 46.1606 182.902 46.1606 180.59C46.1606 178.573 46.063 176.578 45.875 174.609C45.8083 173.91 45.8458 173.202 46.0434 172.529C49.279 161.498 59.5045 153.443 71.6081 153.443C73.1495 153.443 74.6579 153.573 76.1233 153.822C76.9496 153.962 77.7164 154.327 78.3985 154.812C82.4801 157.719 86.9264 160.152 91.6577 162.027C98.8255 164.866 106.639 166.426 114.81 166.426C123.836 166.426 132.427 164.523 140.191 161.093C144.433 159.219 148.427 156.892 152.111 154.171C165.8 144.06 175.226 128.512 177.17 110.715C177.415 108.465 177.541 106.18 177.541 103.869C177.541 101.269 177.381 98.7055 177.071 96.1875C174.677 76.6944 163.298 59.9841 147.205 50.2884C146.447 49.8315 145.675 49.3903 144.894 48.964C137.473 44.2427 132.564 35.9708 132.564 26.5574C132.564 11.8901 144.487 0 159.195 0ZM26.6311 76.7213C41.3391 76.7213 53.2622 88.6115 53.2622 103.279C53.2622 117.946 41.3391 129.836 26.6311 129.836C11.9231 129.836 0 117.946 0 103.279C0 88.6115 11.9231 76.7213 26.6311 76.7213ZM290.575 76.7213C305.283 76.7213 317.206 88.6115 317.206 103.279C317.206 117.946 305.283 129.836 290.575 129.836C275.867 129.836 263.944 117.946 263.944 103.279C263.944 88.6115 275.867 76.7213 290.575 76.7213Z"/></svg></a>
       <p class="f-note">Студия AI и&nbsp;IT-разработки для&nbsp;бизнеса</p>
+      <a class="f-tg f-cta" href="#lead">Записаться на&nbsp;чекап</a>
       <a class="f-tg" href="https://t.me/Anti4ay" target="_blank" rel="noopener">Telegram менеджера</a>
     </div>
-    <nav class="f-nav f-nav2"><span class="f-k">Разделы</span><a href="#why">Для&nbsp;чего</a><a href="#entry">Цена и&nbsp;ценность</a><a href="#days">Как&nbsp;проходит</a><a href="#result">Результат</a><a href="#faq">FAQ</a><a href="#lead">Оставить заявку</a></nav>
+    <nav class="f-nav f-nav2"><span class="f-k">Разделы</span><a href="#why">Для&nbsp;чего</a><a href="#entry">Цена и&nbsp;ценность</a><a href="#days">Как&nbsp;проходит</a><a href="#result">Результат</a><a href="#faq">FAQ</a></nav>
     <div class="f-legal">
       <span class="f-k">Формальности</span>
-      <p>ИП Орешкин Антон Вадимович</p>
-      <p>ИНН 100123323420</p>
-      <p>ОГРНИП 324100000000411</p>
-      <p>185014, Республика Карелия, Петрозаводск</p>
-      <p>переулок Попова, дом&nbsp;6, квартира&nbsp;42</p>
-      <a href="/privacy">Политика обработки персональных данных</a>
+      <div class="f-legal-cols">
+        <div class="f-legal-c">
+          <p>ИП Орешкин Антон Вадимович</p>
+          <p>ИНН 100123323420</p>
+          <p>ОГРНИП 324100000000411</p>
+        </div>
+        <div class="f-legal-c">
+          <p>185014, Республика Карелия, Петрозаводск</p>
+          <p>переулок Попова, дом&nbsp;6, квартира&nbsp;42</p>
+          <a href="/privacy">Политика обработки персональных данных</a>
+        </div>
+      </div>
     </div>
   </div>
   <p class="f-copy">© 2026 Synapt</p>
@@ -2216,8 +2621,11 @@ html body .hero h1,html body h1{font-weight:500!important;letter-spacing:-.028em
   }
   var maxLen=0;
   runs.forEach(function(r){ if(r.length>maxLen) maxLen=r.length });
-  var step=Math.max(5, Math.min(26, 2000/(maxLen*1.3)));
+  var base=Math.max(5, Math.min(26, 2000/(maxLen*1.3)));
   runs.forEach(function(chars){
+    /* короткие строки (кикер, заголовок, цифры) печатаются не быстрее ~0.7с,
+       иначе набор в них не виден; длинный лид идёт своим темпом около 2с */
+    var step=Math.max(base, Math.min(40, 700/(chars.length*1.3)));
     var i=0;
     (function tick(){
       if(i>=chars.length) return;
@@ -2299,10 +2707,12 @@ html body .hero h1,html body h1{font-weight:500!important;letter-spacing:-.028em
 </script>
 
 <script>
-/* обложка: абстрактная схема процессов.
-   0-2,5с – чертёж тонкими серыми линиями; пауза; заливка лаймом от центра
-   по связям, узлы загораются по мере достижения; два-три узла остаются
-   серыми с обводкой – это узкие места. цикл 10 секунд */
+/* обложка: схема процессов компании.
+   0-3с – серый чертёж прорисовывается от центра наружу (узлы-отделы крупные,
+   узлы-процессы мелкие вокруг них, связи лёгкими дугами); пауза; лаймовая волна
+   идёт по связям от центра с мягким свечением и искрами на узлах; узкие места
+   до которых волна не доходит, остаются серыми и тускло пульсируют; к концу
+   цикла всё плавно гаснет и чертёж начинается заново. цикл 11 секунд */
 (function(){
   var c=document.getElementById('chkFx'); if(!c) return;
   var ctx=c.getContext('2d'), DPR=Math.min(devicePixelRatio||1,2), W=0,H=0;
@@ -2310,119 +2720,264 @@ html body .hero h1,html body h1{font-weight:500!important;letter-spacing:-.028em
   function theme(){var l=document.documentElement.getAttribute('data-theme')==='light';
     GR=l?'92,102,98':'128,140,136'; PH=l?'118,146,34':'208,232,101'}
   theme(); new MutationObserver(theme).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+  var reduced=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
 
-  /* узлы в долях холста: схема одинаковая на любой ширине */
-  var NODES=[
-    {x:.50,y:.50,r:5.4},
-    {x:.34,y:.34,r:4.2},{x:.66,y:.33,r:4.2},{x:.68,y:.68,r:4.2},{x:.32,y:.67,r:4.2},
-    {x:.19,y:.20,r:3.4},{x:.50,y:.16,r:3.4},{x:.82,y:.19,r:3.4},
-    {x:.88,y:.48,r:3.4},{x:.83,y:.82,r:3.4},{x:.50,y:.87,r:3.4},
-    {x:.17,y:.81,r:3.4},{x:.12,y:.50,r:3.4},
-    {x:.28,y:.05,r:2.6},{x:.72,y:.05,r:2.6},{x:.96,y:.30,r:2.6},
-    {x:.96,y:.70,r:2.6},{x:.68,y:.96,r:2.6},{x:.30,y:.96,r:2.6},{x:.04,y:.66,r:2.6}
-  ];
-  /* связи: от центра наружу, плюс поперечные хорды */
-  var EDGES=[[0,1],[0,2],[0,3],[0,4],
-    [1,5],[1,6],[2,6],[2,7],[2,8],[3,8],[3,9],[3,10],[4,10],[4,11],[4,12],[1,12],
-    [5,13],[6,14],[7,15],[8,16],[9,17],[10,18],[11,19],
-    [5,6],[6,7],[8,9],[11,12],[12,5],[9,10]];
-  /* узкие места: до них заливка не доходит */
-  var STUCK={7:1,11:1,16:1};
+  /* детерминированный генератор: схема одинаковая при каждой загрузке */
+  var seed=7; function rnd(){seed=(seed*16807)%2147483647; return (seed-1)/2147483646}
 
-  var CYCLE=10000, DRAW=2500, HOLD=1000, FILL=5000; /* остальное – затухание */
-  var t0=performance.now();
+  /* --- граф: центр → отделы (lvl1) → процессы (lvl2) → мелкие шаги (lvl3) --- */
+  var NODES=[], EDGES=[];
+  function add(x,y,r,lvl,parent){var i=NODES.length; NODES.push({x:x,y:y,r:r,lvl:lvl,ph:rnd()*6.283,parent:parent}); if(parent!=null) EDGES.push([parent,i,'tree']); return i}
+  function far(x,y,min){for(var i=0;i<NODES.length;i++){var dx=NODES[i].x-x,dy=NODES[i].y-y; if(dx*dx+dy*dy<min*min) return false} return true}
+  var hub=add(.5,.47,6.2,0,null);
+  var DEPT=7, depts=[];
+  for(var d=0;d<DEPT;d++){
+    var a=-1.25+d*(6.283/DEPT)+(rnd()-.5)*.35, R=.27+(rnd()-.5)*.06;
+    depts.push(add(.5+Math.cos(a)*R*1.08,.47+Math.sin(a)*R*.98,4.6,1,hub));
+  }
+  var procs=[];
+  depts.forEach(function(di,k){
+    var D=NODES[di], base=Math.atan2(D.y-.47,D.x-.5), n=3+Math.floor(rnd()*3), tries=0;
+    for(var j=0;j<n;j++){
+      var a=base+(j-(n-1)/2)*(1.05+rnd()*.25)+(rnd()-.5)*.3, r=.115+rnd()*.06;
+      var x=D.x+Math.cos(a)*r*1.06, y=D.y+Math.sin(a)*r*.98;
+      if(x<.03||x>.97||y<.03||y>.97||!far(x,y,.055)){ if(tries++<10){j--} continue }
+      procs.push(add(x,y,2.9,2,di));
+    }
+  });
+  procs.forEach(function(pi){
+    if(rnd()<.78){
+      var P=NODES[pi], D=NODES[P.parent], base=Math.atan2(P.y-D.y,P.x-D.x), n=1+(rnd()<.55?1:0);
+      for(var j=0;j<n;j++){
+        var a=base+(j-(n-1)/2)*.9+(rnd()-.5)*.5, r=.06+rnd()*.03;
+        var x=P.x+Math.cos(a)*r*1.06, y=P.y+Math.sin(a)*r*.98;
+        if(x<.02||x>.98||y<.02||y>.98||!far(x,y,.04)) continue;
+        add(x,y,1.8,3,pi);
+      }
+    }
+  });
+  /* поперечные связи: кольцо отделов и мосты между соседними кластерами процессов */
+  for(var d=0;d<DEPT;d++){ if(rnd()<.8) EDGES.push([depts[d],depts[(d+1)%DEPT],'x']) }
+  var bridges=0;
+  for(var i=0;i<procs.length&&bridges<7;i++){
+    var A=NODES[procs[i]], best=-1, bd=1;
+    for(var j=0;j<procs.length;j++){ if(i===j) continue; var B=NODES[procs[j]]; if(A.parent===B.parent) continue;
+      var dd=Math.hypot(A.x-B.x,A.y-B.y); if(dd<bd){bd=dd;best=procs[j]} }
+    if(best>=0&&bd<.16&&rnd()<.55){ EDGES.push([procs[i],best,'x']); bridges++ }
+  }
+  EDGES.forEach(function(e){e.bend=(rnd()<.5?-1:1)*(.05+rnd()*.07)});
+  /* узкие места: 5 процессов из разных отделов, до них волна не доходит */
+  var STUCK={}, used={};
+  for(var i=0;i<procs.length&&Object.keys(STUCK).length<5;i++){ var p=NODES[procs[i]]; if(used[p.parent]) continue; if(rnd()<.5){ STUCK[procs[i]]=1; used[p.parent]=1 } }
 
+  /* --- расстояние от центра по графу с учётом длины связей: волна идёт равномерно --- */
+  function ulen(a,b){var A=NODES[a],B=NODES[b]; return Math.hypot((A.x-B.x)*1.6,(A.y-B.y))}
+  var dist=NODES.map(function(){return Infinity}); dist[hub]=0;
+  var adj=NODES.map(function(){return []});
+  EDGES.forEach(function(e,i){adj[e[0]].push([e[1],i]); adj[e[1]].push([e[0],i])});
+  (function(){var done={}; for(;;){var u=-1,bd=Infinity; for(var i=0;i<NODES.length;i++){ if(!done[i]&&dist[i]<bd){bd=dist[i];u=i} } if(u<0) break; done[u]=1;
+    adj[u].forEach(function(p){var v=p[0]; if(STUCK[v]) return; var nd=dist[u]+ulen(u,v); if(nd<dist[v]) dist[v]=nd}) }})();
+  var maxD=0; dist.forEach(function(v){if(isFinite(v)&&v>maxD)maxD=v});
+  /* порядок прорисовки чертежа: тоже от центра наружу, узкие места – по родителю */
+  var order=[]; NODES.forEach(function(n,i){order[i]=isFinite(dist[i])?dist[i]:(order[n.parent]||0)+.08});
+  var eOrder=EDGES.map(function(e){return Math.min(order[e[0]],order[e[1]])});
+  var maxO=Math.max.apply(null,order);
+
+  /* --- геометрия --- */
   function build(){var r=c.getBoundingClientRect(); W=r.width; H=r.height;
     if(!W||!H) return; c.width=W*DPR; c.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0)}
   build(); addEventListener('resize',build);
-
-  /* координаты: схема вписана в квадрат, чтобы не растягивалась на широком экране */
-  function pt(n){
-    /* на широком экране схема сдвинута левее, чтобы не лезть под колонку цифр */
-    var side=Math.min(W,H)*(W<981?.92:.78), cx=W*(W<981?.5:.46), cy=H*.5;
-    return [cx+(n.x-.5)*side, cy+(n.y-.5)*side];
+  var mob=false;
+  function pt(n,t){
+    mob=W<761;
+    var x,y;
+    if(mob){ x=W*(.04+n.x*.92); y=H*(.06+n.y*.56) }
+    else { x=W*(.03+n.x*.94); y=H*(.06+n.y*.90) }
+    /* едва заметное дыхание узлов */
+    var k=n.lvl?1:0; x+=Math.sin(t*.00045+n.ph)*1.6*k; y+=Math.cos(t*.0004+n.ph*1.3)*1.6*k;
+    return [x,y];
   }
-  /* дистанция узла от центра по графу – определяет очередь загорания */
-  var depth=(function(){
-    var d=new Array(NODES.length).fill(Infinity), q=[0]; d[0]=0;
-    while(q.length){var i=q.shift();
-      EDGES.forEach(function(e){
-        var a=e[0],b=e[1];
-        if(a===i&&d[b]>d[i]+1&&!STUCK[b]){d[b]=d[i]+1;q.push(b)}
-        if(b===i&&d[a]>d[i]+1&&!STUCK[a]){d[a]=d[i]+1;q.push(a)}
-      });
-    }
-    return d;
-  })();
-  var maxD=Math.max.apply(null,depth.filter(function(v){return isFinite(v)}));
-
+  /* контрольная точка дуги: смещение поперёк связи, знак детерминирован */
+  function ctrl(A,B,e){var mx=(A[0]+B[0])/2,my=(A[1]+B[1])/2,dx=B[0]-A[0],dy=B[1]-A[1],L=Math.hypot(dx,dy)||1;
+    var s=e.bend;
+    return [mx-dy/L*L*s, my+dx/L*L*s]}
+  /* частичная дуга от A до параметра t (де Кастельжо) */
+  function arc(A,C,B,t0,t1){
+    function q(t){var u=1-t; return [u*u*A[0]+2*u*t*C[0]+t*t*B[0], u*u*A[1]+2*u*t*C[1]+t*t*B[1]]}
+    var P0=q(t0),P1=q(t1);
+    var C1=[(1-t1)*((1-t0)*A[0]+t0*C[0])+t1*((1-t0)*C[0]+t0*B[0]), (1-t1)*((1-t0)*A[1]+t0*C[1])+t1*((1-t0)*C[1]+t0*B[1])];
+    ctx.moveTo(P0[0],P0[1]); ctx.quadraticCurveTo(C1[0],C1[1],P1[0],P1[1]); return P1;
+  }
   function ease(x){return x<0?0:x>1?1:x*x*(3-2*x)}
+  function clamp(x){return x<0?0:x>1?1:x}
 
+  var CYCLE=11000, DRAW=3000, HOLD=800, FILL=4600, STAY=1500; /* остальное 1100 – затухание */
+  var t0=performance.now();
+
+  function render(now){
+    var ph=reduced?DRAW+HOLD+FILL+300:((now-t0)%CYCLE);
+    ctx.clearRect(0,0,W,H);
+    var drawP=ease(ph/DRAW);
+    var fillP=ph<DRAW+HOLD?0:ease((ph-DRAW-HOLD)/FILL);
+    var endT=DRAW+HOLD+FILL+STAY;
+    var fade=ph>endT?ease((ph-endT)/(CYCLE-endT)):0;   /* общее затухание в конце цикла */
+    var G=1-fade;
+    var reach=fillP*(maxD+.001);
+    var P=NODES.map(function(n){return pt(n,now)});
+    ctx.lineCap='round'; ctx.lineJoin='round';
+
+    /* 1. серый чертёж: связи проявляются от центра наружу */
+    EDGES.forEach(function(e,i){
+      var A=P[e[0]],B=P[e[1]],C=ctrl(A,B,e);
+      var k=clamp((drawP*(maxO+.25)-eOrder[i])/ .28);
+      if(k<=0) return;
+      ctx.beginPath(); arc(A,C,B,0,k);
+      ctx.strokeStyle='rgba('+GR+','+(.40*G)+')'; ctx.lineWidth=e[2]==='x'?.8:1; ctx.stroke();
+    });
+
+    /* 2. лаймовая волна по связям: свечение + ядро + голова волны */
+    var heads=[];
+    EDGES.forEach(function(e){
+      if(STUCK[e[0]]||STUCK[e[1]]) return;
+      var dA=dist[e[0]],dB=dist[e[1]]; if(!isFinite(dA)||!isFinite(dB)) return;
+      var near=dA<=dB?e[0]:e[1], farN=dA<=dB?e[1]:e[0];
+      var span=Math.max(dist[farN]-dist[near],1e-4);
+      var g=clamp((reach-dist[near])/span);
+      if(g<=0) return;
+      var A=P[near],B=P[farN],C=ctrl(A,B,e); if(near!==e[0]) C=ctrl(P[e[0]],P[e[1]],e);
+      var al=G*(fillP<1?1:1);
+      ctx.beginPath(); var tip=arc(A,C,B,0,g);
+      ctx.strokeStyle='rgba('+PH+','+(.10*al)+')'; ctx.lineWidth=7; ctx.stroke();
+      ctx.beginPath(); arc(A,C,B,0,g);
+      ctx.strokeStyle='rgba('+PH+','+(.68*al)+')'; ctx.lineWidth=1.4; ctx.stroke();
+      if(g<1&&fillP<1) heads.push(tip);
+    });
+    heads.forEach(function(h){
+      var rg=ctx.createRadialGradient(h[0],h[1],0,h[0],h[1],16);
+      rg.addColorStop(0,'rgba('+PH+','+(.55*G)+')'); rg.addColorStop(.35,'rgba('+PH+','+(.18*G)+')'); rg.addColorStop(1,'rgba('+PH+',0)');
+      ctx.fillStyle=rg; ctx.beginPath(); ctx.arc(h[0],h[1],16,0,7); ctx.fill();
+    });
+
+    /* 3. узлы: серые в чертеже, лаймовые с искрой при приходе волны,
+          узкие места серые с обводкой и тусклой пульсацией после прихода волны к соседям */
+    NODES.forEach(function(n,i){
+      var Q=P[i];
+      var appear=ease((drawP*(maxO+.25)-order[i])/.3);
+      if(appear<=0) return;
+      var stuck=!!STUCK[i];
+      if(stuck){
+        var nb=dist[n.parent]; var awake=isFinite(nb)?clamp((reach-nb)/(maxD*.08)):0;
+        var pulse=awake*(.5+.5*Math.sin(now*.0035+n.ph));
+        var rr=n.r*1.35*appear+pulse*1.2;
+        if(awake>0){var rg2=ctx.createRadialGradient(Q[0],Q[1],0,Q[0],Q[1],rr*4);
+          rg2.addColorStop(0,'rgba('+GR+','+(.16*pulse*G)+')'); rg2.addColorStop(1,'rgba('+GR+',0)');
+          ctx.fillStyle=rg2; ctx.beginPath(); ctx.arc(Q[0],Q[1],rr*4,0,7); ctx.fill()}
+        ctx.beginPath(); ctx.arc(Q[0],Q[1],rr,0,7);
+        ctx.fillStyle='rgba('+GR+','+((.10+.10*pulse)*G)+')'; ctx.fill();
+        ctx.strokeStyle='rgba('+GR+','+((.55+.3*pulse)*G)+')'; ctx.lineWidth=1.2; ctx.stroke();
+        return;
+      }
+      var lit=isFinite(dist[i])&&reach>=dist[i]-1e-6&&fillP>0;
+      var age=lit?clamp((reach-dist[i])/(maxD*.10)):0;   /* 0 – только что зажёгся, 1 – давно */
+      var spark=lit?(1-age):0;
+      if(lit){
+        /* мягкий ореол */
+        var gr=n.r*(3.2+1.6*spark);
+        var rg=ctx.createRadialGradient(Q[0],Q[1],0,Q[0],Q[1],gr);
+        rg.addColorStop(0,'rgba('+PH+','+((.28+.35*spark)*G)+')'); rg.addColorStop(1,'rgba('+PH+',0)');
+        ctx.fillStyle=rg; ctx.beginPath(); ctx.arc(Q[0],Q[1],gr,0,7); ctx.fill();
+        /* искра: расходящееся кольцо */
+        if(spark>0){var sr=n.r+(1-spark)*n.r*5; ctx.beginPath(); ctx.arc(Q[0],Q[1],sr,0,7);
+          ctx.strokeStyle='rgba('+PH+','+(spark*spark*.8*G)+')'; ctx.lineWidth=1; ctx.stroke()}
+        ctx.beginPath(); ctx.arc(Q[0],Q[1],n.r*(1+.35*spark),0,7);
+        ctx.fillStyle='rgba('+PH+','+((.72+.28*spark)*G)+')'; ctx.fill();
+        if(n.lvl<=1){ctx.beginPath(); ctx.arc(Q[0],Q[1],n.r*.42,0,7); ctx.fillStyle='rgba(255,255,255,'+(.55*G)+')'; ctx.fill()}
+      } else {
+        ctx.beginPath(); ctx.arc(Q[0],Q[1],n.r*appear,0,7);
+        ctx.fillStyle='rgba('+GR+','+((n.lvl<=1?.62:.5)*G)+')'; ctx.fill();
+        if(n.lvl<=1){ctx.beginPath(); ctx.arc(Q[0],Q[1],n.r*appear*1.9,0,7); ctx.strokeStyle='rgba('+GR+','+(.22*G)+')'; ctx.lineWidth=.8; ctx.stroke()}
+      }
+    });
+
+    /* 4. маска: затухание к левому нижнему углу, где заголовок и лид, и слабее под цифрами справа */
+    ctx.globalCompositeOperation='destination-out';
+    var m1;
+    if(mob){ m1=ctx.createLinearGradient(0,H*.42,0,H*.66); m1.addColorStop(0,'rgba(0,0,0,0)'); m1.addColorStop(1,'rgba(0,0,0,1)');
+      ctx.fillStyle=m1; ctx.fillRect(0,0,W,H);
+      var mm=ctx.createRadialGradient(W*.8,H*.24,0,W*.8,H*.24,W*.6);
+      mm.addColorStop(0,'rgba(0,0,0,.82)'); mm.addColorStop(.6,'rgba(0,0,0,.45)'); mm.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=mm; ctx.fillRect(0,0,W,H); }
+    else {
+      m1=ctx.createRadialGradient(W*.20,H*.82,0,W*.20,H*.82,W*.56);
+      m1.addColorStop(0,'rgba(0,0,0,1)'); m1.addColorStop(.48,'rgba(0,0,0,.93)'); m1.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=m1; ctx.fillRect(0,0,W,H);
+      var m2=ctx.createRadialGradient(W*.9,H*.32,0,W*.9,H*.32,W*.3);
+      m2.addColorStop(0,'rgba(0,0,0,.8)'); m2.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=m2; ctx.fillRect(0,0,W,H);
+    }
+    /* мягкие края холста */
+    var m3=ctx.createLinearGradient(0,0,0,H); m3.addColorStop(0,'rgba(0,0,0,.55)'); m3.addColorStop(.12,'rgba(0,0,0,0)'); m3.addColorStop(.9,'rgba(0,0,0,0)'); m3.addColorStop(1,'rgba(0,0,0,.6)');
+    ctx.fillStyle=m3; ctx.fillRect(0,0,W,H);
+    ctx.globalCompositeOperation='source-over';
+  }
+
+  if(reduced){ build(); if(W&&H) render(performance.now()); addEventListener('resize',function(){build(); render(performance.now())}); return }
   (function frame(now){
     requestAnimationFrame(frame);
     if(!W||!H){build(); return}
     if(c.getBoundingClientRect().bottom<-600) return;
-    var ph=((now||performance.now())-t0)%CYCLE;
-    ctx.clearRect(0,0,W,H);
+    render(now||performance.now());
+  })(performance.now());
+})();
+</script>
+<script id="fab-cover">(function(){var f=document.querySelector('.fab'),c=document.querySelector('.cover, .hero');if(!f||!c||!('IntersectionObserver' in window))return;new IntersectionObserver(function(en){en.forEach(function(e){f.classList.toggle('is-cover',e.isIntersecting&&e.intersectionRatio>0.12)})},{threshold:[0,0.12,0.3]}).observe(c)})();</script>
 
-    /* 1. чертёж: связи проявляются по очереди */
-    var drawP=ease(ph/DRAW);
-    var fillP=ph<DRAW+HOLD?0:ease((ph-DRAW-HOLD)/FILL);
-    /* к концу цикла лайм плавно гаснет обратно в серое */
-    var fade=ph>DRAW+HOLD+FILL?ease((ph-DRAW-HOLD-FILL)/(CYCLE-DRAW-HOLD-FILL)):0;
-    var live=fillP*(1-fade);
-
-    ctx.lineCap='round';
-    EDGES.forEach(function(e,i){
-      var A=pt(NODES[e[0]]), B=pt(NODES[e[1]]);
-      var seg=i/EDGES.length, k=(drawP-seg*.55)/.45;
-      k=k<0?0:k>1?1:k;
-      if(k<=0) return;
-      ctx.beginPath(); ctx.moveTo(A[0],A[1]);
-      ctx.lineTo(A[0]+(B[0]-A[0])*k, A[1]+(B[1]-A[1])*k);
-      ctx.strokeStyle='rgba('+GR+',.42)'; ctx.lineWidth=1; ctx.stroke();
-
-      /* 3. лаймовая заливка идёт от центра по глубине графа */
-      var dA=depth[e[0]], dB=depth[e[1]];
-      if(STUCK[e[0]]||STUCK[e[1]]) return;
-      var near=Math.min(dA,dB), far=Math.max(dA,dB);
-      if(!isFinite(far)) return;
-      var reach=live*(maxD+1);
-      var g=(reach-near)/1;
-      g=g<0?0:g>1?1:g;
-      if(g<=0) return;
-      var from=near===dA?A:B, to=near===dA?B:A;
-      ctx.beginPath(); ctx.moveTo(from[0],from[1]);
-      ctx.lineTo(from[0]+(to[0]-from[0])*g, from[1]+(to[1]-from[1])*g);
-      ctx.strokeStyle='rgba('+PH+',.62)'; ctx.lineWidth=1.5; ctx.stroke();
-    });
-
-    /* 2/4. узлы: серые в чертеже, лаймовые по мере достижения,
-       узкие места остаются серыми с тонкой обводкой */
-    NODES.forEach(function(n,i){
-      var P=pt(n);
-      var appear=ease((drawP-(i/NODES.length)*.5)/.5);
-      if(appear<=0) return;
-      var stuck=!!STUCK[i];
-      var lit=!stuck&&isFinite(depth[i])&&live*(maxD+1)>=depth[i]+.9;
-      var glow=lit?ease((live*(maxD+1)-depth[i]-.9)/.6):0;
-
-      if(lit&&glow>0){
-        var rg=ctx.createRadialGradient(P[0],P[1],0,P[0],P[1],n.r*4.5);
-        rg.addColorStop(0,'rgba('+PH+','+(.34*glow)+')');
-        rg.addColorStop(1,'rgba('+PH+',0)');
-        ctx.fillStyle=rg; ctx.beginPath(); ctx.arc(P[0],P[1],n.r*4.5,0,7); ctx.fill();
-      }
-      ctx.beginPath(); ctx.arc(P[0],P[1],n.r*appear,0,7);
-      if(stuck){
-        ctx.fillStyle='rgba('+GR+',.10)'; ctx.fill();
-        ctx.strokeStyle='rgba('+GR+',.72)'; ctx.lineWidth=1.2; ctx.stroke();
-      } else {
-        ctx.fillStyle=lit?'rgba('+PH+','+(.5+.5*glow)+')':'rgba('+GR+',.55)';
-        ctx.fill();
-      }
-    });
-  })();
+<script id="fix-6-js">
+/* J5 валидация: перечисляем, чего именно не хватает */
+(function(){
+  var f=document.getElementById('leadForm'); if(!f) return;
+  var err=document.getElementById('lfErr'), name=document.getElementById('lfName'),
+      contact=document.getElementById('lfContact'), agree=document.getElementById('lfAgree'),
+      chk=agree&&agree.closest('.lf-check');
+  function clean(){ [name,contact].forEach(function(x){ if(x) x.classList.remove('err') });
+    if(chk) chk.classList.remove('err'); if(err) err.classList.remove('show') }
+  [name,contact].forEach(function(x){ if(x) x.addEventListener('input',clean) });
+  if(agree) agree.addEventListener('change',clean);
+  document.addEventListener('submit',function(e){
+    if(e.target!==f) return;
+    var miss=[];
+    if(!name.value.trim()){ name.classList.add('err'); miss.push('вашего имени') }
+    if(!contact.value.trim()){ contact.classList.add('err'); miss.push('телефона, почты или\u00A0Telegram') }
+    if(!agree.checked){ if(chk) chk.classList.add('err'); miss.push('согласия на\u00A0обработку персональных данных и\u00A0принятия политики обработки персональных данных') }
+    if(!miss.length) return;
+    e.preventDefault(); e.stopPropagation();
+    var txt=miss.length===1?miss[0]:miss.length===2?miss[0]+' и\u00A0'+miss[1]:miss[0]+', '+miss[1]+' и\u00A0'+miss[2];
+    err.textContent='Не\u00A0хватает '+txt;
+    err.classList.add('show');
+  },true);
+})();
+</script>
+<script id="fix-7-anchors">(function(){
+/* короткие разделы при переходе из меню встают по центру экрана, длинные – кикером под шапку (14px) */
+function nav(){var n=document.querySelector('.nav,header.nav,nav');return n?n.getBoundingClientRect().height:66}
+function apply(){var vh=window.innerHeight,nh=nav();document.querySelectorAll('section[id]').forEach(function(s){
+  var h=s.offsetHeight; var free=vh-nh; if(h<=free){ var m=Math.round((free-h)/2-14); s.style.setProperty('scroll-margin-top',m+'px','important'); s.setAttribute('data-anchor','center'); }
+  else if(s.getAttribute('data-anchor')==='center'){ s.style.removeProperty('scroll-margin-top'); s.removeAttribute('data-anchor'); }
+});}
+window.addEventListener('load',function(){setTimeout(apply,50);setTimeout(apply,800)});window.addEventListener('resize',apply);
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(a){setTimeout(apply,0)}},true);
+})();</script>
+<script id="fix-m2-js">
+/* K3. тап по свободной нижней половине шторки закрывает меню */
+(function(){
+  var sh=document.querySelector('.nav-sheet');if(!sh)return;
+  var brg=document.getElementById('burger')||document.getElementById('brg');
+  sh.addEventListener('click',function(e){
+    if(innerWidth>760)return;
+    if(!sh.classList.contains('open'))return;
+    if(e.target.closest&&e.target.closest('a,button,input,label'))return;
+    if(e.clientY>innerHeight/2&&brg)brg.click();
+  });
 })();
 </script>
 </body>
