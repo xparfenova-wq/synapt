@@ -33,7 +33,7 @@
   --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
   --sans:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
   --ease:cubic-bezier(.22,.7,.3,1);
-  --maxw:1400px; --gutter:36px;
+  --maxw:1400px; --gutter:28px;
 }
 /* ТЁМНАЯ – графит с холодным зелёным подтоном */
 :root[data-theme="dark"]{
@@ -50,7 +50,7 @@
 :root[data-theme="light"]{
   --bg:#FBFBFB; --bg-deep:#F1F3F2; --surface:#FFFFFF; --surface-2:#F4F6F5; --surface-3:#EBEEEC;
   --line:#E6E9E8; --line-2:#DBDFDD; --line-accent:rgba(139,166,44,.35);
-  --text:#161918; --text-2:#3A3F3D; --text-muted:#636A67; --text-dim:#616865; --white:#161918;
+  --text:#161918; --text-2:#3A3F3D; --text-muted:#69706D; --text-dim:#616865; --white:#161918;
   --accent-text:#6E8A1F;
   --glow:radial-gradient(58% 52% at 74% 6%, rgba(208,232,101,.08), transparent 72%);
   --card-shadow:0 1px 2px rgba(20,25,22,.04), 0 14px 40px -24px rgba(30,50,38,.18);
@@ -1484,7 +1484,7 @@ h2,.sec-head h2{font-size:var(--fs-h2);letter-spacing:-.025em;line-height:1.14}
 }
 
 /* светлая тема: основной текст и подписи в графике заметно темнее */
-:root[data-theme="light"]{--text-muted:#3F4A46;--text-dim:#5A6561}
+:root[data-theme="light"]{--text-muted:#69706D;--text-dim:#767D7A}
 
 /* надзаголовок первого экрана обычным шрифтом, без разрядки моно */
 /* надзаголовок первого экрана: обычный шрифт и обычные пробелы.
@@ -1923,7 +1923,7 @@ footer .f-nav{gap:5px}
 footer .f-nav{display:flex;flex-direction:column;gap:10px}
 footer .f-nav a{margin-bottom:0}
 footer .legal{column-gap:36px}
-footer .f-cols,footer .wrap>div{column-gap:clamp(28px,4vw,64px)}
+footer .f-cols{column-gap:clamp(28px,4vw,64px)}
 
 /* липкая полоса шага: та же полупрозрачная подложка, что у шапки, и стабильный скролл */
 @media(max-width:860px){
@@ -2647,7 +2647,7 @@ html body #leadForm .lf-after{margin-top:14px!important}
 @media(min-width:981px){ html body #lead .lc-mgr.lc-after{margin-top:28px!important} }
 /* подвал: разделы ближе к бренду, формальности в два столбца */
 @media(min-width:861px){
-  html body footer .f-main{grid-template-columns:360px 220px minmax(0,1fr)!important;gap:32px!important}
+  html body footer .f-main{grid-template-columns:250px 290px 520px!important;gap:32px!important}
   html body footer .f-legal{display:grid!important;grid-template-columns:auto auto!important;justify-content:space-between!important;grid-template-rows:auto auto auto auto!important;grid-auto-flow:column!important;column-gap:28px!important;row-gap:9px!important;align-content:start}
   html body footer .f-legal .f-k{grid-column:1/-1!important;grid-row:1!important}
   html body footer .f-legal a{margin-top:0!important;align-self:start!important}
@@ -2688,7 +2688,7 @@ html body footer .f-legal .f-k{margin-bottom:8px!important}
     gap:6px!important;max-width:none!important;width:auto!important;align-items:flex-start}
   html body footer .f-nav .f-k,html body footer .f-nav2 .f-k{margin-bottom:2px!important}
   html body footer .f-nav a,html body footer .f-nav2 a{white-space:nowrap}
-  html body footer .f-main{grid-template-columns:360px 200px minmax(0,1fr)!important;gap:32px!important}
+  html body footer .f-main{grid-template-columns:250px 290px 520px!important;gap:32px!important}
 }
 @media(max-width:860px){
   html body footer .f-legal{gap:0!important}
