@@ -2597,6 +2597,73 @@ html body .cover h1:not(#_):not(#_):not(#_):not(#_):not(#_),html body .hero h1:n
 html body .mform.sent .lf:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent .lf-row:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent .lf-check:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent .slots:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent .sl-h:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent button[type=submit]:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent .lf-after:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent .mf-err:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){display:none!important}
 html body .mform.sent .mf-ok:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){display:block!important}
 </style>
+
+
+
+<style id="fix-10">
+/* 19.08, fix-10: лайм только в заливке кнопок, чипах и анимациях; обводки и подчёркивания при наведении белые (в светлой теме чернильные) */
+
+/* 1. FAQ: открытый вопрос выглядит как при наведении: белая обводка, знак основным цветом, без лайма */
+html body .faq details[open] summary .pl:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html body .faq details.open summary .pl:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html body .faq summary:hover .pl:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html body .faq summary .pl:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){border-color:rgba(255,255,255,.45)!important;color:var(--text)!important;background:transparent!important}
+html[data-theme="light"] body .faq details[open] summary .pl:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html[data-theme="light"] body .faq details.open summary .pl:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html[data-theme="light"] body .faq summary:hover .pl:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html[data-theme="light"] body .faq summary .pl:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){border-color:rgba(25,26,29,.45)!important;color:var(--text)!important;background:transparent!important}
+html body .faq details[open] summary:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .faq summary:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){color:var(--text)!important}
+
+/* 2. подвал и блок менеджера у формы: ссылки при наведении подчёркиваются и красятся основным цветом, не лаймом */
+html body footer .f-tg:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html body footer .f-legal a:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html body footer a[href*="privacy"]:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html body footer .f-nav a:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html body .lf-check a:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html body .agree a:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){color:var(--text)!important;border-bottom-color:var(--text)!important;text-decoration-color:var(--text)!important;background:transparent!important;filter:none!important}
+/* имя и ник менеджера: в покое лаймовые, при наведении приглушённые серые */
+html body .lc-mgr-t b a:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html body .lc-mgr-t b:hover .lc-name:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html body .lc-mgr-t b:hover .mgr-name:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html body .lc-name:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html body .mgr-name:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html body .mf-fail a[href*="Anti4ay"]:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){color:var(--text-muted)!important;border-bottom-color:var(--text-muted)!important;text-decoration-color:var(--text-muted)!important;filter:none!important}
+/* светлая тема: имя и ник на лаймовой плашке, текст чернильный, при наведении плашка чуть тускнеет */
+html[data-theme="light"] body .lc-mgr-t b a:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html[data-theme="light"] body .lc-mgr-t b:hover .lc-name:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html[data-theme="light"] body .lc-mgr-t b:hover .mgr-name:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html[data-theme="light"] body .lc-name:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html[data-theme="light"] body .mgr-name:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html[data-theme="light"] body .mf-fail a[href*="Anti4ay"]:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){color:#191A1D!important;border-bottom-color:#191A1D!important;filter:brightness(.92)!important}
+
+/* 3. кнопка в шапке при наведении тускнеет как кнопка формы: тот же лайм, тот же цвет текста */
+html body .nav .btn.pri:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html body .nav .nav-act .btn.pri:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html body .nav-cta:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html body .nav-sheet .btn.pri:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html body .btn.pri:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+html body .btn.pri:focus-visible:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){background:var(--accent)!important;color:var(--accent-ink,#12150A)!important;filter:brightness(.88)!important;box-shadow:none!important;transform:none!important;opacity:1!important}
+html body .nav:not(.solid) .nav-act>.btn.pri:hover:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){opacity:0!important}
+
+/* 4. галочка согласия строго по центру кружка: один svg 20px на всех страницах, центр кружка и центр знака совпадают */
+html body .lf-check:has(input:checked):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_)::after{
+  content:""!important;position:absolute!important;left:0!important;top:50%!important;width:22px!important;height:22px!important;box-sizing:border-box!important;
+  transform:translateY(-50%)!important;border:0!important;margin:0!important;padding:0!important;opacity:1!important;
+  background-color:transparent!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.3l3 3 6-6.6' fill='none' stroke='%2312150A' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")!important;background-repeat:no-repeat!important;background-position:center!important;background-size:20px 20px!important}
+html body #leadForm .lf-check:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_)::before,html body .leadbox .lf-check:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_)::before{box-sizing:border-box!important;width:22px!important;height:22px!important;left:0!important;top:50%!important;transform:translateY(-50%)!important}
+/* страницы, где видимая отметка – сам input */
+html body .mform .lf-check input[type=checkbox]:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body #lead .lf-check input[type=checkbox]:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){box-sizing:border-box!important;width:20px!important;height:20px!important;background-repeat:no-repeat!important;background-position:center!important;background-size:18px 18px!important;background-clip:border-box!important;background-origin:border-box!important}
+html body .mform .lf-check input[type=checkbox]:checked:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body #lead .lf-check input[type=checkbox]:checked:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.3l3 3 6-6.6' fill='none' stroke='%2312150A' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")!important}
+html body .mform .lf-check input[type=checkbox]:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_)::after,html body .mform .lf-check input[type=checkbox]:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_)::before,
+html body #lead .lf-check input[type=checkbox]:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_)::after,html body #lead .lf-check input[type=checkbox]:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_)::before{content:none!important;display:none!important}
+
+/* 5. лента кейсов: карточки прилипают к левому краю колонки, шаг прокрутки равен ширине карточки с отступом */
+html body #cases .crail:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){scroll-snap-type:x mandatory!important;scroll-padding-left:0!important}
+html body #cases .crail>.ccard:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){scroll-snap-align:start!important}
+@media(max-width:760px){
+  html body #cases .crail:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){scroll-padding-left:20px!important}
+}
+</style>
 </head>
 <body>
 <script id="fix-lead-js">(function(){
