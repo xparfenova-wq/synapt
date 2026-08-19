@@ -1569,7 +1569,7 @@ body>section[id],body>section[id]:first-of-type,body>section[id]:last-of-type{
 body>header.cover,.cover.r-cover{
   padding-top:calc(var(--nav-h) + var(--sec-pad))!important;
   padding-bottom:calc(var(--sec-pad) + env(safe-area-inset-bottom,0px))!important}
-footer{padding-top:var(--sec-pad)!important}
+footer{padding-top:64px!important}
 
 /* ==========================================================
    ФОРМА: один шаг между полями, согласие и кнопка по системе
@@ -1798,7 +1798,7 @@ body>section[id],body>section[id]:first-of-type,body>section[id]:last-of-type{
 body>header.cover,.cover.r-cover{
   padding-top:calc(var(--nav-h) + var(--sec-pad))!important;
   padding-bottom:calc(var(--sec-pad) + env(safe-area-inset-bottom,0px))!important}
-footer{padding-top:var(--sec-pad)!important}
+footer{padding-top:64px!important}
 
 /* 12. условия: цена справа на одной верхней линии с заголовком */
 @media(min-width:901px){
@@ -2476,7 +2476,7 @@ html body .brand svg>path:not(.lg-mark):not(#_):not(#_):not(#_){transition:fill 
 html body .brand:hover svg>path:not(.lg-mark):not(#_):not(#_):not(#_){fill:var(--accent)!important}
 /* H9. подвал: восемь разделов в две колонки по четыре, группа ближе к бренду, формальности к правому краю */
 @media(min-width:861px){
-html body footer .f-main:not(#_):not(#_):not(#_){display:grid!important;grid-template-columns:250px max-content minmax(0,1fr)!important;column-gap:32px!important;row-gap:0!important;align-items:start!important;justify-content:start!important}
+html body footer .f-main:not(#_):not(#_):not(#_){display:grid!important;grid-template-columns:250px 290px 520px!important;column-gap:32px!important;row-gap:32px!important;align-items:start!important;justify-content:start!important}
 html body footer .f-nav.f-nav2:not(#_):not(#_):not(#_){display:grid!important;grid-template-columns:max-content max-content!important;grid-template-rows:auto repeat(4,auto)!important;grid-auto-flow:column!important;column-gap:28px!important;row-gap:6px!important;align-content:start!important;max-width:none!important;flex-direction:unset!important}
 html body footer .f-nav.f-nav2 .f-k:not(#_):not(#_):not(#_){grid-column:1/-1!important;grid-row:1!important;margin-bottom:8px!important}
 html body footer .f-nav.f-nav2 a:not(#_):not(#_):not(#_){min-height:0!important;width:fit-content!important;white-space:nowrap!important}
@@ -2626,6 +2626,10 @@ html body .cover h1:not(#_):not(#_):not(#_):not(#_):not(#_),html body .hero h1:n
 /* после отправки заявки поля формы скрываются, остаётся только «Спасибо» */
 html body .mform.sent .lf:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent .lf-row:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent .lf-check:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent .slots:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent .sl-h:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent button[type=submit]:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent .lf-after:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .mform.sent .mf-err:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){display:none!important}
 html body .mform.sent .mf-ok:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){display:block!important}
+
+/* выравнивание по портфелю: базовый кегль текста как на остальных страницах */
+body:not(#_):not(#_){font-size:16px!important}
+@media(max-width:760px){body:not(#_):not(#_){font-size:15px!important}}
 </style>
 </head>
 <body>
