@@ -2632,6 +2632,41 @@ html body #cases .crail>.ccard:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){s
   html body #cases .crail:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){scroll-padding-left:20px!important}
 }
 </style>
+
+<style id="fix-11">
+/* 20.08 мобильные правки: подвал «Формальности», чекбокс согласия по первой строке, шторка меню */
+@media (max-width:760px){
+  /* 1. подвал «Формальности»: одинаковый шаг 2px между всеми пятью строками, line-height 1.35 */
+  html body footer .f-legal:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){gap:0!important;row-gap:0!important;align-items:flex-start!important}
+  html body footer .f-legal-cols:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){gap:0!important;row-gap:0!important;margin:0!important}
+  html body footer .f-legal-col:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body footer .f-legal-c:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){gap:0!important;row-gap:0!important;margin:0!important}
+  html body footer .f-legal p:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body footer .f-legal-col p:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body footer .f-legal-c p:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){line-height:1.35!important;margin:0 0 2px!important;padding:0!important}
+  html body footer .f-legal a:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body footer .f-legal-col a:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body footer .f-legal-c a:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){line-height:1.35!important;margin:0!important;padding:0 0 2px!important;display:block!important;width:fit-content!important}
+
+  /* 2. чекбокс согласия: центр отметки по центру первой строки подписи */
+  html body .lf-check:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){align-items:flex-start!important}
+  html body .lf-check input[type=checkbox]:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){margin-top:0.125px!important;align-self:flex-start!important;top:0!important;transform:none!important}
+
+  /* 3. шторка меню: кнопки темы и Telegram одинаковые 52x52, иконки 20px, рамки целиком */
+  html body .nav-sheet .ns-act .tgl:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+  html body .nav-sheet .ns-act .nav-tg:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+  html body .nav-sheet .ns-act .btn.sq:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+  html body .nav-sheet .ns-actions .tgl:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+  html body .nav-sheet .ns-actions .nav-tg:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){
+    width:52px!important;height:52px!important;min-width:52px!important;flex:0 0 52px!important;
+    padding:0!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;
+    overflow:visible!important;box-sizing:border-box!important}
+  html body .nav-sheet .ns-act .tgl svg:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+  html body .nav-sheet .ns-act .nav-tg svg:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+  html body .nav-sheet .ns-act .btn.sq svg:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+  html body .nav-sheet .ns-actions .tgl svg:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),
+  html body .nav-sheet .ns-actions .nav-tg svg:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){
+    width:20px!important;height:20px!important;min-width:20px!important;flex:none!important;transform:none!important}
+  html body .nav-sheet .ns-act:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .nav-sheet .ns-actions:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){
+    margin-left:0!important;margin-right:0!important;max-width:100%!important;overflow:visible!important}
+  html body .nav-sheet .ns-in:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){overflow:visible!important}
+}
+</style>
 </head>
 <body>
 <script id="fix-lead-js">(function(){
