@@ -4353,7 +4353,10 @@ function LEAD_API(url, opts){
       for (i = 0; i < n; i++) lw = Math.max(lw, ctx.measureText(names[i]).width);
       var padL = 12, gapL = 14, padR = 10;
       var half = Math.max(32, Math.min(112, (W - padL - gapL - lw - padR) / 2));
-      var cx = padL + half, labelX = cx + half + gapL;
+      /* группа пластов и подписей центрируется по холсту, а не прижимается влево */
+      var groupW = half * 2 + gapL + lw;
+      var offX = Math.max(padL, (W - groupW) / 2);
+      var cx = offX + half, labelX = cx + half + gapL;
       var gap = (H - 20) / n, hh = Math.min(gap * .36, 12), cy = H / 2;
       var yTop = cy - (n - 1) / 2 * gap, yBot = cy + (n - 1) / 2 * gap;
       for (i = 0; i < n; i++) {
