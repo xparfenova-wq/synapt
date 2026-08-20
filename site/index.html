@@ -3226,6 +3226,17 @@ html body .cs-modal.cs-wide .cs-win:not(#_):not(#_){width:min(920px,100%);max-he
   .cs2-fig .bub,.cs2-fig .ln,.cs2-fig .call-res,.cs2-fig .chat-chips span,.cs2-fig .lines-in{transition:none}
 }
 </style>
+
+<style id="fix-metrics">
+/* метрики: крупная только цифра, хвост серым мелко; подпись ближе к цифре */
+html body .ccard .cc-res b .tail:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){font-size:13.5px!important;font-weight:450!important;color:var(--text-muted)!important;letter-spacing:0!important}
+html body .ccard .cc-res > div:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){gap:3px!important}
+html body .ccard .cc-res b:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){margin-bottom:0!important}
+html body .ccard .cc-res > div > span:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){margin-top:3px!important}
+html body .cs2-kpi > div:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){gap:4px!important}
+html body .cs2-kpi b:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){margin-bottom:0!important}
+html body .cs2-kpi > div > span:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){margin-top:4px!important}
+</style>
 </head>
 <body>
 <script id="fix-lead-js">(function(){
@@ -3492,7 +3503,7 @@ function LEAD_API(url, opts){
       <a class="cc-hit" href="/innorto/" aria-label="открыть кейс"></a><div class="cc-top"><span class="cc-tag">AI-десант</span><span class="cc-ind">01</span></div>
       <h3>Заявка в&nbsp;закупках оформляется за&nbsp;<span class="nb">2 минуты</span>, раньше уходило 10</h3>
       <div class="cc-client">INNORTO, оптовые закупки</div>
-      <div class="cc-res"><div><b><span class="nb">26 из&nbsp;27</span></b><span>сотрудников работают с&nbsp;AI каждый день</span></div><div><b>1 месяц</b><span>десанта внутри команды на&nbsp;конкретных задачах</span></div></div>
+      <div class="cc-res"><div><b><span class="nb">26 <span class="tail">из&nbsp;27</span></span></b><span>сотрудников работают с&nbsp;AI каждый день</span></div><div><b><span class="nb">1 <span class="tail">месяц</span></span></b><span>десанта внутри команды на&nbsp;конкретных задачах</span></div></div>
       <p class="cc-task">Нейросетями в&nbsp;компании пользовались два энтузиаста, задачей было распространить навыки на&nbsp;всех</p>
       <div class="cc-fig"><canvas class="fx-halftone" data-maxh="126"></canvas></div>
       <a class="morelink" href="/innorto/">Подробнее</a>
@@ -3516,7 +3527,7 @@ function LEAD_API(url, opts){
       <button type="button" class="cc-hit cs-open" data-case="0" aria-label="открыть кейс"></button><div class="cc-top"><span class="cc-tag">AI-агент в&nbsp;подборе</span><span class="cc-ind">04</span></div>
       <h3>Бот подбирает блюда только из&nbsp;того, что&nbsp;сейчас есть на&nbsp;складе</h3>
       <div class="cc-client">FoodTech-сервис, имя под NDA</div>
-      <div class="cc-res"><div><b><span class="nb">1 200+</span></b><span>карт меню поставщиков оцифровано</span></div><div><b><span class="nb">30 тысяч</span></b><span>сообщений обрабатывает ежемесячно</span></div></div><p class="cc-task">Клиент обрабатывает запрос вручную, задача&nbsp;– автоматизировать и&nbsp;ускорить процесс на&nbsp;основе остатков и&nbsp;наличия на&nbsp;складе</p>
+      <div class="cc-res"><div><b><span class="nb">1 200+</span></b><span>карт меню поставщиков оцифровано</span></div><div><b><span class="nb">30 <span class="tail">тысяч</span></span></b><span>сообщений обрабатывает ежемесячно</span></div></div><p class="cc-task">Клиент обрабатывает запрос вручную, задача&nbsp;– автоматизировать и&nbsp;ускорить процесс на&nbsp;основе остатков и&nbsp;наличия на&nbsp;складе</p>
       <div class="cc-fig"><canvas class="fx-dishes" data-maxh="126"></canvas></div>
       <button type="button" class="morelink cs-open" data-case="0">Подробнее</button>
     </article><article class="ccard">
@@ -3530,7 +3541,7 @@ function LEAD_API(url, opts){
       <button type="button" class="cc-hit cs-open" data-case="2" aria-label="открыть кейс"></button><div class="cc-top"><span class="cc-tag">Разработка</span><span class="cc-ind">06</span></div>
       <h3>30 лет расчётов переехали в&nbsp;браузер без расхождений</h3>
       <div class="cc-client">Инженерное бюро, имя под NDA</div>
-      <div class="cc-res"><div><b>100%</b><span>совпадение расчётов со&nbsp;старой системой</span></div><div><b><span class="nb">30+ лет</span></b><span>накопленной логики сохранено</span></div></div><p class="cc-task">Формулы 1992&nbsp;года остались в&nbsp;основании, над ними поставили ядро, расчётный слой и&nbsp;интерфейс</p>
+      <div class="cc-res"><div><b>100%</b><span>совпадение расчётов со&nbsp;старой системой</span></div><div><b><span class="nb">30+ <span class="tail">лет</span></span></b><span>накопленной логики сохранено</span></div></div><p class="cc-task">Формулы 1992&nbsp;года остались в&nbsp;основании, над ними поставили ядро, расчётный слой и&nbsp;интерфейс</p>
       <div class="cc-fig"><canvas class="fx-layers" data-maxh="126" data-layers="веб-интерфейс,расчётный слой,перенесённое ядро,формулы 1992 года"></canvas></div>
       <button type="button" class="morelink cs-open" data-case="2">Подробнее</button>
     </article>
@@ -3565,7 +3576,7 @@ function LEAD_API(url, opts){
       <button type="button" class="cc-hit cs-open" data-case="10" aria-label="открыть кейс"></button><div class="cc-top"><span class="cc-tag">Голосовой агент</span><span class="cc-ind">10</span></div>
       <h3>Голосовой агент прозванивает базу и&nbsp;назначает встречи менеджеру</h3>
       <div class="cc-client">Отдел продаж, имя под&nbsp;NDA</div>
-      <div class="cc-res"><div><b><span class="nb">до&nbsp;200</span></b><span>звонков в&nbsp;день</span></div><div><b>встреча</b><span>итог звонка с&nbsp;менеджером</span></div></div>
+      <div class="cc-res"><div><b><span class="nb"><span class="tail">до</span>&nbsp;200</span></b><span>звонков в&nbsp;день</span></div><div><b>встреча</b><span>итог звонка с&nbsp;менеджером</span></div></div>
       <p class="cc-task">Сам ведёт разговор, собирает информацию о&nbsp;клиенте и&nbsp;договаривается о&nbsp;предварительной встрече</p>
       <div class="cc-fig"><canvas class="fx-calls" data-maxh="126"></canvas></div>
       <button type="button" class="morelink cs-open" data-case="10">Подробнее</button>
