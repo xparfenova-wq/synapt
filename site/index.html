@@ -3112,6 +3112,120 @@ html body #cases .crail>.ccard:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){s
   html body .nav-sheet .ns-in:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){overflow:visible!important}
 }
 </style>
+<style id="cases-0710-css">
+/* поп-апы 07–10: заголовок в левой колонке, анимация справа от самого верха */
+@media(min-width:761px){
+html body .cs-modal.cs-wide .cs-win:not(#_):not(#_){display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.35fr);column-gap:28px;grid-template-rows:auto 1fr;align-items:start}
+html body .cs-modal.cs-wide .cs-head:not(#_):not(#_){grid-column:1;grid-row:1;margin-bottom:14px}
+html body .cs-modal.cs-wide .cs-body:not(#_):not(#_){display:contents}
+html body .cs-modal.cs-wide .cs-item:not(#_):not(#_),html body .cs-modal.cs-wide .cs2:not(#_):not(#_){display:contents}
+html body .cs-modal.cs-wide .cs2-text:not(#_):not(#_){grid-column:1;grid-row:2}
+html body .cs-modal.cs-wide .cs2-fig:not(#_):not(#_){grid-column:2;grid-row:1 / span 2;align-self:stretch}
+html body .cs-modal.cs-wide .cs-x:not(#_):not(#_){position:absolute}
+}
+
+/* ===== КЕЙСЫ 07–10: поп-ап компактнее, текстовая колонка уже, анимация справа ===== */
+html body .cs-modal.cs-wide .cs-win:not(#_):not(#_){width:min(920px,100%);max-height:min(90vh,860px)}
+.cs-modal.cs-wide .cs-head h3{max-width:36ch}
+.cs2{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.35fr);gap:28px;align-items:stretch}
+.cs2-text{display:flex;flex-direction:column;min-width:0}
+.cs2-text p{max-width:38ch}
+.cs2-btn{margin-top:22px;align-self:flex-start}
+.cs-client a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line-2)}
+.cs-client a:hover{color:var(--accent-text);text-decoration-color:var(--accent-text)}
+.cs2-kpi{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:14px}
+.cs2-kpi>div{min-width:0}
+.cs2-kpi b{display:block;font-family:var(--mono);font-size:26px;font-weight:500;letter-spacing:-.03em;color:var(--text);margin-bottom:2px}
+.cs2-kpi>div>span{font-size:13.5px;color:var(--text-muted);line-height:1.45;display:block}
+/* 09: две метрики рядом, крупнее */
+.cs2-kpi.cs2-kpi2{flex-direction:row;gap:26px}
+.cs2-kpi.cs2-kpi2>div{flex:1}
+.cs2-kpi.cs2-kpi2 b{font-size:34px;margin-bottom:4px}
+.cs2-fig{position:relative;min-height:360px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--bg-deep);overflow:hidden;display:flex;flex-direction:column}
+.cs2-fig .fig-cap{position:absolute;left:14px;top:12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--text-dim);z-index:3}
+
+/* 07 чат */
+.cs2-fig .chat{display:flex;flex-direction:column;height:100%;flex:1;padding:40px 18px 16px;gap:12px}
+.cs2-fig .chat-scroll{flex:1;display:flex;flex-direction:column;gap:10px;justify-content:flex-end;min-height:0;overflow:hidden}
+.cs2-fig .bub{max-width:86%;padding:11px 14px;border-radius:16px;font-size:14px;line-height:1.5;opacity:0;transform:translateY(6px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.cs2-fig .bub.show{opacity:1;transform:none}
+.cs2-fig .bub.u{align-self:flex-end;background:var(--surface-3);color:var(--text);border-bottom-right-radius:6px}
+.cs2-fig .bub.a{align-self:flex-start;background:var(--surface);border:1px solid var(--line);color:var(--text-2);border-bottom-left-radius:6px}
+.cs2-fig .bub.a .who{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--accent-text);margin-bottom:6px}
+.cs2-fig .caret{display:inline-block;width:7px;height:15px;vertical-align:-2px;margin-left:2px;background:var(--accent);border-radius:2px;animation:cs2blink 1s steps(2) infinite}
+@keyframes cs2blink{50%{opacity:0}}
+.cs2-fig .chat-chips{display:flex;gap:6px;flex-wrap:wrap;padding-top:10px;border-top:1px solid var(--line)}
+.cs2-fig .chat-chips span{font-family:var(--mono);font-size:11px;color:var(--text-muted);border:1px solid var(--line);border-radius:var(--r-pill);padding:5px 10px;transition:.3s}
+.cs2-fig .chat-chips span.on{color:var(--accent-text);border-color:var(--line-accent);background:rgba(208,232,101,.06)}
+.cs2-fig .chat-input{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:var(--r-pill);padding:9px 14px;font-size:13.5px;color:var(--text-dim);background:var(--surface)}
+.cs2-fig .chat-input i{margin-left:auto;width:26px;height:26px;border-radius:50%;background:var(--accent);display:block;flex:none}
+
+/* 08 схема источников: svg */
+.cs2-fig .fig-svg{width:100%;height:100%;flex:1;padding:34px 10px 6px}
+.cs2-fig .fig-svg text{font-family:var(--mono);font-size:11px;fill:var(--text-muted)}
+.cs2-fig .fig-svg .lbl{fill:var(--text);font-size:11.5px}
+.cs2-fig .fig-svg .dim{fill:var(--text-dim);font-size:10px;letter-spacing:.06em}
+.cs2-fig .fig-svg .node{fill:var(--surface);stroke:var(--line-2);transition:stroke .3s}
+.cs2-fig .fig-svg .node.on{stroke:var(--accent)}
+.cs2-fig .fig-svg .link{stroke:var(--line-2);stroke-width:1.2;fill:none;transition:stroke .3s}
+.cs2-fig .fig-svg .link.on{stroke:var(--accent);stroke-dasharray:6 6;animation:cs2dash 1.2s linear infinite}
+.cs2-fig .fig-svg .link.was{stroke:var(--text-dim)}
+@keyframes cs2dash{to{stroke-dashoffset:-24}}
+.cs2-fig .fig-svg .row{fill:var(--surface-3);transition:fill .3s}
+.cs2-fig .fig-svg .row.on{fill:var(--accent);opacity:.85}
+.cs2-fig .fig-svg .row.on2{fill:var(--text-dim)}
+.cs2-fig .fig-svg .q{fill:var(--text);font-size:11.5px}
+
+/* 09 конвейер проверки: canvas */
+.cs2-fig .cv-check{width:100%;height:100%;min-height:360px;display:block;flex:1}
+
+/* 10 голосовой агент: без журнала, компактнее, реплики без полупрозрачной маски */
+.cs2-fig[data-anim="voice"]{min-height:0}
+.cs2-fig .voice{display:flex;flex-direction:column;height:100%;flex:1;padding:40px 18px 16px;gap:14px;justify-content:center}
+.cs2-fig .call{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.cs2-fig .call-top{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11px;color:var(--text-dim);letter-spacing:.05em}
+.cs2-fig .call-top .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(208,232,101,.15);flex:none}
+.cs2-fig .call-top .who{color:var(--text-muted);margin-left:6px}
+.cs2-fig .call-top .t{margin-left:auto;color:var(--text-muted)}
+.cs2-fig .lines{height:176px;overflow:hidden}
+.cs2-fig .lines-in{display:flex;flex-direction:column;gap:6px;transition:transform .45s var(--ease)}
+.cs2-fig .ln{font-size:13.5px;line-height:1.45;padding:7px 11px;border-radius:12px;max-width:88%;opacity:0;transform:translateY(5px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.cs2-fig .ln.show{opacity:1;transform:none}
+.cs2-fig .ln.a{align-self:flex-start;background:rgba(208,232,101,.08);color:var(--text)}
+.cs2-fig .ln.c{align-self:flex-end;background:var(--surface-3);color:var(--text-2)}
+.cs2-fig .call-res{font-family:var(--mono);font-size:11.5px;color:var(--accent-text);letter-spacing:.04em;opacity:0;transition:opacity .4s;min-height:17px}
+.cs2-fig .call-res.show{opacity:1}
+
+/* планшет и телефон: одна колонка, анимация над текстом */
+@media(max-width:900px){
+  .cs2{grid-template-columns:1fr;gap:22px}
+  .cs2-fig{order:-1;min-height:340px}
+  .cs2-text p{max-width:none}
+  .cs2-fig .fig-svg text,.cs2-fig .fig-svg .lbl,.cs2-fig .fig-svg .q{font-size:13.5px}
+  .cs2-fig .fig-svg .qtext{font-size:12.5px}
+  .cs2-fig .fig-svg .dim{font-size:12px}
+  .cs2-fig .cv-check{min-height:300px}
+}
+/* телефон: поп-ап 07–10 на весь экран со скроллом */
+@media(max-width:760px){
+  html body .cs-modal.cs-wide:not(#_):not(#_):not(#_):not(#_){padding:0!important;align-items:stretch}
+  html body .cs-modal.cs-wide .cs-win:not(#_):not(#_):not(#_):not(#_){width:100%;max-height:none;height:100dvh;border-radius:0;border:0;padding:22px 18px calc(28px + env(safe-area-inset-bottom,0px))}
+  .cs-modal.cs-wide .cs-head h3{padding-right:48px}
+  .cs2-fig{min-height:320px}
+  .cs2-fig[data-anim="chat"]{min-height:400px}
+  .cs2-fig .chat{padding:36px 12px 12px}
+  .cs2-fig .bub{font-size:13px;max-width:92%}
+  .cs2-fig .voice{padding:36px 12px 12px}
+  .cs2-fig .call{padding:12px}
+  .cs2-fig .lines{height:190px}
+  .cs2-fig .ln{font-size:13px;max-width:94%}
+  .cs2-fig .cv-check{min-height:280px}
+}
+@media(prefers-reduced-motion:reduce){
+  .cs2-fig .caret,.cs2-fig .fig-svg .link.on{animation:none}
+  .cs2-fig .bub,.cs2-fig .ln,.cs2-fig .call-res,.cs2-fig .chat-chips span,.cs2-fig .lines-in{transition:none}
+}
+</style>
 </head>
 <body>
 <script id="fix-lead-js">(function(){
@@ -3419,6 +3533,42 @@ function LEAD_API(url, opts){
       <div class="cc-res"><div><b>100%</b><span>совпадение расчётов со&nbsp;старой системой</span></div><div><b><span class="nb">30+ лет</span></b><span>накопленной логики сохранено</span></div></div><p class="cc-task">Формулы 1992&nbsp;года остались в&nbsp;основании, над ними поставили ядро, расчётный слой и&nbsp;интерфейс</p>
       <div class="cc-fig"><canvas class="fx-layers" data-maxh="126" data-layers="веб-интерфейс,расчётный слой,перенесённое ядро,формулы 1992 года"></canvas></div>
       <button type="button" class="morelink cs-open" data-case="2">Подробнее</button>
+    </article>
+      <article class="ccard">
+      <button type="button" class="cc-hit cs-open" data-case="7" aria-label="открыть кейс"></button><div class="cc-top"><span class="cc-tag">b2c-сервис</span><span class="cc-ind">07</span></div>
+      <h3>Карманный консультант отвечает на&nbsp;юридические вопросы в&nbsp;чате</h3>
+      <div class="cc-client">Публичный сервис, <span class="nb">pocket-consultant.ru</span></div>
+      <div class="cc-res"><div><b>24/7</b><span>ответ в&nbsp;любое время</span></div><div><b>b2c</b><span>публичный продуктовый сервис</span></div></div>
+      <p class="cc-task">AI-консультант по&nbsp;юридическим вопросам: договоры, ЖКХ, трудовые споры, покупки. Человек описывает ситуацию словами и&nbsp;получает разбор</p>
+      <div class="cc-fig"><canvas class="fx-chat" data-maxh="126"></canvas></div>
+      <button type="button" class="morelink cs-open" data-case="7">Подробнее</button>
+    </article>
+      <article class="ccard">
+      <button type="button" class="cc-hit cs-open" data-case="8" aria-label="открыть кейс"></button><div class="cc-top"><span class="cc-tag">MCP-агент</span><span class="cc-ind">08</span></div>
+      <h3>MCP-агент для&nbsp;подготовки<br>корпоративной отчётности</h3>
+      <div class="cc-client">Операционный отдел, имя под&nbsp;NDA<!-- уточнить у Димы, какой отдел --></div>
+      <div class="cc-res"><div><b><span class="nb">2 <span class="tail">мин</span></span></b><span>на&nbsp;отчёт<br>вместо 6&nbsp;часов</span></div><div><b>3</b><span>источника: 1С, Sheets, PostgreSQL</span></div></div>
+      <p class="cc-task">MCP-агент принимает запрос на&nbsp;естественном языке, сам выбирает источники, собирает SQL и&nbsp;API-запросы, агрегирует данные и&nbsp;готовит отчёт</p>
+      <div class="cc-fig"><canvas class="fx-report" data-maxh="126"></canvas></div>
+      <button type="button" class="morelink cs-open" data-case="8">Подробнее</button>
+    </article>
+      <article class="ccard">
+      <button type="button" class="cc-hit cs-open" data-case="9" aria-label="открыть кейс"></button><div class="cc-top"><span class="cc-tag">Экономическая безопасность</span><span class="cc-ind">09</span></div>
+      <h3>Агент сам проверяет контрагентов по&nbsp;базе знаний</h3>
+      <div class="cc-client">Отдел экономической безопасности, имя под&nbsp;NDA</div>
+      <div class="cc-res"><div><b><span class="nb">1,8 <span class="tail">мин</span></span></b><span>на&nbsp;проверку<br>вместо 17</span></div><div><b><span class="nb">1 267</span></b><span>человеко-часов высвобождено</span></div></div>
+      <p class="cc-task">Агент уточняет данные через API ФНС и&nbsp;заполняет таблицу через MCP. Рискованных передаёт специалистам</p>
+      <div class="cc-fig"><canvas class="fx-check" data-maxh="126"></canvas></div>
+      <button type="button" class="morelink cs-open" data-case="9">Подробнее</button>
+    </article>
+      <article class="ccard">
+      <button type="button" class="cc-hit cs-open" data-case="10" aria-label="открыть кейс"></button><div class="cc-top"><span class="cc-tag">Голосовой агент</span><span class="cc-ind">10</span></div>
+      <h3>Голосовой агент прозванивает базу и&nbsp;назначает встречи менеджеру</h3>
+      <div class="cc-client">Отдел продаж, имя под&nbsp;NDA</div>
+      <div class="cc-res"><div><b><span class="nb">до&nbsp;200</span></b><span>звонков в&nbsp;день</span></div><div><b>встреча</b><span>итог звонка с&nbsp;менеджером</span></div></div>
+      <p class="cc-task">Сам ведёт разговор, собирает информацию о&nbsp;клиенте и&nbsp;договаривается о&nbsp;предварительной встрече</p>
+      <div class="cc-fig"><canvas class="fx-calls" data-maxh="126"></canvas></div>
+      <button type="button" class="morelink cs-open" data-case="10">Подробнее</button>
     </article>
 
   </div></div>
@@ -5192,6 +5342,105 @@ function LEAD_API(url, opts){
   <div class="cs-item" data-case="1"><p>У&nbsp;клиента своя методология консультирования: свой порядок разбора, свои критерии, свой язык. Обычный чат-бот такую задачу не&nbsp;решает, потому что&nbsp;отвечает из&nbsp;общих знаний модели</p><p>Собрали и&nbsp;разметили материалы автора: правила разбора, примеры, критерии решений, типовые ошибки. Модель освоила порядок, в&nbsp;котором методология разбирает данные клиента, и&nbsp;сохраняет его&nbsp;в&nbsp;каждом ответе</p><p>AI-консультант встроен в&nbsp;Telegram, отдельного сайта и&nbsp;логина не&nbsp;нужно. База знаний выросла до&nbsp;800 страниц, а&nbsp;эксперт освободил больше 300 часов</p></div>
   <div class="cs-item" data-case="2"><p>Документации на&nbsp;исходную логику не&nbsp;сохранилось, поэтому сначала разобрали код построчно и&nbsp;восстановили, как&nbsp;система считает: формулы, поправки, порядок операций</p><p>Затем собрали расчётное ядро заново, уже под браузер, и&nbsp;сверяли результат с&nbsp;исходной системой на&nbsp;каждом шаге. Астрономические данные, которые раньше выводились текстом, стали графиками и&nbsp;картами</p><p>Проверка шла цифра в&nbsp;цифру: расхождений с&nbsp;исходной системой нет ни&nbsp;в&nbsp;одном сценарии</p></div>
   <div class="cs-item" data-case="3"><p>Руководитель слушал разговоры выборочно: пять записей из&nbsp;трёхсот в&nbsp;месяц. Команду оценивали по&nbsp;ощущению, а&nbsp;причины отказов узнавали со&nbsp;слов самих менеджеров</p><p>Агент разбирает все звонки и&nbsp;переписки: расшифровывает разговор, сверяет его&nbsp;со&nbsp;сценарием продажи и&nbsp;отмечает, где менеджер не&nbsp;задал вопрос, не&nbsp;отработал возражение или&nbsp;не&nbsp;довёл клиента до&nbsp;следующего шага</p><p>Руководитель видит картину по&nbsp;отделу и&nbsp;по&nbsp;каждому менеджеру: повторяющиеся ошибки, причины потерь, сильные диалоги как&nbsp;образец для&nbsp;обучения. Конверсия в&nbsp;сделку выросла на&nbsp;20%</p><p>Тот&nbsp;же&nbsp;агент отвечает клиенту в&nbsp;мессенджере за&nbsp;секунды, уточняет объём и&nbsp;сроки и&nbsp;передаёт диалог менеджеру уже с&nbsp;контекстом</p></div>
+  <div class="cs-item" data-case="7">
+    <div class="cs2">
+      <div class="cs2-text">
+        <p>AI-консультант по&nbsp;юридическим вопросам. Пользователь описывает ситуацию своими словами: договоры, ЖКХ, трудовой спор, покупка&nbsp;– и&nbsp;получает понятный разбор и&nbsp;план действий</p>
+        <a class="btn pri cs2-btn" href="https://pocket-consultant.ru" target="_blank" rel="noopener">Открыть сервис</a>
+      </div>
+      <div class="cs2-fig" data-anim="chat">
+        <span class="fig-cap">чат сервиса</span>
+        <div class="chat">
+          <div class="chat-scroll">
+            <div class="bub u"></div>
+            <div class="bub a"><span class="who">консультант</span><span class="txt"></span></div>
+          </div>
+          <div class="chat-chips"><span>договор</span><span>ЖКХ</span><span>трудовой спор</span><span>покупка</span><span>аренда</span><span>возврат</span></div>
+          <div class="chat-input"><span>Опишите ситуацию своими словами</span><i></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cs-item" data-case="8" data-title="MCP-агент для&nbsp;подготовки корпоративной отчётности">
+    <div class="cs2">
+      <div class="cs2-text">
+        <p>Агент работает поверх трёх источников: 1С, Google Sheets и&nbsp;PostgreSQL. Сотрудник формулирует запрос на&nbsp;естественном языке, агент сам выбирает нужные источники, собирает SQL и&nbsp;API-запросы, агрегирует данные и&nbsp;готовит отчёт</p>
+        <p>Еженедельная отчётность, на&nbsp;которую уходило 6&nbsp;часов, теперь занимает 2&nbsp;минуты</p>
+      </div>
+      <div class="cs2-fig" data-anim="report">
+        <span class="fig-cap">запрос, источники, отчёт</span>
+        <svg class="fig-svg" viewBox="0 0 560 400" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <text class="dim" x="110" y="20">запрос</text>
+          <rect class="node qbox" x="110" y="28" width="340" height="36" rx="12"/>
+          <text class="q qtext" x="280" y="51" text-anchor="middle"></text>
+          <path class="link lq" d="M280 64 L 280 153"/>
+          <text class="dim" x="28" y="92">источники</text>
+          <g class="src"><rect class="node" x="28" y="100" width="112" height="46" rx="12"/><text class="lbl" x="84" y="127" text-anchor="middle">1С</text></g>
+          <g class="src"><rect class="node" x="28" y="180" width="112" height="46" rx="12"/><text class="lbl" x="84" y="207" text-anchor="middle">Google Sheets</text></g>
+          <g class="src"><rect class="node" x="28" y="260" width="112" height="46" rx="12"/><text class="lbl" x="84" y="287" text-anchor="middle">PostgreSQL</text></g>
+          <path class="link ls" d="M140 123 C 190 123, 200 203, 236 203"/>
+          <path class="link ls" d="M140 203 L 236 203"/>
+          <path class="link ls" d="M140 283 C 190 283, 200 203, 236 203"/>
+          <text class="dim" x="236" y="145">агент</text>
+          <g class="agent"><rect class="node" x="236" y="153" width="128" height="100" rx="16"/>
+            <text class="q qstate" x="300" y="198" text-anchor="middle"></text>
+            <text class="q qstate2" x="300" y="218" text-anchor="middle"></text>
+          </g>
+          <path class="link lr" d="M364 203 L 410 203"/>
+          <text class="dim" x="410" y="111">отчёт</text>
+          <g class="rep"><rect class="node" x="410" y="119" width="122" height="168" rx="14"/>
+            <text class="dim" x="471" y="143" text-anchor="middle">выручка</text>
+            <text class="dim" x="471" y="157" text-anchor="middle">по&nbsp;филиалам</text>
+            <g class="rows">
+              <rect class="row" x="424" y="175" width="94" height="8" rx="4"/><rect class="row" x="436" y="191" width="70" height="8" rx="4"/>
+              <rect class="row" x="429" y="207" width="84" height="8" rx="4"/><rect class="row" x="441" y="223" width="60" height="8" rx="4"/>
+              <rect class="row" x="426" y="239" width="90" height="8" rx="4"/><rect class="row" x="446" y="255" width="50" height="8" rx="4"/>
+            </g>
+          </g>
+          <text class="dim timer" x="28" y="384">время: 0:00</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="cs-item" data-case="9">
+    <div class="cs2">
+      <div class="cs2-text">
+        <p>Агент уточняет данные через API ФНС и&nbsp;заполняет таблицу через MCP. Контрагентов с&nbsp;признаками риска передаёт специалистам вместе с&nbsp;собранным досье</p>
+        <div class="cs2-kpi cs2-kpi2">
+          <div><b><span class="nb">5 000</span></b><span>контрагентов проверено</span></div>
+          <div><b>83%</b><span>полностью автоматически</span></div>
+        </div>
+      </div>
+      <div class="cs2-fig" data-anim="check">
+        <span class="fig-cap">конвейер проверки</span>
+        <canvas class="cv-check" aria-hidden="true"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="cs-item" data-case="10">
+    <div class="cs2">
+      <div class="cs2-text">
+        <p>Голосовой AI-агент прозванивает базу, ведёт естественный диалог без&nbsp;заметных задержек, собирает информацию о&nbsp;клиенте и&nbsp;договаривается о&nbsp;предварительной встрече с&nbsp;менеджером</p>
+      </div>
+      <div class="cs2-fig" data-anim="voice">
+        <span class="fig-cap">текущий звонок</span>
+        <div class="voice">
+          <div class="call">
+            <div class="call-top"><span class="dot"></span><span>звонок <span class="callno">001</span></span><span class="who">говорит: агент</span><span class="t callt">0:00</span></div>
+            <div class="lines"><div class="lines-in">
+              <div class="ln a">Здравствуйте, это ассистент компании. Удобно ли&nbsp;сейчас говорить пару минут?</div>
+              <div class="ln c">Да, слушаю</div>
+              <div class="ln a">Подскажите, какие задачи сейчас закрываете по&nbsp;этому направлению и&nbsp;кто у&nbsp;вас принимает решение?</div>
+              <div class="ln c">Решаю я, задача понятна, можно обсудить подробнее</div>
+              <div class="ln a">Тогда предложу короткую встречу с&nbsp;менеджером. Четверг, 15:00 подойдёт?</div>
+              <div class="ln c">Да, четверг подходит</div>
+            </div></div>
+            <div class="call-res">встреча назначена: четверг, 15:00, передано менеджеру</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="cs-modal" id="csModal" hidden>
@@ -5203,6 +5452,7 @@ function LEAD_API(url, opts){
     <div class="cs-head"><span class="cs-tag" id="csTag"></span><h3 id="csTitle"></h3><div class="cs-client" id="csClient"></div></div>
     <div class="cs-body" id="csBody"></div>
   </div>
+  
 </div>
 
 <script>
@@ -5406,5 +5656,274 @@ if(rail&&hint){
   addEventListener('resize',pos); addEventListener('load',pos); pos();
 }
 })();</script>
+<script id="cases-0710-js">
+/* ==========================================================
+   КЕЙСЫ 07–10: мини-анимации карточек (canvas.fx-chat .fx-report .fx-check .fx-calls)
+   и развёрнутые анимации в поп-апе (.cs2-fig[data-anim="chat|report|check|voice"])
+   палитра берётся из CSS-переменных страницы и следует за темой
+   ========================================================== */
+(function(){
+'use strict';
+var RM = window.matchMedia ? matchMedia('(prefers-reduced-motion: reduce)').matches : false;
+var DPR = Math.min(devicePixelRatio || 1, 2);
+var MONO = '"JetBrains Mono", ui-monospace, monospace';
+var C = {};
+function theme(){
+  var cs = getComputedStyle(document.documentElement);
+  function v(n){ return cs.getPropertyValue(n).trim(); }
+  C.accent = v('--accent'); C.text = v('--text'); C.text2 = v('--text-2'); C.muted = v('--text-muted'); C.dim = v('--text-dim');
+  C.s1 = v('--surface'); C.s2 = v('--surface-2'); C.s3 = v('--surface-3'); C.line = v('--line-2'); C.line1 = v('--line'); C.accText = v('--accent-text');
+  /* на светлой теме салатовый на холсте не читается: берём тёмный зелёный, как родные fx (112,140,32) */
+  if(document.documentElement.getAttribute('data-theme')==='light'){ C.accent='rgb(112,140,32)'; C.accText='rgb(96,122,26)'; }
+}
+theme();
+new MutationObserver(theme).observe(document.documentElement, {attributes:true, attributeFilter:['data-theme']});
+
+function rr(ctx,x,y,w,h,r){ r=Math.min(r,h/2,w/2); ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+function tick(ctx,cx,cy,r,col,a){ ctx.save(); ctx.globalAlpha=a==null?1:a; ctx.strokeStyle=col; ctx.lineWidth=1.6; ctx.lineCap='round'; ctx.lineJoin='round'; ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.stroke(); ctx.beginPath(); ctx.moveTo(cx-r*.45,cy+r*.02); ctx.lineTo(cx-r*.1,cy+r*.4); ctx.lineTo(cx+r*.5,cy-r*.38); ctx.stroke(); ctx.restore(); }
+function clamp(x,a,b){ return x<a?a:x>b?b:x; }
+function ease(p){ return p<.5 ? 2*p*p : 1-Math.pow(-2*p+2,2)/2; }
+function vis(c){ var r=c.getBoundingClientRect(); return r.bottom>-900 && r.top<innerHeight+900 && r.width>0; }
+
+/* цикл холста в карточке: высота из data-maxh, как у родных fx, время в мс */
+function loop(c, draw){
+  var st={}, t0=performance.now(), calmDone=false;
+  function build(){ var r=c.getBoundingClientRect(), W=r.width, H=+(c.dataset.maxh||0)||r.height; c.style.height=H+'px'; c.width=Math.max(1,W*DPR); c.height=Math.max(1,H*DPR); st.ctx=c.getContext('2d'); st.ctx.setTransform(DPR,0,0,DPR,0,0); st.W=W; st.H=H; calmDone=false; }
+  build(); addEventListener('resize', build);
+  (function frame(){ requestAnimationFrame(frame); if(!vis(c)) return; if(RM){ if(calmDone) return; draw(st, 6200); calmDone=true; return; } draw(st, performance.now()-t0); })();
+}
+
+/* ---------- 07 мини: чат, вопрос печатается, ответ проявляется строками ---------- */
+var CHAT=[
+  {chip:0, q:'Исполнитель сорвал сроки. Что делать?', a:['смотрим пункт о сроках','фиксируем просрочку','готовим претензию']},
+  {chip:1, q:'В квитанции ЖКХ непонятная строка', a:['выясняем, кто начислил','запрос в управляющую','сверяем ответ и сумму']},
+  {chip:2, q:'Задерживают расчёт при увольнении', a:['какие выплаты положены','фиксируем задержку','куда обратиться дальше']}
+];
+[].forEach.call(document.querySelectorAll('canvas.fx-chat'), function(c){
+  loop(c, function(s, ms){
+    var ctx=s.ctx, W=s.W, H=s.H, PER=7000, k=Math.floor(ms/PER)%CHAT.length, u=ms%PER, sc=CHAT[k];
+    ctx.clearRect(0,0,W,H);
+    var fade = u>PER-500 ? (PER-u)/500 : 1;
+    /* чипы тем */
+    ctx.font='9.5px '+MONO; ctx.textBaseline='middle';
+    var chips=['договор','ЖКХ','трудовой спор','покупка'], x=12;
+    chips.forEach(function(t,i){ var w=ctx.measureText(t).width+14, on=i===sc.chip; ctx.globalAlpha=1; ctx.strokeStyle=on?C.accent:C.line; ctx.fillStyle=on?'rgba(208,232,101,.08)':'transparent'; rr(ctx,x,11,w,17,8.5); ctx.fill(); ctx.stroke(); ctx.fillStyle=on?C.accText:C.dim; ctx.fillText(t,x+7,20); x+=w+6; });
+    ctx.globalAlpha=fade;
+    /* вопрос печатается справа */
+    ctx.font='10.5px '+MONO;
+    var n=clamp(Math.floor((u-300)/26),0,sc.q.length), qt=sc.q.slice(0,n);
+    if(n>0){ var qw=ctx.measureText(sc.q).width+20, qx=W-12-qw; ctx.fillStyle=C.s3; rr(ctx,qx,38,qw,21,10); ctx.fill(); ctx.fillStyle=C.text; ctx.fillText(qt,qx+10,48.5); if(n<sc.q.length){ ctx.fillStyle=C.accent; ctx.fillRect(qx+10+ctx.measureText(qt).width+1,43,1.5,11); } }
+    /* ответ проявляется строками слева */
+    var tA=300+sc.q.length*26+520, ua=u-tA;
+    if(ua>0){ var lines=sc.a, lw=0; lines.forEach(function(l){ lw=Math.max(lw,ctx.measureText(l).width); }); var bw=lw+22, bh=12+lines.length*15; ctx.globalAlpha=fade*clamp(ua/300,0,1); ctx.fillStyle=C.s1; ctx.strokeStyle=C.line1; rr(ctx,12,66,bw,bh,10); ctx.fill(); ctx.stroke(); lines.forEach(function(l,i){ var a=clamp((ua-i*520)/350,0,1); if(a<=0) return; ctx.globalAlpha=fade*a; ctx.fillStyle=i===0?C.text2:C.muted; ctx.fillText(l,23,80+i*15); }); }
+    ctx.globalAlpha=1;
+  });
+});
+
+/* ---------- 08 мини: 1С / Sheets / PostgreSQL → агент → отчёт, узлы по центру ---------- */
+[].forEach.call(document.querySelectorAll('canvas.fx-report'), function(c){
+  loop(c, function(s, ms){
+    var ctx=s.ctx, W=s.W, H=s.H, PER=7600, u=ms%PER;
+    ctx.clearRect(0,0,W,H);
+    var G=258, sc=Math.min(1,(W-16)/G), ox=(W-G*sc)/2, oy=(H-126)/2;
+    function X(x){ return ox+x*sc; } function Wd(w){ return w*sc; }
+    var fade = u>PER-500 ? (PER-u)/500 : 1;
+    ctx.globalAlpha=fade; ctx.font='9.5px '+MONO; ctx.textBaseline='middle'; ctx.lineWidth=1;
+    var srcs=['1С','Sheets','PostgreSQL'], sy=[24,63,102];
+    var phase=function(k){ var st=500+k*800; return u<st?0:u<st+800?1:2; };
+    /* линии источников к агенту */
+    srcs.forEach(function(n,k){ var p=phase(k), y=oy+sy[k]; ctx.save(); if(p===1){ ctx.strokeStyle=C.accent; ctx.setLineDash([4,4]); ctx.lineDashOffset=-(ms/40)%8; } else ctx.strokeStyle=p===2?C.dim:C.line; ctx.beginPath(); ctx.moveTo(X(72),y); ctx.bezierCurveTo(X(90),y,X(80),oy+63,X(98),oy+63); ctx.stroke(); ctx.restore(); });
+    /* линия агент → отчёт */
+    var pr = u<2900?0:u<3500?1:2; ctx.save(); if(pr===1){ ctx.strokeStyle=C.accent; ctx.setLineDash([4,4]); ctx.lineDashOffset=-(ms/40)%8; } else ctx.strokeStyle=pr===2?C.dim:C.line; ctx.beginPath(); ctx.moveTo(X(152),oy+63); ctx.lineTo(X(178),oy+63); ctx.stroke(); ctx.restore();
+    /* источники */
+    srcs.forEach(function(n,k){ var p=phase(k), y=oy+sy[k]; ctx.fillStyle=C.s2; ctx.strokeStyle=p===1?C.accent:p===2?C.dim:C.line; rr(ctx,X(0),y-10,Wd(72),20,7); ctx.fill(); ctx.stroke(); ctx.fillStyle=p?C.text:C.muted; ctx.textAlign='center'; ctx.fillText(n,X(36),y); });
+    /* агент */
+    var aon=u>120; ctx.fillStyle=C.s2; ctx.strokeStyle=aon?C.accent:C.line; rr(ctx,X(98),oy+45,Wd(54),36,9); ctx.fill(); ctx.stroke(); ctx.fillStyle=aon?C.accText:C.muted; ctx.textAlign='center'; ctx.fillText('агент',X(125),oy+63);
+    /* отчёт */
+    var ron=u>3100; ctx.fillStyle=C.s2; ctx.strokeStyle=ron?C.accent:C.line; rr(ctx,X(178),oy+13,Wd(80),100,9); ctx.fill(); ctx.stroke();
+    ctx.textAlign='left'; ctx.fillStyle=C.dim; ctx.font='8.5px '+MONO; ctx.fillText('отчёт',X(188),oy+25);
+    var rw=[56,44,60,38,52,30]; rw.forEach(function(w,i){ var on=u>3300+i*220; ctx.fillStyle=on?(i%3===0?C.accent:C.dim):C.s3; ctx.globalAlpha=fade*(on?(i%3===0?.9:.8):1); rr(ctx,X(188),oy+34+i*12,Wd(w),5,2.5); ctx.fill(); });
+    ctx.globalAlpha=1; ctx.textAlign='left';
+  });
+});
+
+/* ---------- 09 мини: контрагент проходит три проверки, у каждой зажигается галочка ---------- */
+[].forEach.call(document.querySelectorAll('canvas.fx-check'), function(c){
+  var GAP=2400, LIFE=4600;
+  function pos(t,W){ /* кусочно-линейный путь с остановками на трёх станциях */
+    var sx=[W*.2,W*.5,W*.8], k=[ [0,-40],[900,sx[0]],[1250,sx[0]],[1900,sx[1]],[2250,sx[1]],[2900,sx[2]],[3250,sx[2]],[4300,W+40] ];
+    if(t<=0) return -40; for(var i=1;i<k.length;i++){ if(t<=k[i][0]){ var a=k[i-1],b=k[i]; var p=(t-a[0])/(b[0]-a[0]); return a[1]+(b[1]-a[1])*ease(p); } } return W+40;
+  }
+  loop(c, function(s, ms){
+    var ctx=s.ctx, W=s.W, H=s.H; ctx.clearRect(0,0,W,H);
+    var sx=[W*.2,W*.5,W*.8], bw=Math.min(74,W*.27), names=['база знаний','ФНС','таблица'], depart=[1250,2250,3250];
+    ctx.font='9.5px '+MONO; ctx.textBaseline='middle'; ctx.textAlign='center'; ctx.lineWidth=1;
+    /* дорожка */
+    ctx.strokeStyle=C.line1; ctx.beginPath(); ctx.moveTo(0,92); ctx.lineTo(W,92); ctx.stroke();
+    /* активные карточки */
+    var first=Math.max(0,Math.floor((ms-LIFE)/GAP)), lastI=Math.floor(ms/GAP), cards=[];
+    for(var i=first;i<=lastI;i++){ var t=ms-i*GAP; if(t<0||t>LIFE) continue; cards.push({i:i,t:t,x:pos(t,W),risk:i%4===3}); }
+    /* станции */
+    names.forEach(function(n,k){ var dwell=cards.some(function(cd){ return cd.t>depart[k]-350&&cd.t<depart[k]; }); ctx.fillStyle=C.s2; ctx.strokeStyle=dwell?C.accent:C.line; rr(ctx,sx[k]-bw/2,42,bw,26,8); ctx.fill(); ctx.stroke(); ctx.fillStyle=dwell?C.text:C.muted; ctx.fillText(n,sx[k],55);
+      /* галочка над станцией: вспыхивает, когда контрагент отходит */
+      var fl=0; cards.forEach(function(cd){ var d=cd.t-depart[k]; if(d>0&&d<1300) fl=Math.max(fl,1-d/1300); }); if(fl>0) tick(ctx,sx[k],28,6,C.accent,.25+.75*fl); });
+    /* карточки контрагентов */
+    cards.forEach(function(cd){ var x=cd.x, done=cd.t>depart[2], gray=cd.risk, a=cd.t<300?cd.t/300:cd.t>LIFE-300?(LIFE-cd.t)/300:1; ctx.globalAlpha=a; ctx.fillStyle=C.s3; ctx.strokeStyle=done?(gray?C.dim:C.accent):C.line; rr(ctx,x-17,84,34,16,5); ctx.fill(); ctx.stroke(); ctx.fillStyle=done&&!gray?C.accent:C.muted; ctx.fillRect(x-11,89,14,2); ctx.fillStyle=C.dim; ctx.fillRect(x-11,94,9,2);
+      if(gray&&cd.t>depart[1]){ ctx.font='9px '+MONO; ctx.fillStyle=C.dim; ctx.fillText('к специалисту',x,112); ctx.font='9.5px '+MONO; }
+      ctx.globalAlpha=1; });
+  });
+});
+
+/* ---------- 10 мини: список звонков, статус «идёт диалог» → «встреча назначена», по кругу ---------- */
+[].forEach.call(document.querySelectorAll('canvas.fx-calls'), function(c){
+  var STEP=1700, TALK=2600, N=4;
+  loop(c, function(s, ms){
+    var ctx=s.ctx, W=s.W, H=s.H; ctx.clearRect(0,0,W,H);
+    var n=Math.floor(ms/STEP), rowH=(H-12)/N;
+    ctx.font='10.5px '+MONO; ctx.textBaseline='middle'; ctx.lineWidth=1;
+    for(var sl=0;sl<N;sl++){
+      var y=6+sl*rowH, cy=y+rowH/2;
+      if(sl>0){ ctx.strokeStyle=C.line1; ctx.beginPath(); ctx.moveTo(12,y); ctx.lineTo(W-12,y); ctx.stroke(); }
+      var m=n-((n-sl)%N+N)%N; if(m<0) continue;
+      var age=ms-m*STEP, a=clamp(age/320,0,1), talk=age<TALK, sec=Math.round(Math.min(age,TALK)/TALK*72);
+      ctx.globalAlpha=a; ctx.textAlign='left'; ctx.fillStyle=C.text2; ctx.fillText('звонок '+('00'+(m%200+1)).slice(-3),14,cy);
+      ctx.fillStyle=C.dim; ctx.fillText(Math.floor(sec/60)+':'+('0'+sec%60).slice(-2),14+ctx.measureText('звонок 000').width+14,cy);
+      ctx.textAlign='right';
+      if(talk){ ctx.fillStyle=C.muted; ctx.fillText('идёт диалог',W-14,cy); var bl=.4+.6*Math.abs(Math.sin(ms/350)); ctx.globalAlpha=a*bl; ctx.fillStyle=C.accent; ctx.beginPath(); ctx.arc(W-14-ctx.measureText('идёт диалог').width-10,cy,2.6,0,7); ctx.fill(); }
+      else { ctx.fillStyle=C.accText; ctx.fillText('встреча назначена',W-14,cy); tick(ctx,W-14-ctx.measureText('встреча назначена').width-11,cy,4.5,C.accent,a); }
+      ctx.globalAlpha=1;
+    }
+  });
+});
+
+/* ==========================================================
+   поп-ап: класс cs-wide для 07–10, старт анимаций при открытии, стоп при закрытии
+   ========================================================== */
+var modal=document.getElementById('csModal'); if(!modal) return;
+var body=document.getElementById('csBody'), live=[];
+function typer(el,text,speed,done,timers){ var i=0; el.textContent=''; (function step(){ if(i<=text.length){ el.textContent=text.slice(0,i); i++; timers.push(setTimeout(step,speed)); } else if(done) done(); })(); }
+function mkT(){ var timers=[]; return { T:function(fn,ms){ timers.push(setTimeout(fn,ms)); }, I:function(fn,ms){ var id=setInterval(fn,ms); timers.push({iv:id}); }, timers:timers, clear:function(){ timers.forEach(function(t){ t&&t.iv?clearInterval(t.iv):clearTimeout(t); }); timers.length=0; } }; }
+
+var ANIM={};
+
+/* 07 чат */
+ANIM.chat=function(fig){
+  var u=fig.querySelector('.bub.u'), a=fig.querySelector('.bub.a'), atxt=a.querySelector('.txt'), chips=fig.querySelectorAll('.chat-chips span');
+  var scen=[
+    {chip:0,q:'Подписал договор на услуги, а исполнитель сроки сорвал. Что можно сделать?',a:'Разберём по шагам: что записано в договоре про сроки и ответственность, какие документы у вас на руках и какие варианты действий есть. Дальше подскажу, с чего начать и что подготовить'},
+    {chip:1,q:'В квитанции за ЖКХ появилась непонятная строка. Куда обращаться?',a:'Сначала посмотрим, что это за начисление и кто его выставил. Потом составим запрос в управляющую компанию и разберём, какие сроки ответа у них есть и что делать, если ответа не будет'},
+    {chip:2,q:'Работодатель задерживает расчёт при увольнении. Какие у меня права?',a:'Разберём, какие выплаты положены при увольнении и в какие сроки. Подскажу, как зафиксировать задержку и куда можно обратиться, если договориться не получится'}
+  ];
+  var tm=mkT(), idx=0, on=true;
+  function cycle(){
+    if(!on) return; var s=scen[idx%scen.length]; idx++;
+    chips.forEach(function(c,i){ c.classList.toggle('on',i===s.chip); });
+    u.classList.remove('show'); a.classList.remove('show'); atxt.innerHTML='';
+    tm.T(function(){ u.classList.add('show'); typer(u,s.q,28,function(){
+      tm.T(function(){ a.classList.add('show'); var car=document.createElement('span'); car.className='caret'; var tx=document.createElement('span'); atxt.appendChild(tx); atxt.appendChild(car);
+        typer(tx,s.a,22,function(){ tm.T(function(){ car.remove(); },600); tm.T(cycle,5200); },tm.timers);
+      },500);
+    },tm.timers); },400);
+  }
+  if(RM){ var s=scen[0]; chips[s.chip].classList.add('on'); u.textContent=s.q; u.classList.add('show'); atxt.textContent=s.a; a.classList.add('show'); return {stop:function(){}}; }
+  cycle();
+  return {stop:function(){ on=false; tm.clear(); }};
+};
+
+/* 08 схема источников: запрос целиком в одной строке над агентом */
+ANIM.report=function(fig){
+  var $=function(sel){ return fig.querySelector(sel); }, $$=function(sel){ return [].slice.call(fig.querySelectorAll(sel)); };
+  var qtext=$('.qtext'), qbox=$('.qbox'), lq=$('.lq'), links=$$('.ls'), srcs=$$('.src rect'), lr=$('.lr'), agent=$('.agent rect'), rep=$('.rep rect'), rows=$$('.rows rect'), st=$('.qstate'), st2=$('.qstate2'), timer=$('.timer');
+  var Q='покажи выручку по филиалам за неделю';
+  var tm=mkT(), on=true;
+  function reset(){ [lq,lr].concat(links).forEach(function(l){ l.classList.remove('on','was'); }); srcs.concat([qbox,agent,rep]).forEach(function(r){ r.classList.remove('on'); }); rows.forEach(function(r){ r.classList.remove('on','on2'); }); qtext.textContent=''; st.textContent=''; st2.textContent=''; timer.textContent='время: 0:00'; }
+  function cycle(){
+    if(!on) return; reset();
+    var t0=Date.now(); tm.I(function(){ var s=Math.min(120,Math.round((Date.now()-t0)/1000*13)); timer.textContent='время: '+Math.floor(s/60)+':'+('0'+s%60).slice(-2); },200);
+    qbox.classList.add('on');
+    typer(qtext,Q,34,function(){
+      lq.classList.add('on'); agent.classList.add('on'); st.textContent='выбираю источники';
+      tm.T(function(){ lq.classList.remove('on'); lq.classList.add('was');
+        [0,1,2].forEach(function(k){ tm.T(function(){ links[k].classList.add('on'); srcs[k].classList.add('on'); st.textContent=['SQL к 1С','API Sheets','SQL к PostgreSQL'][k]; st2.textContent=''; if(k>0){ links[k-1].classList.remove('on'); links[k-1].classList.add('was'); } },k*900); });
+        tm.T(function(){ links[2].classList.remove('on'); links[2].classList.add('was'); st.textContent='агрегирую'; st2.textContent='три источника';
+          tm.T(function(){ lr.classList.add('on'); rep.classList.add('on'); st.textContent='готовлю отчёт'; st2.textContent='';
+            rows.forEach(function(r,k){ tm.T(function(){ r.classList.add(k%3===0?'on':'on2'); },k*220); });
+            tm.T(function(){ st.textContent='готово'; st2.textContent='2 минуты'; lr.classList.remove('on'); lr.classList.add('was'); tm.clear(); timer.textContent='время: 2:00'; tm.T(cycle,3600); },rows.length*220+300);
+          },700);
+        },2900);
+      },600);
+    },tm.timers);
+  }
+  if(RM){ reset(); qtext.textContent=Q; st.textContent='готово'; st2.textContent='2 минуты'; srcs.concat([qbox,agent,rep]).forEach(function(r){ r.classList.add('on'); }); rows.forEach(function(r,k){ r.classList.add(k%3===0?'on':'on2'); }); timer.textContent='время: 2:00'; return {stop:function(){}}; }
+  cycle();
+  return {stop:function(){ on=false; tm.clear(); }};
+};
+
+/* 09 конвейер проверки: canvas, спокойный поток, без красного и без сброса вниз */
+ANIM.check=function(fig){
+  var cv=fig.querySelector('canvas'), ctx=cv.getContext('2d'), W=0, H=0, on=true, raf=null, t0=performance.now();
+  var GAP=1500, LIFE=6200;
+  function size(){ var r=cv.getBoundingClientRect(); W=r.width; H=r.height; cv.width=Math.max(1,W*DPR); cv.height=Math.max(1,H*DPR); ctx.setTransform(DPR,0,0,DPR,0,0); }
+  size(); var ro=function(){ size(); }; addEventListener('resize',ro);
+  function pos(t){ var sx=[W*.2,W*.5,W*.8], k=[[0,-70],[1300,sx[0]],[1750,sx[0]],[2600,sx[1]],[3050,sx[1]],[3900,sx[2]],[4350,sx[2]],[5700,W+70]]; if(t<=0) return -70; for(var i=1;i<k.length;i++){ if(t<=k[i][0]){ var a=k[i-1],b=k[i],p=(t-a[0])/(b[0]-a[0]); return a[1]+(b[1]-a[1])*ease(p); } } return W+70; }
+  function draw(ms){
+    ctx.clearRect(0,0,W,H);
+    var sx=[W*.2,W*.5,W*.8], bw=Math.min(126,W*.27), depart=[1750,3050,4350];
+    var narrow=W<480, names=['база знаний','ФНС','таблица'], subs=['внутренняя','API',narrow?'Sheets, MCP':'Google Sheets, MCP'];
+    var yBox=H*.36, bh=44, yTrack=yBox+bh+58;
+    ctx.textBaseline='middle'; ctx.textAlign='center'; ctx.lineWidth=1;
+    ctx.strokeStyle=C.line1; ctx.beginPath(); ctx.moveTo(0,yTrack); ctx.lineTo(W,yTrack); ctx.stroke();
+    var first=Math.max(0,Math.floor((ms-LIFE)/GAP)), lastI=Math.floor(ms/GAP), cards=[];
+    for(var i=first;i<=lastI;i++){ var t=ms-i*GAP; if(t<0||t>LIFE) continue; cards.push({i:i,t:t,x:pos(t),risk:i%6===5}); }
+    names.forEach(function(n,k){
+      var dwell=cards.some(function(cd){ return cd.t>depart[k]-450&&cd.t<depart[k]; });
+      ctx.fillStyle=C.s2; ctx.strokeStyle=dwell?C.accent:C.line; rr(ctx,sx[k]-bw/2,yBox,bw,bh,12); ctx.fill(); ctx.stroke();
+      ctx.font='11.5px '+MONO; ctx.fillStyle=dwell?C.text:C.text2; ctx.fillText(n,sx[k],yBox+16);
+      ctx.font='9.5px '+MONO; ctx.fillStyle=C.dim; ctx.fillText(subs[k],sx[k],yBox+31);
+      var fl=0; cards.forEach(function(cd){ var d=cd.t-depart[k]; if(d>0&&d<1500) fl=Math.max(fl,1-d/1500); });
+      if(fl>0) tick(ctx,sx[k],yBox-20,8,C.accent,.2+.8*fl);
+    });
+    cards.forEach(function(cd){
+      var x=cd.x, done=cd.t>depart[2], gray=cd.risk, a=cd.t<350?cd.t/350:cd.t>LIFE-350?(LIFE-cd.t)/350:1;
+      ctx.globalAlpha=a; ctx.fillStyle=C.s3; ctx.strokeStyle=done?(gray?C.dim:C.accent):C.line; rr(ctx,x-29,yTrack-16,58,32,8); ctx.fill(); ctx.stroke();
+      ctx.fillStyle=done&&!gray?C.accent:C.muted; ctx.fillRect(x-20,yTrack-7,26,2.5); ctx.fillStyle=C.dim; ctx.fillRect(x-20,yTrack-1,16,2.5); ctx.fillRect(x-20,yTrack+5,21,2.5);
+      ctx.font='10px '+MONO; ctx.textAlign='center';
+      if(gray&&cd.t>depart[1]){ ctx.fillStyle=C.dim; ctx.fillText('к специалисту',x,yTrack+32); }
+      else if(done){ ctx.fillStyle=C.accText; ctx.fillText('проверен',x,yTrack+32); }
+      ctx.globalAlpha=1;
+    });
+    ctx.font='10.5px '+MONO; ctx.textAlign='left'; ctx.fillStyle=C.dim;
+    if(narrow){ ctx.fillText('контрагент проходит три проверки,',16,H-32); ctx.fillText('редкий уходит к специалисту',16,H-18); }
+    else ctx.fillText('контрагент проходит три проверки, редкий уходит к специалисту',16,H-18);
+  }
+  function frame(){ if(!on) return; raf=requestAnimationFrame(frame); draw(performance.now()-t0); }
+  if(RM){ draw(7800); return {stop:function(){ removeEventListener('resize',ro); }}; }
+  frame();
+  return {stop:function(){ on=false; cancelAnimationFrame(raf); removeEventListener('resize',ro); }};
+};
+
+/* 10 голосовой агент: реплики в окне фиксированной высоты, итог звонка; пауза после каждой реплики, чтобы успеть прочитать */
+ANIM.voice=function(fig){
+  var lines=[].slice.call(fig.querySelectorAll('.ln')), inner=fig.querySelector('.lines-in'), wrap=fig.querySelector('.lines'), res=fig.querySelector('.call-res'), who=fig.querySelector('.who'), callNo=fig.querySelector('.callno'), tmr=fig.querySelector('.callt');
+  var tm=mkT(), on=true, call=37;
+  function scrollTo(i){ var off=0; if(i>=0){ var ln=lines[i]; off=Math.max(0,ln.offsetTop+ln.offsetHeight-wrap.clientHeight); } inner.style.transform='translateY('+(-off)+'px)'; }
+  function cycle(){
+    if(!on) return; call++; callNo.textContent=('00'+call).slice(-3);
+    lines.forEach(function(l){ l.classList.remove('show'); }); res.classList.remove('show'); scrollTo(-1);
+    var t0=Date.now(); tm.I(function(){ var s=Math.round((Date.now()-t0)/1000*6); tmr.textContent=Math.floor(s/60)+':'+('0'+s%60).slice(-2); },250);
+    var t=400;
+    lines.forEach(function(l,i){ tm.T(function(){ who.textContent='говорит: '+(l.classList.contains('a')?'агент':'клиент'); l.classList.add('show'); scrollTo(i); },t); t+=l.classList.contains('a')?2200:1800; });
+    tm.T(function(){ res.classList.add('show'); who.textContent='итог: встреча'; tm.clear(); tm.T(cycle,4200); },t);
+  }
+  if(RM){ lines.forEach(function(l){ l.classList.add('show'); }); res.classList.add('show'); callNo.textContent='038'; tmr.textContent='1:12'; who.textContent='итог: встреча'; call=38; scrollTo(lines.length-1); return {stop:function(){}}; }
+  cycle();
+  return {stop:function(){ on=false; tm.clear(); }};
+};
+
+function start(){ stop(); var wide=!!body.querySelector('.cs2'); modal.classList.toggle('cs-wide',wide); [].forEach.call(body.querySelectorAll('.cs2-fig[data-anim]'),function(fig){ var f=ANIM[fig.dataset.anim]; if(f) live.push(f(fig)); }); }
+function stop(){ live.forEach(function(h){ h&&h.stop&&h.stop(); }); live=[]; }
+new MutationObserver(function(){ if(modal.hidden){ stop(); modal.classList.remove('cs-wide'); } else start(); }).observe(modal,{attributes:true,attributeFilter:['hidden']});
+})();
+</script>
 </body>
 </html>
