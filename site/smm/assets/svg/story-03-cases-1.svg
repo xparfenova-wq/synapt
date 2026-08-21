@@ -1,15 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
 <rect x="0" y="0" width="1080" height="1920" rx="0" fill="#0E1211"/>
 <text x="90" y="288" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="2.64" fill="#D0E865">кейс, AI-десант</text>
-<rect x="91" y="458.31" width="708.73" height="88" rx="44" fill="none" stroke="#2C3532" stroke-width="2"/>
-<text x="118" y="518.31" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.88" fill="#9AA5A1">INNORTO, оптовые закупки</text>
-<text x="90" y="665.31" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">Заявка в закупках</text>
-<text x="90" y="755.61" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">оформляется</text>
-<text x="90" y="845.91" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">за 2 минуты, раньше</text>
-<text x="90" y="936.2" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">уходило 10</text>
-<text x="90" y="1082.5" font-family="JetBrains Mono" font-size="110" font-weight="500" letter-spacing="-3.3" fill="#FFFFFF">26 из 27</text>
-<text x="90" y="1157.5" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.44" fill="#9AA5A1">сотрудников работают с AI каждый</text>
-<text x="90" y="1216.89" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.44" fill="#9AA5A1">день</text>
-<text x="90" y="1369.28" font-family="JetBrains Mono" font-size="110" font-weight="500" letter-spacing="-3.3" fill="#FFFFFF">25-35 ч</text>
-<text x="90" y="1444.28" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.44" fill="#9AA5A1">рутины в неделю освободилось</text>
+<rect x="91" y="533.16" width="708.73" height="88" rx="44" fill="none" stroke="#2C3532" stroke-width="2"/>
+<text x="118" y="593.16" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.88" fill="#9AA5A1">INNORTO, оптовые закупки</text>
+<text x="90" y="740.16" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">Поиск фабрики</text>
+<text x="90" y="830.45" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">занимает 2 минуты,</text>
+<text x="90" y="920.75" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">раньше уходило 10</text>
+<text x="90" y="1067.05" font-family="JetBrains Mono" font-size="110" font-weight="500" letter-spacing="-3.3" fill="#FFFFFF">26 из 27</text>
+<text x="90" y="1142.05" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.44" fill="#9AA5A1">сотрудников офиса работают с AI</text>
+<text x="90" y="1294.44" font-family="JetBrains Mono" font-size="110" font-weight="500" letter-spacing="-3.3" fill="#FFFFFF">25-35 ч</text>
+<text x="90" y="1369.44" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.44" fill="#9AA5A1">рутины в неделю освободилось</text>
 </svg>
