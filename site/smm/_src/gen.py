@@ -111,6 +111,17 @@ p.tx.center{text-align:center}
 .hlcover{position:absolute;inset:0;background:var(--surface);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:56px}
 .hlcover .w{font-family:var(--mono);font-size:120px;color:#fff;letter-spacing:.02em;line-height:1;text-align:center;white-space:nowrap}
 .hlcover .mark{width:150px;height:150px;color:var(--accent)}
+.frame.fr-lime{--bg:#D0E865;--surface:rgba(18,21,10,.06);--text:#12150A;--text2:#2A3115;--muted:#3E4A1E;--dim:#55622B;--line:rgba(18,21,10,.22);--accent:#12150A;--milk:#12150A}
+.frame.fr-lime .kick,.frame.fr-lime .idx{color:#3E4A1E}
+.frame.fr-lime h1{color:#12150A}
+.frame.fr-lime .tx{color:#2A3115}
+.frame.fr-milk{--bg:#F4F6F5;--surface:rgba(18,21,10,.04);--text:#12150A;--text2:#2E3532;--muted:#5A6560;--dim:#78827E;--line:rgba(18,21,10,.14);--accent:#5F7A16;--milk:#12150A}
+.frame.fr-milk .kick,.frame.fr-milk .idx{color:#78827E}
+.frame.fr-milk h1{color:#12150A}
+.frame.fr-milk .tx{color:#2E3532}
+.card .ph{width:148px;height:148px;border-radius:50%%;object-fit:cover;display:block;margin-bottom:22px}
+.card.pcard{display:flex;align-items:center;gap:36px}
+.card.pcard .ph{margin-bottom:0;flex:none}
 '''
 
 def scale(fmt):
@@ -200,12 +211,21 @@ def cards(title, items, on_last=False, text=None, tsize='m', all_on=False, row=F
         b += '<div class="card%s%s"><div class="k">%s</div><div class="v">%s</div></div>' % (' on' if on else '', ' row' if row else '', nb(it[0]), nb(it[1]))
     return b + '</div></div>'
 
+def photo_uri(path):
+    import base64 as _b
+    return 'data:image/jpeg;base64,' + _b.b64encode(open(path, 'rb').read()).decode()
+
 def team(title, people, text=None):
     b = '<div class="body"><h1 class="m">%s</h1>' % nb(title)
     if text: b += '<p class="tx">%s</p>' % nb(text)
     b += '<div class="cards">'
-    for n, r in people:
-        b += '<div class="card"><div class="nm">%s</div><div class="rl">%s</div></div>' % (nb(n), nb(r))
+    for item in people:
+        if len(item) == 3:
+            n, r, ph = item
+            b += '<div class="card pcard"><img class="ph" src="%s"><div><div class="nm">%s</div><div class="rl">%s</div></div></div>' % (photo_uri(ph), nb(n), nb(r))
+        else:
+            n, r = item
+            b += '<div class="card"><div class="nm">%s</div><div class="rl">%s</div></div>' % (nb(n), nb(r))
     return b + '</div></div>'
 
 def cta(title, text, btn='Оставить заявку', size='l'):
@@ -222,10 +242,13 @@ def quotes(title, qs, tsize='m'):
 def bigquote(text, who=None):
     return '<div class="body"><div class="q plain"><span class="m">«</span>%s<span class="m">»</span>%s</div></div>' % (nb(text), '<span class="who">%s</span>' % nb(who) if who else '')
 
-def hlcover(word):
+HL_VARIANTS = {1: ('#151A18', '#FFFFFF'), 2: ('#D0E865', '#12150A'), 3: ('#F4F6F5', '#12150A'), 4: ('#151A18', '#D0E865'), 5: ('#D0E865', '#12150A')}
+
+def hlcover(word, idx=1):
     sc = scale('story')
-    mark = ''
-    return '<!doctype html><html lang="ru"><head><meta charset="utf-8"><style>%s</style></head><body><div class="hlcover"><div class="w">%s</div></div></body></html>' % (CSS % sc, nb(word))
+    bg, fg = HL_VARIANTS.get(idx, HL_VARIANTS[1])
+    ov = '<style>.hlcover{background:%s}.hlcover .w{color:%s}</style>' % (bg, fg)
+    return '<!doctype html><html lang="ru"><head><meta charset="utf-8"><style>%s</style>%s</head><body><div class="hlcover"><div class="w">%s</div></div></body></html>' % (CSS % sc, ov, nb(word))
 
 # ---------- контент ----------
 slides = []  # (name, fmt, html)
@@ -236,7 +259,8 @@ def P(name, kick, inner, i, n, net=False, cls='', logo=False):
     slides.append((name, 'post', page('post', inner, '%d / %d' % (i, n), kick, net, cls, logo=logo, site=logo)))
 
 def S(name, kick, inner, net=False, cls='', logo=False):
-    slides.append((name, 'story', page('story', inner, None, kick, net, cls, logo=logo, site=logo)))
+    # Сторис без знака и подписи: человек уже в нашем профиле
+    slides.append((name, 'story', page('story', inner, None, kick, net, cls, logo=False, site=False)))
 
 # ПОСТ 1 – кто мы: миссия и команда (главная synapt.tech: hero, 04 Почему мы, Почему сейчас, 07 Консультация)
 N = 7
@@ -247,10 +271,11 @@ P('post1-04', 'почему сейчас', cards('AI внедряют почти
     ('одни', 'покупают подписки и раздают инструменты сотрудникам. Работа при этом остаётся прежней'),
     ('другие', 'перестраивают сам процесс: кто принимает заявку, откуда берутся знания, как работа идёт дальше'),
 ], on_last=True, tsize='m'), 4, N, logo=True)
+TEAM_PH = '/private/tmp/claude-501/-Users-xeniaparfenova-A-AAM/b8920e5c-bebf-49bd-9213-58265736edd5/scratchpad/team'
 P('post1-05', 'команда', team('Кто ведёт проект', [
-    ('Виктор Калугин', 'технический партнёр, архитектура системы'),
-    ('Антон Орешкин', 'стратегический партнёр, продукт и развитие'),
-    ('Никита', 'project manager студии'),
+    ('Виктор Калугин', 'технический партнёр, архитектура системы', TEAM_PH + '/витя.jpg'),
+    ('Антон Орешкин', 'стратегический партнёр, продукт и развитие', TEAM_PH + '/антон.jpg'),
+    ('Никита', 'project manager студии', TEAM_PH + '/никита.jpg'),
 ]), 5, N, logo=True)
 P('post1-06', 'в цифрах', metrics(None, [
     ('19 900 ₽', 'чекап бизнеса за две недели'),
@@ -260,7 +285,7 @@ P('post1-06', 'в цифрах', metrics(None, [
 P('post1-07', 'следующий шаг', cta('30 минут в Zoom с партнёрами студии', 'Вы рассказываете про бизнес, мы задаём вопросы и совместно определяем цели. После присылаем запись разговора и разбор: что увидели и с чего рекомендуем начать'), 7, N, net=True, logo=True)
 
 # ПОСТ 2 – услуги: три шага и модули системы (главная synapt.tech, 01 Услуги; цена десанта с synapt.tech/desant)
-P('post2-01', 'услуги', thesis('Сначала формируем карту процессов бизнеса, затем строим систему под неё', 'На старте изучаем, где компания теряет деньги и где их недополучает, а потом собираем под это AI-систему', 'l'), 1, N, net=True)
+P('post2-01', 'услуги', thesis('Сначала формируем карту процессов бизнеса, затем строим систему под неё', 'На старте изучаем, где компания теряет деньги и где их недополучает, а потом собираем под это AI-систему', 'l'), 1, N, net=True, cls='fr-lime')
 P('post2-02', 'шаг 1 из 3', metrics('AI-чекап бизнеса', [
     ('19 900 ₽', 'две недели, сумма фиксированная'),
     ('14 дней', 'от Zoom до карты процессов и первого агента'),
@@ -293,7 +318,7 @@ PRINC = [
     ('60 дней на связи после сдачи', 'В первые недели обкатываем систему на работе, и если что-то идёт не так, правим. Заодно быстро донастраиваем под нагрузку и новые сценарии, которые появляются по ходу'),
     ('Берёмся только за то, что умеем', 'AI-агенты, интеграции, веб и мобильная разработка для бизнеса. Игровые проекты, встроенное ПО и задачи, где нужна команда из тридцати человек, отдаём коллегам и говорим об этом сразу. Если задача решается на уровне процесса и AI не нужен – тоже скажем'),
 ]
-P('post3-01', 'подход', thesis('Шесть принципов, по которым работаем над каждым проектом', 'Смету и критерии приёмки фиксируем в договоре до начала работ, дальше показываем результат каждую неделю', 'l'), 1, N, net=True)
+P('post3-01', 'подход', thesis('Шесть принципов, по которым работаем над каждым проектом', 'Смету и критерии приёмки фиксируем в договоре до начала работ, дальше показываем результат каждую неделю', 'l'), 1, N, net=True, cls='fr-milk')
 P('post3-02', 'принципы 1 и 2 из 6', plist(PRINC, 0), 2, N)
 P('post3-03', 'принципы 3 и 4 из 6', plist(PRINC, 2), 3, N)
 P('post3-04', 'принципы 5 и 6 из 6', plist(PRINC, 4), 4, N)
@@ -390,7 +415,7 @@ S('story-05-faq-5', 'следующий шаг', cta('30 минут в Zoom с �
 
 # ОБЛОЖКИ хайлайтов
 for i, w in enumerate(['о студии', 'три шага', 'кейсы', 'система', 'вопросы'], 1):
-    slides.append(('cover-%02d' % i, 'story', hlcover(w)))
+    slides.append(('cover-%02d' % i, 'story', hlcover(w, i)))
 
 manifest = []
 for name, fmt, h in slides:

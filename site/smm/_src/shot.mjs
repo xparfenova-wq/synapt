@@ -83,6 +83,14 @@ const extract = () => {
     if (!(el instanceof HTMLElement)) return;
     const cs = getComputedStyle(el);
     if (cs.display === 'none') return;
+    if (el.tagName === 'IMG') {
+      const r = el.getBoundingClientRect();
+      const rad = Math.min(parseFloat(cs.borderTopLeftRadius) || 0, r.width / 2);
+      const id = 'clip' + Math.round(r.left) + 'x' + Math.round(r.top);
+      if (rad > 0) out.push(`<clipPath id="${id}"><circle cx="${num(r.left + r.width / 2)}" cy="${num(r.top + r.height / 2)}" r="${num(r.width / 2)}"/></clipPath>`);
+      out.push(`<image x="${num(r.left)}" y="${num(r.top)}" width="${num(r.width)}" height="${num(r.height)}" href="${el.src}" preserveAspectRatio="xMidYMid slice"${rad > 0 ? ` clip-path="url(#${id})"` : ''}/>`);
+      return;
+    }
     if (el !== document.body && el !== document.documentElement) rectEl(el.getBoundingClientRect(), cs);
     for (const c of el.childNodes) {
       if (c.nodeType === 3) textNode(c); else if (c.nodeType === 1) walk(c);
