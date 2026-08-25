@@ -1,14 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
-<rect x="0" y="0" width="1080" height="1920" rx="0" fill="#0E1211"/>
-<text x="90" y="288" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="2.64" fill="#D0E865">кейс, разработка</text>
-<rect x="91" y="503.47" width="817.84" height="88" rx="44" fill="none" stroke="#2C3532" stroke-width="2"/>
-<text x="118" y="563.47" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.88" fill="#9AA5A1">Инженерное бюро, имя под NDA</text>
-<text x="90" y="710.47" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">30 лет расчётов</text>
-<text x="90" y="800.77" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">переехали в браузер</text>
-<text x="90" y="891.06" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">без расхождений</text>
-<text x="90" y="1037.36" font-family="JetBrains Mono" font-size="110" font-weight="500" letter-spacing="-3.3" fill="#FFFFFF">100%</text>
-<text x="90" y="1112.36" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.44" fill="#9AA5A1">совпадение расчётов со старой</text>
-<text x="90" y="1171.75" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.44" fill="#9AA5A1">системой</text>
-<text x="90" y="1324.14" font-family="JetBrains Mono" font-size="110" font-weight="500" letter-spacing="-3.3" fill="#FFFFFF">30+ лет</text>
-<text x="90" y="1399.14" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.44" fill="#9AA5A1">накопленной логики сохранено</text>
+<rect x="0" y="0" width="1080" height="1920" rx="0" fill="#F4F6F5"/>
+<text x="90" y="288" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="2.64" fill="#78827E">кейс, AI-консультант</text>
+<rect x="91" y="354.47" width="898" height="146" rx="73" fill="none" stroke="#12150A" stroke-opacity="0.3" stroke-width="2"/>
+<text x="118" y="414.47" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.88" fill="#12150A">Консалтинговая компания, имя</text>
+<text x="118" y="472.47" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.88" fill="#12150A">под NDA</text>
+<text x="90" y="619.47" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#12150A">Консультант</text>
+<text x="90" y="709.77" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#12150A">разбирает запрос</text>
+<text x="90" y="800.06" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#12150A">по методике</text>
+<text x="90" y="890.36" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#12150A">компании прямо</text>
+<text x="90" y="980.66" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#12150A">в Telegram</text>
+<text x="90" y="1126.95" font-family="JetBrains Mono" font-size="110" font-weight="500" letter-spacing="-3.3" fill="#12150A">300+</text>
+<text x="90" y="1201.95" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.44" fill="#5A6560">часов работы экспертов экономим</text>
+<text x="90" y="1261.34" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.44" fill="#5A6560">каждый месяц</text>
+<text x="90" y="1413.73" font-family="JetBrains Mono" font-size="110" font-weight="500" letter-spacing="-3.3" fill="#12150A">800+</text>
+<text x="90" y="1488.73" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.44" fill="#5A6560">страниц методики внутри базы</text>
+<text x="90" y="1548.13" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.44" fill="#5A6560">знаний</text>
 </svg>

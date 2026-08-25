@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+<rect x="0" y="0" width="1080" height="1920" rx="0" fill="#0E1211"/>
+<text x="90" y="288" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="2.64" fill="#D0E865">кейс, b2c-сервис</text>
+<rect x="91" y="474.47" width="898" height="146" rx="73" fill="none" stroke="#2C3532" stroke-width="2"/>
+<text x="118" y="534.47" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.88" fill="#9AA5A1">Коммерческий продукт, участие</text>
+<text x="118" y="592.47" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.88" fill="#9AA5A1">в разработке</text>
+<text x="90" y="739.47" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">Юридический</text>
+<text x="90" y="829.77" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">консультант отвечает</text>
+<text x="90" y="920.06" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">на вопросы в чате</text>
+<text x="90" y="1066.36" font-family="JetBrains Mono" font-size="110" font-weight="500" letter-spacing="-3.3" fill="#FFFFFF">24/7</text>
+<text x="90" y="1141.36" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.44" fill="#9AA5A1">ответ в любое время</text>
+<text x="90" y="1293.75" font-family="JetBrains Mono" font-size="110" font-weight="500" letter-spacing="-3.3" fill="#FFFFFF">2-5 сек</text>
+<text x="90" y="1368.75" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.44" fill="#9AA5A1">ответ в обычном режиме, до минуты</text>
+<text x="90" y="1428.14" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.44" fill="#9AA5A1">в экспертном</text>
+</svg>

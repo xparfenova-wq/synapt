@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+<rect x="0" y="0" width="1080" height="1920" rx="0" fill="#F4F6F5"/>
+<text x="90" y="288" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="2.64" fill="#78827E">подход, 4 из 6</text>
+<text x="90" y="748.2" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#12150A">Данные не покидают</text>
+<text x="90" y="838.5" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#12150A">ваш контур</text>
+<text x="90" y="944.8" font-family="Manrope" font-size="50" font-weight="400" letter-spacing="-0.25" fill="#2E3532">Фиксируем, какие поля уходят</text>
+<text x="90" y="1015.8" font-family="Manrope" font-size="50" font-weight="400" letter-spacing="-0.25" fill="#2E3532">в модель. Обезличивание, ролевой</text>
+<text x="90" y="1086.8" font-family="Manrope" font-size="50" font-weight="400" letter-spacing="-0.25" fill="#2E3532">доступ и логирование настраиваем</text>
+<text x="90" y="1157.8" font-family="Manrope" font-size="50" font-weight="400" letter-spacing="-0.25" fill="#2E3532">мы, ваш юрист получает описание</text>
+<text x="90" y="1228.8" font-family="Manrope" font-size="50" font-weight="400" letter-spacing="-0.25" fill="#2E3532">контура</text>
+</svg>
