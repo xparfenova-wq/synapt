@@ -70,14 +70,15 @@ ol.steps li::before{content:"0" counter(s);display:block;font-family:var(--mono)
  letter-spacing:.08em;color:var(--accent);margin-bottom:8px}
 
 table.plan{table-layout:fixed;min-width:1140px}
-table.plan td{white-space:normal;overflow-wrap:anywhere}
-table.plan th:nth-child(1),table.plan td:nth-child(1){width:6%}
-table.plan th:nth-child(2),table.plan td:nth-child(2){width:7%}
+table.plan td{white-space:normal;overflow-wrap:normal;word-break:normal}
+table.plan td:nth-child(1),table.plan td:nth-child(2){white-space:nowrap}
+table.plan th:nth-child(1),table.plan td:nth-child(1){width:7%}
+table.plan th:nth-child(2),table.plan td:nth-child(2){width:8%}
 table.plan th:nth-child(3),table.plan td:nth-child(3){width:5%}
-table.plan th:nth-child(4),table.plan td:nth-child(4){width:8%}
+table.plan th:nth-child(4),table.plan td:nth-child(4){width:7%}
 table.plan th:nth-child(5),table.plan td:nth-child(5){width:12%}
 table.plan th:nth-child(6),table.plan td:nth-child(6){width:7%}
-table.plan th:nth-child(7),table.plan td:nth-child(7){width:15%}
+table.plan th:nth-child(7),table.plan td:nth-child(7){width:14%}
 table.plan th:nth-child(8),table.plan td:nth-child(8){width:27%}
 table.plan th:nth-child(9),table.plan td:nth-child(9){width:13%}
 .tw{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);
