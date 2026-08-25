@@ -1,30 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
-<rect x="0" y="0" width="1080" height="1920" rx="0" fill="#D0E865"/>
-<text x="90" y="288" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="2.64" fill="#3E4A1E">что предлагаем</text>
-<text x="90" y="398.42" font-family="Manrope" font-size="64" font-weight="600" letter-spacing="-1.92" fill="#12150A">Четыре запроса, с которыми</text>
-<text x="90" y="468.81" font-family="Manrope" font-size="64" font-weight="600" letter-spacing="-1.92" fill="#12150A">к нам приходят</text>
-<rect x="90" y="520.2" width="900" height="253.59" rx="0" fill="#12150A" fill-opacity="0.05"/>
-<text x="116" y="587.2" font-family="JetBrains Mono" font-size="44" font-weight="500" letter-spacing="0.88" fill="#12150A">01</text>
-<text x="238" y="587.2" font-family="Manrope" font-size="42" font-weight="500" letter-spacing="-0.42" fill="#12150A">AI-чекап: покажем, где внедрение</text>
-<text x="238" y="639.7" font-family="Manrope" font-size="42" font-weight="500" letter-spacing="-0.42" fill="#12150A">окупится</text>
-<text x="238" y="694.2" font-family="Manrope" font-size="36" font-weight="400" fill="#3E4A1E">хотите применить AI, но не знаете, с чего</text>
-<text x="238" y="741" font-family="Manrope" font-size="36" font-weight="400" fill="#3E4A1E">начать</text>
-<rect x="90" y="787.8" width="900" height="253.59" rx="0" fill="#12150A" fill-opacity="0.05"/>
-<text x="116" y="854.8" font-family="JetBrains Mono" font-size="44" font-weight="500" letter-spacing="0.88" fill="#12150A">02</text>
-<text x="238" y="854.8" font-family="Manrope" font-size="42" font-weight="500" letter-spacing="-0.42" fill="#12150A">AI-десант: настраиваем процессы</text>
-<text x="238" y="907.3" font-family="Manrope" font-size="42" font-weight="500" letter-spacing="-0.42" fill="#12150A">внутри команды</text>
-<text x="238" y="961.8" font-family="Manrope" font-size="36" font-weight="400" fill="#3E4A1E">хотите, чтобы команда начала регулярно</text>
-<text x="238" y="1008.59" font-family="Manrope" font-size="36" font-weight="400" fill="#3E4A1E">работать с AI</text>
-<rect x="90" y="1055.39" width="900" height="253.59" rx="0" fill="#12150A" fill-opacity="0.05"/>
-<text x="116" y="1122.39" font-family="JetBrains Mono" font-size="44" font-weight="500" letter-spacing="0.88" fill="#12150A">03</text>
-<text x="238" y="1122.39" font-family="Manrope" font-size="42" font-weight="500" letter-spacing="-0.42" fill="#12150A">AI-система: разработка с первого</text>
-<text x="238" y="1174.89" font-family="Manrope" font-size="42" font-weight="500" letter-spacing="-0.42" fill="#12150A">нужного модуля</text>
-<text x="238" y="1229.39" font-family="Manrope" font-size="36" font-weight="400" fill="#3E4A1E">точно знаете, какой процесс надо</text>
-<text x="238" y="1276.19" font-family="Manrope" font-size="36" font-weight="400" fill="#3E4A1E">оптимизировать</text>
-<rect x="90" y="1322.98" width="900" height="253.59" rx="0" fill="#12150A" fill-opacity="0.05"/>
-<text x="116" y="1389.98" font-family="JetBrains Mono" font-size="44" font-weight="500" letter-spacing="0.88" fill="#12150A">04</text>
-<text x="238" y="1389.98" font-family="Manrope" font-size="42" font-weight="500" letter-spacing="-0.42" fill="#12150A">Напишите нам: разберём</text>
-<text x="238" y="1442.48" font-family="Manrope" font-size="42" font-weight="500" letter-spacing="-0.42" fill="#12150A">и предложим, с чего начать</text>
-<text x="238" y="1496.98" font-family="Manrope" font-size="36" font-weight="400" fill="#3E4A1E">есть запрос на ускорение, но не похоже</text>
-<text x="238" y="1543.78" font-family="Manrope" font-size="36" font-weight="400" fill="#3E4A1E">на первые три</text>
+<rect x="0" y="0" width="1080" height="1920" rx="0" fill="#151A18"/>
+<text x="90" y="288" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="2.64" fill="#D0E865">что предлагаем</text>
+<text x="90" y="398.42" font-family="Manrope" font-size="64" font-weight="600" letter-spacing="-1.92" fill="#FFFFFF">Четыре запроса, с которыми</text>
+<text x="90" y="468.81" font-family="Manrope" font-size="64" font-weight="600" letter-spacing="-1.92" fill="#FFFFFF">к нам приходят</text>
+<text x="116" y="587.2" font-family="JetBrains Mono" font-size="44" font-weight="500" letter-spacing="0.88" fill="#D0E865">01</text>
+<text x="238" y="587.2" font-family="Manrope" font-size="42" font-weight="500" letter-spacing="-0.42" fill="#FFFFFF">AI-чекап: покажем, где внедрение</text>
+<text x="238" y="639.7" font-family="Manrope" font-size="42" font-weight="500" letter-spacing="-0.42" fill="#FFFFFF">окупится</text>
+<text x="238" y="694.2" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">хотите применить AI, но не знаете, с чего</text>
+<text x="238" y="741" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">начать</text>
+<text x="116" y="854.8" font-family="JetBrains Mono" font-size="44" font-weight="500" letter-spacing="0.88" fill="#D0E865">02</text>
+<text x="238" y="854.8" font-family="Manrope" font-size="42" font-weight="500" letter-spacing="-0.42" fill="#FFFFFF">AI-десант: настраиваем процессы</text>
+<text x="238" y="907.3" font-family="Manrope" font-size="42" font-weight="500" letter-spacing="-0.42" fill="#FFFFFF">внутри команды</text>
+<text x="238" y="961.8" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">хотите, чтобы команда начала регулярно</text>
+<text x="238" y="1008.59" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">работать с AI</text>
+<text x="116" y="1122.39" font-family="JetBrains Mono" font-size="44" font-weight="500" letter-spacing="0.88" fill="#D0E865">03</text>
+<text x="238" y="1122.39" font-family="Manrope" font-size="42" font-weight="500" letter-spacing="-0.42" fill="#FFFFFF">AI-система: разработка с первого</text>
+<text x="238" y="1174.89" font-family="Manrope" font-size="42" font-weight="500" letter-spacing="-0.42" fill="#FFFFFF">нужного модуля</text>
+<text x="238" y="1229.39" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">точно знаете, какой процесс надо</text>
+<text x="238" y="1276.19" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">оптимизировать</text>
+<text x="116" y="1389.98" font-family="JetBrains Mono" font-size="44" font-weight="500" letter-spacing="0.88" fill="#D0E865">04</text>
+<text x="238" y="1389.98" font-family="Manrope" font-size="42" font-weight="500" letter-spacing="-0.42" fill="#FFFFFF">Напишите нам: разберём</text>
+<text x="238" y="1442.48" font-family="Manrope" font-size="42" font-weight="500" letter-spacing="-0.42" fill="#FFFFFF">и предложим, с чего начать</text>
+<text x="238" y="1496.98" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">есть запрос на ускорение, но не похоже</text>
+<text x="238" y="1543.78" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">на первые три</text>
 </svg>

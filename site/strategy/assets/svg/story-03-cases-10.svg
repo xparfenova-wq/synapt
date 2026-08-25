@@ -1,14 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
 <rect x="0" y="0" width="1080" height="1920" rx="0" fill="#0E1211"/>
 <text x="90" y="288" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="2.64" fill="#D0E865">кейс, голосовой агент</text>
-<rect x="91" y="488.02" width="736" height="88" rx="44" fill="none" stroke="#2C3532" stroke-width="2"/>
-<text x="118" y="548.02" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.88" fill="#9AA5A1">Отдел продаж, имя под NDA</text>
-<text x="90" y="695.02" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">Голосовой агент</text>
-<text x="90" y="785.31" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">прозванивает базу</text>
-<text x="90" y="875.61" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">и назначает встречи</text>
-<text x="90" y="965.91" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">менеджеру</text>
-<text x="90" y="1112.2" font-family="JetBrains Mono" font-size="110" font-weight="500" letter-spacing="-3.3" fill="#FFFFFF">до 200</text>
-<text x="90" y="1187.2" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.44" fill="#9AA5A1">звонков в день</text>
-<text x="90" y="1339.59" font-family="JetBrains Mono" font-size="110" font-weight="500" letter-spacing="-3.3" fill="#FFFFFF">встреча</text>
-<text x="90" y="1414.59" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.44" fill="#9AA5A1">итог звонка с менеджером</text>
+<text x="90" y="548.02" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="2.64" fill="#9AA5A1">Отдел продаж, имя под NDA</text>
+<text x="90" y="679.02" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">Голосовой агент</text>
+<text x="90" y="769.31" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">прозванивает базу</text>
+<text x="90" y="859.61" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">и назначает встречи</text>
+<text x="90" y="949.91" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">менеджеру</text>
+<text x="90" y="1096.2" font-family="JetBrains Mono" font-size="110" font-weight="500" letter-spacing="-3.3" fill="#FFFFFF">до 200</text>
+<text x="90" y="1171.2" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.44" fill="#9AA5A1">звонков в день</text>
+<text x="90" y="1323.59" font-family="JetBrains Mono" font-size="110" font-weight="500" letter-spacing="-3.3" fill="#FFFFFF">встреча</text>
+<text x="90" y="1398.59" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.44" fill="#9AA5A1">итог звонка с менеджером</text>
 </svg>

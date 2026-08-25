@@ -1,15 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
-<rect x="0" y="0" width="1080" height="1920" rx="0" fill="#D0E865"/>
-<text x="90" y="288" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="2.64" fill="#3E4A1E">кейс, MCP-агент</text>
-<rect x="91" y="459.02" width="898" height="146" rx="73" fill="none" stroke="#12150A" stroke-opacity="0.3" stroke-width="2"/>
-<text x="118" y="519.02" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.88" fill="#12150A">Операционный отдел, имя</text>
-<text x="118" y="577.02" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.88" fill="#12150A">под NDA</text>
-<text x="90" y="724.02" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#12150A">MCP-агент</text>
-<text x="90" y="814.31" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#12150A">для подготовки</text>
-<text x="90" y="904.61" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#12150A">корпоративной</text>
-<text x="90" y="994.91" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#12150A">отчётности</text>
-<text x="90" y="1141.2" font-family="JetBrains Mono" font-size="110" font-weight="500" letter-spacing="-3.3" fill="#12150A">2 мин</text>
-<text x="90" y="1216.2" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.44" fill="#3E4A1E">на отчёт вместо 5 часов</text>
-<text x="90" y="1368.59" font-family="JetBrains Mono" font-size="110" font-weight="500" letter-spacing="-3.3" fill="#12150A">3</text>
-<text x="90" y="1443.59" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.44" fill="#3E4A1E">источника: 1С, Sheets, PostgreSQL</text>
+<rect x="0" y="0" width="1080" height="1920" rx="0" fill="#0E1211"/>
+<text x="90" y="288" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="2.64" fill="#D0E865">кейс, MCP-агент</text>
+<text x="90" y="519.02" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="2.64" fill="#9AA5A1">Операционный отдел, имя</text>
+<text x="90" y="577.02" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="2.64" fill="#9AA5A1">под NDA</text>
+<text x="90" y="708.02" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">MCP-агент</text>
+<text x="90" y="798.31" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">для подготовки</text>
+<text x="90" y="888.61" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">корпоративной</text>
+<text x="90" y="978.91" font-family="Manrope" font-size="86" font-weight="600" letter-spacing="-2.58" fill="#FFFFFF">отчётности</text>
+<text x="90" y="1125.2" font-family="JetBrains Mono" font-size="110" font-weight="500" letter-spacing="-3.3" fill="#FFFFFF">2 мин</text>
+<text x="90" y="1200.2" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.44" fill="#9AA5A1">на отчёт вместо 5 часов</text>
+<text x="90" y="1352.59" font-family="JetBrains Mono" font-size="110" font-weight="500" letter-spacing="-3.3" fill="#FFFFFF">3</text>
+<text x="90" y="1427.59" font-family="JetBrains Mono" font-size="44" font-weight="400" letter-spacing="0.44" fill="#9AA5A1">источника: 1С, Sheets, PostgreSQL</text>
 </svg>
