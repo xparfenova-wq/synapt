@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+<rect x="0" y="0" width="1080" height="1350" rx="0" fill="#0E1211"/>
+<text x="90" y="121" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="2.16" fill="#D0E865">почему сейчас</text>
+<text x="871.19" y="121" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="2.16" fill="#6E7975">4 / 7</text>
+<text x="90" y="291.61" font-family="Manrope" font-size="70" font-weight="600" letter-spacing="-2.1" fill="#FFFFFF">AI внедряют почти все,</text>
+<text x="90" y="368.61" font-family="Manrope" font-size="70" font-weight="600" letter-spacing="-2.1" fill="#FFFFFF">вопрос в том, как</text>
+<rect x="90" y="420.61" width="900" height="334.39" rx="28" fill="#151A18"/>
+<rect x="91" y="421.61" width="898" height="332.39" rx="27" fill="none" stroke="#232A28" stroke-width="2"/>
+<text x="132" y="495.61" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="2.16" fill="#6E7975">одни</text>
+<text x="132" y="572.61" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">покупают подписки и раздают</text>
+<text x="132" y="637.41" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">инструменты. Работа остаётся</text>
+<text x="132" y="702.2" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">прежней</text>
+<rect x="90" y="777" width="900" height="334.39" rx="28" fill="#D0E865" fill-opacity="0.07"/>
+<rect x="91" y="778" width="898" height="332.39" rx="27" fill="none" stroke="#D0E865" stroke-opacity="0.6" stroke-width="2"/>
+<text x="132" y="852" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="2.16" fill="#D0E865">другие</text>
+<text x="132" y="929" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">перестраивают сам процесс:</text>
+<text x="132" y="993.8" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">кто принимает заявку, откуда</text>
+<text x="132" y="1058.59" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">берутся знания</text>
+</svg>

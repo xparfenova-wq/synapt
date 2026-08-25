@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+<rect x="0" y="0" width="1080" height="1350" rx="0" fill="#0E1211"/>
+<text x="90" y="121" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="2.16" fill="#D0E865">принципы 3 и 4 из 6</text>
+<text x="871.19" y="121" font-family="JetBrains Mono" font-size="36" font-weight="400" letter-spacing="2.16" fill="#6E7975">3 / 7</text>
+<text x="90" y="441.53" font-family="JetBrains Mono" font-size="36" font-weight="500" letter-spacing="0.72" fill="#D0E865">03</text>
+<text x="196" y="441.53" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">Система остаётся у вас целиком</text>
+<text x="196" y="499.92" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">Код, доступы, промпты, база знаний</text>
+<text x="196" y="548.52" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">и документация – ваши. Продолжить можно</text>
+<text x="196" y="597.11" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">с нами или с другой командой</text>
+<text x="90" y="729.7" font-family="JetBrains Mono" font-size="36" font-weight="500" letter-spacing="0.72" fill="#D0E865">04</text>
+<text x="196" y="729.7" font-family="Manrope" font-size="48" font-weight="500" letter-spacing="-0.48" fill="#FFFFFF">Данные не покидают ваш контур</text>
+<text x="196" y="788.09" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">Фиксируем, какие поля уходят в модель.</text>
+<text x="196" y="836.69" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">Обезличивание, ролевой доступ</text>
+<text x="196" y="885.28" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">и логирование настраиваем мы, юрист</text>
+<text x="196" y="933.88" font-family="Manrope" font-size="36" font-weight="400" fill="#9AA5A1">получает описание контура</text>
+</svg>
