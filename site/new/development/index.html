@@ -2281,36 +2281,7 @@ html body footer .f-legal p:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(
 #devFx{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0;opacity:.5;-webkit-mask-image:linear-gradient(180deg,#000 0,#000 38%,rgba(0,0,0,.4) 68%,transparent 96%);mask-image:linear-gradient(180deg,#000 0,#000 38%,rgba(0,0,0,.4) 68%,transparent 96%)}
 @media(max-width:760px){#devFx{opacity:.4}}
 </style>
-<script id="proto-js">(function(){
-var c=document.getElementById('devFx'); if(!c) return;
-var ctx=c.getContext('2d'),DPR=Math.min(devicePixelRatio||1,2),W=0,H=0;
-function rs(){W=c.clientWidth;H=c.clientHeight;c.width=W*DPR;c.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0)}
-rs();addEventListener('resize',rs);
-var GR='128,140,136',PH='208,232,101',M=6;
-function draw(t){
- ctx.clearRect(0,0,W,H);
- var cx=W*.64,cy=H*.42,cyc=(t/12000)%1,R=Math.min(W,H)*.26;
- ctx.strokeStyle='rgba('+GR+',.2)';ctx.setLineDash([3,9]);ctx.lineWidth=1;
- ctx.beginPath();ctx.arc(cx,cy,R*1.28,0,7);ctx.stroke();ctx.setLineDash([]);
- for(var i=0;i<M;i++){
-  var a=-Math.PI/2+i/M*Math.PI*2,x=cx+Math.cos(a)*R,y=cy+Math.sin(a)*R;
-  var st=(cyc*M)-i, on=st>0;
-  if(on){var k=Math.min(1,st*2);
-   ctx.strokeStyle='rgba('+(st<0.6?PH:GR)+','+(0.35*k)+')';ctx.lineWidth=1.4;
-   ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+(x-cx)*k,cy+(y-cy)*k);ctx.stroke();}
-  ctx.fillStyle=on?'rgba('+PH+',.85)':'rgba('+GR+',.5)';
-  ctx.beginPath();ctx.arc(x,y,on?4.5:3,0,7);ctx.fill();
-  for(var g=0;g<3;g++){var ga=a+(g-1)*.5,gx=x+Math.cos(ga)*26,gy=y+Math.sin(ga)*26;
-   ctx.strokeStyle='rgba('+GR+',.14)';ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(gx,gy);ctx.stroke();
-   ctx.fillStyle='rgba('+GR+',.5)';ctx.beginPath();ctx.arc(gx,gy,1.6,0,7);ctx.fill();}}
- var pulse=1+Math.sin(t/500)*.12;
- ctx.strokeStyle='rgba('+PH+',.5)';ctx.lineWidth=1.5;
- ctx.strokeRect(cx-13*pulse,cy-13*pulse,26*pulse,26*pulse);
- ctx.fillStyle='rgba('+PH+',.9)';ctx.fillRect(cx-4,cy-4,8,8);
- requestAnimationFrame(draw);
-}
-if(!matchMedia('(prefers-reduced-motion: reduce)').matches)requestAnimationFrame(draw);else draw(11000);
-})();</script>
+
 <style id="fix-capsize">
 .hs span{font-size:15.5px!important;line-height:1.5!important}
 .hero-meta .m>span{font-size:15.5px!important;line-height:1.45!important}
@@ -3019,5 +2990,35 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
   });
 })();
 </script>
+<script id="proto-js">(function(){
+var c=document.getElementById('devFx'); if(!c) return;
+var ctx=c.getContext('2d'),DPR=Math.min(devicePixelRatio||1,2),W=0,H=0;
+function rs(){W=c.clientWidth;H=c.clientHeight;c.width=W*DPR;c.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0)}
+rs();addEventListener('resize',rs);
+var GR='128,140,136',PH='208,232,101',M=6;
+function draw(t){
+ ctx.clearRect(0,0,W,H);
+ var cx=W*.64,cy=H*.42,cyc=(t/12000)%1,R=Math.min(W,H)*.26;
+ ctx.strokeStyle='rgba('+GR+',.2)';ctx.setLineDash([3,9]);ctx.lineWidth=1;
+ ctx.beginPath();ctx.arc(cx,cy,R*1.28,0,7);ctx.stroke();ctx.setLineDash([]);
+ for(var i=0;i<M;i++){
+  var a=-Math.PI/2+i/M*Math.PI*2,x=cx+Math.cos(a)*R,y=cy+Math.sin(a)*R;
+  var st=(cyc*M)-i, on=st>0;
+  if(on){var k=Math.min(1,st*2);
+   ctx.strokeStyle='rgba('+(st<0.6?PH:GR)+','+(0.35*k)+')';ctx.lineWidth=1.4;
+   ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+(x-cx)*k,cy+(y-cy)*k);ctx.stroke();}
+  ctx.fillStyle=on?'rgba('+PH+',.85)':'rgba('+GR+',.5)';
+  ctx.beginPath();ctx.arc(x,y,on?4.5:3,0,7);ctx.fill();
+  for(var g=0;g<3;g++){var ga=a+(g-1)*.5,gx=x+Math.cos(ga)*26,gy=y+Math.sin(ga)*26;
+   ctx.strokeStyle='rgba('+GR+',.14)';ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(gx,gy);ctx.stroke();
+   ctx.fillStyle='rgba('+GR+',.5)';ctx.beginPath();ctx.arc(gx,gy,1.6,0,7);ctx.fill();}}
+ var pulse=1+Math.sin(t/500)*.12;
+ ctx.strokeStyle='rgba('+PH+',.5)';ctx.lineWidth=1.5;
+ ctx.strokeRect(cx-13*pulse,cy-13*pulse,26*pulse,26*pulse);
+ ctx.fillStyle='rgba('+PH+',.9)';ctx.fillRect(cx-4,cy-4,8,8);
+ requestAnimationFrame(draw);
+}
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches)requestAnimationFrame(draw);else draw(11000);
+})();</script>
 </body>
 </html>
