@@ -2278,14 +2278,22 @@ html body footer .f-legal p:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(
 </style>
 <meta name="robots" content="noindex, nofollow">
 <style id="fix-proto">
+.mods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:34px}
+.mod{border:1px solid var(--line);border-radius:16px;padding:20px 20px 18px;background:var(--surface,rgba(255,255,255,.02))}
+.mod-k{font-family:var(--mono);font-size:11px;letter-spacing:.09em;color:var(--accent-txt,var(--accent))}
+.mod-t{font-size:16.5px;font-weight:600;margin:10px 0 8px;color:var(--text)}
+.mod-d{font-size:13.5px;line-height:1.55;color:var(--text-muted);margin:0}
+@media(max-width:900px){.mods{grid-template-columns:1fr}}
 #devFx{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0;opacity:.5;-webkit-mask-image:linear-gradient(180deg,#000 0,#000 38%,rgba(0,0,0,.4) 68%,transparent 96%);mask-image:linear-gradient(180deg,#000 0,#000 38%,rgba(0,0,0,.4) 68%,transparent 96%)}
 @media(max-width:760px){#devFx{opacity:.4}}
 </style>
 
 <style id="fix-capsize">
-.hs span{font-size:15.5px!important;line-height:1.5!important}
-.hero-meta .m>span{font-size:15.5px!important;line-height:1.45!important}
-@media(max-width:760px){.hs span{font-size:14px!important}.hero-meta .m>span{font-size:14px!important}}
+.hs span{font-size:17px!important;line-height:1.5!important}
+.hero-meta .m>span{font-size:17px!important;line-height:1.45!important}
+@media(max-width:760px){.hs span{font-size:15px!important}.hero-meta .m>span{font-size:15px!important}}
+footer .f-main>*:not(.f-brand){margin-top:58px}
+@media(max-width:760px){footer .f-main>*:not(.f-brand){margin-top:0}}
 </style>
 </head>
 <body>
@@ -2326,11 +2334,26 @@ window.fetch.__synapt=true; })();</script>
   
 </div>
   </div>
-</div></header> <section id="cwhy" class="rh-list"><div class="wrap"> <div class="sec-head reveal"> <div class="eyebrow"><span class="n">01</span> С чего начать</div> <h2>Два входа в&nbsp;разработку</h2> </div> <div class="rules"><div class="rule reveal"><span class="rn">01</span><div class="rt">Агент под&nbsp;конкретную задачу</div><div class="rd">Одна задача – один агент: квалификация заявок, ответы клиентам, отчёт из&nbsp;CRM. Разворачиваем готового агента и&nbsp;подключаем к&nbsp;вашим системам за&nbsp;неделю</div></div><div class="rule reveal"><span class="rn">02</span><div class="rt">Система под&nbsp;отдел</div><div class="rd">Процесс целиком: продажи, клиентский сервис, документы, знания. Собираем систему из&nbsp;нужных модулей под&nbsp;то, как&nbsp;работает ваш отдел</div></div></div></div></section><section id="formats" class="rh-list"><div class="wrap"> <div class="sec-head reveal"> <div class="eyebrow"><span class="n">02</span> AI-агент за&nbsp;неделю</div> <h2>29&nbsp;900&nbsp;₽ – готовый агент с&nbsp;интеграцией</h2> <p class="lead">Быстрый способ пощупать AI в&nbsp;деле: рабочий агент на&nbsp;ваших данных и&nbsp;в&nbsp;ваших системах</p></div> <div class="rules"><div class="rule reveal"><span class="rn">01</span><div class="rt">Что делает</div><div class="rd">Отвечает на&nbsp;заявки, квалифицирует лидов, готовит отчёты, ищет по&nbsp;базе знаний – под&nbsp;вашу задачу. Работает в&nbsp;Telegram или&nbsp;прямо в&nbsp;CRM</div></div><div class="rule reveal"><span class="rn">02</span><div class="rt">Куда подключаем</div><div class="rd">amoCRM, Битрикс24, 1С, Tilda и&nbsp;другие ваши системы. Данные остаются в&nbsp;вашем контуре</div></div><div class="rule reveal"><span class="rn">03</span><div class="rt">Что дальше</div><div class="rd">Поддержка и&nbsp;развитие агента – 6&nbsp;900&nbsp;₽/мес по&nbsp;желанию. Если задача вырастает – агент становится первым модулем системы</div></div></div></div></section><section id="system" class="rh-list"><div class="wrap"> <div class="sec-head reveal"> <div class="eyebrow"><span class="n">03</span> AI-система</div> <h2>200–800&nbsp;тыс.&nbsp;₽ – система под&nbsp;бизнес-процесс</h2> <p class="lead">Разрабатывается из&nbsp;модулей: продажи, аналитика, команда, экспертиза, операции, документы – безопасный слой в&nbsp;основании</p></div> <div class="rules"><div class="rule reveal"><span class="rn">01</span><div class="rt">Точная спецификация</div><div class="rd">Первый этап любой разработки – техническое задание: фиксируем процессы, данные, критерии приёмки и&nbsp;смету. Если вы&nbsp;проходили AI-чекап, его результаты идут в&nbsp;зачёт и&nbsp;кратно ускоряют этот этап</div></div><div class="rule reveal"><span class="rn">02</span><div class="rt">Разработка из&nbsp;модулей</div><div class="rd">Компания заходит с&nbsp;любого нужного модуля. Каждое следующее внедрение встраивается в&nbsp;общий контур дешевле и&nbsp;быстрее</div></div><div class="rule reveal"><span class="rn">03</span><div class="rt">Передача целиком</div><div class="rd">Код, доступы, промпты, база знаний и&nbsp;документация – ваши. Продолжить можно с&nbsp;нами или&nbsp;с&nbsp;другой командой</div></div></div></div></section><section id="process" class="rh-list"><div class="wrap"> <div class="sec-head reveal"> <div class="eyebrow"><span class="n">04</span> Как&nbsp;работаем</div> <h2>Декомпозируем проект на&nbsp;этапы, каждый завершаем результатом</h2> </div> <div class="rules"><div class="rule reveal"><span class="rn">01</span><div class="rt">Разбор и&nbsp;план внедрения</div><div class="rd">Карта конкретного процесса и&nbsp;смета</div></div><div class="rule reveal"><span class="rn">02</span><div class="rt">Разработка решения</div><div class="rd">Работающий продукт</div></div><div class="rule reveal"><span class="rn">03</span><div class="rt">Внедрение и&nbsp;обучение</div><div class="rd">Обученная команда и&nbsp;регламент</div></div><div class="rule reveal"><span class="rn">04</span><div class="rt">Передача и&nbsp;поддержка</div><div class="rd">Всё, что&nbsp;нужно для&nbsp;работы, и&nbsp;60&nbsp;дней на&nbsp;связи</div></div></div></div></section><section id="faq" class="rh-dense"><div class="wrap"> <div class="sec-head reveal"> <div class="eyebrow"><span class="n">05</span> FAQ</div> <h2>Частые вопросы</h2> </div> <div class="faq reveal"><details open><summary>Почему агент стоит 29&nbsp;900, если фрилансеры делают за&nbsp;10&nbsp;тысяч? <span class="pl">+</span></summary><div class="ans">За&nbsp;эти деньги вы&nbsp;получаете не&nbsp;скрипт, а&nbsp;продукт: интеграцию с&nbsp;вашими системами, данные внутри вашего контура, гарантии и&nbsp;поддержку. Фриланс-бот без поддержки умирает при первом изменении в&nbsp;CRM</div></details><details><summary>Мы&nbsp;не&nbsp;уверены, что&nbsp;именно внедрять <span class="pl">+</span></summary><div class="ans">Тогда вам не&nbsp;сюда, и&nbsp;это нормально: начните с&nbsp;AI-чекапа – за&nbsp;две недели покажем карту процессов и&nbsp;что&nbsp;окупится первым</div></details><details><summary>Сколько занимает система? <span class="pl">+</span></summary><div class="ans">3–5&nbsp;недель до&nbsp;готового продукта. Первый результат показываем каждую неделю</div></details><details><summary>Что с&nbsp;данными? <span class="pl">+</span></summary><div class="ans">Фиксируем, какие поля уходят в&nbsp;модель. Обезличивание, ролевой доступ и&nbsp;логирование настраиваем мы, ваш юрист получает описание контура</div></details></div></div></section> <section id="lead" class="rh-cta"><div class="wrap">
+</div></header> <section id="cwhy" class="rh-list"><div class="wrap"> <div class="sec-head reveal"> <div class="eyebrow"><span class="n">01</span> С чего начать</div> <h2>Два входа в&nbsp;разработку</h2> </div> <div class="rules"><div class="rule reveal"><span class="rn">01</span><div class="rt">Агент под&nbsp;конкретную задачу</div><div class="rd">Одна задача – один агент: квалификация заявок, ответы клиентам, отчёт из&nbsp;CRM. Разворачиваем готового агента и&nbsp;подключаем к&nbsp;вашим системам за&nbsp;неделю</div></div><div class="rule reveal"><span class="rn">02</span><div class="rt">Система под&nbsp;отдел</div><div class="rd">Процесс целиком: продажи, клиентский сервис, документы, знания. Собираем кастомную систему из&nbsp;нужных модулей под&nbsp;то, как&nbsp;работает ваш отдел</div></div></div></div></section><section id="formats" class="rh-list"><div class="wrap"> <div class="sec-head reveal"> <div class="eyebrow"><span class="n">02</span> AI-агент за&nbsp;неделю</div> <h2>29&nbsp;900&nbsp;₽ – готовый агент&nbsp;с&nbsp;интеграцией</h2> <p class="lead">Быстрый способ пощупать AI на&nbsp;практике</p></div> <div class="rules"><div class="rule reveal"><span class="rn">01</span><div class="rt">Что делает</div><div class="rd">Отвечает на&nbsp;заявки, квалифицирует лидов, готовит отчёты, ищет по&nbsp;базе знаний – под&nbsp;вашу задачу. Работает в&nbsp;Telegram или&nbsp;прямо в&nbsp;CRM</div></div><div class="rule reveal"><span class="rn">02</span><div class="rt">Куда подключаем</div><div class="rd">amoCRM, Битрикс24, 1С, Tilda и&nbsp;другие ваши системы. Данные остаются в&nbsp;вашем контуре</div></div><div class="rule reveal"><span class="rn">03</span><div class="rt">Что дальше</div><div class="rd">Поддержка и&nbsp;развитие агента – 6&nbsp;900&nbsp;₽/мес по&nbsp;желанию. Если задача вырастает – агент становится первым модулем системы</div></div></div></div></section><section id="system" class="rh-list"><div class="wrap"> <div class="sec-head reveal"> <div class="eyebrow"><span class="n">03</span> AI-система</div> <h2>200–800&nbsp;тыс.&nbsp;₽ – система под&nbsp;бизнес-процесс</h2> <p class="lead">Разрабатывается из&nbsp;модулей: продажи, аналитика, команда, экспертиза, операции, документы – безопасный слой в&nbsp;основании</p></div> <div class="rules"><div class="rule reveal"><span class="rn">01</span><div class="rt">Точная спецификация</div><div class="rd">Первый этап любой разработки – техническое задание: фиксируем процессы, данные, критерии приёмки и&nbsp;смету. Если вы&nbsp;проходили AI-чекап, его результаты идут в&nbsp;зачёт и&nbsp;кратно ускоряют этот этап</div></div><div class="rule reveal"><span class="rn">02</span><div class="rt">Разработка из&nbsp;модулей</div><div class="rd">Компания заходит с&nbsp;любого нужного модуля. Каждое следующее внедрение встраивается в&nbsp;общий контур дешевле и&nbsp;быстрее</div></div><div class="rule reveal"><span class="rn">03</span><div class="rt">Передача целиком</div><div class="rd">Код, доступы, промпты, база знаний и&nbsp;документация – ваши. Продолжить можно с&nbsp;нами или&nbsp;с&nbsp;другой командой</div></div></div><div class="mods reveal"><div class="mod"><span class="mod-k">продажи</span><div class="mod-t">Работа с&nbsp;клиентом</div><p class="mod-d">Система отвечает клиенту за&nbsp;секунды, выясняет потребность и&nbsp;доводит до&nbsp;заявки, а&nbsp;после разбирает диалоги и&nbsp;показывает зоны роста</p></div><div class="mod"><span class="mod-k">управление</span><div class="mod-t">AI-дашборд для&nbsp;собственника</div><p class="mod-d">Система разбирает воронку, найм, маржу и&nbsp;другие процессы, присылает регулярный разбор с&nbsp;рекомендациями и&nbsp;ссылками на&nbsp;источники данных</p></div><div class="mod"><span class="mod-k">команда</span><div class="mod-t">Знания и&nbsp;адаптация</div><p class="mod-d">Агент отвечает по&nbsp;внутренним документам и&nbsp;истории решений, онбордит новых специалистов и&nbsp;помогает с&nbsp;решениями опытным</p></div><div class="mod"><span class="mod-k">экспертиза</span><div class="mod-t">AI-эксперт</div><p class="mod-d">Цифровая копия эксперта отвечает клиентам по&nbsp;авторским материалам и&nbsp;методологиям, а&nbsp;сложные случаи передаёт человеку</p></div><div class="mod"><span class="mod-k">операции</span><div class="mod-t">Интеграции и&nbsp;автоматизация</div><p class="mod-d">Связываем CRM, 1С, таблицы и&nbsp;мессенджеры так, чтобы данные не&nbsp;переносились вручную и&nbsp;работали между собой</p></div><div class="mod"><span class="mod-k">основа всех блоков</span><div class="mod-t">Безопасный слой</div><p class="mod-d">Обезличивание данных перед отправкой в&nbsp;модель, ролевой доступ и&nbsp;журнал обращений. Настраивается один раз в&nbsp;основе всей системы</p></div></div></div></section><section id="process" class="rh-list"><div class="wrap"> <div class="sec-head reveal"> <div class="eyebrow"><span class="n">04</span> Как&nbsp;работаем</div> <h2>Декомпозируем проект на&nbsp;этапы, каждый завершаем результатом</h2> </div> <div class="rules"><div class="rule reveal"><span class="rn">01</span><div class="rt">Разбор и&nbsp;план внедрения</div><div class="rd">Изучаем процессы и&nbsp;находим узкие места. На&nbsp;выходе – карта конкретного процесса и&nbsp;смета: схема, приоритеты по&nbsp;эффекту и&nbsp;план работ</div></div><div class="rule reveal"><span class="rn">02</span><div class="rt">Разработка решения</div><div class="rd">Настраиваем агентов под&nbsp;ваш сценарий, собираем базу знаний из&nbsp;документов и&nbsp;подключаем систему к&nbsp;рабочим инструментам. На&nbsp;выходе – работающий продукт, который можно открыть и&nbsp;проверить на&nbsp;своих данных ещё до&nbsp;конца проекта</div></div><div class="rule reveal"><span class="rn">03</span><div class="rt">Внедрение и&nbsp;обучение</div><div class="rd">Встраиваем в&nbsp;работу, обучаем команду, настраиваем контроль качества ответов. На&nbsp;выходе – обученная команда и&nbsp;регламент: люди работают самостоятельно, у&nbsp;каждого сценария есть инструкция и&nbsp;ответственный</div></div><div class="rule reveal"><span class="rn">04</span><div class="rt">Передача и&nbsp;поддержка</div><div class="rd">Передаём систему команде в&nbsp;работу и&nbsp;60&nbsp;дней остаёмся на&nbsp;связи: обкатаем на&nbsp;задачах и&nbsp;поправим, если что-то пойдёт не&nbsp;так. На&nbsp;выходе – всё, что&nbsp;нужно для&nbsp;работы: код, документация, доступы, промпты и&nbsp;база знаний переходят к&nbsp;вам</div></div></div></div></section><section id="faq" class="rh-dense"><div class="wrap"> <div class="sec-head reveal"> <div class="eyebrow"><span class="n">05</span> FAQ</div> <h2>Частые вопросы</h2> </div> <div class="faq reveal"><details>
+      <summary>С&nbsp;чего начинается проект? <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+      <div class="ans">С&nbsp;короткой встречи на&nbsp;30&nbsp;минут. Разбираем задачу, текущие процессы, данные и&nbsp;то, какого результата вы&nbsp;ждёте. На&nbsp;ней&nbsp;же&nbsp;обсуждаем решение, и&nbsp;после отправляем план работ</div>
+    </details><details>
+      <summary>Когда будет готов работающий продукт? <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+      <div class="ans">Обычно через <span class="nb">3-5&nbsp;недель</span>, в&nbsp;зависимости от&nbsp;объёма. Работаем по&nbsp;этапам, каждый заканчивается результатом, который можно открыть и&nbsp;проверить</div>
+    </details><details>
+      <summary>Можно начать с&nbsp;небольшого решения? <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+      <div class="ans">Да, чекап за&nbsp;две недели или&nbsp;компактное решение под&nbsp;один процесс. Дальше добавляем модули по&nbsp;тому, что&nbsp;показала работа первого, масштабирование идёт по&nbsp;вашему запросу</div>
+    </details><details>
+      <summary>Что&nbsp;если у&nbsp;нас есть своя команда разработки? <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+      <div class="ans">Одного агента ваш разработчик соберёт за&nbsp;выходные, это&nbsp;правда. Но&nbsp;решение начинает работать и&nbsp;приносить деньги, когда за&nbsp;ним стоит пять вещей:<ul class="ans-list"><li>Спрос: продукт закрывает работу, которая людям действительно нужна, а&nbsp;не&nbsp;остаётся экспериментом ради эксперимента&nbsp;– мы&nbsp;проверяем это&nbsp;до&nbsp;сборки</li><li>Адаптация: учим команду работать с&nbsp;новым инструментом, чтобы через месяц всё не&nbsp;откатилось назад</li><li>Сценарии: закладываем запас на&nbsp;будущее и&nbsp;держим систему живой, когда меняются модель, интерфейс, прайсы поставщиков и&nbsp;условия рынка</li><li>Цепочки: ведём длинные маршруты, где агент ходит по&nbsp;нескольким системам, и&nbsp;отвечаем за&nbsp;то, чтобы ошибка в&nbsp;середине не&nbsp;стоила дорого</li><li>Обвязка: собираем вокруг агента журнал действий, подтверждения и&nbsp;контроль качества ответов</li></ul>Всё это&nbsp;закрываем сами, вашей команде остаётся работа, ради которой её&nbsp;нанимали</div>
+    </details><details>
+      <summary>Вы&nbsp;интегрируетесь с&nbsp;нашими системами? <span class="pl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+      <div class="ans">Да, это&nbsp;основа большинства проектов. Подключаемся к&nbsp;тому, что&nbsp;уже работает: CRM, 1С, таблицы, почта и&nbsp;мессенджеры. Если по&nbsp;ходу видим, что&nbsp;сам процесс мешает или&nbsp;работает некорректно&nbsp;– говорим и&nbsp;предлагаем, как&nbsp;его&nbsp;перестроить</div>
+    </details><details><summary>Что с&nbsp;данными? <span class="pl">+</span></summary><div class="ans">Фиксируем, какие поля уходят в&nbsp;модель. Обезличивание, ролевой доступ и&nbsp;логирование настраиваем мы, ваш юрист получает описание контура</div></details></div></div></div></section> <section id="lead" class="rh-cta"><div class="wrap">
   <div class="lead-grid">
     <div class="lead-copy reveal">
       <div class="eyebrow"><span class="n">06</span> Следующий шаг</div>
-      <h2>Опишите задачу</h2>
+      <h2><span class="nb">30 минут</span> в&nbsp;Zoom</h2>
   <p class="lead">Вы&nbsp;рассказываете про&nbsp;бизнес, мы&nbsp;задаём вопросы и&nbsp;совместно определяем цели. После присылаем запись разговора и&nbsp;разбор: что&nbsp;увидели и&nbsp;с&nbsp;чего рекомендуем начать</p>
     </div>
     <div class="leadbox reveal d1">
@@ -2993,32 +3016,88 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
 <script id="proto-js">(function(){
 var c=document.getElementById('devFx'); if(!c) return;
 var ctx=c.getContext('2d'),DPR=Math.min(devicePixelRatio||1,2),W=0,H=0;
-function rs(){W=c.clientWidth;H=c.clientHeight;c.width=W*DPR;c.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0)}
-rs();addEventListener('resize',rs);
-var GR='128,140,136',PH='208,232,101',M=6;
-function draw(t){
+var GR='128,140,136',PH='208,232,101';
+var CYC=17000,seed=1,traces=[],mods=[],links=[];
+function rng(s){return function(){s|=0;s=s+0x6D2B79F5|0;var t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function rs(){W=c.clientWidth;H=c.clientHeight;c.width=W*DPR;c.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);build(seed)}
+function build(sd){
+ var R=rng(sd*77773+13);traces=[];mods=[];links=[];
+ var cx=W*.6,cy=H*.42,S=Math.min(W,H)/520+.4;
+ mods.push({x:cx,y:cy,r:9,core:true,birth:0});
+ // магистрали: ломаные под прямыми углами, волнами от ядра
+ function lay(x,y,dir,len,wave,depth){
+  if(wave>=5||depth>4)return;
+  var n=depth===0?6:(R()<.7?2:1);
+  for(var i=0;i<n;i++){
+   var d=depth===0?i%4:(R()<.7?dir:(dir+ (R()<.5?1:3))%4);
+   var L=len*(.7+R()*.6);
+   var dx=[1,0,-1,0][d],dy=[0,1,0,-1][d];
+   var x1=x+dx*L,y1=y+dy*L*.8;
+   var t0=wave*2100+R()*900;
+   traces.push({x0:x,y0:y,x1:x1,y1:y1,t0:t0,dur:700+R()*500,wave:wave});
+   var isMod=R()<.75;
+   if(isMod)mods.push({x:x1,y:y1,r:3.5+R()*4,core:false,birth:t0+700,wave:wave});
+   if(R()<.85)lay(x1,y1,d,L,wave+1,depth+1);
+  }
+ }
+ lay(cx,cy,0,70*S,0,0);
+ // поперечные линки между близкими модулями
+ for(var a=1;a<mods.length;a++)for(var b=a+1;b<mods.length;b++){
+  var dx=mods[a].x-mods[b].x,dy=mods[a].y-mods[b].y,dd=dx*dx+dy*dy;
+  if(dd<9000&&R()<.16)links.push({a:mods[a],b:mods[b],t0:Math.max(mods[a].birth,mods[b].birth)+800});
+ }
+}
+var pulses=[],last=0;
+function draw(now){
+ var tm=now%CYC,cycN=Math.floor(now/CYC)+1;
+ if(cycN!==seed){seed=cycN;build(seed);pulses=[]}
+ var fade=tm>CYC-1400?1-(tm-(CYC-1400))/1400:(tm<450?tm/450:1);
  ctx.clearRect(0,0,W,H);
- var cx=W*.64,cy=H*.42,cyc=(t/12000)%1,R=Math.min(W,H)*.26;
- ctx.strokeStyle='rgba('+GR+',.2)';ctx.setLineDash([3,9]);ctx.lineWidth=1;
- ctx.beginPath();ctx.arc(cx,cy,R*1.28,0,7);ctx.stroke();ctx.setLineDash([]);
- for(var i=0;i<M;i++){
-  var a=-Math.PI/2+i/M*Math.PI*2,x=cx+Math.cos(a)*R,y=cy+Math.sin(a)*R;
-  var st=(cyc*M)-i, on=st>0;
-  if(on){var k=Math.min(1,st*2);
-   ctx.strokeStyle='rgba('+(st<0.6?PH:GR)+','+(0.35*k)+')';ctx.lineWidth=1.4;
-   ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+(x-cx)*k,cy+(y-cy)*k);ctx.stroke();}
-  ctx.fillStyle=on?'rgba('+PH+',.85)':'rgba('+GR+',.5)';
-  ctx.beginPath();ctx.arc(x,y,on?4.5:3,0,7);ctx.fill();
-  for(var g=0;g<3;g++){var ga=a+(g-1)*.5,gx=x+Math.cos(ga)*26,gy=y+Math.sin(ga)*26;
-   ctx.strokeStyle='rgba('+GR+',.14)';ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(gx,gy);ctx.stroke();
-   ctx.fillStyle='rgba('+GR+',.5)';ctx.beginPath();ctx.arc(gx,gy,1.6,0,7);ctx.fill();}}
- var pulse=1+Math.sin(t/500)*.12;
- ctx.strokeStyle='rgba('+PH+',.5)';ctx.lineWidth=1.5;
- ctx.strokeRect(cx-13*pulse,cy-13*pulse,26*pulse,26*pulse);
- ctx.fillStyle='rgba('+PH+',.9)';ctx.fillRect(cx-4,cy-4,8,8);
+ var cx=W*.6,cy=H*.42;
+ ctx.save();ctx.translate(cx,cy);ctx.scale(1+Math.sin(now/3100)*.005,1+Math.sin(now/3100)*.005);ctx.translate(-cx,-cy);
+ ctx.globalAlpha=fade;
+ for(var i=0;i<traces.length;i++){var s=traces[i];
+  var p=Math.max(0,Math.min(1,(tm-s.t0)/s.dur));if(p<=0)continue;
+  var e=1-Math.pow(1-p,3);
+  var fresh=p<1?1:Math.max(0,1-(tm-s.t0-s.dur)/2400);
+  ctx.strokeStyle='rgba('+(fresh>.25?PH:GR)+','+(0.2+fresh*.3)+')';
+  ctx.lineWidth=fresh>.25?1.25:0.85;
+  ctx.beginPath();ctx.moveTo(s.x0,s.y0);ctx.lineTo(s.x0+(s.x1-s.x0)*e,s.y0+(s.y1-s.y0)*e);ctx.stroke();
+ }
+ for(var i=0;i<links.length;i++){var l=links[i];if(tm<l.t0)continue;
+  var lf=Math.min(1,(tm-l.t0)/700);
+  ctx.setLineDash([3,5]);ctx.strokeStyle='rgba('+GR+','+(0.16*lf)+')';ctx.lineWidth=0.7;
+  ctx.beginPath();ctx.moveTo(l.a.x,l.a.y);ctx.lineTo(l.b.x,l.b.y);ctx.stroke();ctx.setLineDash([]);
+ }
+ for(var i=0;i<mods.length;i++){var md=mods[i];if(tm<md.birth&&!md.core)continue;
+  var mf=md.core?1:Math.min(1,(tm-md.birth)/500);
+  var fresh=md.core?0:Math.max(0,1-(tm-md.birth)/2600);
+  var r=md.r*(0.6+0.4*mf);
+  ctx.strokeStyle='rgba('+(fresh>.2?PH:GR)+','+(0.4+fresh*.5)+')';
+  ctx.lineWidth=1;
+  ctx.strokeRect(md.x-r,md.y-r,r*2,r*2);
+  if(fresh>.5){ctx.fillStyle='rgba('+PH+','+((fresh-.5)*.5)+')';ctx.fillRect(md.x-r,md.y-r,r*2,r*2)}
+  if(fresh>.55){ctx.strokeStyle='rgba('+PH+','+((fresh-.55)*.7)+')';
+   ctx.strokeRect(md.x-r-4-(1-fresh)*10,md.y-r-4-(1-fresh)*10,(r+4+(1-fresh)*10)*2,(r+4+(1-fresh)*10)*2)}
+ }
+ var rr=8+Math.sin(now/650)*1.5;
+ ctx.fillStyle='rgba('+PH+',.92)';ctx.fillRect(cx-rr/2,cy-rr/2,rr,rr);
+ ctx.strokeStyle='rgba('+PH+',.3)';ctx.strokeRect(cx-rr/2-6,cy-rr/2-6,rr+12,rr+12);
+ if(tm>1600&&tm<CYC-1600&&now-last>300&&traces.length){last=now;
+  var s=traces[Math.floor(Math.random()*traces.length)];
+  if((tm-s.t0)/s.dur>=1)pulses.push({s:s,t:0,sp:.0011+Math.random()*.0008,back:Math.random()<.4})}
+ for(var j=pulses.length-1;j>=0;j--){var u=pulses[j];u.t+=u.sp*16.7;
+  if(u.t>=1){pulses.splice(j,1);continue}
+  var tt=u.back?1-u.t:u.t;
+  var px=u.s.x0+(u.s.x1-u.s.x0)*tt,py=u.s.y0+(u.s.y1-u.s.y0)*tt;
+  ctx.fillStyle='rgba('+PH+','+(0.9*fade)+')';
+  ctx.beginPath();ctx.arc(px,py,1.9,0,7);ctx.fill();
+ }
+ ctx.restore();
  requestAnimationFrame(draw);
 }
-if(!matchMedia('(prefers-reduced-motion: reduce)').matches)requestAnimationFrame(draw);else draw(11000);
+rs();addEventListener('resize',rs);
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches)requestAnimationFrame(draw);else draw(9000);
 })();</script>
 </body>
 </html>
