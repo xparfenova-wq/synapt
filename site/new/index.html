@@ -3276,6 +3276,8 @@ footer .f-main>*:not(.f-brand){margin-top:40px}
 @media(min-width:761px){.hero-meta .m>span:not(#_):not(#_){white-space:nowrap!important;max-width:none!important;width:auto!important;margin-left:0!important;margin-right:0!important;align-self:flex-end!important}}
 .now-f>span{line-height:1.6!important}
 #start{scroll-margin-top:94px!important}
+/* nav-glass: контент не сливается с меню при прокрутке */
+.nav:not(#_):not(#_){background:color-mix(in srgb, var(--bg) 78%, transparent)!important;-webkit-backdrop-filter:blur(14px)!important;backdrop-filter:blur(14px)!important;border-bottom:1px solid var(--line)!important}
 </style>
 </head>
 <body>
@@ -3660,8 +3662,8 @@ function LEAD_API(url, opts){
     <div class="f-legal">
       <span class="f-k">Формальности</span>
       <p>ИП Орешкин Антон Вадимович</p>
-      <p>ИНН 100123323420</p>
-      <p>ОГРНИП 324100000000411</p>
+      <p>ИНН&nbsp;100123323420</p>
+      <p>ОГРНИП&nbsp;324100000000411</p>
       <p>Республика Карелия, Петрозаводск</p>
       <a href="/privacy">Политика обработки персональных данных</a>
     </div>
