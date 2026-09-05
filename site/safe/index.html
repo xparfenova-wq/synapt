@@ -2712,6 +2712,21 @@ footer .f-main>*:not(.f-brand){margin-top:58px}
 @media(min-width:761px){.hero-meta .m>span:not(#_):not(#_){white-space:nowrap!important;max-width:none!important;width:auto!important;margin-left:0!important;margin-right:0!important;align-self:flex-end!important}}
 /* nav-glass: контент не сливается с меню при прокрутке */
 .nav:not(#_):not(#_){background:color-mix(in srgb, var(--bg) 78%, transparent)!important;-webkit-backdrop-filter:blur(14px)!important;backdrop-filter:blur(14px)!important;border-bottom:1px solid var(--line)!important}
+/* lines-off: верхние разделители секций и линия перед менеджером убраны */
+.rules:not(#_):not(#_){border-top:0!important}
+.faq:not(#_):not(#_){border-top:0!important}
+.lc-mgr:not(#_):not(#_),.lc-mgr.lc-after:not(#_):not(#_){border-top:0!important;padding-top:0!important}
+/* nav-scrolled-css */
+.nav:not(#_):not(#_):not(#_){background:transparent!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;border-bottom:1px solid transparent!important;transition:background .25s ease,border-color .25s ease}
+.nav.scrolled:not(#_):not(#_):not(#_){background:color-mix(in srgb, var(--bg) 80%, transparent)!important;-webkit-backdrop-filter:blur(14px)!important;backdrop-filter:blur(14px)!important;border-bottom:1px solid var(--line)!important}
+/* caps-155-final: подписи цифр единые по референсу десанта +2 */
+.hero-stats .hs>span:not(#_):not(#_):not(#_):not(#_):not(#_),.hero-stats .hs>span *:not(#_):not(#_):not(#_):not(#_):not(#_),.hero-meta .m>span:not(#_):not(#_):not(#_):not(#_):not(#_),.hero-meta .m>span *:not(#_):not(#_):not(#_):not(#_):not(#_),.cover-stats .cs .cs-c:not(#_):not(#_):not(#_):not(#_):not(#_){font-size:15.5px!important;line-height:1.45!important}
+@media(max-width:760px){.hero-stats .hs>span:not(#_):not(#_):not(#_):not(#_):not(#_),.hero-stats .hs>span *:not(#_):not(#_):not(#_):not(#_):not(#_),.hero-meta .m>span:not(#_):not(#_):not(#_):not(#_):not(#_),.hero-meta .m>span *:not(#_):not(#_):not(#_):not(#_):not(#_),.cover-stats .cs .cs-c:not(#_):not(#_):not(#_):not(#_):not(#_){font-size:15px!important}}
+/* logo-36-final */
+.nav .brand svg:not(#_):not(#_):not(#_){height:36px!important;width:auto!important}
+/* lead-19-final: подзаголовки hero +2 */
+html body .hero .lead:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .hero-sub:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){font-size:19px!important}
+@media(max-width:760px){html body .hero .lead:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .hero-sub:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){font-size:16px!important;margin-top:17px!important}}
 </style>
 </head>
 <body>
@@ -4082,5 +4097,6 @@ function check(){if(busy||document.hidden)return;busy=true;
 check();setInterval(check,90000);
 document.addEventListener('visibilitychange',function(){if(!document.hidden)check()});
 })();</script>
+<script id="nav-scroll-js">(function(){var nav=document.querySelector(".nav");if(!nav)return;var hero=document.querySelector("header.hero,.hero,.cover");function thr(){return (hero?hero.offsetHeight:900)-70}function up(){if(scrollY>thr())nav.classList.add("scrolled");else nav.classList.remove("scrolled")}addEventListener("scroll",up,{passive:true});addEventListener("resize",up);up();})();</script>
 </body>
 </html>

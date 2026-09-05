@@ -2286,7 +2286,8 @@ footer .f-main>*:not(.f-brand){margin-top:58px}
 footer .f-legal a{margin-top:10px;display:inline-block}
 /* nav-glass: контент не сливается с меню при прокрутке */
 .nav:not(#_):not(#_){background:color-mix(in srgb, var(--bg) 78%, transparent)!important;-webkit-backdrop-filter:blur(14px)!important;backdrop-filter:blur(14px)!important;border-bottom:1px solid var(--line)!important}
-.tariffs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:30px}
+.tariffs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:34px}
+@media(max-width:900px){.tariffs{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:760px){.tariffs{grid-template-columns:1fr}}
 .trf{border:1px solid var(--line);border-radius:16px;padding:22px 22px 20px;background:var(--surface,rgba(255,255,255,.02));display:flex;flex-direction:column}
 .trf-t{font-size:17px;font-weight:600;color:var(--text)}
@@ -2296,6 +2297,22 @@ footer .f-legal a{margin-top:10px;display:inline-block}
 .fmt-row{display:flex;gap:10px;flex-wrap:wrap}
 .fmt-chip{font-family:var(--sans);font-size:14.5px;padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--text-muted);cursor:pointer;transition:border-color .2s,color .2s}
 .fmt-chip[aria-pressed="true"]{border-color:var(--accent);color:var(--text)}
+/* lines-off: верхние разделители секций и линия перед менеджером убраны */
+.rules:not(#_):not(#_){border-top:0!important}
+.faq:not(#_):not(#_){border-top:0!important}
+.lc-mgr:not(#_):not(#_),.lc-mgr.lc-after:not(#_):not(#_){border-top:0!important;padding-top:0!important}
+/* nav-scrolled-css */
+.nav:not(#_):not(#_):not(#_){background:transparent!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;border-bottom:1px solid transparent!important;transition:background .25s ease,border-color .25s ease}
+.nav.scrolled:not(#_):not(#_):not(#_){background:color-mix(in srgb, var(--bg) 80%, transparent)!important;-webkit-backdrop-filter:blur(14px)!important;backdrop-filter:blur(14px)!important;border-bottom:1px solid var(--line)!important}
+.nav .btn.pri:not(#_):not(#_){border-radius:13px!important}
+/* caps-155-final: подписи цифр единые по референсу десанта +2 */
+.hero-stats .hs>span:not(#_):not(#_):not(#_):not(#_):not(#_),.hero-stats .hs>span *:not(#_):not(#_):not(#_):not(#_):not(#_),.hero-meta .m>span:not(#_):not(#_):not(#_):not(#_):not(#_),.hero-meta .m>span *:not(#_):not(#_):not(#_):not(#_):not(#_),.cover-stats .cs .cs-c:not(#_):not(#_):not(#_):not(#_):not(#_){font-size:15.5px!important;line-height:1.45!important}
+@media(max-width:760px){.hero-stats .hs>span:not(#_):not(#_):not(#_):not(#_):not(#_),.hero-stats .hs>span *:not(#_):not(#_):not(#_):not(#_):not(#_),.hero-meta .m>span:not(#_):not(#_):not(#_):not(#_):not(#_),.hero-meta .m>span *:not(#_):not(#_):not(#_):not(#_):not(#_),.cover-stats .cs .cs-c:not(#_):not(#_):not(#_):not(#_):not(#_){font-size:15px!important}}
+/* logo-36-final */
+.nav .brand svg:not(#_):not(#_):not(#_){height:36px!important;width:auto!important}
+/* lead-19-final: подзаголовки hero +2 */
+html body .hero .lead:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .hero-sub:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){font-size:19px!important}
+@media(max-width:760px){html body .hero .lead:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .hero-sub:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){font-size:16px!important;margin-top:17px!important}}
 </style>
 </head>
 <body>
@@ -2364,11 +2381,10 @@ window.fetch.__synapt=true; })();</script>
 <section id="entry" class="rh-think"><div class="wrap">
   <div class="eyebrow reveal"><span class="n">02</span> Ценность</div>
   <h2 class="reveal d1">Цена</h2>
-  <div class="ph-num reveal d1"><b><span class="m-t tail">от</span>&nbsp;19&nbsp;900<span class="m-t tail">₽</span></b><small>два формата на&nbsp;выбор</small></div>
   <div class="price-hero reveal d1">
     <p class="ph-txt">Первый шаг стоит в&nbsp;несколько раз меньше месячной зарплаты одного менеджера, но&nbsp;уже через две недели вы&nbsp;получаете карту процессов, одну автоматизацию и&nbsp;чёткий план дальнейшей AI-интеграции</p>
   </div>
-</div><div class="tariffs reveal d2"><div class="trf"><div class="trf-t">AI-чекап</div><p class="trf-d">Карта всех процессов компании с&nbsp;узкими местами, приоритеты по&nbsp;эффекту, план внедрения с&nbsp;вилкой бюджета и&nbsp;один собранный агент на&nbsp;ваших материалах</p><div class="trf-p">19&nbsp;900<span class="tail">&nbsp;₽</span></div></div><div class="trf"><div class="trf-t">Чекап PRO</div><p class="trf-d">Всё то&nbsp;же плюс готовое техническое задание на&nbsp;интеграцию: процессы, данные, критерии приёмки и&nbsp;смета. Для&nbsp;тех, кто уверен, что&nbsp;дальше разработка&nbsp;– выгоднее, чем чекап и&nbsp;ТЗ по&nbsp;отдельности</p><div class="trf-p">79&nbsp;900<span class="tail">&nbsp;₽</span></div></div></div></section>
+<div class="tariffs reveal d2"><div class="trf"><div class="trf-t">AI-чекап</div><p class="trf-d">Карта всех процессов компании с&nbsp;узкими местами, приоритеты по&nbsp;эффекту, план внедрения с&nbsp;вилкой бюджета и&nbsp;один собранный агент на&nbsp;ваших материалах</p><div class="trf-p">19&nbsp;900<span class="tail">&nbsp;₽</span></div></div><div class="trf"><div class="trf-t">Чекап PRO</div><p class="trf-d">Всё то&nbsp;же плюс готовое техническое задание на&nbsp;интеграцию: границы первой версии, требования к&nbsp;функциям, подключения и&nbsp;права, критерии приёмки с&nbsp;показателями проверки, порядок работ и&nbsp;смета. Для&nbsp;тех, кто уверен, что&nbsp;дальше разработка&nbsp;– выгоднее, чем чекап и&nbsp;ТЗ по&nbsp;отдельности</p><div class="trf-p">79&nbsp;900<span class="tail">&nbsp;₽</span></div></div></div></div></section>
 
 
 
@@ -2383,7 +2399,7 @@ window.fetch.__synapt=true; })();</script>
     <div class="rule reveal"><span class="rn">Zoom 1</span><div class="rt">Знакомство и&nbsp;постановка целей</div><div class="rd">Разбираем, чем занимается компания, какие процессы болят и&nbsp;что&nbsp;хотите изменить. Договариваемся о&nbsp;доступах</div></div>
     <div class="rule reveal d1"><span class="rn">неделя 1</span><div class="rt">Смотрим, как&nbsp;устроена работа</div><div class="rd">Читаем рабочие материалы, изучаем принципы, регламенты и&nbsp;выгрузки, считаем, сколько времени уходит на&nbsp;повторяющиеся операции</div></div>
     <div class="rule reveal d2"><span class="rn">Zoom 2</span><div class="rt">Делимся инсайтами</div><div class="rd">Показываем, что&nbsp;нашли, и&nbsp;проверяем: где мы&nbsp;правы, где картина другая. Затем выбираем участок, под&nbsp;который собираем агента</div></div>
-    <div class="rule reveal d3"><span class="rn">неделя 2</span><div class="rt">Собираем агента</div><div class="rd">Под&nbsp;конкретный запрос и&nbsp;проверяем на&nbsp;рабочих процессах вместе с&nbsp;командой</div></div>
+    <div class="rule reveal d3"><span class="rn">неделя 2</span><div class="rt">Собираем агента</div><div class="rd">Под&nbsp;конкретный запрос и&nbsp;проверяем на&nbsp;рабочих процессах вместе с&nbsp;командой. На&nbsp;формате PRO параллельно готовим техническое задание на&nbsp;интеграцию: границы первой версии, требования к&nbsp;функциям, подключения и&nbsp;права доступа, критерии приёмки с&nbsp;показателями проверки, порядок работ и&nbsp;смета. Агент здесь не&nbsp;черновик, а&nbsp;первая проверка гипотез: его сценарий и&nbsp;данные ложатся в&nbsp;основу ТЗ, и&nbsp;при&nbsp;переходе в&nbsp;разработку он&nbsp;становится первым модулем системы</div></div>
     <div class="rule reveal d4"><span class="rn">Zoom 3</span><div class="rt">Отдаём результат</div><div class="rd">Показываем карту всех процессов, приоритеты по&nbsp;эффекту и&nbsp;план дальнейшей AI-интеграции с&nbsp;вилкой бюджета. Отвечаем на&nbsp;вопросы команды и&nbsp;передаём собранного агента</div></div>
   </div>
 </div></section>
@@ -2418,9 +2434,9 @@ window.fetch.__synapt=true; })();</script>
   <div class="faq reveal">
     <details open><summary>Что&nbsp;если после чекапа мы&nbsp;не&nbsp;пойдём в&nbsp;разработку? <span class="pl">+</span></summary><div class="ans">Чекап даёт честную оценку текущих процессов и&nbsp;потенциал эффекта от&nbsp;AI. Через две недели у&nbsp;вас уже есть агент, который ускоряет работу, карта процессов и&nbsp;план. Масштабировать автоматизацию дальше&nbsp;– свободный выбор компании</div></details>
     <details><summary>Как&nbsp;быть с&nbsp;конфиденциальными данными? <span class="pl">+</span></summary><div class="ans">Разбор контура данных идёт первым делом, ещё до&nbsp;разговора про&nbsp;разработку. Списком фиксируем, какие поля уходят в&nbsp;модель и&nbsp;какие остаются внутри. Подписываем соглашение о&nbsp;неразглашении до&nbsp;старта, работаем на&nbsp;обезличенных выгрузках, для&nbsp;чувствительных данных разворачиваем агента в&nbsp;вашем контуре по&nbsp;152-ФЗ</div></details>
-    <details><summary>А&nbsp;может ли&nbsp;не&nbsp;хватить двух недель? <span class="pl">+</span></summary><div class="ans">Срок фиксированный, состав пакета рассчитан под него, и&nbsp;мы&nbsp;гарантируем, что&nbsp;выполним весь заявленный объём. До&nbsp;старта отдельно обсуждаем и&nbsp;фиксируем контекст вашей компании, чтобы рамка чекапа была реалистичной</div></details>
+    <details><summary>Хватит ли&nbsp;двух недель? <span class="pl">+</span></summary><div class="ans">Срок фиксированный, состав пакета рассчитан под него, и&nbsp;мы&nbsp;гарантируем, что&nbsp;выполним весь заявленный объём. До&nbsp;старта отдельно обсуждаем и&nbsp;фиксируем контекст вашей компании, чтобы рамка чекапа была реалистичной</div></details>
     <details>
-      <summary>Будет ли&nbsp;полезно, если есть свои разработчики? <span class="pl">+</span></summary>
+      <summary>Будет полезно, если есть свои разработчики? <span class="pl">+</span></summary>
       <div class="ans">Одного агента ваш разработчик соберёт за&nbsp;выходные, это&nbsp;правда. Но&nbsp;решение начинает работать и&nbsp;приносить деньги, когда за&nbsp;ним стоит пять вещей:<ul class="ans-list"><li>Спрос: продукт закрывает работу, которая людям действительно нужна, а&nbsp;не&nbsp;остаётся экспериментом ради эксперимента&nbsp;– проверяем это&nbsp;до&nbsp;сборки</li><li>Адаптация: учим команду работать с&nbsp;новым инструментом, чтобы через месяц всё не&nbsp;откатилось назад</li><li>Сценарии: закладываем запас на&nbsp;будущее и&nbsp;держим систему живой, когда меняются модель, интерфейс, прайсы поставщиков и&nbsp;условия рынка</li><li>Цепочки: ведём длинные маршруты, где агент ходит по&nbsp;нескольким системам, и&nbsp;отвечаем за&nbsp;то, чтобы ошибка в&nbsp;середине не&nbsp;стоила дорого</li><li>Обвязка: собираем вокруг агента журнал действий, подтверждения и&nbsp;контроль качества ответов</li></ul>Всё это&nbsp;закрываем сами, вашей команде остаётся работа, ради которой её&nbsp;нанимали</div>
     </details>
     <details>
@@ -3118,5 +3134,6 @@ check();setInterval(check,90000);
 document.addEventListener('visibilitychange',function(){if(!document.hidden)check()});
 })();</script>
 <script id="fmt-js">(function(){document.addEventListener("click",function(e){var b=e.target.closest(".fmt-chip");if(!b)return;document.querySelectorAll(".fmt-chip").forEach(function(x){x.setAttribute("aria-pressed","false")});b.setAttribute("aria-pressed","true");});})();</script>
+<script id="nav-scroll-js">(function(){var nav=document.querySelector(".nav");if(!nav)return;var hero=document.querySelector("header.hero,.hero,.cover");function thr(){return (hero?hero.offsetHeight:900)-70}function up(){if(scrollY>thr())nav.classList.add("scrolled");else nav.classList.remove("scrolled")}addEventListener("scroll",up,{passive:true});addEventListener("resize",up);up();})();</script>
 </body>
 </html>

@@ -2278,7 +2278,7 @@ html body footer .f-legal p:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(
 </style>
 <meta name="robots" content="noindex">
 <style id="fix-proto">
-.mods-note{margin-top:16px;border:1px dashed var(--line);border-radius:16px;padding:18px 22px;display:flex;gap:14px;align-items:flex-start}
+.mods-note{margin-top:16px;border:1px dashed var(--line);border-radius:16px;padding:18px 22px;display:flex;gap:14px;align-items:flex-start;width:fit-content;max-width:100%}
 .mn-i{flex:0 0 auto;width:20px;height:20px;color:var(--accent-txt,var(--accent));margin-top:1px}
 .mods-note .mod-d{max-width:70ch}
 .mods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:34px}
@@ -2304,6 +2304,22 @@ html body .hero.rh-hero h1+.lead:not(#_){margin-top:18px!important}
 footer .f-legal a{margin-top:10px;display:inline-block}
 /* nav-glass: контент не сливается с меню при прокрутке */
 .nav:not(#_):not(#_){background:color-mix(in srgb, var(--bg) 78%, transparent)!important;-webkit-backdrop-filter:blur(14px)!important;backdrop-filter:blur(14px)!important;border-bottom:1px solid var(--line)!important}
+@media(min-width:901px){#related .nxt:not(#_):not(#_){grid-template-columns:repeat(6,minmax(0,1fr))!important}}
+/* lines-off: верхние разделители секций и линия перед менеджером убраны */
+.rules:not(#_):not(#_){border-top:0!important}
+.faq:not(#_):not(#_){border-top:0!important}
+.lc-mgr:not(#_):not(#_),.lc-mgr.lc-after:not(#_):not(#_){border-top:0!important;padding-top:0!important}
+/* nav-scrolled-css */
+.nav:not(#_):not(#_):not(#_){background:transparent!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;border-bottom:1px solid transparent!important;transition:background .25s ease,border-color .25s ease}
+.nav.scrolled:not(#_):not(#_):not(#_){background:color-mix(in srgb, var(--bg) 80%, transparent)!important;-webkit-backdrop-filter:blur(14px)!important;backdrop-filter:blur(14px)!important;border-bottom:1px solid var(--line)!important}
+/* caps-155-final: подписи цифр единые по референсу десанта +2 */
+.hero-stats .hs>span:not(#_):not(#_):not(#_):not(#_):not(#_),.hero-stats .hs>span *:not(#_):not(#_):not(#_):not(#_):not(#_),.hero-meta .m>span:not(#_):not(#_):not(#_):not(#_):not(#_),.hero-meta .m>span *:not(#_):not(#_):not(#_):not(#_):not(#_),.cover-stats .cs .cs-c:not(#_):not(#_):not(#_):not(#_):not(#_){font-size:15.5px!important;line-height:1.45!important}
+@media(max-width:760px){.hero-stats .hs>span:not(#_):not(#_):not(#_):not(#_):not(#_),.hero-stats .hs>span *:not(#_):not(#_):not(#_):not(#_):not(#_),.hero-meta .m>span:not(#_):not(#_):not(#_):not(#_):not(#_),.hero-meta .m>span *:not(#_):not(#_):not(#_):not(#_):not(#_),.cover-stats .cs .cs-c:not(#_):not(#_):not(#_):not(#_):not(#_){font-size:15px!important}}
+/* logo-36-final */
+.nav .brand svg:not(#_):not(#_):not(#_){height:36px!important;width:auto!important}
+/* lead-19-final: подзаголовки hero +2 */
+html body .hero .lead:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .hero-sub:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){font-size:19px!important}
+@media(max-width:760px){html body .hero .lead:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_),html body .hero-sub:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_){font-size:16px!important;margin-top:17px!important}}
 </style>
 </head>
 <body>
@@ -2368,7 +2384,7 @@ window.fetch.__synapt=true; })();</script>
           <div class="lf"><label for="lfName">Как&nbsp;вас зовут <span class="req">*</span></label><input id="lfName" name="name" type="text" autocomplete="name" required></div>
           <div class="lf"><label for="lfContact">Телефон, почта или&nbsp;Telegram <span class="req">*</span></label><input id="lfContact" name="contact" type="text" autocomplete="off" required></div>
           <div class="lf lf-wide"><label for="lfCompany">Компания и&nbsp;сфера деятельности</label><input id="lfCompany" name="company" type="text" autocomplete="organization"></div>
-          <div class="lf lf-wide"><label for="lfTask">Коротко о&nbsp;контексте: какой сейчас уровень использования AI в&nbsp;команде и&nbsp;к&nbsp;какому результату хотите прийти</label><textarea id="lfTask" name="task" rows="2"></textarea></div>
+          <div class="lf lf-wide"><label for="lfTask">Коротко о&nbsp;запросе: какой сейчас уровень интеграции AI в&nbsp;процессы и&nbsp;к&nbsp;какому результату хотите прийти</label><textarea id="lfTask" name="task" rows="2"></textarea></div>
         </div>
         <div class="slots" id="slots">
           <div class="sl-h">Когда вам удобно</div>
@@ -3117,5 +3133,6 @@ function check(){if(busy||document.hidden)return;busy=true;
 check();setInterval(check,90000);
 document.addEventListener('visibilitychange',function(){if(!document.hidden)check()});
 })();</script>
+<script id="nav-scroll-js">(function(){var nav=document.querySelector(".nav");if(!nav)return;var hero=document.querySelector("header.hero,.hero,.cover");function thr(){return (hero?hero.offsetHeight:900)-70}function up(){if(scrollY>thr())nav.classList.add("scrolled");else nav.classList.remove("scrolled")}addEventListener("scroll",up,{passive:true});addEventListener("resize",up);up();})();</script>
 </body>
 </html>
