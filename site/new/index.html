@@ -3261,7 +3261,7 @@ html body footer .f-legal p:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(
 .nv-q{font-size:15.5px;font-weight:450;line-height:1.55;letter-spacing:0;color:var(--text-muted,#9aa5a1)}
 .nv-a{font-size:17.5px;font-weight:560;letter-spacing:-.004em;line-height:1.42;color:var(--text,#e8eeec);margin-top:-2px}
 .nv-d{font-size:13px;font-weight:450;line-height:1.5;color:var(--text-dim,#6e7975);margin-top:-6px}
-.nv-m{font-family:var(--mono);font-size:11.5px;font-weight:450;letter-spacing:.08em;line-height:1.5;color:var(--text-dim,#6e7975);padding-top:14px;border-top:1px solid var(--line);margin-top:auto}
+.nv-m{font-family:var(--mono);font-size:11.5px;font-weight:450;letter-spacing:.08em;line-height:1.5;color:var(--text-dim,#6e7975);padding-top:14px;margin-top:auto}
 @media(max-width:980px){.nv{grid-template-columns:repeat(2,minmax(0,1fr))}.nv-c{min-height:210px}}
 @media(max-width:560px){.nv{grid-template-columns:1fr}.nv-c{min-height:0;padding:18px 18px 16px}.nv-a{font-size:17px}}
 </style>
@@ -3359,10 +3359,10 @@ function LEAD_API(url, opts){
 <section id="start"><div class="wrap">
 <div class="sec-head reveal"><div class="eyebrow">Что предлагаем</div><h2 class="nv-h">Четыре запроса, с&nbsp;которыми к&nbsp;нам приходят</h2></div>
 <div class="nv reveal">
-<a class="nv-c" href="/new/consult/"><span class="nv-n">01</span><span class="nv-q">Хотите разобраться сами или&nbsp;помочь команде</span><span class="nv-a">Персональный AI-тренер</span><span class="nv-d">разовые консультации, месячный трекинг для&nbsp;себя или&nbsp;всей команды</span><span class="nv-m">от&nbsp;4&nbsp;900 ₽</span></a>
-<a class="nv-c" href="/checkup/"><span class="nv-n">02</span><span class="nv-q">Хотите понять, где AI окупится в&nbsp;вашем бизнесе</span><span class="nv-a">AI-чекап</span><span class="nv-d">карта процессов и&nbsp;план за&nbsp;две недели</span><span class="nv-m">19&nbsp;900 ₽, две недели</span></a>
-<a class="nv-c" href="/desant/"><span class="nv-n">03</span><span class="nv-q">Хотите, чтобы мы&nbsp;пришли в&nbsp;офис и&nbsp;вживую встроили AI в&nbsp;работу</span><span class="nv-a">AI-десант</span><span class="nv-d">сами настраиваем процессы внутри компании</span><span class="nv-m">от&nbsp;80&nbsp;тыс. ₽, месяц</span></a>
-<a class="nv-c" href="/new/development/"><span class="nv-n">04</span><span class="nv-q">Точно знаете, что&nbsp;внедрять, и&nbsp;хотите готовый результат</span><span class="nv-a">Разработка</span><span class="nv-d">агент под&nbsp;задачу или&nbsp;система под&nbsp;отдел</span><span class="nv-m">от&nbsp;29&nbsp;900 ₽</span></a>
+<a class="nv-c" href="/new/consult/"><span class="nv-n">01</span><span class="nv-q">Хотите разобраться сами или&nbsp;помочь команде</span><span class="nv-a">Персональный AI-тренер</span><span class="nv-d">разовые или&nbsp;регулярные консультации для&nbsp;себя или&nbsp;всей команды</span><span class="nv-m">от&nbsp;4&nbsp;900 ₽</span></a>
+<a class="nv-c" href="/checkup/"><span class="nv-n">02</span><span class="nv-q">Хотите понять, где AI окупится в&nbsp;вашем бизнесе</span><span class="nv-a">AI-чекап</span><span class="nv-d">карта процессов и&nbsp;план внедрения AI за&nbsp;две недели</span><span class="nv-m">19&nbsp;900 ₽, две недели</span></a>
+<a class="nv-c" href="/desant/"><span class="nv-n">03</span><span class="nv-q">Хотите, чтобы мы&nbsp;пришли в&nbsp;офис и&nbsp;вживую встроили AI в&nbsp;работу</span><span class="nv-a">AI-десант</span><span class="nv-d">сами настраиваем процессы внутри компании на&nbsp;ваших задачах</span><span class="nv-m">от&nbsp;80&nbsp;тыс. ₽, месяц</span></a>
+<a class="nv-c" href="/new/development/"><span class="nv-n">04</span><span class="nv-q">Точно знаете, что&nbsp;внедрять, и&nbsp;хотите готовый результат</span><span class="nv-a">Разработка</span><span class="nv-d">агент под&nbsp;конкретную задачу за&nbsp;неделю или&nbsp;система под&nbsp;отдел</span><span class="nv-m">от&nbsp;29&nbsp;900 ₽</span></a>
 </div>
 </div></section>
 <section id="now"><div class="wrap">
@@ -5912,5 +5912,16 @@ function stop(){ live.forEach(function(h){ h&&h.stop&&h.stop(); }); live=[]; }
 new MutationObserver(function(){ if(modal.hidden){ stop(); modal.classList.remove('cs-wide'); } else start(); }).observe(modal,{attributes:true,attributeFilter:['hidden']});
 })();
 </script>
+<script id="fresh-js">(function(){
+/* старая вкладка сама подхватывает новую версию: тихая перезагрузка, когда на сервере другой etag */
+var tag=null,busy=false;
+function check(){if(busy||document.hidden)return;busy=true;
+ fetch(location.href,{method:'HEAD',cache:'no-store'}).then(function(r){
+  var e=r.headers.get('etag')||r.headers.get('last-modified')||'';
+  if(tag===null){tag=e}else if(e&&e!==tag){location.reload()}
+ }).catch(function(){}).finally(function(){busy=false});}
+check();setInterval(check,90000);
+document.addEventListener('visibilitychange',function(){if(!document.hidden)check()});
+})();</script>
 </body>
 </html>

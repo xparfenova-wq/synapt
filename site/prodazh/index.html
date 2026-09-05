@@ -3878,5 +3878,16 @@ sh.addEventListener('click',function(e){
   if(e.clientY>innerHeight/2){ g.click(); }
 });
 })();</script>
+<script id="fresh-js">(function(){
+/* старая вкладка сама подхватывает новую версию: тихая перезагрузка, когда на сервере другой etag */
+var tag=null,busy=false;
+function check(){if(busy||document.hidden)return;busy=true;
+ fetch(location.href,{method:'HEAD',cache:'no-store'}).then(function(r){
+  var e=r.headers.get('etag')||r.headers.get('last-modified')||'';
+  if(tag===null){tag=e}else if(e&&e!==tag){location.reload()}
+ }).catch(function(){}).finally(function(){busy=false});}
+check();setInterval(check,90000);
+document.addEventListener('visibilitychange',function(){if(!document.hidden)check()});
+})();</script>
 </body>
 </html>

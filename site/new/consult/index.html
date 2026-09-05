@@ -2282,8 +2282,8 @@ html body footer .f-legal p:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(
 .rp{grid-column:3;justify-self:start;font-family:var(--mono);font-size:24px;font-weight:500;letter-spacing:-.01em;color:var(--text);padding-top:14px;border-top:1px solid var(--line);margin-top:16px;min-width:150px;line-height:1}
 .rp .tail{font-size:.55em;color:var(--text-muted);letter-spacing:0}
 @media(max-width:900px){.rp{grid-column:1}}
-.rd a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line-2,rgba(255,255,255,.35))}
-.rd a:hover{color:var(--accent-txt,var(--accent));text-decoration-color:currentColor}
+.rd a{color:var(--text);text-decoration:none}
+.rd a:hover{color:var(--accent-txt,var(--accent))}
 .fmt-chip{font-family:var(--sans);font-size:14.5px;padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--text-muted);cursor:pointer;transition:border-color .2s,color .2s}
 .fmt-chip[aria-pressed="true"]{border-color:var(--accent);color:var(--text)}
 #cnsFx{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;z-index:0;opacity:.5;-webkit-mask-image:linear-gradient(180deg,#000 0,#000 38%,rgba(0,0,0,.4) 68%,transparent 96%);mask-image:linear-gradient(180deg,#000 0,#000 38%,rgba(0,0,0,.4) 68%,transparent 96%)}
@@ -2296,6 +2296,9 @@ html body footer .f-legal p:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(
 @media(max-width:760px){.hs span{font-size:15px!important}.hero-meta .m>span{font-size:15px!important}}
 footer .f-main>*:not(.f-brand){margin-top:58px}
 @media(max-width:760px){footer .f-main>*:not(.f-brand){margin-top:0}}
+.hero-stats .hs:nth-child(2):not(#_){align-items:flex-end!important}
+.hero-stats .hs:nth-child(2) span:not(#_){white-space:nowrap!important;max-width:none!important;width:auto!important;text-align:right!important}
+@media(max-width:900px){.hero-stats .hs:nth-child(2) span:not(#_){white-space:normal!important}}
 </style>
 </head>
 <body>
@@ -2328,9 +2331,9 @@ window.fetch.__synapt=true; })();</script>
 <span id="top"></span>
 
 <header class="hero rh-hero"><canvas id="cnsFx" aria-hidden="true"></canvas><div class="wrap hero-in">
-  <div class="hero-stats reveal d2"><div class="hs"><b>4&nbsp;900<span class="m-t tail">₽</span></b><span>разовая консультация, 60&nbsp;минут</span></div><div class="hs"><b>от&nbsp;16&nbsp;900<span class="m-t tail">₽</span></b><span>персональный<br>AI-тренер на&nbsp;один месяц</span></div></div><div class="hero-txt">
+  <div class="hero-stats reveal d2"><div class="hs"><b>4&nbsp;900<span class="m-t tail">₽</span></b><span>разовая консультация, 60&nbsp;минут</span></div><div class="hs"><b>от&nbsp;16&nbsp;900<span class="m-t tail">₽</span></b><span>персональный AI-тренер на&nbsp;один месяц</span></div></div><div class="hero-txt">
     <div class="hero-bottom">
-      <div class="hero-kick reveal"><span class="hero-chip">Услуга</span></div> <h1 class="reveal d1">Персональный AI-тренер</h1> <p class="lead reveal d2">Для тех, кто&nbsp;хочет сначала разобраться: разовая консультация по&nbsp;конкретному запросу или&nbsp;месяц работы с&nbsp;личным тренером по&nbsp;AI – встречи, чат и&nbsp;трек под&nbsp;ваши задачи</p>
+      <div class="hero-kick reveal"><span class="hero-chip">Услуга</span></div> <h1 class="reveal d1">Персональный <span class="nb">AI-тренер</span></h1> <p class="lead reveal d2">Для тех, кто&nbsp;хочет сначала разобраться: разовая консультация по&nbsp;конкретному запросу или&nbsp;месяц работы с&nbsp;личным тренером по&nbsp;AI – встречи, чат и&nbsp;трек под&nbsp;ваши задачи</p>
     </div>
   
   
@@ -3087,6 +3090,17 @@ function draw(now){
 }
 rs();addEventListener('resize',rs);
 requestAnimationFrame(draw);
+})();</script>
+<script id="fresh-js">(function(){
+/* старая вкладка сама подхватывает новую версию: тихая перезагрузка, когда на сервере другой etag */
+var tag=null,busy=false;
+function check(){if(busy||document.hidden)return;busy=true;
+ fetch(location.href,{method:'HEAD',cache:'no-store'}).then(function(r){
+  var e=r.headers.get('etag')||r.headers.get('last-modified')||'';
+  if(tag===null){tag=e}else if(e&&e!==tag){location.reload()}
+ }).catch(function(){}).finally(function(){busy=false});}
+check();setInterval(check,90000);
+document.addEventListener('visibilitychange',function(){if(!document.hidden)check()});
 })();</script>
 </body>
 </html>
