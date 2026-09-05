@@ -15,7 +15,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="AI-чекап бизнеса за&nbsp;две недели: три Zoom, карта всех процессов компании с&nbsp;узкими местами, приоритеты, план с&nbsp;вилкой бюджета и&nbsp;собранный агент на&nbsp;ваших материалах. 19&nbsp;900 ₽">
+<meta name="description" content="AI-чекап бизнеса за&nbsp;две недели: три Zoom, карта всех процессов компании с&nbsp;узкими местами, приоритеты, план с&nbsp;вилкой бюджета и&nbsp;собранный агент на&nbsp;ваших материалах. От&nbsp;19&nbsp;900 ₽">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -2286,6 +2286,16 @@ footer .f-main>*:not(.f-brand){margin-top:58px}
 footer .f-legal a{margin-top:10px;display:inline-block}
 /* nav-glass: контент не сливается с меню при прокрутке */
 .nav:not(#_):not(#_){background:color-mix(in srgb, var(--bg) 78%, transparent)!important;-webkit-backdrop-filter:blur(14px)!important;backdrop-filter:blur(14px)!important;border-bottom:1px solid var(--line)!important}
+.tariffs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:30px}
+@media(max-width:760px){.tariffs{grid-template-columns:1fr}}
+.trf{border:1px solid var(--line);border-radius:16px;padding:22px 22px 20px;background:var(--surface,rgba(255,255,255,.02));display:flex;flex-direction:column}
+.trf-t{font-size:17px;font-weight:600;color:var(--text)}
+.trf-d{font-size:14.5px;line-height:1.55;color:var(--text-muted);margin:10px 0 16px}
+.trf-p{font-family:var(--mono);font-size:24px;font-weight:500;color:var(--text);letter-spacing:-.01em;margin-top:auto;padding-top:12px;border-top:1px solid var(--line);line-height:1}
+.trf-p .tail{font-size:.55em;color:var(--text-muted)}
+.fmt-row{display:flex;gap:10px;flex-wrap:wrap}
+.fmt-chip{font-family:var(--sans);font-size:14.5px;padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--text-muted);cursor:pointer;transition:border-color .2s,color .2s}
+.fmt-chip[aria-pressed="true"]{border-color:var(--accent);color:var(--text)}
 </style>
 </head>
 <body>
@@ -2320,7 +2330,7 @@ window.fetch.__synapt=true; })();</script>
 <header class="hero rh-hero"><canvas id="chkFx" aria-hidden="true"></canvas><div class="wrap hero-in">
   <div class="hero-stats reveal d2">
     <div class="hs"><b>14<span class="m-t tail">дней</span></b><span>от&nbsp;Zoom до&nbsp;карты процессов и&nbsp;первого агента</span></div>
-    <div class="hs"><b>19&nbsp;900<span class="m-t tail">₽</span></b><span>чекап целиком, сумма фиксированная</span></div>
+    <div class="hs"><b><span class="m-t tail">от</span>&nbsp;19&nbsp;900<span class="m-t tail">₽</span></b><span>чекап целиком, сумма фиксированная</span></div>
     
     
   </div><div class="hero-txt">
@@ -2354,11 +2364,11 @@ window.fetch.__synapt=true; })();</script>
 <section id="entry" class="rh-think"><div class="wrap">
   <div class="eyebrow reveal"><span class="n">02</span> Ценность</div>
   <h2 class="reveal d1">Цена</h2>
-  <div class="ph-num reveal d1"><b>19&nbsp;900<span class="m-t tail">₽</span></b><small>за&nbsp;чекап целиком</small></div>
+  <div class="ph-num reveal d1"><b><span class="m-t tail">от</span>&nbsp;19&nbsp;900<span class="m-t tail">₽</span></b><small>два формата на&nbsp;выбор</small></div>
   <div class="price-hero reveal d1">
     <p class="ph-txt">Первый шаг стоит в&nbsp;несколько раз меньше месячной зарплаты одного менеджера, но&nbsp;уже через две недели вы&nbsp;получаете карту процессов, одну автоматизацию и&nbsp;чёткий план дальнейшей AI-интеграции</p>
   </div>
-</div></section>
+</div><div class="tariffs reveal d2"><div class="trf"><div class="trf-t">AI-чекап</div><p class="trf-d">Карта всех процессов компании с&nbsp;узкими местами, приоритеты по&nbsp;эффекту, план внедрения с&nbsp;вилкой бюджета и&nbsp;один собранный агент на&nbsp;ваших материалах</p><div class="trf-p">19&nbsp;900<span class="tail">&nbsp;₽</span></div></div><div class="trf"><div class="trf-t">Чекап PRO</div><p class="trf-d">Всё то&nbsp;же плюс готовое техническое задание на&nbsp;интеграцию: процессы, данные, критерии приёмки и&nbsp;смета. Для&nbsp;тех, кто уверен, что&nbsp;дальше разработка&nbsp;– выгоднее, чем чекап и&nbsp;ТЗ по&nbsp;отдельности</p><div class="trf-p">79&nbsp;900<span class="tail">&nbsp;₽</span></div></div></div></section>
 
 
 
@@ -2435,7 +2445,7 @@ window.fetch.__synapt=true; })();</script>
           <div class="lf"><label for="lfName">Как&nbsp;вас зовут <span class="req">*</span></label><input id="lfName" name="name" type="text" autocomplete="name" required></div>
           <div class="lf"><label for="lfContact">Телефон, почта или&nbsp;Telegram <span class="req">*</span></label><input id="lfContact" name="contact" type="text" autocomplete="off" required></div>
           <div class="lf lf-wide"><label for="lfCompany">Компания и&nbsp;сфера деятельности</label><input id="lfCompany" name="company" type="text" autocomplete="organization"></div>
-          <div class="lf lf-wide"><label for="lfTask">Коротко о&nbsp;контексте: какой сейчас уровень использования AI в&nbsp;команде и&nbsp;к&nbsp;какому результату хотите прийти</label><textarea id="lfTask" name="task" rows="2"></textarea></div>
+          <div class="lf lf-wide"><label for="lfTask">Коротко о&nbsp;контексте: какой сейчас уровень использования AI в&nbsp;команде и&nbsp;к&nbsp;какому результату хотите прийти</label><textarea id="lfTask" name="task" rows="2"></textarea></div><div class="lf lf-wide fmt-wrap"><label>Какой формат</label><div class="fmt-row"> <button type="button" class="fmt-chip" aria-pressed="true">AI-чекап</button> <button type="button" class="fmt-chip" aria-pressed="false">Чекап PRO</button> </div></div>
         </div>
         <div class="slots" id="slots">
           <div class="sl-h">Когда вам удобно</div>
@@ -3107,5 +3117,6 @@ function check(){if(busy||document.hidden)return;busy=true;
 check();setInterval(check,90000);
 document.addEventListener('visibilitychange',function(){if(!document.hidden)check()});
 })();</script>
+<script id="fmt-js">(function(){document.addEventListener("click",function(e){var b=e.target.closest(".fmt-chip");if(!b)return;document.querySelectorAll(".fmt-chip").forEach(function(x){x.setAttribute("aria-pressed","false")});b.setAttribute("aria-pressed","true");});})();</script>
 </body>
 </html>
