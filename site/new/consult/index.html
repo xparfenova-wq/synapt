@@ -2279,7 +2279,8 @@ html body footer .f-legal p:not(#_):not(#_):not(#_):not(#_):not(#_):not(#_):not(
 <meta name="robots" content="noindex, nofollow">
 <style id="fix-proto">
 .fmt-row{display:flex;gap:10px;flex-wrap:wrap}
-.rp{font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.08em;color:var(--text-muted);padding-top:12px;border-top:1px solid var(--line);margin-top:14px}
+.rp{grid-column:3;justify-self:start;font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.08em;color:var(--text-muted);padding-top:12px;border-top:1px solid var(--line);margin-top:14px;min-width:130px}
+@media(max-width:900px){.rp{grid-column:1}}
 .rd a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent)}
 .fmt-chip{font-family:var(--sans);font-size:14.5px;padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--text-muted);cursor:pointer;transition:border-color .2s,color .2s}
 .fmt-chip[aria-pressed="true"]{border-color:var(--accent);color:var(--text)}
