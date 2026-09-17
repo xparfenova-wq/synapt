@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Анимация Synapt для&nbsp;соцсетей</title>
+<meta name="description" content="Как&nbsp;устроена фирменная анимация сайта Synapt и&nbsp;как&nbsp;повторить её&nbsp;в&nbsp;сторис и&nbsp;рилс: цвета, тайминги, раскадровка, референсы">
+<style>
+:root{
+--bg:#0E0F10; --bg-2:#151719; --card:#17191B; --line:#26292C; --line-2:#33373B;
+--text:#EDEFEA; --text-2:#A7ADA9; --text-3:#6E7570;
+--accent:#D0E865; --accent-glow:#E2F291; --accent-deep:#A6BF41; --accent-ink:#12150A;
+--sans:'Geist','Inter',system-ui,sans-serif; --mono:'Geist Mono',ui-monospace,monospace;
+--ease:cubic-bezier(.22,.7,.3,1);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+header.top{padding:72px 0 40px;border-bottom:1px solid var(--line)}
+.kick{display:inline-block;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--accent);border:1px solid var(--line-2);border-radius:14px;padding:5px 12px;margin-bottom:22px}
+h1{font-size:clamp(30px,5vw,46px);line-height:1.08;margin:0 0 18px;font-weight:600;letter-spacing:-.01em}
+.sub{font-size:18px;color:var(--text-2);max-width:60ch;margin:0}
+section{padding:48px 0;border-bottom:1px solid var(--line)}
+h2{font-size:clamp(22px,3.2vw,30px);margin:0 0 8px;font-weight:600;letter-spacing:-.01em}
+.n{font-family:var(--mono);color:var(--accent);font-size:14px;margin-right:8px}
+.lead{color:var(--text-2);font-size:16.5px;max-width:64ch;margin:6px 0 26px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
+.card h3{margin:0 0 8px;font-size:17px;font-weight:600}
+.card p{margin:0;color:var(--text-2);font-size:14.5px}
+.spec{display:grid;grid-template-columns:max-content 1fr;gap:10px 22px;font-size:15px;margin:0}
+.spec dt{font-family:var(--mono);color:var(--accent);white-space:nowrap}
+.spec dd{margin:0;color:var(--text-2)}
+.swatches{display:flex;flex-wrap:wrap;gap:14px;margin:8px 0 0}
+.sw{border:1px solid var(--line);border-radius:14px;padding:12px 14px;min-width:150px;background:var(--card)}
+.sw .chip{width:100%;height:34px;border-radius:9px;margin-bottom:10px}
+.sw b{font-family:var(--mono);font-size:13px;display:block}
+.sw span{font-size:12.5px;color:var(--text-3)}
+ol.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:14px}
+ol.steps li{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px 18px 58px;position:relative}
+ol.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:18px;top:18px;width:26px;height:26px;border-radius:8px;background:var(--accent);color:var(--accent-ink);font-family:var(--mono);font-weight:600;display:flex;align-items:center;justify-content:center;font-size:14px}
+ol.steps b{display:block;margin-bottom:3px}
+ol.steps p{margin:0;color:var(--text-2);font-size:14.5px}
+.demo{margin:24px 0 0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#0A0B0C}
+.demo canvas{display:block;width:100%;height:280px}
+.demo-cap{font-size:13px;color:var(--text-3);padding:10px 16px;border-top:1px solid var(--line);font-family:var(--mono)}
+.tip{background:linear-gradient(180deg,rgba(208,232,101,.06),transparent);border:1px solid var(--line-2);border-radius:16px;padding:18px 20px;margin:22px 0 0}
+.tip b{color:var(--accent)}
+ul.plain{margin:6px 0 0;padding-left:20px;color:var(--text-2);font-size:15px}
+ul.plain li{margin:6px 0}
+footer{padding:40px 0 64px;color:var(--text-3);font-size:13.5px}
+footer a{color:var(--accent);text-decoration:none}
+@media(max-width:560px){.spec{grid-template-columns:1fr;gap:4px 0}.spec dt{margin-top:12px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<span class="kick">Для&nbsp;команды, моушн-гайд</span>
+<h1>Как&nbsp;повторить анимацию Synapt в&nbsp;соцсетях</h1>
+<p class="sub">Разбор фирменной анимации сайта: из&nbsp;чего она собрана, какие цвета и&nbsp;тайминги, и&nbsp;как&nbsp;перенести тот&nbsp;же&nbsp;характер в&nbsp;сторис и&nbsp;рилс, чтобы контент читался как&nbsp;один бренд</p>
+</div></header>
+
+<section><div class="wrap">
+<h2><span class="n">01</span>Идея анимации</h2>
+<p class="lead">Наша анимация&nbsp;– это живая нейросеть: точки-нейроны медленно дрейфуют, между близкими протягиваются связи, узлы мягко пульсируют светом. Смысл&nbsp;– спокойный интеллект, а&nbsp;не&nbsp;суета. Отсюда три правила, которые держат стиль</p>
+<div class="cards">
+<div class="card"><h3>Медленно</h3><p>Всё движется плавно и&nbsp;неторопливо. Дрейф нейронов еле заметный, свечение разгорается и&nbsp;гаснет мягко. Резких скачков нет</p></div>
+<div class="card"><h3>Один акцент</h3><p>Цвет только лаймовый на&nbsp;тёмном. Свет исходит от&nbsp;него. Никаких радуг и&nbsp;вторых ярких цветов</p></div>
+<div class="card"><h3>Связи, не&nbsp;хаос</h3><p>Линии соединяют только близкие узлы и&nbsp;тонкие. Это сеть, а&nbsp;не&nbsp;фейерверк частиц</p></div>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<h2><span class="n">02</span>Цвета</h2>
+<p class="lead">Ровно те&nbsp;же&nbsp;значения, что&nbsp;на&nbsp;сайте. Копируйте коды, не&nbsp;подбирайте на&nbsp;глаз</p>
+<div class="swatches">
+<div class="sw"><div class="chip" style="background:#0E0F10"></div><b>#0E0F10</b><span>фон, почти чёрный</span></div>
+<div class="sw"><div class="chip" style="background:#D0E865"></div><b>#D0E865</b><span>акцент, лайм</span></div>
+<div class="sw"><div class="chip" style="background:#E2F291"></div><b>#E2F291</b><span>свечение, светлее</span></div>
+<div class="sw"><div class="chip" style="background:#A6BF41"></div><b>#A6BF41</b><span>тень акцента</span></div>
+<div class="sw"><div class="chip" style="background:#EDEFEA"></div><b>#EDEFEA</b><span>текст</span></div>
+</div>
+<div class="tip"><b>Правило контраста.</b> Лайм всегда на&nbsp;тёмном, никогда на&nbsp;белом или&nbsp;светло-сером&nbsp;– он&nbsp;теряет яркость и&nbsp;выглядит грязным. Текст на&nbsp;лаймовой плашке&nbsp;– чернильный #12150A, не&nbsp;белый</div>
+</div></section>
+
+<section><div class="wrap">
+<h2><span class="n">03</span>Тайминги и&nbsp;характер</h2>
+<p class="lead">Скорость&nbsp;– это и&nbsp;есть наш стиль. Цифры взяты прямо из&nbsp;кода сайта</p>
+<dl class="spec">
+<dt>Появление</dt><dd>элементы всплывают снизу на&nbsp;18&nbsp;px за&nbsp;0,7&nbsp;секунды, плавной кривой (ease-out). В&nbsp;видео&nbsp;– тот&nbsp;же&nbsp;мягкий заход, без&nbsp;резкого выпрыгивания</dd>
+<dt>Дрейф сети</dt><dd>очень медленный, почти незаметный. Нейроны плывут, а&nbsp;не&nbsp;летают</dd>
+<dt>Пульс света</dt><dd>узлы разгораются и&nbsp;гаснут по&nbsp;очереди, цикл в&nbsp;несколько секунд. Это фон, а&nbsp;не&nbsp;главный герой</dd>
+<dt>Ховер, клик</dt><dd>реакция на&nbsp;действие быстрая, 0,16&nbsp;секунды. В&nbsp;видео это переход между кадрами: смена состояния резче, чем&nbsp;фоновая жизнь сети</dd>
+<dt>Кривая</dt><dd>cubic-bezier(.22,&nbsp;.7,&nbsp;.3,&nbsp;1)&nbsp;– мягкий старт и&nbsp;плавное торможение. В&nbsp;CapCut это профиль Ease out</dd>
+</dl>
+<div class="demo">
+<canvas id="fx" aria-hidden="true"></canvas>
+<div class="demo-cap">живой пример нашей анимации&nbsp;– именно этот характер повторяем</div>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<h2><span class="n">04</span>Раскадровка сторис и&nbsp;рилс</h2>
+<p class="lead">Готовый сценарий на&nbsp;10-15&nbsp;секунд, который выглядит как&nbsp;наш сайт</p>
+<ol class="steps">
+<li><b>Кадр 1, тёмный фон и&nbsp;сеть</b><p>Пустой почти чёрный экран, на&nbsp;нём медленно проявляется нейросеть из&nbsp;точек и&nbsp;тонких связей. 2-3&nbsp;секунды тишины и&nbsp;движения</p></li>
+<li><b>Кадр 2, заголовок всплывает</b><p>Текст появляется снизу вверх с&nbsp;лёгким сдвигом, тем&nbsp;же&nbsp;мягким заходом за&nbsp;0,7&nbsp;секунды. Шрифт Geist, крупно, по&nbsp;левому краю</p></li>
+<li><b>Кадр 3, один узел загорается</b><p>Одна точка сети вспыхивает лаймом и&nbsp;подсвечивает связи вокруг&nbsp;– это акцент кадра, привязанный к&nbsp;смыслу текста</p></li>
+<li><b>Кадр 4, смысловой блок</b><p>Короткая мысль или&nbsp;цифра выезжает на&nbsp;лаймовой плашке с&nbsp;чернильным текстом. Держится, пока читается</p></li>
+<li><b>Кадр 5, подпись и&nbsp;уход</b><p>Логотип Synapt и&nbsp;хэндл. Сеть на&nbsp;фоне продолжает жить, свет мягко гаснет</p></li>
+</ol>
+</div></section>
+
+<section><div class="wrap">
+<h2><span class="n">05</span>Что&nbsp;можно и&nbsp;чего нельзя</h2>
+<div class="cards">
+<div class="card"><h3>Можно</h3>
+<ul class="plain">
+<li>лаймовое свечение на&nbsp;тёмном</li>
+<li>медленный дрейф и&nbsp;мягкий пульс</li>
+<li>всплытие текста снизу, ease-out</li>
+<li>тонкие связи между близкими точками</li>
+<li>шрифт Geist, крупно и&nbsp;по&nbsp;левому краю</li>
+</ul>
+</div>
+<div class="card"><h3>Нельзя</h3>
+<ul class="plain">
+<li>второй яркий цвет рядом с&nbsp;лаймом</li>
+<li>резкие рывки, отскоки, тряска</li>
+<li>лайм на&nbsp;светлом фоне</li>
+<li>плотный хаос из&nbsp;частиц вместо сети</li>
+<li>сильное свечение на&nbsp;каждом элементе&nbsp;– свет это акцент, а&nbsp;не&nbsp;постоянный фон</li>
+</ul>
+</div>
+</div>
+<div class="tip"><b>Инструменты.</b> В&nbsp;CapCut и&nbsp;After&nbsp;Effects повторяется всё: фон #0E0F10, лаймовый текст и&nbsp;свечение (glow), профиль Ease&nbsp;out для&nbsp;появления, медленный фоновый слой с&nbsp;точками. Сеть можно взять как&nbsp;видео-подложку с&nbsp;нашего сайта&nbsp;– запишите экран hero-блока и&nbsp;используйте как&nbsp;фон</div>
+</div></section>
+
+<footer><div class="wrap">
+Референс живой анимации&nbsp;– hero на&nbsp;<a href="https://synapt.tech" target="_blank" rel="noopener">synapt.tech</a>. Цвета и&nbsp;тайминги в&nbsp;этом гайде взяты прямо из&nbsp;кода сайта, чтобы соцсети читались как&nbsp;один бренд
+</div></footer>
+
+<script>
+// демо той же анимации: медленный дрейф нейронов, тонкие связи, мягкий пульс
+(function(){
+  var c=document.getElementById('fx'); if(!c) return;
+  var x=c.getContext('2d'), DPR=Math.min(2,window.devicePixelRatio||1);
+  function size(){ c.width=c.clientWidth*DPR; c.height=c.clientHeight*DPR; }
+  size(); window.addEventListener('resize',size);
+  var N=26, nodes=[];
+  for(var i=0;i<N;i++) nodes.push({
+    x:Math.random(), y:Math.random(),
+    vx:(Math.random()-.5)*0.00018, vy:(Math.random()-.5)*0.00018,
+    ph:Math.random()*Math.PI*2
+  });
+  function frame(t){
+    var w=c.width,h=c.height; x.clearRect(0,0,w,h);
+    for(var i=0;i<N;i++){var n=nodes[i]; n.x+=n.vx; n.y+=n.vy;
+      if(n.x<0||n.x>1)n.vx*=-1; if(n.y<0||n.y>1)n.vy*=-1;}
+    // связи
+    for(var i=0;i<N;i++)for(var j=i+1;j<N;j++){
+      var a=nodes[i],b=nodes[j], dx=(a.x-b.x)*w, dy=(a.y-b.y)*h, d=Math.hypot(dx,dy);
+      if(d<150*DPR){ x.globalAlpha=(1-d/(150*DPR))*0.35; x.strokeStyle='#D0E865'; x.lineWidth=1*DPR;
+        x.beginPath(); x.moveTo(a.x*w,a.y*h); x.lineTo(b.x*w,b.y*h); x.stroke(); }
+    }
+    // узлы с мягким пульсом
+    for(var i=0;i<N;i++){var n=nodes[i], pulse=0.5+0.5*Math.sin(t*0.0007+n.ph);
+      x.globalAlpha=0.5+0.45*pulse; x.fillStyle='#D0E865';
+      x.shadowBlur=(6+10*pulse)*DPR; x.shadowColor='#E2F291';
+      x.beginPath(); x.arc(n.x*w,n.y*h,(2.2+1.6*pulse)*DPR,0,Math.PI*2); x.fill();
+    }
+    x.shadowBlur=0; x.globalAlpha=1;
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
