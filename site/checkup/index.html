@@ -8,7 +8,7 @@
     <a href="#og">Кейсы</a>
     <a href="#nextsteps">Что дальше</a>
   </div>
-  <a class="ck-cta" href="#lead">Пройти чекап</a>
+  <a class="ck-cta" href="#lead" id="ckCta">Пройти чекап</a>
   <button class="ck-burger" id="ckBurger" aria-label="Меню"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
 </nav>
 <div class="ck-sheet" id="ckSheet">
@@ -1106,7 +1106,7 @@ const { Engine, Bodies, Body, Composite, Query, Sleeping } = Matter;
   if(!box) return;
   const open=e=>{ if(e) e.preventDefault(); box.classList.add('on'); document.body.style.overflow='hidden'; setTimeout(()=>document.getElementById('leadName').focus(),260); };
   const close=()=>{ box.classList.remove('on'); document.body.style.overflow=''; };
-  ['cta','askCases'].forEach(id=>{ const a=document.getElementById(id); if(a) a.addEventListener('click', open); });
+  ['cta','askCases','ckCta'].forEach(id=>{ const a=document.getElementById(id); if(a) a.addEventListener('click', open); });
   document.getElementById('leadClose').addEventListener('click', close);
   box.addEventListener('click', e=>{ if(e.target===box) close(); });
   addEventListener('keydown', e=>{ if(e.key==='Escape' && box.classList.contains('on')) close(); });
@@ -1327,6 +1327,11 @@ const { Engine, Bodies, Body, Composite, Query, Sleeping } = Matter;
   const story=document.getElementById('story'), title=document.getElementById('title0'), side=document.getElementById('side'), side2=document.getElementById('side2'), side4=document.getElementById('side4');
   const LAST=4; let step=0, pending=0, locked=false, stepAt=0;
   function applyStep(){
+    // СТРАХОВКА от застревания скролла: на последнем шаге гарантированно освобождаем сцену
+    if(step===LAST){ clearTimeout(window.__sceneUnlock); window.__sceneUnlock=setTimeout(function(){
+      try{ if(!side5.classList.contains('on')){ side5.classList.add('on'); } }catch(e){}
+    }, 1400); }
+
     title.style.opacity = step===0?1:0; story.querySelector('.sticky').classList.toggle('s0', step===0);
     tChips = step>=1 ? ORDER.length : 0; tRocks = step>=2 ? ROCKS1.length : 0; mTarget = step>=3 ? 1 : 0;
     const freedTotal = ORDER.filter((_,i)=>i%FREE_EVERY!==FREE_EVERY-1).length; tGone = step>=3 ? freedTotal : 0;
