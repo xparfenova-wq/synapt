@@ -73,7 +73,7 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
 
 /* ===== INTRO ===== */
-.intro{position:relative;min-height:calc(var(--vh1,1vh)*100);min-height:calc(var(--vh1,1vh)*100);display:flex;align-items:center;justify-content:center;background:#FFFFFF;width:100vw;margin-left:calc(50% - 50vw);overflow:hidden}
+.intro{position:relative;min-height:calc(var(--vh1,1vh)*100 - 73px);padding-top:73px;min-height:calc(var(--vh1,1vh)*100);display:flex;align-items:center;justify-content:center;background:#FFFFFF;width:100vw;margin-left:calc(50% - 50vw);overflow:hidden}
 #warp{position:absolute;inset:0;width:100%;height:100%;display:block}
 .intro-in{position:relative;z-index:1;text-align:center;padding:0 24px}
 .intro h1{font-family:var(--f-display);font-weight:600;font-size:clamp(56px,13vw,200px);letter-spacing:-.05em;line-height:.9;color:#141821;transform:skewX(-9deg);-webkit-text-stroke:2px #D0E865;paint-order:stroke fill}
@@ -633,11 +633,11 @@ html{scroll-snap-type:y proximity}
 .ck-nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;gap:20px;
   padding:14px clamp(18px,4vw,48px);background:rgba(244,246,245,.82);backdrop-filter:saturate(150%) blur(18px);
   border-bottom:1px solid rgba(20,24,33,.10);
-  transform:translateY(-100%);opacity:0;pointer-events:none;
+  transform:translateY(0);opacity:1;pointer-events:auto;
   transition:transform .32s cubic-bezier(.4,0,.2,1),opacity .32s ease}
 .ck-nav.show{transform:translateY(0);opacity:1;pointer-events:auto}
 .ck-nav .ck-brand{display:inline-flex;align-items:center;color:#141821;flex:none}
-.ck-nav .ck-brand svg{height:28px;width:auto;display:block}
+.ck-nav .ck-brand svg{height:32px;width:auto;display:block}
 .ck-nav .ck-brand .lg-mark{transition:fill .18s ease}
 .ck-nav .ck-brand:hover .lg-mark{fill:#8CC01A}
 .ck-links{display:flex;gap:2px;margin-left:8px;flex:1}
@@ -1454,7 +1454,7 @@ const { Engine, Bodies, Body, Composite, Query, Sleeping } = Matter;
 (function(){
   var nav=document.getElementById('ckNav'),sheet=document.getElementById('ckSheet'),burger=document.getElementById('ckBurger');
   var intro=document.querySelector('.intro');
-  function upd(){ if(!intro)return; var b=intro.getBoundingClientRect().bottom; nav.classList.toggle('show', b < 40); }
+  function upd(){ if(!intro)return; var b=intro.getBoundingClientRect().bottom; nav.classList.add('show'); }
   addEventListener('scroll',upd,{passive:true}); addEventListener('resize',upd); upd();
   if(burger){ burger.addEventListener('click',function(){ sheet.classList.toggle('open'); }); 
     sheet.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ sheet.classList.remove('open'); }); }); }
