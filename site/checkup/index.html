@@ -584,7 +584,7 @@ html{scroll-snap-type:y proximity}
 .lead-card.ok .done{display:block}
 /* горизонтального скролла страницы быть не должно: full-bleed секции считаются от 100vw, поэтому режем вылеты */
 @media (max-width: 768px){ html,body{overflow-x:clip} }
-</style>
+@media (max-width: 768px){br.dtop{display:none}}</style>
 <div class="lead" id="lead" role="dialog" aria-modal="true" aria-labelledby="leadTitle">
   <div class="lead-card" id="leadCard">
     <button type="button" class="x" id="leadClose" aria-label="Закрыть">×</button>
@@ -611,7 +611,7 @@ html{scroll-snap-type:y proximity}
     <canvas id="warp"></canvas>
     <div class="intro-in">
       <h1>AI-чекап</h1>
-      <p>Карта бизнес-процессов: разбираем каждый и даём план,<br>что именно стоит AI-зировать и что это даст в деньгах</p>
+      <p>Карта бизнес-процессов: разбираем каждый и даём план,<br class="dtop">что именно стоит AI-зировать и что это даст в деньгах</p>
     </div>
   </section>
 
@@ -688,7 +688,7 @@ html{scroll-snap-type:y proximity}
     </div>
     <div class="example"><div class="example-card">
       <h2>Чекап: как обязательная<br>диагностика, только для бизнеса</h2>
-      <p>Находим, где AI даст эффект до того,<br>как вы потратите бюджет на внедрение</p>
+      <p>Находим, где AI даст эффект до того,<br class="dtop">как вы потратите бюджет на внедрение</p>
       <a class="bigcta" href="#" id="cta">Пройти чекап</a>
     </div></div>
     <div class="og" id="og">
