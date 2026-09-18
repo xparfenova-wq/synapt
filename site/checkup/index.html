@@ -1470,10 +1470,18 @@ const { Engine, Bodies, Body, Composite, Query, Sleeping } = Matter;
       var rb=document.getElementById('restart'); if(rb){ setTimeout(function(){ rb.click(); }, 60); }
       return;
     }
-    // абсолютная позиция через цепочку offsetTop (устойчиво к sticky)
-    var y=0, node=el; while(node){ y+=node.offsetTop; node=node.offsetParent; }
+    function absY(node){ var y=0; while(node){ y+=node.offsetTop; node=node.offsetParent; } return y; }
     var margin = (id==='example') ? 100 : (id==='og') ? 20 : 73;
-    window.scrollTo(0, Math.max(0, y - margin));
+    var target = Math.max(0, absY(el) - margin);
+    // двойной проход: story-анимация снапит скролл в свою зону, поэтому добиваем несколько раз
+    window.scrollTo(0, target);
+    var tries=0;
+    var iv=setInterval(function(){
+      tries++;
+      var cur = Math.abs(window.pageYOffset - target);
+      if(cur > 40 && tries < 12){ window.scrollTo(0, target); }
+      else { clearInterval(iv); }
+    }, 80);
   }
   document.querySelectorAll('.ck-links a[href^="#"],.ck-sheet a[href^="#"]').forEach(function(a){
     a.addEventListener('click',function(e){ e.preventDefault(); var s=document.getElementById('ckSheet'); if(s)s.classList.remove('open'); go(a.getAttribute('href')); });
