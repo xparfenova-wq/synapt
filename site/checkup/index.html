@@ -631,8 +631,8 @@ html{scroll-snap-type:y proximity}
 @media (max-width: 768px){br.dtop{display:none}}
 /* === Внутренняя шапка чекапа (единая с сайтом) === */
 .ck-nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;gap:20px;
-  padding:14px clamp(18px,4vw,48px);background:rgba(244,246,245,.82);backdrop-filter:saturate(150%) blur(18px);
-  border-bottom:1px solid rgba(20,24,33,.10);
+  padding:14px clamp(18px,4vw,48px);background:transparent;
+  border-bottom:1px solid transparent;transition:background .3s ease,border-color .3s ease;
   transform:translateY(0);opacity:1;pointer-events:auto;
   transition:transform .32s cubic-bezier(.4,0,.2,1),opacity .32s ease}
 .ck-nav.show{transform:translateY(0);opacity:1;pointer-events:auto}
@@ -652,7 +652,7 @@ html{scroll-snap-type:y proximity}
   .ck-links{display:none}
   .ck-nav .ck-cta{display:none}
   .ck-burger{display:flex}
-  .ck-sheet{position:fixed;top:60px;left:0;right:0;z-index:999;background:#F4F6F5;border-bottom:1px solid rgba(20,24,33,.10);padding:8px 0;transform:translateY(-8px);opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease}
+  .ck-sheet{position:fixed;top:60px;left:0;right:0;z-index:999;background:#F4F6F5;border-bottom:1px solid transparent;transition:background .3s ease,border-color .3s ease;padding:8px 0;transform:translateY(-8px);opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease}
   .ck-sheet.open{opacity:1;transform:translateY(0);pointer-events:auto}
   .ck-sheet a{display:flex;align-items:center;min-height:52px;padding:0 clamp(18px,4vw,48px);font-size:16px;font-weight:500;color:#141821;text-decoration:none;border-bottom:1px solid rgba(20,24,33,.07)}
   .ck-sheet a:last-child{border-bottom:0}
@@ -673,6 +673,7 @@ html{scroll-snap-type:y proximity}
 #og{scroll-margin-top:-48px}
 #example{scroll-margin-top:123px}
 #story{scroll-margin-top:0}
+.ck-nav.solid{background:rgba(244,246,245,.82);backdrop-filter:saturate(150%) blur(18px);-webkit-backdrop-filter:saturate(150%) blur(18px);border-bottom-color:rgba(20,24,33,.10)}
 </style>
 <div class="lead" id="lead" role="dialog" aria-modal="true" aria-labelledby="leadTitle">
   <div class="lead-card" id="leadCard">
@@ -1454,7 +1455,7 @@ const { Engine, Bodies, Body, Composite, Query, Sleeping } = Matter;
 (function(){
   var nav=document.getElementById('ckNav'),sheet=document.getElementById('ckSheet'),burger=document.getElementById('ckBurger');
   var intro=document.querySelector('.intro');
-  function upd(){ if(!intro)return; var b=intro.getBoundingClientRect().bottom; nav.classList.add('show'); }
+  function upd(){ if(!intro)return; var b=intro.getBoundingClientRect().bottom; nav.classList.toggle('solid', b < 40); nav.classList.add('show'); }
   addEventListener('scroll',upd,{passive:true}); addEventListener('resize',upd); upd();
   if(burger){ burger.addEventListener('click',function(){ sheet.classList.toggle('open'); }); 
     sheet.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',function(){ sheet.classList.remove('open'); }); }); }
@@ -1465,17 +1466,14 @@ const { Engine, Bodies, Body, Composite, Query, Sleeping } = Matter;
   function go(hash){
     var id=hash.replace('#',''); var el=document.getElementById(id); if(!el)return;
     if(id==='story'){
-      var el2=document.getElementById('story'); if(el2) window.scrollTo(0, el2.offsetTop);
-      var rb=document.getElementById('restart');
-      if(rb){ setTimeout(function(){ rb.click(); }, 60); }
+      window.scrollTo(0, el.offsetTop);
+      var rb=document.getElementById('restart'); if(rb){ setTimeout(function(){ rb.click(); }, 60); }
       return;
     }
-    el.scrollIntoView({behavior:'auto',block:'start'});
-    requestAnimationFrame(function(){ requestAnimationFrame(function(){
-      var y=el.getBoundingClientRect().top+window.pageYOffset;
-      var off=(id==='example')?123:(id==='og')?-58:70;
-      window.scrollTo(0, Math.max(0,y-off));
-    });});
+    // абсолютная позиция через цепочку offsetTop (устойчиво к sticky)
+    var y=0, node=el; while(node){ y+=node.offsetTop; node=node.offsetParent; }
+    var margin = (id==='example') ? 100 : (id==='og') ? 20 : 73;
+    window.scrollTo(0, Math.max(0, y - margin));
   }
   document.querySelectorAll('.ck-links a[href^="#"],.ck-sheet a[href^="#"]').forEach(function(a){
     a.addEventListener('click',function(e){ e.preventDefault(); var s=document.getElementById('ckSheet'); if(s)s.classList.remove('open'); go(a.getAttribute('href')); });
